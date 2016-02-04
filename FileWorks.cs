@@ -30,6 +30,12 @@ namespace Students
                 schemaList.Add(new SchemaField(vals[0], vals[1]));
             }
             m_schema = schemaList.ToArray();
+
+            m_enumSortBy = new string[7]
+                { "Status", "Changed", "Learns", "Speaks", "First", "Last", "Source"};
+
+            m_enumSortDirection = new string[2]
+                { "Asc", "Desc"};
         }
 
         void ParseHeaders(string[] hdrs)
@@ -89,7 +95,7 @@ namespace Students
 
             return st;
         }
-        void ReadCsvFile()
+        void ReadStudentsFile()
         {
             this.m_students.Clear();
             string[] sts = File.ReadAllLines(m_dataLocation + "\\Students.csv");
@@ -103,6 +109,13 @@ namespace Students
             }
 
             AssignMissingID();
+        }
+
+        void ShowStudents(List<Student> students)
+        {
+            studentListBindingSource.Clear();
+            foreach (Student s in students)
+                studentListBindingSource.Add(s);
         }
 
         private string SafeGuard(string s)
@@ -151,7 +164,7 @@ namespace Students
             }
         }
 
-        void WriteCsvFile()
+        void WriteStudentsFile()
         {
             string bkup = m_dataLocation + "\\Students.backup.csv";
             string target = m_dataLocation + "\\Students.csv";
@@ -164,7 +177,32 @@ namespace Students
                 WriteHeader(sw);
                 WriteValues(sw);
             }
+        }
 
+        private void CaptureStudentEditing()
+        {
+            m_curStudent.Birthday = textBoxBirthday.Text;
+            m_curStudent.Email = textBoxEmail.Text;
+            m_curStudent.MailingAddress = textBoxAddress1.Text;
+            m_curStudent.FirstName = textBoxFirstName.Text;
+            m_curStudent.LastName = textBoxLastName.Text;
+            m_curStudent.PossibleSchedule = textBoxSchedule.Text;
+            m_curStudent.HomePhone = textBoxHomePhone.Text;
+            m_curStudent.CellPhone = textBoxCellPhone.Text;
+            m_curStudent.Comments = textBoxComments.Text;
+            m_curStudent.Interests = textBoxInterests.Text;
+            m_curStudent.Goals = textBoxGoals.Text;
+            m_curStudent.Background = textBoxBackground.Text;
+            m_curStudent.SourceDetail = textBoxSourceDetail.Text;
+            m_curStudent.Birthday = textBoxBirthday.Text;
+            m_curStudent.LanguageDetail = textBoxLanguageDetail.Text;
+            m_curStudent.LearningLanguage = comboBoxLearns.Text;
+            m_curStudent.Level = comboBoxLevel.Text;
+            m_curStudent.OtherLanguage = comboBoxOther.Text;
+            m_curStudent.Source = comboBoxSource.Text;
+            m_curStudent.NativeLanguage =comboBoxSpeaks.Text;
+            m_curStudent.Status = comboBoxStatus.Text;
+            m_curStudent.Changed = DateTime.Now;
         }
     }
 }

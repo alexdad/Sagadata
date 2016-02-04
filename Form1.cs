@@ -68,6 +68,8 @@ namespace Students
     }
     public partial class Form1 : Form
     {
+        Student m_curStudent;
+        int m_curIndex;
         List<Student> m_students;
         SchemaField[] m_schema;
         int[] m_placements;
@@ -76,8 +78,8 @@ namespace Students
         string[] m_enumLevel;
         string[] m_enumSource;
         string[] m_enumStatus;
-
-        
+        string[] m_enumSortBy;
+        string[] m_enumSortDirection;
 
         public Form1(string dataLocation)
         {
@@ -85,6 +87,24 @@ namespace Students
             m_dataLocation = dataLocation;
             ReadSchemas();
             InitializeComponent();
+            AssignEnums();
+        }
+
+        private void AssignEnums()
+        {
+            comboBoxSelectLearns.Items.AddRange(m_enumLanguage);
+            comboBoxSelectSpeaks.Items.AddRange(m_enumLanguage);
+            comboBoxSelectStatus.Items.AddRange(m_enumStatus);
+            comboBoxSelectSource.Items.AddRange(m_enumSource);
+            comboBoxSortBy.Items.AddRange(m_enumSortBy);
+            comboBoxSortAscDesc.Items.AddRange(m_enumSortDirection);
+
+            comboBoxLearns.Items.AddRange(m_enumLanguage);
+            comboBoxOther.Items.AddRange(m_enumLanguage);
+            comboBoxSpeaks.Items.AddRange(m_enumLanguage);
+            comboBoxLevel.Items.AddRange(m_enumLevel);
+            comboBoxSource.Items.AddRange(m_enumSource);
+            comboBoxStatus.Items.AddRange(m_enumStatus);
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -121,47 +141,108 @@ namespace Students
 
         }
 
-        private void openToolStripMenuItem_Click_2(object sender, EventArgs e)
-        {
-            OpenFileDialog openFileDialog1 = new OpenFileDialog();
-            openFileDialog1.InitialDirectory = "c:\\";
-            openFileDialog1.Filter = "csv files (*.csv)|*.csv";
-            openFileDialog1.FilterIndex = 2;
-            openFileDialog1.RestoreDirectory = true;
-            Stream myStream = null;
-
-            if (openFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    string fpath = openFileDialog1.FileName;
-                    if ((myStream = openFileDialog1.OpenFile()) != null)
-                    {
-                        using (myStream)
-                        {
-                            ReadCsvFile();
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error: Could not read file from disk. Original error: " + ex.Message);
-                }
-            }
-        }
-
         private void openToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            ReadCsvFile();
+            ReadStudentsFile();
+            ShowStudents(m_students);
+            SetFirstCurrentStudent();
+            ShowCurrentStudent();
         }
+
+        private void ShowCurrentStudent()
+        {
+            textBoxBirthday.Text = m_curStudent.Birthday;
+            textBoxEmail.Text = m_curStudent.Email;
+            textBoxAddress1.Text = m_curStudent.MailingAddress;
+            textBoxFirstName.Text = m_curStudent.FirstName;
+            textBoxLastName.Text = m_curStudent.LastName;
+            textBoxSchedule.Text = m_curStudent.PossibleSchedule;
+            textBoxHomePhone.Text = m_curStudent.HomePhone;
+            textBoxCellPhone.Text = m_curStudent.CellPhone;
+            textBoxComments.Text = m_curStudent.Comments;
+            textBoxInterests.Text = m_curStudent.Interests;
+            textBoxGoals.Text = m_curStudent.Goals;
+            textBoxBackground.Text = m_curStudent.Background;
+            textBoxSourceDetail.Text = m_curStudent.SourceDetail;
+            textBoxBirthday.Text = m_curStudent.Birthday;
+            textBoxLanguageDetail.Text = m_curStudent.LanguageDetail;
+            comboBoxLearns.Text = m_curStudent.LearningLanguage;
+            comboBoxLevel.Text = m_curStudent.Level;
+            comboBoxOther.Text = m_curStudent.OtherLanguage;
+            comboBoxSource.Text = m_curStudent.Source;
+            comboBoxSpeaks.Text = m_curStudent.NativeLanguage;
+            comboBoxStatus.Text = m_curStudent.Status;
+        }
+
+        private void SetCurrentStudent(int index)
+        {
+            m_curIndex = index;
+
+            buttonNext.Enabled = (m_curIndex < m_students.Count - 1);
+            buttonPrev.Enabled = (m_curIndex > 0);
+
+            m_curStudent = m_students[m_curIndex];
+        }
+
+        private void SetFirstCurrentStudent()
+        {
+            SetCurrentStudent(0);
+        }
+        private void SetNextCurrentStudent()
+        {
+            SetCurrentStudent(m_curIndex + 1);
+        }
+        private void SetPrevCurrentStudent()
+        {
+            SetCurrentStudent(m_curIndex - 1);
+        }
+
+        private void SetCurrentStudentFromArray(int index)
+        {
+            m_curIndex = index;
+            m_curStudent = m_students[index];
+        }
+        private void SaveCurrentStudentToArray()
+        {
+            if (m_curStudent.FirstName.Length > 0 && m_curStudent.LastName.Length > 0)
+                m_students[m_curIndex] = m_curStudent;
+        }
+
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            WriteCsvFile();
+            WriteStudentsFile();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void buttonNext_Click(object sender, EventArgs e)
+        {
+            CaptureStudentEditing();
+            SaveCurrentStudentToArray();
+            SetNextCurrentStudent();
+            ShowCurrentStudent();
+        }
+
+        private void buttonPrev_Click(object sender, EventArgs e)
+        {
+            CaptureStudentEditing();
+            SaveCurrentStudentToArray();
+            SetPrevCurrentStudent();
+            ShowCurrentStudent();
+        }
+
+        private void buttonNew_Click(object sender, EventArgs e)
+        {
+            CaptureStudentEditing();
+            SaveCurrentStudentToArray();
+
+            m_students.Add(Student.Factory());
+
+            SetCurrentStudent(m_students.Count - 1);
+            ShowCurrentStudent();
         }
     }
 }

@@ -16,6 +16,10 @@ namespace Students
         public string MailingAddress { get; set; }
         public string HomePhone { get; set; }
         public string CellPhone { get; set; }
+        public string Phone
+        {
+            get { return (CellPhone.Length > 0 ? CellPhone : HomePhone); }
+        }
         public String Birthday { get; set; }
         public String NativeLanguage { get; set; }
         public String LearningLanguage { get; set; }
@@ -196,7 +200,7 @@ namespace Students
             st.PossibleSchedule = "";
             st.Source = "?";
             st.SourceDetail = "";
-            st.Status = "";
+            st.Status = "?";
 
             return st;
         }
