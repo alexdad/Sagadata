@@ -101,11 +101,19 @@
             this.listViewStudents = new System.Windows.Forms.ListView();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonPrev = new System.Windows.Forms.Button();
+            this.buttonNew = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
+            this.buttonNext = new System.Windows.Forms.Button();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
             this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.learningLanguageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.levelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nativeLanguageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -113,10 +121,6 @@
             this.birthdayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mailingAddressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.studentListBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.buttonPrev = new System.Windows.Forms.Button();
-            this.buttonNew = new System.Windows.Forms.Button();
-            this.buttonDelete = new System.Windows.Forms.Button();
-            this.buttonNext = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panelSort.SuspendLayout();
             this.panelStudent.SuspendLayout();
@@ -288,7 +292,7 @@
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(210)))), ((int)(((byte)(47)))));
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(71, 3);
+            this.button1.Location = new System.Drawing.Point(62, 3);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(116, 23);
             this.button1.TabIndex = 5;
@@ -300,7 +304,7 @@
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(210)))), ((int)(((byte)(47)))));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(91, 5);
+            this.button2.Location = new System.Drawing.Point(61, 5);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 6;
@@ -319,7 +323,7 @@
             // comboBoxSortBy
             // 
             this.comboBoxSortBy.FormattingEnabled = true;
-            this.comboBoxSortBy.Location = new System.Drawing.Point(21, 39);
+            this.comboBoxSortBy.Location = new System.Drawing.Point(70, 39);
             this.comboBoxSortBy.Name = "comboBoxSortBy";
             this.comboBoxSortBy.Size = new System.Drawing.Size(121, 21);
             this.comboBoxSortBy.TabIndex = 1;
@@ -327,7 +331,7 @@
             // comboBoxSortAscDesc
             // 
             this.comboBoxSortAscDesc.FormattingEnabled = true;
-            this.comboBoxSortAscDesc.Location = new System.Drawing.Point(21, 66);
+            this.comboBoxSortAscDesc.Location = new System.Drawing.Point(70, 66);
             this.comboBoxSortAscDesc.Name = "comboBoxSortAscDesc";
             this.comboBoxSortAscDesc.Size = new System.Drawing.Size(121, 21);
             this.comboBoxSortAscDesc.TabIndex = 2;
@@ -491,9 +495,9 @@
             // 
             // textBoxLanguageDetail
             // 
-            this.textBoxLanguageDetail.Location = new System.Drawing.Point(691, 86);
+            this.textBoxLanguageDetail.Location = new System.Drawing.Point(735, 86);
             this.textBoxLanguageDetail.Name = "textBoxLanguageDetail";
-            this.textBoxLanguageDetail.Size = new System.Drawing.Size(234, 20);
+            this.textBoxLanguageDetail.Size = new System.Drawing.Size(190, 20);
             this.textBoxLanguageDetail.TabIndex = 11;
             // 
             // label19
@@ -523,7 +527,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(6, 115);
+            this.label20.Location = new System.Drawing.Point(11, 121);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(36, 13);
             this.label20.TabIndex = 24;
@@ -645,6 +649,8 @@
             // 
             this.panelSort.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(195)))), ((int)(((byte)(178)))));
             this.panelSort.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelSort.Controls.Add(this.label30);
+            this.panelSort.Controls.Add(this.label28);
             this.panelSort.Controls.Add(this.button2);
             this.panelSort.Controls.Add(this.comboBoxSortAscDesc);
             this.panelSort.Controls.Add(this.comboBoxSortBy);
@@ -658,6 +664,8 @@
             // 
             this.panelStudent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
             this.panelStudent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelStudent.Controls.Add(this.label32);
+            this.panelStudent.Controls.Add(this.label31);
             this.panelStudent.Controls.Add(this.textBoxComments);
             this.panelStudent.Controls.Add(this.textBoxLastName);
             this.panelStudent.Controls.Add(this.textBoxSchedule);
@@ -704,9 +712,9 @@
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.Location = new System.Drawing.Point(1124, 37);
+            this.pictureBox1.Location = new System.Drawing.Point(1108, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(151, 183);
+            this.pictureBox1.Size = new System.Drawing.Size(151, 199);
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
             // 
@@ -794,92 +802,12 @@
             this.dataGridView1.Size = new System.Drawing.Size(1057, 342);
             this.dataGridView1.TabIndex = 13;
             // 
-            // statusDataGridViewTextBoxColumn
-            // 
-            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
-            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
-            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
-            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
-            this.statusDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // firstNameDataGridViewTextBoxColumn
-            // 
-            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.HeaderText = "First Name";
-            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lastNameDataGridViewTextBoxColumn
-            // 
-            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.HeaderText = "Last Name";
-            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
-            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
-            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // Phone
             // 
             this.Phone.DataPropertyName = "Phone";
             this.Phone.HeaderText = "Phone";
             this.Phone.Name = "Phone";
             this.Phone.ReadOnly = true;
-            // 
-            // learningLanguageDataGridViewTextBoxColumn
-            // 
-            this.learningLanguageDataGridViewTextBoxColumn.DataPropertyName = "LearningLanguage";
-            this.learningLanguageDataGridViewTextBoxColumn.HeaderText = "Learning";
-            this.learningLanguageDataGridViewTextBoxColumn.Name = "learningLanguageDataGridViewTextBoxColumn";
-            this.learningLanguageDataGridViewTextBoxColumn.ReadOnly = true;
-            this.learningLanguageDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // levelDataGridViewTextBoxColumn
-            // 
-            this.levelDataGridViewTextBoxColumn.DataPropertyName = "Level";
-            this.levelDataGridViewTextBoxColumn.HeaderText = "Level";
-            this.levelDataGridViewTextBoxColumn.Name = "levelDataGridViewTextBoxColumn";
-            this.levelDataGridViewTextBoxColumn.ReadOnly = true;
-            this.levelDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // nativeLanguageDataGridViewTextBoxColumn
-            // 
-            this.nativeLanguageDataGridViewTextBoxColumn.DataPropertyName = "NativeLanguage";
-            this.nativeLanguageDataGridViewTextBoxColumn.HeaderText = "Native";
-            this.nativeLanguageDataGridViewTextBoxColumn.Name = "nativeLanguageDataGridViewTextBoxColumn";
-            this.nativeLanguageDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nativeLanguageDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // otherLanguageDataGridViewTextBoxColumn
-            // 
-            this.otherLanguageDataGridViewTextBoxColumn.DataPropertyName = "OtherLanguage";
-            this.otherLanguageDataGridViewTextBoxColumn.HeaderText = "Other";
-            this.otherLanguageDataGridViewTextBoxColumn.Name = "otherLanguageDataGridViewTextBoxColumn";
-            this.otherLanguageDataGridViewTextBoxColumn.ReadOnly = true;
-            this.otherLanguageDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // birthdayDataGridViewTextBoxColumn
-            // 
-            this.birthdayDataGridViewTextBoxColumn.DataPropertyName = "Birthday";
-            this.birthdayDataGridViewTextBoxColumn.HeaderText = "Birthday";
-            this.birthdayDataGridViewTextBoxColumn.Name = "birthdayDataGridViewTextBoxColumn";
-            this.birthdayDataGridViewTextBoxColumn.ReadOnly = true;
-            this.birthdayDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // mailingAddressDataGridViewTextBoxColumn
-            // 
-            this.mailingAddressDataGridViewTextBoxColumn.DataPropertyName = "MailingAddress";
-            this.mailingAddressDataGridViewTextBoxColumn.HeaderText = "Address";
-            this.mailingAddressDataGridViewTextBoxColumn.Name = "mailingAddressDataGridViewTextBoxColumn";
-            this.mailingAddressDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // studentListBindingSource
-            // 
-            this.studentListBindingSource.DataSource = typeof(Students.Student);
             // 
             // buttonPrev
             // 
@@ -933,6 +861,122 @@
             this.buttonNext.Text = ">>";
             this.buttonNext.UseVisualStyleBackColor = false;
             this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(12, 47);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(22, 13);
+            this.label28.TabIndex = 7;
+            this.label28.Text = "By:";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(12, 69);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(52, 13);
+            this.label30.TabIndex = 8;
+            this.label30.Text = "Direction:";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(490, 129);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(39, 13);
+            this.label31.TabIndex = 34;
+            this.label31.Text = "Details";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(688, 88);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(39, 13);
+            this.label32.TabIndex = 35;
+            this.label32.Text = "Details";
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
+            this.statusDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "First Name";
+            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "Last Name";
+            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // learningLanguageDataGridViewTextBoxColumn
+            // 
+            this.learningLanguageDataGridViewTextBoxColumn.DataPropertyName = "LearningLanguage";
+            this.learningLanguageDataGridViewTextBoxColumn.HeaderText = "Learning";
+            this.learningLanguageDataGridViewTextBoxColumn.Name = "learningLanguageDataGridViewTextBoxColumn";
+            this.learningLanguageDataGridViewTextBoxColumn.ReadOnly = true;
+            this.learningLanguageDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // levelDataGridViewTextBoxColumn
+            // 
+            this.levelDataGridViewTextBoxColumn.DataPropertyName = "Level";
+            this.levelDataGridViewTextBoxColumn.HeaderText = "Level";
+            this.levelDataGridViewTextBoxColumn.Name = "levelDataGridViewTextBoxColumn";
+            this.levelDataGridViewTextBoxColumn.ReadOnly = true;
+            this.levelDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // nativeLanguageDataGridViewTextBoxColumn
+            // 
+            this.nativeLanguageDataGridViewTextBoxColumn.DataPropertyName = "NativeLanguage";
+            this.nativeLanguageDataGridViewTextBoxColumn.HeaderText = "Native";
+            this.nativeLanguageDataGridViewTextBoxColumn.Name = "nativeLanguageDataGridViewTextBoxColumn";
+            this.nativeLanguageDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nativeLanguageDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // otherLanguageDataGridViewTextBoxColumn
+            // 
+            this.otherLanguageDataGridViewTextBoxColumn.DataPropertyName = "OtherLanguage";
+            this.otherLanguageDataGridViewTextBoxColumn.HeaderText = "Other";
+            this.otherLanguageDataGridViewTextBoxColumn.Name = "otherLanguageDataGridViewTextBoxColumn";
+            this.otherLanguageDataGridViewTextBoxColumn.ReadOnly = true;
+            this.otherLanguageDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // birthdayDataGridViewTextBoxColumn
+            // 
+            this.birthdayDataGridViewTextBoxColumn.DataPropertyName = "Birthday";
+            this.birthdayDataGridViewTextBoxColumn.HeaderText = "Birthday";
+            this.birthdayDataGridViewTextBoxColumn.Name = "birthdayDataGridViewTextBoxColumn";
+            this.birthdayDataGridViewTextBoxColumn.ReadOnly = true;
+            this.birthdayDataGridViewTextBoxColumn.Width = 50;
+            // 
+            // mailingAddressDataGridViewTextBoxColumn
+            // 
+            this.mailingAddressDataGridViewTextBoxColumn.DataPropertyName = "MailingAddress";
+            this.mailingAddressDataGridViewTextBoxColumn.HeaderText = "Address";
+            this.mailingAddressDataGridViewTextBoxColumn.Name = "mailingAddressDataGridViewTextBoxColumn";
+            this.mailingAddressDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // studentListBindingSource
+            // 
+            this.studentListBindingSource.DataSource = typeof(Students.Student);
             // 
             // Form1
             // 
@@ -1060,6 +1104,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn otherLanguageDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn birthdayDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn mailingAddressDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label31;
     }
 }
 
