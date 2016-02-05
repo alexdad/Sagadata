@@ -182,6 +182,10 @@ namespace Students
             buttonPrev.Enabled = (m_curIndex > 0);
 
             m_curStudent = m_students[m_curIndex];
+
+            dataGridView1.ClearSelection();
+            dataGridView1.Rows[m_curIndex].Selected = true;
+            dataGridView1.CurrentCell = dataGridView1.Rows[m_curIndex].Cells[0];
         }
 
         private void SetFirstCurrentStudent()
@@ -239,9 +243,29 @@ namespace Students
             CaptureStudentEditing();
             SaveCurrentStudentToArray();
 
-            m_students.Add(Student.Factory());
-
+            Student newStud = Student.Factory();
+            m_students.Add(newStud);
+            studentListBindingSource.Add(newStud);
             SetCurrentStudent(m_students.Count - 1);
+            ShowCurrentStudent();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < m_students.Count)
+            {
+                SetCurrentStudent(e.RowIndex);
+                ShowCurrentStudent();
+            }
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            m_students.RemoveAt(m_curIndex);
+            studentListBindingSource.RemoveAt(m_curIndex);
+            if (m_curIndex >= studentListBindingSource.Count)
+                m_curIndex = studentListBindingSource.Count - 1;
+            SetCurrentStudent(m_curIndex);
             ShowCurrentStudent();
         }
     }

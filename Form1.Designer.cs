@@ -93,7 +93,11 @@
             this.textBoxSchedule = new System.Windows.Forms.TextBox();
             this.textBoxComments = new System.Windows.Forms.TextBox();
             this.panelSort = new System.Windows.Forms.Panel();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
             this.panelStudent = new System.Windows.Forms.Panel();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label27 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
@@ -106,10 +110,6 @@
             this.buttonNew = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonNext = new System.Windows.Forms.Button();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
             this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -660,6 +660,24 @@
             this.panelSort.Size = new System.Drawing.Size(195, 100);
             this.panelSort.TabIndex = 4;
             // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(12, 69);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(52, 13);
+            this.label30.TabIndex = 8;
+            this.label30.Text = "Direction:";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(12, 47);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(22, 13);
+            this.label28.TabIndex = 7;
+            this.label28.Text = "By:";
+            // 
             // panelStudent
             // 
             this.panelStudent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
@@ -708,6 +726,24 @@
             this.panelStudent.Name = "panelStudent";
             this.panelStudent.Size = new System.Drawing.Size(937, 398);
             this.panelStudent.TabIndex = 5;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(688, 88);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(39, 13);
+            this.label32.TabIndex = 35;
+            this.label32.Text = "Details";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(490, 129);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(39, 13);
+            this.label31.TabIndex = 34;
+            this.label31.Text = "Details";
             // 
             // pictureBox1
             // 
@@ -799,8 +835,10 @@
             this.dataGridView1.Location = new System.Drawing.Point(12, 37);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1057, 342);
             this.dataGridView1.TabIndex = 13;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // Phone
             // 
@@ -848,6 +886,7 @@
             this.buttonDelete.TabIndex = 19;
             this.buttonDelete.Text = "X";
             this.buttonDelete.UseVisualStyleBackColor = false;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // buttonNext
             // 
@@ -861,42 +900,6 @@
             this.buttonNext.Text = ">>";
             this.buttonNext.UseVisualStyleBackColor = false;
             this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(12, 47);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(22, 13);
-            this.label28.TabIndex = 7;
-            this.label28.Text = "By:";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(12, 69);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(52, 13);
-            this.label30.TabIndex = 8;
-            this.label30.Text = "Direction:";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(490, 129);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(39, 13);
-            this.label31.TabIndex = 34;
-            this.label31.Text = "Details";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(688, 88);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(39, 13);
-            this.label32.TabIndex = 35;
-            this.label32.Text = "Details";
             // 
             // statusDataGridViewTextBoxColumn
             // 
