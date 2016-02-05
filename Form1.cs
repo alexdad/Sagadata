@@ -70,24 +70,35 @@ namespace Students
     {
         Student m_curStudent;
         int m_curIndex;
-        List<Student> m_students;
+        bool m_selectionMode;
+        Student[] m_savedFullListDuringSelection;
+
         SchemaField[] m_schema;
         int[] m_placements;
         string m_dataLocation;
+
         string[] m_enumLanguage;
         string[] m_enumLevel;
         string[] m_enumSource;
         string[] m_enumStatus;
-        string[] m_enumSortBy;
+        string[] m_enumColumnNames;
         string[] m_enumSortDirection;
+
+        string m_selectionStatus;
+        string m_selectionLearns;
+        string m_selectionSpeaks;
+        string m_selectionFirstName;
+        string m_selectionLastName;
+        string m_selectionSource;
+        string m_selectionLevel;
 
         public Form1(string dataLocation)
         {
-            m_students = new List<Student>();
             m_dataLocation = dataLocation;
             ReadSchemas();
             InitializeComponent();
             AssignEnums();
+            m_selectionMode = false;
         }
 
         private void AssignEnums()
@@ -96,8 +107,7 @@ namespace Students
             comboBoxSelectSpeaks.Items.AddRange(m_enumLanguage);
             comboBoxSelectStatus.Items.AddRange(m_enumStatus);
             comboBoxSelectSource.Items.AddRange(m_enumSource);
-            comboBoxSortBy.Items.AddRange(m_enumSortBy);
-            comboBoxSortAscDesc.Items.AddRange(m_enumSortDirection);
+            comboBoxSelectLevel.Items.AddRange(m_enumLevel);
 
             comboBoxLearns.Items.AddRange(m_enumLanguage);
             comboBoxOther.Items.AddRange(m_enumLanguage);
@@ -143,8 +153,9 @@ namespace Students
 
         private void openToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
+            if (BlockSelectionMode())
+                return;
             ReadStudentsFile();
-            ShowStudents(m_students);
             SetFirstCurrentStudent();
             ShowCurrentStudent();
         }
@@ -172,16 +183,18 @@ namespace Students
             comboBoxSource.Text = m_curStudent.Source;
             comboBoxSpeaks.Text = m_curStudent.NativeLanguage;
             comboBoxStatus.Text = m_curStudent.Status;
+
+            labelCount.Text = studentList.Count.ToString();
         }
 
         private void SetCurrentStudent(int index)
         {
             m_curIndex = index;
 
-            buttonNext.Enabled = (m_curIndex < m_students.Count - 1);
+            buttonNext.Enabled = (m_curIndex < studentList.Count - 1);
             buttonPrev.Enabled = (m_curIndex > 0);
 
-            m_curStudent = m_students[m_curIndex];
+            m_curStudent = (Student)studentList[m_curIndex];
 
             dataGridView1.ClearSelection();
             dataGridView1.Rows[m_curIndex].Selected = true;
@@ -204,55 +217,72 @@ namespace Students
         private void SetCurrentStudentFromArray(int index)
         {
             m_curIndex = index;
-            m_curStudent = m_students[index];
+            m_curStudent = (Student)studentList[index];
         }
         private void SaveCurrentStudentToArray()
         {
+            if (BlockSelectionMode())
+                return;
             if (m_curStudent.FirstName.Length > 0 && m_curStudent.LastName.Length > 0)
-                m_students[m_curIndex] = m_curStudent;
+                studentList[m_curIndex] = m_curStudent;
         }
 
         private void closeToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (BlockSelectionMode())
+                return;
+            CaptureStudentEditing();
+            SaveCurrentStudentToArray();
+
             WriteStudentsFile();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (BlockSelectionMode())
+                return;
             Application.Exit();
         }
 
         private void buttonNext_Click(object sender, EventArgs e)
         {
-            CaptureStudentEditing();
-            SaveCurrentStudentToArray();
+            if (!m_selectionMode)
+            {
+                CaptureStudentEditing();
+                SaveCurrentStudentToArray();
+            }
             SetNextCurrentStudent();
             ShowCurrentStudent();
         }
 
         private void buttonPrev_Click(object sender, EventArgs e)
         {
-            CaptureStudentEditing();
-            SaveCurrentStudentToArray();
+            if (!m_selectionMode)
+            {
+                CaptureStudentEditing();
+                SaveCurrentStudentToArray();
+            }
             SetPrevCurrentStudent();
             ShowCurrentStudent();
         }
 
-        private void buttonNew_Click(object sender, EventArgs e)
+        private void buttonAdd_Click(object sender, EventArgs e)
         {
-            CaptureStudentEditing();
-            SaveCurrentStudentToArray();
-
-            Student newStud = Student.Factory();
-            m_students.Add(newStud);
-            studentListBindingSource.Add(newStud);
-            SetCurrentStudent(m_students.Count - 1);
+            if (BlockSelectionMode())
+                return;
+            Student[] temp = new Student[studentList.Count + 1];
+            studentList.CopyTo(temp, 0);
+            temp[studentList.Count] = Student.Factory();
+            studentList.Clear();
+            foreach (Student s in temp)
+                studentList.Add(s);
+            SetCurrentStudent(studentList.Count - 1);
             ShowCurrentStudent();
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.RowIndex < m_students.Count)
+            if (e.RowIndex >= 0 && e.RowIndex < studentList.Count)
             {
                 SetCurrentStudent(e.RowIndex);
                 ShowCurrentStudent();
@@ -261,12 +291,216 @@ namespace Students
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            m_students.RemoveAt(m_curIndex);
-            studentListBindingSource.RemoveAt(m_curIndex);
-            if (m_curIndex >= studentListBindingSource.Count)
-                m_curIndex = studentListBindingSource.Count - 1;
+            if (BlockSelectionMode())
+                return;
+            studentList.RemoveAt(m_curIndex);
+            if (m_curIndex >= studentList.Count)
+                m_curIndex = studentList.Count - 1;
             SetCurrentStudent(m_curIndex);
             ShowCurrentStudent();
         }
+        static int s_lastColumnSorted = -1;
+        static bool s_needToReverse = false;
+
+        private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.ColumnIndex != s_lastColumnSorted)
+            {
+                s_lastColumnSorted = e.ColumnIndex;
+                s_needToReverse = false;
+            }
+            else
+                s_needToReverse = !s_needToReverse;
+
+            DataGridViewColumn col = dataGridView1.Columns[e.ColumnIndex];
+            Student[] temp = new Student[studentList.Count];
+            studentList.CopyTo(temp, 0);
+
+            //m_enumColumnNames = new string[]
+            //    { "Status", "First Name", "Last Name", "Email", "Phone", "Learning", "Level",
+            //      "Native", "Other", "Birthday", "Source", "Address"};
+
+            switch (col.HeaderText)
+            {
+                case "Status":
+                    Array.Sort(temp, new ComparerByStatus());
+                    break;
+                case "Changed":
+                    Array.Sort(temp, new ComparerByChanged());
+                    break;
+                case "Learning":
+                    Array.Sort(temp, new ComparerByLearns());
+                    break;
+                case "Other":
+                    Array.Sort(temp, new ComparerByOther());
+                    break;
+                case "Level":
+                    Array.Sort(temp, new ComparerByLevel());
+                    break;
+                case "Native":
+                    Array.Sort(temp, new ComparerBySpeaks());
+                    break;
+                case "First Name":
+                    Array.Sort(temp, new ComparerByFirstName());
+                    break;
+                case "Last Name":
+                    Array.Sort(temp, new ComparerByLastName());
+                    break;
+                case "Source":
+                    Array.Sort(temp, new ComparerBySource());
+                    break;
+                default:
+                    s_needToReverse = false;
+                    break;
+            }
+            studentList.Clear();
+            if (s_needToReverse)
+                Array.Reverse(temp);
+
+            foreach (Student s in temp)
+                studentList.Add(s);
+
+            SetFirstCurrentStudent();
+            ShowCurrentStudent();
+        }
+
+        private void buttonShowAll_Click(object sender, EventArgs e)
+        {
+            buttonShowAll.Enabled = false;
+            buttonDelete.Enabled = true;
+            buttonAdd.Enabled = true;
+            m_selectionMode = false;
+
+            studentList.Clear();
+            foreach (Student s in m_savedFullListDuringSelection)
+                studentList.Add(s);
+            m_savedFullListDuringSelection = null;
+
+            SetFirstCurrentStudent();
+            ShowCurrentStudent();
+
+            m_selectionStatus = null;
+            m_selectionLearns = null;
+            m_selectionSpeaks = null;
+            m_selectionFirstName = null;
+            m_selectionLastName = null;
+            m_selectionSource = null;
+            m_selectionLevel = null;
+
+            comboBoxSelectStatus.SelectedIndex = 0;
+            comboBoxSelectLearns.SelectedIndex = 0;
+            comboBoxSelectSpeaks.SelectedIndex = 0;
+            textBoxSelectFirstName.Text = "";
+            textBoxSelectLastName.Text = "";
+            comboBoxSelectSource.SelectedIndex = 0;
+            comboBoxSelectLevel.SelectedIndex = 0;
+            // Changed
+        }
+
+        private bool Fit(string what, string where)
+        {
+            return (what == null || what == "" || what == "?" || 
+                    where.ToLower().Contains(what.ToLower()));
+        }
+        private void DoSelection()
+        {
+            if (!m_selectionMode)
+            {
+                m_selectionMode = true;
+                buttonDelete.Enabled = false;
+                buttonAdd.Enabled = false;
+                buttonShowAll.Enabled = true;
+
+                m_savedFullListDuringSelection = new Student[studentList.Count];
+                studentList.CopyTo(m_savedFullListDuringSelection, 0);
+            }
+
+            studentList.Clear();
+            foreach (Student s in m_savedFullListDuringSelection)
+            {
+                if (!Fit(m_selectionStatus, s.Status))
+                    continue;
+                if (!Fit(m_selectionLearns, s.LearningLanguage))
+                    continue;
+                if (!Fit(m_selectionSpeaks, s.NativeLanguage))
+                    continue;
+                if (!Fit(m_selectionFirstName, s.FirstName))
+                    continue;
+                if (!Fit(m_selectionLastName, s.LastName))
+                    continue;
+                if (!Fit(m_selectionSource, s.Source))
+                    continue;
+                if (!Fit(m_selectionLevel, s.Level))
+                    continue;
+
+                studentList.Add(s);
+            }
+            if (studentList.Count > 0)
+                SetFirstCurrentStudent();
+            else
+                m_curStudent = Student.Factory();
+            ShowCurrentStudent();
+        }
+
+        private bool BlockSelectionMode()
+        {
+            if (m_selectionMode)
+            {
+                MessageBox.Show("Not allowed in selection mode. Click 'Show All'");
+                return true;
+            }
+            else
+                return false;
+        }
+
+        private void comboBoxSelectStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            m_selectionStatus = (string)comboBox.SelectedItem;
+            DoSelection();
+        }
+
+        private void comboBoxSelectLearns_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            m_selectionLearns = (string)comboBox.SelectedItem;
+            DoSelection();
+        }
+
+        private void comboBoxSelectSpeaks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            m_selectionSpeaks = (string)comboBox.SelectedItem;
+            DoSelection();
+        }
+
+        private void textBoxSelectFirstName_TextChanged(object sender, EventArgs e)
+        {
+            TextBox testBox = (TextBox)sender;
+            m_selectionFirstName = testBox.Text;
+            DoSelection();
+        }
+
+        private void textBoxSelectLastName_TextChanged(object sender, EventArgs e)
+        {
+            TextBox testBox = (TextBox)sender;
+            m_selectionLastName = (string)testBox.Text;
+            DoSelection();
+        }
+
+        private void comboBoxSelectSource_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            m_selectionSource = (string)comboBox.SelectedItem;
+            DoSelection();
+        }
+
+        private void comboBoxSelectLevel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            m_selectionLevel= (string)comboBox.SelectedItem;
+            DoSelection();
+        }
     }
 }
+ 

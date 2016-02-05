@@ -31,11 +31,14 @@ namespace Students
             }
             m_schema = schemaList.ToArray();
 
-            m_enumSortBy = new string[7]
-                { "Status", "Changed", "Learns", "Speaks", "First", "Last", "Source"};
+            m_enumColumnNames = new string[]
+                { "Status", "First Name", "Last Name", "Email", "Phone", "Learning", "Level",
+                  "Native", "Other", "Birthday", "Source", "Address"};
 
             m_enumSortDirection = new string[2]
                 { "Asc", "Desc"};
+
+
         }
 
         void ParseHeaders(string[] hdrs)
@@ -58,13 +61,13 @@ namespace Students
         void AssignMissingID()
         {
             int maxId = 1;
-            foreach (Student st in m_students)
+            foreach (Student st in studentList)
             {
                 if (st.Id > maxId)
                     maxId = st.Id;
             }
 
-            foreach (Student st in m_students)
+            foreach (Student st in studentList)
             {
                 if (st.Id <= 0)
                     st.Id = ++maxId;
@@ -97,7 +100,7 @@ namespace Students
         }
         void ReadStudentsFile()
         {
-            this.m_students.Clear();
+            this.studentList.Clear();
             string[] sts = File.ReadAllLines(m_dataLocation + "\\Students.csv");
 
             ParseHeaders (sts[0].Split(','));
@@ -105,17 +108,10 @@ namespace Students
             for (int s = 1; s < sts.Length; s++)
             {
                 string safeStr = SafeGuard(sts[s]);
-                m_students.Add(ParseValues(s, safeStr.Split(',')));
+                studentList.Add(ParseValues(s, safeStr.Split(',')));
             }
 
             AssignMissingID();
-        }
-
-        void ShowStudents(List<Student> students)
-        {
-            studentListBindingSource.Clear();
-            foreach (Student s in students)
-                studentListBindingSource.Add(s);
         }
 
         private string SafeGuard(string s)
@@ -148,7 +144,7 @@ namespace Students
         }
         void WriteValues(StreamWriter sw)
         {
-            foreach(Student s in m_students)
+            foreach(Student s in studentList)
             {
                 StringBuilder sb = new StringBuilder();
                 for (int i = 0; i < m_schema.Length; i++)

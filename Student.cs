@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Students
 {
-    class Student
+    public class Student
     {
         public int Id { get; set; }
         public string Status { get; set; }
@@ -203,6 +203,70 @@ namespace Students
             st.Status = "?";
 
             return st;
+        }
+    }
+
+    public class ComparerByFirstName : IComparer<Student>
+    {
+        public int Compare(Student y, Student x)
+        {
+            return y.FirstName.CompareTo(x.FirstName);
+        }
+    }
+    public class ComparerByLastName : IComparer<Student>
+    {
+        public int Compare(Student y, Student x)
+        {
+            return y.LastName.CompareTo(x.LastName);
+        }
+    }
+    public class ComparerByStatus : IComparer<Student>
+    {
+        public int Compare(Student y, Student x)
+        {
+            return y.Status.CompareTo(x.Status);
+        }
+    }
+    public class ComparerBySource : IComparer<Student>
+    {
+        public int Compare(Student y, Student x)
+        {
+            return y.Source.CompareTo(x.Source);
+        }
+    }
+    public class ComparerByLearns : IComparer<Student>
+    {
+        public int Compare(Student y, Student x)
+        {
+            return y.LearningLanguage.CompareTo(x.LearningLanguage);
+        }
+    }
+    public class ComparerByOther: IComparer<Student>
+    {
+        public int Compare(Student y, Student x)
+        {
+            return y.OtherLanguage.CompareTo(x.OtherLanguage);
+        }
+    }
+    public class ComparerByLevel: IComparer<Student>
+    {
+        public int Compare(Student y, Student x)
+        {
+            return y.Level.CompareTo(x.Level);
+        }
+    }
+    public class ComparerBySpeaks : IComparer<Student>
+    {
+        public int Compare(Student y, Student x)
+        {
+            return y.NativeLanguage.CompareTo(x.NativeLanguage);
+        }
+    }
+    public class ComparerByChanged : IComparer<Student>
+    {
+        public int Compare(Student y, Student x)
+        {
+            return y.Changed.CompareTo(x.Changed);
         }
     }
 }
