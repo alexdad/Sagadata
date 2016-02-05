@@ -117,40 +117,6 @@ namespace Students
             comboBoxStatus.Items.AddRange(m_enumStatus);
         }
 
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label14_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label27_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label28_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listViewStudents_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void openToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             if (BlockSelectionMode())
@@ -282,6 +248,11 @@ namespace Students
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (!m_selectionMode)
+            {
+                CaptureStudentEditing();
+                SaveCurrentStudentToArray();
+            }
             if (e.RowIndex >= 0 && e.RowIndex < studentList.Count)
             {
                 SetCurrentStudent(e.RowIndex);
