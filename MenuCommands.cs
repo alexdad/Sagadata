@@ -75,5 +75,16 @@ namespace Students
 
             File.Copy(studFile, cloudFile);
         }
+
+        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panelHelp.Visible = true;
+        }
+
+        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

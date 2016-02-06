@@ -54,14 +54,12 @@ namespace Students
             Client = Environment.MachineName;
             m_studentsAsRead = new Dictionary<string, Student>();
         }
-
+        #region "Navigation"
         public bool SelectionMode
         {
             get { return buttonShowAll.Enabled; }
             set { buttonShowAll.Enabled = value; }
         }
-
-
 
         private void SetCurrentStudent(int index)
         {
@@ -108,7 +106,33 @@ namespace Students
                 SelectionMode = false;
             }
         }
+        #endregion
+        #region "DataGridClicks"
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            CaptureStudentEditing();
+            if (e.RowIndex >= 0 && e.RowIndex < studentList.Count)
+                SetCurrentStudent(e.RowIndex);
+        }
 
+        private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.ColumnIndex != s_lastColumnSorted)
+            {
+                s_lastColumnSorted = e.ColumnIndex;
+                s_needToReverse = false;
+            }
+            else
+                s_needToReverse = !s_needToReverse;
+
+            DataGridViewColumn col = dataGridView1.Columns[e.ColumnIndex];
+            Student[] temp = ForkOut(0);
+            SortStudents(col.HeaderText, temp);
+            MergeBack(temp);
+            SetFirstCurrentStudent();
+        }
+        #endregion
+        #region "ButtonClicks"
         private void buttonNext_Click(object sender, EventArgs e)
         {
             CaptureStudentEditing();
@@ -129,13 +153,6 @@ namespace Students
             SetLastCurrentStudent();
         }
 
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            CaptureStudentEditing();
-            if (e.RowIndex >= 0 && e.RowIndex < studentList.Count)
-                SetCurrentStudent(e.RowIndex);
-        }
-
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             Student s = (Student)studentList[m_curIndex];
@@ -145,23 +162,6 @@ namespace Students
                 m_curIndex = studentList.Count - 1;
             SetCurrentStudent(m_curIndex);
             ShowCurrentStudent();
-        }
-
-        private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.ColumnIndex != s_lastColumnSorted)
-            {
-                s_lastColumnSorted = e.ColumnIndex;
-                s_needToReverse = false;
-            }
-            else
-                s_needToReverse = !s_needToReverse;
-
-            DataGridViewColumn col = dataGridView1.Columns[e.ColumnIndex];
-            Student[] temp = ForkOut(0);
-            SortStudents(col.HeaderText, temp);
-            MergeBack(temp);
-            SetFirstCurrentStudent();
         }
 
         private void buttonShowAll_Click(object sender, EventArgs e)
@@ -185,8 +185,8 @@ namespace Students
             comboBoxSelectLevel.SelectedIndex = 0;
             // Changed
         }
-
-
+        #endregion
+        #region "ComboBoxClicks"
         private void comboBoxSelectStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
@@ -207,7 +207,20 @@ namespace Students
             m_selectionSpeaks = (string)comboBox.SelectedItem;
             DoSelection();
         }
-
+        private void comboBoxSelectSource_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            m_selectionSource = (string)comboBox.SelectedItem;
+            DoSelection();
+        }
+        private void comboBoxSelectLevel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            m_selectionLevel = (string)comboBox.SelectedItem;
+            DoSelection();
+        }
+        #endregion
+        #region "TextBoxClicks"
         private void textBoxSelectFirstName_TextChanged(object sender, EventArgs e)
         {
             TextBox testBox = (TextBox)sender;
@@ -221,20 +234,7 @@ namespace Students
             m_selectionLastName = (string)testBox.Text;
             DoSelection();
         }
-
-        private void comboBoxSelectSource_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ComboBox comboBox = (ComboBox)sender;
-            m_selectionSource = (string)comboBox.SelectedItem;
-            DoSelection();
-        }
-
-        private void comboBoxSelectLevel_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ComboBox comboBox = (ComboBox)sender;
-            m_selectionLevel= (string)comboBox.SelectedItem;
-            DoSelection();
-        }
+        #endregion
     }
 }
  
