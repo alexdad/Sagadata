@@ -98,9 +98,10 @@ namespace Students
 
             return st;
         }
-        void ReadStudentsFile()
+        void ReadStudentsFile(Dictionary<string, Student> studentsAsRead )
         {
             this.studentList.Clear();
+            studentsAsRead.Clear();
             string[] sts = File.ReadAllLines(m_dataLocation + "\\Students.csv");
 
             ParseHeaders (sts[0].Split(','));
@@ -108,10 +109,28 @@ namespace Students
             for (int s = 1; s < sts.Length; s++)
             {
                 string safeStr = SafeGuard(sts[s]);
-                studentList.Add(ParseValues(s, safeStr.Split(',')));
+                Student st = ParseValues(s, safeStr.Split(','));
+                studentList.Add(st);
+                studentsAsRead.Add(st.Key, st.Duplicate());
             }
 
             AssignMissingID();
+        }
+
+        Student[] ReadCloudFile(string cloudFile)
+        {
+            string[] sts = File.ReadAllLines(cloudFile);
+            Student[] studs = new Student[sts.Length - 1];
+
+            ParseHeaders(sts[0].Split(','));
+
+            for (int s = 1; s < sts.Length; s++)
+            {
+                string safeStr = SafeGuard(sts[s]);
+                studs[s - 1] = ParseValues(s, safeStr.Split(','));
+            }
+
+            return studs;
         }
 
         private string SafeGuard(string s)
@@ -146,10 +165,23 @@ namespace Students
         {
             foreach(Student s in studentList)
             {
+                Student st = s.Duplicate();
+                if (m_studentsAsRead.ContainsKey(st.Key))
+                {
+                    Student oldSt = m_studentsAsRead[st.Key];
+                    if (!StudentDiffers(st, oldSt))
+                    {
+                        st.Changed = oldSt.Changed;
+                        st.ChangedBy = oldSt.ChangedBy;
+                    }
+                }
+
                 StringBuilder sb = new StringBuilder();
                 for (int i = 0; i < m_schema.Length; i++)
                 {
-                    string safeValue = s.Get(m_schema[i].Header);
+                    string safeValue = st.Get(m_schema[i].Header);
+                    if (safeValue == null)
+                        safeValue = "";
                     safeValue = safeValue.Replace('"', ' ');
                     safeValue = safeValue.Replace(',', ';');
                     sb.Append("\"");
@@ -160,9 +192,32 @@ namespace Students
             }
         }
 
+        string DecideBackup()
+        {
+            string prefix = m_dataLocation + "\\Students.backup.";
+            DateTime maxDt = DateTime.MinValue;
+            const int maxBackup = 100;
+            int index = -1;
+            for (int i=0; i < maxBackup; i++)
+            {
+                string fl = prefix + i.ToString() + ".csv";
+                if (File.Exists(fl) &&
+                    File.GetLastWriteTime(fl) > maxDt)
+                {
+                    maxDt = File.GetLastWriteTime(fl);
+                    index = i;
+                }
+            }
+            if (index >= 0)
+                index++;
+            else
+                index = 0;
+
+            return prefix + index.ToString() + ".csv";
+        }
         void WriteStudentsFile()
         {
-            string bkup = m_dataLocation + "\\Students.backup.csv";
+            string bkup = DecideBackup();
             string target = m_dataLocation + "\\Students.csv";
             if (File.Exists(bkup))
                 File.Delete(bkup);
@@ -199,6 +254,9 @@ namespace Students
             m_curStudent.NativeLanguage =comboBoxSpeaks.Text;
             m_curStudent.Status = comboBoxStatus.Text;
             m_curStudent.Changed = DateTime.Now;
+            m_curStudent.ChangedBy = Form1.Client;
+
+            SaveCurrentStudentToArray();
         }
     }
 }

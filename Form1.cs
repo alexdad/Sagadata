@@ -68,10 +68,13 @@ namespace Students
     }
     public partial class Form1 : Form
     {
+        public static string Client;
+
         Student m_curStudent;
         int m_curIndex;
-        bool m_selectionMode;
         Student[] m_savedFullListDuringSelection;
+        Dictionary<string, Student> m_studentsAsRead;
+        List<string> m_deletedKeys;
 
         SchemaField[] m_schema;
         int[] m_placements;
@@ -92,13 +95,25 @@ namespace Students
         string m_selectionSource;
         string m_selectionLevel;
 
+        // Temporary - it should be cloud
+        const string s_cloudLocation = @"C:\Users\Sasha\Documents\Visual Studio 2015\Projects\Students\Remote";
+
         public Form1(string dataLocation)
         {
             m_dataLocation = dataLocation;
             ReadSchemas();
             InitializeComponent();
             AssignEnums();
-            m_selectionMode = false;
+            SelectionMode = false;
+            m_deletedKeys = new List<string>();
+            Client = Environment.MachineName;
+            m_studentsAsRead = new Dictionary<string, Student>();
+        }
+
+        public bool SelectionMode
+        {
+            get { return buttonShowAll.Enabled; }
+            set { buttonShowAll.Enabled = value; }
         }
 
         private void AssignEnums()
@@ -115,15 +130,6 @@ namespace Students
             comboBoxLevel.Items.AddRange(m_enumLevel);
             comboBoxSource.Items.AddRange(m_enumSource);
             comboBoxStatus.Items.AddRange(m_enumStatus);
-        }
-
-        private void openToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            if (BlockSelectionMode())
-                return;
-            ReadStudentsFile();
-            SetFirstCurrentStudent();
-            ShowCurrentStudent();
         }
 
         private void ShowCurrentStudent()
@@ -165,11 +171,17 @@ namespace Students
             dataGridView1.ClearSelection();
             dataGridView1.Rows[m_curIndex].Selected = true;
             dataGridView1.CurrentCell = dataGridView1.Rows[m_curIndex].Cells[0];
+
+            ShowCurrentStudent();
         }
 
         private void SetFirstCurrentStudent()
         {
             SetCurrentStudent(0);
+        }
+        private void SetLastCurrentStudent()
+        {
+            SetCurrentStudent(studentList.Count - 1);
         }
         private void SetNextCurrentStudent()
         {
@@ -180,90 +192,134 @@ namespace Students
             SetCurrentStudent(m_curIndex - 1);
         }
 
-        private void SetCurrentStudentFromArray(int index)
-        {
-            m_curIndex = index;
-            m_curStudent = (Student)studentList[index];
-        }
         private void SaveCurrentStudentToArray()
         {
-            if (BlockSelectionMode())
-                return;
             if (m_curStudent.FirstName.Length > 0 && m_curStudent.LastName.Length > 0)
                 studentList[m_curIndex] = m_curStudent;
         }
 
-        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        private Student[] ForkOut(int addedPositions)
         {
-            if (BlockSelectionMode())
-                return;
-            CaptureStudentEditing();
-            SaveCurrentStudentToArray();
-
-            WriteStudentsFile();
+            Student[] temp = new Student[studentList.Count + addedPositions];
+            int i = 0;
+            foreach (Student s in studentList)
+                temp[i++] = s.Duplicate();
+            return temp;
+        }
+        private bool IsStudentDeleted(Student s)
+        {
+            return m_deletedKeys.Contains(s.Key);
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        public bool StudentDiffers(Student s1, Student s2)
         {
-            if (BlockSelectionMode())
-                return;
-            Application.Exit();
+            for (int i = 0; i < m_schema.Length; i++)
+            {
+                string hdr = m_schema[i].Header;
+                if (hdr == "DateTimeChanged" ||
+                    hdr == "ChangedBy")
+                    continue;
+
+                if (s1.Get(hdr) != s2.Get(hdr))
+                    return true;
+            }
+            return false;
+        }
+
+        private void MergeBack(Student[] target)
+        {
+            Dictionary<string, Student> dict = new Dictionary<string, Student>();
+            foreach (Student s in studentList)
+            {
+                if (!IsStudentDeleted(s))
+                    dict.Add(s.Key, s);
+            }
+
+            foreach (Student t in target)
+            {
+                if (!IsStudentDeleted(t))
+                {
+                    if (!dict.ContainsKey(t.Key))
+                        dict.Add(t.Key, t);
+                    else if (StudentDiffers(t, dict[t.Key]))
+                    {
+                        if (dict[t.Key].Changed < t.Changed)
+                        {
+                            dict[t.Key] = t;        // Target had newer, restoring back
+                            MessageBox.Show( String.Format (
+                                "Merge conflict: {0} edited {1} at {2}; not taking yours!",
+                                               t.ChangedBy,
+                                               t.FirstName + " " + t.LastName,
+                                               t.Changed));
+                        }
+                    }
+                }
+            }
+
+            studentList.Clear();
+            foreach (Student s in dict.Values)
+                studentList.Add(s);
+
+            m_deletedKeys.Clear();
+        }
+
+        private void StashStudentList()
+        {
+            m_savedFullListDuringSelection = ForkOut(0);
+        }
+
+        private void RestoreStudentList()
+        {
+            studentList.Clear();
+            foreach (Student s in m_savedFullListDuringSelection)
+                studentList.Add(s);
+            m_savedFullListDuringSelection = null;
+        }
+
+        private void EndSelectionMode()
+        {
+            if (SelectionMode)
+            {
+                CaptureStudentEditing();
+                Student[] temp = ForkOut(0);
+                RestoreStudentList();
+                MergeBack(temp);
+                SetFirstCurrentStudent();
+                SelectionMode = false;
+            }
         }
 
         private void buttonNext_Click(object sender, EventArgs e)
         {
-            if (!m_selectionMode)
-            {
-                CaptureStudentEditing();
-                SaveCurrentStudentToArray();
-            }
+            CaptureStudentEditing();
             SetNextCurrentStudent();
-            ShowCurrentStudent();
         }
 
         private void buttonPrev_Click(object sender, EventArgs e)
         {
-            if (!m_selectionMode)
-            {
-                CaptureStudentEditing();
-                SaveCurrentStudentToArray();
-            }
+            CaptureStudentEditing();
             SetPrevCurrentStudent();
-            ShowCurrentStudent();
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            if (BlockSelectionMode())
-                return;
-            Student[] temp = new Student[studentList.Count + 1];
-            studentList.CopyTo(temp, 0);
+            Student[] temp = ForkOut(1);
             temp[studentList.Count] = Student.Factory();
-            studentList.Clear();
-            foreach (Student s in temp)
-                studentList.Add(s);
-            SetCurrentStudent(studentList.Count - 1);
-            ShowCurrentStudent();
+            MergeBack(temp);
+            SetLastCurrentStudent();
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (!m_selectionMode)
-            {
-                CaptureStudentEditing();
-                SaveCurrentStudentToArray();
-            }
+            CaptureStudentEditing();
             if (e.RowIndex >= 0 && e.RowIndex < studentList.Count)
-            {
                 SetCurrentStudent(e.RowIndex);
-                ShowCurrentStudent();
-            }
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            if (BlockSelectionMode())
-                return;
+            Student s = (Student)studentList[m_curIndex];
+            m_deletedKeys.Add(s.Key);
             studentList.RemoveAt(m_curIndex);
             if (m_curIndex >= studentList.Count)
                 m_curIndex = studentList.Count - 1;
@@ -284,8 +340,7 @@ namespace Students
                 s_needToReverse = !s_needToReverse;
 
             DataGridViewColumn col = dataGridView1.Columns[e.ColumnIndex];
-            Student[] temp = new Student[studentList.Count];
-            studentList.CopyTo(temp, 0);
+            Student[] temp = ForkOut(0);
 
             //m_enumColumnNames = new string[]
             //    { "Status", "First Name", "Last Name", "Email", "Phone", "Learning", "Level",
@@ -324,31 +379,17 @@ namespace Students
                     s_needToReverse = false;
                     break;
             }
-            studentList.Clear();
             if (s_needToReverse)
                 Array.Reverse(temp);
 
-            foreach (Student s in temp)
-                studentList.Add(s);
+            MergeBack(temp);
 
             SetFirstCurrentStudent();
-            ShowCurrentStudent();
         }
 
         private void buttonShowAll_Click(object sender, EventArgs e)
         {
-            buttonShowAll.Enabled = false;
-            buttonDelete.Enabled = true;
-            buttonAdd.Enabled = true;
-            m_selectionMode = false;
-
-            studentList.Clear();
-            foreach (Student s in m_savedFullListDuringSelection)
-                studentList.Add(s);
-            m_savedFullListDuringSelection = null;
-
-            SetFirstCurrentStudent();
-            ShowCurrentStudent();
+            EndSelectionMode();
 
             m_selectionStatus = null;
             m_selectionLearns = null;
@@ -375,15 +416,10 @@ namespace Students
         }
         private void DoSelection()
         {
-            if (!m_selectionMode)
+            if (!SelectionMode)
             {
-                m_selectionMode = true;
-                buttonDelete.Enabled = false;
-                buttonAdd.Enabled = false;
-                buttonShowAll.Enabled = true;
-
-                m_savedFullListDuringSelection = new Student[studentList.Count];
-                studentList.CopyTo(m_savedFullListDuringSelection, 0);
+                SelectionMode = true;
+                StashStudentList();
             }
 
             studentList.Clear();
@@ -411,17 +447,6 @@ namespace Students
             else
                 m_curStudent = Student.Factory();
             ShowCurrentStudent();
-        }
-
-        private bool BlockSelectionMode()
-        {
-            if (m_selectionMode)
-            {
-                MessageBox.Show("Not allowed in selection mode. Click 'Show All'");
-                return true;
-            }
-            else
-                return false;
         }
 
         private void comboBoxSelectStatus_SelectedIndexChanged(object sender, EventArgs e)
@@ -471,6 +496,66 @@ namespace Students
             ComboBox comboBox = (ComboBox)sender;
             m_selectionLevel= (string)comboBox.SelectedItem;
             DoSelection();
+        }
+
+        //----------------------------------------------------
+        // Menu strip
+        //----------------------------------------------------
+        private void downloadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // TEMP - it should be real cloud
+            string cloudFile = s_cloudLocation + @"\Students.csv";
+            if (!File.Exists(cloudFile))
+            {
+                MessageBox.Show("Cannot find cloud file");
+                return;
+            }
+            string studFile = m_dataLocation + @"\Students.csv";
+            if (File.Exists(studFile))
+                File.Delete(studFile);
+
+            File.Copy(cloudFile, studFile);
+        }
+
+        private void openToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            ReadStudentsFile(m_studentsAsRead);
+            SetFirstCurrentStudent();
+            ShowCurrentStudent();
+        }
+
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CaptureStudentEditing();
+            EndSelectionMode();
+            WriteStudentsFile();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void mergeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string studFile = m_dataLocation + @"\Students.csv";
+            string cloudFile = s_cloudLocation + @"\Students.csv";
+
+            if (!File.Exists(cloudFile))
+            {
+                MessageBox.Show("Cannot find cloud file");
+                return;
+            }
+
+            Student[] temp = ReadCloudFile(cloudFile);
+            MergeBack(temp);
+            WriteStudentsFile();
+
+            if (File.Exists(cloudFile))
+                File.Delete(cloudFile);
+
+            File.Copy(studFile, cloudFile);
         }
     }
 }

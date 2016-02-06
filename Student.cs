@@ -35,6 +35,9 @@ namespace Students
         public string Comments { get; set; }
         public DateTime Created { get; set; }
         public DateTime Changed { get; set; }
+        public string ChangedBy { get; set; }
+        public string CreatedBy { get; set; }
+        public string Key { get { return CreatedBy + Id.ToString();  } }
 
         public bool Set(string field, string value)
         {
@@ -54,8 +57,14 @@ namespace Students
                 case "DateTimeCreated":
                     this.Created = DateTime.Parse(value);
                     break;
+                case "CreatedBy":
+                    this.CreatedBy = value;
+                    break;
                 case "DateTimeChanged":
                     this.Changed = DateTime.Parse(value);
+                    break;
+                case "ChangedBy":
+                    this.ChangedBy = value;
                     break;
                 case "FirstName":
                     this.FirstName = value;
@@ -130,8 +139,12 @@ namespace Students
                     return Status;
                 case "DateTimeCreated":
                     return Created.ToString();
+                case "CreatedBy":
+                    return CreatedBy;
                 case "DateTimeChanged":
                     return Changed.ToString();
+                case "ChangedBy":
+                    return ChangedBy;
                 case "FirstName":
                     return FirstName;
                 case "LastName":
@@ -184,6 +197,7 @@ namespace Students
             st.Changed = DateTime.Now;
             st.Comments = "";
             st.Created = DateTime.Now;
+            st.CreatedBy = Form1.Client;
             st.Email = "?";
             st.FirstName = "";
             st.Goals = "";
@@ -204,6 +218,38 @@ namespace Students
 
             return st;
         }
+        public Student Duplicate()
+        {
+            Student st = new Student();
+            st.Background = this.Background;
+            st.Birthday = this.Birthday;
+            st.CellPhone = this.CellPhone;
+            st.Changed = this.Changed;
+            st.ChangedBy = this.ChangedBy;
+            st.Comments = this.Comments;
+            st.Created = this.Created;
+            st.CreatedBy = this.CreatedBy;
+            st.Email = this.Email;
+            st.FirstName = this.FirstName;
+            st.Goals = this.Goals;
+            st.HomePhone = this.HomePhone;
+            st.Id = this.Id;
+            st.Interests = this.Interests;
+            st.LanguageDetail = this.LanguageDetail;
+            st.LastName = this.LastName;
+            st.LearningLanguage = this.LearningLanguage;
+            st.Level = this.Level;
+            st.MailingAddress = this.MailingAddress;
+            st.NativeLanguage = this.NativeLanguage;
+            st.OtherLanguage = this.OtherLanguage;
+            st.PossibleSchedule = this.PossibleSchedule;
+            st.Source = this.Source;
+            st.SourceDetail = this.SourceDetail;
+            st.Status = this.Status;
+
+            return st;
+        }
+
     }
 
     public class ComparerByFirstName : IComparer<Student>
