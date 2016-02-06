@@ -58,26 +58,9 @@ namespace Students
             }
         }
 
-        void AssignMissingID()
-        {
-            int maxId = 1;
-            foreach (Student st in studentList)
-            {
-                if (st.Id > maxId)
-                    maxId = st.Id;
-            }
-
-            foreach (Student st in studentList)
-            {
-                if (st.Id <= 0)
-                    st.Id = ++maxId;
-            }
-        }
-
-
         Student ParseValues(int ind, string[] vals)
         {
-            Student st = Student.Factory();
+            Student st = new Student();
 
             for (int i = 0; i < m_placements.Length; i++)
             {
@@ -102,7 +85,7 @@ namespace Students
         {
             this.studentList.Clear();
             studentsAsRead.Clear();
-            string[] sts = File.ReadAllLines(m_dataLocation + "\\Students.csv");
+            string[] sts = File.ReadAllLines(FilePath);
 
             ParseHeaders (sts[0].Split(','));
 
@@ -110,15 +93,17 @@ namespace Students
             {
                 string safeStr = SafeGuard(sts[s]);
                 Student st = ParseValues(s, safeStr.Split(','));
-                studentList.Add(st);
-                studentsAsRead.Add(st.Key, st.Duplicate());
+                studentList.Add(new Student(st));
+                studentsAsRead.Add(st.Key, st);
+                Form1.AccumulateID(st.Id);
             }
-
-            AssignMissingID();
         }
 
         Student[] ReadCloudFile(string cloudFile)
         {
+            if (!File.Exists(cloudFile))
+                throw new Exception("Cannot find cloud file");
+
             string[] sts = File.ReadAllLines(cloudFile);
             Student[] studs = new Student[sts.Length - 1];
 
@@ -165,14 +150,14 @@ namespace Students
         {
             foreach(Student s in studentList)
             {
-                Student st = s.Duplicate();
+                Student st = s;
                 if (m_studentsAsRead.ContainsKey(st.Key))
                 {
                     Student oldSt = m_studentsAsRead[st.Key];
-                    if (!StudentDiffers(st, oldSt))
+                    if (StudentDiffers(st, oldSt))
                     {
-                        st.Changed = oldSt.Changed;
-                        st.ChangedBy = oldSt.ChangedBy;
+                        st.Changed = DateTime.Now;
+                        st.ChangedBy = Client;
                     }
                 }
 
@@ -194,7 +179,7 @@ namespace Students
 
         string DecideBackup()
         {
-            string prefix = m_dataLocation + "\\Students.backup.";
+            string prefix = Path.Combine(m_backupLocation, m_fileName + ".backup");
             DateTime maxDt = DateTime.MinValue;
             const int maxBackup = 100;
             int index = -1;
@@ -218,45 +203,15 @@ namespace Students
         void WriteStudentsFile()
         {
             string bkup = DecideBackup();
-            string target = m_dataLocation + "\\Students.csv";
             if (File.Exists(bkup))
                 File.Delete(bkup);
-            File.Move( target, bkup );
+            File.Move(FilePath, bkup );
 
-            using (StreamWriter sw = new StreamWriter(target))
+            using (StreamWriter sw = new StreamWriter(FilePath))
             {
                 WriteHeader(sw);
                 WriteValues(sw);
             }
-        }
-
-        private void CaptureStudentEditing()
-        {
-            m_curStudent.Birthday = textBoxBirthday.Text;
-            m_curStudent.Email = textBoxEmail.Text;
-            m_curStudent.MailingAddress = textBoxAddress1.Text;
-            m_curStudent.FirstName = textBoxFirstName.Text;
-            m_curStudent.LastName = textBoxLastName.Text;
-            m_curStudent.PossibleSchedule = textBoxSchedule.Text;
-            m_curStudent.HomePhone = textBoxHomePhone.Text;
-            m_curStudent.CellPhone = textBoxCellPhone.Text;
-            m_curStudent.Comments = textBoxComments.Text;
-            m_curStudent.Interests = textBoxInterests.Text;
-            m_curStudent.Goals = textBoxGoals.Text;
-            m_curStudent.Background = textBoxBackground.Text;
-            m_curStudent.SourceDetail = textBoxSourceDetail.Text;
-            m_curStudent.Birthday = textBoxBirthday.Text;
-            m_curStudent.LanguageDetail = textBoxLanguageDetail.Text;
-            m_curStudent.LearningLanguage = comboBoxLearns.Text;
-            m_curStudent.Level = comboBoxLevel.Text;
-            m_curStudent.OtherLanguage = comboBoxOther.Text;
-            m_curStudent.Source = comboBoxSource.Text;
-            m_curStudent.NativeLanguage =comboBoxSpeaks.Text;
-            m_curStudent.Status = comboBoxStatus.Text;
-            m_curStudent.Changed = DateTime.Now;
-            m_curStudent.ChangedBy = Form1.Client;
-
-            SaveCurrentStudentToArray();
         }
     }
 }

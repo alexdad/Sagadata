@@ -11,6 +11,13 @@ using System.Windows.Forms;
 
 namespace Students
 {
+    enum Clouds
+    {
+        None,
+        Dir,
+        Google,
+        Azure
+    }
     enum Validations
     {
         Ignore,
@@ -85,30 +92,8 @@ namespace Students
             comboBoxStatus.Items.AddRange(m_enumStatus);
         }
 
-        private void ShowCurrentStudent()
+        private void ShowStudentCount()
         {
-            textBoxBirthday.Text = m_curStudent.Birthday;
-            textBoxEmail.Text = m_curStudent.Email;
-            textBoxAddress1.Text = m_curStudent.MailingAddress;
-            textBoxFirstName.Text = m_curStudent.FirstName;
-            textBoxLastName.Text = m_curStudent.LastName;
-            textBoxSchedule.Text = m_curStudent.PossibleSchedule;
-            textBoxHomePhone.Text = m_curStudent.HomePhone;
-            textBoxCellPhone.Text = m_curStudent.CellPhone;
-            textBoxComments.Text = m_curStudent.Comments;
-            textBoxInterests.Text = m_curStudent.Interests;
-            textBoxGoals.Text = m_curStudent.Goals;
-            textBoxBackground.Text = m_curStudent.Background;
-            textBoxSourceDetail.Text = m_curStudent.SourceDetail;
-            textBoxBirthday.Text = m_curStudent.Birthday;
-            textBoxLanguageDetail.Text = m_curStudent.LanguageDetail;
-            comboBoxLearns.Text = m_curStudent.LearningLanguage;
-            comboBoxLevel.Text = m_curStudent.Level;
-            comboBoxOther.Text = m_curStudent.OtherLanguage;
-            comboBoxSource.Text = m_curStudent.Source;
-            comboBoxSpeaks.Text = m_curStudent.NativeLanguage;
-            comboBoxStatus.Text = m_curStudent.Status;
-
             labelCount.Text = studentList.Count.ToString();
         }
 

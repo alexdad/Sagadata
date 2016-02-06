@@ -16,18 +16,13 @@ namespace Students
         static int s_lastColumnSorted = -1;
         static bool s_needToReverse = false;
 
-        private void SaveCurrentStudentToArray()
-        {
-            if (m_curStudent.FirstName.Length > 0 && m_curStudent.LastName.Length > 0)
-                studentList[m_curIndex] = m_curStudent;
-        }
 
         private Student[] ForkOut(int addedPositions)
         {
             Student[] temp = new Student[studentList.Count + addedPositions];
             int i = 0;
             foreach (Student s in studentList)
-                temp[i++] = s.Duplicate();
+                temp[i++] = s;
             return temp;
         }
         private bool IsStudentDeleted(Student s)
@@ -35,6 +30,10 @@ namespace Students
             return m_deletedKeys.Contains(s.Key);
         }
 
+        private static bool Empty(string s)
+        {
+            return (s == null || s.Trim().Length == 0 || s == "?");
+        }
         public bool StudentDiffers(Student s1, Student s2)
         {
             for (int i = 0; i < m_schema.Length; i++)
@@ -43,8 +42,12 @@ namespace Students
                 if (hdr == "DateTimeChanged" ||
                     hdr == "ChangedBy")
                     continue;
+                string val1 = s1.Get(hdr);
+                string val2 = s2.Get(hdr);
+                if (Empty(val1) && Empty(val2))
+                    continue;
 
-                if (s1.Get(hdr) != s2.Get(hdr))
+                if (val1 != val2)
                     return true;
             }
             return false;
@@ -85,6 +88,13 @@ namespace Students
                 studentList.Add(s);
 
             m_deletedKeys.Clear();
+        }
+
+        private void ReplaceStudentList(Student[] target)
+        {
+            studentList.Clear();
+            foreach (Student s in target)
+                studentList.Add(s);
         }
 
         private void StashStudentList()
@@ -133,11 +143,7 @@ namespace Students
 
                 studentList.Add(s);
             }
-            if (studentList.Count > 0)
-                SetFirstCurrentStudent();
-            else
-                m_curStudent = Student.Factory();
-            ShowCurrentStudent();
+            ShowStudentCount();
         }
 
         void SortStudents(string hdr, Student[] temp)

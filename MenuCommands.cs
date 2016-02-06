@@ -18,34 +18,15 @@ namespace Students
         //----------------------------------------------------
         private void downloadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // TEMP - it should be real cloud
-            string cloudFile = s_cloudLocation + @"\Students.csv";
-            if (!File.Exists(cloudFile))
-            {
-                MessageBox.Show("Cannot find cloud file");
-                return;
-            }
-
-            string studFile = m_dataLocation + @"\Students.csv";
             ReadStudentsFile(m_studentsAsRead);
 
-            Student[] temp = ReadCloudFile(cloudFile);
+            Student[] temp = ReadCloudFile(m_cloudLocation);
             MergeBack(temp);
-            SetFirstCurrentStudent();
-            ShowCurrentStudent();
+            ShowStudentCount();
         }
-
-        private void openToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            ReadStudentsFile(m_studentsAsRead);
-            SetFirstCurrentStudent();
-            ShowCurrentStudent();
-        }
-
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CaptureStudentEditing();
             EndSelectionMode();
             WriteStudentsFile();
         }
@@ -57,34 +38,14 @@ namespace Students
 
         private void uploadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string studFile = m_dataLocation + @"\Students.csv";
-            string cloudFile = s_cloudLocation + @"\Students.csv";
-
-            if (!File.Exists(cloudFile))
-            {
-                MessageBox.Show("Cannot find cloud file");
-                return;
-            }
-
-            Student[] temp = ReadCloudFile(cloudFile);
+            Student[] temp = ReadCloudFile(m_cloudLocation);
             MergeBack(temp);
             WriteStudentsFile();
 
-            if (File.Exists(cloudFile))
-                File.Delete(cloudFile);
+            if (File.Exists(m_cloudLocation))
+                File.Delete(m_cloudLocation);
 
-            File.Copy(studFile, cloudFile);
+            File.Copy(FilePath, m_cloudLocation);
         }
-
-        private void helpToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            panelHelp.Visible = true;
-        }
-
-        private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }

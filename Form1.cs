@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,9 +16,16 @@ namespace Students
     public partial class Form1 : Form
     {
         public static string Client;
+        public static int MaxID { get; set; }
+        public static int AllocateID() 
+        {
+           return ++MaxID;
+        }
+        public static void AccumulateID(int id)
+        {
+            MaxID = Math.Max(MaxID, id);
+        }
 
-        Student m_curStudent;
-        int m_curIndex;
         Student[] m_savedFullListDuringSelection;
         Dictionary<string, Student> m_studentsAsRead;
         List<string> m_deletedKeys;
@@ -24,6 +33,11 @@ namespace Students
         SchemaField[] m_schema;
         int[] m_placements;
         string m_dataLocation;
+        string m_cloudLocation;
+        string m_backupLocation;
+        string m_fileName;
+        Clouds m_cloudType;
+        int m_backupLimit;
 
         string[] m_enumLanguage;
         string[] m_enumLevel;
@@ -43,9 +57,9 @@ namespace Students
         // Temporary - it should be cloud
         const string s_cloudLocation = @"C:\Users\Sasha\Documents\Visual Studio 2015\Projects\Students\Remote";
 
-        public Form1(string dataLocation)
+        public Form1()
         {
-            m_dataLocation = dataLocation;
+            ReadSettings();
             ReadSchemas();
             InitializeComponent();
             AssignEnums();
@@ -53,7 +67,39 @@ namespace Students
             m_deletedKeys = new List<string>();
             Client = Environment.MachineName;
             m_studentsAsRead = new Dictionary<string, Student>();
+            ReadStudentsFile(m_studentsAsRead);
+            ShowStudentCount();
         }
+
+        private void ReadSettings()
+        {
+            string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            m_dataLocation = Path.Combine(dir, Properties.Settings.Default.LocalDir);
+            m_backupLocation = Path.Combine(dir, Properties.Settings.Default.BackupDir);
+            m_cloudType = Clouds.None;
+            m_fileName = Properties.Settings.Default.FileName;
+            m_cloudLocation = Path.Combine(Properties.Settings.Default.CloudLocation, m_fileName + ".csv");
+            switch (Properties.Settings.Default.CloudType.ToLower())
+            {
+                case "dir":
+                    m_cloudType = Clouds.Dir;
+                    break;
+                case "azure":
+                    m_cloudType = Clouds.Azure;
+                    break;
+                case "google":
+                    m_cloudType = Clouds.Google;
+                    break;
+            }
+
+            m_backupLimit = Properties.Settings.Default.BackupLimit;
+        }
+
+        public string FilePath
+        {
+            get { return Path.Combine(m_dataLocation, m_fileName + ".csv"); }
+        }
+
         #region "Navigation"
         public bool SelectionMode
         {
@@ -61,60 +107,18 @@ namespace Students
             set { buttonShowAll.Enabled = value; }
         }
 
-        private void SetCurrentStudent(int index)
-        {
-            m_curIndex = index;
-
-            buttonNext.Enabled = (m_curIndex < studentList.Count - 1);
-            buttonPrev.Enabled = (m_curIndex > 0);
-
-            m_curStudent = (Student)studentList[m_curIndex];
-
-            dataGridView1.ClearSelection();
-            dataGridView1.Rows[m_curIndex].Selected = true;
-            dataGridView1.CurrentCell = dataGridView1.Rows[m_curIndex].Cells[0];
-
-            ShowCurrentStudent();
-        }
-
-        private void SetFirstCurrentStudent()
-        {
-            SetCurrentStudent(0);
-        }
-        private void SetLastCurrentStudent()
-        {
-            SetCurrentStudent(studentList.Count - 1);
-        }
-        private void SetNextCurrentStudent()
-        {
-            SetCurrentStudent(m_curIndex + 1);
-        }
-        private void SetPrevCurrentStudent()
-        {
-            SetCurrentStudent(m_curIndex - 1);
-        }
-
         private void EndSelectionMode()
         {
             if (SelectionMode)
             {
-                CaptureStudentEditing();
                 Student[] temp = ForkOut(0);
                 RestoreStudentList();
                 MergeBack(temp);
-                SetFirstCurrentStudent();
                 SelectionMode = false;
             }
         }
         #endregion
         #region "DataGridClicks"
-        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            CaptureStudentEditing();
-            if (e.RowIndex >= 0 && e.RowIndex < studentList.Count)
-                SetCurrentStudent(e.RowIndex);
-        }
-
         private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.ColumnIndex != s_lastColumnSorted)
@@ -128,40 +132,35 @@ namespace Students
             DataGridViewColumn col = dataGridView1.Columns[e.ColumnIndex];
             Student[] temp = ForkOut(0);
             SortStudents(col.HeaderText, temp);
-            MergeBack(temp);
-            SetFirstCurrentStudent();
+            ReplaceStudentList(temp);
         }
         #endregion
         #region "ButtonClicks"
         private void buttonNext_Click(object sender, EventArgs e)
         {
-            CaptureStudentEditing();
-            SetNextCurrentStudent();
+            if (studentList.CurrencyManager.Position < studentList.Count - 1)
+                studentList.CurrencyManager.Position++;
         }
 
         private void buttonPrev_Click(object sender, EventArgs e)
         {
-            CaptureStudentEditing();
-            SetPrevCurrentStudent();
+            if (studentList.CurrencyManager.Position > 0)
+                studentList.CurrencyManager.Position--;
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            Student[] temp = ForkOut(1);
-            temp[studentList.Count] = Student.Factory();
-            MergeBack(temp);
-            SetLastCurrentStudent();
+            Student st = (Student)studentList.AddNew();
+            st.Id = Form1.AllocateID();
+            ShowStudentCount();
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            Student s = (Student)studentList[m_curIndex];
+            Student s = (Student)studentList.Current;
             m_deletedKeys.Add(s.Key);
-            studentList.RemoveAt(m_curIndex);
-            if (m_curIndex >= studentList.Count)
-                m_curIndex = studentList.Count - 1;
-            SetCurrentStudent(m_curIndex);
-            ShowCurrentStudent();
+            studentList.RemoveCurrent();
+            ShowStudentCount();
         }
 
         private void buttonShowAll_Click(object sender, EventArgs e)

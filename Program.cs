@@ -14,14 +14,9 @@ namespace Students
         [STAThread]
         static void Main(string[] args)
         {
-            if (args.Length != 1)
-            {
-                MessageBox.Show("Single Parameter should point to the data location");
-                return;
-            }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1(args[0]));
+            Application.Run(new Form1());
         }
     }
 }

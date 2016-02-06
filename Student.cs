@@ -8,36 +8,93 @@ namespace Students
 {
     public class Student
     {
-        public int Id { get; set; }
-        public string Status { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string MailingAddress { get; set; }
-        public string HomePhone { get; set; }
-        public string CellPhone { get; set; }
-        public string Phone
-        {
-            get { return (CellPhone.Length > 0 ? CellPhone : HomePhone); }
-        }
+        public string Background { get; set; }
         public String Birthday { get; set; }
-        public String NativeLanguage { get; set; }
+        public string CellPhone { get; set; }
+        public DateTime Changed { get; set; }
+        public string ChangedBy { get; set; }
+        public string Comments { get; set; }
+        public DateTime Created { get; set; }
+        public string CreatedBy { get; set; }
+        public string Email { get; set; }
+        public string FirstName { get; set; }
+        public string Goals { get; set; }
+        public string HomePhone { get; set; }
+        public int Id { get; set; }
+        public string Interests { get; set; }
+        public string LastName { get; set; }
         public String LearningLanguage { get; set; }
-        public String OtherLanguage { get; set; }
         public String LanguageDetail { get; set; }
         public String Level { get; set; }
-        public string Background { get; set; }
-        public string Goals { get; set; }
-        public string Interests { get; set; }
+        public string MailingAddress { get; set; }
+        public String NativeLanguage { get; set; }
+        public String OtherLanguage { get; set; }
         public string PossibleSchedule { get; set; }
         public string Source { get; set; }
         public string SourceDetail { get; set; }
-        public string Comments { get; set; }
-        public DateTime Created { get; set; }
-        public DateTime Changed { get; set; }
-        public string ChangedBy { get; set; }
-        public string CreatedBy { get; set; }
+        public string Status { get; set; }
+
         public string Key { get { return CreatedBy + Id.ToString();  } }
+        public string Phone { get { return (CellPhone.Length > 0 ? CellPhone : HomePhone); }
+        }
+
+        public Student()
+        {
+            Background = "";
+            Birthday = "";
+            CellPhone = "";
+            ChangedBy = Form1.Client;
+            CreatedBy = Form1.Client;
+            Comments = "";
+            Created = DateTime.Now;
+            Changed = DateTime.Now;
+            Email = "";
+            FirstName = "";
+            Goals = "";
+            HomePhone = "";
+            Id = 0;
+            Interests = "";
+            LastName = "";
+            LearningLanguage = "?";
+            LanguageDetail = "";
+            Level = "?";
+            MailingAddress = "";
+            NativeLanguage = "?";
+            OtherLanguage = "?";
+            PossibleSchedule = "";
+            Source = "?";
+            SourceDetail = "";
+            Status = "?";
+        }
+
+        public Student(Student st)
+        {
+            Background = st.Background;
+            Birthday = st.Birthday;
+            CellPhone = st.CellPhone;
+            Changed = st.Changed;
+            ChangedBy = st.ChangedBy;
+            Comments = st.Comments;
+            Created = st.Created;
+            CreatedBy = st.CreatedBy;
+            Email = st.Email;
+            FirstName = st.FirstName;
+            Goals = st.Goals;
+            HomePhone = st.HomePhone;
+            Id = st.Id;
+            Interests = st.Interests;
+            LastName = st.LastName;
+            LearningLanguage = st.LearningLanguage;
+            LanguageDetail = st.LanguageDetail;
+            Level = st.Level;
+            MailingAddress = st.MailingAddress;
+            NativeLanguage = st.NativeLanguage;
+            OtherLanguage = st.OtherLanguage;
+            PossibleSchedule = st.PossibleSchedule;
+            Source = st.Source;
+            SourceDetail = st.SourceDetail;
+            Status = st.Status;
+        }
 
         public bool Set(string field, string value)
         {
@@ -50,6 +107,7 @@ namespace Students
             {
                 case "id":
                     this.Id = int.Parse(value);
+                    Form1.AccumulateID(Id);
                     break;
                 case "Status":
                     this.Status = value;
@@ -133,123 +191,60 @@ namespace Students
         {
             switch (field)
             {
-                case "id":
-                    return Id.ToString();
-                case "Status":
-                    return Status;
-                case "DateTimeCreated":
-                    return Created.ToString();
-                case "CreatedBy":
-                    return CreatedBy;
+                case "Background":
+                    return Background;
+                case "Birthday":
+                    return Birthday;
+                case "CellPhone":
+                    return CellPhone;
                 case "DateTimeChanged":
                     return Changed.ToString();
                 case "ChangedBy":
                     return ChangedBy;
-                case "FirstName":
-                    return FirstName;
-                case "LastName":
-                    return LastName;
+                case "Comments":
+                    return Comments;
+                case "CreatedBy":
+                    return CreatedBy;
+                case "DateTimeCreated":
+                    return Created.ToString();
                 case "EMail":
                     return Email;
-                case "MailingAddress":
-                    return MailingAddress;
+                case "FirstName":
+                    return FirstName;
+                case "Goals":
+                    return Goals;
                 case "HomePhone":
                     return HomePhone;
-                case "CellPhone":
-                    return CellPhone;
-                case "Birthday":
-                    return Birthday;
-                case "NativeLanguage":
-                    return NativeLanguage;
+                case "id":
+                    return Id.ToString();
+                case "Interests":
+                    return Interests;
+                case "LastName":
+                    return LastName;
                 case "LearningLanguage":
                     return LearningLanguage;
-                case "OtherLanguage":
-                    return OtherLanguage;
                 case "LanguageDetail":
                     return LanguageDetail;
                 case "Level":
                     return Level;
-                case "Background":
-                    return Background;
-                case "Goals":
-                    return Goals;
-                case "Interests":
-                    return Interests;
+                case "MailingAddress":
+                    return MailingAddress;
+                case "NativeLanguage":
+                    return NativeLanguage;
+                case "OtherLanguage":
+                    return OtherLanguage;
                 case "PossibleSchedule":
                     return PossibleSchedule;
                 case "Source":
                     return Source;
                 case "SourceDetail":
                     return SourceDetail;
-                case "Comments":
-                    return Comments;
+                case "Status":
+                    return Status;
                 default:
                     throw new Exception("unknown field " + field);
             }
         }
-
-        public static Student Factory()
-        {
-            Student st = new Student();
-            st.Background = "";
-            st.Birthday = "";
-            st.CellPhone = "?";
-            st.Changed = DateTime.Now;
-            st.Comments = "";
-            st.Created = DateTime.Now;
-            st.CreatedBy = Form1.Client;
-            st.Email = "?";
-            st.FirstName = "";
-            st.Goals = "";
-            st.HomePhone = "?";
-            st.Id = -1;
-            st.Interests = "";
-            st.LanguageDetail = "";
-            st.LastName = "";
-            st.LearningLanguage = "?";
-            st.Level = "?";
-            st.MailingAddress = "";
-            st.NativeLanguage = "?";
-            st.OtherLanguage = "?";
-            st.PossibleSchedule = "";
-            st.Source = "?";
-            st.SourceDetail = "";
-            st.Status = "?";
-
-            return st;
-        }
-        public Student Duplicate()
-        {
-            Student st = new Student();
-            st.Background = this.Background;
-            st.Birthday = this.Birthday;
-            st.CellPhone = this.CellPhone;
-            st.Changed = this.Changed;
-            st.ChangedBy = this.ChangedBy;
-            st.Comments = this.Comments;
-            st.Created = this.Created;
-            st.CreatedBy = this.CreatedBy;
-            st.Email = this.Email;
-            st.FirstName = this.FirstName;
-            st.Goals = this.Goals;
-            st.HomePhone = this.HomePhone;
-            st.Id = this.Id;
-            st.Interests = this.Interests;
-            st.LanguageDetail = this.LanguageDetail;
-            st.LastName = this.LastName;
-            st.LearningLanguage = this.LearningLanguage;
-            st.Level = this.Level;
-            st.MailingAddress = this.MailingAddress;
-            st.NativeLanguage = this.NativeLanguage;
-            st.OtherLanguage = this.OtherLanguage;
-            st.PossibleSchedule = this.PossibleSchedule;
-            st.Source = this.Source;
-            st.SourceDetail = this.SourceDetail;
-            st.Status = this.Status;
-
-            return st;
-        }
-
     }
 
     public class ComparerByFirstName : IComparer<Student>
