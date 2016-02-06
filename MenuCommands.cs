@@ -25,11 +25,14 @@ namespace Students
                 MessageBox.Show("Cannot find cloud file");
                 return;
             }
-            string studFile = m_dataLocation + @"\Students.csv";
-            if (File.Exists(studFile))
-                File.Delete(studFile);
 
-            File.Copy(cloudFile, studFile);
+            string studFile = m_dataLocation + @"\Students.csv";
+            ReadStudentsFile(m_studentsAsRead);
+
+            Student[] temp = ReadCloudFile(cloudFile);
+            MergeBack(temp);
+            SetFirstCurrentStudent();
+            ShowCurrentStudent();
         }
 
         private void openToolStripMenuItem_Click_1(object sender, EventArgs e)
