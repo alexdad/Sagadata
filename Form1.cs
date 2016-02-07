@@ -34,7 +34,6 @@ namespace Students
         int[] m_placements;
         string m_dataLocation;
         string m_cloudLocation;
-        string m_gdriveUrl;
         string m_backupLocation;
         string m_fileName;
         Clouds m_cloudType;
@@ -55,8 +54,8 @@ namespace Students
         string m_selectionSource;
         string m_selectionLevel;
 
-        // Temporary - it should be cloud
-        const string s_cloudLocation = @"C:\Users\Sasha\Documents\Visual Studio 2015\Projects\Students\Remote";
+        bool m_bChanged;
+        bool m_bSynced;
 
         public Form1()
         {
@@ -70,6 +69,8 @@ namespace Students
             m_studentsAsRead = new Dictionary<string, Student>();
             ReadStudentsFile(m_studentsAsRead);
             ShowStudentCount();
+            m_bChanged = false;
+            m_bSynced = false;
         }
 
         private void ReadSettings()

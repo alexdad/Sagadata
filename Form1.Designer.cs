@@ -106,6 +106,8 @@
             this.buttonDelete = new System.Windows.Forms.Button();
             this.buttonNext = new System.Windows.Forms.Button();
             this.labelCount = new System.Windows.Forms.Label();
+            this.labelLastDownload = new System.Windows.Forms.Label();
+            this.labelLastUpload = new System.Windows.Forms.Label();
             this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -897,6 +899,24 @@
             this.labelCount.Size = new System.Drawing.Size(50, 24);
             this.labelCount.TabIndex = 20;
             // 
+            // labelLastDownload
+            // 
+            this.labelLastDownload.AutoSize = true;
+            this.labelLastDownload.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLastDownload.Location = new System.Drawing.Point(772, 11);
+            this.labelLastDownload.Name = "labelLastDownload";
+            this.labelLastDownload.Size = new System.Drawing.Size(0, 13);
+            this.labelLastDownload.TabIndex = 21;
+            // 
+            // labelLastUpload
+            // 
+            this.labelLastUpload.AutoSize = true;
+            this.labelLastUpload.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelLastUpload.Location = new System.Drawing.Point(932, 11);
+            this.labelLastUpload.Name = "labelLastUpload";
+            this.labelLastUpload.Size = new System.Drawing.Size(0, 13);
+            this.labelLastUpload.TabIndex = 22;
+            // 
             // statusDataGridViewTextBoxColumn
             // 
             this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
@@ -982,6 +1002,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1291, 811);
+            this.Controls.Add(this.labelLastUpload);
+            this.Controls.Add(this.labelLastDownload);
             this.Controls.Add(this.labelCount);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonAdd);
@@ -1102,6 +1124,8 @@
         private System.Windows.Forms.Label labelCount;
         private System.Windows.Forms.ToolStripMenuItem downloadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mergeToolStripMenuItem;
+        private System.Windows.Forms.Label labelLastDownload;
+        private System.Windows.Forms.Label labelLastUpload;
     }
 }
 

@@ -23,7 +23,6 @@ namespace GDrive
 
         const string ApplicationName = "Sagalingua1";
         const string User = "sagalingua";
-        static int s_result = 0;
 
         public enum Direction {  Up, Down };
 
@@ -103,57 +102,26 @@ namespace GDrive
         public static bool ExecuteDownload(DriveService service, string fileId, string target)
         {
             bool success = false;
-            s_result = 0;
             try
-            { 
+            {
                 var request = service.Files.Get(fileId);
-                var stream = new System.IO.MemoryStream();
 
-                request.MediaDownloader.ProgressChanged +=
-
-                    (Google.Apis.Download.IDownloadProgress progress) =>
+                using (var stream = new System.IO.MemoryStream())
+                {
+                    request.Download(stream);
+                    if (stream.Length > 0)
                     {
-                        switch (progress.Status)
+                        using (StreamWriter sw = new StreamWriter(target))
                         {
-                            case Google.Apis.Download.DownloadStatus.Downloading:
-                                {
-                                    s_result = 1;
-                                    break;
-                                }
-                            case Google.Apis.Download.DownloadStatus.Completed:
-                                {
-                                    s_result = 2;
-                                    break;
-                                }
-                            case Google.Apis.Download.DownloadStatus.Failed:
-                                {
-                                    s_result = 3;
-                                    break;
-                                }
+                            long sz = stream.Length;
+                            byte[] ba = stream.ToArray();
+                            char[] ca = new char[sz];
+                            for (int i = 0; i < sz; i++)
+                                ca[i] = Convert.ToChar(ba[i]);
+                            sw.Write(ca);
                         }
-                    };
-
-                request.Download(stream);
-
-                for (int i = 0; i < 20; i++)
-                {
-                    if (s_result > 1)
-                        break;
-                    Thread.Sleep(5000);
-                }
-
-                if (s_result == 2)
-                {
-                    using (StreamWriter sw = new StreamWriter(target))
-                    {
-                        long sz = stream.Length;
-                        byte[] ba = stream.ToArray();
-                        char[] ca = new char[sz];
-                        for (int i = 0; i < sz; i++)
-                            ca[i] = Convert.ToChar(ba[i]);
-                        sw.Write(ca);
+                        success = true;
                     }
-                    success = true;
                 }
             }
             catch (Exception e)
@@ -163,15 +131,13 @@ namespace GDrive
 
             return success;
         }
-
         public static bool ExecuteUpload(DriveService service, string fileId, string localPath, string cloudName)
         {
             byte[] byteArray = System.IO.File.ReadAllBytes(localPath);
             System.IO.MemoryStream stream = new System.IO.MemoryStream(byteArray);
 
             Google.Apis.Drive.v3.Data.File body = new Google.Apis.Drive.v3.Data.File();
-
-            // Here we may need to add metadata as body.something 
+            body.Description = "Uploaded from " + Students.Form1.Client;
 
             FilesResource.UpdateMediaUpload request =  service.Files.Update(body, fileId, stream, GetMimeType(localPath));
             request.Upload();

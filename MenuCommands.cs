@@ -36,21 +36,13 @@ namespace Students
 
             if (success)
             {
+                labelLastDownload.Text = "Last download: " + DateTime.Now.ToShortTimeString();
+                m_bSynced = true;
+
                 Student[] temp = ReadCloudFile(m_cloudLocation);
                 MergeBack(temp);
             }
             ShowStudentCount();
-        }
-
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            EndSelectionMode();
-            WriteStudentsFile();
-        }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
         }
 
         private void uploadToolStripMenuItem_Click(object sender, EventArgs e)
@@ -58,6 +50,8 @@ namespace Students
             Student[] temp = ReadCloudFile(m_cloudLocation);
             MergeBack(temp);
             WriteStudentsFile();
+            labelLastDownload.Text = "Last download: " + DateTime.Now.ToShortTimeString();
+            m_bSynced = true;
 
             if (File.Exists(m_cloudLocation))
                 File.Delete(m_cloudLocation);
@@ -77,6 +71,45 @@ namespace Students
             }
             if (!success)
                 MessageBox.Show("Cannot upload to the cloud. Local file is OK.");
+            else
+                labelLastUpload.Text = "Last upload: " + DateTime.Now.ToShortTimeString();
         }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EndSelectionMode();
+            WriteStudentsFile();
+            m_bChanged = false;
+            m_bSynced = false;
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (m_bChanged)
+            {
+                DialogResult result = MessageBox.Show(
+                    "Should I save?",  "You have unsaved changes",  MessageBoxButtons.YesNoCancel);
+                if (result == DialogResult.Cancel)
+                    return;
+                else if (result == DialogResult.Yes)
+                {
+                    saveToolStripMenuItem_Click(sender, e);
+                }
+            }
+
+            if (!m_bSynced)
+            {
+                DialogResult result = MessageBox.Show(
+                    "Should I upload?", "You have local changes", MessageBoxButtons.YesNoCancel);
+                if (result == DialogResult.Cancel)
+                    return;
+                else if (result == DialogResult.Yes)
+                {
+                    uploadToolStripMenuItem_Click(sender, e);
+                }
+            }
+            Application.Exit();
+        }
+
     }
 }

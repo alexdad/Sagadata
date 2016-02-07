@@ -48,7 +48,10 @@ namespace Students
                     continue;
 
                 if (val1 != val2)
+                {
+                    m_bChanged = true;
                     return true;
+                }
             }
             return false;
         }
