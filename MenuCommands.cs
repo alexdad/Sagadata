@@ -63,6 +63,20 @@ namespace Students
                 File.Delete(m_cloudLocation);
 
             File.Copy(FilePath, m_cloudLocation);
+
+            bool success = false;
+            switch (m_cloudType)
+            {
+                case Clouds.Google:
+                    success = GDrive.Ops.UploadStudentsFile(m_cloudLocation, m_fileName + ".csv");
+                    break;
+                case Clouds.Azure:
+                case Clouds.Dir:
+                default:
+                    break;
+            }
+            if (!success)
+                MessageBox.Show("Cannot upload to the cloud. Local file is OK.");
         }
     }
 }

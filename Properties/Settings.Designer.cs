@@ -77,14 +77,5 @@ namespace Students.Properties {
                 return ((string)(this["CloudLocation"]));
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0B1kWkAgtqrU_Y3FMdU1fSTBPelE")]
-        public string GDriveUrl {
-            get {
-                return ((string)(this["GDriveUrl"]));
-            }
-        }
     }
 }

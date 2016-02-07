@@ -90,7 +90,6 @@ namespace Students
                     break;
                 case "google":
                     m_cloudType = Clouds.Google;
-                    m_gdriveUrl = Properties.Settings.Default.GDriveUrl;
                     break;
             }
 
