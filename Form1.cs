@@ -17,9 +17,9 @@ namespace Students
     {
         public static string Client;
         public static int MaxID { get; set; }
-        public static int AllocateID() 
+        public static int AllocateID()
         {
-           return ++MaxID;
+            return ++MaxID;
         }
         public static void AccumulateID(int id)
         {
@@ -34,6 +34,7 @@ namespace Students
         int[] m_placements;
         string m_dataLocation;
         string m_cloudLocation;
+        string m_gdriveUrl;
         string m_backupLocation;
         string m_fileName;
         Clouds m_cloudType;
@@ -89,6 +90,7 @@ namespace Students
                     break;
                 case "google":
                     m_cloudType = Clouds.Google;
+                    m_gdriveUrl = Properties.Settings.Default.GDriveUrl;
                     break;
             }
 
@@ -236,4 +238,3 @@ namespace Students
         #endregion
     }
 }
- 

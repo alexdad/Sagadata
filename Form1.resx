@@ -318,16 +318,31 @@
   <metadata name="Source.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="Phone.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="Source.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="studentList.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>66</value>
   </metadata>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABILAAASCwAAAAAAAAAA
+        AAD/////39/e/wEACv9DSxn/YWsl/1hhIP9aYyH/WmMh/1pjIf9aYyH/WGAg/2FsJf9FShf/BgsQ/9/f
+        3v///////////9/g1/8JAEb/MTIy/7rNOv++z0T/usxB/7zOQf+8zkH/usxB/77SRf+5wjT/P2RL/xtq
+        gf/d09D////////////d3tP/FAZW/wMAev88RBz/uco+/6+/Pv+wwD3/sMA9/6/AP/+4yT3/Q0og/yC0
+        4P8kiZz/2s3K////////////3d7V/xAETP8YApr/AwBe/1plHv+/0kP/r8A9/6/APv+/00T/YGIc/xuI
+        qf838v//IHiO/9vQzf///////////93e1P8QBE//FACO/xcDkf8EAEr/eIUj/7zOQ/+70EX/fX4e/xlt
+        hv804f//Md3//yB8kv/bz83////////////d3tX/EQVP/xUBkP8XBIX/FQGP/wsINv+YqzD/m54n/x1T
+        Xv8y3P//Ms/y/zPg//8hfJH/28/N////////////3t7V/wwET/8MAJD/DQGG/w4BiP8FAIf/IB0p/zBd
+        S/8jzvb/LNn//yvS+/8s5P//Hn6V/9vPzP///////////9vb2f8dGy//LytS/ywoTf8xLlD/NS1Y/wYA
+        HP8ULzz/RHmC/ztucv84anH/PHN5/yZBRf/a1tb////////////NzND/hpB2//r/2P/q/sv/6PHI/01h
+        Qf8BWw//AU8L/1hcRP/q7cX/5/DD//j/0f+IjXT/zs3Q////////////zczP/4eQfP/5/+H/+f/h/36F
+        c/8Aawv/A7Us/wO3Lf8AZAv/j5aD//n/4//5/+P/i5V//83Mz////////////83Mz/+Gj3r/9//e//X/
+        2/9TbVD/AJgc/wOgJ/8Eoyj/AJIZ/2V4Xf/3/97/9v/d/4mUfP/OzM/////////////NzM//ipF8////
+        4v/+/+L/kJN+/wBmC/8Gtyz/BbYq/wBdCv+gooz//f/h////4v+OlX//zczP////////////z83Q/3eF
+        c//d+dT/zunF/9Lpyf9GXU//AEIO/wBBD/9TZln/1uzM/83oxf/d+dT/eol2/8/O0P///////////9bZ
+        2/9FKhn/e0ko/3NEJv92SCj/f04v/2ElEf9kKBT/gFEx/3ZHJ/9zRCb/e0ko/0YrGv/W2dv/////////
+        ///N1dz/kkob//+GKf/8fSj//30n//99Jv//hiz//4Us//98Jf//fif//H0o//+GKf+VSxv/zNXb////
+        ////////19rd/z8hD/9wNxX/aTUV/2o1Ff9qNRX/aTMU/2k0FP9qNRX/ajUV/2k0Ff9wNxX/QCEQ/9fa
+        3P//////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAA==
+</value>
+  </data>
 </root>

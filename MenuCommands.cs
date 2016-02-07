@@ -20,8 +20,25 @@ namespace Students
         {
             ReadStudentsFile(m_studentsAsRead);
 
-            Student[] temp = ReadCloudFile(m_cloudLocation);
-            MergeBack(temp);
+            bool success = false;
+            switch(m_cloudType) 
+            {
+                case Clouds.Google:
+                    success = GDrive.Ops.DownloadStudentsFile(m_fileName + ".csv", m_cloudLocation);
+                    if (!success)
+                        MessageBox.Show("Cannot download from Google. Opening local file.");
+                    break;
+                case Clouds.Azure:
+                case Clouds.Dir:
+                default:
+                    break;
+            }
+
+            if (success)
+            {
+                Student[] temp = ReadCloudFile(m_cloudLocation);
+                MergeBack(temp);
+            }
             ShowStudentCount();
         }
 

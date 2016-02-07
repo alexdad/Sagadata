@@ -61,7 +61,7 @@ namespace Students.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Dir")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Google")]
         public string CloudType {
             get {
                 return ((string)(this["CloudType"]));
@@ -75,6 +75,15 @@ namespace Students.Properties {
         public string CloudLocation {
             get {
                 return ((string)(this["CloudLocation"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0B1kWkAgtqrU_Y3FMdU1fSTBPelE")]
+        public string GDriveUrl {
+            get {
+                return ((string)(this["GDriveUrl"]));
             }
         }
     }

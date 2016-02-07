@@ -706,7 +706,7 @@
             this.labelAppType.Name = "labelAppType";
             this.labelAppType.Size = new System.Drawing.Size(105, 25);
             this.labelAppType.TabIndex = 10;
-            this.labelAppType.Text = m_fileName;
+            this.labelAppType.Text = "Students";
             // 
             // panel2
             // 
@@ -995,9 +995,10 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panelStudent);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Students";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panelStudent.ResumeLayout(false);

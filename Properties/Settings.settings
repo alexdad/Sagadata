@@ -15,10 +15,13 @@
       <Value Profile="(Default)">100</Value>
     </Setting>
     <Setting Name="CloudType" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Dir</Value>
+      <Value Profile="(Default)">Google</Value>
     </Setting>
     <Setting Name="CloudLocation" Type="System.String" Scope="Application">
       <Value Profile="(Default)">C:\Users\Sasha\Documents\Visual Studio 2015\Projects\Students\Students\bin\Remote</Value>
+    </Setting>
+    <Setting Name="GDriveUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">0B1kWkAgtqrU_Y3FMdU1fSTBPelE</Value>
     </Setting>
   </Settings>
 </SettingsFile>
