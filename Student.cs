@@ -247,6 +247,7 @@ namespace Students
         }
     }
 
+    #region "Comparers"
     public class ComparerByFirstName : IComparer<Student>
     {
         public int Compare(Student y, Student x)
@@ -310,4 +311,35 @@ namespace Students
             return y.Changed.CompareTo(x.Changed);
         }
     }
+
+    public class ComparerByEmail : IComparer<Student>
+    {
+        public int Compare(Student y, Student x)
+        {
+            return y.Email.CompareTo(x.Email);
+        }
+    }
+    public class ComparerByCellPhone: IComparer<Student>
+    {
+        public int Compare(Student y, Student x)
+        {
+            return y.CellPhone.CompareTo(x.CellPhone);
+        }
+    }
+    public class ComparerByBirthday : IComparer<Student>
+    {
+        public int Compare(Student y, Student x)
+        {
+            return y.Birthday.CompareTo(x.Birthday);
+        }
+    }
+
+    public class ComparerByAddress : IComparer<Student>
+    {
+        public int Compare(Student y, Student x)
+        {
+            return y.MailingAddress.CompareTo(x.MailingAddress);
+        }
+    }
+    #endregion
 }

@@ -160,23 +160,17 @@ namespace Students
         {
             switch (hdr)
             {
-                case "Status":
-                    Array.Sort(temp, new ComparerByStatus());
+                case "Address":
+                    Array.Sort(temp, new ComparerByAddress());
+                    break;
+                case "Birthday":
+                    Array.Sort(temp, new ComparerByBirthday());
                     break;
                 case "Changed":
                     Array.Sort(temp, new ComparerByChanged());
                     break;
-                case "Learning":
-                    Array.Sort(temp, new ComparerByLearns());
-                    break;
-                case "Other":
-                    Array.Sort(temp, new ComparerByOther());
-                    break;
-                case "Level":
-                    Array.Sort(temp, new ComparerByLevel());
-                    break;
-                case "Native":
-                    Array.Sort(temp, new ComparerBySpeaks());
+                case "Email":
+                    Array.Sort(temp, new ComparerByEmail());
                     break;
                 case "First Name":
                     Array.Sort(temp, new ComparerByFirstName());
@@ -184,8 +178,26 @@ namespace Students
                 case "Last Name":
                     Array.Sort(temp, new ComparerByLastName());
                     break;
+                case "Learning":
+                    Array.Sort(temp, new ComparerByLearns());
+                    break;
+                case "Level":
+                    Array.Sort(temp, new ComparerByLevel());
+                    break;
+                case "Native":
+                    Array.Sort(temp, new ComparerBySpeaks());
+                    break;
+                case "Other":
+                    Array.Sort(temp, new ComparerByOther());
+                    break;
+                case "Phone":
+                    Array.Sort(temp, new ComparerByCellPhone());  // ignoring home phones
+                    break;
                 case "Source":
                     Array.Sort(temp, new ComparerBySource());
+                    break;
+                case "Status":
+                    Array.Sort(temp, new ComparerByStatus());
                     break;
                 default:
                     s_needToReverse = false;

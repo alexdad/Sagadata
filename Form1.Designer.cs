@@ -68,6 +68,39 @@
             this.labelLastDownload = new System.Windows.Forms.Label();
             this.labelLastUpload = new System.Windows.Forms.Label();
             this.panelStudent = new System.Windows.Forms.Panel();
+            this.panelPrimary = new System.Windows.Forms.Panel();
+            this.groupPrinaryRight = new System.Windows.Forms.GroupBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textBoxAddress1 = new System.Windows.Forms.TextBox();
+            this.textBoxLanguageDetail = new System.Windows.Forms.TextBox();
+            this.textBoxSourceDetail = new System.Windows.Forms.TextBox();
+            this.panelPrimaryLeft = new System.Windows.Forms.Panel();
+            this.comboBoxSpeaks = new System.Windows.Forms.ComboBox();
+            this.comboBoxOther = new System.Windows.Forms.ComboBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.textBoxLastName = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.textBoxFirstName = new System.Windows.Forms.TextBox();
+            this.comboBoxStatus = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.comboBoxLearns = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.textBoxBirthday = new System.Windows.Forms.TextBox();
+            this.textBoxEmail = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.comboBoxLevel = new System.Windows.Forms.ComboBox();
+            this.textBoxCellPhone = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.textBoxHomePhone = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.comboBoxSource = new System.Windows.Forms.ComboBox();
             this.panelSecondary = new System.Windows.Forms.Panel();
             this.groupBoxSecondaryRight = new System.Windows.Forms.GroupBox();
             this.textBoxComments = new System.Windows.Forms.TextBox();
@@ -81,45 +114,12 @@
             this.label26 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.textBoxLastName = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBoxFirstName = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.textBoxEmail = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.textBoxCellPhone = new System.Windows.Forms.TextBox();
-            this.textBoxHomePhone = new System.Windows.Forms.TextBox();
-            this.textBoxSourceDetail = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.comboBoxSource = new System.Windows.Forms.ComboBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.textBoxAddress1 = new System.Windows.Forms.TextBox();
-            this.comboBoxLevel = new System.Windows.Forms.ComboBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.textBoxBirthday = new System.Windows.Forms.TextBox();
-            this.comboBoxLearns = new System.Windows.Forms.ComboBox();
-            this.comboBoxStatus = new System.Windows.Forms.ComboBox();
-            this.comboBoxSpeaks = new System.Windows.Forms.ComboBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.textBoxLanguageDetail = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.comboBoxOther = new System.Windows.Forms.ComboBox();
             this.panelEdit = new System.Windows.Forms.Panel();
             this.panelNextNew = new System.Windows.Forms.Panel();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.splitContainerMasterDetail = new System.Windows.Forms.SplitContainer();
             this.splitContainerDataControls = new System.Windows.Forms.SplitContainer();
             this.panelIndicators = new System.Windows.Forms.Panel();
-            this.groupPrinaryRight = new System.Windows.Forms.GroupBox();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.panelPrimaryLeft = new System.Windows.Forms.Panel();
-            this.panelPrimary = new System.Windows.Forms.Panel();
             this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -136,6 +136,9 @@
             this.panelSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panelStudent.SuspendLayout();
+            this.panelPrimary.SuspendLayout();
+            this.groupPrinaryRight.SuspendLayout();
+            this.panelPrimaryLeft.SuspendLayout();
             this.panelSecondary.SuspendLayout();
             this.groupBoxSecondaryRight.SuspendLayout();
             this.panelSecondaryLeft.SuspendLayout();
@@ -151,9 +154,6 @@
             this.splitContainerDataControls.Panel2.SuspendLayout();
             this.splitContainerDataControls.SuspendLayout();
             this.panelIndicators.SuspendLayout();
-            this.groupPrinaryRight.SuspendLayout();
-            this.panelPrimaryLeft.SuspendLayout();
-            this.panelPrimary.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.studentList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -575,6 +575,346 @@
             this.panelStudent.Size = new System.Drawing.Size(948, 398);
             this.panelStudent.TabIndex = 5;
             // 
+            // panelPrimary
+            // 
+            this.panelPrimary.Controls.Add(this.groupPrinaryRight);
+            this.panelPrimary.Controls.Add(this.panelPrimaryLeft);
+            this.panelPrimary.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelPrimary.Location = new System.Drawing.Point(0, 0);
+            this.panelPrimary.Name = "panelPrimary";
+            this.panelPrimary.Size = new System.Drawing.Size(946, 158);
+            this.panelPrimary.TabIndex = 40;
+            // 
+            // groupPrinaryRight
+            // 
+            this.groupPrinaryRight.Controls.Add(this.label28);
+            this.groupPrinaryRight.Controls.Add(this.label27);
+            this.groupPrinaryRight.Controls.Add(this.label14);
+            this.groupPrinaryRight.Controls.Add(this.textBoxAddress1);
+            this.groupPrinaryRight.Controls.Add(this.textBoxLanguageDetail);
+            this.groupPrinaryRight.Controls.Add(this.textBoxSourceDetail);
+            this.groupPrinaryRight.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupPrinaryRight.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
+            this.groupPrinaryRight.Location = new System.Drawing.Point(490, 0);
+            this.groupPrinaryRight.Name = "groupPrinaryRight";
+            this.groupPrinaryRight.Size = new System.Drawing.Size(456, 158);
+            this.groupPrinaryRight.TabIndex = 37;
+            this.groupPrinaryRight.TabStop = false;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(17, 110);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(80, 13);
+            this.label28.TabIndex = 16;
+            this.label28.Text = "Details (source)";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(17, 72);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(96, 13);
+            this.label27.TabIndex = 15;
+            this.label27.Text = "Detauls (language)";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(17, 32);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(48, 13);
+            this.label14.TabIndex = 10;
+            this.label14.Text = "Address:";
+            // 
+            // textBoxAddress1
+            // 
+            this.textBoxAddress1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxAddress1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "MailingAddress", true));
+            this.textBoxAddress1.Location = new System.Drawing.Point(6, 49);
+            this.textBoxAddress1.Name = "textBoxAddress1";
+            this.textBoxAddress1.Size = new System.Drawing.Size(444, 20);
+            this.textBoxAddress1.TabIndex = 7;
+            this.textBoxAddress1.TextChanged += new System.EventHandler(this.textBoxAddress1_TextChanged);
+            // 
+            // textBoxLanguageDetail
+            // 
+            this.textBoxLanguageDetail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxLanguageDetail.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "LanguageDetail", true));
+            this.textBoxLanguageDetail.Location = new System.Drawing.Point(6, 87);
+            this.textBoxLanguageDetail.Name = "textBoxLanguageDetail";
+            this.textBoxLanguageDetail.Size = new System.Drawing.Size(444, 20);
+            this.textBoxLanguageDetail.TabIndex = 11;
+            this.textBoxLanguageDetail.TextChanged += new System.EventHandler(this.textBoxLanguageDetail_TextChanged);
+            // 
+            // textBoxSourceDetail
+            // 
+            this.textBoxSourceDetail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxSourceDetail.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "SourceDetail", true));
+            this.textBoxSourceDetail.Location = new System.Drawing.Point(6, 125);
+            this.textBoxSourceDetail.Name = "textBoxSourceDetail";
+            this.textBoxSourceDetail.Size = new System.Drawing.Size(444, 20);
+            this.textBoxSourceDetail.TabIndex = 14;
+            this.textBoxSourceDetail.TextChanged += new System.EventHandler(this.textBoxSourceDetail_TextChanged);
+            // 
+            // panelPrimaryLeft
+            // 
+            this.panelPrimaryLeft.Controls.Add(this.comboBoxSpeaks);
+            this.panelPrimaryLeft.Controls.Add(this.comboBoxOther);
+            this.panelPrimaryLeft.Controls.Add(this.label18);
+            this.panelPrimaryLeft.Controls.Add(this.textBoxLastName);
+            this.panelPrimaryLeft.Controls.Add(this.label17);
+            this.panelPrimaryLeft.Controls.Add(this.label9);
+            this.panelPrimaryLeft.Controls.Add(this.label19);
+            this.panelPrimaryLeft.Controls.Add(this.textBoxFirstName);
+            this.panelPrimaryLeft.Controls.Add(this.comboBoxStatus);
+            this.panelPrimaryLeft.Controls.Add(this.label10);
+            this.panelPrimaryLeft.Controls.Add(this.comboBoxLearns);
+            this.panelPrimaryLeft.Controls.Add(this.label11);
+            this.panelPrimaryLeft.Controls.Add(this.textBoxBirthday);
+            this.panelPrimaryLeft.Controls.Add(this.textBoxEmail);
+            this.panelPrimaryLeft.Controls.Add(this.label16);
+            this.panelPrimaryLeft.Controls.Add(this.label12);
+            this.panelPrimaryLeft.Controls.Add(this.label20);
+            this.panelPrimaryLeft.Controls.Add(this.label13);
+            this.panelPrimaryLeft.Controls.Add(this.comboBoxLevel);
+            this.panelPrimaryLeft.Controls.Add(this.textBoxCellPhone);
+            this.panelPrimaryLeft.Controls.Add(this.label21);
+            this.panelPrimaryLeft.Controls.Add(this.textBoxHomePhone);
+            this.panelPrimaryLeft.Controls.Add(this.label15);
+            this.panelPrimaryLeft.Controls.Add(this.comboBoxSource);
+            this.panelPrimaryLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelPrimaryLeft.Location = new System.Drawing.Point(0, 0);
+            this.panelPrimaryLeft.Name = "panelPrimaryLeft";
+            this.panelPrimaryLeft.Size = new System.Drawing.Size(490, 158);
+            this.panelPrimaryLeft.TabIndex = 39;
+            // 
+            // comboBoxSpeaks
+            // 
+            this.comboBoxSpeaks.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "NativeLanguage", true));
+            this.comboBoxSpeaks.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxSpeaks.FormattingEnabled = true;
+            this.comboBoxSpeaks.Location = new System.Drawing.Point(148, 92);
+            this.comboBoxSpeaks.Name = "comboBoxSpeaks";
+            this.comboBoxSpeaks.Size = new System.Drawing.Size(162, 21);
+            this.comboBoxSpeaks.TabIndex = 9;
+            // 
+            // comboBoxOther
+            // 
+            this.comboBoxOther.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "OtherLanguage", true));
+            this.comboBoxOther.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxOther.FormattingEnabled = true;
+            this.comboBoxOther.Location = new System.Drawing.Point(328, 92);
+            this.comboBoxOther.Name = "comboBoxOther";
+            this.comboBoxOther.Size = new System.Drawing.Size(152, 21);
+            this.comboBoxOther.TabIndex = 10;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(155, 114);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(48, 13);
+            this.label18.TabIndex = 18;
+            this.label18.Text = "Birthday:";
+            // 
+            // textBoxLastName
+            // 
+            this.textBoxLastName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "LastName", true));
+            this.textBoxLastName.Location = new System.Drawing.Point(148, 19);
+            this.textBoxLastName.Name = "textBoxLastName";
+            this.textBoxLastName.Size = new System.Drawing.Size(162, 20);
+            this.textBoxLastName.TabIndex = 2;
+            this.textBoxLastName.TextChanged += new System.EventHandler(this.textBoxLastName_TextChanged);
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(334, 79);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(27, 13);
+            this.label17.TabIndex = 17;
+            this.label17.Text = "Also";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(5, 6);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(58, 13);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "First name:";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(5, 41);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(40, 13);
+            this.label19.TabIndex = 21;
+            this.label19.Text = "Status:";
+            // 
+            // textBoxFirstName
+            // 
+            this.textBoxFirstName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "FirstName", true));
+            this.textBoxFirstName.Location = new System.Drawing.Point(5, 19);
+            this.textBoxFirstName.Name = "textBoxFirstName";
+            this.textBoxFirstName.Size = new System.Drawing.Size(130, 20);
+            this.textBoxFirstName.TabIndex = 1;
+            this.textBoxFirstName.TextChanged += new System.EventHandler(this.textBoxFirstName_TextChanged);
+            // 
+            // comboBoxStatus
+            // 
+            this.comboBoxStatus.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "Status", true));
+            this.comboBoxStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxStatus.FormattingEnabled = true;
+            this.comboBoxStatus.Location = new System.Drawing.Point(5, 57);
+            this.comboBoxStatus.Name = "comboBoxStatus";
+            this.comboBoxStatus.Size = new System.Drawing.Size(130, 21);
+            this.comboBoxStatus.TabIndex = 15;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(155, 4);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(59, 13);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "Last name:";
+            // 
+            // comboBoxLearns
+            // 
+            this.comboBoxLearns.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "LearningLanguage", true));
+            this.comboBoxLearns.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxLearns.FormattingEnabled = true;
+            this.comboBoxLearns.Location = new System.Drawing.Point(5, 91);
+            this.comboBoxLearns.Name = "comboBoxLearns";
+            this.comboBoxLearns.Size = new System.Drawing.Size(130, 21);
+            this.comboBoxLearns.TabIndex = 8;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(334, 6);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(35, 13);
+            this.label11.TabIndex = 4;
+            this.label11.Text = "Email:";
+            // 
+            // textBoxBirthday
+            // 
+            this.textBoxBirthday.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "Birthday", true));
+            this.textBoxBirthday.Location = new System.Drawing.Point(148, 129);
+            this.textBoxBirthday.Name = "textBoxBirthday";
+            this.textBoxBirthday.Size = new System.Drawing.Size(124, 20);
+            this.textBoxBirthday.TabIndex = 4;
+            this.textBoxBirthday.TextChanged += new System.EventHandler(this.textBoxBirthday_TextChanged);
+            // 
+            // textBoxEmail
+            // 
+            this.textBoxEmail.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "Email", true));
+            this.textBoxEmail.Location = new System.Drawing.Point(328, 19);
+            this.textBoxEmail.Name = "textBoxEmail";
+            this.textBoxEmail.Size = new System.Drawing.Size(152, 20);
+            this.textBoxEmail.TabIndex = 3;
+            this.textBoxEmail.TextChanged += new System.EventHandler(this.textBoxEmail_TextChanged);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(155, 76);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(46, 13);
+            this.label16.TabIndex = 14;
+            this.label16.Text = "Speaks:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(155, 41);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(60, 13);
+            this.label12.TabIndex = 6;
+            this.label12.Text = "Cell phone:";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(6, 114);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(36, 13);
+            this.label20.TabIndex = 24;
+            this.label20.Text = "Level:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(334, 41);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(71, 13);
+            this.label13.TabIndex = 7;
+            this.label13.Text = "Home phone:";
+            // 
+            // comboBoxLevel
+            // 
+            this.comboBoxLevel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "Level", true));
+            this.comboBoxLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxLevel.FormattingEnabled = true;
+            this.comboBoxLevel.Location = new System.Drawing.Point(5, 129);
+            this.comboBoxLevel.Name = "comboBoxLevel";
+            this.comboBoxLevel.Size = new System.Drawing.Size(130, 21);
+            this.comboBoxLevel.TabIndex = 12;
+            // 
+            // textBoxCellPhone
+            // 
+            this.textBoxCellPhone.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "CellPhone", true));
+            this.textBoxCellPhone.Location = new System.Drawing.Point(148, 55);
+            this.textBoxCellPhone.Name = "textBoxCellPhone";
+            this.textBoxCellPhone.Size = new System.Drawing.Size(130, 20);
+            this.textBoxCellPhone.TabIndex = 5;
+            this.textBoxCellPhone.TextChanged += new System.EventHandler(this.textBoxCellPhone_TextChanged);
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(334, 114);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(44, 13);
+            this.label21.TabIndex = 26;
+            this.label21.Text = "Source:";
+            // 
+            // textBoxHomePhone
+            // 
+            this.textBoxHomePhone.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "HomePhone", true));
+            this.textBoxHomePhone.Location = new System.Drawing.Point(328, 57);
+            this.textBoxHomePhone.Name = "textBoxHomePhone";
+            this.textBoxHomePhone.Size = new System.Drawing.Size(155, 20);
+            this.textBoxHomePhone.TabIndex = 6;
+            this.textBoxHomePhone.TextChanged += new System.EventHandler(this.textBoxHomePhone_TextChanged);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(5, 78);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(42, 13);
+            this.label15.TabIndex = 11;
+            this.label15.Text = "Learns:";
+            // 
+            // comboBoxSource
+            // 
+            this.comboBoxSource.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "Source", true));
+            this.comboBoxSource.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxSource.FormattingEnabled = true;
+            this.comboBoxSource.Location = new System.Drawing.Point(325, 129);
+            this.comboBoxSource.Name = "comboBoxSource";
+            this.comboBoxSource.Size = new System.Drawing.Size(155, 21);
+            this.comboBoxSource.TabIndex = 13;
+            // 
             // panelSecondary
             // 
             this.panelSecondary.Controls.Add(this.groupBoxSecondaryRight);
@@ -593,6 +933,7 @@
             this.groupBoxSecondaryRight.Controls.Add(this.textBoxGoals);
             this.groupBoxSecondaryRight.Controls.Add(this.textBoxBackground);
             this.groupBoxSecondaryRight.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxSecondaryRight.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
             this.groupBoxSecondaryRight.Location = new System.Drawing.Point(80, 0);
             this.groupBoxSecondaryRight.Name = "groupBoxSecondaryRight";
             this.groupBoxSecondaryRight.Size = new System.Drawing.Size(866, 241);
@@ -712,270 +1053,6 @@
             this.label24.TabIndex = 31;
             this.label24.Text = "Interests:";
             // 
-            // textBoxLastName
-            // 
-            this.textBoxLastName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "LastName", true));
-            this.textBoxLastName.Location = new System.Drawing.Point(148, 19);
-            this.textBoxLastName.Name = "textBoxLastName";
-            this.textBoxLastName.Size = new System.Drawing.Size(162, 20);
-            this.textBoxLastName.TabIndex = 2;
-            this.textBoxLastName.TextChanged += new System.EventHandler(this.textBoxLastName_TextChanged);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(5, 6);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(58, 13);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "First name:";
-            // 
-            // textBoxFirstName
-            // 
-            this.textBoxFirstName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "FirstName", true));
-            this.textBoxFirstName.Location = new System.Drawing.Point(5, 19);
-            this.textBoxFirstName.Name = "textBoxFirstName";
-            this.textBoxFirstName.Size = new System.Drawing.Size(130, 20);
-            this.textBoxFirstName.TabIndex = 1;
-            this.textBoxFirstName.TextChanged += new System.EventHandler(this.textBoxFirstName_TextChanged);
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(155, 4);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(59, 13);
-            this.label10.TabIndex = 2;
-            this.label10.Text = "Last name:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(334, 6);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(35, 13);
-            this.label11.TabIndex = 4;
-            this.label11.Text = "Email:";
-            // 
-            // textBoxEmail
-            // 
-            this.textBoxEmail.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "Email", true));
-            this.textBoxEmail.Location = new System.Drawing.Point(328, 19);
-            this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(152, 20);
-            this.textBoxEmail.TabIndex = 3;
-            this.textBoxEmail.TextChanged += new System.EventHandler(this.textBoxEmail_TextChanged);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(155, 41);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(60, 13);
-            this.label12.TabIndex = 6;
-            this.label12.Text = "Cell phone:";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(334, 41);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(71, 13);
-            this.label13.TabIndex = 7;
-            this.label13.Text = "Home phone:";
-            // 
-            // textBoxCellPhone
-            // 
-            this.textBoxCellPhone.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "CellPhone", true));
-            this.textBoxCellPhone.Location = new System.Drawing.Point(148, 55);
-            this.textBoxCellPhone.Name = "textBoxCellPhone";
-            this.textBoxCellPhone.Size = new System.Drawing.Size(130, 20);
-            this.textBoxCellPhone.TabIndex = 5;
-            this.textBoxCellPhone.TextChanged += new System.EventHandler(this.textBoxCellPhone_TextChanged);
-            // 
-            // textBoxHomePhone
-            // 
-            this.textBoxHomePhone.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "HomePhone", true));
-            this.textBoxHomePhone.Location = new System.Drawing.Point(328, 57);
-            this.textBoxHomePhone.Name = "textBoxHomePhone";
-            this.textBoxHomePhone.Size = new System.Drawing.Size(155, 20);
-            this.textBoxHomePhone.TabIndex = 6;
-            this.textBoxHomePhone.TextChanged += new System.EventHandler(this.textBoxHomePhone_TextChanged);
-            // 
-            // textBoxSourceDetail
-            // 
-            this.textBoxSourceDetail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxSourceDetail.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "SourceDetail", true));
-            this.textBoxSourceDetail.Location = new System.Drawing.Point(6, 125);
-            this.textBoxSourceDetail.Name = "textBoxSourceDetail";
-            this.textBoxSourceDetail.Size = new System.Drawing.Size(444, 20);
-            this.textBoxSourceDetail.TabIndex = 14;
-            this.textBoxSourceDetail.TextChanged += new System.EventHandler(this.textBoxSourceDetail_TextChanged);
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(17, 32);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(48, 13);
-            this.label14.TabIndex = 10;
-            this.label14.Text = "Address:";
-            // 
-            // comboBoxSource
-            // 
-            this.comboBoxSource.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "Source", true));
-            this.comboBoxSource.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxSource.FormattingEnabled = true;
-            this.comboBoxSource.Location = new System.Drawing.Point(325, 129);
-            this.comboBoxSource.Name = "comboBoxSource";
-            this.comboBoxSource.Size = new System.Drawing.Size(155, 21);
-            this.comboBoxSource.TabIndex = 13;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(5, 78);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(42, 13);
-            this.label15.TabIndex = 11;
-            this.label15.Text = "Learns:";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(334, 114);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(44, 13);
-            this.label21.TabIndex = 26;
-            this.label21.Text = "Source:";
-            // 
-            // textBoxAddress1
-            // 
-            this.textBoxAddress1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxAddress1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "MailingAddress", true));
-            this.textBoxAddress1.Location = new System.Drawing.Point(6, 49);
-            this.textBoxAddress1.Name = "textBoxAddress1";
-            this.textBoxAddress1.Size = new System.Drawing.Size(444, 20);
-            this.textBoxAddress1.TabIndex = 7;
-            this.textBoxAddress1.TextChanged += new System.EventHandler(this.textBoxAddress1_TextChanged);
-            // 
-            // comboBoxLevel
-            // 
-            this.comboBoxLevel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "Level", true));
-            this.comboBoxLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxLevel.FormattingEnabled = true;
-            this.comboBoxLevel.Location = new System.Drawing.Point(5, 129);
-            this.comboBoxLevel.Name = "comboBoxLevel";
-            this.comboBoxLevel.Size = new System.Drawing.Size(130, 21);
-            this.comboBoxLevel.TabIndex = 12;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(6, 114);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(36, 13);
-            this.label20.TabIndex = 24;
-            this.label20.Text = "Level:";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(155, 76);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(46, 13);
-            this.label16.TabIndex = 14;
-            this.label16.Text = "Speaks:";
-            // 
-            // textBoxBirthday
-            // 
-            this.textBoxBirthday.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "Birthday", true));
-            this.textBoxBirthday.Location = new System.Drawing.Point(148, 129);
-            this.textBoxBirthday.Name = "textBoxBirthday";
-            this.textBoxBirthday.Size = new System.Drawing.Size(124, 20);
-            this.textBoxBirthday.TabIndex = 4;
-            this.textBoxBirthday.TextChanged += new System.EventHandler(this.textBoxBirthday_TextChanged);
-            // 
-            // comboBoxLearns
-            // 
-            this.comboBoxLearns.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "LearningLanguage", true));
-            this.comboBoxLearns.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxLearns.FormattingEnabled = true;
-            this.comboBoxLearns.Location = new System.Drawing.Point(5, 91);
-            this.comboBoxLearns.Name = "comboBoxLearns";
-            this.comboBoxLearns.Size = new System.Drawing.Size(130, 21);
-            this.comboBoxLearns.TabIndex = 8;
-            // 
-            // comboBoxStatus
-            // 
-            this.comboBoxStatus.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "Status", true));
-            this.comboBoxStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxStatus.FormattingEnabled = true;
-            this.comboBoxStatus.Location = new System.Drawing.Point(5, 57);
-            this.comboBoxStatus.Name = "comboBoxStatus";
-            this.comboBoxStatus.Size = new System.Drawing.Size(130, 21);
-            this.comboBoxStatus.TabIndex = 15;
-            // 
-            // comboBoxSpeaks
-            // 
-            this.comboBoxSpeaks.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "NativeLanguage", true));
-            this.comboBoxSpeaks.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxSpeaks.FormattingEnabled = true;
-            this.comboBoxSpeaks.Location = new System.Drawing.Point(148, 92);
-            this.comboBoxSpeaks.Name = "comboBoxSpeaks";
-            this.comboBoxSpeaks.Size = new System.Drawing.Size(162, 21);
-            this.comboBoxSpeaks.TabIndex = 9;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(5, 41);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(40, 13);
-            this.label19.TabIndex = 21;
-            this.label19.Text = "Status:";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(334, 79);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(27, 13);
-            this.label17.TabIndex = 17;
-            this.label17.Text = "Also";
-            // 
-            // textBoxLanguageDetail
-            // 
-            this.textBoxLanguageDetail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxLanguageDetail.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "LanguageDetail", true));
-            this.textBoxLanguageDetail.Location = new System.Drawing.Point(6, 87);
-            this.textBoxLanguageDetail.Name = "textBoxLanguageDetail";
-            this.textBoxLanguageDetail.Size = new System.Drawing.Size(444, 20);
-            this.textBoxLanguageDetail.TabIndex = 11;
-            this.textBoxLanguageDetail.TextChanged += new System.EventHandler(this.textBoxLanguageDetail_TextChanged);
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(155, 114);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(48, 13);
-            this.label18.TabIndex = 18;
-            this.label18.Text = "Birthday:";
-            // 
-            // comboBoxOther
-            // 
-            this.comboBoxOther.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "OtherLanguage", true));
-            this.comboBoxOther.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxOther.FormattingEnabled = true;
-            this.comboBoxOther.Location = new System.Drawing.Point(328, 92);
-            this.comboBoxOther.Name = "comboBoxOther";
-            this.comboBoxOther.Size = new System.Drawing.Size(152, 21);
-            this.comboBoxOther.TabIndex = 10;
-            // 
             // panelEdit
             // 
             this.panelEdit.Controls.Add(this.panelNextNew);
@@ -1054,81 +1131,6 @@
             this.panelIndicators.Name = "panelIndicators";
             this.panelIndicators.Size = new System.Drawing.Size(1008, 24);
             this.panelIndicators.TabIndex = 27;
-            // 
-            // groupPrinaryRight
-            // 
-            this.groupPrinaryRight.Controls.Add(this.label28);
-            this.groupPrinaryRight.Controls.Add(this.label27);
-            this.groupPrinaryRight.Controls.Add(this.label14);
-            this.groupPrinaryRight.Controls.Add(this.textBoxAddress1);
-            this.groupPrinaryRight.Controls.Add(this.textBoxLanguageDetail);
-            this.groupPrinaryRight.Controls.Add(this.textBoxSourceDetail);
-            this.groupPrinaryRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupPrinaryRight.Location = new System.Drawing.Point(490, 0);
-            this.groupPrinaryRight.Name = "groupPrinaryRight";
-            this.groupPrinaryRight.Size = new System.Drawing.Size(456, 158);
-            this.groupPrinaryRight.TabIndex = 37;
-            this.groupPrinaryRight.TabStop = false;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(17, 72);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(96, 13);
-            this.label27.TabIndex = 15;
-            this.label27.Text = "Detauls (language)";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(17, 110);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(80, 13);
-            this.label28.TabIndex = 16;
-            this.label28.Text = "Details (source)";
-            // 
-            // panelPrimaryLeft
-            // 
-            this.panelPrimaryLeft.Controls.Add(this.comboBoxSpeaks);
-            this.panelPrimaryLeft.Controls.Add(this.comboBoxOther);
-            this.panelPrimaryLeft.Controls.Add(this.label18);
-            this.panelPrimaryLeft.Controls.Add(this.textBoxLastName);
-            this.panelPrimaryLeft.Controls.Add(this.label17);
-            this.panelPrimaryLeft.Controls.Add(this.label9);
-            this.panelPrimaryLeft.Controls.Add(this.label19);
-            this.panelPrimaryLeft.Controls.Add(this.textBoxFirstName);
-            this.panelPrimaryLeft.Controls.Add(this.comboBoxStatus);
-            this.panelPrimaryLeft.Controls.Add(this.label10);
-            this.panelPrimaryLeft.Controls.Add(this.comboBoxLearns);
-            this.panelPrimaryLeft.Controls.Add(this.label11);
-            this.panelPrimaryLeft.Controls.Add(this.textBoxBirthday);
-            this.panelPrimaryLeft.Controls.Add(this.textBoxEmail);
-            this.panelPrimaryLeft.Controls.Add(this.label16);
-            this.panelPrimaryLeft.Controls.Add(this.label12);
-            this.panelPrimaryLeft.Controls.Add(this.label20);
-            this.panelPrimaryLeft.Controls.Add(this.label13);
-            this.panelPrimaryLeft.Controls.Add(this.comboBoxLevel);
-            this.panelPrimaryLeft.Controls.Add(this.textBoxCellPhone);
-            this.panelPrimaryLeft.Controls.Add(this.label21);
-            this.panelPrimaryLeft.Controls.Add(this.textBoxHomePhone);
-            this.panelPrimaryLeft.Controls.Add(this.label15);
-            this.panelPrimaryLeft.Controls.Add(this.comboBoxSource);
-            this.panelPrimaryLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelPrimaryLeft.Location = new System.Drawing.Point(0, 0);
-            this.panelPrimaryLeft.Name = "panelPrimaryLeft";
-            this.panelPrimaryLeft.Size = new System.Drawing.Size(490, 158);
-            this.panelPrimaryLeft.TabIndex = 39;
-            // 
-            // panelPrimary
-            // 
-            this.panelPrimary.Controls.Add(this.groupPrinaryRight);
-            this.panelPrimary.Controls.Add(this.panelPrimaryLeft);
-            this.panelPrimary.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelPrimary.Location = new System.Drawing.Point(0, 0);
-            this.panelPrimary.Name = "panelPrimary";
-            this.panelPrimary.Size = new System.Drawing.Size(946, 158);
-            this.panelPrimary.TabIndex = 40;
             // 
             // statusDataGridViewTextBoxColumn
             // 
@@ -1225,6 +1227,11 @@
             this.panelSearch.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panelStudent.ResumeLayout(false);
+            this.panelPrimary.ResumeLayout(false);
+            this.groupPrinaryRight.ResumeLayout(false);
+            this.groupPrinaryRight.PerformLayout();
+            this.panelPrimaryLeft.ResumeLayout(false);
+            this.panelPrimaryLeft.PerformLayout();
             this.panelSecondary.ResumeLayout(false);
             this.groupBoxSecondaryRight.ResumeLayout(false);
             this.groupBoxSecondaryRight.PerformLayout();
@@ -1244,11 +1251,6 @@
             this.splitContainerDataControls.ResumeLayout(false);
             this.panelIndicators.ResumeLayout(false);
             this.panelIndicators.PerformLayout();
-            this.groupPrinaryRight.ResumeLayout(false);
-            this.groupPrinaryRight.PerformLayout();
-            this.panelPrimaryLeft.ResumeLayout(false);
-            this.panelPrimaryLeft.PerformLayout();
-            this.panelPrimary.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.studentList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
