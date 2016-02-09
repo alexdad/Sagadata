@@ -56,6 +56,7 @@ namespace Students
 
         bool m_bChanged;
 
+        #region "Form"
         public Form1()
         {
             m_bChanged = false;
@@ -80,32 +81,21 @@ namespace Students
             ShowStudentCount();
         }
 
-        private void ReadSettings()
+        private void Form1_Load(object sender, EventArgs e)
         {
-            string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            m_cloudType = Clouds.None;
-            m_fileName = Properties.Settings.Default.FileName;
-            switch (Properties.Settings.Default.CloudType.ToLower())
-            {
-                case "dir":
-                    m_cloudType = Clouds.Dir;
-                    break;
-                case "azure":
-                    m_cloudType = Clouds.Azure;
-                    break;
-                case "google":
-                    m_cloudType = Clouds.Google;
-                    break;
-            }
-
-            m_backupLimit = Properties.Settings.Default.BackupLimit;
+            this.Size = Properties.Settings.Default.Form1Size;
+            splitContainerDataControls.SplitterDistance = Properties.Settings.Default.SplitDC;
+            splitContainerMasterDetail.SplitterDistance = Properties.Settings.Default.SplitMD;
         }
 
-        public string FilePath
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            get { return Path.Combine(m_dataLocation, m_fileName + ".csv"); }
+            Properties.Settings.Default.Form1Size = this.Size;
+            Properties.Settings.Default.SplitDC = splitContainerDataControls.SplitterDistance;
+            Properties.Settings.Default.SplitMD = splitContainerMasterDetail.SplitterDistance;
+            Properties.Settings.Default.Save();
         }
-
+        #endregion
         #region "Navigation"
         public bool SelectionMode
         {
@@ -140,7 +130,16 @@ namespace Students
             SortStudents(col.HeaderText, temp);
             ReplaceStudentList(temp);
         }
-        #endregion
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex >= 0 && e.ColumnIndex < dataGridView1.ColumnCount &&
+                e.RowIndex >= 0 && e.RowIndex < dataGridView1.RowCount &&
+                dataGridView1[e.ColumnIndex, e.RowIndex].Value != null)
+
+                Clipboard.SetText(dataGridView1[e.ColumnIndex, e.RowIndex].Value.ToString());
+        }
+    #endregion
         #region "ButtonClicks"
         private void buttonNext_Click(object sender, EventArgs e)
         {
@@ -249,23 +248,6 @@ namespace Students
             m_selectionLastName = (string)testBox.Text;
             DoSelection();
         }
-        #endregion
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            this.Size = Properties.Settings.Default.Form1Size;
-            splitContainerDataControls.SplitterDistance = Properties.Settings.Default.SplitDC;
-            splitContainerMasterDetail.SplitterDistance = Properties.Settings.Default.SplitMD;
-        }
-
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Properties.Settings.Default.Form1Size  = this.Size;
-            Properties.Settings.Default.SplitDC = splitContainerDataControls.SplitterDistance;
-            Properties.Settings.Default.SplitMD = splitContainerMasterDetail.SplitterDistance;
-            Properties.Settings.Default.Save();
-        }
-
         private void textBoxComments_TextChanged(object sender, EventArgs e)
         {
             m_bChanged = true;
@@ -335,5 +317,7 @@ namespace Students
         {
             m_bChanged = true;
         }
+
+        #endregion
     }
 }

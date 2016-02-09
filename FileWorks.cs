@@ -3,6 +3,7 @@ using System.IO;
 using System.Text;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace Students
 {
@@ -304,5 +305,32 @@ namespace Students
 
             return success;
         }
+
+        private void ReadSettings()
+        {
+            string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            m_cloudType = Clouds.None;
+            m_fileName = Properties.Settings.Default.FileName;
+            switch (Properties.Settings.Default.CloudType.ToLower())
+            {
+                case "dir":
+                    m_cloudType = Clouds.Dir;
+                    break;
+                case "azure":
+                    m_cloudType = Clouds.Azure;
+                    break;
+                case "google":
+                    m_cloudType = Clouds.Google;
+                    break;
+            }
+
+            m_backupLimit = Properties.Settings.Default.BackupLimit;
+        }
+
+        public string FilePath
+        {
+            get { return Path.Combine(m_dataLocation, m_fileName + ".csv"); }
+        }
+
     }
 }
