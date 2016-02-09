@@ -74,36 +74,36 @@ namespace RecordKeeper
         public Validations Validation;
     }
 
-    public partial class Form1 : Form
+    public partial class FormGlob : Form
     {
         private void AssignEnums()
         {
-            comboBoxSelectLearns.Items.AddRange(m_enumLanguage);
-            comboBoxSelectSpeaks.Items.AddRange(m_enumLanguage);
-            comboBoxSelectStatus.Items.AddRange(m_enumStatus);
-            comboBoxSelectSource.Items.AddRange(m_enumSource);
-            comboBoxSelectLevel.Items.AddRange(m_enumLevel);
+            cbStudSelectLearns.Items.AddRange(m_enumLanguage);
+            cbStudSelectSpeaks.Items.AddRange(m_enumLanguage);
+            cbStudSelectStatus.Items.AddRange(m_enumStatus);
+            cbStudSelectSource.Items.AddRange(m_enumSource);
+            cbStudSelectLevel.Items.AddRange(m_enumLevel);
 
-            comboBoxLearns.Items.AddRange(m_enumLanguage);
-            comboBoxOther.Items.AddRange(m_enumLanguage);
-            comboBoxSpeaks.Items.AddRange(m_enumLanguage);
-            comboBoxLevel.Items.AddRange(m_enumLevel);
-            comboBoxSource.Items.AddRange(m_enumSource);
-            comboBoxStatus.Items.AddRange(m_enumStatus);
+            cbStudLearns.Items.AddRange(m_enumLanguage);
+            cbStudOther.Items.AddRange(m_enumLanguage);
+            cbStudSpeaks.Items.AddRange(m_enumLanguage);
+            cbStudLevel.Items.AddRange(m_enumLevel);
+            cbStudSource.Items.AddRange(m_enumSource);
+            cbStudStatus.Items.AddRange(m_enumStatus);
 
-            comboBoxType.Items.Add("Welcome");
-            comboBoxType.Items.Add("Students");
-            comboBoxType.Items.Add("Teachers");
-            comboBoxType.Items.Add("Programs");
-            comboBoxType.Items.Add("Rooms");
-            comboBoxType.Items.Add("Lessons");
-            comboBoxType.Items.Add("Expenses");
-            comboBoxType.Text = "Welcome";
+            cbGlobType.Items.Add("Welcome");
+            cbGlobType.Items.Add("Students");
+            cbGlobType.Items.Add("Teachers");
+            cbGlobType.Items.Add("Programs");
+            cbGlobType.Items.Add("Rooms");
+            cbGlobType.Items.Add("Lessons");
+            cbGlobType.Items.Add("Expenses");
+            cbGlobType.Text = "Welcome";
         }
 
         private void ShowStudentCount()
         {
-            labelCount.Text = studentList.Count.ToString();
+            labelGlobCount.Text = studentList.Count.ToString();
         }
 
     }

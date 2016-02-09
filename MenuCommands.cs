@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace RecordKeeper
 {
-    public partial class Form1 : Form
+    public partial class FormGlob : Form
     {
         //----------------------------------------------------
         // Menu strip

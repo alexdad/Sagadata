@@ -43,8 +43,8 @@ namespace RecordKeeper
             Background = "";
             Birthday = "";
             CellPhone = "";
-            ChangedBy = Form1.Client;
-            CreatedBy = Form1.Client;
+            ChangedBy = FormGlob.Client;
+            CreatedBy = FormGlob.Client;
             Comments = "";
             Created = DateTime.Now;
             Changed = DateTime.Now;
@@ -107,7 +107,7 @@ namespace RecordKeeper
             {
                 case "id":
                     this.Id = int.Parse(value);
-                    Form1.AccumulateID(Id);
+                    FormGlob.AccumulateID(Id);
                     break;
                 case "Status":
                     this.Status = value;

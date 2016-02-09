@@ -7,7 +7,7 @@ using System.Reflection;
 
 namespace RecordKeeper
 {
-    public partial class Form1 
+    public partial class FormGlob 
     {
         void PrepareDataDirectories()
         {
@@ -116,7 +116,7 @@ namespace RecordKeeper
                 Student st = ParseValues(s, safeStr.Split(','));
                 studentList.Add(new Student(st));
                 studentsAsRead.Add(st.Key, st);
-                Form1.AccumulateID(st.Id);
+                FormGlob.AccumulateID(st.Id);
             }
         }
 
@@ -267,7 +267,7 @@ namespace RecordKeeper
 
             if (success)
             {
-                labelLastDownload.Text = "Last download: " + DateTime.Now.ToShortTimeString();
+                labelGlobLastDownload.Text = "Last download: " + DateTime.Now.ToShortTimeString();
                 Student[] temp = ReadCloudFile(m_cloudLocation);
                 MergeBack(temp);
             }
@@ -280,7 +280,7 @@ namespace RecordKeeper
             Student[] temp = ReadCloudFile(m_cloudLocation);
             MergeBack(temp);
             WriteStudentsFile();
-            labelLastDownload.Text = "Last download: " + DateTime.Now.ToShortTimeString();
+            labelGlobLastDownload.Text = "Last download: " + DateTime.Now.ToShortTimeString();
 
             if (File.Exists(m_cloudLocation))
                 File.Delete(m_cloudLocation);
@@ -301,7 +301,7 @@ namespace RecordKeeper
             if (!success)
                 MessageBox.Show("Cannot upload to the cloud. Local file is OK.");
             else
-                labelLastUpload.Text = "Last upload: " + DateTime.Now.ToShortTimeString();
+                labelGlobLastUpload.Text = "Last upload: " + DateTime.Now.ToShortTimeString();
 
             return success;
         }

@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace RecordKeeper
 {
-    public partial class Form1 : Form
+    public partial class FormGlob : Form
     {
         public static string Client;
         public static int MaxID { get; set; }
@@ -57,7 +57,7 @@ namespace RecordKeeper
         bool m_bChanged;
 
         #region "Form"
-        public Form1()
+        public FormGlob()
         {
             ReadSettings();
             ReadSchemas();
@@ -84,24 +84,24 @@ namespace RecordKeeper
         private void Form1_Load(object sender, EventArgs e)
         {
             this.Size = Properties.Settings.Default.Form1Size;
-            splitContainerDataControls.SplitterDistance = Properties.Settings.Default.SplitDC;
-            splitContainerMasterDetail.SplitterDistance = Properties.Settings.Default.SplitMD;
+            splitContainerGlobDataControls.SplitterDistance = Properties.Settings.Default.SplitDC;
+            splitContainerGlobMasterDetail.SplitterDistance = Properties.Settings.Default.SplitMD;
             m_bChanged = false;
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             Properties.Settings.Default.Form1Size = this.Size;
-            Properties.Settings.Default.SplitDC = splitContainerDataControls.SplitterDistance;
-            Properties.Settings.Default.SplitMD = splitContainerMasterDetail.SplitterDistance;
+            Properties.Settings.Default.SplitDC = splitContainerGlobDataControls.SplitterDistance;
+            Properties.Settings.Default.SplitMD = splitContainerGlobMasterDetail.SplitterDistance;
             Properties.Settings.Default.Save();
         }
         #endregion
         #region "Selection"
         public bool SelectionMode
         {
-            get { return buttonShowAll.Enabled; }
-            set { buttonShowAll.Enabled = value; }
+            get { return buttGlobalShowAll.Enabled; }
+            set { buttGlobalShowAll.Enabled = value; }
         }
 
         private void EndSelectionMode()
@@ -126,7 +126,7 @@ namespace RecordKeeper
             else
                 s_needToReverse = !s_needToReverse;
 
-            DataGridViewColumn col = dataGridView1.Columns[e.ColumnIndex];
+            DataGridViewColumn col = dataGridViewStudents.Columns[e.ColumnIndex];
             Student[] temp = ForkOut(0);
             SortStudents(col.HeaderText, temp);
             ReplaceStudentList(temp);
@@ -134,11 +134,11 @@ namespace RecordKeeper
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex >= 0 && e.ColumnIndex < dataGridView1.ColumnCount &&
-                e.RowIndex >= 0 && e.RowIndex < dataGridView1.RowCount &&
-                dataGridView1[e.ColumnIndex, e.RowIndex].Value != null)
+            if (e.ColumnIndex >= 0 && e.ColumnIndex < dataGridViewStudents.ColumnCount &&
+                e.RowIndex >= 0 && e.RowIndex < dataGridViewStudents.RowCount &&
+                dataGridViewStudents[e.ColumnIndex, e.RowIndex].Value != null)
 
-                Clipboard.SetText(dataGridView1[e.ColumnIndex, e.RowIndex].Value.ToString());
+                Clipboard.SetText(dataGridViewStudents[e.ColumnIndex, e.RowIndex].Value.ToString());
         }
     #endregion
         #region "ButtonClicks"
@@ -157,10 +157,10 @@ namespace RecordKeeper
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             Student st = (Student)studentList.AddNew();
-            st.Id = Form1.AllocateID();
+            st.Id = FormGlob.AllocateID();
             ShowStudentCount();
             m_bChanged = true;
-            textBoxFirstName.Select();
+            tbStudFirstName.Select();
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
@@ -184,13 +184,13 @@ namespace RecordKeeper
             m_selectionSource = null;
             m_selectionLevel = null;
 
-            comboBoxSelectStatus.SelectedIndex = 0;
-            comboBoxSelectLearns.SelectedIndex = 0;
-            comboBoxSelectSpeaks.SelectedIndex = 0;
-            textBoxSelectFirstName.Text = "";
-            textBoxSelectLastName.Text = "";
-            comboBoxSelectSource.SelectedIndex = 0;
-            comboBoxSelectLevel.SelectedIndex = 0;
+            cbStudSelectStatus.SelectedIndex = 0;
+            cbStudSelectLearns.SelectedIndex = 0;
+            cbStudSelectSpeaks.SelectedIndex = 0;
+            tbStudSelectFirstName.Text = "";
+            tbStudSelectLastName.Text = "";
+            cbStudSelectSource.SelectedIndex = 0;
+            cbStudSelectLevel.SelectedIndex = 0;
             // Changed
         }
 

@@ -137,7 +137,7 @@ namespace GDrive
             System.IO.MemoryStream stream = new System.IO.MemoryStream(byteArray);
 
             Google.Apis.Drive.v3.Data.File body = new Google.Apis.Drive.v3.Data.File();
-            body.Description = "Uploaded from " + RecordKeeper.Form1.Client;
+            body.Description = "Uploaded from " + RecordKeeper.FormGlob.Client;
 
             FilesResource.UpdateMediaUpload request =  service.Files.Update(body, fileId, stream, GetMimeType(localPath));
             request.Upload();

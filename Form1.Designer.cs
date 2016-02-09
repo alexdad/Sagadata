@@ -1,6 +1,6 @@
 ﻿namespace RecordKeeper
 {
-    partial class Form1
+    partial class FormGlob
     {
         /// <summary>
         /// Required designer variable.
@@ -29,600 +29,510 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.downloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mergeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBoxSelectStatus = new System.Windows.Forms.ComboBox();
-            this.Label4 = new System.Windows.Forms.Label();
-            this.comboBoxSelectLearns = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.comboBoxSelectSpeaks = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBoxSelectFirstName = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBoxSelectLastName = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.comboBoxSelectSource = new System.Windows.Forms.ComboBox();
-            this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
-            this.labelSagalingua = new System.Windows.Forms.Label();
-            this.panelSearch = new System.Windows.Forms.Panel();
-            this.buttonToExcel = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.comboBoxSelectLevel = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.buttonShowAll = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.learningLanguageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.levelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nativeLanguageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.otherLanguageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.birthdayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Source = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mailingAddressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.studentList = new System.Windows.Forms.BindingSource(this.components);
-            this.buttonPrev = new System.Windows.Forms.Button();
-            this.buttonAdd = new System.Windows.Forms.Button();
-            this.buttonDelete = new System.Windows.Forms.Button();
-            this.buttonNext = new System.Windows.Forms.Button();
-            this.labelCount = new System.Windows.Forms.Label();
-            this.labelLastDownload = new System.Windows.Forms.Label();
-            this.labelLastUpload = new System.Windows.Forms.Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGlob));
+            this.menuStripGlobalOps = new System.Windows.Forms.MenuStrip();
+            this.menuItemGlobDownload = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemGlobSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemGlobUpload = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemGlobExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.labelStudStatus = new System.Windows.Forms.Label();
+            this.cbStudSelectStatus = new System.Windows.Forms.ComboBox();
+            this.LabelStudLearns = new System.Windows.Forms.Label();
+            this.cbStudSelectLearns = new System.Windows.Forms.ComboBox();
+            this.labelStudSpeaks = new System.Windows.Forms.Label();
+            this.cbStudSelectSpeaks = new System.Windows.Forms.ComboBox();
+            this.labelStudFirstName1 = new System.Windows.Forms.Label();
+            this.tbStudSelectFirstName = new System.Windows.Forms.TextBox();
+            this.labelStudLastName = new System.Windows.Forms.Label();
+            this.tbStudSelectLastName = new System.Windows.Forms.TextBox();
+            this.labelStudSource = new System.Windows.Forms.Label();
+            this.cbStudSelectSource = new System.Windows.Forms.ComboBox();
+            this.pictureBoxGlobIcon = new System.Windows.Forms.PictureBox();
+            this.labelGlobSagalingua = new System.Windows.Forms.Label();
+            this.panelGlobSearch = new System.Windows.Forms.Panel();
+            this.butGlobalToExcel = new System.Windows.Forms.Button();
+            this.labelGlobSearch = new System.Windows.Forms.Label();
+            this.cbStudSelectLevel = new System.Windows.Forms.ComboBox();
+            this.labelStudLevel = new System.Windows.Forms.Label();
+            this.buttGlobalShowAll = new System.Windows.Forms.Button();
+            this.dataGridViewStudents = new System.Windows.Forms.DataGridView();
+            this.dgvStudColumnPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStudColumnSource = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.butGlobalPrev = new System.Windows.Forms.Button();
+            this.butGlobalAdd = new System.Windows.Forms.Button();
+            this.butGlobalDelete = new System.Windows.Forms.Button();
+            this.butGlobalNext = new System.Windows.Forms.Button();
+            this.labelGlobCount = new System.Windows.Forms.Label();
+            this.labelGlobLastDownload = new System.Windows.Forms.Label();
+            this.labelGlobLastUpload = new System.Windows.Forms.Label();
             this.panelStudent = new System.Windows.Forms.Panel();
-            this.panelPrimary = new System.Windows.Forms.Panel();
-            this.groupPrinaryRight = new System.Windows.Forms.GroupBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.textBoxAddress1 = new System.Windows.Forms.TextBox();
-            this.textBoxLanguageDetail = new System.Windows.Forms.TextBox();
-            this.textBoxSourceDetail = new System.Windows.Forms.TextBox();
-            this.panelPrimaryLeft = new System.Windows.Forms.Panel();
-            this.comboBoxSpeaks = new System.Windows.Forms.ComboBox();
-            this.comboBoxOther = new System.Windows.Forms.ComboBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.textBoxLastName = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.textBoxFirstName = new System.Windows.Forms.TextBox();
-            this.comboBoxStatus = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.comboBoxLearns = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.textBoxBirthday = new System.Windows.Forms.TextBox();
-            this.textBoxEmail = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.comboBoxLevel = new System.Windows.Forms.ComboBox();
-            this.textBoxCellPhone = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.textBoxHomePhone = new System.Windows.Forms.TextBox();
-            this.label15 = new System.Windows.Forms.Label();
-            this.comboBoxSource = new System.Windows.Forms.ComboBox();
-            this.panelSecondary = new System.Windows.Forms.Panel();
-            this.groupBoxSecondaryRight = new System.Windows.Forms.GroupBox();
-            this.textBoxComments = new System.Windows.Forms.TextBox();
-            this.textBoxSchedule = new System.Windows.Forms.TextBox();
-            this.textBoxInterests = new System.Windows.Forms.TextBox();
-            this.textBoxGoals = new System.Windows.Forms.TextBox();
-            this.textBoxBackground = new System.Windows.Forms.TextBox();
-            this.panelSecondaryLeft = new System.Windows.Forms.Panel();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.panelEdit = new System.Windows.Forms.Panel();
-            this.panelNextNew = new System.Windows.Forms.Panel();
-            this.panelLogo = new System.Windows.Forms.Panel();
-            this.comboBoxType = new System.Windows.Forms.ComboBox();
-            this.splitContainerMasterDetail = new System.Windows.Forms.SplitContainer();
-            this.splitContainerDataControls = new System.Windows.Forms.SplitContainer();
-            this.panelIndicators = new System.Windows.Forms.Panel();
-            this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
-            this.panelSearch.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.studentList)).BeginInit();
+            this.panelStudPrimary = new System.Windows.Forms.Panel();
+            this.groupBoxStudPrinaryRight = new System.Windows.Forms.GroupBox();
+            this.labelStudDetailsSource = new System.Windows.Forms.Label();
+            this.labelStudDetailsLanguage = new System.Windows.Forms.Label();
+            this.labelStudAddress1 = new System.Windows.Forms.Label();
+            this.tbStudAddress1 = new System.Windows.Forms.TextBox();
+            this.tbStudLanguageDetail = new System.Windows.Forms.TextBox();
+            this.tbStudSourceDetail = new System.Windows.Forms.TextBox();
+            this.panelStudPrimaryLeft = new System.Windows.Forms.Panel();
+            this.cbStudSpeaks = new System.Windows.Forms.ComboBox();
+            this.cbStudOther = new System.Windows.Forms.ComboBox();
+            this.labelStudBirthday = new System.Windows.Forms.Label();
+            this.tbStudLastName = new System.Windows.Forms.TextBox();
+            this.labelStudAlso = new System.Windows.Forms.Label();
+            this.labelStudFirstname = new System.Windows.Forms.Label();
+            this.labelStudStatus1 = new System.Windows.Forms.Label();
+            this.tbStudFirstName = new System.Windows.Forms.TextBox();
+            this.cbStudStatus = new System.Windows.Forms.ComboBox();
+            this.labelStudLastName1 = new System.Windows.Forms.Label();
+            this.cbStudLearns = new System.Windows.Forms.ComboBox();
+            this.labelStudEmail1 = new System.Windows.Forms.Label();
+            this.tbStudBirthday = new System.Windows.Forms.TextBox();
+            this.tbStudEmail = new System.Windows.Forms.TextBox();
+            this.labelStudSpeaks1 = new System.Windows.Forms.Label();
+            this.labelStudCellPhone = new System.Windows.Forms.Label();
+            this.labelStudLevel1 = new System.Windows.Forms.Label();
+            this.labelStudHomePhone = new System.Windows.Forms.Label();
+            this.cbStudLevel = new System.Windows.Forms.ComboBox();
+            this.tbStudCellPhone = new System.Windows.Forms.TextBox();
+            this.labelStudSource1 = new System.Windows.Forms.Label();
+            this.tbStudHomePhone = new System.Windows.Forms.TextBox();
+            this.labelStudSpeaks2 = new System.Windows.Forms.Label();
+            this.cbStudSource = new System.Windows.Forms.ComboBox();
+            this.panelStudSecondary = new System.Windows.Forms.Panel();
+            this.groupBoxStudSecondaryRight = new System.Windows.Forms.GroupBox();
+            this.tbStudComments = new System.Windows.Forms.TextBox();
+            this.tbStudSchedule = new System.Windows.Forms.TextBox();
+            this.tbStudInterests = new System.Windows.Forms.TextBox();
+            this.tbStudGoals = new System.Windows.Forms.TextBox();
+            this.tbStudBackground = new System.Windows.Forms.TextBox();
+            this.panelStudSecondaryLeft = new System.Windows.Forms.Panel();
+            this.labelStudGoals = new System.Windows.Forms.Label();
+            this.labelStudBackground = new System.Windows.Forms.Label();
+            this.labelStudComments = new System.Windows.Forms.Label();
+            this.labelStudSchedule = new System.Windows.Forms.Label();
+            this.labelStudInterests = new System.Windows.Forms.Label();
+            this.panelGlobEdit = new System.Windows.Forms.Panel();
+            this.panelGlobNextNew = new System.Windows.Forms.Panel();
+            this.panelGlobLogo = new System.Windows.Forms.Panel();
+            this.cbGlobType = new System.Windows.Forms.ComboBox();
+            this.splitContainerGlobMasterDetail = new System.Windows.Forms.SplitContainer();
+            this.splitContainerGlobDataControls = new System.Windows.Forms.SplitContainer();
+            this.panelGlobIndicators = new System.Windows.Forms.Panel();
+            this.panelStudSearch = new System.Windows.Forms.Panel();
+            this.dgvStudColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStudColumnFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStudColumnLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStudColumnEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStudColumnLearningLanguage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStudColumnLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStudColumnNativeLanguage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStudColumnOtherLanguage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStudColumnBirthday = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStudColumnAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.studentList = new System.Windows.Forms.BindingSource(this.components);
+            this.menuStripGlobalOps.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGlobIcon)).BeginInit();
+            this.panelGlobSearch.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudents)).BeginInit();
             this.panelStudent.SuspendLayout();
-            this.panelPrimary.SuspendLayout();
-            this.groupPrinaryRight.SuspendLayout();
-            this.panelPrimaryLeft.SuspendLayout();
-            this.panelSecondary.SuspendLayout();
-            this.groupBoxSecondaryRight.SuspendLayout();
-            this.panelSecondaryLeft.SuspendLayout();
-            this.panelEdit.SuspendLayout();
-            this.panelNextNew.SuspendLayout();
-            this.panelLogo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMasterDetail)).BeginInit();
-            this.splitContainerMasterDetail.Panel1.SuspendLayout();
-            this.splitContainerMasterDetail.Panel2.SuspendLayout();
-            this.splitContainerMasterDetail.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerDataControls)).BeginInit();
-            this.splitContainerDataControls.Panel1.SuspendLayout();
-            this.splitContainerDataControls.Panel2.SuspendLayout();
-            this.splitContainerDataControls.SuspendLayout();
-            this.panelIndicators.SuspendLayout();
+            this.panelStudPrimary.SuspendLayout();
+            this.groupBoxStudPrinaryRight.SuspendLayout();
+            this.panelStudPrimaryLeft.SuspendLayout();
+            this.panelStudSecondary.SuspendLayout();
+            this.groupBoxStudSecondaryRight.SuspendLayout();
+            this.panelStudSecondaryLeft.SuspendLayout();
+            this.panelGlobEdit.SuspendLayout();
+            this.panelGlobNextNew.SuspendLayout();
+            this.panelGlobLogo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerGlobMasterDetail)).BeginInit();
+            this.splitContainerGlobMasterDetail.Panel1.SuspendLayout();
+            this.splitContainerGlobMasterDetail.Panel2.SuspendLayout();
+            this.splitContainerGlobMasterDetail.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerGlobDataControls)).BeginInit();
+            this.splitContainerGlobDataControls.Panel1.SuspendLayout();
+            this.splitContainerGlobDataControls.Panel2.SuspendLayout();
+            this.splitContainerGlobDataControls.SuspendLayout();
+            this.panelGlobIndicators.SuspendLayout();
+            this.panelStudSearch.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.studentList)).BeginInit();
             this.SuspendLayout();
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.downloadToolStripMenuItem,
-            this.saveToolStripMenuItem,
-            this.mergeToolStripMenuItem,
-            this.exitToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1291, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // downloadToolStripMenuItem
-            // 
-            this.downloadToolStripMenuItem.Name = "downloadToolStripMenuItem";
-            this.downloadToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
-            this.downloadToolStripMenuItem.Text = "Download";
-            this.downloadToolStripMenuItem.Click += new System.EventHandler(this.downloadToolStripMenuItem_Click);
-            // 
-            // saveToolStripMenuItem
-            // 
-            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.saveToolStripMenuItem.Text = "Save";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
-            // 
-            // mergeToolStripMenuItem
-            // 
-            this.mergeToolStripMenuItem.Name = "mergeToolStripMenuItem";
-            this.mergeToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
-            this.mergeToolStripMenuItem.Text = "Upload";
-            this.mergeToolStripMenuItem.Click += new System.EventHandler(this.uploadToolStripMenuItem_Click);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 53);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Status:";
-            // 
-            // comboBoxSelectStatus
-            // 
-            this.comboBoxSelectStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxSelectStatus.FormattingEnabled = true;
-            this.comboBoxSelectStatus.Location = new System.Drawing.Point(60, 61);
-            this.comboBoxSelectStatus.Name = "comboBoxSelectStatus";
-            this.comboBoxSelectStatus.Size = new System.Drawing.Size(120, 21);
-            this.comboBoxSelectStatus.TabIndex = 1;
-            this.comboBoxSelectStatus.SelectedIndexChanged += new System.EventHandler(this.comboBoxSelectStatus_SelectedIndexChanged);
-            // 
-            // Label4
-            // 
-            this.Label4.AutoSize = true;
-            this.Label4.Location = new System.Drawing.Point(7, 91);
-            this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(42, 13);
-            this.Label4.TabIndex = 4;
-            this.Label4.Text = "Learns:";
-            // 
-            // comboBoxSelectLearns
-            // 
-            this.comboBoxSelectLearns.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxSelectLearns.FormattingEnabled = true;
-            this.comboBoxSelectLearns.Location = new System.Drawing.Point(62, 103);
-            this.comboBoxSelectLearns.Name = "comboBoxSelectLearns";
-            this.comboBoxSelectLearns.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxSelectLearns.TabIndex = 5;
-            this.comboBoxSelectLearns.SelectedIndexChanged += new System.EventHandler(this.comboBoxSelectLearns_SelectedIndexChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(5, 119);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(46, 13);
-            this.label5.TabIndex = 6;
-            this.label5.Text = "Speaks:";
-            // 
-            // comboBoxSelectSpeaks
-            // 
-            this.comboBoxSelectSpeaks.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxSelectSpeaks.FormattingEnabled = true;
-            this.comboBoxSelectSpeaks.Location = new System.Drawing.Point(62, 136);
-            this.comboBoxSelectSpeaks.Name = "comboBoxSelectSpeaks";
-            this.comboBoxSelectSpeaks.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxSelectSpeaks.TabIndex = 7;
-            this.comboBoxSelectSpeaks.SelectedIndexChanged += new System.EventHandler(this.comboBoxSelectSpeaks_SelectedIndexChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(7, 160);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(60, 13);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "First Name:";
-            // 
-            // textBoxSelectFirstName
-            // 
-            this.textBoxSelectFirstName.Location = new System.Drawing.Point(60, 176);
-            this.textBoxSelectFirstName.Name = "textBoxSelectFirstName";
-            this.textBoxSelectFirstName.Size = new System.Drawing.Size(121, 20);
-            this.textBoxSelectFirstName.TabIndex = 9;
-            this.textBoxSelectFirstName.TextChanged += new System.EventHandler(this.textBoxSelectFirstName_TextChanged);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(7, 197);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(61, 13);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Last Name:";
-            // 
-            // textBoxSelectLastName
-            // 
-            this.textBoxSelectLastName.Location = new System.Drawing.Point(60, 214);
-            this.textBoxSelectLastName.Name = "textBoxSelectLastName";
-            this.textBoxSelectLastName.Size = new System.Drawing.Size(120, 20);
-            this.textBoxSelectLastName.TabIndex = 11;
-            this.textBoxSelectLastName.TextChanged += new System.EventHandler(this.textBoxSelectLastName_TextChanged);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(7, 276);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(44, 13);
-            this.label8.TabIndex = 12;
-            this.label8.Text = "Source:";
-            // 
-            // comboBoxSelectSource
-            // 
-            this.comboBoxSelectSource.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxSelectSource.FormattingEnabled = true;
-            this.comboBoxSelectSource.Location = new System.Drawing.Point(60, 285);
-            this.comboBoxSelectSource.Name = "comboBoxSelectSource";
-            this.comboBoxSelectSource.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxSelectSource.TabIndex = 13;
-            this.comboBoxSelectSource.SelectedIndexChanged += new System.EventHandler(this.comboBoxSelectSource_SelectedIndexChanged);
-            // 
-            // pictureBoxIcon
-            // 
-            this.pictureBoxIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxIcon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxIcon.BackgroundImage")));
-            this.pictureBoxIcon.Location = new System.Drawing.Point(26, 53);
-            this.pictureBoxIcon.Name = "pictureBoxIcon";
-            this.pictureBoxIcon.Size = new System.Drawing.Size(151, 199);
-            this.pictureBoxIcon.TabIndex = 7;
-            this.pictureBoxIcon.TabStop = false;
-            // 
-            // labelSagalingua
-            // 
-            this.labelSagalingua.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelSagalingua.AutoSize = true;
-            this.labelSagalingua.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSagalingua.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(119)))), ((int)(((byte)(237)))));
-            this.labelSagalingua.Location = new System.Drawing.Point(29, 255);
-            this.labelSagalingua.Name = "labelSagalingua";
-            this.labelSagalingua.Size = new System.Drawing.Size(137, 25);
-            this.labelSagalingua.TabIndex = 8;
-            this.labelSagalingua.Text = "Sagalingua ";
-            // 
-            // panelSearch
-            // 
-            this.panelSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(195)))), ((int)(((byte)(178)))));
-            this.panelSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelSearch.Controls.Add(this.buttonToExcel);
-            this.panelSearch.Controls.Add(this.label2);
-            this.panelSearch.Controls.Add(this.comboBoxSelectLevel);
-            this.panelSearch.Controls.Add(this.label3);
-            this.panelSearch.Controls.Add(this.buttonShowAll);
-            this.panelSearch.Controls.Add(this.comboBoxSelectSource);
-            this.panelSearch.Controls.Add(this.label8);
-            this.panelSearch.Controls.Add(this.label1);
-            this.panelSearch.Controls.Add(this.textBoxSelectLastName);
-            this.panelSearch.Controls.Add(this.label7);
-            this.panelSearch.Controls.Add(this.comboBoxSelectStatus);
-            this.panelSearch.Controls.Add(this.textBoxSelectFirstName);
-            this.panelSearch.Controls.Add(this.label6);
-            this.panelSearch.Controls.Add(this.comboBoxSelectSpeaks);
-            this.panelSearch.Controls.Add(this.comboBoxSelectLearns);
-            this.panelSearch.Controls.Add(this.label5);
-            this.panelSearch.Controls.Add(this.Label4);
-            this.panelSearch.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelSearch.Location = new System.Drawing.Point(0, 440);
-            this.panelSearch.Name = "panelSearch";
-            this.panelSearch.Size = new System.Drawing.Size(250, 367);
-            this.panelSearch.TabIndex = 11;
-            // 
-            // buttonToExcel
-            // 
-            this.buttonToExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(210)))), ((int)(((byte)(47)))));
-            this.buttonToExcel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonToExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonToExcel.Location = new System.Drawing.Point(10, 327);
-            this.buttonToExcel.Name = "buttonToExcel";
-            this.buttonToExcel.Size = new System.Drawing.Size(82, 23);
-            this.buttonToExcel.TabIndex = 18;
-            this.buttonToExcel.Text = "To Excel";
-            this.buttonToExcel.UseVisualStyleBackColor = false;
-            this.buttonToExcel.Click += new System.EventHandler(this.buttonToExcel_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(210)))), ((int)(((byte)(47)))));
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(83, 17);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(52, 15);
-            this.label2.TabIndex = 17;
-            this.label2.Text = "Search";
-            // 
-            // comboBoxSelectLevel
-            // 
-            this.comboBoxSelectLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxSelectLevel.FormattingEnabled = true;
-            this.comboBoxSelectLevel.Location = new System.Drawing.Point(60, 251);
-            this.comboBoxSelectLevel.Name = "comboBoxSelectLevel";
-            this.comboBoxSelectLevel.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxSelectLevel.TabIndex = 16;
-            this.comboBoxSelectLevel.SelectedIndexChanged += new System.EventHandler(this.comboBoxSelectLevel_SelectedIndexChanged);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 242);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(36, 13);
-            this.label3.TabIndex = 15;
-            this.label3.Text = "Level:";
-            // 
-            // buttonShowAll
-            // 
-            this.buttonShowAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(210)))), ((int)(((byte)(47)))));
-            this.buttonShowAll.Enabled = false;
-            this.buttonShowAll.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonShowAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonShowAll.Location = new System.Drawing.Point(98, 327);
-            this.buttonShowAll.Name = "buttonShowAll";
-            this.buttonShowAll.Size = new System.Drawing.Size(82, 23);
-            this.buttonShowAll.TabIndex = 14;
-            this.buttonShowAll.Text = "Show all";
-            this.buttonShowAll.UseVisualStyleBackColor = false;
-            this.buttonShowAll.Click += new System.EventHandler(this.buttonShowAll_Click);
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.statusDataGridViewTextBoxColumn,
-            this.firstNameDataGridViewTextBoxColumn,
-            this.lastNameDataGridViewTextBoxColumn,
-            this.emailDataGridViewTextBoxColumn,
-            this.Phone,
-            this.learningLanguageDataGridViewTextBoxColumn,
-            this.levelDataGridViewTextBoxColumn,
-            this.nativeLanguageDataGridViewTextBoxColumn,
-            this.otherLanguageDataGridViewTextBoxColumn,
-            this.birthdayDataGridViewTextBoxColumn,
-            this.Source,
-            this.mailingAddressDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.studentList;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1037, 402);
-            this.dataGridView1.TabIndex = 13;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            this.dataGridView1.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_ColumnHeaderMouseClick);
-            // 
-            // statusDataGridViewTextBoxColumn
-            // 
-            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
-            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
-            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
-            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // firstNameDataGridViewTextBoxColumn
-            // 
-            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.HeaderText = "First Name";
-            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // lastNameDataGridViewTextBoxColumn
-            // 
-            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.HeaderText = "Last Name";
-            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // emailDataGridViewTextBoxColumn
-            // 
-            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
-            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
-            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
-            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // Phone
-            // 
-            this.Phone.DataPropertyName = "Phone";
-            this.Phone.HeaderText = "Phone";
-            this.Phone.Name = "Phone";
-            this.Phone.ReadOnly = true;
-            // 
-            // learningLanguageDataGridViewTextBoxColumn
-            // 
-            this.learningLanguageDataGridViewTextBoxColumn.DataPropertyName = "LearningLanguage";
-            this.learningLanguageDataGridViewTextBoxColumn.HeaderText = "Learning";
-            this.learningLanguageDataGridViewTextBoxColumn.Name = "learningLanguageDataGridViewTextBoxColumn";
-            this.learningLanguageDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // levelDataGridViewTextBoxColumn
-            // 
-            this.levelDataGridViewTextBoxColumn.DataPropertyName = "Level";
-            this.levelDataGridViewTextBoxColumn.HeaderText = "Level";
-            this.levelDataGridViewTextBoxColumn.Name = "levelDataGridViewTextBoxColumn";
-            this.levelDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nativeLanguageDataGridViewTextBoxColumn
-            // 
-            this.nativeLanguageDataGridViewTextBoxColumn.DataPropertyName = "NativeLanguage";
-            this.nativeLanguageDataGridViewTextBoxColumn.HeaderText = "Native";
-            this.nativeLanguageDataGridViewTextBoxColumn.Name = "nativeLanguageDataGridViewTextBoxColumn";
-            this.nativeLanguageDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // otherLanguageDataGridViewTextBoxColumn
-            // 
-            this.otherLanguageDataGridViewTextBoxColumn.DataPropertyName = "OtherLanguage";
-            this.otherLanguageDataGridViewTextBoxColumn.HeaderText = "Other";
-            this.otherLanguageDataGridViewTextBoxColumn.Name = "otherLanguageDataGridViewTextBoxColumn";
-            this.otherLanguageDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // birthdayDataGridViewTextBoxColumn
-            // 
-            this.birthdayDataGridViewTextBoxColumn.DataPropertyName = "Birthday";
-            this.birthdayDataGridViewTextBoxColumn.HeaderText = "Birthday";
-            this.birthdayDataGridViewTextBoxColumn.Name = "birthdayDataGridViewTextBoxColumn";
-            this.birthdayDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // Source
-            // 
-            this.Source.DataPropertyName = "Source";
-            this.Source.HeaderText = "Source";
-            this.Source.Name = "Source";
-            this.Source.ReadOnly = true;
-            // 
-            // mailingAddressDataGridViewTextBoxColumn
-            // 
-            this.mailingAddressDataGridViewTextBoxColumn.DataPropertyName = "MailingAddress";
-            this.mailingAddressDataGridViewTextBoxColumn.HeaderText = "Address";
-            this.mailingAddressDataGridViewTextBoxColumn.Name = "mailingAddressDataGridViewTextBoxColumn";
-            this.mailingAddressDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // studentList
-            // 
-            this.studentList.DataSource = typeof(RecordKeeper.Student);
-            // 
-            // buttonPrev
-            // 
-            this.buttonPrev.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
-            this.buttonPrev.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonPrev.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonPrev.Location = new System.Drawing.Point(3, 0);
-            this.buttonPrev.Name = "buttonPrev";
-            this.buttonPrev.Size = new System.Drawing.Size(40, 158);
-            this.buttonPrev.TabIndex = 15;
-            this.buttonPrev.Text = "<<";
-            this.buttonPrev.UseVisualStyleBackColor = false;
-            this.buttonPrev.Click += new System.EventHandler(this.buttonPrev_Click);
-            // 
-            // buttonAdd
-            // 
-            this.buttonAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(162)))), ((int)(((byte)(0)))));
-            this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.buttonAdd.Location = new System.Drawing.Point(5, 177);
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(40, 102);
-            this.buttonAdd.TabIndex = 18;
-            this.buttonAdd.Text = "+";
-            this.buttonAdd.UseVisualStyleBackColor = false;
-            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
-            // 
-            // buttonDelete
-            // 
-            this.buttonDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(0)))), ((int)(((byte)(20)))));
-            this.buttonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.buttonDelete.Location = new System.Drawing.Point(3, 177);
-            this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(40, 102);
-            this.buttonDelete.TabIndex = 19;
-            this.buttonDelete.Text = "X";
-            this.buttonDelete.UseVisualStyleBackColor = false;
-            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
-            // 
-            // buttonNext
-            // 
-            this.buttonNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonNext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
-            this.buttonNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonNext.Location = new System.Drawing.Point(5, 1);
-            this.buttonNext.Name = "buttonNext";
-            this.buttonNext.Size = new System.Drawing.Size(40, 158);
-            this.buttonNext.TabIndex = 14;
-            this.buttonNext.Text = ">>";
-            this.buttonNext.UseVisualStyleBackColor = false;
-            this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
-            // 
-            // labelCount
-            // 
-            this.labelCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelCount.AutoSize = true;
-            this.labelCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(119)))), ((int)(((byte)(237)))));
-            this.labelCount.Location = new System.Drawing.Point(116, 14);
-            this.labelCount.MinimumSize = new System.Drawing.Size(50, 20);
-            this.labelCount.Name = "labelCount";
-            this.labelCount.Size = new System.Drawing.Size(50, 24);
-            this.labelCount.TabIndex = 20;
-            // 
-            // labelLastDownload
-            // 
-            this.labelLastDownload.AutoSize = true;
-            this.labelLastDownload.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLastDownload.Location = new System.Drawing.Point(140, 9);
-            this.labelLastDownload.Name = "labelLastDownload";
-            this.labelLastDownload.Size = new System.Drawing.Size(0, 13);
-            this.labelLastDownload.TabIndex = 21;
-            // 
-            // labelLastUpload
-            // 
-            this.labelLastUpload.AutoSize = true;
-            this.labelLastUpload.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelLastUpload.Location = new System.Drawing.Point(313, 9);
-            this.labelLastUpload.Name = "labelLastUpload";
-            this.labelLastUpload.Size = new System.Drawing.Size(0, 13);
-            this.labelLastUpload.TabIndex = 22;
+            // menuStripGlobalOps
+            // 
+            this.menuStripGlobalOps.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemGlobDownload,
+            this.menuItemGlobSave,
+            this.menuItemGlobUpload,
+            this.menuItemGlobExit});
+            this.menuStripGlobalOps.Location = new System.Drawing.Point(0, 0);
+            this.menuStripGlobalOps.Name = "menuStripGlobalOps";
+            this.menuStripGlobalOps.Size = new System.Drawing.Size(1291, 24);
+            this.menuStripGlobalOps.TabIndex = 0;
+            this.menuStripGlobalOps.Text = "menuStrip1";
+            // 
+            // menuItemGlobDownload
+            // 
+            this.menuItemGlobDownload.Name = "menuItemGlobDownload";
+            this.menuItemGlobDownload.Size = new System.Drawing.Size(73, 20);
+            this.menuItemGlobDownload.Text = "Download";
+            this.menuItemGlobDownload.Click += new System.EventHandler(this.downloadToolStripMenuItem_Click);
+            // 
+            // menuItemGlobSave
+            // 
+            this.menuItemGlobSave.Name = "menuItemGlobSave";
+            this.menuItemGlobSave.Size = new System.Drawing.Size(43, 20);
+            this.menuItemGlobSave.Text = "Save";
+            this.menuItemGlobSave.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // menuItemGlobUpload
+            // 
+            this.menuItemGlobUpload.Name = "menuItemGlobUpload";
+            this.menuItemGlobUpload.Size = new System.Drawing.Size(57, 20);
+            this.menuItemGlobUpload.Text = "Upload";
+            this.menuItemGlobUpload.Click += new System.EventHandler(this.uploadToolStripMenuItem_Click);
+            // 
+            // menuItemGlobExit
+            // 
+            this.menuItemGlobExit.Name = "menuItemGlobExit";
+            this.menuItemGlobExit.Size = new System.Drawing.Size(37, 20);
+            this.menuItemGlobExit.Text = "Exit";
+            this.menuItemGlobExit.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // labelStudStatus
+            // 
+            this.labelStudStatus.AutoSize = true;
+            this.labelStudStatus.Location = new System.Drawing.Point(14, 7);
+            this.labelStudStatus.Name = "labelStudStatus";
+            this.labelStudStatus.Size = new System.Drawing.Size(40, 13);
+            this.labelStudStatus.TabIndex = 0;
+            this.labelStudStatus.Text = "Status:";
+            // 
+            // cbStudSelectStatus
+            // 
+            this.cbStudSelectStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStudSelectStatus.FormattingEnabled = true;
+            this.cbStudSelectStatus.Location = new System.Drawing.Point(69, 15);
+            this.cbStudSelectStatus.Name = "cbStudSelectStatus";
+            this.cbStudSelectStatus.Size = new System.Drawing.Size(120, 21);
+            this.cbStudSelectStatus.TabIndex = 1;
+            this.cbStudSelectStatus.SelectedIndexChanged += new System.EventHandler(this.comboBoxSelectStatus_SelectedIndexChanged);
+            // 
+            // LabelStudLearns
+            // 
+            this.LabelStudLearns.AutoSize = true;
+            this.LabelStudLearns.Location = new System.Drawing.Point(16, 45);
+            this.LabelStudLearns.Name = "LabelStudLearns";
+            this.LabelStudLearns.Size = new System.Drawing.Size(42, 13);
+            this.LabelStudLearns.TabIndex = 4;
+            this.LabelStudLearns.Text = "Learns:";
+            // 
+            // cbStudSelectLearns
+            // 
+            this.cbStudSelectLearns.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStudSelectLearns.FormattingEnabled = true;
+            this.cbStudSelectLearns.Location = new System.Drawing.Point(71, 57);
+            this.cbStudSelectLearns.Name = "cbStudSelectLearns";
+            this.cbStudSelectLearns.Size = new System.Drawing.Size(121, 21);
+            this.cbStudSelectLearns.TabIndex = 5;
+            this.cbStudSelectLearns.SelectedIndexChanged += new System.EventHandler(this.comboBoxSelectLearns_SelectedIndexChanged);
+            // 
+            // labelStudSpeaks
+            // 
+            this.labelStudSpeaks.AutoSize = true;
+            this.labelStudSpeaks.Location = new System.Drawing.Point(14, 73);
+            this.labelStudSpeaks.Name = "labelStudSpeaks";
+            this.labelStudSpeaks.Size = new System.Drawing.Size(46, 13);
+            this.labelStudSpeaks.TabIndex = 6;
+            this.labelStudSpeaks.Text = "Speaks:";
+            // 
+            // cbStudSelectSpeaks
+            // 
+            this.cbStudSelectSpeaks.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStudSelectSpeaks.FormattingEnabled = true;
+            this.cbStudSelectSpeaks.Location = new System.Drawing.Point(71, 90);
+            this.cbStudSelectSpeaks.Name = "cbStudSelectSpeaks";
+            this.cbStudSelectSpeaks.Size = new System.Drawing.Size(121, 21);
+            this.cbStudSelectSpeaks.TabIndex = 7;
+            this.cbStudSelectSpeaks.SelectedIndexChanged += new System.EventHandler(this.comboBoxSelectSpeaks_SelectedIndexChanged);
+            // 
+            // labelStudFirstName1
+            // 
+            this.labelStudFirstName1.AutoSize = true;
+            this.labelStudFirstName1.Location = new System.Drawing.Point(16, 114);
+            this.labelStudFirstName1.Name = "labelStudFirstName1";
+            this.labelStudFirstName1.Size = new System.Drawing.Size(60, 13);
+            this.labelStudFirstName1.TabIndex = 8;
+            this.labelStudFirstName1.Text = "First Name:";
+            // 
+            // tbStudSelectFirstName
+            // 
+            this.tbStudSelectFirstName.Location = new System.Drawing.Point(69, 130);
+            this.tbStudSelectFirstName.Name = "tbStudSelectFirstName";
+            this.tbStudSelectFirstName.Size = new System.Drawing.Size(121, 20);
+            this.tbStudSelectFirstName.TabIndex = 9;
+            this.tbStudSelectFirstName.TextChanged += new System.EventHandler(this.textBoxSelectFirstName_TextChanged);
+            // 
+            // labelStudLastName
+            // 
+            this.labelStudLastName.AutoSize = true;
+            this.labelStudLastName.Location = new System.Drawing.Point(16, 151);
+            this.labelStudLastName.Name = "labelStudLastName";
+            this.labelStudLastName.Size = new System.Drawing.Size(61, 13);
+            this.labelStudLastName.TabIndex = 10;
+            this.labelStudLastName.Text = "Last Name:";
+            // 
+            // tbStudSelectLastName
+            // 
+            this.tbStudSelectLastName.Location = new System.Drawing.Point(69, 168);
+            this.tbStudSelectLastName.Name = "tbStudSelectLastName";
+            this.tbStudSelectLastName.Size = new System.Drawing.Size(120, 20);
+            this.tbStudSelectLastName.TabIndex = 11;
+            this.tbStudSelectLastName.TextChanged += new System.EventHandler(this.textBoxSelectLastName_TextChanged);
+            // 
+            // labelStudSource
+            // 
+            this.labelStudSource.AutoSize = true;
+            this.labelStudSource.Location = new System.Drawing.Point(16, 230);
+            this.labelStudSource.Name = "labelStudSource";
+            this.labelStudSource.Size = new System.Drawing.Size(44, 13);
+            this.labelStudSource.TabIndex = 12;
+            this.labelStudSource.Text = "Source:";
+            // 
+            // cbStudSelectSource
+            // 
+            this.cbStudSelectSource.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStudSelectSource.FormattingEnabled = true;
+            this.cbStudSelectSource.Location = new System.Drawing.Point(69, 239);
+            this.cbStudSelectSource.Name = "cbStudSelectSource";
+            this.cbStudSelectSource.Size = new System.Drawing.Size(121, 21);
+            this.cbStudSelectSource.TabIndex = 13;
+            this.cbStudSelectSource.SelectedIndexChanged += new System.EventHandler(this.comboBoxSelectSource_SelectedIndexChanged);
+            // 
+            // pictureBoxGlobIcon
+            // 
+            this.pictureBoxGlobIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxGlobIcon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxGlobIcon.BackgroundImage")));
+            this.pictureBoxGlobIcon.Location = new System.Drawing.Point(13, 123);
+            this.pictureBoxGlobIcon.Name = "pictureBoxGlobIcon";
+            this.pictureBoxGlobIcon.Size = new System.Drawing.Size(151, 199);
+            this.pictureBoxGlobIcon.TabIndex = 7;
+            this.pictureBoxGlobIcon.TabStop = false;
+            // 
+            // labelGlobSagalingua
+            // 
+            this.labelGlobSagalingua.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelGlobSagalingua.AutoSize = true;
+            this.labelGlobSagalingua.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGlobSagalingua.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(119)))), ((int)(((byte)(237)))));
+            this.labelGlobSagalingua.Location = new System.Drawing.Point(-2, 0);
+            this.labelGlobSagalingua.Name = "labelGlobSagalingua";
+            this.labelGlobSagalingua.Size = new System.Drawing.Size(137, 25);
+            this.labelGlobSagalingua.TabIndex = 8;
+            this.labelGlobSagalingua.Text = "Sagalingua ";
+            // 
+            // panelGlobSearch
+            // 
+            this.panelGlobSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(195)))), ((int)(((byte)(178)))));
+            this.panelGlobSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelGlobSearch.Controls.Add(this.panelStudSearch);
+            this.panelGlobSearch.Controls.Add(this.butGlobalToExcel);
+            this.panelGlobSearch.Controls.Add(this.labelGlobSearch);
+            this.panelGlobSearch.Controls.Add(this.buttGlobalShowAll);
+            this.panelGlobSearch.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelGlobSearch.Location = new System.Drawing.Point(0, 440);
+            this.panelGlobSearch.Name = "panelGlobSearch";
+            this.panelGlobSearch.Size = new System.Drawing.Size(250, 367);
+            this.panelGlobSearch.TabIndex = 11;
+            // 
+            // butGlobalToExcel
+            // 
+            this.butGlobalToExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(210)))), ((int)(((byte)(47)))));
+            this.butGlobalToExcel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.butGlobalToExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.butGlobalToExcel.Location = new System.Drawing.Point(32, 326);
+            this.butGlobalToExcel.Name = "butGlobalToExcel";
+            this.butGlobalToExcel.Size = new System.Drawing.Size(82, 23);
+            this.butGlobalToExcel.TabIndex = 18;
+            this.butGlobalToExcel.Text = "To Excel";
+            this.butGlobalToExcel.UseVisualStyleBackColor = false;
+            this.butGlobalToExcel.Click += new System.EventHandler(this.buttonToExcel_Click);
+            // 
+            // labelGlobSearch
+            // 
+            this.labelGlobSearch.AutoSize = true;
+            this.labelGlobSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(210)))), ((int)(((byte)(47)))));
+            this.labelGlobSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGlobSearch.Location = new System.Drawing.Point(83, 17);
+            this.labelGlobSearch.Name = "labelGlobSearch";
+            this.labelGlobSearch.Size = new System.Drawing.Size(52, 15);
+            this.labelGlobSearch.TabIndex = 17;
+            this.labelGlobSearch.Text = "Search";
+            // 
+            // cbStudSelectLevel
+            // 
+            this.cbStudSelectLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStudSelectLevel.FormattingEnabled = true;
+            this.cbStudSelectLevel.Location = new System.Drawing.Point(69, 205);
+            this.cbStudSelectLevel.Name = "cbStudSelectLevel";
+            this.cbStudSelectLevel.Size = new System.Drawing.Size(121, 21);
+            this.cbStudSelectLevel.TabIndex = 16;
+            this.cbStudSelectLevel.SelectedIndexChanged += new System.EventHandler(this.comboBoxSelectLevel_SelectedIndexChanged);
+            // 
+            // labelStudLevel
+            // 
+            this.labelStudLevel.AutoSize = true;
+            this.labelStudLevel.Location = new System.Drawing.Point(16, 196);
+            this.labelStudLevel.Name = "labelStudLevel";
+            this.labelStudLevel.Size = new System.Drawing.Size(36, 13);
+            this.labelStudLevel.TabIndex = 15;
+            this.labelStudLevel.Text = "Level:";
+            // 
+            // buttGlobalShowAll
+            // 
+            this.buttGlobalShowAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(210)))), ((int)(((byte)(47)))));
+            this.buttGlobalShowAll.Enabled = false;
+            this.buttGlobalShowAll.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttGlobalShowAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttGlobalShowAll.Location = new System.Drawing.Point(161, 326);
+            this.buttGlobalShowAll.Name = "buttGlobalShowAll";
+            this.buttGlobalShowAll.Size = new System.Drawing.Size(82, 23);
+            this.buttGlobalShowAll.TabIndex = 14;
+            this.buttGlobalShowAll.Text = "Show all";
+            this.buttGlobalShowAll.UseVisualStyleBackColor = false;
+            this.buttGlobalShowAll.Click += new System.EventHandler(this.buttonShowAll_Click);
+            // 
+            // dataGridViewStudents
+            // 
+            this.dataGridViewStudents.AllowUserToAddRows = false;
+            this.dataGridViewStudents.AllowUserToDeleteRows = false;
+            this.dataGridViewStudents.AllowUserToOrderColumns = true;
+            this.dataGridViewStudents.AutoGenerateColumns = false;
+            this.dataGridViewStudents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewStudents.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvStudColumnStatus,
+            this.dgvStudColumnFirstName,
+            this.dgvStudColumnLastName,
+            this.dgvStudColumnEmail,
+            this.dgvStudColumnPhone,
+            this.dgvStudColumnLearningLanguage,
+            this.dgvStudColumnLevel,
+            this.dgvStudColumnNativeLanguage,
+            this.dgvStudColumnOtherLanguage,
+            this.dgvStudColumnBirthday,
+            this.dgvStudColumnSource,
+            this.dgvStudColumnAddress});
+            this.dataGridViewStudents.DataSource = this.studentList;
+            this.dataGridViewStudents.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewStudents.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewStudents.Name = "dataGridViewStudents";
+            this.dataGridViewStudents.ReadOnly = true;
+            this.dataGridViewStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewStudents.Size = new System.Drawing.Size(1037, 402);
+            this.dataGridViewStudents.TabIndex = 13;
+            this.dataGridViewStudents.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridViewStudents.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_ColumnHeaderMouseClick);
+            // 
+            // dgvStudColumnPhone
+            // 
+            this.dgvStudColumnPhone.DataPropertyName = "Phone";
+            this.dgvStudColumnPhone.HeaderText = "Phone";
+            this.dgvStudColumnPhone.Name = "dgvStudColumnPhone";
+            this.dgvStudColumnPhone.ReadOnly = true;
+            // 
+            // dgvStudColumnSource
+            // 
+            this.dgvStudColumnSource.DataPropertyName = "Source";
+            this.dgvStudColumnSource.HeaderText = "Source";
+            this.dgvStudColumnSource.Name = "dgvStudColumnSource";
+            this.dgvStudColumnSource.ReadOnly = true;
+            // 
+            // butGlobalPrev
+            // 
+            this.butGlobalPrev.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
+            this.butGlobalPrev.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.butGlobalPrev.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.butGlobalPrev.Location = new System.Drawing.Point(3, 0);
+            this.butGlobalPrev.Name = "butGlobalPrev";
+            this.butGlobalPrev.Size = new System.Drawing.Size(40, 158);
+            this.butGlobalPrev.TabIndex = 15;
+            this.butGlobalPrev.Text = "<<";
+            this.butGlobalPrev.UseVisualStyleBackColor = false;
+            this.butGlobalPrev.Click += new System.EventHandler(this.buttonPrev_Click);
+            // 
+            // butGlobalAdd
+            // 
+            this.butGlobalAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.butGlobalAdd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(162)))), ((int)(((byte)(0)))));
+            this.butGlobalAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.butGlobalAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.butGlobalAdd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.butGlobalAdd.Location = new System.Drawing.Point(5, 177);
+            this.butGlobalAdd.Name = "butGlobalAdd";
+            this.butGlobalAdd.Size = new System.Drawing.Size(40, 102);
+            this.butGlobalAdd.TabIndex = 18;
+            this.butGlobalAdd.Text = "+";
+            this.butGlobalAdd.UseVisualStyleBackColor = false;
+            this.butGlobalAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            // 
+            // butGlobalDelete
+            // 
+            this.butGlobalDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(137)))), ((int)(((byte)(0)))), ((int)(((byte)(20)))));
+            this.butGlobalDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.butGlobalDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.butGlobalDelete.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.butGlobalDelete.Location = new System.Drawing.Point(3, 177);
+            this.butGlobalDelete.Name = "butGlobalDelete";
+            this.butGlobalDelete.Size = new System.Drawing.Size(40, 102);
+            this.butGlobalDelete.TabIndex = 19;
+            this.butGlobalDelete.Text = "X";
+            this.butGlobalDelete.UseVisualStyleBackColor = false;
+            this.butGlobalDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+            // 
+            // butGlobalNext
+            // 
+            this.butGlobalNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.butGlobalNext.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
+            this.butGlobalNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.butGlobalNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.butGlobalNext.Location = new System.Drawing.Point(5, 1);
+            this.butGlobalNext.Name = "butGlobalNext";
+            this.butGlobalNext.Size = new System.Drawing.Size(40, 158);
+            this.butGlobalNext.TabIndex = 14;
+            this.butGlobalNext.Text = ">>";
+            this.butGlobalNext.UseVisualStyleBackColor = false;
+            this.butGlobalNext.Click += new System.EventHandler(this.buttonNext_Click);
+            // 
+            // labelGlobCount
+            // 
+            this.labelGlobCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelGlobCount.AutoSize = true;
+            this.labelGlobCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGlobCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(119)))), ((int)(((byte)(237)))));
+            this.labelGlobCount.Location = new System.Drawing.Point(59, 78);
+            this.labelGlobCount.MinimumSize = new System.Drawing.Size(50, 20);
+            this.labelGlobCount.Name = "labelGlobCount";
+            this.labelGlobCount.Size = new System.Drawing.Size(50, 24);
+            this.labelGlobCount.TabIndex = 20;
+            // 
+            // labelGlobLastDownload
+            // 
+            this.labelGlobLastDownload.AutoSize = true;
+            this.labelGlobLastDownload.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGlobLastDownload.Location = new System.Drawing.Point(140, 9);
+            this.labelGlobLastDownload.Name = "labelGlobLastDownload";
+            this.labelGlobLastDownload.Size = new System.Drawing.Size(0, 13);
+            this.labelGlobLastDownload.TabIndex = 21;
+            // 
+            // labelGlobLastUpload
+            // 
+            this.labelGlobLastUpload.AutoSize = true;
+            this.labelGlobLastUpload.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGlobLastUpload.Location = new System.Drawing.Point(313, 9);
+            this.labelGlobLastUpload.Name = "labelGlobLastUpload";
+            this.labelGlobLastUpload.Size = new System.Drawing.Size(0, 13);
+            this.labelGlobLastUpload.TabIndex = 22;
             // 
             // panelStudent
             // 
@@ -630,628 +540,725 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelStudent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
             this.panelStudent.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelStudent.Controls.Add(this.panelPrimary);
-            this.panelStudent.Controls.Add(this.panelSecondary);
+            this.panelStudent.Controls.Add(this.panelStudPrimary);
+            this.panelStudent.Controls.Add(this.panelStudSecondary);
             this.panelStudent.Location = new System.Drawing.Point(45, 0);
             this.panelStudent.Name = "panelStudent";
             this.panelStudent.Size = new System.Drawing.Size(948, 398);
             this.panelStudent.TabIndex = 5;
             // 
-            // panelPrimary
+            // panelStudPrimary
             // 
-            this.panelPrimary.Controls.Add(this.groupPrinaryRight);
-            this.panelPrimary.Controls.Add(this.panelPrimaryLeft);
-            this.panelPrimary.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelPrimary.Location = new System.Drawing.Point(0, 0);
-            this.panelPrimary.Name = "panelPrimary";
-            this.panelPrimary.Size = new System.Drawing.Size(946, 158);
-            this.panelPrimary.TabIndex = 40;
+            this.panelStudPrimary.Controls.Add(this.groupBoxStudPrinaryRight);
+            this.panelStudPrimary.Controls.Add(this.panelStudPrimaryLeft);
+            this.panelStudPrimary.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelStudPrimary.Location = new System.Drawing.Point(0, 0);
+            this.panelStudPrimary.Name = "panelStudPrimary";
+            this.panelStudPrimary.Size = new System.Drawing.Size(946, 158);
+            this.panelStudPrimary.TabIndex = 40;
             // 
-            // groupPrinaryRight
+            // groupBoxStudPrinaryRight
             // 
-            this.groupPrinaryRight.Controls.Add(this.label28);
-            this.groupPrinaryRight.Controls.Add(this.label27);
-            this.groupPrinaryRight.Controls.Add(this.label14);
-            this.groupPrinaryRight.Controls.Add(this.textBoxAddress1);
-            this.groupPrinaryRight.Controls.Add(this.textBoxLanguageDetail);
-            this.groupPrinaryRight.Controls.Add(this.textBoxSourceDetail);
-            this.groupPrinaryRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupPrinaryRight.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
-            this.groupPrinaryRight.Location = new System.Drawing.Point(490, 0);
-            this.groupPrinaryRight.Name = "groupPrinaryRight";
-            this.groupPrinaryRight.Size = new System.Drawing.Size(456, 158);
-            this.groupPrinaryRight.TabIndex = 37;
-            this.groupPrinaryRight.TabStop = false;
+            this.groupBoxStudPrinaryRight.Controls.Add(this.labelStudDetailsSource);
+            this.groupBoxStudPrinaryRight.Controls.Add(this.labelStudDetailsLanguage);
+            this.groupBoxStudPrinaryRight.Controls.Add(this.labelStudAddress1);
+            this.groupBoxStudPrinaryRight.Controls.Add(this.tbStudAddress1);
+            this.groupBoxStudPrinaryRight.Controls.Add(this.tbStudLanguageDetail);
+            this.groupBoxStudPrinaryRight.Controls.Add(this.tbStudSourceDetail);
+            this.groupBoxStudPrinaryRight.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxStudPrinaryRight.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
+            this.groupBoxStudPrinaryRight.Location = new System.Drawing.Point(490, 0);
+            this.groupBoxStudPrinaryRight.Name = "groupBoxStudPrinaryRight";
+            this.groupBoxStudPrinaryRight.Size = new System.Drawing.Size(456, 158);
+            this.groupBoxStudPrinaryRight.TabIndex = 37;
+            this.groupBoxStudPrinaryRight.TabStop = false;
             // 
-            // label28
+            // labelStudDetailsSource
             // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(17, 110);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(80, 13);
-            this.label28.TabIndex = 16;
-            this.label28.Text = "Details (source)";
+            this.labelStudDetailsSource.AutoSize = true;
+            this.labelStudDetailsSource.Location = new System.Drawing.Point(17, 110);
+            this.labelStudDetailsSource.Name = "labelStudDetailsSource";
+            this.labelStudDetailsSource.Size = new System.Drawing.Size(80, 13);
+            this.labelStudDetailsSource.TabIndex = 16;
+            this.labelStudDetailsSource.Text = "Details (source)";
             // 
-            // label27
+            // labelStudDetailsLanguage
             // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(17, 72);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(96, 13);
-            this.label27.TabIndex = 15;
-            this.label27.Text = "Detauls (language)";
+            this.labelStudDetailsLanguage.AutoSize = true;
+            this.labelStudDetailsLanguage.Location = new System.Drawing.Point(17, 72);
+            this.labelStudDetailsLanguage.Name = "labelStudDetailsLanguage";
+            this.labelStudDetailsLanguage.Size = new System.Drawing.Size(92, 13);
+            this.labelStudDetailsLanguage.TabIndex = 15;
+            this.labelStudDetailsLanguage.Text = "Details (language)";
             // 
-            // label14
+            // labelStudAddress1
             // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(17, 32);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(48, 13);
-            this.label14.TabIndex = 10;
-            this.label14.Text = "Address:";
+            this.labelStudAddress1.AutoSize = true;
+            this.labelStudAddress1.Location = new System.Drawing.Point(17, 32);
+            this.labelStudAddress1.Name = "labelStudAddress1";
+            this.labelStudAddress1.Size = new System.Drawing.Size(48, 13);
+            this.labelStudAddress1.TabIndex = 10;
+            this.labelStudAddress1.Text = "Address:";
             // 
-            // textBoxAddress1
+            // tbStudAddress1
             // 
-            this.textBoxAddress1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbStudAddress1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxAddress1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "MailingAddress", true));
-            this.textBoxAddress1.Location = new System.Drawing.Point(6, 49);
-            this.textBoxAddress1.Name = "textBoxAddress1";
-            this.textBoxAddress1.Size = new System.Drawing.Size(444, 20);
-            this.textBoxAddress1.TabIndex = 7;
-            this.textBoxAddress1.TextChanged += new System.EventHandler(this.textBoxAddress1_TextChanged);
+            this.tbStudAddress1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "MailingAddress", true));
+            this.tbStudAddress1.Location = new System.Drawing.Point(6, 49);
+            this.tbStudAddress1.Name = "tbStudAddress1";
+            this.tbStudAddress1.Size = new System.Drawing.Size(444, 20);
+            this.tbStudAddress1.TabIndex = 7;
+            this.tbStudAddress1.TextChanged += new System.EventHandler(this.textBoxAddress1_TextChanged);
             // 
-            // textBoxLanguageDetail
+            // tbStudLanguageDetail
             // 
-            this.textBoxLanguageDetail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbStudLanguageDetail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxLanguageDetail.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "LanguageDetail", true));
-            this.textBoxLanguageDetail.Location = new System.Drawing.Point(6, 87);
-            this.textBoxLanguageDetail.Name = "textBoxLanguageDetail";
-            this.textBoxLanguageDetail.Size = new System.Drawing.Size(444, 20);
-            this.textBoxLanguageDetail.TabIndex = 11;
-            this.textBoxLanguageDetail.TextChanged += new System.EventHandler(this.textBoxLanguageDetail_TextChanged);
+            this.tbStudLanguageDetail.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "LanguageDetail", true));
+            this.tbStudLanguageDetail.Location = new System.Drawing.Point(6, 87);
+            this.tbStudLanguageDetail.Name = "tbStudLanguageDetail";
+            this.tbStudLanguageDetail.Size = new System.Drawing.Size(444, 20);
+            this.tbStudLanguageDetail.TabIndex = 11;
+            this.tbStudLanguageDetail.TextChanged += new System.EventHandler(this.textBoxLanguageDetail_TextChanged);
             // 
-            // textBoxSourceDetail
+            // tbStudSourceDetail
             // 
-            this.textBoxSourceDetail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbStudSourceDetail.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxSourceDetail.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "SourceDetail", true));
-            this.textBoxSourceDetail.Location = new System.Drawing.Point(6, 125);
-            this.textBoxSourceDetail.Name = "textBoxSourceDetail";
-            this.textBoxSourceDetail.Size = new System.Drawing.Size(444, 20);
-            this.textBoxSourceDetail.TabIndex = 14;
-            this.textBoxSourceDetail.TextChanged += new System.EventHandler(this.textBoxSourceDetail_TextChanged);
+            this.tbStudSourceDetail.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "SourceDetail", true));
+            this.tbStudSourceDetail.Location = new System.Drawing.Point(6, 125);
+            this.tbStudSourceDetail.Name = "tbStudSourceDetail";
+            this.tbStudSourceDetail.Size = new System.Drawing.Size(444, 20);
+            this.tbStudSourceDetail.TabIndex = 14;
+            this.tbStudSourceDetail.TextChanged += new System.EventHandler(this.textBoxSourceDetail_TextChanged);
             // 
-            // panelPrimaryLeft
+            // panelStudPrimaryLeft
             // 
-            this.panelPrimaryLeft.Controls.Add(this.comboBoxSpeaks);
-            this.panelPrimaryLeft.Controls.Add(this.comboBoxOther);
-            this.panelPrimaryLeft.Controls.Add(this.label18);
-            this.panelPrimaryLeft.Controls.Add(this.textBoxLastName);
-            this.panelPrimaryLeft.Controls.Add(this.label17);
-            this.panelPrimaryLeft.Controls.Add(this.label9);
-            this.panelPrimaryLeft.Controls.Add(this.label19);
-            this.panelPrimaryLeft.Controls.Add(this.textBoxFirstName);
-            this.panelPrimaryLeft.Controls.Add(this.comboBoxStatus);
-            this.panelPrimaryLeft.Controls.Add(this.label10);
-            this.panelPrimaryLeft.Controls.Add(this.comboBoxLearns);
-            this.panelPrimaryLeft.Controls.Add(this.label11);
-            this.panelPrimaryLeft.Controls.Add(this.textBoxBirthday);
-            this.panelPrimaryLeft.Controls.Add(this.textBoxEmail);
-            this.panelPrimaryLeft.Controls.Add(this.label16);
-            this.panelPrimaryLeft.Controls.Add(this.label12);
-            this.panelPrimaryLeft.Controls.Add(this.label20);
-            this.panelPrimaryLeft.Controls.Add(this.label13);
-            this.panelPrimaryLeft.Controls.Add(this.comboBoxLevel);
-            this.panelPrimaryLeft.Controls.Add(this.textBoxCellPhone);
-            this.panelPrimaryLeft.Controls.Add(this.label21);
-            this.panelPrimaryLeft.Controls.Add(this.textBoxHomePhone);
-            this.panelPrimaryLeft.Controls.Add(this.label15);
-            this.panelPrimaryLeft.Controls.Add(this.comboBoxSource);
-            this.panelPrimaryLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelPrimaryLeft.Location = new System.Drawing.Point(0, 0);
-            this.panelPrimaryLeft.Name = "panelPrimaryLeft";
-            this.panelPrimaryLeft.Size = new System.Drawing.Size(490, 158);
-            this.panelPrimaryLeft.TabIndex = 39;
+            this.panelStudPrimaryLeft.Controls.Add(this.cbStudSpeaks);
+            this.panelStudPrimaryLeft.Controls.Add(this.cbStudOther);
+            this.panelStudPrimaryLeft.Controls.Add(this.labelStudBirthday);
+            this.panelStudPrimaryLeft.Controls.Add(this.tbStudLastName);
+            this.panelStudPrimaryLeft.Controls.Add(this.labelStudAlso);
+            this.panelStudPrimaryLeft.Controls.Add(this.labelStudFirstname);
+            this.panelStudPrimaryLeft.Controls.Add(this.labelStudStatus1);
+            this.panelStudPrimaryLeft.Controls.Add(this.tbStudFirstName);
+            this.panelStudPrimaryLeft.Controls.Add(this.cbStudStatus);
+            this.panelStudPrimaryLeft.Controls.Add(this.labelStudLastName1);
+            this.panelStudPrimaryLeft.Controls.Add(this.cbStudLearns);
+            this.panelStudPrimaryLeft.Controls.Add(this.labelStudEmail1);
+            this.panelStudPrimaryLeft.Controls.Add(this.tbStudBirthday);
+            this.panelStudPrimaryLeft.Controls.Add(this.tbStudEmail);
+            this.panelStudPrimaryLeft.Controls.Add(this.labelStudSpeaks1);
+            this.panelStudPrimaryLeft.Controls.Add(this.labelStudCellPhone);
+            this.panelStudPrimaryLeft.Controls.Add(this.labelStudLevel1);
+            this.panelStudPrimaryLeft.Controls.Add(this.labelStudHomePhone);
+            this.panelStudPrimaryLeft.Controls.Add(this.cbStudLevel);
+            this.panelStudPrimaryLeft.Controls.Add(this.tbStudCellPhone);
+            this.panelStudPrimaryLeft.Controls.Add(this.labelStudSource1);
+            this.panelStudPrimaryLeft.Controls.Add(this.tbStudHomePhone);
+            this.panelStudPrimaryLeft.Controls.Add(this.labelStudSpeaks2);
+            this.panelStudPrimaryLeft.Controls.Add(this.cbStudSource);
+            this.panelStudPrimaryLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelStudPrimaryLeft.Location = new System.Drawing.Point(0, 0);
+            this.panelStudPrimaryLeft.Name = "panelStudPrimaryLeft";
+            this.panelStudPrimaryLeft.Size = new System.Drawing.Size(490, 158);
+            this.panelStudPrimaryLeft.TabIndex = 39;
             // 
-            // comboBoxSpeaks
+            // cbStudSpeaks
             // 
-            this.comboBoxSpeaks.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "NativeLanguage", true));
-            this.comboBoxSpeaks.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxSpeaks.FormattingEnabled = true;
-            this.comboBoxSpeaks.Location = new System.Drawing.Point(148, 92);
-            this.comboBoxSpeaks.Name = "comboBoxSpeaks";
-            this.comboBoxSpeaks.Size = new System.Drawing.Size(162, 21);
-            this.comboBoxSpeaks.TabIndex = 9;
+            this.cbStudSpeaks.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "NativeLanguage", true));
+            this.cbStudSpeaks.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStudSpeaks.FormattingEnabled = true;
+            this.cbStudSpeaks.Location = new System.Drawing.Point(148, 92);
+            this.cbStudSpeaks.Name = "cbStudSpeaks";
+            this.cbStudSpeaks.Size = new System.Drawing.Size(162, 21);
+            this.cbStudSpeaks.TabIndex = 9;
             // 
-            // comboBoxOther
+            // cbStudOther
             // 
-            this.comboBoxOther.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "OtherLanguage", true));
-            this.comboBoxOther.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxOther.FormattingEnabled = true;
-            this.comboBoxOther.Location = new System.Drawing.Point(328, 92);
-            this.comboBoxOther.Name = "comboBoxOther";
-            this.comboBoxOther.Size = new System.Drawing.Size(152, 21);
-            this.comboBoxOther.TabIndex = 10;
+            this.cbStudOther.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "OtherLanguage", true));
+            this.cbStudOther.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStudOther.FormattingEnabled = true;
+            this.cbStudOther.Location = new System.Drawing.Point(328, 92);
+            this.cbStudOther.Name = "cbStudOther";
+            this.cbStudOther.Size = new System.Drawing.Size(152, 21);
+            this.cbStudOther.TabIndex = 10;
             // 
-            // label18
+            // labelStudBirthday
             // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(155, 114);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(48, 13);
-            this.label18.TabIndex = 18;
-            this.label18.Text = "Birthday:";
+            this.labelStudBirthday.AutoSize = true;
+            this.labelStudBirthday.Location = new System.Drawing.Point(155, 114);
+            this.labelStudBirthday.Name = "labelStudBirthday";
+            this.labelStudBirthday.Size = new System.Drawing.Size(48, 13);
+            this.labelStudBirthday.TabIndex = 18;
+            this.labelStudBirthday.Text = "Birthday:";
             // 
-            // textBoxLastName
+            // tbStudLastName
             // 
-            this.textBoxLastName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "LastName", true));
-            this.textBoxLastName.Location = new System.Drawing.Point(148, 19);
-            this.textBoxLastName.Name = "textBoxLastName";
-            this.textBoxLastName.Size = new System.Drawing.Size(162, 20);
-            this.textBoxLastName.TabIndex = 2;
-            this.textBoxLastName.TextChanged += new System.EventHandler(this.textBoxLastName_TextChanged);
+            this.tbStudLastName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "LastName", true));
+            this.tbStudLastName.Location = new System.Drawing.Point(148, 19);
+            this.tbStudLastName.Name = "tbStudLastName";
+            this.tbStudLastName.Size = new System.Drawing.Size(162, 20);
+            this.tbStudLastName.TabIndex = 2;
+            this.tbStudLastName.TextChanged += new System.EventHandler(this.textBoxLastName_TextChanged);
             // 
-            // label17
+            // labelStudAlso
             // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(334, 79);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(27, 13);
-            this.label17.TabIndex = 17;
-            this.label17.Text = "Also";
+            this.labelStudAlso.AutoSize = true;
+            this.labelStudAlso.Location = new System.Drawing.Point(334, 79);
+            this.labelStudAlso.Name = "labelStudAlso";
+            this.labelStudAlso.Size = new System.Drawing.Size(27, 13);
+            this.labelStudAlso.TabIndex = 17;
+            this.labelStudAlso.Text = "Also";
             // 
-            // label9
+            // labelStudFirstname
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(5, 6);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(58, 13);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "First name:";
+            this.labelStudFirstname.AutoSize = true;
+            this.labelStudFirstname.Location = new System.Drawing.Point(5, 6);
+            this.labelStudFirstname.Name = "labelStudFirstname";
+            this.labelStudFirstname.Size = new System.Drawing.Size(58, 13);
+            this.labelStudFirstname.TabIndex = 0;
+            this.labelStudFirstname.Text = "First name:";
             // 
-            // label19
+            // labelStudStatus1
             // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(5, 41);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(40, 13);
-            this.label19.TabIndex = 21;
-            this.label19.Text = "Status:";
+            this.labelStudStatus1.AutoSize = true;
+            this.labelStudStatus1.Location = new System.Drawing.Point(5, 41);
+            this.labelStudStatus1.Name = "labelStudStatus1";
+            this.labelStudStatus1.Size = new System.Drawing.Size(40, 13);
+            this.labelStudStatus1.TabIndex = 21;
+            this.labelStudStatus1.Text = "Status:";
             // 
-            // textBoxFirstName
+            // tbStudFirstName
             // 
-            this.textBoxFirstName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "FirstName", true));
-            this.textBoxFirstName.Location = new System.Drawing.Point(5, 19);
-            this.textBoxFirstName.Name = "textBoxFirstName";
-            this.textBoxFirstName.Size = new System.Drawing.Size(130, 20);
-            this.textBoxFirstName.TabIndex = 1;
-            this.textBoxFirstName.TextChanged += new System.EventHandler(this.textBoxFirstName_TextChanged);
+            this.tbStudFirstName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "FirstName", true));
+            this.tbStudFirstName.Location = new System.Drawing.Point(5, 19);
+            this.tbStudFirstName.Name = "tbStudFirstName";
+            this.tbStudFirstName.Size = new System.Drawing.Size(130, 20);
+            this.tbStudFirstName.TabIndex = 1;
+            this.tbStudFirstName.TextChanged += new System.EventHandler(this.textBoxFirstName_TextChanged);
             // 
-            // comboBoxStatus
+            // cbStudStatus
             // 
-            this.comboBoxStatus.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "Status", true));
-            this.comboBoxStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxStatus.FormattingEnabled = true;
-            this.comboBoxStatus.Location = new System.Drawing.Point(5, 57);
-            this.comboBoxStatus.Name = "comboBoxStatus";
-            this.comboBoxStatus.Size = new System.Drawing.Size(130, 21);
-            this.comboBoxStatus.TabIndex = 15;
+            this.cbStudStatus.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "Status", true));
+            this.cbStudStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStudStatus.FormattingEnabled = true;
+            this.cbStudStatus.Location = new System.Drawing.Point(5, 57);
+            this.cbStudStatus.Name = "cbStudStatus";
+            this.cbStudStatus.Size = new System.Drawing.Size(130, 21);
+            this.cbStudStatus.TabIndex = 15;
             // 
-            // label10
+            // labelStudLastName1
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(155, 4);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(59, 13);
-            this.label10.TabIndex = 2;
-            this.label10.Text = "Last name:";
+            this.labelStudLastName1.AutoSize = true;
+            this.labelStudLastName1.Location = new System.Drawing.Point(155, 4);
+            this.labelStudLastName1.Name = "labelStudLastName1";
+            this.labelStudLastName1.Size = new System.Drawing.Size(59, 13);
+            this.labelStudLastName1.TabIndex = 2;
+            this.labelStudLastName1.Text = "Last name:";
             // 
-            // comboBoxLearns
+            // cbStudLearns
             // 
-            this.comboBoxLearns.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "LearningLanguage", true));
-            this.comboBoxLearns.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxLearns.FormattingEnabled = true;
-            this.comboBoxLearns.Location = new System.Drawing.Point(5, 91);
-            this.comboBoxLearns.Name = "comboBoxLearns";
-            this.comboBoxLearns.Size = new System.Drawing.Size(130, 21);
-            this.comboBoxLearns.TabIndex = 8;
+            this.cbStudLearns.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "LearningLanguage", true));
+            this.cbStudLearns.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStudLearns.FormattingEnabled = true;
+            this.cbStudLearns.Location = new System.Drawing.Point(5, 91);
+            this.cbStudLearns.Name = "cbStudLearns";
+            this.cbStudLearns.Size = new System.Drawing.Size(130, 21);
+            this.cbStudLearns.TabIndex = 8;
             // 
-            // label11
+            // labelStudEmail1
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(334, 6);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(35, 13);
-            this.label11.TabIndex = 4;
-            this.label11.Text = "Email:";
+            this.labelStudEmail1.AutoSize = true;
+            this.labelStudEmail1.Location = new System.Drawing.Point(334, 6);
+            this.labelStudEmail1.Name = "labelStudEmail1";
+            this.labelStudEmail1.Size = new System.Drawing.Size(35, 13);
+            this.labelStudEmail1.TabIndex = 4;
+            this.labelStudEmail1.Text = "Email:";
             // 
-            // textBoxBirthday
+            // tbStudBirthday
             // 
-            this.textBoxBirthday.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "Birthday", true));
-            this.textBoxBirthday.Location = new System.Drawing.Point(148, 129);
-            this.textBoxBirthday.Name = "textBoxBirthday";
-            this.textBoxBirthday.Size = new System.Drawing.Size(124, 20);
-            this.textBoxBirthday.TabIndex = 4;
-            this.textBoxBirthday.TextChanged += new System.EventHandler(this.textBoxBirthday_TextChanged);
+            this.tbStudBirthday.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "Birthday", true));
+            this.tbStudBirthday.Location = new System.Drawing.Point(148, 129);
+            this.tbStudBirthday.Name = "tbStudBirthday";
+            this.tbStudBirthday.Size = new System.Drawing.Size(124, 20);
+            this.tbStudBirthday.TabIndex = 4;
+            this.tbStudBirthday.TextChanged += new System.EventHandler(this.textBoxBirthday_TextChanged);
             // 
-            // textBoxEmail
+            // tbStudEmail
             // 
-            this.textBoxEmail.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "Email", true));
-            this.textBoxEmail.Location = new System.Drawing.Point(328, 19);
-            this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(152, 20);
-            this.textBoxEmail.TabIndex = 3;
-            this.textBoxEmail.TextChanged += new System.EventHandler(this.textBoxEmail_TextChanged);
+            this.tbStudEmail.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "Email", true));
+            this.tbStudEmail.Location = new System.Drawing.Point(328, 19);
+            this.tbStudEmail.Name = "tbStudEmail";
+            this.tbStudEmail.Size = new System.Drawing.Size(152, 20);
+            this.tbStudEmail.TabIndex = 3;
+            this.tbStudEmail.TextChanged += new System.EventHandler(this.textBoxEmail_TextChanged);
             // 
-            // label16
+            // labelStudSpeaks1
             // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(155, 76);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(46, 13);
-            this.label16.TabIndex = 14;
-            this.label16.Text = "Speaks:";
+            this.labelStudSpeaks1.AutoSize = true;
+            this.labelStudSpeaks1.Location = new System.Drawing.Point(155, 76);
+            this.labelStudSpeaks1.Name = "labelStudSpeaks1";
+            this.labelStudSpeaks1.Size = new System.Drawing.Size(46, 13);
+            this.labelStudSpeaks1.TabIndex = 14;
+            this.labelStudSpeaks1.Text = "Speaks:";
             // 
-            // label12
+            // labelStudCellPhone
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(155, 41);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(60, 13);
-            this.label12.TabIndex = 6;
-            this.label12.Text = "Cell phone:";
+            this.labelStudCellPhone.AutoSize = true;
+            this.labelStudCellPhone.Location = new System.Drawing.Point(155, 41);
+            this.labelStudCellPhone.Name = "labelStudCellPhone";
+            this.labelStudCellPhone.Size = new System.Drawing.Size(60, 13);
+            this.labelStudCellPhone.TabIndex = 6;
+            this.labelStudCellPhone.Text = "Cell phone:";
             // 
-            // label20
+            // labelStudLevel1
             // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(6, 114);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(36, 13);
-            this.label20.TabIndex = 24;
-            this.label20.Text = "Level:";
+            this.labelStudLevel1.AutoSize = true;
+            this.labelStudLevel1.Location = new System.Drawing.Point(6, 114);
+            this.labelStudLevel1.Name = "labelStudLevel1";
+            this.labelStudLevel1.Size = new System.Drawing.Size(36, 13);
+            this.labelStudLevel1.TabIndex = 24;
+            this.labelStudLevel1.Text = "Level:";
             // 
-            // label13
+            // labelStudHomePhone
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(334, 41);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(71, 13);
-            this.label13.TabIndex = 7;
-            this.label13.Text = "Home phone:";
+            this.labelStudHomePhone.AutoSize = true;
+            this.labelStudHomePhone.Location = new System.Drawing.Point(334, 41);
+            this.labelStudHomePhone.Name = "labelStudHomePhone";
+            this.labelStudHomePhone.Size = new System.Drawing.Size(71, 13);
+            this.labelStudHomePhone.TabIndex = 7;
+            this.labelStudHomePhone.Text = "Home phone:";
             // 
-            // comboBoxLevel
+            // cbStudLevel
             // 
-            this.comboBoxLevel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "Level", true));
-            this.comboBoxLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxLevel.FormattingEnabled = true;
-            this.comboBoxLevel.Location = new System.Drawing.Point(5, 129);
-            this.comboBoxLevel.Name = "comboBoxLevel";
-            this.comboBoxLevel.Size = new System.Drawing.Size(130, 21);
-            this.comboBoxLevel.TabIndex = 12;
+            this.cbStudLevel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "Level", true));
+            this.cbStudLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStudLevel.FormattingEnabled = true;
+            this.cbStudLevel.Location = new System.Drawing.Point(5, 129);
+            this.cbStudLevel.Name = "cbStudLevel";
+            this.cbStudLevel.Size = new System.Drawing.Size(130, 21);
+            this.cbStudLevel.TabIndex = 12;
             // 
-            // textBoxCellPhone
+            // tbStudCellPhone
             // 
-            this.textBoxCellPhone.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "CellPhone", true));
-            this.textBoxCellPhone.Location = new System.Drawing.Point(148, 55);
-            this.textBoxCellPhone.Name = "textBoxCellPhone";
-            this.textBoxCellPhone.Size = new System.Drawing.Size(130, 20);
-            this.textBoxCellPhone.TabIndex = 5;
-            this.textBoxCellPhone.TextChanged += new System.EventHandler(this.textBoxCellPhone_TextChanged);
+            this.tbStudCellPhone.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "CellPhone", true));
+            this.tbStudCellPhone.Location = new System.Drawing.Point(148, 55);
+            this.tbStudCellPhone.Name = "tbStudCellPhone";
+            this.tbStudCellPhone.Size = new System.Drawing.Size(130, 20);
+            this.tbStudCellPhone.TabIndex = 5;
+            this.tbStudCellPhone.TextChanged += new System.EventHandler(this.textBoxCellPhone_TextChanged);
             // 
-            // label21
+            // labelStudSource1
             // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(334, 114);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(44, 13);
-            this.label21.TabIndex = 26;
-            this.label21.Text = "Source:";
+            this.labelStudSource1.AutoSize = true;
+            this.labelStudSource1.Location = new System.Drawing.Point(334, 114);
+            this.labelStudSource1.Name = "labelStudSource1";
+            this.labelStudSource1.Size = new System.Drawing.Size(44, 13);
+            this.labelStudSource1.TabIndex = 26;
+            this.labelStudSource1.Text = "Source:";
             // 
-            // textBoxHomePhone
+            // tbStudHomePhone
             // 
-            this.textBoxHomePhone.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "HomePhone", true));
-            this.textBoxHomePhone.Location = new System.Drawing.Point(328, 57);
-            this.textBoxHomePhone.Name = "textBoxHomePhone";
-            this.textBoxHomePhone.Size = new System.Drawing.Size(155, 20);
-            this.textBoxHomePhone.TabIndex = 6;
-            this.textBoxHomePhone.TextChanged += new System.EventHandler(this.textBoxHomePhone_TextChanged);
+            this.tbStudHomePhone.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "HomePhone", true));
+            this.tbStudHomePhone.Location = new System.Drawing.Point(328, 57);
+            this.tbStudHomePhone.Name = "tbStudHomePhone";
+            this.tbStudHomePhone.Size = new System.Drawing.Size(155, 20);
+            this.tbStudHomePhone.TabIndex = 6;
+            this.tbStudHomePhone.TextChanged += new System.EventHandler(this.textBoxHomePhone_TextChanged);
             // 
-            // label15
+            // labelStudSpeaks2
             // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(5, 78);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(42, 13);
-            this.label15.TabIndex = 11;
-            this.label15.Text = "Learns:";
+            this.labelStudSpeaks2.AutoSize = true;
+            this.labelStudSpeaks2.Location = new System.Drawing.Point(5, 78);
+            this.labelStudSpeaks2.Name = "labelStudSpeaks2";
+            this.labelStudSpeaks2.Size = new System.Drawing.Size(42, 13);
+            this.labelStudSpeaks2.TabIndex = 11;
+            this.labelStudSpeaks2.Text = "Learns:";
             // 
-            // comboBoxSource
+            // cbStudSource
             // 
-            this.comboBoxSource.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "Source", true));
-            this.comboBoxSource.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxSource.FormattingEnabled = true;
-            this.comboBoxSource.Location = new System.Drawing.Point(325, 129);
-            this.comboBoxSource.Name = "comboBoxSource";
-            this.comboBoxSource.Size = new System.Drawing.Size(155, 21);
-            this.comboBoxSource.TabIndex = 13;
+            this.cbStudSource.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "Source", true));
+            this.cbStudSource.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStudSource.FormattingEnabled = true;
+            this.cbStudSource.Location = new System.Drawing.Point(325, 129);
+            this.cbStudSource.Name = "cbStudSource";
+            this.cbStudSource.Size = new System.Drawing.Size(155, 21);
+            this.cbStudSource.TabIndex = 13;
             // 
-            // panelSecondary
+            // panelStudSecondary
             // 
-            this.panelSecondary.Controls.Add(this.groupBoxSecondaryRight);
-            this.panelSecondary.Controls.Add(this.panelSecondaryLeft);
-            this.panelSecondary.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelSecondary.Location = new System.Drawing.Point(0, 155);
-            this.panelSecondary.Name = "panelSecondary";
-            this.panelSecondary.Size = new System.Drawing.Size(946, 241);
-            this.panelSecondary.TabIndex = 36;
+            this.panelStudSecondary.Controls.Add(this.groupBoxStudSecondaryRight);
+            this.panelStudSecondary.Controls.Add(this.panelStudSecondaryLeft);
+            this.panelStudSecondary.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelStudSecondary.Location = new System.Drawing.Point(0, 155);
+            this.panelStudSecondary.Name = "panelStudSecondary";
+            this.panelStudSecondary.Size = new System.Drawing.Size(946, 241);
+            this.panelStudSecondary.TabIndex = 36;
             // 
-            // groupBoxSecondaryRight
+            // groupBoxStudSecondaryRight
             // 
-            this.groupBoxSecondaryRight.Controls.Add(this.textBoxComments);
-            this.groupBoxSecondaryRight.Controls.Add(this.textBoxSchedule);
-            this.groupBoxSecondaryRight.Controls.Add(this.textBoxInterests);
-            this.groupBoxSecondaryRight.Controls.Add(this.textBoxGoals);
-            this.groupBoxSecondaryRight.Controls.Add(this.textBoxBackground);
-            this.groupBoxSecondaryRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBoxSecondaryRight.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
-            this.groupBoxSecondaryRight.Location = new System.Drawing.Point(80, 0);
-            this.groupBoxSecondaryRight.Name = "groupBoxSecondaryRight";
-            this.groupBoxSecondaryRight.Size = new System.Drawing.Size(866, 241);
-            this.groupBoxSecondaryRight.TabIndex = 36;
-            this.groupBoxSecondaryRight.TabStop = false;
+            this.groupBoxStudSecondaryRight.Controls.Add(this.tbStudComments);
+            this.groupBoxStudSecondaryRight.Controls.Add(this.tbStudSchedule);
+            this.groupBoxStudSecondaryRight.Controls.Add(this.tbStudInterests);
+            this.groupBoxStudSecondaryRight.Controls.Add(this.tbStudGoals);
+            this.groupBoxStudSecondaryRight.Controls.Add(this.tbStudBackground);
+            this.groupBoxStudSecondaryRight.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxStudSecondaryRight.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
+            this.groupBoxStudSecondaryRight.Location = new System.Drawing.Point(80, 0);
+            this.groupBoxStudSecondaryRight.Name = "groupBoxStudSecondaryRight";
+            this.groupBoxStudSecondaryRight.Size = new System.Drawing.Size(866, 241);
+            this.groupBoxStudSecondaryRight.TabIndex = 36;
+            this.groupBoxStudSecondaryRight.TabStop = false;
             // 
-            // textBoxComments
+            // tbStudComments
             // 
-            this.textBoxComments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbStudComments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxComments.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "Comments", true));
-            this.textBoxComments.Location = new System.Drawing.Point(6, 114);
-            this.textBoxComments.Name = "textBoxComments";
-            this.textBoxComments.Size = new System.Drawing.Size(852, 20);
-            this.textBoxComments.TabIndex = 20;
-            this.textBoxComments.TextChanged += new System.EventHandler(this.textBoxComments_TextChanged);
+            this.tbStudComments.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "Comments", true));
+            this.tbStudComments.Location = new System.Drawing.Point(6, 114);
+            this.tbStudComments.Name = "tbStudComments";
+            this.tbStudComments.Size = new System.Drawing.Size(852, 20);
+            this.tbStudComments.TabIndex = 20;
+            this.tbStudComments.TextChanged += new System.EventHandler(this.textBoxComments_TextChanged);
             // 
-            // textBoxSchedule
+            // tbStudSchedule
             // 
-            this.textBoxSchedule.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbStudSchedule.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxSchedule.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "PossibleSchedule", true));
-            this.textBoxSchedule.Location = new System.Drawing.Point(6, 88);
-            this.textBoxSchedule.Name = "textBoxSchedule";
-            this.textBoxSchedule.Size = new System.Drawing.Size(852, 20);
-            this.textBoxSchedule.TabIndex = 19;
-            this.textBoxSchedule.TextChanged += new System.EventHandler(this.textBoxSchedule_TextChanged);
+            this.tbStudSchedule.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "PossibleSchedule", true));
+            this.tbStudSchedule.Location = new System.Drawing.Point(6, 88);
+            this.tbStudSchedule.Name = "tbStudSchedule";
+            this.tbStudSchedule.Size = new System.Drawing.Size(852, 20);
+            this.tbStudSchedule.TabIndex = 19;
+            this.tbStudSchedule.TextChanged += new System.EventHandler(this.textBoxSchedule_TextChanged);
             // 
-            // textBoxInterests
+            // tbStudInterests
             // 
-            this.textBoxInterests.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbStudInterests.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxInterests.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "Interests", true));
-            this.textBoxInterests.Location = new System.Drawing.Point(6, 63);
-            this.textBoxInterests.Name = "textBoxInterests";
-            this.textBoxInterests.Size = new System.Drawing.Size(852, 20);
-            this.textBoxInterests.TabIndex = 18;
-            this.textBoxInterests.TextChanged += new System.EventHandler(this.textBoxInterests_TextChanged);
+            this.tbStudInterests.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "Interests", true));
+            this.tbStudInterests.Location = new System.Drawing.Point(6, 63);
+            this.tbStudInterests.Name = "tbStudInterests";
+            this.tbStudInterests.Size = new System.Drawing.Size(852, 20);
+            this.tbStudInterests.TabIndex = 18;
+            this.tbStudInterests.TextChanged += new System.EventHandler(this.textBoxInterests_TextChanged);
             // 
-            // textBoxGoals
+            // tbStudGoals
             // 
-            this.textBoxGoals.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbStudGoals.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxGoals.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "Goals", true));
-            this.textBoxGoals.Location = new System.Drawing.Point(6, 39);
-            this.textBoxGoals.Name = "textBoxGoals";
-            this.textBoxGoals.Size = new System.Drawing.Size(852, 20);
-            this.textBoxGoals.TabIndex = 17;
-            this.textBoxGoals.TextChanged += new System.EventHandler(this.textBoxGoals_TextChanged);
+            this.tbStudGoals.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "Goals", true));
+            this.tbStudGoals.Location = new System.Drawing.Point(6, 39);
+            this.tbStudGoals.Name = "tbStudGoals";
+            this.tbStudGoals.Size = new System.Drawing.Size(852, 20);
+            this.tbStudGoals.TabIndex = 17;
+            this.tbStudGoals.TextChanged += new System.EventHandler(this.textBoxGoals_TextChanged);
             // 
-            // textBoxBackground
+            // tbStudBackground
             // 
-            this.textBoxBackground.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbStudBackground.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxBackground.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "Background", true));
-            this.textBoxBackground.Location = new System.Drawing.Point(6, 16);
-            this.textBoxBackground.Name = "textBoxBackground";
-            this.textBoxBackground.Size = new System.Drawing.Size(852, 20);
-            this.textBoxBackground.TabIndex = 16;
-            this.textBoxBackground.TextChanged += new System.EventHandler(this.textBoxBackground_TextChanged);
+            this.tbStudBackground.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "Background", true));
+            this.tbStudBackground.Location = new System.Drawing.Point(6, 16);
+            this.tbStudBackground.Name = "tbStudBackground";
+            this.tbStudBackground.Size = new System.Drawing.Size(852, 20);
+            this.tbStudBackground.TabIndex = 16;
+            this.tbStudBackground.TextChanged += new System.EventHandler(this.textBoxBackground_TextChanged);
             // 
-            // panelSecondaryLeft
+            // panelStudSecondaryLeft
             // 
-            this.panelSecondaryLeft.Controls.Add(this.label23);
-            this.panelSecondaryLeft.Controls.Add(this.label22);
-            this.panelSecondaryLeft.Controls.Add(this.label26);
-            this.panelSecondaryLeft.Controls.Add(this.label25);
-            this.panelSecondaryLeft.Controls.Add(this.label24);
-            this.panelSecondaryLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelSecondaryLeft.Location = new System.Drawing.Point(0, 0);
-            this.panelSecondaryLeft.Name = "panelSecondaryLeft";
-            this.panelSecondaryLeft.Size = new System.Drawing.Size(80, 241);
-            this.panelSecondaryLeft.TabIndex = 35;
+            this.panelStudSecondaryLeft.Controls.Add(this.labelStudGoals);
+            this.panelStudSecondaryLeft.Controls.Add(this.labelStudBackground);
+            this.panelStudSecondaryLeft.Controls.Add(this.labelStudComments);
+            this.panelStudSecondaryLeft.Controls.Add(this.labelStudSchedule);
+            this.panelStudSecondaryLeft.Controls.Add(this.labelStudInterests);
+            this.panelStudSecondaryLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelStudSecondaryLeft.Location = new System.Drawing.Point(0, 0);
+            this.panelStudSecondaryLeft.Name = "panelStudSecondaryLeft";
+            this.panelStudSecondaryLeft.Size = new System.Drawing.Size(80, 241);
+            this.panelStudSecondaryLeft.TabIndex = 35;
             // 
-            // label23
+            // labelStudGoals
             // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(9, 42);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(37, 13);
-            this.label23.TabIndex = 30;
-            this.label23.Text = "Goals:";
+            this.labelStudGoals.AutoSize = true;
+            this.labelStudGoals.Location = new System.Drawing.Point(9, 42);
+            this.labelStudGoals.Name = "labelStudGoals";
+            this.labelStudGoals.Size = new System.Drawing.Size(37, 13);
+            this.labelStudGoals.TabIndex = 30;
+            this.labelStudGoals.Text = "Goals:";
             // 
-            // label22
+            // labelStudBackground
             // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(11, 19);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(68, 13);
-            this.label22.TabIndex = 29;
-            this.label22.Text = "Background:";
+            this.labelStudBackground.AutoSize = true;
+            this.labelStudBackground.Location = new System.Drawing.Point(11, 19);
+            this.labelStudBackground.Name = "labelStudBackground";
+            this.labelStudBackground.Size = new System.Drawing.Size(68, 13);
+            this.labelStudBackground.TabIndex = 29;
+            this.labelStudBackground.Text = "Background:";
             // 
-            // label26
+            // labelStudComments
             // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(6, 116);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(59, 13);
-            this.label26.TabIndex = 33;
-            this.label26.Text = "Comments:";
+            this.labelStudComments.AutoSize = true;
+            this.labelStudComments.Location = new System.Drawing.Point(6, 116);
+            this.labelStudComments.Name = "labelStudComments";
+            this.labelStudComments.Size = new System.Drawing.Size(59, 13);
+            this.labelStudComments.TabIndex = 33;
+            this.labelStudComments.Text = "Comments:";
             // 
-            // label25
+            // labelStudSchedule
             // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(9, 88);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(55, 13);
-            this.label25.TabIndex = 32;
-            this.label25.Text = "Schedule:";
+            this.labelStudSchedule.AutoSize = true;
+            this.labelStudSchedule.Location = new System.Drawing.Point(9, 88);
+            this.labelStudSchedule.Name = "labelStudSchedule";
+            this.labelStudSchedule.Size = new System.Drawing.Size(55, 13);
+            this.labelStudSchedule.TabIndex = 32;
+            this.labelStudSchedule.Text = "Schedule:";
             // 
-            // label24
+            // labelStudInterests
             // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(11, 64);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(50, 13);
-            this.label24.TabIndex = 31;
-            this.label24.Text = "Interests:";
+            this.labelStudInterests.AutoSize = true;
+            this.labelStudInterests.Location = new System.Drawing.Point(11, 64);
+            this.labelStudInterests.Name = "labelStudInterests";
+            this.labelStudInterests.Size = new System.Drawing.Size(50, 13);
+            this.labelStudInterests.TabIndex = 31;
+            this.labelStudInterests.Text = "Interests:";
             // 
-            // panelEdit
+            // panelGlobEdit
             // 
-            this.panelEdit.Controls.Add(this.panelNextNew);
-            this.panelEdit.Controls.Add(this.panelStudent);
-            this.panelEdit.Controls.Add(this.buttonPrev);
-            this.panelEdit.Controls.Add(this.buttonDelete);
-            this.panelEdit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelEdit.Location = new System.Drawing.Point(0, 0);
-            this.panelEdit.Name = "panelEdit";
-            this.panelEdit.Size = new System.Drawing.Size(1037, 401);
-            this.panelEdit.TabIndex = 23;
+            this.panelGlobEdit.Controls.Add(this.panelGlobNextNew);
+            this.panelGlobEdit.Controls.Add(this.panelStudent);
+            this.panelGlobEdit.Controls.Add(this.butGlobalPrev);
+            this.panelGlobEdit.Controls.Add(this.butGlobalDelete);
+            this.panelGlobEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelGlobEdit.Location = new System.Drawing.Point(0, 0);
+            this.panelGlobEdit.Name = "panelGlobEdit";
+            this.panelGlobEdit.Size = new System.Drawing.Size(1037, 401);
+            this.panelGlobEdit.TabIndex = 23;
             // 
-            // panelNextNew
+            // panelGlobNextNew
             // 
-            this.panelNextNew.Controls.Add(this.buttonAdd);
-            this.panelNextNew.Controls.Add(this.buttonNext);
-            this.panelNextNew.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelNextNew.Location = new System.Drawing.Point(989, 0);
-            this.panelNextNew.Name = "panelNextNew";
-            this.panelNextNew.Size = new System.Drawing.Size(48, 401);
-            this.panelNextNew.TabIndex = 20;
+            this.panelGlobNextNew.Controls.Add(this.butGlobalAdd);
+            this.panelGlobNextNew.Controls.Add(this.butGlobalNext);
+            this.panelGlobNextNew.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelGlobNextNew.Location = new System.Drawing.Point(989, 0);
+            this.panelGlobNextNew.Name = "panelGlobNextNew";
+            this.panelGlobNextNew.Size = new System.Drawing.Size(48, 401);
+            this.panelGlobNextNew.TabIndex = 20;
             // 
-            // panelLogo
+            // panelGlobLogo
             // 
-            this.panelLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelLogo.Controls.Add(this.comboBoxType);
-            this.panelLogo.Controls.Add(this.pictureBoxIcon);
-            this.panelLogo.Controls.Add(this.labelSagalingua);
-            this.panelLogo.Controls.Add(this.labelCount);
-            this.panelLogo.Location = new System.Drawing.Point(61, 3);
-            this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(183, 325);
-            this.panelLogo.TabIndex = 24;
+            this.panelGlobLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelGlobLogo.Controls.Add(this.cbGlobType);
+            this.panelGlobLogo.Controls.Add(this.pictureBoxGlobIcon);
+            this.panelGlobLogo.Controls.Add(this.labelGlobSagalingua);
+            this.panelGlobLogo.Controls.Add(this.labelGlobCount);
+            this.panelGlobLogo.Location = new System.Drawing.Point(61, 3);
+            this.panelGlobLogo.Name = "panelGlobLogo";
+            this.panelGlobLogo.Size = new System.Drawing.Size(183, 325);
+            this.panelGlobLogo.TabIndex = 24;
             // 
-            // comboBoxType
+            // cbGlobType
             // 
-            this.comboBoxType.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(119)))), ((int)(((byte)(237)))));
-            this.comboBoxType.FormattingEnabled = true;
-            this.comboBoxType.Location = new System.Drawing.Point(38, 283);
-            this.comboBoxType.Name = "comboBoxType";
-            this.comboBoxType.Size = new System.Drawing.Size(145, 33);
-            this.comboBoxType.TabIndex = 21;
+            this.cbGlobType.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbGlobType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(119)))), ((int)(((byte)(237)))));
+            this.cbGlobType.FormattingEnabled = true;
+            this.cbGlobType.Location = new System.Drawing.Point(3, 28);
+            this.cbGlobType.Name = "cbGlobType";
+            this.cbGlobType.Size = new System.Drawing.Size(145, 33);
+            this.cbGlobType.TabIndex = 21;
             // 
-            // splitContainerMasterDetail
+            // splitContainerGlobMasterDetail
             // 
-            this.splitContainerMasterDetail.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerMasterDetail.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerMasterDetail.Name = "splitContainerMasterDetail";
-            this.splitContainerMasterDetail.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            this.splitContainerGlobMasterDetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerGlobMasterDetail.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerGlobMasterDetail.Name = "splitContainerGlobMasterDetail";
+            this.splitContainerGlobMasterDetail.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // splitContainerMasterDetail.Panel1
+            // splitContainerGlobMasterDetail.Panel1
             // 
-            this.splitContainerMasterDetail.Panel1.Controls.Add(this.dataGridView1);
+            this.splitContainerGlobMasterDetail.Panel1.Controls.Add(this.dataGridViewStudents);
             // 
-            // splitContainerMasterDetail.Panel2
+            // splitContainerGlobMasterDetail.Panel2
             // 
-            this.splitContainerMasterDetail.Panel2.Controls.Add(this.panelEdit);
-            this.splitContainerMasterDetail.Size = new System.Drawing.Size(1037, 807);
-            this.splitContainerMasterDetail.SplitterDistance = 402;
-            this.splitContainerMasterDetail.TabIndex = 25;
+            this.splitContainerGlobMasterDetail.Panel2.Controls.Add(this.panelGlobEdit);
+            this.splitContainerGlobMasterDetail.Size = new System.Drawing.Size(1037, 807);
+            this.splitContainerGlobMasterDetail.SplitterDistance = 402;
+            this.splitContainerGlobMasterDetail.TabIndex = 25;
             // 
-            // splitContainerDataControls
+            // splitContainerGlobDataControls
             // 
-            this.splitContainerDataControls.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainerDataControls.Location = new System.Drawing.Point(0, 24);
-            this.splitContainerDataControls.Name = "splitContainerDataControls";
+            this.splitContainerGlobDataControls.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerGlobDataControls.Location = new System.Drawing.Point(0, 24);
+            this.splitContainerGlobDataControls.Name = "splitContainerGlobDataControls";
             // 
-            // splitContainerDataControls.Panel1
+            // splitContainerGlobDataControls.Panel1
             // 
-            this.splitContainerDataControls.Panel1.Controls.Add(this.splitContainerMasterDetail);
+            this.splitContainerGlobDataControls.Panel1.Controls.Add(this.splitContainerGlobMasterDetail);
             // 
-            // splitContainerDataControls.Panel2
+            // splitContainerGlobDataControls.Panel2
             // 
-            this.splitContainerDataControls.Panel2.Controls.Add(this.panelSearch);
-            this.splitContainerDataControls.Panel2.Controls.Add(this.panelLogo);
-            this.splitContainerDataControls.Size = new System.Drawing.Size(1291, 807);
-            this.splitContainerDataControls.SplitterDistance = 1037;
-            this.splitContainerDataControls.TabIndex = 26;
+            this.splitContainerGlobDataControls.Panel2.Controls.Add(this.panelGlobSearch);
+            this.splitContainerGlobDataControls.Panel2.Controls.Add(this.panelGlobLogo);
+            this.splitContainerGlobDataControls.Size = new System.Drawing.Size(1291, 807);
+            this.splitContainerGlobDataControls.SplitterDistance = 1037;
+            this.splitContainerGlobDataControls.TabIndex = 26;
             // 
-            // panelIndicators
+            // panelGlobIndicators
             // 
-            this.panelIndicators.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.panelGlobIndicators.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelIndicators.Controls.Add(this.labelLastUpload);
-            this.panelIndicators.Controls.Add(this.labelLastDownload);
-            this.panelIndicators.Location = new System.Drawing.Point(240, 0);
-            this.panelIndicators.Name = "panelIndicators";
-            this.panelIndicators.Size = new System.Drawing.Size(1051, 24);
-            this.panelIndicators.TabIndex = 27;
+            this.panelGlobIndicators.Controls.Add(this.labelGlobLastUpload);
+            this.panelGlobIndicators.Controls.Add(this.labelGlobLastDownload);
+            this.panelGlobIndicators.Location = new System.Drawing.Point(240, 0);
+            this.panelGlobIndicators.Name = "panelGlobIndicators";
+            this.panelGlobIndicators.Size = new System.Drawing.Size(1051, 24);
+            this.panelGlobIndicators.TabIndex = 27;
             // 
-            // Form1
+            // panelStudSearch
+            // 
+            this.panelStudSearch.Controls.Add(this.labelStudStatus);
+            this.panelStudSearch.Controls.Add(this.LabelStudLearns);
+            this.panelStudSearch.Controls.Add(this.labelStudSpeaks);
+            this.panelStudSearch.Controls.Add(this.cbStudSelectLevel);
+            this.panelStudSearch.Controls.Add(this.cbStudSelectLearns);
+            this.panelStudSearch.Controls.Add(this.labelStudLevel);
+            this.panelStudSearch.Controls.Add(this.cbStudSelectSpeaks);
+            this.panelStudSearch.Controls.Add(this.labelStudFirstName1);
+            this.panelStudSearch.Controls.Add(this.cbStudSelectSource);
+            this.panelStudSearch.Controls.Add(this.tbStudSelectFirstName);
+            this.panelStudSearch.Controls.Add(this.labelStudSource);
+            this.panelStudSearch.Controls.Add(this.cbStudSelectStatus);
+            this.panelStudSearch.Controls.Add(this.labelStudLastName);
+            this.panelStudSearch.Controls.Add(this.tbStudSelectLastName);
+            this.panelStudSearch.Location = new System.Drawing.Point(32, 42);
+            this.panelStudSearch.Name = "panelStudSearch";
+            this.panelStudSearch.Size = new System.Drawing.Size(211, 278);
+            this.panelStudSearch.TabIndex = 19;
+            // 
+            // dgvStudColumnStatus
+            // 
+            this.dgvStudColumnStatus.DataPropertyName = "Status";
+            this.dgvStudColumnStatus.HeaderText = "Status";
+            this.dgvStudColumnStatus.Name = "dgvStudColumnStatus";
+            this.dgvStudColumnStatus.ReadOnly = true;
+            // 
+            // dgvStudColumnFirstName
+            // 
+            this.dgvStudColumnFirstName.DataPropertyName = "FirstName";
+            this.dgvStudColumnFirstName.HeaderText = "First Name";
+            this.dgvStudColumnFirstName.Name = "dgvStudColumnFirstName";
+            this.dgvStudColumnFirstName.ReadOnly = true;
+            // 
+            // dgvStudColumnLastName
+            // 
+            this.dgvStudColumnLastName.DataPropertyName = "LastName";
+            this.dgvStudColumnLastName.HeaderText = "Last Name";
+            this.dgvStudColumnLastName.Name = "dgvStudColumnLastName";
+            this.dgvStudColumnLastName.ReadOnly = true;
+            // 
+            // dgvStudColumnEmail
+            // 
+            this.dgvStudColumnEmail.DataPropertyName = "Email";
+            this.dgvStudColumnEmail.HeaderText = "Email";
+            this.dgvStudColumnEmail.Name = "dgvStudColumnEmail";
+            this.dgvStudColumnEmail.ReadOnly = true;
+            // 
+            // dgvStudColumnLearningLanguage
+            // 
+            this.dgvStudColumnLearningLanguage.DataPropertyName = "LearningLanguage";
+            this.dgvStudColumnLearningLanguage.HeaderText = "Learning";
+            this.dgvStudColumnLearningLanguage.Name = "dgvStudColumnLearningLanguage";
+            this.dgvStudColumnLearningLanguage.ReadOnly = true;
+            // 
+            // dgvStudColumnLevel
+            // 
+            this.dgvStudColumnLevel.DataPropertyName = "Level";
+            this.dgvStudColumnLevel.HeaderText = "Level";
+            this.dgvStudColumnLevel.Name = "dgvStudColumnLevel";
+            this.dgvStudColumnLevel.ReadOnly = true;
+            // 
+            // dgvStudColumnNativeLanguage
+            // 
+            this.dgvStudColumnNativeLanguage.DataPropertyName = "NativeLanguage";
+            this.dgvStudColumnNativeLanguage.HeaderText = "Native";
+            this.dgvStudColumnNativeLanguage.Name = "dgvStudColumnNativeLanguage";
+            this.dgvStudColumnNativeLanguage.ReadOnly = true;
+            // 
+            // dgvStudColumnOtherLanguage
+            // 
+            this.dgvStudColumnOtherLanguage.DataPropertyName = "OtherLanguage";
+            this.dgvStudColumnOtherLanguage.HeaderText = "Other";
+            this.dgvStudColumnOtherLanguage.Name = "dgvStudColumnOtherLanguage";
+            this.dgvStudColumnOtherLanguage.ReadOnly = true;
+            // 
+            // dgvStudColumnBirthday
+            // 
+            this.dgvStudColumnBirthday.DataPropertyName = "Birthday";
+            this.dgvStudColumnBirthday.HeaderText = "Birthday";
+            this.dgvStudColumnBirthday.Name = "dgvStudColumnBirthday";
+            this.dgvStudColumnBirthday.ReadOnly = true;
+            // 
+            // dgvStudColumnAddress
+            // 
+            this.dgvStudColumnAddress.DataPropertyName = "MailingAddress";
+            this.dgvStudColumnAddress.HeaderText = "Address";
+            this.dgvStudColumnAddress.Name = "dgvStudColumnAddress";
+            this.dgvStudColumnAddress.ReadOnly = true;
+            // 
+            // studentList
+            // 
+            this.studentList.DataSource = typeof(RecordKeeper.Student);
+            // 
+            // FormGlob
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1291, 831);
-            this.Controls.Add(this.panelIndicators);
-            this.Controls.Add(this.splitContainerDataControls);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.panelGlobIndicators);
+            this.Controls.Add(this.splitContainerGlobDataControls);
+            this.Controls.Add(this.menuStripGlobalOps);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
-            this.Name = "Form1";
+            this.MainMenuStrip = this.menuStripGlobalOps;
+            this.Name = "FormGlob";
             this.Text = "RecordKeeper";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
-            this.panelSearch.ResumeLayout(false);
-            this.panelSearch.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.studentList)).EndInit();
+            this.menuStripGlobalOps.ResumeLayout(false);
+            this.menuStripGlobalOps.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGlobIcon)).EndInit();
+            this.panelGlobSearch.ResumeLayout(false);
+            this.panelGlobSearch.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudents)).EndInit();
             this.panelStudent.ResumeLayout(false);
-            this.panelPrimary.ResumeLayout(false);
-            this.groupPrinaryRight.ResumeLayout(false);
-            this.groupPrinaryRight.PerformLayout();
-            this.panelPrimaryLeft.ResumeLayout(false);
-            this.panelPrimaryLeft.PerformLayout();
-            this.panelSecondary.ResumeLayout(false);
-            this.groupBoxSecondaryRight.ResumeLayout(false);
-            this.groupBoxSecondaryRight.PerformLayout();
-            this.panelSecondaryLeft.ResumeLayout(false);
-            this.panelSecondaryLeft.PerformLayout();
-            this.panelEdit.ResumeLayout(false);
-            this.panelNextNew.ResumeLayout(false);
-            this.panelLogo.ResumeLayout(false);
-            this.panelLogo.PerformLayout();
-            this.splitContainerMasterDetail.Panel1.ResumeLayout(false);
-            this.splitContainerMasterDetail.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerMasterDetail)).EndInit();
-            this.splitContainerMasterDetail.ResumeLayout(false);
-            this.splitContainerDataControls.Panel1.ResumeLayout(false);
-            this.splitContainerDataControls.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainerDataControls)).EndInit();
-            this.splitContainerDataControls.ResumeLayout(false);
-            this.panelIndicators.ResumeLayout(false);
-            this.panelIndicators.PerformLayout();
+            this.panelStudPrimary.ResumeLayout(false);
+            this.groupBoxStudPrinaryRight.ResumeLayout(false);
+            this.groupBoxStudPrinaryRight.PerformLayout();
+            this.panelStudPrimaryLeft.ResumeLayout(false);
+            this.panelStudPrimaryLeft.PerformLayout();
+            this.panelStudSecondary.ResumeLayout(false);
+            this.groupBoxStudSecondaryRight.ResumeLayout(false);
+            this.groupBoxStudSecondaryRight.PerformLayout();
+            this.panelStudSecondaryLeft.ResumeLayout(false);
+            this.panelStudSecondaryLeft.PerformLayout();
+            this.panelGlobEdit.ResumeLayout(false);
+            this.panelGlobNextNew.ResumeLayout(false);
+            this.panelGlobLogo.ResumeLayout(false);
+            this.panelGlobLogo.PerformLayout();
+            this.splitContainerGlobMasterDetail.Panel1.ResumeLayout(false);
+            this.splitContainerGlobMasterDetail.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerGlobMasterDetail)).EndInit();
+            this.splitContainerGlobMasterDetail.ResumeLayout(false);
+            this.splitContainerGlobDataControls.Panel1.ResumeLayout(false);
+            this.splitContainerGlobDataControls.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerGlobDataControls)).EndInit();
+            this.splitContainerGlobDataControls.ResumeLayout(false);
+            this.panelGlobIndicators.ResumeLayout(false);
+            this.panelGlobIndicators.PerformLayout();
+            this.panelStudSearch.ResumeLayout(false);
+            this.panelStudSearch.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.studentList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1259,107 +1266,107 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBoxSelectStatus;
-        private System.Windows.Forms.ComboBox comboBoxSelectSpeaks;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox comboBoxSelectLearns;
-        private System.Windows.Forms.Label Label4;
-        private System.Windows.Forms.ComboBox comboBoxSelectSource;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBoxSelectLastName;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBoxSelectFirstName;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.PictureBox pictureBoxIcon;
-        private System.Windows.Forms.Label labelSagalingua;
-        private System.Windows.Forms.Panel panelSearch;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.MenuStrip menuStripGlobalOps;
+        private System.Windows.Forms.ToolStripMenuItem menuItemGlobSave;
+        private System.Windows.Forms.Label labelStudStatus;
+        private System.Windows.Forms.ComboBox cbStudSelectStatus;
+        private System.Windows.Forms.ComboBox cbStudSelectSpeaks;
+        private System.Windows.Forms.Label labelStudSpeaks;
+        private System.Windows.Forms.ComboBox cbStudSelectLearns;
+        private System.Windows.Forms.Label LabelStudLearns;
+        private System.Windows.Forms.ComboBox cbStudSelectSource;
+        private System.Windows.Forms.Label labelStudSource;
+        private System.Windows.Forms.TextBox tbStudSelectLastName;
+        private System.Windows.Forms.Label labelStudLastName;
+        private System.Windows.Forms.TextBox tbStudSelectFirstName;
+        private System.Windows.Forms.Label labelStudFirstName1;
+        private System.Windows.Forms.PictureBox pictureBoxGlobIcon;
+        private System.Windows.Forms.Label labelGlobSagalingua;
+        private System.Windows.Forms.Panel panelGlobSearch;
+        private System.Windows.Forms.ToolStripMenuItem menuItemGlobExit;
+        private System.Windows.Forms.DataGridView dataGridViewStudents;
         private System.Windows.Forms.BindingSource studentList;
-        private System.Windows.Forms.Button buttonPrev;
-        private System.Windows.Forms.Button buttonAdd;
-        private System.Windows.Forms.Button buttonDelete;
-        private System.Windows.Forms.Button buttonNext;
-        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Phone;
-        private System.Windows.Forms.DataGridViewTextBoxColumn learningLanguageDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn levelDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nativeLanguageDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn otherLanguageDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn birthdayDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Source;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mailingAddressDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Button buttonShowAll;
-        private System.Windows.Forms.ComboBox comboBoxSelectLevel;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label labelCount;
-        private System.Windows.Forms.ToolStripMenuItem downloadToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mergeToolStripMenuItem;
-        private System.Windows.Forms.Label labelLastDownload;
-        private System.Windows.Forms.Label labelLastUpload;
+        private System.Windows.Forms.Button butGlobalPrev;
+        private System.Windows.Forms.Button butGlobalAdd;
+        private System.Windows.Forms.Button butGlobalDelete;
+        private System.Windows.Forms.Button butGlobalNext;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvStudColumnStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvStudColumnFirstName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvStudColumnLastName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvStudColumnEmail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvStudColumnPhone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvStudColumnLearningLanguage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvStudColumnLevel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvStudColumnNativeLanguage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvStudColumnOtherLanguage;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvStudColumnBirthday;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvStudColumnSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dgvStudColumnAddress;
+        private System.Windows.Forms.Button buttGlobalShowAll;
+        private System.Windows.Forms.ComboBox cbStudSelectLevel;
+        private System.Windows.Forms.Label labelStudLevel;
+        private System.Windows.Forms.Label labelGlobSearch;
+        private System.Windows.Forms.Label labelGlobCount;
+        private System.Windows.Forms.ToolStripMenuItem menuItemGlobDownload;
+        private System.Windows.Forms.ToolStripMenuItem menuItemGlobUpload;
+        private System.Windows.Forms.Label labelGlobLastDownload;
+        private System.Windows.Forms.Label labelGlobLastUpload;
         private System.Windows.Forms.Panel panelStudent;
-        private System.Windows.Forms.TextBox textBoxComments;
-        private System.Windows.Forms.TextBox textBoxLastName;
-        private System.Windows.Forms.TextBox textBoxSchedule;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBoxInterests;
-        private System.Windows.Forms.TextBox textBoxFirstName;
-        private System.Windows.Forms.TextBox textBoxGoals;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBoxBackground;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.TextBox textBoxEmail;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.TextBox textBoxCellPhone;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox textBoxHomePhone;
-        private System.Windows.Forms.TextBox textBoxSourceDetail;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.ComboBox comboBoxSource;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox textBoxAddress1;
-        private System.Windows.Forms.ComboBox comboBoxLevel;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBoxBirthday;
-        private System.Windows.Forms.ComboBox comboBoxLearns;
-        private System.Windows.Forms.ComboBox comboBoxStatus;
-        private System.Windows.Forms.ComboBox comboBoxSpeaks;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textBoxLanguageDetail;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.ComboBox comboBoxOther;
-        private System.Windows.Forms.Panel panelEdit;
-        private System.Windows.Forms.Panel panelLogo;
-        private System.Windows.Forms.SplitContainer splitContainerMasterDetail;
-        private System.Windows.Forms.SplitContainer splitContainerDataControls;
-        private System.Windows.Forms.Panel panelIndicators;
-        private System.Windows.Forms.Panel panelNextNew;
-        private System.Windows.Forms.Button buttonToExcel;
-        private System.Windows.Forms.Panel panelSecondary;
-        private System.Windows.Forms.Panel panelSecondaryLeft;
-        private System.Windows.Forms.GroupBox groupBoxSecondaryRight;
-        private System.Windows.Forms.GroupBox groupPrinaryRight;
-        private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Panel panelPrimaryLeft;
-        private System.Windows.Forms.Panel panelPrimary;
-        private System.Windows.Forms.ComboBox comboBoxType;
+        private System.Windows.Forms.TextBox tbStudComments;
+        private System.Windows.Forms.TextBox tbStudLastName;
+        private System.Windows.Forms.TextBox tbStudSchedule;
+        private System.Windows.Forms.Label labelStudFirstname;
+        private System.Windows.Forms.TextBox tbStudInterests;
+        private System.Windows.Forms.TextBox tbStudFirstName;
+        private System.Windows.Forms.TextBox tbStudGoals;
+        private System.Windows.Forms.Label labelStudLastName1;
+        private System.Windows.Forms.TextBox tbStudBackground;
+        private System.Windows.Forms.Label labelStudEmail1;
+        private System.Windows.Forms.Label labelStudComments;
+        private System.Windows.Forms.TextBox tbStudEmail;
+        private System.Windows.Forms.Label labelStudSchedule;
+        private System.Windows.Forms.Label labelStudCellPhone;
+        private System.Windows.Forms.Label labelStudInterests;
+        private System.Windows.Forms.Label labelStudHomePhone;
+        private System.Windows.Forms.Label labelStudGoals;
+        private System.Windows.Forms.TextBox tbStudCellPhone;
+        private System.Windows.Forms.Label labelStudBackground;
+        private System.Windows.Forms.TextBox tbStudHomePhone;
+        private System.Windows.Forms.TextBox tbStudSourceDetail;
+        private System.Windows.Forms.Label labelStudAddress1;
+        private System.Windows.Forms.ComboBox cbStudSource;
+        private System.Windows.Forms.Label labelStudSpeaks2;
+        private System.Windows.Forms.Label labelStudSource1;
+        private System.Windows.Forms.TextBox tbStudAddress1;
+        private System.Windows.Forms.ComboBox cbStudLevel;
+        private System.Windows.Forms.Label labelStudLevel1;
+        private System.Windows.Forms.Label labelStudSpeaks1;
+        private System.Windows.Forms.TextBox tbStudBirthday;
+        private System.Windows.Forms.ComboBox cbStudLearns;
+        private System.Windows.Forms.ComboBox cbStudStatus;
+        private System.Windows.Forms.ComboBox cbStudSpeaks;
+        private System.Windows.Forms.Label labelStudStatus1;
+        private System.Windows.Forms.Label labelStudAlso;
+        private System.Windows.Forms.TextBox tbStudLanguageDetail;
+        private System.Windows.Forms.Label labelStudBirthday;
+        private System.Windows.Forms.ComboBox cbStudOther;
+        private System.Windows.Forms.Panel panelGlobEdit;
+        private System.Windows.Forms.Panel panelGlobLogo;
+        private System.Windows.Forms.SplitContainer splitContainerGlobMasterDetail;
+        private System.Windows.Forms.SplitContainer splitContainerGlobDataControls;
+        private System.Windows.Forms.Panel panelGlobIndicators;
+        private System.Windows.Forms.Panel panelGlobNextNew;
+        private System.Windows.Forms.Button butGlobalToExcel;
+        private System.Windows.Forms.Panel panelStudSecondary;
+        private System.Windows.Forms.Panel panelStudSecondaryLeft;
+        private System.Windows.Forms.GroupBox groupBoxStudSecondaryRight;
+        private System.Windows.Forms.GroupBox groupBoxStudPrinaryRight;
+        private System.Windows.Forms.Label labelStudDetailsSource;
+        private System.Windows.Forms.Label labelStudDetailsLanguage;
+        private System.Windows.Forms.Panel panelStudPrimaryLeft;
+        private System.Windows.Forms.Panel panelStudPrimary;
+        private System.Windows.Forms.ComboBox cbGlobType;
+        private System.Windows.Forms.Panel panelStudSearch;
     }
 }
 
