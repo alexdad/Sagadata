@@ -8,19 +8,39 @@ namespace Students
 {
     public partial class Form1 
     {
-        string[] ReadEnum(string name)
+        void PrepareDataDirectories()
         {
-            return File.ReadAllLines(m_dataLocation + "\\Enum" + name + ".csv");
-        }
+            string userDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string requestedDir = Properties.Settings.Default.DataDir;
+            string sd = (requestedDir.Trim().Length == 0 ? 
+                Path.Combine(userDir,      "Sagalingua").ToString() :
+                Path.Combine(requestedDir, "Sagalingua").ToString() );
 
+            if (!Directory.Exists(sd))
+                Directory.CreateDirectory(sd);
+
+            string rl = Path.Combine(sd, "Remote").ToString();
+            if (!Directory.Exists(rl))
+                Directory.CreateDirectory(rl);
+            m_cloudLocation = Path.Combine(rl, m_fileName + ".csv");
+
+            m_dataLocation = Path.Combine(sd, "Students").ToString();
+            if (!Directory.Exists(m_dataLocation))
+                Directory.CreateDirectory(m_dataLocation);
+
+            m_backupLocation = Path.Combine(m_dataLocation, "Backup").ToString();
+            if (!Directory.Exists(m_backupLocation))
+                Directory.CreateDirectory(m_backupLocation);
+        }
         void ReadSchemas()
         {
-            m_enumLanguage = ReadEnum("Language");
-            m_enumLevel = ReadEnum("Level");
-            m_enumSource = ReadEnum("Source");
-            m_enumStatus = ReadEnum("Status");
+            string binLocation = Directory.GetCurrentDirectory();
+            m_enumLanguage = File.ReadAllLines(Path.Combine(binLocation, "EnumLanguage.csv").ToString());
+            m_enumLevel = File.ReadAllLines(Path.Combine(binLocation, "EnumLevel.csv").ToString());
+            m_enumSource = File.ReadAllLines(Path.Combine(binLocation, "EnumSource.csv").ToString());
+            m_enumStatus = File.ReadAllLines(Path.Combine(binLocation, "EnumStatus.csv").ToString());
+            string[] schema = File.ReadAllLines(Path.Combine(binLocation, "SchemaStudent.csv").ToString());
 
-            string[] schema = File.ReadAllLines(m_dataLocation + "\\SchemaStudent.csv");
             List<SchemaField> schemaList = new List<SchemaField>();
             foreach (string s in schema)
             {
@@ -202,10 +222,13 @@ namespace Students
         }
         void WriteStudentsFile()
         {
-            string bkup = DecideBackup();
-            if (File.Exists(bkup))
-                File.Delete(bkup);
-            File.Move(FilePath, bkup );
+            if (File.Exists(FilePath))
+            {
+                string bkup = DecideBackup();
+                if (File.Exists(bkup))
+                    File.Delete(bkup);
+                File.Move(FilePath, bkup);
+            }
 
             using (StreamWriter sw = new StreamWriter(FilePath))
             {
@@ -213,5 +236,77 @@ namespace Students
                 WriteValues(sw);
             }
         }
+
+        string  WriteTempFile()
+        {
+            string tempFile = Path.GetTempFileName().ToLower().Replace(".tmp", ".csv");
+            using (StreamWriter sw = new StreamWriter(tempFile))
+            {
+                WriteHeader(sw);
+                WriteValues(sw);
+            }
+            return tempFile;
+        }
+
+        private bool Download()
+        {
+            bool success = false;
+            switch (m_cloudType)
+            {
+                case Clouds.Google:
+                    success = GDrive.Ops.DownloadStudentsFile(m_fileName + ".csv", m_cloudLocation);
+                    if (!success)
+                        MessageBox.Show("Cannot download from Google. Continuing to use local file.");
+                    break;
+                case Clouds.Azure:
+                case Clouds.Dir:
+                default:
+                    break;
+            }
+
+            if (success)
+            {
+                labelLastDownload.Text = "Last download: " + DateTime.Now.ToShortTimeString();
+                m_bSynced = true;
+
+                Student[] temp = ReadCloudFile(m_cloudLocation);
+                MergeBack(temp);
+            }
+            ShowStudentCount();
+            return success;
+        }
+
+        private bool Upload()
+        {
+            Student[] temp = ReadCloudFile(m_cloudLocation);
+            MergeBack(temp);
+            WriteStudentsFile();
+            labelLastDownload.Text = "Last download: " + DateTime.Now.ToShortTimeString();
+            m_bSynced = true;
+
+            if (File.Exists(m_cloudLocation))
+                File.Delete(m_cloudLocation);
+
+            File.Copy(FilePath, m_cloudLocation);
+
+            bool success = false;
+            switch (m_cloudType)
+            {
+                case Clouds.Google:
+                    success = GDrive.Ops.UploadStudentsFile(m_cloudLocation, m_fileName + ".csv");
+                    break;
+                case Clouds.Azure:
+                case Clouds.Dir:
+                default:
+                    break;
+            }
+            if (!success)
+                MessageBox.Show("Cannot upload to the cloud. Local file is OK.");
+            else
+                labelLastUpload.Text = "Last upload: " + DateTime.Now.ToShortTimeString();
+
+            return success;
+        }
+
     }
 }

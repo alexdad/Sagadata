@@ -113,10 +113,16 @@ namespace Students
             m_savedFullListDuringSelection = null;
         }
 
-        private bool Fit(string what, string where)
+        private bool Fit(string what, string where, bool fExact)
         {
-            return (what == null || what == "" || what == "?" ||
-                    where.ToLower().Contains(what.ToLower()));
+            if (where == null || where == "")
+                return false;
+            else if (what == null || what == "" || what == "?")
+                return true;
+            else if (fExact)
+                return (where.ToLower().Trim() == what.ToLower().Trim());
+            else
+                return (where.ToLower().Contains(what.ToLower()));
         }
         private void DoSelection()
         {
@@ -129,19 +135,19 @@ namespace Students
             studentList.Clear();
             foreach (Student s in m_savedFullListDuringSelection)
             {
-                if (!Fit(m_selectionStatus, s.Status))
+                if (!Fit(m_selectionStatus, s.Status, true))
                     continue;
-                if (!Fit(m_selectionLearns, s.LearningLanguage))
+                if (!Fit(m_selectionLearns, s.LearningLanguage, true))
                     continue;
-                if (!Fit(m_selectionSpeaks, s.NativeLanguage))
+                if (!Fit(m_selectionSpeaks, s.NativeLanguage, true))
                     continue;
-                if (!Fit(m_selectionFirstName, s.FirstName))
+                if (!Fit(m_selectionFirstName, s.FirstName, false))
                     continue;
-                if (!Fit(m_selectionLastName, s.LastName))
+                if (!Fit(m_selectionLastName, s.LastName, false))
                     continue;
-                if (!Fit(m_selectionSource, s.Source))
+                if (!Fit(m_selectionSource, s.Source, true))
                     continue;
-                if (!Fit(m_selectionLevel, s.Level))
+                if (!Fit(m_selectionLevel, s.Level, true))
                     continue;
 
                 studentList.Add(s);

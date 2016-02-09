@@ -2,14 +2,11 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Students.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="LocalDir" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">..\Data</Value>
+    <Setting Name="DataDir" Type="System.String" Scope="Application">
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="FileName" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Students</Value>
-    </Setting>
-    <Setting Name="BackupDir" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">..\Data\Backup</Value>
     </Setting>
     <Setting Name="BackupLimit" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">100</Value>
@@ -17,8 +14,17 @@
     <Setting Name="CloudType" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Google</Value>
     </Setting>
-    <Setting Name="CloudLocation" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">C:\Users\Sasha\Documents\Visual Studio 2015\Projects\Students\Students\bin\Remote</Value>
+    <Setting Name="InitialDownload" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">No</Value>
+    </Setting>
+    <Setting Name="Form1Size" Type="System.Drawing.Size" Scope="User">
+      <Value Profile="(Default)">1307, 860</Value>
+    </Setting>
+    <Setting Name="SplitDC" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1037</Value>
+    </Setting>
+    <Setting Name="SplitMD" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">398</Value>
     </Setting>
   </Settings>
 </SettingsFile>

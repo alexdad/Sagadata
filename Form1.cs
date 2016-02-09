@@ -61,13 +61,22 @@ namespace Students
         {
             ReadSettings();
             ReadSchemas();
+            PrepareDataDirectories();
             InitializeComponent();
             AssignEnums();
             SelectionMode = false;
             m_deletedKeys = new List<string>();
             Client = Environment.MachineName;
             m_studentsAsRead = new Dictionary<string, Student>();
-            ReadStudentsFile(m_studentsAsRead);
+
+            if (Properties.Settings.Default.InitialDownload.ToLower() != "no")
+            {
+                if (!Download())
+                    ReadStudentsFile(m_studentsAsRead);
+            }
+            else
+                ReadStudentsFile(m_studentsAsRead);
+
             ShowStudentCount();
             m_bChanged = false;
             m_bSynced = false;
@@ -76,11 +85,8 @@ namespace Students
         private void ReadSettings()
         {
             string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            m_dataLocation = Path.Combine(dir, Properties.Settings.Default.LocalDir);
-            m_backupLocation = Path.Combine(dir, Properties.Settings.Default.BackupDir);
             m_cloudType = Clouds.None;
             m_fileName = Properties.Settings.Default.FileName;
-            m_cloudLocation = Path.Combine(Properties.Settings.Default.CloudLocation, m_fileName + ".csv");
             switch (Properties.Settings.Default.CloudType.ToLower())
             {
                 case "dir":
@@ -186,6 +192,13 @@ namespace Students
             comboBoxSelectLevel.SelectedIndex = 0;
             // Changed
         }
+
+        private void buttonToExcel_Click(object sender, EventArgs e)
+        {
+            string tempCsv = WriteTempFile();
+            System.Diagnostics.Process.Start(tempCsv);
+        }
+
         #endregion
         #region "ComboBoxClicks"
         private void comboBoxSelectStatus_SelectedIndexChanged(object sender, EventArgs e)
@@ -236,5 +249,25 @@ namespace Students
             DoSelection();
         }
         #endregion
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            this.Size = Properties.Settings.Default.Form1Size;
+            splitContainerDataControls.SplitterDistance = Properties.Settings.Default.SplitDC;
+            splitContainerMasterDetail.SplitterDistance = Properties.Settings.Default.SplitMD;
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.Form1Size  = this.Size;
+            Properties.Settings.Default.SplitDC = splitContainerDataControls.SplitterDistance;
+            Properties.Settings.Default.SplitMD = splitContainerMasterDetail.SplitterDistance;
+            Properties.Settings.Default.Save();
+        }
+
+        private void textBoxComments_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

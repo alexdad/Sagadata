@@ -25,10 +25,10 @@ namespace Students.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\Data")]
-        public string LocalDir {
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DataDir {
             get {
-                return ((string)(this["LocalDir"]));
+                return ((string)(this["DataDir"]));
             }
         }
         
@@ -38,15 +38,6 @@ namespace Students.Properties {
         public string FileName {
             get {
                 return ((string)(this["FileName"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\Data\\Backup")]
-        public string BackupDir {
-            get {
-                return ((string)(this["BackupDir"]));
             }
         }
         
@@ -70,11 +61,46 @@ namespace Students.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\Sasha\\Documents\\Visual Studio 2015\\Projects\\Students\\Students\\bin\\Remote" +
-            "")]
-        public string CloudLocation {
+        [global::System.Configuration.DefaultSettingValueAttribute("No")]
+        public string InitialDownload {
             get {
-                return ((string)(this["CloudLocation"]));
+                return ((string)(this["InitialDownload"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1307, 860")]
+        public global::System.Drawing.Size Form1Size {
+            get {
+                return ((global::System.Drawing.Size)(this["Form1Size"]));
+            }
+            set {
+                this["Form1Size"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1037")]
+        public int SplitDC {
+            get {
+                return ((int)(this["SplitDC"]));
+            }
+            set {
+                this["SplitDC"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("398")]
+        public int SplitMD {
+            get {
+                return ((int)(this["SplitMD"]));
+            }
+            set {
+                this["SplitMD"] = value;
             }
         }
     }
