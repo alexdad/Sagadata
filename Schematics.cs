@@ -90,6 +90,11 @@ namespace Students
             comboBoxLevel.Items.AddRange(m_enumLevel);
             comboBoxSource.Items.AddRange(m_enumSource);
             comboBoxStatus.Items.AddRange(m_enumStatus);
+
+            comboBoxType.Items.Add("Students");
+            comboBoxType.Items.Add("Teachers");
+            comboBoxType.Items.Add("Expenses");
+            comboBoxType.Text = "Students";
         }
 
         private void ShowStudentCount()

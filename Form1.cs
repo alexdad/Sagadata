@@ -59,7 +59,6 @@ namespace Students
         #region "Form"
         public Form1()
         {
-            m_bChanged = false;
             ReadSettings();
             ReadSchemas();
             PrepareDataDirectories();
@@ -79,6 +78,7 @@ namespace Students
                 ReadStudentsFile(m_studentsAsRead);
 
             ShowStudentCount();
+            m_bChanged = false;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -86,6 +86,7 @@ namespace Students
             this.Size = Properties.Settings.Default.Form1Size;
             splitContainerDataControls.SplitterDistance = Properties.Settings.Default.SplitDC;
             splitContainerMasterDetail.SplitterDistance = Properties.Settings.Default.SplitMD;
+            m_bChanged = false;
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
