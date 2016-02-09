@@ -153,6 +153,7 @@ namespace Students
                 studentList.Add(s);
             }
             ShowStudentCount();
+            m_bChanged = true;
         }
 
         void SortStudents(string hdr, Student[] temp)

@@ -267,8 +267,6 @@ namespace Students
             if (success)
             {
                 labelLastDownload.Text = "Last download: " + DateTime.Now.ToShortTimeString();
-                m_bSynced = true;
-
                 Student[] temp = ReadCloudFile(m_cloudLocation);
                 MergeBack(temp);
             }
@@ -282,7 +280,6 @@ namespace Students
             MergeBack(temp);
             WriteStudentsFile();
             labelLastDownload.Text = "Last download: " + DateTime.Now.ToShortTimeString();
-            m_bSynced = true;
 
             if (File.Exists(m_cloudLocation))
                 File.Delete(m_cloudLocation);
@@ -307,6 +304,5 @@ namespace Students
 
             return success;
         }
-
     }
 }

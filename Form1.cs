@@ -55,10 +55,10 @@ namespace Students
         string m_selectionLevel;
 
         bool m_bChanged;
-        bool m_bSynced;
 
         public Form1()
         {
+            m_bChanged = false;
             ReadSettings();
             ReadSchemas();
             PrepareDataDirectories();
@@ -78,8 +78,6 @@ namespace Students
                 ReadStudentsFile(m_studentsAsRead);
 
             ShowStudentCount();
-            m_bChanged = false;
-            m_bSynced = false;
         }
 
         private void ReadSettings()
@@ -161,6 +159,8 @@ namespace Students
             Student st = (Student)studentList.AddNew();
             st.Id = Form1.AllocateID();
             ShowStudentCount();
+            m_bChanged = true;
+            textBoxFirstName.Select();
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
@@ -169,6 +169,7 @@ namespace Students
             m_deletedKeys.Add(s.Key);
             studentList.RemoveCurrent();
             ShowStudentCount();
+            m_bChanged = true;
         }
 
         private void buttonShowAll_Click(object sender, EventArgs e)
@@ -267,7 +268,72 @@ namespace Students
 
         private void textBoxComments_TextChanged(object sender, EventArgs e)
         {
+            m_bChanged = true;
+        }
 
+        private void textBoxEmail_TextChanged(object sender, EventArgs e)
+        {
+            m_bChanged = true;
+        }
+
+        private void textBoxFirstName_TextChanged(object sender, EventArgs e)
+        {
+            m_bChanged = true;
+        }
+
+        private void textBoxLastName_TextChanged(object sender, EventArgs e)
+        {
+            m_bChanged = true;
+        }
+
+        private void textBoxCellPhone_TextChanged(object sender, EventArgs e)
+        {
+            m_bChanged = true;
+        }
+
+        private void textBoxHomePhone_TextChanged(object sender, EventArgs e)
+        {
+            m_bChanged = true;
+        }
+
+        private void textBoxAddress1_TextChanged(object sender, EventArgs e)
+        {
+            m_bChanged = true;
+        }
+
+        private void textBoxLanguageDetail_TextChanged(object sender, EventArgs e)
+        {
+            m_bChanged = true;
+        }
+
+        private void textBoxBirthday_TextChanged(object sender, EventArgs e)
+        {
+            m_bChanged = true;
+        }
+
+        private void textBoxSourceDetail_TextChanged(object sender, EventArgs e)
+        {
+            m_bChanged = true;
+        }
+
+        private void textBoxSchedule_TextChanged(object sender, EventArgs e)
+        {
+            m_bChanged = true;
+        }
+
+        private void textBoxInterests_TextChanged(object sender, EventArgs e)
+        {
+            m_bChanged = true;
+        }
+
+        private void textBoxGoals_TextChanged(object sender, EventArgs e)
+        {
+            m_bChanged = true;
+        }
+
+        private void textBoxBackground_TextChanged(object sender, EventArgs e)
+        {
+            m_bChanged = true;
         }
     }
 }

@@ -32,7 +32,6 @@ namespace Students
             EndSelectionMode();
             WriteStudentsFile();
             m_bChanged = false;
-            m_bSynced = false;
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -40,25 +39,20 @@ namespace Students
             if (m_bChanged)
             {
                 DialogResult result = MessageBox.Show(
-                    "Should I save?",  "You have unsaved changes",  MessageBoxButtons.YesNoCancel);
+                    "Should I save?", "You have unsaved changes", MessageBoxButtons.YesNoCancel);
                 if (result == DialogResult.Cancel)
                     return;
                 else if (result == DialogResult.Yes)
                 {
                     saveToolStripMenuItem_Click(sender, e);
+                    result = MessageBox.Show(
+                        "Should I upload?", "You have local changes", MessageBoxButtons.YesNoCancel);
+                    if (result == DialogResult.Cancel)
+                        return;
+                    else if (result == DialogResult.Yes)
+                        Upload();
                 }
-            }
 
-            if (!m_bSynced)
-            {
-                DialogResult result = MessageBox.Show(
-                    "Should I upload?", "You have local changes", MessageBoxButtons.YesNoCancel);
-                if (result == DialogResult.Cancel)
-                    return;
-                else if (result == DialogResult.Yes)
-                {
-                    uploadToolStripMenuItem_Click(sender, e);
-                }
             }
             Application.Exit();
         }
