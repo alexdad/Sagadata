@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Students
+namespace RecordKeeper
 {
     enum Clouds
     {
@@ -91,10 +91,14 @@ namespace Students
             comboBoxSource.Items.AddRange(m_enumSource);
             comboBoxStatus.Items.AddRange(m_enumStatus);
 
+            comboBoxType.Items.Add("Welcome");
             comboBoxType.Items.Add("Students");
             comboBoxType.Items.Add("Teachers");
+            comboBoxType.Items.Add("Programs");
+            comboBoxType.Items.Add("Rooms");
+            comboBoxType.Items.Add("Lessons");
             comboBoxType.Items.Add("Expenses");
-            comboBoxType.Text = "Students";
+            comboBoxType.Text = "Welcome";
         }
 
         private void ShowStudentCount()

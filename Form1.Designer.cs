@@ -1,4 +1,4 @@
-﻿namespace Students
+﻿namespace RecordKeeper
 {
     partial class Form1
     {
@@ -536,7 +536,7 @@
             // 
             // studentList
             // 
-            this.studentList.DataSource = typeof(Students.Student);
+            this.studentList.DataSource = typeof(RecordKeeper.Student);
             // 
             // buttonPrev
             // 
@@ -1217,7 +1217,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Students";
+            this.Text = "RecordKeeper";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);

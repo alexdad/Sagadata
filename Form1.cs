@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Students
+namespace RecordKeeper
 {
     public partial class Form1 : Form
     {
@@ -97,7 +97,7 @@ namespace Students
             Properties.Settings.Default.Save();
         }
         #endregion
-        #region "Navigation"
+        #region "Selection"
         public bool SelectionMode
         {
             get { return buttonShowAll.Enabled; }

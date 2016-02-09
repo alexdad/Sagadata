@@ -7,8 +7,8 @@
     <ProjectGuid>{808DA6F3-E616-463D-95C2-CEEDC362DE4D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Students</RootNamespace>
-    <AssemblyName>Students</AssemblyName>
+    <RootNamespace>RecordKeeper</RootNamespace>
+    <AssemblyName>RecordKeeper</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -154,6 +154,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.config" />
     <None Include="client_id.json">
@@ -187,7 +188,7 @@
     <None Include="SchemaStudent.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Students.config">
+    <None Include="RecordKeeper.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

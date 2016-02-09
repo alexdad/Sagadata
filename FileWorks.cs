@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using System.Reflection;
 
-namespace Students
+namespace RecordKeeper
 {
     public partial class Form1 
     {
