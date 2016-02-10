@@ -50,14 +50,26 @@
             this.pictureBoxGlobIcon = new System.Windows.Forms.PictureBox();
             this.labelGlobSagalingua = new System.Windows.Forms.Label();
             this.panelGlobSearch = new System.Windows.Forms.Panel();
-            this.butGlobalToExcel = new System.Windows.Forms.Button();
-            this.labelGlobSearch = new System.Windows.Forms.Label();
+            this.panelStudSearch = new System.Windows.Forms.Panel();
             this.cbStudSelectLevel = new System.Windows.Forms.ComboBox();
             this.labelStudLevel = new System.Windows.Forms.Label();
+            this.butGlobalToExcel = new System.Windows.Forms.Button();
+            this.labelGlobSearch = new System.Windows.Forms.Label();
             this.buttGlobalShowAll = new System.Windows.Forms.Button();
             this.dataGridViewStudents = new System.Windows.Forms.DataGridView();
+            this.dgvStudColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStudColumnFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStudColumnLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStudColumnEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvStudColumnPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStudColumnLearningLanguage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStudColumnLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStudColumnNativeLanguage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStudColumnOtherLanguage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStudColumnBirthday = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvStudColumnSource = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStudColumnAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.studentList = new System.Windows.Forms.BindingSource(this.components);
             this.butGlobalPrev = new System.Windows.Forms.Button();
             this.butGlobalAdd = new System.Windows.Forms.Button();
             this.butGlobalDelete = new System.Windows.Forms.Button();
@@ -115,26 +127,16 @@
             this.panelGlobEdit = new System.Windows.Forms.Panel();
             this.panelGlobNextNew = new System.Windows.Forms.Panel();
             this.panelGlobLogo = new System.Windows.Forms.Panel();
-            this.cbGlobType = new System.Windows.Forms.ComboBox();
+            this.cbGlobMode = new System.Windows.Forms.ComboBox();
             this.splitContainerGlobMasterDetail = new System.Windows.Forms.SplitContainer();
             this.splitContainerGlobDataControls = new System.Windows.Forms.SplitContainer();
             this.panelGlobIndicators = new System.Windows.Forms.Panel();
-            this.panelStudSearch = new System.Windows.Forms.Panel();
-            this.dgvStudColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvStudColumnFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvStudColumnLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvStudColumnEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvStudColumnLearningLanguage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvStudColumnLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvStudColumnNativeLanguage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvStudColumnOtherLanguage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvStudColumnBirthday = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvStudColumnAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.studentList = new System.Windows.Forms.BindingSource(this.components);
             this.menuStripGlobalOps.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGlobIcon)).BeginInit();
             this.panelGlobSearch.SuspendLayout();
+            this.panelStudSearch.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudents)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.studentList)).BeginInit();
             this.panelStudent.SuspendLayout();
             this.panelStudPrimary.SuspendLayout();
             this.groupBoxStudPrinaryRight.SuspendLayout();
@@ -154,8 +156,6 @@
             this.splitContainerGlobDataControls.Panel2.SuspendLayout();
             this.splitContainerGlobDataControls.SuspendLayout();
             this.panelGlobIndicators.SuspendLayout();
-            this.panelStudSearch.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.studentList)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStripGlobalOps
@@ -345,6 +345,46 @@
             this.panelGlobSearch.Size = new System.Drawing.Size(250, 367);
             this.panelGlobSearch.TabIndex = 11;
             // 
+            // panelStudSearch
+            // 
+            this.panelStudSearch.Controls.Add(this.labelStudStatus);
+            this.panelStudSearch.Controls.Add(this.LabelStudLearns);
+            this.panelStudSearch.Controls.Add(this.labelStudSpeaks);
+            this.panelStudSearch.Controls.Add(this.cbStudSelectLevel);
+            this.panelStudSearch.Controls.Add(this.cbStudSelectLearns);
+            this.panelStudSearch.Controls.Add(this.labelStudLevel);
+            this.panelStudSearch.Controls.Add(this.cbStudSelectSpeaks);
+            this.panelStudSearch.Controls.Add(this.labelStudFirstName1);
+            this.panelStudSearch.Controls.Add(this.cbStudSelectSource);
+            this.panelStudSearch.Controls.Add(this.tbStudSelectFirstName);
+            this.panelStudSearch.Controls.Add(this.labelStudSource);
+            this.panelStudSearch.Controls.Add(this.cbStudSelectStatus);
+            this.panelStudSearch.Controls.Add(this.labelStudLastName);
+            this.panelStudSearch.Controls.Add(this.tbStudSelectLastName);
+            this.panelStudSearch.Location = new System.Drawing.Point(32, 42);
+            this.panelStudSearch.Name = "panelStudSearch";
+            this.panelStudSearch.Size = new System.Drawing.Size(211, 278);
+            this.panelStudSearch.TabIndex = 19;
+            // 
+            // cbStudSelectLevel
+            // 
+            this.cbStudSelectLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStudSelectLevel.FormattingEnabled = true;
+            this.cbStudSelectLevel.Location = new System.Drawing.Point(69, 205);
+            this.cbStudSelectLevel.Name = "cbStudSelectLevel";
+            this.cbStudSelectLevel.Size = new System.Drawing.Size(121, 21);
+            this.cbStudSelectLevel.TabIndex = 16;
+            this.cbStudSelectLevel.SelectedIndexChanged += new System.EventHandler(this.comboBoxSelectLevel_SelectedIndexChanged);
+            // 
+            // labelStudLevel
+            // 
+            this.labelStudLevel.AutoSize = true;
+            this.labelStudLevel.Location = new System.Drawing.Point(16, 196);
+            this.labelStudLevel.Name = "labelStudLevel";
+            this.labelStudLevel.Size = new System.Drawing.Size(36, 13);
+            this.labelStudLevel.TabIndex = 15;
+            this.labelStudLevel.Text = "Level:";
+            // 
             // butGlobalToExcel
             // 
             this.butGlobalToExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(210)))), ((int)(((byte)(47)))));
@@ -368,25 +408,6 @@
             this.labelGlobSearch.Size = new System.Drawing.Size(52, 15);
             this.labelGlobSearch.TabIndex = 17;
             this.labelGlobSearch.Text = "Search";
-            // 
-            // cbStudSelectLevel
-            // 
-            this.cbStudSelectLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbStudSelectLevel.FormattingEnabled = true;
-            this.cbStudSelectLevel.Location = new System.Drawing.Point(69, 205);
-            this.cbStudSelectLevel.Name = "cbStudSelectLevel";
-            this.cbStudSelectLevel.Size = new System.Drawing.Size(121, 21);
-            this.cbStudSelectLevel.TabIndex = 16;
-            this.cbStudSelectLevel.SelectedIndexChanged += new System.EventHandler(this.comboBoxSelectLevel_SelectedIndexChanged);
-            // 
-            // labelStudLevel
-            // 
-            this.labelStudLevel.AutoSize = true;
-            this.labelStudLevel.Location = new System.Drawing.Point(16, 196);
-            this.labelStudLevel.Name = "labelStudLevel";
-            this.labelStudLevel.Size = new System.Drawing.Size(36, 13);
-            this.labelStudLevel.TabIndex = 15;
-            this.labelStudLevel.Text = "Level:";
             // 
             // buttGlobalShowAll
             // 
@@ -434,6 +455,34 @@
             this.dataGridViewStudents.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridViewStudents.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_ColumnHeaderMouseClick);
             // 
+            // dgvStudColumnStatus
+            // 
+            this.dgvStudColumnStatus.DataPropertyName = "Status";
+            this.dgvStudColumnStatus.HeaderText = "Status";
+            this.dgvStudColumnStatus.Name = "dgvStudColumnStatus";
+            this.dgvStudColumnStatus.ReadOnly = true;
+            // 
+            // dgvStudColumnFirstName
+            // 
+            this.dgvStudColumnFirstName.DataPropertyName = "FirstName";
+            this.dgvStudColumnFirstName.HeaderText = "First Name";
+            this.dgvStudColumnFirstName.Name = "dgvStudColumnFirstName";
+            this.dgvStudColumnFirstName.ReadOnly = true;
+            // 
+            // dgvStudColumnLastName
+            // 
+            this.dgvStudColumnLastName.DataPropertyName = "LastName";
+            this.dgvStudColumnLastName.HeaderText = "Last Name";
+            this.dgvStudColumnLastName.Name = "dgvStudColumnLastName";
+            this.dgvStudColumnLastName.ReadOnly = true;
+            // 
+            // dgvStudColumnEmail
+            // 
+            this.dgvStudColumnEmail.DataPropertyName = "Email";
+            this.dgvStudColumnEmail.HeaderText = "Email";
+            this.dgvStudColumnEmail.Name = "dgvStudColumnEmail";
+            this.dgvStudColumnEmail.ReadOnly = true;
+            // 
             // dgvStudColumnPhone
             // 
             this.dgvStudColumnPhone.DataPropertyName = "Phone";
@@ -441,12 +490,58 @@
             this.dgvStudColumnPhone.Name = "dgvStudColumnPhone";
             this.dgvStudColumnPhone.ReadOnly = true;
             // 
+            // dgvStudColumnLearningLanguage
+            // 
+            this.dgvStudColumnLearningLanguage.DataPropertyName = "LearningLanguage";
+            this.dgvStudColumnLearningLanguage.HeaderText = "Learning";
+            this.dgvStudColumnLearningLanguage.Name = "dgvStudColumnLearningLanguage";
+            this.dgvStudColumnLearningLanguage.ReadOnly = true;
+            // 
+            // dgvStudColumnLevel
+            // 
+            this.dgvStudColumnLevel.DataPropertyName = "Level";
+            this.dgvStudColumnLevel.HeaderText = "Level";
+            this.dgvStudColumnLevel.Name = "dgvStudColumnLevel";
+            this.dgvStudColumnLevel.ReadOnly = true;
+            // 
+            // dgvStudColumnNativeLanguage
+            // 
+            this.dgvStudColumnNativeLanguage.DataPropertyName = "NativeLanguage";
+            this.dgvStudColumnNativeLanguage.HeaderText = "Native";
+            this.dgvStudColumnNativeLanguage.Name = "dgvStudColumnNativeLanguage";
+            this.dgvStudColumnNativeLanguage.ReadOnly = true;
+            // 
+            // dgvStudColumnOtherLanguage
+            // 
+            this.dgvStudColumnOtherLanguage.DataPropertyName = "OtherLanguage";
+            this.dgvStudColumnOtherLanguage.HeaderText = "Other";
+            this.dgvStudColumnOtherLanguage.Name = "dgvStudColumnOtherLanguage";
+            this.dgvStudColumnOtherLanguage.ReadOnly = true;
+            // 
+            // dgvStudColumnBirthday
+            // 
+            this.dgvStudColumnBirthday.DataPropertyName = "Birthday";
+            this.dgvStudColumnBirthday.HeaderText = "Birthday";
+            this.dgvStudColumnBirthday.Name = "dgvStudColumnBirthday";
+            this.dgvStudColumnBirthday.ReadOnly = true;
+            // 
             // dgvStudColumnSource
             // 
             this.dgvStudColumnSource.DataPropertyName = "Source";
             this.dgvStudColumnSource.HeaderText = "Source";
             this.dgvStudColumnSource.Name = "dgvStudColumnSource";
             this.dgvStudColumnSource.ReadOnly = true;
+            // 
+            // dgvStudColumnAddress
+            // 
+            this.dgvStudColumnAddress.DataPropertyName = "MailingAddress";
+            this.dgvStudColumnAddress.HeaderText = "Address";
+            this.dgvStudColumnAddress.Name = "dgvStudColumnAddress";
+            this.dgvStudColumnAddress.ReadOnly = true;
+            // 
+            // studentList
+            // 
+            this.studentList.DataSource = typeof(RecordKeeper.Student);
             // 
             // butGlobalPrev
             // 
@@ -1050,7 +1145,7 @@
             // panelGlobLogo
             // 
             this.panelGlobLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelGlobLogo.Controls.Add(this.cbGlobType);
+            this.panelGlobLogo.Controls.Add(this.cbGlobMode);
             this.panelGlobLogo.Controls.Add(this.pictureBoxGlobIcon);
             this.panelGlobLogo.Controls.Add(this.labelGlobSagalingua);
             this.panelGlobLogo.Controls.Add(this.labelGlobCount);
@@ -1059,15 +1154,16 @@
             this.panelGlobLogo.Size = new System.Drawing.Size(183, 325);
             this.panelGlobLogo.TabIndex = 24;
             // 
-            // cbGlobType
+            // cbGlobMode
             // 
-            this.cbGlobType.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbGlobType.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(119)))), ((int)(((byte)(237)))));
-            this.cbGlobType.FormattingEnabled = true;
-            this.cbGlobType.Location = new System.Drawing.Point(3, 28);
-            this.cbGlobType.Name = "cbGlobType";
-            this.cbGlobType.Size = new System.Drawing.Size(145, 33);
-            this.cbGlobType.TabIndex = 21;
+            this.cbGlobMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbGlobMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(119)))), ((int)(((byte)(237)))));
+            this.cbGlobMode.FormattingEnabled = true;
+            this.cbGlobMode.Location = new System.Drawing.Point(3, 28);
+            this.cbGlobMode.Name = "cbGlobMode";
+            this.cbGlobMode.Size = new System.Drawing.Size(145, 33);
+            this.cbGlobMode.TabIndex = 21;
+            this.cbGlobMode.SelectedIndexChanged += new System.EventHandler(this.cbGlobType_SelectedIndexChanged);
             // 
             // splitContainerGlobMasterDetail
             // 
@@ -1116,101 +1212,6 @@
             this.panelGlobIndicators.Size = new System.Drawing.Size(1051, 24);
             this.panelGlobIndicators.TabIndex = 27;
             // 
-            // panelStudSearch
-            // 
-            this.panelStudSearch.Controls.Add(this.labelStudStatus);
-            this.panelStudSearch.Controls.Add(this.LabelStudLearns);
-            this.panelStudSearch.Controls.Add(this.labelStudSpeaks);
-            this.panelStudSearch.Controls.Add(this.cbStudSelectLevel);
-            this.panelStudSearch.Controls.Add(this.cbStudSelectLearns);
-            this.panelStudSearch.Controls.Add(this.labelStudLevel);
-            this.panelStudSearch.Controls.Add(this.cbStudSelectSpeaks);
-            this.panelStudSearch.Controls.Add(this.labelStudFirstName1);
-            this.panelStudSearch.Controls.Add(this.cbStudSelectSource);
-            this.panelStudSearch.Controls.Add(this.tbStudSelectFirstName);
-            this.panelStudSearch.Controls.Add(this.labelStudSource);
-            this.panelStudSearch.Controls.Add(this.cbStudSelectStatus);
-            this.panelStudSearch.Controls.Add(this.labelStudLastName);
-            this.panelStudSearch.Controls.Add(this.tbStudSelectLastName);
-            this.panelStudSearch.Location = new System.Drawing.Point(32, 42);
-            this.panelStudSearch.Name = "panelStudSearch";
-            this.panelStudSearch.Size = new System.Drawing.Size(211, 278);
-            this.panelStudSearch.TabIndex = 19;
-            // 
-            // dgvStudColumnStatus
-            // 
-            this.dgvStudColumnStatus.DataPropertyName = "Status";
-            this.dgvStudColumnStatus.HeaderText = "Status";
-            this.dgvStudColumnStatus.Name = "dgvStudColumnStatus";
-            this.dgvStudColumnStatus.ReadOnly = true;
-            // 
-            // dgvStudColumnFirstName
-            // 
-            this.dgvStudColumnFirstName.DataPropertyName = "FirstName";
-            this.dgvStudColumnFirstName.HeaderText = "First Name";
-            this.dgvStudColumnFirstName.Name = "dgvStudColumnFirstName";
-            this.dgvStudColumnFirstName.ReadOnly = true;
-            // 
-            // dgvStudColumnLastName
-            // 
-            this.dgvStudColumnLastName.DataPropertyName = "LastName";
-            this.dgvStudColumnLastName.HeaderText = "Last Name";
-            this.dgvStudColumnLastName.Name = "dgvStudColumnLastName";
-            this.dgvStudColumnLastName.ReadOnly = true;
-            // 
-            // dgvStudColumnEmail
-            // 
-            this.dgvStudColumnEmail.DataPropertyName = "Email";
-            this.dgvStudColumnEmail.HeaderText = "Email";
-            this.dgvStudColumnEmail.Name = "dgvStudColumnEmail";
-            this.dgvStudColumnEmail.ReadOnly = true;
-            // 
-            // dgvStudColumnLearningLanguage
-            // 
-            this.dgvStudColumnLearningLanguage.DataPropertyName = "LearningLanguage";
-            this.dgvStudColumnLearningLanguage.HeaderText = "Learning";
-            this.dgvStudColumnLearningLanguage.Name = "dgvStudColumnLearningLanguage";
-            this.dgvStudColumnLearningLanguage.ReadOnly = true;
-            // 
-            // dgvStudColumnLevel
-            // 
-            this.dgvStudColumnLevel.DataPropertyName = "Level";
-            this.dgvStudColumnLevel.HeaderText = "Level";
-            this.dgvStudColumnLevel.Name = "dgvStudColumnLevel";
-            this.dgvStudColumnLevel.ReadOnly = true;
-            // 
-            // dgvStudColumnNativeLanguage
-            // 
-            this.dgvStudColumnNativeLanguage.DataPropertyName = "NativeLanguage";
-            this.dgvStudColumnNativeLanguage.HeaderText = "Native";
-            this.dgvStudColumnNativeLanguage.Name = "dgvStudColumnNativeLanguage";
-            this.dgvStudColumnNativeLanguage.ReadOnly = true;
-            // 
-            // dgvStudColumnOtherLanguage
-            // 
-            this.dgvStudColumnOtherLanguage.DataPropertyName = "OtherLanguage";
-            this.dgvStudColumnOtherLanguage.HeaderText = "Other";
-            this.dgvStudColumnOtherLanguage.Name = "dgvStudColumnOtherLanguage";
-            this.dgvStudColumnOtherLanguage.ReadOnly = true;
-            // 
-            // dgvStudColumnBirthday
-            // 
-            this.dgvStudColumnBirthday.DataPropertyName = "Birthday";
-            this.dgvStudColumnBirthday.HeaderText = "Birthday";
-            this.dgvStudColumnBirthday.Name = "dgvStudColumnBirthday";
-            this.dgvStudColumnBirthday.ReadOnly = true;
-            // 
-            // dgvStudColumnAddress
-            // 
-            this.dgvStudColumnAddress.DataPropertyName = "MailingAddress";
-            this.dgvStudColumnAddress.HeaderText = "Address";
-            this.dgvStudColumnAddress.Name = "dgvStudColumnAddress";
-            this.dgvStudColumnAddress.ReadOnly = true;
-            // 
-            // studentList
-            // 
-            this.studentList.DataSource = typeof(RecordKeeper.Student);
-            // 
             // FormGlob
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1230,7 +1231,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGlobIcon)).EndInit();
             this.panelGlobSearch.ResumeLayout(false);
             this.panelGlobSearch.PerformLayout();
+            this.panelStudSearch.ResumeLayout(false);
+            this.panelStudSearch.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudents)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.studentList)).EndInit();
             this.panelStudent.ResumeLayout(false);
             this.panelStudPrimary.ResumeLayout(false);
             this.groupBoxStudPrinaryRight.ResumeLayout(false);
@@ -1256,9 +1260,6 @@
             this.splitContainerGlobDataControls.ResumeLayout(false);
             this.panelGlobIndicators.ResumeLayout(false);
             this.panelGlobIndicators.PerformLayout();
-            this.panelStudSearch.ResumeLayout(false);
-            this.panelStudSearch.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.studentList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1365,7 +1366,7 @@
         private System.Windows.Forms.Label labelStudDetailsLanguage;
         private System.Windows.Forms.Panel panelStudPrimaryLeft;
         private System.Windows.Forms.Panel panelStudPrimary;
-        private System.Windows.Forms.ComboBox cbGlobType;
+        private System.Windows.Forms.ComboBox cbGlobMode;
         private System.Windows.Forms.Panel panelStudSearch;
     }
 }

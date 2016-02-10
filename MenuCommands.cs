@@ -19,18 +19,18 @@ namespace RecordKeeper
         private void downloadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //ReadStudentsFile(m_studentsAsRead);
-            Download();
+            m_curType.Download<Student>();
         }
 
         private void uploadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Upload();
+            m_curType.Upload<Student>();
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            EndSelectionMode();
-            WriteStudentsFile();
+            m_curType.EndSelectionMode();
+            m_curType.WriteRecordsFile();
             m_bChanged = false;
         }
 
@@ -50,7 +50,7 @@ namespace RecordKeeper
                     if (result == DialogResult.Cancel)
                         return;
                     else if (result == DialogResult.Yes)
-                        Upload();
+                        m_curType.Upload<Student>();
                 }
 
             }

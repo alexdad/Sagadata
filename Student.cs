@@ -6,21 +6,15 @@ using System.Threading.Tasks;
 
 namespace RecordKeeper
 {
-    public class Student
+    public class Student : Record
     {
         public string Background { get; set; }
         public String Birthday { get; set; }
         public string CellPhone { get; set; }
-        public DateTime Changed { get; set; }
-        public string ChangedBy { get; set; }
-        public string Comments { get; set; }
-        public DateTime Created { get; set; }
-        public string CreatedBy { get; set; }
         public string Email { get; set; }
         public string FirstName { get; set; }
         public string Goals { get; set; }
         public string HomePhone { get; set; }
-        public int Id { get; set; }
         public string Interests { get; set; }
         public string LastName { get; set; }
         public String LearningLanguage { get; set; }
@@ -33,9 +27,13 @@ namespace RecordKeeper
         public string Source { get; set; }
         public string SourceDetail { get; set; }
         public string Status { get; set; }
-
-        public string Key { get { return CreatedBy + Id.ToString();  } }
-        public string Phone { get { return (CellPhone.Length > 0 ? CellPhone : HomePhone); }
+        public string Phone
+        {
+            get { return (CellPhone.Length > 0 ? CellPhone : HomePhone); }
+        }
+        public override string Description
+        {
+            get { return FirstName + " " + LastName; }
         }
 
         public Student()
@@ -96,7 +94,7 @@ namespace RecordKeeper
             Status = st.Status;
         }
 
-        public bool Set(string field, string value)
+        public override bool Set(string field, string value)
         {
             while (value.StartsWith("\""))
                 value = value.Substring(1);
@@ -187,7 +185,7 @@ namespace RecordKeeper
             return true;
         }
 
-        public string Get(string field)
+        public override string Get(string field)
         {
             switch (field)
             {
@@ -245,101 +243,101 @@ namespace RecordKeeper
                     throw new Exception("unknown field " + field);
             }
         }
-    }
 
-    #region "Comparers"
-    public class ComparerByFirstName : IComparer<Student>
-    {
-        public int Compare(Student y, Student x)
+        #region "Comparers"
+        public class ComparerByFirstName : IComparer<Student>
         {
-            return y.FirstName.CompareTo(x.FirstName);
+            public int Compare(Student y, Student x)
+            {
+                return y.FirstName.CompareTo(x.FirstName);
+            }
         }
-    }
-    public class ComparerByLastName : IComparer<Student>
-    {
-        public int Compare(Student y, Student x)
+        public class ComparerByLastName : IComparer<Student>
         {
-            return y.LastName.CompareTo(x.LastName);
+            public int Compare(Student y, Student x)
+            {
+                return y.LastName.CompareTo(x.LastName);
+            }
         }
-    }
-    public class ComparerByStatus : IComparer<Student>
-    {
-        public int Compare(Student y, Student x)
+        public class ComparerByStatus : IComparer<Student>
         {
-            return y.Status.CompareTo(x.Status);
+            public int Compare(Student y, Student x)
+            {
+                return y.Status.CompareTo(x.Status);
+            }
         }
-    }
-    public class ComparerBySource : IComparer<Student>
-    {
-        public int Compare(Student y, Student x)
+        public class ComparerBySource : IComparer<Student>
         {
-            return y.Source.CompareTo(x.Source);
+            public int Compare(Student y, Student x)
+            {
+                return y.Source.CompareTo(x.Source);
+            }
         }
-    }
-    public class ComparerByLearns : IComparer<Student>
-    {
-        public int Compare(Student y, Student x)
+        public class ComparerByLearns : IComparer<Student>
         {
-            return y.LearningLanguage.CompareTo(x.LearningLanguage);
+            public int Compare(Student y, Student x)
+            {
+                return y.LearningLanguage.CompareTo(x.LearningLanguage);
+            }
         }
-    }
-    public class ComparerByOther: IComparer<Student>
-    {
-        public int Compare(Student y, Student x)
+        public class ComparerByOther : IComparer<Student>
         {
-            return y.OtherLanguage.CompareTo(x.OtherLanguage);
+            public int Compare(Student y, Student x)
+            {
+                return y.OtherLanguage.CompareTo(x.OtherLanguage);
+            }
         }
-    }
-    public class ComparerByLevel: IComparer<Student>
-    {
-        public int Compare(Student y, Student x)
+        public class ComparerByLevel : IComparer<Student>
         {
-            return y.Level.CompareTo(x.Level);
+            public int Compare(Student y, Student x)
+            {
+                return y.Level.CompareTo(x.Level);
+            }
         }
-    }
-    public class ComparerBySpeaks : IComparer<Student>
-    {
-        public int Compare(Student y, Student x)
+        public class ComparerBySpeaks : IComparer<Student>
         {
-            return y.NativeLanguage.CompareTo(x.NativeLanguage);
+            public int Compare(Student y, Student x)
+            {
+                return y.NativeLanguage.CompareTo(x.NativeLanguage);
+            }
         }
-    }
-    public class ComparerByChanged : IComparer<Student>
-    {
-        public int Compare(Student y, Student x)
+        public class ComparerByChanged : IComparer<Student>
         {
-            return y.Changed.CompareTo(x.Changed);
+            public int Compare(Student y, Student x)
+            {
+                return y.Changed.CompareTo(x.Changed);
+            }
         }
-    }
 
-    public class ComparerByEmail : IComparer<Student>
-    {
-        public int Compare(Student y, Student x)
+        public class ComparerByEmail : IComparer<Student>
         {
-            return y.Email.CompareTo(x.Email);
+            public int Compare(Student y, Student x)
+            {
+                return y.Email.CompareTo(x.Email);
+            }
         }
-    }
-    public class ComparerByCellPhone: IComparer<Student>
-    {
-        public int Compare(Student y, Student x)
+        public class ComparerByCellPhone : IComparer<Student>
         {
-            return y.CellPhone.CompareTo(x.CellPhone);
+            public int Compare(Student y, Student x)
+            {
+                return y.CellPhone.CompareTo(x.CellPhone);
+            }
         }
-    }
-    public class ComparerByBirthday : IComparer<Student>
-    {
-        public int Compare(Student y, Student x)
+        public class ComparerByBirthday : IComparer<Student>
         {
-            return y.Birthday.CompareTo(x.Birthday);
+            public int Compare(Student y, Student x)
+            {
+                return y.Birthday.CompareTo(x.Birthday);
+            }
         }
-    }
 
-    public class ComparerByAddress : IComparer<Student>
-    {
-        public int Compare(Student y, Student x)
+        public class ComparerByAddress : IComparer<Student>
         {
-            return y.MailingAddress.CompareTo(x.MailingAddress);
+            public int Compare(Student y, Student x)
+            {
+                return y.MailingAddress.CompareTo(x.MailingAddress);
+            }
         }
+        #endregion
     }
-    #endregion
 }

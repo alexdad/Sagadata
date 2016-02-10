@@ -11,14 +11,14 @@ using System.Windows.Forms;
 
 namespace RecordKeeper
 {
-    enum Clouds
+    public enum Clouds
     {
         None,
         Dir,
         Google,
         Azure
     }
-    enum Validations
+    public enum Validations
     {
         Ignore,
         Number,
@@ -32,7 +32,7 @@ namespace RecordKeeper
         Source
     }
 
-    struct SchemaField
+    public struct SchemaField
     {
         public SchemaField(string h, string v)
         {
@@ -91,17 +91,10 @@ namespace RecordKeeper
             cbStudSource.Items.AddRange(m_enumSource);
             cbStudStatus.Items.AddRange(m_enumStatus);
 
-            cbGlobType.Items.Add("Welcome");
-            cbGlobType.Items.Add("Students");
-            cbGlobType.Items.Add("Teachers");
-            cbGlobType.Items.Add("Programs");
-            cbGlobType.Items.Add("Rooms");
-            cbGlobType.Items.Add("Lessons");
-            cbGlobType.Items.Add("Expenses");
-            cbGlobType.Text = "Welcome";
+            cbGlobMode.Items.AddRange(m_enumModes);
         }
 
-        private void ShowStudentCount()
+        public void ShowStudentCount()
         {
             labelGlobCount.Text = studentList.Count.ToString();
         }

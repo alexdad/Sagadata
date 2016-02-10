@@ -26,12 +26,11 @@ namespace RecordKeeper
             MaxID = Math.Max(MaxID, id);
         }
 
-        Student[] m_savedFullListDuringSelection;
-        Dictionary<string, Student> m_studentsAsRead;
-        List<string> m_deletedKeys;
-
-        SchemaField[] m_schema;
-        int[] m_placements;
+        //Record[] m_savedFullListDuringSelection;
+        //Dictionary<string, Record> m_recordsAsRead;
+        //List<string> m_deletedKeys;
+        //SchemaField[] m_schema;
+        //int[] m_placements;
         string m_dataLocation;
         string m_cloudLocation;
         string m_backupLocation;
@@ -39,6 +38,7 @@ namespace RecordKeeper
         Clouds m_cloudType;
         int m_backupLimit;
 
+        string[] m_enumModes;
         string[] m_enumLanguage;
         string[] m_enumLevel;
         string[] m_enumSource;
@@ -54,38 +54,84 @@ namespace RecordKeeper
         string m_selectionSource;
         string m_selectionLevel;
 
+        string m_mode;
+        RecordType m_curType;
         bool m_bChanged;
+
+        public Clouds CloudType { get { return m_cloudType; } }
+        public string CloudLocation { get { return m_cloudLocation; } }
+
+        public string FileName { get { return m_fileName; } }
+
+        public bool Changed { get { return m_bChanged; } set { m_bChanged = value;  } }
+
+        public string LastDownloadText { set { labelGlobLastDownload.Text = value; } }
+        public string LastUploadText { set { labelGlobLastUpload.Text = value; } }
+
+        public Dictionary<string, Record> RecordsAsRead { get; set; }
+
+        public int[] Placements { get; set; }
+
+        public SchemaField[] Schema { get; set; }
+
+        public List<string> DeletedKeys { get; set;  }
+
+        public Record[] SavedFullListDuringSelection { get; set; }
+
+        public string SelectionLevel { get { return m_selectionLevel; } set { m_selectionLevel = value; } }
+
+        public string BackupLocation { get { return m_backupLocation; } set { m_backupLocation = value; }  }
+
+        public System.Windows.Forms.BindingSource DataList
+        {
+            get
+            {
+                // Here are links between manually crafted per-record-type UI and modes
+                switch(m_mode)
+                {
+                    case "Students":
+                        return studentList;
+                    default:
+                        return null;
+                }
+            }
+        }
+
 
         #region "Form"
         public FormGlob()
         {
+            Client = Environment.MachineName;
             ReadSettings();
             ReadSchemas();
             PrepareDataDirectories();
             InitializeComponent();
             AssignEnums();
+
+            m_mode = m_enumModes[0];
+            m_curType = new StudentType(this);
+
             SelectionMode = false;
-            m_deletedKeys = new List<string>();
-            Client = Environment.MachineName;
-            m_studentsAsRead = new Dictionary<string, Student>();
-
-            if (Properties.Settings.Default.InitialDownload.ToLower() != "no")
-            {
-                if (!Download())
-                    ReadStudentsFile(m_studentsAsRead);
-            }
-            else
-                ReadStudentsFile(m_studentsAsRead);
-
-            ShowStudentCount();
-            m_bChanged = false;
+            DeletedKeys = new List<string>();
+            RecordsAsRead = new Dictionary<string, Record>();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            if (Properties.Settings.Default.InitialDownload.ToLower() != "no")
+            {
+                if (!m_curType.Download<Student>())
+                    m_curType.ReadRecordsFile<Student>(RecordsAsRead);
+            }
+            else
+                m_curType.ReadRecordsFile<Student>(RecordsAsRead);
+
+            ShowStudentCount();
+
             this.Size = Properties.Settings.Default.Form1Size;
             splitContainerGlobDataControls.SplitterDistance = Properties.Settings.Default.SplitDC;
             splitContainerGlobMasterDetail.SplitterDistance = Properties.Settings.Default.SplitMD;
+
             m_bChanged = false;
         }
 
@@ -97,6 +143,24 @@ namespace RecordKeeper
             Properties.Settings.Default.Save();
         }
         #endregion
+        #region "Mode navigation"
+        private void cbGlobType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            string mode = (string)comboBox.SelectedItem;
+
+
+        }
+        #endregion
+        #region TypeSpecificFormControlRelated
+        public void ReplaceStudentList(Student[] target)
+        {
+            studentList.Clear();
+            foreach (Student s in target)
+                studentList.Add(s);
+        }
+        #endregion
+
         #region "Selection"
         public bool SelectionMode
         {
@@ -104,32 +168,55 @@ namespace RecordKeeper
             set { buttGlobalShowAll.Enabled = value; }
         }
 
-        private void EndSelectionMode()
+
+        public void DoStudentSelection()
         {
-            if (SelectionMode)
+            if (!SelectionMode)
             {
-                Student[] temp = ForkOut(0);
-                RestoreStudentList();
-                MergeBack(temp);
-                SelectionMode = false;
+                SelectionMode = true;
+                m_curType.StashRecordList();
             }
+
+            DataList.Clear();
+            foreach (Student s in SavedFullListDuringSelection)
+            {
+                if (!m_curType.Fit(m_selectionStatus, s.Status, true))
+                    continue;
+                if (!m_curType.Fit(m_selectionLearns, s.LearningLanguage, true))
+                    continue;
+                if (!m_curType.Fit(m_selectionSpeaks, s.NativeLanguage, true))
+                    continue;
+                if (!m_curType.Fit(m_selectionFirstName, s.FirstName, false))
+                    continue;
+                if (!m_curType.Fit(m_selectionLastName, s.LastName, false))
+                    continue;
+                if (!m_curType.Fit(m_selectionSource, s.Source, true))
+                    continue;
+                if (!m_curType.Fit(m_selectionLevel, s.Level, true))
+                    continue;
+
+                DataList.Add(s);
+            }
+            m_curType.ShowCount();
+            m_bChanged = true;
         }
+
         #endregion
         #region "DataGridClicks"
         private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (e.ColumnIndex != s_lastColumnSorted)
+            if (e.ColumnIndex != Record.LastColumnSorted)
             {
-                s_lastColumnSorted = e.ColumnIndex;
-                s_needToReverse = false;
+                Record.LastColumnSorted = e.ColumnIndex;
+                Record.NeedToReverse = false;
             }
             else
-                s_needToReverse = !s_needToReverse;
+                Record.NeedToReverse = !Record.NeedToReverse;
 
             DataGridViewColumn col = dataGridViewStudents.Columns[e.ColumnIndex];
-            Student[] temp = ForkOut(0);
-            SortStudents(col.HeaderText, temp);
-            ReplaceStudentList(temp);
+            Record[] temp = m_curType.ForkOut<Record>(0);
+            m_curType.SortRecords(col.HeaderText, temp);
+            m_curType.ReplaceRecordList(temp);
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -140,7 +227,8 @@ namespace RecordKeeper
 
                 Clipboard.SetText(dataGridViewStudents[e.ColumnIndex, e.RowIndex].Value.ToString());
         }
-    #endregion
+
+        #endregion
         #region "ButtonClicks"
         private void buttonNext_Click(object sender, EventArgs e)
         {
@@ -166,7 +254,7 @@ namespace RecordKeeper
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             Student s = (Student)studentList.Current;
-            m_deletedKeys.Add(s.Key);
+            DeletedKeys.Add(s.Key);
             studentList.RemoveCurrent();
             ShowStudentCount();
             m_bChanged = true;
@@ -174,7 +262,7 @@ namespace RecordKeeper
 
         private void buttonShowAll_Click(object sender, EventArgs e)
         {
-            EndSelectionMode();
+            m_curType.EndSelectionMode();
 
             m_selectionStatus = null;
             m_selectionLearns = null;
@@ -196,7 +284,7 @@ namespace RecordKeeper
 
         private void buttonToExcel_Click(object sender, EventArgs e)
         {
-            string tempCsv = WriteTempFile();
+            string tempCsv = m_curType.WriteTempFile();
             System.Diagnostics.Process.Start(tempCsv);
         }
 
@@ -206,33 +294,33 @@ namespace RecordKeeper
         {
             ComboBox comboBox = (ComboBox)sender;
             m_selectionStatus = (string)comboBox.SelectedItem;
-            DoSelection();
+            m_curType.DoSelection();
         }
 
         private void comboBoxSelectLearns_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
             m_selectionLearns = (string)comboBox.SelectedItem;
-            DoSelection();
+            m_curType.DoSelection();
         }
 
         private void comboBoxSelectSpeaks_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
             m_selectionSpeaks = (string)comboBox.SelectedItem;
-            DoSelection();
+            m_curType.DoSelection();
         }
         private void comboBoxSelectSource_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
             m_selectionSource = (string)comboBox.SelectedItem;
-            DoSelection();
+            m_curType.DoSelection();
         }
         private void comboBoxSelectLevel_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
             m_selectionLevel = (string)comboBox.SelectedItem;
-            DoSelection();
+            m_curType.DoSelection();
         }
         #endregion
         #region "TextBoxClicks"
@@ -240,14 +328,14 @@ namespace RecordKeeper
         {
             TextBox testBox = (TextBox)sender;
             m_selectionFirstName = testBox.Text;
-            DoSelection();
+            m_curType.DoSelection();
         }
 
         private void textBoxSelectLastName_TextChanged(object sender, EventArgs e)
         {
             TextBox testBox = (TextBox)sender;
             m_selectionLastName = (string)testBox.Text;
-            DoSelection();
+            m_curType.DoSelection();
         }
         private void textBoxComments_TextChanged(object sender, EventArgs e)
         {

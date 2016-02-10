@@ -26,16 +26,16 @@ namespace GDrive
 
         public enum Direction {  Up, Down };
 
-        public static bool DownloadStudentsFile(string cloudName, string target)
+        public static bool DownloadDataFile(string cloudName, string target)
         {
-            return TransferStudentsFile(cloudName, target, Direction.Down);
+            return TransferDataFile(cloudName, target, Direction.Down);
         }
-        public static bool UploadStudentsFile(string localPath, string cloudName)
+        public static bool UploadDataFile(string localPath, string cloudName)
         {
-            return TransferStudentsFile(cloudName, localPath, Direction.Up);
+            return TransferDataFile(cloudName, localPath, Direction.Up);
         }
 
-        public static bool TransferStudentsFile(string cloudName, string target, Direction direction)
+        public static bool TransferDataFile(string cloudName, string target, Direction direction)
         {
             bool success = false;
             UserCredential credential;
