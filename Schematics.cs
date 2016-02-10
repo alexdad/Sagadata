@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -76,6 +77,17 @@ namespace RecordKeeper
 
     public partial class FormGlob : Form
     {
+        public static string Client;
+        public static int MaxID { get; set; }
+        public static int AllocateID()
+        {
+            return ++MaxID;
+        }
+        public static void AccumulateID(int id)
+        {
+            MaxID = Math.Max(MaxID, id);
+        }
+
         private void AssignEnums()
         {
             cbStudSelectLearns.Items.AddRange(m_enumLanguage);
@@ -94,9 +106,96 @@ namespace RecordKeeper
             cbGlobMode.Items.AddRange(m_enumModes);
         }
 
+        public bool SelectionMode
+        {
+            get { return buttGlobalShowAll.Enabled; }
+            set { buttGlobalShowAll.Enabled = value; }
+        }
+
         public void ShowStudentCount()
         {
             labelGlobCount.Text = studentList.Count.ToString();
+        }
+
+        void PrepareDataDirectories()
+        {
+            string userDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string requestedDir = Properties.Settings.Default.DataDir;
+            string sd = (requestedDir.Trim().Length == 0 ?
+                Path.Combine(userDir, "Sagalingua").ToString() :
+                Path.Combine(requestedDir, "Sagalingua").ToString());
+
+            if (!Directory.Exists(sd))
+                Directory.CreateDirectory(sd);
+
+            string rl = Path.Combine(sd, "Remote").ToString();
+            if (!Directory.Exists(rl))
+                Directory.CreateDirectory(rl);
+
+            CloudLocation = Path.Combine(rl, FileName + ".csv");
+
+            DataLocation = Path.Combine(sd, "Students").ToString();
+            if (!Directory.Exists(DataLocation))
+                Directory.CreateDirectory(DataLocation);
+
+            BackupLocation = Path.Combine(DataLocation, "Backup").ToString();
+            if (!Directory.Exists(BackupLocation))
+                Directory.CreateDirectory(BackupLocation);
+        }
+        void ReadSchemas()
+        {
+            string binLocation = Directory.GetCurrentDirectory();
+            m_enumModes = File.ReadAllLines(Path.Combine(binLocation, "EnumModes.csv").ToString());
+            m_enumLanguage = File.ReadAllLines(Path.Combine(binLocation, "EnumLanguage.csv").ToString());
+            m_enumLevel = File.ReadAllLines(Path.Combine(binLocation, "EnumLevel.csv").ToString());
+            m_enumSource = File.ReadAllLines(Path.Combine(binLocation, "EnumSource.csv").ToString());
+            m_enumStatus = File.ReadAllLines(Path.Combine(binLocation, "EnumStatus.csv").ToString());
+            string[] schema = File.ReadAllLines(Path.Combine(binLocation, "SchemaStudent.csv").ToString());
+
+            List<SchemaField> schemaList = new List<SchemaField>();
+            foreach (string s in schema)
+            {
+                string[] vals = s.Split(',');
+                if (vals.Length != 3)
+                    throw new Exception("ILlegal schema line: " + s);
+                schemaList.Add(new SchemaField(vals[0], vals[1]));
+            }
+            Schema = schemaList.ToArray();
+
+
+            // TODO - generalize into a file
+            m_enumColumnNames = new string[]
+                { "Status", "First Name", "Last Name", "Email", "Phone", "Learning", "Level",
+                  "Native", "Other", "Birthday", "Source", "Address"};
+
+            m_enumSortDirection = new string[2]
+                { "Asc", "Desc"};
+        }
+
+        private void ReadSettings()
+        {
+            string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            CloudType = Clouds.None;
+            FileName = Properties.Settings.Default.FileName;
+            switch (Properties.Settings.Default.CloudType.ToLower())
+            {
+                case "dir":
+                    CloudType = Clouds.Dir;
+                    break;
+                case "azure":
+                    CloudType = Clouds.Azure;
+                    break;
+                case "google":
+                    CloudType = Clouds.Google;
+                    break;
+            }
+
+            BackupLimit = Properties.Settings.Default.BackupLimit;
+        }
+
+        public string FilePath
+        {
+            get { return Path.Combine(DataLocation, FileName + ".csv"); }
         }
 
     }

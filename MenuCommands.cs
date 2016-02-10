@@ -31,12 +31,12 @@ namespace RecordKeeper
         {
             m_curType.EndSelectionMode();
             m_curType.WriteRecordsFile();
-            m_bChanged = false;
+            Changed = false;
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (m_bChanged)
+            if (Changed)
             {
                 DialogResult result = MessageBox.Show(
                     "Should I save?", "You have unsaved changes", MessageBoxButtons.YesNoCancel);

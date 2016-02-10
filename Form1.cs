@@ -15,29 +15,6 @@ namespace RecordKeeper
 {
     public partial class FormGlob : Form
     {
-        public static string Client;
-        public static int MaxID { get; set; }
-        public static int AllocateID()
-        {
-            return ++MaxID;
-        }
-        public static void AccumulateID(int id)
-        {
-            MaxID = Math.Max(MaxID, id);
-        }
-
-        //Record[] m_savedFullListDuringSelection;
-        //Dictionary<string, Record> m_recordsAsRead;
-        //List<string> m_deletedKeys;
-        //SchemaField[] m_schema;
-        //int[] m_placements;
-        string m_dataLocation;
-        string m_cloudLocation;
-        string m_backupLocation;
-        string m_fileName;
-        Clouds m_cloudType;
-        int m_backupLimit;
-
         string[] m_enumModes;
         string[] m_enumLanguage;
         string[] m_enumLevel;
@@ -52,21 +29,14 @@ namespace RecordKeeper
         string m_selectionFirstName;
         string m_selectionLastName;
         string m_selectionSource;
-        string m_selectionLevel;
 
         string m_mode;
         RecordType m_curType;
-        bool m_bChanged;
 
-        public Clouds CloudType { get { return m_cloudType; } }
-        public string CloudLocation { get { return m_cloudLocation; } }
-
-        public string FileName { get { return m_fileName; } }
-
-        public bool Changed { get { return m_bChanged; } set { m_bChanged = value;  } }
-
-        public string LastDownloadText { set { labelGlobLastDownload.Text = value; } }
-        public string LastUploadText { set { labelGlobLastUpload.Text = value; } }
+        public Clouds CloudType { get; set; }
+        public string CloudLocation { get; set; }
+        public string FileName { get; set; }
+        public bool Changed { get; set; }
 
         public Dictionary<string, Record> RecordsAsRead { get; set; }
 
@@ -78,9 +48,15 @@ namespace RecordKeeper
 
         public Record[] SavedFullListDuringSelection { get; set; }
 
-        public string SelectionLevel { get { return m_selectionLevel; } set { m_selectionLevel = value; } }
+        public string SelectionLevel { get; set; }
+        public string DataLocation { get; set; }
 
-        public string BackupLocation { get { return m_backupLocation; } set { m_backupLocation = value; }  }
+        public string BackupLocation { get; set; }
+        public int BackupLimit{ get; set; }
+
+        // WinForm form child control-related
+        public string LastDownloadText { set { labelGlobLastDownload.Text = value; } }
+        public string LastUploadText { set { labelGlobLastUpload.Text = value; } }
 
         public System.Windows.Forms.BindingSource DataList
         {
@@ -132,7 +108,7 @@ namespace RecordKeeper
             splitContainerGlobDataControls.SplitterDistance = Properties.Settings.Default.SplitDC;
             splitContainerGlobMasterDetail.SplitterDistance = Properties.Settings.Default.SplitMD;
 
-            m_bChanged = false;
+            Changed = false;
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -162,13 +138,6 @@ namespace RecordKeeper
         #endregion
 
         #region "Selection"
-        public bool SelectionMode
-        {
-            get { return buttGlobalShowAll.Enabled; }
-            set { buttGlobalShowAll.Enabled = value; }
-        }
-
-
         public void DoStudentSelection()
         {
             if (!SelectionMode)
@@ -192,13 +161,13 @@ namespace RecordKeeper
                     continue;
                 if (!m_curType.Fit(m_selectionSource, s.Source, true))
                     continue;
-                if (!m_curType.Fit(m_selectionLevel, s.Level, true))
+                if (!m_curType.Fit(SelectionLevel, s.Level, true))
                     continue;
 
                 DataList.Add(s);
             }
             m_curType.ShowCount();
-            m_bChanged = true;
+            Changed = true;
         }
 
         #endregion
@@ -247,7 +216,7 @@ namespace RecordKeeper
             Student st = (Student)studentList.AddNew();
             st.Id = FormGlob.AllocateID();
             ShowStudentCount();
-            m_bChanged = true;
+            Changed = true;
             tbStudFirstName.Select();
         }
 
@@ -257,7 +226,7 @@ namespace RecordKeeper
             DeletedKeys.Add(s.Key);
             studentList.RemoveCurrent();
             ShowStudentCount();
-            m_bChanged = true;
+            Changed = true;
         }
 
         private void buttonShowAll_Click(object sender, EventArgs e)
@@ -270,7 +239,7 @@ namespace RecordKeeper
             m_selectionFirstName = null;
             m_selectionLastName = null;
             m_selectionSource = null;
-            m_selectionLevel = null;
+            SelectionLevel = null;
 
             cbStudSelectStatus.SelectedIndex = 0;
             cbStudSelectLearns.SelectedIndex = 0;
@@ -319,7 +288,7 @@ namespace RecordKeeper
         private void comboBoxSelectLevel_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
-            m_selectionLevel = (string)comboBox.SelectedItem;
+            SelectionLevel = (string)comboBox.SelectedItem;
             m_curType.DoSelection();
         }
         #endregion
@@ -339,72 +308,72 @@ namespace RecordKeeper
         }
         private void textBoxComments_TextChanged(object sender, EventArgs e)
         {
-            m_bChanged = true;
+            Changed = true;
         }
 
         private void textBoxEmail_TextChanged(object sender, EventArgs e)
         {
-            m_bChanged = true;
+            Changed = true;
         }
 
         private void textBoxFirstName_TextChanged(object sender, EventArgs e)
         {
-            m_bChanged = true;
+            Changed = true;
         }
 
         private void textBoxLastName_TextChanged(object sender, EventArgs e)
         {
-            m_bChanged = true;
+            Changed = true;
         }
 
         private void textBoxCellPhone_TextChanged(object sender, EventArgs e)
         {
-            m_bChanged = true;
+            Changed = true;
         }
 
         private void textBoxHomePhone_TextChanged(object sender, EventArgs e)
         {
-            m_bChanged = true;
+            Changed = true;
         }
 
         private void textBoxAddress1_TextChanged(object sender, EventArgs e)
         {
-            m_bChanged = true;
+            Changed = true;
         }
 
         private void textBoxLanguageDetail_TextChanged(object sender, EventArgs e)
         {
-            m_bChanged = true;
+            Changed = true;
         }
 
         private void textBoxBirthday_TextChanged(object sender, EventArgs e)
         {
-            m_bChanged = true;
+            Changed = true;
         }
 
         private void textBoxSourceDetail_TextChanged(object sender, EventArgs e)
         {
-            m_bChanged = true;
+            Changed = true;
         }
 
         private void textBoxSchedule_TextChanged(object sender, EventArgs e)
         {
-            m_bChanged = true;
+            Changed = true;
         }
 
         private void textBoxInterests_TextChanged(object sender, EventArgs e)
         {
-            m_bChanged = true;
+            Changed = true;
         }
 
         private void textBoxGoals_TextChanged(object sender, EventArgs e)
         {
-            m_bChanged = true;
+            Changed = true;
         }
 
         private void textBoxBackground_TextChanged(object sender, EventArgs e)
         {
-            m_bChanged = true;
+            Changed = true;
         }
 
         #endregion
