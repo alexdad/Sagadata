@@ -2596,6 +2596,7 @@
 		<col def="I2">Order</col>
 		<col def="I2">ISSetupLocation</col>
 		<col def="S255">ISReleaseFlags</col>
+		<row><td>_89B7EB20_E8B3_42F2_B4BB_AA9DD06E0F49_</td><td>Microsoft .NET Framework 4.5.2 Web.prq</td><td/><td/><td/></row>
 	</table>
 
 	<table name="ISSetupType">
@@ -3982,7 +3983,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISTheme</td><td>InstallShield Blue.theme</td></row>
 		<row><td>ISUSLock</td><td>{A027B5F7-4333-41AF-8415-E1A7D259C615}</td></row>
 		<row><td>ISUSSignature</td><td>{60DFA571-7283-45F9-8E3E-6750D0A08BC2}</td></row>
-		<row><td>ISVisitedViews</td><td>viewAssistant</td></row>
+		<row><td>ISVisitedViews</td><td>viewAssistant,viewProject,viewUpgradePaths,viewUpdateService,viewAppFiles,viewObjects,viewShortcuts,viewRelease,viewCustomActions,viewSystemSearch,viewTextMessages,viewUI,viewServices,viewFileExtensions,viewIniFiles,viewRegistry,viewLearnMore,viewISToday</td></row>
 		<row><td>Limited</td><td>1</td></row>
 		<row><td>LockPermissionMode</td><td>1</td></row>
 		<row><td>MsiExecCmdLineOptions</td><td/></row>
