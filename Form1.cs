@@ -15,6 +15,7 @@ namespace RecordKeeper
 {
     public partial class FormGlob : Form
     {
+        // Local fields
         string[] m_enumModes;
         string[] m_enumLanguage;
         string[] m_enumLevel;
@@ -33,26 +34,22 @@ namespace RecordKeeper
         string m_mode;
         RecordType m_curType;
 
+        // Public Propertirs 
         public Clouds CloudType { get; set; }
         public string CloudLocation { get; set; }
         public string FileName { get; set; }
         public bool Changed { get; set; }
-
-        public Dictionary<string, Record> RecordsAsRead { get; set; }
-
-        public int[] Placements { get; set; }
-
-        public SchemaField[] Schema { get; set; }
-
-        public List<string> DeletedKeys { get; set;  }
-
-        public Record[] SavedFullListDuringSelection { get; set; }
-
         public string SelectionLevel { get; set; }
         public string DataLocation { get; set; }
-
         public string BackupLocation { get; set; }
-        public int BackupLimit{ get; set; }
+        public int BackupLimit { get; set; }
+
+        public SchemaField[] Schema { get; set; }
+        public int[] Placements { get; set; }
+
+        public List<string> DeletedKeys { get; set;  }
+        public Dictionary<string, Record> RecordsAsRead { get; set; }
+        public Record[] SavedFullListDuringSelection { get; set; }
 
         // WinForm form child control-related
         public string LastDownloadText { set { labelGlobLastDownload.Text = value; } }
@@ -84,6 +81,8 @@ namespace RecordKeeper
             InitializeComponent();
             AssignEnums();
 
+            // Initial mode is the first in the Modes file
+            cbGlobMode.SelectedIndex = 0;
             m_mode = m_enumModes[0];
             m_curType = new StudentType(this);
 
@@ -119,6 +118,7 @@ namespace RecordKeeper
             Properties.Settings.Default.Save();
         }
         #endregion
+
         #region "Mode navigation"
         private void cbGlobType_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -128,6 +128,7 @@ namespace RecordKeeper
 
         }
         #endregion
+
         #region TypeSpecificFormControlRelated
         public void ReplaceStudentList(Student[] target)
         {
@@ -171,6 +172,7 @@ namespace RecordKeeper
         }
 
         #endregion
+
         #region "DataGridClicks"
         private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -198,6 +200,7 @@ namespace RecordKeeper
         }
 
         #endregion
+
         #region "ButtonClicks"
         private void buttonNext_Click(object sender, EventArgs e)
         {
@@ -258,6 +261,7 @@ namespace RecordKeeper
         }
 
         #endregion
+
         #region "ComboBoxClicks"
         private void comboBoxSelectStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -292,6 +296,7 @@ namespace RecordKeeper
             m_curType.DoSelection();
         }
         #endregion
+
         #region "TextBoxClicks"
         private void textBoxSelectFirstName_TextChanged(object sender, EventArgs e)
         {

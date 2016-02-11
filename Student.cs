@@ -35,6 +35,13 @@ namespace RecordKeeper
         {
             get { return FirstName + " " + LastName; }
         }
+        public override string Abbreviation
+        {
+            get {
+                return (
+                    (FirstName.Length > 0 ? FirstName.Substring(0,1) : "X") +
+                    (LastName.Length > 0 ? LastName.Substring(0, 1) : "X") ); }
+        }
 
         public Student()
         {
@@ -65,107 +72,58 @@ namespace RecordKeeper
             Status = "?";
         }
 
-        public Student(Student st)
+        public override bool Set(string field, string fieldValue)
         {
-            Background = st.Background;
-            Birthday = st.Birthday;
-            CellPhone = st.CellPhone;
-            Changed = st.Changed;
-            ChangedBy = st.ChangedBy;
-            Comments = st.Comments;
-            Created = st.Created;
-            CreatedBy = st.CreatedBy;
-            Email = st.Email;
-            FirstName = st.FirstName;
-            Goals = st.Goals;
-            HomePhone = st.HomePhone;
-            Id = st.Id;
-            Interests = st.Interests;
-            LastName = st.LastName;
-            LearningLanguage = st.LearningLanguage;
-            LanguageDetail = st.LanguageDetail;
-            Level = st.Level;
-            MailingAddress = st.MailingAddress;
-            NativeLanguage = st.NativeLanguage;
-            OtherLanguage = st.OtherLanguage;
-            PossibleSchedule = st.PossibleSchedule;
-            Source = st.Source;
-            SourceDetail = st.SourceDetail;
-            Status = st.Status;
-        }
-
-        public override bool Set(string field, string value)
-        {
-            while (value.StartsWith("\""))
-                value = value.Substring(1);
-            while (value.EndsWith("\""))
-                value = value.Substring(0, value.Length - 1);
-
+            string value = SetRecordFields(field, fieldValue);
+            if (value.Length == 0)
+                return true;
+                        
             switch (field)
             {
-                case "id":
-                    this.Id = int.Parse(value);
-                    FormGlob.AccumulateID(Id);
-                    break;
-                case "Status":
-                    this.Status = value;
-                    break;
-                case "DateTimeCreated":
-                    this.Created = DateTime.Parse(value);
-                    break;
-                case "CreatedBy":
-                    this.CreatedBy = value;
-                    break;
-                case "DateTimeChanged":
-                    this.Changed = DateTime.Parse(value);
-                    break;
-                case "ChangedBy":
-                    this.ChangedBy = value;
-                    break;
-                case "FirstName":
-                    this.FirstName = value;
-                    break;
-                case "LastName":
-                    this.LastName = value;
-                    break;
-                case "EMail":
-                    this.Email = value;
-                    break;
-                case "MailingAddress":
-                    this.MailingAddress = value;
-                    break;
-                case "HomePhone":
-                    this.HomePhone = value;
-                    break;
-                case "CellPhone":
-                    this.CellPhone = value;
-                    break;
                 case "Birthday":
                     this.Birthday = value;
-                    break;
-                case "NativeLanguage":
-                    this.NativeLanguage = value;
-                    break;
-                case "LearningLanguage":
-                    this.LearningLanguage = value;
-                    break;
-                case "OtherLanguage":
-                    this.OtherLanguage = value;
-                    break;
-                case "LanguageDetail":
-                    this.LanguageDetail = value;
-                    break;
-                case "Level":
-                    this.Level = value;
                     break;
                 case "Background":
                     this.Background = value;
                     break;
+                case "CellPhone":
+                    this.CellPhone = value;
+                    break;
+                case "EMail":
+                    this.Email = value;
+                    break;
+                case "FirstName":
+                    this.FirstName = value;
+                    break;
                 case "Goals":
                     this.Goals = value;
                     break;
+                case "HomePhone":
+                    this.HomePhone = value;
+                    break;
                 case "Interests":
                     this.Interests = value;
+                    break;
+                case "LanguageDetail":
+                    this.LanguageDetail = value;
+                    break;
+                case "LastName":
+                    this.LastName = value;
+                    break;
+                case "LearningLanguage":
+                    this.LearningLanguage = value;
+                    break;
+                case "Level":
+                    this.Level = value;
+                    break;
+                case "MailingAddress":
+                    this.MailingAddress = value;
+                    break;
+                case "NativeLanguage":
+                    this.NativeLanguage = value;
+                    break;
+                case "OtherLanguage":
+                    this.OtherLanguage = value;
                     break;
                 case "PossibleSchedule":
                     this.PossibleSchedule = value;
@@ -176,8 +134,8 @@ namespace RecordKeeper
                 case "SourceDetail":
                     this.SourceDetail = value;
                     break;
-                case "Comments":
-                    this.Comments = value;
+                case "Status":
+                    this.Status = value;
                     break;
                 default:
                     throw new Exception("unknown field " + field);
@@ -187,6 +145,10 @@ namespace RecordKeeper
 
         public override string Get(string field)
         {
+            string v = GetRecordFields(field);
+            if (v != null)
+                return v;
+
             switch (field)
             {
                 case "Background":
@@ -195,16 +157,6 @@ namespace RecordKeeper
                     return Birthday;
                 case "CellPhone":
                     return CellPhone;
-                case "DateTimeChanged":
-                    return Changed.ToString();
-                case "ChangedBy":
-                    return ChangedBy;
-                case "Comments":
-                    return Comments;
-                case "CreatedBy":
-                    return CreatedBy;
-                case "DateTimeCreated":
-                    return Created.ToString();
                 case "EMail":
                     return Email;
                 case "FirstName":
@@ -213,8 +165,6 @@ namespace RecordKeeper
                     return Goals;
                 case "HomePhone":
                     return HomePhone;
-                case "id":
-                    return Id.ToString();
                 case "Interests":
                     return Interests;
                 case "LastName":
@@ -245,6 +195,34 @@ namespace RecordKeeper
         }
 
         #region "Comparers"
+        public class ComparerByBirthday : IComparer<Student>
+        {
+            public int Compare(Student y, Student x)
+            {
+                return y.Birthday.CompareTo(x.Birthday);
+            }
+        }
+        public class ComparerByCellPhone : IComparer<Student>
+        {
+            public int Compare(Student y, Student x)
+            {
+                return y.CellPhone.CompareTo(x.CellPhone);
+            }
+        }
+        public class ComparerByChanged : IComparer<Student>
+        {
+            public int Compare(Student y, Student x)
+            {
+                return y.Changed.CompareTo(x.Changed);
+            }
+        }
+        public class ComparerByEmail : IComparer<Student>
+        {
+            public int Compare(Student y, Student x)
+            {
+                return y.Email.CompareTo(x.Email);
+            }
+        }
         public class ComparerByFirstName : IComparer<Student>
         {
             public int Compare(Student y, Student x)
@@ -259,32 +237,11 @@ namespace RecordKeeper
                 return y.LastName.CompareTo(x.LastName);
             }
         }
-        public class ComparerByStatus : IComparer<Student>
-        {
-            public int Compare(Student y, Student x)
-            {
-                return y.Status.CompareTo(x.Status);
-            }
-        }
-        public class ComparerBySource : IComparer<Student>
-        {
-            public int Compare(Student y, Student x)
-            {
-                return y.Source.CompareTo(x.Source);
-            }
-        }
         public class ComparerByLearns : IComparer<Student>
         {
             public int Compare(Student y, Student x)
             {
                 return y.LearningLanguage.CompareTo(x.LearningLanguage);
-            }
-        }
-        public class ComparerByOther : IComparer<Student>
-        {
-            public int Compare(Student y, Student x)
-            {
-                return y.OtherLanguage.CompareTo(x.OtherLanguage);
             }
         }
         public class ComparerByLevel : IComparer<Student>
@@ -294,6 +251,13 @@ namespace RecordKeeper
                 return y.Level.CompareTo(x.Level);
             }
         }
+        public class ComparerByAddress : IComparer<Student>
+        {
+            public int Compare(Student y, Student x)
+            {
+                return y.MailingAddress.CompareTo(x.MailingAddress);
+            }
+        }
         public class ComparerBySpeaks : IComparer<Student>
         {
             public int Compare(Student y, Student x)
@@ -301,41 +265,25 @@ namespace RecordKeeper
                 return y.NativeLanguage.CompareTo(x.NativeLanguage);
             }
         }
-        public class ComparerByChanged : IComparer<Student>
+        public class ComparerByOther : IComparer<Student>
         {
             public int Compare(Student y, Student x)
             {
-                return y.Changed.CompareTo(x.Changed);
+                return y.OtherLanguage.CompareTo(x.OtherLanguage);
             }
         }
-
-        public class ComparerByEmail : IComparer<Student>
+        public class ComparerBySource : IComparer<Student>
         {
             public int Compare(Student y, Student x)
             {
-                return y.Email.CompareTo(x.Email);
+                return y.Source.CompareTo(x.Source);
             }
         }
-        public class ComparerByCellPhone : IComparer<Student>
+        public class ComparerByStatus : IComparer<Student>
         {
             public int Compare(Student y, Student x)
             {
-                return y.CellPhone.CompareTo(x.CellPhone);
-            }
-        }
-        public class ComparerByBirthday : IComparer<Student>
-        {
-            public int Compare(Student y, Student x)
-            {
-                return y.Birthday.CompareTo(x.Birthday);
-            }
-        }
-
-        public class ComparerByAddress : IComparer<Student>
-        {
-            public int Compare(Student y, Student x)
-            {
-                return y.MailingAddress.CompareTo(x.MailingAddress);
+                return y.Status.CompareTo(x.Status);
             }
         }
         #endregion
