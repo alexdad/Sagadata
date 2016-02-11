@@ -31,8 +31,11 @@ namespace RecordKeeper
         string m_selectionLastName;
         string m_selectionSource;
 
-        string m_mode;
+        Modes m_mode;
         RecordType m_curType;
+
+        FormRoom m_formRoom;
+
 
         // Public Propertirs 
         public Clouds CloudType { get; set; }
@@ -62,7 +65,7 @@ namespace RecordKeeper
                 // Here are links between manually crafted per-record-type UI and modes
                 switch(m_mode)
                 {
-                    case "Students":
+                    case Modes.Students:
                         return studentList;
                     default:
                         return null;
@@ -82,13 +85,15 @@ namespace RecordKeeper
             AssignEnums();
 
             // Initial mode is the first in the Modes file
-            cbGlobMode.SelectedIndex = 0;
-            m_mode = m_enumModes[0];
+            m_mode = Modes.Students;
+            cbGlobMode.SelectedIndex = (int)m_mode;
             m_curType = new StudentType(this);
 
             SelectionMode = false;
             DeletedKeys = new List<string>();
             RecordsAsRead = new Dictionary<string, Record>();
+
+            m_formRoom = new FormRoom();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -123,9 +128,28 @@ namespace RecordKeeper
         private void cbGlobType_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
-            string mode = (string)comboBox.SelectedItem;
+            Modes oldMode = m_mode;
+            m_mode = (Modes)comboBox.SelectedIndex;
+            if (m_mode == oldMode)
+                return;
+            tabControlModesBottom.SelectedIndex = (int)m_mode;
+            tabControlModesTop.SelectedIndex = (int)m_mode;
 
-
+            switch (m_mode)
+            {
+                case Modes.Students:
+                    break;
+                case Modes.Teachers:
+                    break;
+                case Modes.Programs:
+                    break;
+                case Modes.Rooms:
+                    break;
+                case Modes.Lessons:
+                    break;
+                default:
+                    throw new Exception("Wrong mode selection " + m_mode);
+            }
         }
         #endregion
 

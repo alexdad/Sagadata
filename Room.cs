@@ -10,7 +10,7 @@ namespace RecordKeeper
     {
         public int Capacity { get; set; }
         public string Name { get; set; }
-        public int Preferrability { get; set; }
+        public int Rank { get; set; }
         public string Tags { get; set; }
 
         public override string Description
@@ -38,8 +38,8 @@ namespace RecordKeeper
                 case "Name":
                     this.Name = value;
                     break;
-                case "Preferrability":
-                    this.Preferrability = int.Parse(value);
+                case "Rank":
+                    this.Rank = int.Parse(value);
                     break;
                 case "Tags":
                     this.Tags = value;
@@ -54,7 +54,7 @@ namespace RecordKeeper
         {
             Capacity = -1;
             Name = "?";
-            Preferrability = -1;
+            Rank = -1;
             Tags = "";
         }
 
@@ -70,8 +70,8 @@ namespace RecordKeeper
                     return Name;
                 case "Capacity":
                     return Capacity.ToString();
-                case "Preferrability":
-                    return Preferrability.ToString();
+                case "Rank":
+                    return Rank.ToString();
                 case "Tags":
                     return Tags;
                 default:
@@ -95,11 +95,11 @@ namespace RecordKeeper
                 return y.Capacity.CompareTo(x.Capacity);
             }
         }
-        public class ComparerByPreferrability : IComparer<Room>
+        public class ComparerByRank : IComparer<Room>
         {
             public int Compare(Room y, Room x)
             {
-                return y.Preferrability.CompareTo(x.Preferrability);
+                return y.Rank.CompareTo(x.Rank);
             }
         }
         public class ComparerByTags : IComparer<Room>

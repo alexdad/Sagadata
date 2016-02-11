@@ -12,6 +12,15 @@ using System.Windows.Forms;
 
 namespace RecordKeeper
 {
+    public enum Modes
+    {
+        Students = 0,
+        Teachers = 1,
+        Programs = 2,
+        Rooms = 3,
+        Lessons = 4,
+        MaxMode = 5
+    }
     public enum Clouds
     {
         None,
@@ -90,6 +99,8 @@ namespace RecordKeeper
 
         private void AssignEnums()
         {
+            cbGlobMode.Items.AddRange(m_enumModes);
+
             cbStudSelectLearns.Items.AddRange(m_enumLanguage);
             cbStudSelectSpeaks.Items.AddRange(m_enumLanguage);
             cbStudSelectStatus.Items.AddRange(m_enumStatus);
@@ -102,8 +113,6 @@ namespace RecordKeeper
             cbStudLevel.Items.AddRange(m_enumLevel);
             cbStudSource.Items.AddRange(m_enumSource);
             cbStudStatus.Items.AddRange(m_enumStatus);
-
-            cbGlobMode.Items.AddRange(m_enumModes);
         }
 
         public bool SelectionMode
@@ -145,7 +154,6 @@ namespace RecordKeeper
         void ReadSchemas()
         {
             string binLocation = Directory.GetCurrentDirectory();
-            m_enumModes = File.ReadAllLines(Path.Combine(binLocation, "EnumModes.csv").ToString());
             m_enumLanguage = File.ReadAllLines(Path.Combine(binLocation, "EnumLanguage.csv").ToString());
             m_enumLevel = File.ReadAllLines(Path.Combine(binLocation, "EnumLevel.csv").ToString());
             m_enumSource = File.ReadAllLines(Path.Combine(binLocation, "EnumSource.csv").ToString());
@@ -161,6 +169,13 @@ namespace RecordKeeper
                 schemaList.Add(new SchemaField(vals[0], vals[1]));
             }
             Schema = schemaList.ToArray();
+
+            m_enumModes = new string[(int)Modes.MaxMode];
+            m_enumModes[(int)Modes.Students] = "Students";
+            m_enumModes[(int)Modes.Teachers] = "Teachers";
+            m_enumModes[(int)Modes.Programs] = "Programs";
+            m_enumModes[(int)Modes.Rooms] = "Rooms";
+            m_enumModes[(int)Modes.Lessons] = "Lessons";
 
 
             // TODO - generalize into a file
