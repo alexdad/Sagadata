@@ -34,9 +34,6 @@ namespace RecordKeeper
         Modes m_mode;
         RecordType m_curType;
 
-        FormRoom m_formRoom;
-
-
         // Public Propertirs 
         public Clouds CloudType { get; set; }
         public string CloudLocation { get; set; }
@@ -92,8 +89,6 @@ namespace RecordKeeper
             SelectionMode = false;
             DeletedKeys = new List<string>();
             RecordsAsRead = new Dictionary<string, Record>();
-
-            m_formRoom = new FormRoom();
         }
 
         private void Form1_Load(object sender, EventArgs e)

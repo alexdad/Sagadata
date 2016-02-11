@@ -130,6 +130,19 @@
             this.tabBottomPageTeachers = new System.Windows.Forms.TabPage();
             this.tabBottomPagePrograms = new System.Windows.Forms.TabPage();
             this.tabBottomPageRooms = new System.Windows.Forms.TabPage();
+            this.panelRoom = new System.Windows.Forms.Panel();
+            this.panelRoomPrimaryLeft = new System.Windows.Forms.Panel();
+            this.labelRoomRank = new System.Windows.Forms.Label();
+            this.labelRoomCapacity = new System.Windows.Forms.Label();
+            this.labelRoomName = new System.Windows.Forms.Label();
+            this.tbRoomPreferrability = new System.Windows.Forms.TextBox();
+            this.tbRoomCapacity = new System.Windows.Forms.TextBox();
+            this.tbRoomName = new System.Windows.Forms.TextBox();
+            this.groupBoxRoom = new System.Windows.Forms.GroupBox();
+            this.labelRoomComments = new System.Windows.Forms.Label();
+            this.labelRoomTags = new System.Windows.Forms.Label();
+            this.tbRoomComments = new System.Windows.Forms.TextBox();
+            this.tbRoomTags = new System.Windows.Forms.TextBox();
             this.tabBottomPageLessons = new System.Windows.Forms.TabPage();
             this.panelGlobPrevDelete = new System.Windows.Forms.Panel();
             this.panelGlobNextNew = new System.Windows.Forms.Panel();
@@ -160,6 +173,10 @@
             this.panelGlobEdit.SuspendLayout();
             this.tabControlModesBottom.SuspendLayout();
             this.tabBottomPageStudents.SuspendLayout();
+            this.tabBottomPageRooms.SuspendLayout();
+            this.panelRoom.SuspendLayout();
+            this.panelRoomPrimaryLeft.SuspendLayout();
+            this.groupBoxRoom.SuspendLayout();
             this.panelGlobPrevDelete.SuspendLayout();
             this.panelGlobNextNew.SuspendLayout();
             this.panelGlobLogo.SuspendLayout();
@@ -1199,6 +1216,7 @@
             // 
             // tabBottomPageRooms
             // 
+            this.tabBottomPageRooms.Controls.Add(this.panelRoom);
             this.tabBottomPageRooms.Location = new System.Drawing.Point(4, 22);
             this.tabBottomPageRooms.Name = "tabBottomPageRooms";
             this.tabBottomPageRooms.Padding = new System.Windows.Forms.Padding(3);
@@ -1206,6 +1224,127 @@
             this.tabBottomPageRooms.TabIndex = 3;
             this.tabBottomPageRooms.Text = "Rooms";
             this.tabBottomPageRooms.UseVisualStyleBackColor = true;
+            // 
+            // panelRoom
+            // 
+            this.panelRoom.Controls.Add(this.panelRoomPrimaryLeft);
+            this.panelRoom.Controls.Add(this.groupBoxRoom);
+            this.panelRoom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelRoom.Location = new System.Drawing.Point(3, 3);
+            this.panelRoom.Name = "panelRoom";
+            this.panelRoom.Size = new System.Drawing.Size(928, 366);
+            this.panelRoom.TabIndex = 0;
+            // 
+            // panelRoomPrimaryLeft
+            // 
+            this.panelRoomPrimaryLeft.Controls.Add(this.labelRoomRank);
+            this.panelRoomPrimaryLeft.Controls.Add(this.labelRoomCapacity);
+            this.panelRoomPrimaryLeft.Controls.Add(this.labelRoomName);
+            this.panelRoomPrimaryLeft.Controls.Add(this.tbRoomPreferrability);
+            this.panelRoomPrimaryLeft.Controls.Add(this.tbRoomCapacity);
+            this.panelRoomPrimaryLeft.Controls.Add(this.tbRoomName);
+            this.panelRoomPrimaryLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelRoomPrimaryLeft.Location = new System.Drawing.Point(0, 0);
+            this.panelRoomPrimaryLeft.Name = "panelRoomPrimaryLeft";
+            this.panelRoomPrimaryLeft.Size = new System.Drawing.Size(200, 366);
+            this.panelRoomPrimaryLeft.TabIndex = 1;
+            // 
+            // labelRoomRank
+            // 
+            this.labelRoomRank.AutoSize = true;
+            this.labelRoomRank.Location = new System.Drawing.Point(6, 71);
+            this.labelRoomRank.Name = "labelRoomRank";
+            this.labelRoomRank.Size = new System.Drawing.Size(36, 13);
+            this.labelRoomRank.TabIndex = 5;
+            this.labelRoomRank.Text = "Rank:";
+            // 
+            // labelRoomCapacity
+            // 
+            this.labelRoomCapacity.AutoSize = true;
+            this.labelRoomCapacity.Location = new System.Drawing.Point(6, 42);
+            this.labelRoomCapacity.Name = "labelRoomCapacity";
+            this.labelRoomCapacity.Size = new System.Drawing.Size(51, 13);
+            this.labelRoomCapacity.TabIndex = 4;
+            this.labelRoomCapacity.Text = "Capacity:";
+            // 
+            // labelRoomName
+            // 
+            this.labelRoomName.AutoSize = true;
+            this.labelRoomName.Location = new System.Drawing.Point(6, 13);
+            this.labelRoomName.Name = "labelRoomName";
+            this.labelRoomName.Size = new System.Drawing.Size(38, 13);
+            this.labelRoomName.TabIndex = 3;
+            this.labelRoomName.Text = "Name:";
+            // 
+            // tbRoomPreferrability
+            // 
+            this.tbRoomPreferrability.Location = new System.Drawing.Point(61, 68);
+            this.tbRoomPreferrability.Name = "tbRoomPreferrability";
+            this.tbRoomPreferrability.Size = new System.Drawing.Size(87, 20);
+            this.tbRoomPreferrability.TabIndex = 2;
+            // 
+            // tbRoomCapacity
+            // 
+            this.tbRoomCapacity.Location = new System.Drawing.Point(61, 39);
+            this.tbRoomCapacity.Name = "tbRoomCapacity";
+            this.tbRoomCapacity.Size = new System.Drawing.Size(87, 20);
+            this.tbRoomCapacity.TabIndex = 1;
+            // 
+            // tbRoomName
+            // 
+            this.tbRoomName.Location = new System.Drawing.Point(61, 10);
+            this.tbRoomName.Name = "tbRoomName";
+            this.tbRoomName.Size = new System.Drawing.Size(87, 20);
+            this.tbRoomName.TabIndex = 0;
+            // 
+            // groupBoxRoom
+            // 
+            this.groupBoxRoom.Controls.Add(this.labelRoomComments);
+            this.groupBoxRoom.Controls.Add(this.labelRoomTags);
+            this.groupBoxRoom.Controls.Add(this.tbRoomComments);
+            this.groupBoxRoom.Controls.Add(this.tbRoomTags);
+            this.groupBoxRoom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxRoom.Location = new System.Drawing.Point(0, 0);
+            this.groupBoxRoom.Name = "groupBoxRoom";
+            this.groupBoxRoom.Size = new System.Drawing.Size(928, 366);
+            this.groupBoxRoom.TabIndex = 0;
+            this.groupBoxRoom.TabStop = false;
+            // 
+            // labelRoomComments
+            // 
+            this.labelRoomComments.AutoSize = true;
+            this.labelRoomComments.Location = new System.Drawing.Point(210, 59);
+            this.labelRoomComments.Name = "labelRoomComments";
+            this.labelRoomComments.Size = new System.Drawing.Size(59, 13);
+            this.labelRoomComments.TabIndex = 3;
+            this.labelRoomComments.Text = "Comments:";
+            // 
+            // labelRoomTags
+            // 
+            this.labelRoomTags.AutoSize = true;
+            this.labelRoomTags.Location = new System.Drawing.Point(207, 13);
+            this.labelRoomTags.Name = "labelRoomTags";
+            this.labelRoomTags.Size = new System.Drawing.Size(34, 13);
+            this.labelRoomTags.TabIndex = 2;
+            this.labelRoomTags.Text = "Tags:";
+            // 
+            // tbRoomComments
+            // 
+            this.tbRoomComments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbRoomComments.Location = new System.Drawing.Point(206, 78);
+            this.tbRoomComments.Name = "tbRoomComments";
+            this.tbRoomComments.Size = new System.Drawing.Size(716, 20);
+            this.tbRoomComments.TabIndex = 1;
+            // 
+            // tbRoomTags
+            // 
+            this.tbRoomTags.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbRoomTags.Location = new System.Drawing.Point(206, 32);
+            this.tbRoomTags.Name = "tbRoomTags";
+            this.tbRoomTags.Size = new System.Drawing.Size(716, 20);
+            this.tbRoomTags.TabIndex = 0;
             // 
             // tabBottomPageLessons
             // 
@@ -1369,9 +1508,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelGlobIndicators.Controls.Add(this.labelGlobLastUpload);
             this.panelGlobIndicators.Controls.Add(this.labelGlobLastDownload);
-            this.panelGlobIndicators.Location = new System.Drawing.Point(0, 0);
+            this.panelGlobIndicators.Location = new System.Drawing.Point(222, 0);
             this.panelGlobIndicators.Name = "panelGlobIndicators";
-            this.panelGlobIndicators.Size = new System.Drawing.Size(1051, 24);
+            this.panelGlobIndicators.Size = new System.Drawing.Size(829, 24);
             this.panelGlobIndicators.TabIndex = 27;
             // 
             // FormGlob
@@ -1411,6 +1550,12 @@
             this.panelGlobEdit.ResumeLayout(false);
             this.tabControlModesBottom.ResumeLayout(false);
             this.tabBottomPageStudents.ResumeLayout(false);
+            this.tabBottomPageRooms.ResumeLayout(false);
+            this.panelRoom.ResumeLayout(false);
+            this.panelRoomPrimaryLeft.ResumeLayout(false);
+            this.panelRoomPrimaryLeft.PerformLayout();
+            this.groupBoxRoom.ResumeLayout(false);
+            this.groupBoxRoom.PerformLayout();
             this.panelGlobPrevDelete.ResumeLayout(false);
             this.panelGlobNextNew.ResumeLayout(false);
             this.panelGlobLogo.ResumeLayout(false);
@@ -1548,6 +1693,20 @@
         private System.Windows.Forms.TabPage tabTopPagePrograms;
         private System.Windows.Forms.TabPage tabTopPageRooms;
         private System.Windows.Forms.TabPage tabTopPageLessons;
+        private System.Windows.Forms.Panel panelRoom;
+        private System.Windows.Forms.Panel panelRoomPrimaryLeft;
+        private System.Windows.Forms.GroupBox groupBoxRoom;
+        private System.Windows.Forms.TextBox tbRoomComments;
+        private System.Windows.Forms.TextBox tbRoomTags;
+        private System.Windows.Forms.Label labelRoomRank;
+        private System.Windows.Forms.Label labelRoomCapacity;
+        private System.Windows.Forms.Label labelRoomName;
+        private System.Windows.Forms.TextBox tbRoomPreferrability;
+        private System.Windows.Forms.TextBox tbRoomCapacity;
+        private System.Windows.Forms.TextBox tbRoomName;
+        private System.Windows.Forms.Label labelRoomComments;
+        private System.Windows.Forms.Label labelRoomTags;
+
     }
 }
 
