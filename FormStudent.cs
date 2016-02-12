@@ -26,8 +26,6 @@ namespace RecordKeeper
         {
             m_dataTypes.Add(Modes.Student, typeof(Student));
             m_recordTypes.Add(Modes.Student, new StudentType(this));
-            m_changed.Add(Modes.Student, false);
-            m_loaded.Add(Modes.Student, false);
 
         }
         private void StudentToFormConst2()
@@ -47,31 +45,31 @@ namespace RecordKeeper
             if (!SelectionMode)
             {
                 SelectionMode = true;
-                m_curType.StashRecordList();
+                CurrentType.StashRecordList();
             }
 
             DataList.Clear();
             foreach (Student s in SavedFullListDuringSelection)
             {
-                if (!m_curType.Fit(m_StudentSelectionStatus, s.Status, true))
+                if (!CurrentType.Fit(m_StudentSelectionStatus, s.Status, true))
                     continue;
-                if (!m_curType.Fit(m_StudentSelectionLearns, s.LearningLanguage, true))
+                if (!CurrentType.Fit(m_StudentSelectionLearns, s.LearningLanguage, true))
                     continue;
-                if (!m_curType.Fit(m_StudentSelectionSpeaks, s.NativeLanguage, true))
+                if (!CurrentType.Fit(m_StudentSelectionSpeaks, s.NativeLanguage, true))
                     continue;
-                if (!m_curType.Fit(m_StudentSelectionFirstName, s.FirstName, false))
+                if (!CurrentType.Fit(m_StudentSelectionFirstName, s.FirstName, false))
                     continue;
-                if (!m_curType.Fit(m_StudentSelectionLastName, s.LastName, false))
+                if (!CurrentType.Fit(m_StudentSelectionLastName, s.LastName, false))
                     continue;
-                if (!m_curType.Fit(m_StudentSelectionSource, s.Source, true))
+                if (!CurrentType.Fit(m_StudentSelectionSource, s.Source, true))
                     continue;
-                if (!m_curType.Fit(SelectionLevel, s.Level, true))
+                if (!CurrentType.Fit(SelectionLevel, s.Level, true))
                     continue;
 
                 DataList.Add(s);
             }
             ShowCurrentCount();
-            Changed = true;
+            Modified = true;
         }
     }
 }

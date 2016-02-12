@@ -21,8 +21,6 @@ namespace RecordKeeper
         {
             m_dataTypes.Add(Modes.Lesson, typeof(Lesson));
             m_recordTypes.Add(Modes.Lesson, new LessonType(this));
-            m_changed.Add(Modes.Lesson, false);
-            m_loaded.Add(Modes.Lesson, false);
         }
         private void LessonToFormConst2()
         {
@@ -34,7 +32,7 @@ namespace RecordKeeper
             if (!SelectionMode)
             {
                 SelectionMode = true;
-                m_curType.StashRecordList();
+                CurrentType.StashRecordList();
             }
 
             DataList.Clear();
@@ -46,7 +44,7 @@ namespace RecordKeeper
                 DataList.Add(s);
             }
             ShowCurrentCount();
-            Changed = true;
+            Modified = true;
         }
 
     }

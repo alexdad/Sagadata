@@ -20,9 +20,19 @@ namespace RecordKeeper
         public RecordType(FormGlob glob)
         {
             m_glob = glob;
+            Modified = false;
         }
-        public abstract string Class();
-        public abstract void Initialize();
+        public bool Modified { get; set; }
+        public bool Loaded { get; set; }
+        public SchemaField[] Schema { get; set; }
+        public int[] Placements { get; set; }
+
+        public string FilePath
+        {
+            get { return Path.Combine(m_glob.DataLocation, Mode.ToString() + ".csv"); }
+        }
+
+        public abstract Modes Mode { get;  }
         public abstract bool ReadFile();
         public abstract bool DownloadFile();
         public abstract bool UploadFile();
@@ -46,7 +56,7 @@ namespace RecordKeeper
             bool success = false;
             try
             {
-                string[] sts = File.ReadAllLines(m_glob.FilePath);
+                string[] sts = File.ReadAllLines(FilePath);
 
                 ParseHeaders(sts[0].Split(','));
 
@@ -66,15 +76,15 @@ namespace RecordKeeper
 
         public void WriteRecordsFile()
         {
-            if (File.Exists(m_glob.FilePath))
+            if (File.Exists(FilePath))
             {
                 string bkup = DecideBackup();
                 if (File.Exists(bkup))
                     File.Delete(bkup);
-                File.Move(m_glob.FilePath, bkup);
+                File.Move(FilePath, bkup);
             }
 
-            using (StreamWriter sw = new StreamWriter(m_glob.FilePath))
+            using (StreamWriter sw = new StreamWriter(FilePath))
             {
                 WriteHeader(sw);
                 WriteValues(sw);
@@ -120,19 +130,19 @@ namespace RecordKeeper
         {
             T st = Activator.CreateInstance<T>();
 
-            for (int i = 0; i < m_glob.Placements.Length; i++)
+            for (int i = 0; i < Placements.Length; i++)
             {
-                int fld = m_glob.Placements[i];
+                int fld = Placements[i];
                 if (fld < 0)
                     continue;
-                Validations tp = m_glob.Schema[fld].Validation;
+                Validations tp = Schema[fld].Validation;
                 string val = vals[i];
                 if (tp == Validations.Ignore)
                     continue;
 
                 // Check validations here
 
-                bool success = st.Set(m_glob.Schema[fld].Header, val);
+                bool success = st.Set(Schema[fld].Header, val);
                 if (!success)
                     MessageBox.Show("Bad value");
             }
@@ -156,9 +166,9 @@ namespace RecordKeeper
                 }
 
                 StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < m_glob.Schema.Length; i++)
+                for (int i = 0; i < Schema.Length; i++)
                 {
-                    string safeValue = st.Get(m_glob.Schema[i].Header);
+                    string safeValue = st.Get(Schema[i].Header);
                     if (safeValue == null)
                         safeValue = "";
                     safeValue = safeValue.Replace('"', ' ');
@@ -172,17 +182,17 @@ namespace RecordKeeper
         }
         public void ParseHeaders(string[] hdrs)
         {
-            m_glob.Placements = new int[hdrs.Length];
+            Placements = new int[hdrs.Length];
 
             for (int j = 0; j < hdrs.Length; j++)
-                m_glob.Placements[j] = -1;
+                Placements[j] = -1;
 
             for (int i = 0; i < hdrs.Length; i++)
             {
-                for (int j = 0; j < m_glob.Schema.Length; j++)
+                for (int j = 0; j < Schema.Length; j++)
                 {
-                    if (m_glob.Schema[j].Header.ToLower() == hdrs[i].ToLower())
-                        m_glob.Placements[i] = j;
+                    if (Schema[j].Header.ToLower() == hdrs[i].ToLower())
+                        Placements[i] = j;
                 }
             }
         }
@@ -192,7 +202,7 @@ namespace RecordKeeper
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < m_glob.Schema.Length; i++)
             {
-                sb.Append(m_glob.Schema[i].Header);
+                sb.Append(Schema[i].Header);
                 sb.Append(",");
             }
             sw.WriteLine(sb.ToString());
@@ -270,7 +280,7 @@ namespace RecordKeeper
             if (File.Exists(m_glob.CloudLocation))
                 File.Delete(m_glob.CloudLocation);
 
-            File.Copy(m_glob.FilePath, m_glob.CloudLocation);
+            File.Copy(FilePath, m_glob.CloudLocation);
 
             bool success = false;
             switch (m_glob.CloudType)
@@ -302,6 +312,7 @@ namespace RecordKeeper
 
         public void MergeBack<T>(T[] target) where T : Record
         {
+            //bool modified = false;
             Dictionary<string, T> dict = new Dictionary<string, T>();
             foreach (T s in m_glob.DataList)
             {
@@ -330,11 +341,15 @@ namespace RecordKeeper
                 }
             }
 
+            //if (!modified)
+            //    modified = CompareToDatalist(dict);
+
             m_glob.DataList.Clear();
             foreach (T s in dict.Values)
                 m_glob.DataList.Add(s);
 
             m_glob.DeletedKeys.Clear();
+            //Modified = modified;
         }
 
         public void EndSelectionMode()
@@ -373,9 +388,9 @@ namespace RecordKeeper
 
         public bool RecordDiffers(Record s1, Record s2)
         {
-            for (int i = 0; i < m_glob.Schema.Length; i++)
+            for (int i = 0; i < Schema.Length; i++)
             {
-                string hdr = m_glob.Schema[i].Header;
+                string hdr = Schema[i].Header;
                 if (hdr == "DateTimeChanged" ||
                     hdr == "ChangedBy")
                     continue;
@@ -386,7 +401,7 @@ namespace RecordKeeper
 
                 if (val1 != val2)
                 {
-                    m_glob.Changed = true;
+                    m_glob.Modified = true;
                     return true;
                 }
             }

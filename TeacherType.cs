@@ -15,14 +15,7 @@ namespace RecordKeeper
         {
         }
 
-        public override string Class()
-        {
-            return "Teacher";
-        }
-        public override void Initialize()
-        {
-
-        }
+        public override Modes Mode { get { return Modes.Teacher; } }
 
         public override bool ReadFile()
         {

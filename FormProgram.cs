@@ -21,8 +21,6 @@ namespace RecordKeeper
         {
             m_dataTypes.Add(Modes.Program, typeof(Program));
             m_recordTypes.Add(Modes.Program, new ProgramType(this));
-            m_changed.Add(Modes.Program, false);
-            m_loaded.Add(Modes.Program, false);
         }
         private void ProgramToFormConst2()
         {
@@ -34,7 +32,7 @@ namespace RecordKeeper
             if (!SelectionMode)
             {
                 SelectionMode = true;
-                m_curType.StashRecordList();
+                CurrentType.StashRecordList();
             }
 
             DataList.Clear();
@@ -46,7 +44,7 @@ namespace RecordKeeper
                 DataList.Add(s);
             }
             ShowCurrentCount();
-            Changed = true;
+            Modified = true;
         }
 
     }

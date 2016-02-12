@@ -23,13 +23,17 @@ namespace RecordKeeper
 
         private void uploadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            m_curType.EndSelectionMode();
-            UploadFiles(SaveChangedFiles());
+            CurrentType.EndSelectionMode();
+            List<Modes> temp = SaveChangedFiles();
+            if (!temp.Contains(CurrentMode))
+                temp.Add(CurrentMode);
+            UploadFiles(temp);
+            Modified = false;
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            m_curType.EndSelectionMode();
+            CurrentType.EndSelectionMode();
             SaveChangedFiles();
         }
 
@@ -48,7 +52,7 @@ namespace RecordKeeper
                     "Should I save?", "You have unsaved changes", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    bool[] saved = SaveChangedFiles();
+                    List<Modes> saved = SaveChangedFiles();
                     result = MessageBox.Show(
                         "Should I upload?", "You have local changes", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
@@ -57,17 +61,13 @@ namespace RecordKeeper
             }
         }
 
-        private void UploadFiles(bool[] files)
+        private void UploadFiles(List<Modes> files)
         {
             Modes modeWas = m_mode;
-
-            for (int i = 0; i < (int)Modes.MaxMode; i++)
+            foreach (Modes m in files)
             {
-                if (files[i])
-                {
-                    SetMode(i);
-                    UploadCurrentFile();
-                }
+                SetMode(m);
+                UploadCurrentFile();
             }
             m_mode = modeWas;
         }
@@ -76,7 +76,7 @@ namespace RecordKeeper
         {
             Modes modeWas = m_mode;
 
-            for (int i = 0; i < (int)Modes.MaxMode; i++)
+            for (Modes i = (Modes)0; i < Modes.MaxMode; i++)
             {
                 SetMode(i);
                 DownloadCurrentFile();
@@ -84,7 +84,7 @@ namespace RecordKeeper
             m_mode = modeWas;
         }
 
-        private bool[] AskAndSaveChangedFiles()
+        private List<Modes> AskAndSaveChangedFiles()
         {
             if (AnyFileChanged)
             {
@@ -95,26 +95,24 @@ namespace RecordKeeper
             }
             return null;
         }
-        private bool[] SaveChangedFiles()
+        private List<Modes> SaveChangedFiles()
         {
-            bool[] saved = new bool[(int)Modes.MaxMode];
-            for (int i = 0; i < (int)Modes.MaxMode; i++)
-                saved[i] = false;
-
+            List<Modes> saved = new List<Modes>();
             Modes modeWas = m_mode;
-
-            for (int i = 0; i < (int)Modes.MaxMode; i++)
+            //this.Visible = false;
+            for (Modes i = (Modes)0; i < Modes.MaxMode; i++)
             {
                 SetMode(i);
-                if (Changed)
+                if (Modified)
                 {
-                    m_curType.WriteRecordsFile();
-                    saved[i] = true;
+                    CurrentType.WriteRecordsFile();
+                    saved.Add(i);
+                    Modified = false;
                 }
-                Changed = false;
             }
 
             SetMode(modeWas);
+            //this.Visible = true;
             return saved;
         }
     }

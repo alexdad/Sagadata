@@ -22,29 +22,56 @@ namespace RecordKeeper
         string[] m_enumStatus;
 
         Modes m_mode;
-        RecordType m_curType;
-        Dictionary<Modes, bool> m_changed;
-        Dictionary<Modes, bool> m_loaded;
         Dictionary<Modes, RecordType> m_recordTypes;
         Dictionary<Modes, Type> m_dataTypes;
-        Dictionary<Modes, SchemaField[]> m_schemas;
 
         string m_remoteDir;             // place for remote file copy
         string m_recordKeeperDir;       // place for local file subdirs
 
         // Public Propertirs 
+        public Modes CurrentMode
+        {
+            get { return m_mode; }
+        }
+        public RecordType CurrentType
+        {
+            get { return m_recordTypes[m_mode]; }
+        }
+        public string CurrentModeName
+        {
+            get { return CurrentMode.ToString(); }
+        }
+        public bool Modified
+        {
+            get { return CurrentType.Modified; }
+            set { CurrentType.Modified = value; }
+        }
+        public bool Loaded
+        {
+            get { return CurrentType.Loaded; }
+            set { CurrentType.Loaded = value; }
+        }
+        public SchemaField[] Schema
+        {
+            get { return CurrentType.Schema; }
+            set { CurrentType.Schema = value; }
+        }
+        public int[] Placements
+        {
+            get { return CurrentType.Placements; }
+            set { CurrentType.Placements = value; }
+        }
         public string DataLocation
         {
-            get
-            {
-                return Path.Combine(m_recordKeeperDir, CurrentModeName).ToString();
-            }
+            get { return Path.Combine(m_recordKeeperDir, CurrentModeName).ToString(); }
         }
+        public string FilePath
+        {
+            get { return Path.Combine(DataLocation, CurrentModeName + ".csv"); }
+        }
+
         public string BackupLocation {
-            get
-            {
-                return Path.Combine(DataLocation, "Backup").ToString();
-            }
+            get { return Path.Combine(DataLocation, "Backup").ToString(); }
         }
         public int BackupLimit { get; set; }
 
@@ -52,45 +79,26 @@ namespace RecordKeeper
 
         public string CloudLocation
         {
-            get
-            {
-                return Path.Combine(m_remoteDir, CurrentModeName + ".csv").ToString();
-            }
+            get { return Path.Combine(m_remoteDir, CurrentModeName + ".csv").ToString(); }
         }
-        public string CurrentModeName {
-            get
-            {
-                return m_mode.ToString();
-            } 
-        }
-        public bool Changed
-        {
-            get { return m_changed[m_mode];  }
-            set { m_changed[m_mode] = value; }
-        }
-
-        public bool Loaded
-        {
-            get { return m_loaded[m_mode]; }
-            set { m_loaded[m_mode] = value; }
-        }
-
         
         public bool AnyFileChanged
         {
             get
             {
-                for (int i = 0; i < (int)Modes.MaxMode; i++)
-                    if (m_changed[(Modes)i])
+                foreach (RecordType r in m_recordTypes.Values)
+                {
+                    if (r.Modified)
+                    {
+                        Modes dt = r.Mode;
                         return true;
+                    }
+                }
                 return false;
             }
         }
 
         public string SelectionLevel { get; set; }
-
-        public SchemaField[] Schema { get; set; }
-        public int[] Placements { get; set; }
 
         public List<string> DeletedKeys { get; set;  }
         public Dictionary<string, Record> RecordsAsRead { get; set; }
@@ -123,14 +131,11 @@ namespace RecordKeeper
         {
             m_dataTypes = new Dictionary<Modes, Type>();
             m_recordTypes = new Dictionary<Modes, RecordType>();
-            m_schemas = new Dictionary<Modes, SchemaField[]>();
-            m_changed = new Dictionary<Modes, bool>();
-            m_loaded = new Dictionary<Modes, bool>();
 
             RecordsToFormConst1();
 
             // Initial mode is the first in the Modes enum
-            SetModeNoUI( (Modes)0 );      
+            m_mode = (Modes)0 ;      
             Client = Environment.MachineName;
             ReadSettings();
             ReadSchemas();
@@ -178,7 +183,7 @@ namespace RecordKeeper
             splitContainerGlobDataControls.SplitterDistance = Properties.Settings.Default.SplitDC;
             splitContainerGlobMasterDetail.SplitterDistance = Properties.Settings.Default.SplitMD;
 
-            Changed = false;
+            Modified = false;
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -194,19 +199,19 @@ namespace RecordKeeper
 
         private bool DownloadCurrentFile()
         {
-            return m_curType.DownloadFile();
+            return CurrentType.DownloadFile();
         }
         private bool UploadCurrentFile()
         {
-            return m_curType.UploadFile();
+            return CurrentType.UploadFile();
         }
         private bool ReadCurrentFile()
         {
-            return m_curType.ReadFile();
+            return CurrentType.ReadFile();
         }
         private void ShowCurrentCount()
         {
-            m_curType.ShowCount();
+            CurrentType.ShowCount();
         }
         private void ShowAllCurrent()
         {
@@ -232,17 +237,10 @@ namespace RecordKeeper
         }
         private void SetMode(Modes mode)
         {
-            SetModeNoUI(mode);
-            Schema = m_schemas[m_mode];
+            m_mode = mode;
             tabControlModesBottom.SelectedIndex = (int)m_mode;
             tabControlModesTop.SelectedIndex = (int)m_mode;
 
-        }
-
-        private void SetModeNoUI(Modes mode)
-        {
-            m_mode = mode;
-            m_curType = m_recordTypes[m_mode];
         }
 
         private void ChangeMode(Modes newMode)
@@ -278,9 +276,9 @@ namespace RecordKeeper
                 Record.NeedToReverse = !Record.NeedToReverse;
 
             DataGridViewColumn col = dataGridViewStudents.Columns[e.ColumnIndex];
-            Record[] temp = m_curType.ForkOut<Record>(0);
-            m_curType.SortRecords(col.HeaderText, temp);
-            m_curType.ReplaceRecordList(temp);
+            Record[] temp = CurrentType.ForkOut<Record>(0);
+            CurrentType.SortRecords(col.HeaderText, temp);
+            CurrentType.ReplaceRecordList(temp);
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -312,7 +310,7 @@ namespace RecordKeeper
             Record st = (Record)DataList.AddNew();
             st.Id = FormGlob.AllocateID();
             ShowCurrentCount();
-            Changed = true;
+            Modified = true;
             //tbStudFirstName.Select();  -- TODO
         }
 
@@ -322,12 +320,12 @@ namespace RecordKeeper
             DeletedKeys.Add(s.Key);
             DataList.RemoveCurrent();
             ShowCurrentCount();
-            Changed = true;
+            Modified = true;
         }
 
         private void buttonShowAll_Click(object sender, EventArgs e)
         {
-            m_curType.EndSelectionMode();
+            CurrentType.EndSelectionMode();
 
             ShowAllCurrent();
             SelectionLevel = null;
@@ -344,7 +342,7 @@ namespace RecordKeeper
 
         private void buttonToExcel_Click(object sender, EventArgs e)
         {
-            string tempCsv = m_curType.WriteTempFile();
+            string tempCsv = CurrentType.WriteTempFile();
             System.Diagnostics.Process.Start(tempCsv);
         }
 
@@ -356,33 +354,33 @@ namespace RecordKeeper
         {
             ComboBox comboBox = (ComboBox)sender;
             m_StudentSelectionStatus = (string)comboBox.SelectedItem;
-            m_curType.DoSelection();
+            CurrentType.DoSelection();
         }
 
         private void comboBoxSelectLearns_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
             m_StudentSelectionLearns = (string)comboBox.SelectedItem;
-            m_curType.DoSelection();
+            CurrentType.DoSelection();
         }
 
         private void comboBoxSelectSpeaks_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
             m_StudentSelectionSpeaks = (string)comboBox.SelectedItem;
-            m_curType.DoSelection();
+            CurrentType.DoSelection();
         }
         private void comboBoxSelectSource_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
             m_StudentSelectionSource = (string)comboBox.SelectedItem;
-            m_curType.DoSelection();
+            CurrentType.DoSelection();
         }
         private void comboBoxSelectLevel_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
             SelectionLevel = (string)comboBox.SelectedItem;
-            m_curType.DoSelection();
+            CurrentType.DoSelection();
         }
 
 
@@ -390,83 +388,83 @@ namespace RecordKeeper
         {
             TextBox testBox = (TextBox)sender;
             m_StudentSelectionFirstName = testBox.Text;
-            m_curType.DoSelection();
+            CurrentType.DoSelection();
         }
 
         private void textBoxSelectLastName_TextChanged(object sender, EventArgs e)
         {
             TextBox testBox = (TextBox)sender;
             m_StudentSelectionLastName = (string)testBox.Text;
-            m_curType.DoSelection();
+            CurrentType.DoSelection();
         }
         private void textBoxComments_TextChanged(object sender, EventArgs e)
         {
-            Changed = true;
+            Modified = true;
         }
 
         private void textBoxEmail_TextChanged(object sender, EventArgs e)
         {
-            Changed = true;
+            Modified = true;
         }
 
         private void textBoxFirstName_TextChanged(object sender, EventArgs e)
         {
-            Changed = true;
+            Modified = true;
         }
 
         private void textBoxLastName_TextChanged(object sender, EventArgs e)
         {
-            Changed = true;
+            Modified = true;
         }
 
         private void textBoxCellPhone_TextChanged(object sender, EventArgs e)
         {
-            Changed = true;
+            Modified = true;
         }
 
         private void textBoxHomePhone_TextChanged(object sender, EventArgs e)
         {
-            Changed = true;
+            Modified = true;
         }
 
         private void textBoxAddress1_TextChanged(object sender, EventArgs e)
         {
-            Changed = true;
+            Modified = true;
         }
 
         private void textBoxLanguageDetail_TextChanged(object sender, EventArgs e)
         {
-            Changed = true;
+            Modified = true;
         }
 
         private void textBoxBirthday_TextChanged(object sender, EventArgs e)
         {
-            Changed = true;
+            Modified = true;
         }
 
         private void textBoxSourceDetail_TextChanged(object sender, EventArgs e)
         {
-            Changed = true;
+            Modified = true;
         }
 
         private void textBoxSchedule_TextChanged(object sender, EventArgs e)
         {
-            Changed = true;
+            Modified = true;
         }
 
         private void textBoxInterests_TextChanged(object sender, EventArgs e)
         {
-            Changed = true;
+            Modified = true;
         }
 
         private void textBoxGoals_TextChanged(object sender, EventArgs e)
         {
-            Changed = true;
+            Modified = true;
         }
 
         private void textBoxBackground_TextChanged(object sender, EventArgs e)
         {
-            Changed = true;
+            Modified = true;
         }
 
 
@@ -475,27 +473,27 @@ namespace RecordKeeper
         #region Room-related UI
         private void tbRoomName_TextChanged(object sender, EventArgs e)
         {
-            Changed = true;
+            Modified = true;
         }
 
         private void tbRoomCapacity_TextChanged(object sender, EventArgs e)
         {
-            Changed = true;
+            Modified = true;
         }
 
         private void tbRoomPreferrability_TextChanged(object sender, EventArgs e)
         {
-            Changed = true;
+            Modified = true;
         }
 
         private void tbRoomTags_TextChanged(object sender, EventArgs e)
         {
-            Changed = true;
+            Modified = true;
         }
 
         private void tbRoomComments_TextChanged(object sender, EventArgs e)
         {
-            Changed = true;
+            Modified = true;
         }
         #endregion
     }

@@ -14,7 +14,6 @@ namespace RecordKeeper
 {
     public enum Modes
     {
-        MinMode = 0,
         Student = 0,
         Teacher = 1,
         Program = 2,
@@ -157,7 +156,7 @@ namespace RecordKeeper
             if (!Directory.Exists(m_recordKeeperDir))
                 Directory.CreateDirectory(m_recordKeeperDir);
 
-            for (Modes i = Modes.MinMode; i < Modes.MaxMode; i++)
+            for (Modes i = (Modes)0; i < Modes.MaxMode; i++)
             {
                 string dir = Path.Combine(m_recordKeeperDir, i.ToString());
                 if (!Directory.Exists(dir))
@@ -208,9 +207,8 @@ namespace RecordKeeper
 
             SchemaField[] schemaRecord = ReadSchema("Record", null);  // common fields
 
-            for (Modes i=Modes.MinMode;  i < Modes.MaxMode; i++)
-                m_schemas[i] = ReadSchema(i.ToString(), schemaRecord);
-
+            foreach (var r in m_recordTypes.Values)
+                r.Schema = ReadSchema(r.Mode.ToString(), schemaRecord);
         }
 
         private void ReadSettings()
@@ -232,11 +230,5 @@ namespace RecordKeeper
 
             BackupLimit = Properties.Settings.Default.BackupLimit;
         }
-
-        public string FilePath
-        {
-            get { return Path.Combine(DataLocation, CurrentModeName + ".csv"); }
-        }
-
     }
 }

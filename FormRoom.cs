@@ -24,8 +24,6 @@ namespace RecordKeeper
         {
             m_dataTypes.Add(Modes.Room, typeof(Room));
             m_recordTypes.Add(Modes.Room, new RoomType(this));
-            m_changed.Add(Modes.Room, false);
-            m_loaded.Add(Modes.Room, false);
         }
         private void RoomToFormConst2()
         {
@@ -37,26 +35,26 @@ namespace RecordKeeper
             if (!SelectionMode)
             {
                 SelectionMode = true;
-                m_curType.StashRecordList();
+                CurrentType.StashRecordList();
             }
 
             DataList.Clear();
             foreach (Room s in SavedFullListDuringSelection)
             {
                 // TODO - make it >= number
-                if (!m_curType.Fit(m_RoomSelectionCapacity, s.Capacity.ToString(), true))
+                if (!CurrentType.Fit(m_RoomSelectionCapacity, s.Capacity.ToString(), true))
                     continue;
-                if (!m_curType.Fit(m_RoomSelectionName, s.Name, true))
+                if (!CurrentType.Fit(m_RoomSelectionName, s.Name, true))
                     continue;
                 // TODO - make it >= number
-                if (!m_curType.Fit(m_RoomSelectionRank, s.Rank.ToString(), true))
+                if (!CurrentType.Fit(m_RoomSelectionRank, s.Rank.ToString(), true))
                     continue;
-                if (!m_curType.Fit(m_RoomSelectionTags, s.Tags, false))
+                if (!CurrentType.Fit(m_RoomSelectionTags, s.Tags, false))
                     continue;
                 DataList.Add(s);
             }
             ShowCurrentCount();
-            Changed = true;
+            Modified = true;
         }
 
     }
