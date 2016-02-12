@@ -127,20 +127,48 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormLesson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProgram.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTeacher.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GDrive.cs" />
+    <Compile Include="HiddenTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="HiddenTabControl.Designer.cs">
+      <DependentUpon>HiddenTabControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Lesson.cs" />
+    <Compile Include="LessonType.cs" />
     <Compile Include="MenuCommands.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Main.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="ProgramType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Record.cs" />
     <Compile Include="RecordType.cs" />
     <Compile Include="Room.cs" />
+    <Compile Include="RoomType.cs" />
     <Compile Include="Schematics.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Student.cs" />
     <Compile Include="StudentType.cs" />
+    <Compile Include="Teacher.cs" />
+    <Compile Include="TeacherType.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -171,6 +199,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Room.datasource" />
     <None Include="Properties\DataSources\Student.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -182,8 +211,23 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="SchemaTeacher.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
+    <None Include="SchemaLesson.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SchemaProgram.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SchemaRecord.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SchemaRoom.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="SchemaStudent.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

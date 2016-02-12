@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RecordKeeper
 {
-    public class Program : Record
+    public class Teacher : Record
     {
         public string Name { get; set; }
         public override string Description
@@ -37,7 +37,7 @@ namespace RecordKeeper
             return true;
         }
 
-        public Program()
+        public Teacher()
         {
             Name = "?";
         }

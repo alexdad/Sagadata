@@ -23,6 +23,9 @@ namespace RecordKeeper
         }
         public abstract string Class();
         public abstract void Initialize();
+        public abstract bool ReadFile();
+        public abstract bool DownloadFile();
+        public abstract bool UploadFile();
         public abstract void ShowCount();
         public abstract void DoSelection();
         public abstract void SortRecords(string hdr, Record[] temp);
@@ -34,23 +37,31 @@ namespace RecordKeeper
                 m_glob.DataList.Add(s);
         }
 
-        public void ReadRecordsFile<T>(Dictionary<string, Record> studentsAsRead) where T : Record
+
+
+        public bool ReadRecordsFile<T>() where T : Record
         {
             m_glob.DataList.Clear();
             m_glob.RecordsAsRead.Clear();
-
-            string[] sts = File.ReadAllLines(m_glob.FilePath);
-
-            ParseHeaders(sts[0].Split(','));
-
-            for (int s = 1; s < sts.Length; s++)
+            bool success = false;
+            try
             {
-                string safeStr = SafeGuard(sts[s]);
-                T st = ParseValues<T>(s, safeStr.Split(','));
-                m_glob.DataList.Add(st); 
-                m_glob.RecordsAsRead.Add(st.Key, st);
-                FormGlob.AccumulateID(st.Id);
+                string[] sts = File.ReadAllLines(m_glob.FilePath);
+
+                ParseHeaders(sts[0].Split(','));
+
+                for (int s = 1; s < sts.Length; s++)
+                {
+                    string safeStr = SafeGuard(sts[s]);
+                    T st = ParseValues<T>(s, safeStr.Split(','));
+                    m_glob.DataList.Add(st);
+                    m_glob.RecordsAsRead.Add(st.Key, st);
+                    FormGlob.AccumulateID(st.Id);
+                }
+                success = true;
             }
+            catch(Exception) {}
+            return success;
         }
 
         public void WriteRecordsFile()
@@ -83,7 +94,7 @@ namespace RecordKeeper
 
         public string DecideBackup()
         {
-            string prefix = Path.Combine(m_glob.BackupLocation, m_glob.FileName + ".backup");
+            string prefix = Path.Combine(m_glob.BackupLocation, m_glob.CurrentModeName + ".backup");
             DateTime maxDt = DateTime.MinValue;
             const int maxBackup = 100;
             int index = -1;
@@ -229,7 +240,7 @@ namespace RecordKeeper
             switch (m_glob.CloudType)
             {
                 case Clouds.Google:
-                    success = GDrive.Ops.DownloadDataFile(m_glob.FileName + ".csv", m_glob.CloudLocation);
+                    success = GDrive.Ops.DownloadDataFile(m_glob.CurrentModeName + ".csv", m_glob.CloudLocation);
                     if (!success)
                         MessageBox.Show("Cannot download from Google. Continuing to use local file.");
                     break;
@@ -265,7 +276,7 @@ namespace RecordKeeper
             switch (m_glob.CloudType)
             {
                 case Clouds.Google:
-                    success = GDrive.Ops.UploadDataFile(m_glob.CloudLocation, m_glob.FileName + ".csv");
+                    success = GDrive.Ops.UploadDataFile(m_glob.CloudLocation, m_glob.CurrentModeName + ".csv");
                     break;
                 case Clouds.Azure:
                 case Clouds.Dir:

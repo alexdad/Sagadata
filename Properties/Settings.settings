@@ -5,9 +5,6 @@
     <Setting Name="DataDir" Type="System.String" Scope="Application">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="FileName" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Students</Value>
-    </Setting>
     <Setting Name="BackupLimit" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">100</Value>
     </Setting>

@@ -14,11 +14,12 @@ namespace RecordKeeper
 {
     public enum Modes
     {
-        Students = 0,
-        Teachers = 1,
-        Programs = 2,
-        Rooms = 3,
-        Lessons = 4,
+        MinMode = 0,
+        Student = 0,
+        Teacher = 1,
+        Program = 2,
+        Room = 3,
+        Lesson = 4,
         MaxMode = 5
     }
     public enum Clouds
@@ -99,8 +100,6 @@ namespace RecordKeeper
 
         private void AssignEnums()
         {
-            cbGlobMode.Items.AddRange(m_enumModes);
-
             cbStudSelectLearns.Items.AddRange(m_enumLanguage);
             cbStudSelectSpeaks.Items.AddRange(m_enumLanguage);
             cbStudSelectStatus.Items.AddRange(m_enumStatus);
@@ -125,6 +124,22 @@ namespace RecordKeeper
         {
             labelGlobCount.Text = studentList.Count.ToString();
         }
+        public void ShowRoomCount()
+        {
+            labelGlobCount.Text = roomList.Count.ToString();
+        }
+        public void ShowTeacherCount()
+        {
+            //labelGlobCount.Text = teacherList.Count.ToString();
+        }
+        public void ShowProgramCount()
+        {
+            //labelGlobCount.Text = programList.Count.ToString();
+        }
+        public void ShowLessonCount()
+        {
+            //labelGlobCount.Text = lessonList.Count.ToString();
+        }
 
         void PrepareDataDirectories()
         {
@@ -137,28 +152,33 @@ namespace RecordKeeper
             if (!Directory.Exists(sd))
                 Directory.CreateDirectory(sd);
 
-            string rl = Path.Combine(sd, "Remote").ToString();
-            if (!Directory.Exists(rl))
-                Directory.CreateDirectory(rl);
+            // Here will reside subdirs per mode for local files
+            m_recordKeeperDir = Path.Combine(sd, "RecordKeeper").ToString();
+            if (!Directory.Exists(m_recordKeeperDir))
+                Directory.CreateDirectory(m_recordKeeperDir);
 
-            CloudLocation = Path.Combine(rl, FileName + ".csv");
+            for (Modes i = Modes.MinMode; i < Modes.MaxMode; i++)
+            {
+                string dir = Path.Combine(m_recordKeeperDir, i.ToString());
+                if (!Directory.Exists(dir))
+                    Directory.CreateDirectory(dir);
 
-            DataLocation = Path.Combine(sd, "Students").ToString();
-            if (!Directory.Exists(DataLocation))
-                Directory.CreateDirectory(DataLocation);
+                string backupdir  = Path.Combine(dir, "Backup").ToString();
+                if (!Directory.Exists(backupdir))
+                    Directory.CreateDirectory(backupdir);
+            }
 
-            BackupLocation = Path.Combine(DataLocation, "Backup").ToString();
-            if (!Directory.Exists(BackupLocation))
-                Directory.CreateDirectory(BackupLocation);
+            // Here all remote file copies will sit
+            m_remoteDir = Path.Combine(m_recordKeeperDir, "Remote");
+            if (!Directory.Exists(m_remoteDir))
+                Directory.CreateDirectory(m_remoteDir);
         }
-        void ReadSchemas()
+
+        SchemaField[] ReadSchema(string name, SchemaField[] addition)
         {
-            string binLocation = Directory.GetCurrentDirectory();
-            m_enumLanguage = File.ReadAllLines(Path.Combine(binLocation, "EnumLanguage.csv").ToString());
-            m_enumLevel = File.ReadAllLines(Path.Combine(binLocation, "EnumLevel.csv").ToString());
-            m_enumSource = File.ReadAllLines(Path.Combine(binLocation, "EnumSource.csv").ToString());
-            m_enumStatus = File.ReadAllLines(Path.Combine(binLocation, "EnumStatus.csv").ToString());
-            string[] schema = File.ReadAllLines(Path.Combine(binLocation, "SchemaStudent.csv").ToString());
+            string[] schema = File.ReadAllLines(
+                Path.Combine(Directory.GetCurrentDirectory(), 
+                "Schema" + name + ".csv").ToString());
 
             List<SchemaField> schemaList = new List<SchemaField>();
             foreach (string s in schema)
@@ -168,30 +188,35 @@ namespace RecordKeeper
                     throw new Exception("ILlegal schema line: " + s);
                 schemaList.Add(new SchemaField(vals[0], vals[1]));
             }
-            Schema = schemaList.ToArray();
 
-            m_enumModes = new string[(int)Modes.MaxMode];
-            m_enumModes[(int)Modes.Students] = "Students";
-            m_enumModes[(int)Modes.Teachers] = "Teachers";
-            m_enumModes[(int)Modes.Programs] = "Programs";
-            m_enumModes[(int)Modes.Rooms] = "Rooms";
-            m_enumModes[(int)Modes.Lessons] = "Lessons";
+            if (addition != null)
+            {
+                foreach (var f in addition)
+                    schemaList.Add(f);
+            }
 
+            return schemaList.ToArray();
+        }
 
-            // TODO - generalize into a file
-            m_enumColumnNames = new string[]
-                { "Status", "First Name", "Last Name", "Email", "Phone", "Learning", "Level",
-                  "Native", "Other", "Birthday", "Source", "Address"};
+        void ReadSchemas()
+        {
+            string binLocation = Directory.GetCurrentDirectory();
+            m_enumLanguage = File.ReadAllLines(Path.Combine(binLocation, "EnumLanguage.csv").ToString());
+            m_enumLevel = File.ReadAllLines(Path.Combine(binLocation, "EnumLevel.csv").ToString());
+            m_enumSource = File.ReadAllLines(Path.Combine(binLocation, "EnumSource.csv").ToString());
+            m_enumStatus = File.ReadAllLines(Path.Combine(binLocation, "EnumStatus.csv").ToString());
 
-            m_enumSortDirection = new string[2]
-                { "Asc", "Desc"};
+            SchemaField[] schemaRecord = ReadSchema("Record", null);  // common fields
+
+            for (Modes i=Modes.MinMode;  i < Modes.MaxMode; i++)
+                m_schemas[i] = ReadSchema(i.ToString(), schemaRecord);
+
         }
 
         private void ReadSettings()
         {
             string dir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             CloudType = Clouds.None;
-            FileName = Properties.Settings.Default.FileName;
             switch (Properties.Settings.Default.CloudType.ToLower())
             {
                 case "dir":
@@ -210,7 +235,7 @@ namespace RecordKeeper
 
         public string FilePath
         {
-            get { return Path.Combine(DataLocation, FileName + ".csv"); }
+            get { return Path.Combine(DataLocation, CurrentModeName + ".csv"); }
         }
 
     }

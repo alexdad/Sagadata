@@ -16,33 +16,78 @@ namespace RecordKeeper
     public partial class FormGlob : Form
     {
         // Local fields
-        string[] m_enumModes;
         string[] m_enumLanguage;
         string[] m_enumLevel;
         string[] m_enumSource;
         string[] m_enumStatus;
-        string[] m_enumColumnNames;
-        string[] m_enumSortDirection;
-
-        string m_selectionStatus;
-        string m_selectionLearns;
-        string m_selectionSpeaks;
-        string m_selectionFirstName;
-        string m_selectionLastName;
-        string m_selectionSource;
 
         Modes m_mode;
         RecordType m_curType;
+        Dictionary<Modes, bool> m_changed;
+        Dictionary<Modes, bool> m_loaded;
+        Dictionary<Modes, RecordType> m_recordTypes;
+        Dictionary<Modes, Type> m_dataTypes;
+        Dictionary<Modes, SchemaField[]> m_schemas;
+
+        string m_remoteDir;             // place for remote file copy
+        string m_recordKeeperDir;       // place for local file subdirs
 
         // Public Propertirs 
-        public Clouds CloudType { get; set; }
-        public string CloudLocation { get; set; }
-        public string FileName { get; set; }
-        public bool Changed { get; set; }
-        public string SelectionLevel { get; set; }
-        public string DataLocation { get; set; }
-        public string BackupLocation { get; set; }
+        public string DataLocation
+        {
+            get
+            {
+                return Path.Combine(m_recordKeeperDir, CurrentModeName).ToString();
+            }
+        }
+        public string BackupLocation {
+            get
+            {
+                return Path.Combine(DataLocation, "Backup").ToString();
+            }
+        }
         public int BackupLimit { get; set; }
+
+        public Clouds CloudType { get; set; }
+
+        public string CloudLocation
+        {
+            get
+            {
+                return Path.Combine(m_remoteDir, CurrentModeName + ".csv").ToString();
+            }
+        }
+        public string CurrentModeName {
+            get
+            {
+                return m_mode.ToString();
+            } 
+        }
+        public bool Changed
+        {
+            get { return m_changed[m_mode];  }
+            set { m_changed[m_mode] = value; }
+        }
+
+        public bool Loaded
+        {
+            get { return m_loaded[m_mode]; }
+            set { m_loaded[m_mode] = value; }
+        }
+
+        
+        public bool AnyFileChanged
+        {
+            get
+            {
+                for (int i = 0; i < (int)Modes.MaxMode; i++)
+                    if (m_changed[(Modes)i])
+                        return true;
+                return false;
+            }
+        }
+
+        public string SelectionLevel { get; set; }
 
         public SchemaField[] Schema { get; set; }
         public int[] Placements { get; set; }
@@ -62,8 +107,10 @@ namespace RecordKeeper
                 // Here are links between manually crafted per-record-type UI and modes
                 switch(m_mode)
                 {
-                    case Modes.Students:
+                    case Modes.Student:
                         return studentList;
+                    case Modes.Room:
+                        return roomList;
                     default:
                         return null;
                 }
@@ -74,34 +121,58 @@ namespace RecordKeeper
         #region "Form"
         public FormGlob()
         {
+            m_dataTypes = new Dictionary<Modes, Type>();
+            m_recordTypes = new Dictionary<Modes, RecordType>();
+            m_schemas = new Dictionary<Modes, SchemaField[]>();
+            m_changed = new Dictionary<Modes, bool>();
+            m_loaded = new Dictionary<Modes, bool>();
+
+            RecordsToFormConst1();
+
+            // Initial mode is the first in the Modes enum
+            SetModeNoUI( (Modes)0 );      
             Client = Environment.MachineName;
             ReadSettings();
             ReadSchemas();
             PrepareDataDirectories();
             InitializeComponent();
             AssignEnums();
-
-            // Initial mode is the first in the Modes file
-            m_mode = Modes.Students;
+            SetMode(m_mode);
+            RecordsToFormConst2();
             cbGlobMode.SelectedIndex = (int)m_mode;
-            m_curType = new StudentType(this);
-
             SelectionMode = false;
             DeletedKeys = new List<string>();
             RecordsAsRead = new Dictionary<string, Record>();
         }
 
+        private void RecordsToFormConst1()
+        {
+            StudentToFormConst1();
+            TeacherToFormConst1();
+            ProgramToFormConst1();
+            RoomToFormConst1();
+            LessonToFormConst1();
+
+        }
+        private void RecordsToFormConst2()
+        {
+            StudentToFormConst2();
+            TeacherToFormConst2();
+            ProgramToFormConst2();
+            RoomToFormConst2();
+            LessonToFormConst2();
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             if (Properties.Settings.Default.InitialDownload.ToLower() != "no")
             {
-                if (!m_curType.Download<Student>())
-                    m_curType.ReadRecordsFile<Student>(RecordsAsRead);
+                if (!DownloadCurrentFile())
+                    ReadCurrentFile();
             }
             else
-                m_curType.ReadRecordsFile<Student>(RecordsAsRead);
+                ReadCurrentFile();
 
-            ShowStudentCount();
+            ShowCurrentCount();
 
             this.Size = Properties.Settings.Default.Form1Size;
             splitContainerGlobDataControls.SplitterDistance = Properties.Settings.Default.SplitDC;
@@ -120,77 +191,80 @@ namespace RecordKeeper
         #endregion
 
         #region "Mode navigation"
-        private void cbGlobType_SelectedIndexChanged(object sender, EventArgs e)
+
+        private bool DownloadCurrentFile()
         {
-            ComboBox comboBox = (ComboBox)sender;
-            Modes oldMode = m_mode;
-            m_mode = (Modes)comboBox.SelectedIndex;
-            if (m_mode == oldMode)
-                return;
+            return m_curType.DownloadFile();
+        }
+        private bool UploadCurrentFile()
+        {
+            return m_curType.UploadFile();
+        }
+        private bool ReadCurrentFile()
+        {
+            return m_curType.ReadFile();
+        }
+        private void ShowCurrentCount()
+        {
+            m_curType.ShowCount();
+        }
+        private void ShowAllCurrent()
+        {
+            // TODO make it only for current type. Maybe new friend of Form object per rec type.
+            m_StudentSelectionStatus = null;
+            m_StudentSelectionLearns = null;
+            m_StudentSelectionSpeaks = null;
+            m_StudentSelectionFirstName = null;
+            m_StudentSelectionLastName = null;
+            m_StudentSelectionSource = null;
+
+            m_RoomSelectionCapacity = null;
+            m_RoomSelectionName = null;
+            m_RoomSelectionRank = null;
+            m_RoomSelectionTags = null;
+
+
+        }
+
+        private void SetMode(int mode)
+        {
+            SetMode((Modes)mode);
+        }
+        private void SetMode(Modes mode)
+        {
+            SetModeNoUI(mode);
+            Schema = m_schemas[m_mode];
             tabControlModesBottom.SelectedIndex = (int)m_mode;
             tabControlModesTop.SelectedIndex = (int)m_mode;
 
-            switch (m_mode)
-            {
-                case Modes.Students:
-                    break;
-                case Modes.Teachers:
-                    break;
-                case Modes.Programs:
-                    break;
-                case Modes.Rooms:
-                    break;
-                case Modes.Lessons:
-                    break;
-                default:
-                    throw new Exception("Wrong mode selection " + m_mode);
-            }
         }
-        #endregion
 
-        #region TypeSpecificFormControlRelated
-        public void ReplaceStudentList(Student[] target)
+        private void SetModeNoUI(Modes mode)
         {
-            studentList.Clear();
-            foreach (Student s in target)
-                studentList.Add(s);
+            m_mode = mode;
+            m_curType = m_recordTypes[m_mode];
         }
-        #endregion
 
-        #region "Selection"
-        public void DoStudentSelection()
+        private void ChangeMode(Modes newMode)
         {
-            if (!SelectionMode)
-            {
-                SelectionMode = true;
-                m_curType.StashRecordList();
-            }
+            if (AnyFileChanged)
+                SaveChangedFiles();
 
-            DataList.Clear();
-            foreach (Student s in SavedFullListDuringSelection)
-            {
-                if (!m_curType.Fit(m_selectionStatus, s.Status, true))
-                    continue;
-                if (!m_curType.Fit(m_selectionLearns, s.LearningLanguage, true))
-                    continue;
-                if (!m_curType.Fit(m_selectionSpeaks, s.NativeLanguage, true))
-                    continue;
-                if (!m_curType.Fit(m_selectionFirstName, s.FirstName, false))
-                    continue;
-                if (!m_curType.Fit(m_selectionLastName, s.LastName, false))
-                    continue;
-                if (!m_curType.Fit(m_selectionSource, s.Source, true))
-                    continue;
-                if (!m_curType.Fit(SelectionLevel, s.Level, true))
-                    continue;
-
-                DataList.Add(s);
-            }
-            m_curType.ShowCount();
-            Changed = true;
+            SetMode(newMode);
+            if (!Loaded)
+                ReadCurrentFile();
         }
 
+        private void cbGlobType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            Modes newMode = (Modes)comboBox.SelectedIndex;
+            if (newMode == m_mode)
+                return;
+            ChangeMode(newMode);
+        }
         #endregion
+
 
         #region "DataGridClicks"
         private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -223,31 +297,31 @@ namespace RecordKeeper
         #region "ButtonClicks"
         private void buttonNext_Click(object sender, EventArgs e)
         {
-            if (studentList.CurrencyManager.Position < studentList.Count - 1)
-                studentList.CurrencyManager.Position++;
+            if (DataList.CurrencyManager.Position < DataList.Count - 1)
+                DataList.CurrencyManager.Position++;
         }
 
         private void buttonPrev_Click(object sender, EventArgs e)
         {
-            if (studentList.CurrencyManager.Position > 0)
-                studentList.CurrencyManager.Position--;
+            if (DataList.CurrencyManager.Position > 0)
+                DataList.CurrencyManager.Position--;
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            Student st = (Student)studentList.AddNew();
+            Record st = (Record)DataList.AddNew();
             st.Id = FormGlob.AllocateID();
-            ShowStudentCount();
+            ShowCurrentCount();
             Changed = true;
-            tbStudFirstName.Select();
+            //tbStudFirstName.Select();  -- TODO
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            Student s = (Student)studentList.Current;
+            Record s = (Record)DataList.Current;
             DeletedKeys.Add(s.Key);
-            studentList.RemoveCurrent();
-            ShowStudentCount();
+            DataList.RemoveCurrent();
+            ShowCurrentCount();
             Changed = true;
         }
 
@@ -255,12 +329,7 @@ namespace RecordKeeper
         {
             m_curType.EndSelectionMode();
 
-            m_selectionStatus = null;
-            m_selectionLearns = null;
-            m_selectionSpeaks = null;
-            m_selectionFirstName = null;
-            m_selectionLastName = null;
-            m_selectionSource = null;
+            ShowAllCurrent();
             SelectionLevel = null;
 
             cbStudSelectStatus.SelectedIndex = 0;
@@ -279,33 +348,34 @@ namespace RecordKeeper
             System.Diagnostics.Process.Start(tempCsv);
         }
 
+
         #endregion
 
-        #region "ComboBoxClicks"
+        #region Student-related UI 
         private void comboBoxSelectStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
-            m_selectionStatus = (string)comboBox.SelectedItem;
+            m_StudentSelectionStatus = (string)comboBox.SelectedItem;
             m_curType.DoSelection();
         }
 
         private void comboBoxSelectLearns_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
-            m_selectionLearns = (string)comboBox.SelectedItem;
+            m_StudentSelectionLearns = (string)comboBox.SelectedItem;
             m_curType.DoSelection();
         }
 
         private void comboBoxSelectSpeaks_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
-            m_selectionSpeaks = (string)comboBox.SelectedItem;
+            m_StudentSelectionSpeaks = (string)comboBox.SelectedItem;
             m_curType.DoSelection();
         }
         private void comboBoxSelectSource_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
-            m_selectionSource = (string)comboBox.SelectedItem;
+            m_StudentSelectionSource = (string)comboBox.SelectedItem;
             m_curType.DoSelection();
         }
         private void comboBoxSelectLevel_SelectedIndexChanged(object sender, EventArgs e)
@@ -314,20 +384,19 @@ namespace RecordKeeper
             SelectionLevel = (string)comboBox.SelectedItem;
             m_curType.DoSelection();
         }
-        #endregion
 
-        #region "TextBoxClicks"
+
         private void textBoxSelectFirstName_TextChanged(object sender, EventArgs e)
         {
             TextBox testBox = (TextBox)sender;
-            m_selectionFirstName = testBox.Text;
+            m_StudentSelectionFirstName = testBox.Text;
             m_curType.DoSelection();
         }
 
         private void textBoxSelectLastName_TextChanged(object sender, EventArgs e)
         {
             TextBox testBox = (TextBox)sender;
-            m_selectionLastName = (string)testBox.Text;
+            m_StudentSelectionLastName = (string)testBox.Text;
             m_curType.DoSelection();
         }
         private void textBoxComments_TextChanged(object sender, EventArgs e)
@@ -400,6 +469,34 @@ namespace RecordKeeper
             Changed = true;
         }
 
+
+        #endregion
+
+        #region Room-related UI
+        private void tbRoomName_TextChanged(object sender, EventArgs e)
+        {
+            Changed = true;
+        }
+
+        private void tbRoomCapacity_TextChanged(object sender, EventArgs e)
+        {
+            Changed = true;
+        }
+
+        private void tbRoomPreferrability_TextChanged(object sender, EventArgs e)
+        {
+            Changed = true;
+        }
+
+        private void tbRoomTags_TextChanged(object sender, EventArgs e)
+        {
+            Changed = true;
+        }
+
+        private void tbRoomComments_TextChanged(object sender, EventArgs e)
+        {
+            Changed = true;
+        }
         #endregion
     }
 }

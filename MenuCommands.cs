@@ -18,44 +18,104 @@ namespace RecordKeeper
         //----------------------------------------------------
         private void downloadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //ReadStudentsFile(m_studentsAsRead);
-            m_curType.Download<Student>();
+            DownloadCurrentFile();
         }
 
         private void uploadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            m_curType.Upload<Student>();
+            m_curType.EndSelectionMode();
+            UploadFiles(SaveChangedFiles());
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             m_curType.EndSelectionMode();
-            m_curType.WriteRecordsFile();
-            Changed = false;
+            SaveChangedFiles();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (Changed)
-            {
-                DialogResult result = MessageBox.Show(
-                    "Should I save?", "You have unsaved changes", MessageBoxButtons.YesNoCancel);
-                if (result == DialogResult.Cancel)
-                    return;
-                else if (result == DialogResult.Yes)
-                {
-                    saveToolStripMenuItem_Click(sender, e);
-                    result = MessageBox.Show(
-                        "Should I upload?", "You have local changes", MessageBoxButtons.YesNoCancel);
-                    if (result == DialogResult.Cancel)
-                        return;
-                    else if (result == DialogResult.Yes)
-                        m_curType.Upload<Student>();
-                }
-
-            }
+            AskAndUploadChangedFiles();
             Application.Exit();
         }
 
+        // Support functions
+        private void AskAndUploadChangedFiles()
+        {
+            if (AnyFileChanged)
+            {
+                DialogResult result = MessageBox.Show(
+                    "Should I save?", "You have unsaved changes", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                {
+                    bool[] saved = SaveChangedFiles();
+                    result = MessageBox.Show(
+                        "Should I upload?", "You have local changes", MessageBoxButtons.YesNo);
+                    if (result == DialogResult.Yes)
+                        UploadFiles(saved);
+                }
+            }
+        }
+
+        private void UploadFiles(bool[] files)
+        {
+            Modes modeWas = m_mode;
+
+            for (int i = 0; i < (int)Modes.MaxMode; i++)
+            {
+                if (files[i])
+                {
+                    SetMode(i);
+                    UploadCurrentFile();
+                }
+            }
+            m_mode = modeWas;
+        }
+
+        private void DownloadAllFiles()
+        {
+            Modes modeWas = m_mode;
+
+            for (int i = 0; i < (int)Modes.MaxMode; i++)
+            {
+                SetMode(i);
+                DownloadCurrentFile();
+            }
+            m_mode = modeWas;
+        }
+
+        private bool[] AskAndSaveChangedFiles()
+        {
+            if (AnyFileChanged)
+            {
+                DialogResult result = MessageBox.Show(
+                    "Should I save?", "You have unsaved changes", MessageBoxButtons.YesNo);
+                if (result == DialogResult.Yes)
+                    return SaveChangedFiles();
+            }
+            return null;
+        }
+        private bool[] SaveChangedFiles()
+        {
+            bool[] saved = new bool[(int)Modes.MaxMode];
+            for (int i = 0; i < (int)Modes.MaxMode; i++)
+                saved[i] = false;
+
+            Modes modeWas = m_mode;
+
+            for (int i = 0; i < (int)Modes.MaxMode; i++)
+            {
+                SetMode(i);
+                if (Changed)
+                {
+                    m_curType.WriteRecordsFile();
+                    saved[i] = true;
+                }
+                Changed = false;
+            }
+
+            SetMode(modeWas);
+            return saved;
+        }
     }
 }

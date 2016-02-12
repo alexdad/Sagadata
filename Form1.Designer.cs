@@ -56,20 +56,6 @@
             this.butGlobalToExcel = new System.Windows.Forms.Button();
             this.labelGlobSearch = new System.Windows.Forms.Label();
             this.buttGlobalShowAll = new System.Windows.Forms.Button();
-            this.dataGridViewStudents = new System.Windows.Forms.DataGridView();
-            this.dgvStudColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvStudColumnFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvStudColumnLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvStudColumnEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvStudColumnPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvStudColumnLearningLanguage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvStudColumnLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvStudColumnNativeLanguage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvStudColumnOtherLanguage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvStudColumnBirthday = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvStudColumnSource = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvStudColumnAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.studentList = new System.Windows.Forms.BindingSource(this.components);
             this.butGlobalPrev = new System.Windows.Forms.Button();
             this.butGlobalAdd = new System.Windows.Forms.Button();
             this.butGlobalDelete = new System.Windows.Forms.Button();
@@ -77,6 +63,9 @@
             this.labelGlobCount = new System.Windows.Forms.Label();
             this.labelGlobLastDownload = new System.Windows.Forms.Label();
             this.labelGlobLastUpload = new System.Windows.Forms.Label();
+            this.panelGlobEdit = new System.Windows.Forms.Panel();
+            this.tabControlModesBottom = new RecordKeeper.HiddenTabControl();
+            this.tabBottomPageStudents = new System.Windows.Forms.TabPage();
             this.panelStudent = new System.Windows.Forms.Panel();
             this.panelStudPrimary = new System.Windows.Forms.Panel();
             this.groupBoxStudPrinaryRight = new System.Windows.Forms.GroupBox();
@@ -84,6 +73,7 @@
             this.labelStudDetailsLanguage = new System.Windows.Forms.Label();
             this.labelStudAddress1 = new System.Windows.Forms.Label();
             this.tbStudAddress1 = new System.Windows.Forms.TextBox();
+            this.studentList = new System.Windows.Forms.BindingSource(this.components);
             this.tbStudLanguageDetail = new System.Windows.Forms.TextBox();
             this.tbStudSourceDetail = new System.Windows.Forms.TextBox();
             this.panelStudPrimaryLeft = new System.Windows.Forms.Panel();
@@ -124,9 +114,6 @@
             this.labelStudComments = new System.Windows.Forms.Label();
             this.labelStudSchedule = new System.Windows.Forms.Label();
             this.labelStudInterests = new System.Windows.Forms.Label();
-            this.panelGlobEdit = new System.Windows.Forms.Panel();
-            this.tabControlModesBottom = new System.Windows.Forms.TabControl();
-            this.tabBottomPageStudents = new System.Windows.Forms.TabPage();
             this.tabBottomPageTeachers = new System.Windows.Forms.TabPage();
             this.tabBottomPagePrograms = new System.Windows.Forms.TabPage();
             this.tabBottomPageRooms = new System.Windows.Forms.TabPage();
@@ -136,6 +123,7 @@
             this.labelRoomCapacity = new System.Windows.Forms.Label();
             this.labelRoomName = new System.Windows.Forms.Label();
             this.tbRoomPreferrability = new System.Windows.Forms.TextBox();
+            this.roomList = new System.Windows.Forms.BindingSource(this.components);
             this.tbRoomCapacity = new System.Windows.Forms.TextBox();
             this.tbRoomName = new System.Windows.Forms.TextBox();
             this.groupBoxRoom = new System.Windows.Forms.GroupBox();
@@ -149,11 +137,31 @@
             this.panelGlobLogo = new System.Windows.Forms.Panel();
             this.cbGlobMode = new System.Windows.Forms.ComboBox();
             this.splitContainerGlobMasterDetail = new System.Windows.Forms.SplitContainer();
-            this.tabControlModesTop = new System.Windows.Forms.TabControl();
+            this.tabControlModesTop = new RecordKeeper.HiddenTabControl();
             this.tabTopPageStudents = new System.Windows.Forms.TabPage();
+            this.dataGridViewStudents = new System.Windows.Forms.DataGridView();
+            this.dgvStudColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStudColumnFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStudColumnLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStudColumnEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStudColumnPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStudColumnLearningLanguage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStudColumnLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStudColumnNativeLanguage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStudColumnOtherLanguage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStudColumnBirthday = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStudColumnSource = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvStudColumnAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabTopPageTeachers = new System.Windows.Forms.TabPage();
             this.tabTopPagePrograms = new System.Windows.Forms.TabPage();
             this.tabTopPageRooms = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.capacityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rankDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tagsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.commentsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabTopPageLessons = new System.Windows.Forms.TabPage();
             this.splitContainerGlobDataControls = new System.Windows.Forms.SplitContainer();
             this.panelGlobIndicators = new System.Windows.Forms.Panel();
@@ -161,21 +169,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGlobIcon)).BeginInit();
             this.panelGlobSearch.SuspendLayout();
             this.panelStudSearch.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudents)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.studentList)).BeginInit();
+            this.panelGlobEdit.SuspendLayout();
+            this.tabControlModesBottom.SuspendLayout();
+            this.tabBottomPageStudents.SuspendLayout();
             this.panelStudent.SuspendLayout();
             this.panelStudPrimary.SuspendLayout();
             this.groupBoxStudPrinaryRight.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.studentList)).BeginInit();
             this.panelStudPrimaryLeft.SuspendLayout();
             this.panelStudSecondary.SuspendLayout();
             this.groupBoxStudSecondaryRight.SuspendLayout();
             this.panelStudSecondaryLeft.SuspendLayout();
-            this.panelGlobEdit.SuspendLayout();
-            this.tabControlModesBottom.SuspendLayout();
-            this.tabBottomPageStudents.SuspendLayout();
             this.tabBottomPageRooms.SuspendLayout();
             this.panelRoom.SuspendLayout();
             this.panelRoomPrimaryLeft.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.roomList)).BeginInit();
             this.groupBoxRoom.SuspendLayout();
             this.panelGlobPrevDelete.SuspendLayout();
             this.panelGlobNextNew.SuspendLayout();
@@ -186,6 +194,9 @@
             this.splitContainerGlobMasterDetail.SuspendLayout();
             this.tabControlModesTop.SuspendLayout();
             this.tabTopPageStudents.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudents)).BeginInit();
+            this.tabTopPageRooms.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerGlobDataControls)).BeginInit();
             this.splitContainerGlobDataControls.Panel1.SuspendLayout();
             this.splitContainerGlobDataControls.Panel2.SuspendLayout();
@@ -458,126 +469,6 @@
             this.buttGlobalShowAll.UseVisualStyleBackColor = false;
             this.buttGlobalShowAll.Click += new System.EventHandler(this.buttonShowAll_Click);
             // 
-            // dataGridViewStudents
-            // 
-            this.dataGridViewStudents.AllowUserToAddRows = false;
-            this.dataGridViewStudents.AllowUserToDeleteRows = false;
-            this.dataGridViewStudents.AllowUserToOrderColumns = true;
-            this.dataGridViewStudents.AutoGenerateColumns = false;
-            this.dataGridViewStudents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewStudents.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dgvStudColumnStatus,
-            this.dgvStudColumnFirstName,
-            this.dgvStudColumnLastName,
-            this.dgvStudColumnEmail,
-            this.dgvStudColumnPhone,
-            this.dgvStudColumnLearningLanguage,
-            this.dgvStudColumnLevel,
-            this.dgvStudColumnNativeLanguage,
-            this.dgvStudColumnOtherLanguage,
-            this.dgvStudColumnBirthday,
-            this.dgvStudColumnSource,
-            this.dgvStudColumnAddress});
-            this.dataGridViewStudents.DataSource = this.studentList;
-            this.dataGridViewStudents.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewStudents.Location = new System.Drawing.Point(3, 3);
-            this.dataGridViewStudents.Name = "dataGridViewStudents";
-            this.dataGridViewStudents.ReadOnly = true;
-            this.dataGridViewStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewStudents.Size = new System.Drawing.Size(1015, 361);
-            this.dataGridViewStudents.TabIndex = 13;
-            this.dataGridViewStudents.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            this.dataGridViewStudents.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_ColumnHeaderMouseClick);
-            // 
-            // dgvStudColumnStatus
-            // 
-            this.dgvStudColumnStatus.DataPropertyName = "Status";
-            this.dgvStudColumnStatus.HeaderText = "Status";
-            this.dgvStudColumnStatus.Name = "dgvStudColumnStatus";
-            this.dgvStudColumnStatus.ReadOnly = true;
-            // 
-            // dgvStudColumnFirstName
-            // 
-            this.dgvStudColumnFirstName.DataPropertyName = "FirstName";
-            this.dgvStudColumnFirstName.HeaderText = "First Name";
-            this.dgvStudColumnFirstName.Name = "dgvStudColumnFirstName";
-            this.dgvStudColumnFirstName.ReadOnly = true;
-            // 
-            // dgvStudColumnLastName
-            // 
-            this.dgvStudColumnLastName.DataPropertyName = "LastName";
-            this.dgvStudColumnLastName.HeaderText = "Last Name";
-            this.dgvStudColumnLastName.Name = "dgvStudColumnLastName";
-            this.dgvStudColumnLastName.ReadOnly = true;
-            // 
-            // dgvStudColumnEmail
-            // 
-            this.dgvStudColumnEmail.DataPropertyName = "Email";
-            this.dgvStudColumnEmail.HeaderText = "Email";
-            this.dgvStudColumnEmail.Name = "dgvStudColumnEmail";
-            this.dgvStudColumnEmail.ReadOnly = true;
-            // 
-            // dgvStudColumnPhone
-            // 
-            this.dgvStudColumnPhone.DataPropertyName = "Phone";
-            this.dgvStudColumnPhone.HeaderText = "Phone";
-            this.dgvStudColumnPhone.Name = "dgvStudColumnPhone";
-            this.dgvStudColumnPhone.ReadOnly = true;
-            // 
-            // dgvStudColumnLearningLanguage
-            // 
-            this.dgvStudColumnLearningLanguage.DataPropertyName = "LearningLanguage";
-            this.dgvStudColumnLearningLanguage.HeaderText = "Learning";
-            this.dgvStudColumnLearningLanguage.Name = "dgvStudColumnLearningLanguage";
-            this.dgvStudColumnLearningLanguage.ReadOnly = true;
-            // 
-            // dgvStudColumnLevel
-            // 
-            this.dgvStudColumnLevel.DataPropertyName = "Level";
-            this.dgvStudColumnLevel.HeaderText = "Level";
-            this.dgvStudColumnLevel.Name = "dgvStudColumnLevel";
-            this.dgvStudColumnLevel.ReadOnly = true;
-            // 
-            // dgvStudColumnNativeLanguage
-            // 
-            this.dgvStudColumnNativeLanguage.DataPropertyName = "NativeLanguage";
-            this.dgvStudColumnNativeLanguage.HeaderText = "Native";
-            this.dgvStudColumnNativeLanguage.Name = "dgvStudColumnNativeLanguage";
-            this.dgvStudColumnNativeLanguage.ReadOnly = true;
-            // 
-            // dgvStudColumnOtherLanguage
-            // 
-            this.dgvStudColumnOtherLanguage.DataPropertyName = "OtherLanguage";
-            this.dgvStudColumnOtherLanguage.HeaderText = "Other";
-            this.dgvStudColumnOtherLanguage.Name = "dgvStudColumnOtherLanguage";
-            this.dgvStudColumnOtherLanguage.ReadOnly = true;
-            // 
-            // dgvStudColumnBirthday
-            // 
-            this.dgvStudColumnBirthday.DataPropertyName = "Birthday";
-            this.dgvStudColumnBirthday.HeaderText = "Birthday";
-            this.dgvStudColumnBirthday.Name = "dgvStudColumnBirthday";
-            this.dgvStudColumnBirthday.ReadOnly = true;
-            // 
-            // dgvStudColumnSource
-            // 
-            this.dgvStudColumnSource.DataPropertyName = "Source";
-            this.dgvStudColumnSource.HeaderText = "Source";
-            this.dgvStudColumnSource.Name = "dgvStudColumnSource";
-            this.dgvStudColumnSource.ReadOnly = true;
-            // 
-            // dgvStudColumnAddress
-            // 
-            this.dgvStudColumnAddress.DataPropertyName = "MailingAddress";
-            this.dgvStudColumnAddress.HeaderText = "Address";
-            this.dgvStudColumnAddress.Name = "dgvStudColumnAddress";
-            this.dgvStudColumnAddress.ReadOnly = true;
-            // 
-            // studentList
-            // 
-            this.studentList.DataSource = typeof(RecordKeeper.Student);
-            // 
             // butGlobalPrev
             // 
             this.butGlobalPrev.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
@@ -664,6 +555,44 @@
             this.labelGlobLastUpload.Size = new System.Drawing.Size(0, 13);
             this.labelGlobLastUpload.TabIndex = 22;
             // 
+            // panelGlobEdit
+            // 
+            this.panelGlobEdit.Controls.Add(this.tabControlModesBottom);
+            this.panelGlobEdit.Controls.Add(this.panelGlobPrevDelete);
+            this.panelGlobEdit.Controls.Add(this.panelGlobNextNew);
+            this.panelGlobEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelGlobEdit.Location = new System.Drawing.Point(0, 0);
+            this.panelGlobEdit.Name = "panelGlobEdit";
+            this.panelGlobEdit.Size = new System.Drawing.Size(1037, 401);
+            this.panelGlobEdit.TabIndex = 23;
+            // 
+            // tabControlModesBottom
+            // 
+            this.tabControlModesBottom.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControlModesBottom.Controls.Add(this.tabBottomPageStudents);
+            this.tabControlModesBottom.Controls.Add(this.tabBottomPageTeachers);
+            this.tabControlModesBottom.Controls.Add(this.tabBottomPagePrograms);
+            this.tabControlModesBottom.Controls.Add(this.tabBottomPageRooms);
+            this.tabControlModesBottom.Controls.Add(this.tabBottomPageLessons);
+            this.tabControlModesBottom.Location = new System.Drawing.Point(46, 3);
+            this.tabControlModesBottom.Name = "tabControlModesBottom";
+            this.tabControlModesBottom.SelectedIndex = 0;
+            this.tabControlModesBottom.Size = new System.Drawing.Size(942, 398);
+            this.tabControlModesBottom.TabIndex = 14;
+            // 
+            // tabBottomPageStudents
+            // 
+            this.tabBottomPageStudents.Controls.Add(this.panelStudent);
+            this.tabBottomPageStudents.Location = new System.Drawing.Point(4, 22);
+            this.tabBottomPageStudents.Name = "tabBottomPageStudents";
+            this.tabBottomPageStudents.Padding = new System.Windows.Forms.Padding(3);
+            this.tabBottomPageStudents.Size = new System.Drawing.Size(934, 372);
+            this.tabBottomPageStudents.TabIndex = 0;
+            this.tabBottomPageStudents.Text = "Students";
+            this.tabBottomPageStudents.UseVisualStyleBackColor = true;
+            // 
             // panelStudent
             // 
             this.panelStudent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
@@ -739,6 +668,10 @@
             this.tbStudAddress1.Size = new System.Drawing.Size(424, 20);
             this.tbStudAddress1.TabIndex = 7;
             this.tbStudAddress1.TextChanged += new System.EventHandler(this.textBoxAddress1_TextChanged);
+            // 
+            // studentList
+            // 
+            this.studentList.DataSource = typeof(RecordKeeper.Student);
             // 
             // tbStudLanguageDetail
             // 
@@ -1156,44 +1089,6 @@
             this.labelStudInterests.TabIndex = 31;
             this.labelStudInterests.Text = "Interests:";
             // 
-            // panelGlobEdit
-            // 
-            this.panelGlobEdit.Controls.Add(this.tabControlModesBottom);
-            this.panelGlobEdit.Controls.Add(this.panelGlobPrevDelete);
-            this.panelGlobEdit.Controls.Add(this.panelGlobNextNew);
-            this.panelGlobEdit.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelGlobEdit.Location = new System.Drawing.Point(0, 0);
-            this.panelGlobEdit.Name = "panelGlobEdit";
-            this.panelGlobEdit.Size = new System.Drawing.Size(1037, 401);
-            this.panelGlobEdit.TabIndex = 23;
-            // 
-            // tabControlModesBottom
-            // 
-            this.tabControlModesBottom.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControlModesBottom.Controls.Add(this.tabBottomPageStudents);
-            this.tabControlModesBottom.Controls.Add(this.tabBottomPageTeachers);
-            this.tabControlModesBottom.Controls.Add(this.tabBottomPagePrograms);
-            this.tabControlModesBottom.Controls.Add(this.tabBottomPageRooms);
-            this.tabControlModesBottom.Controls.Add(this.tabBottomPageLessons);
-            this.tabControlModesBottom.Location = new System.Drawing.Point(46, 3);
-            this.tabControlModesBottom.Name = "tabControlModesBottom";
-            this.tabControlModesBottom.SelectedIndex = 0;
-            this.tabControlModesBottom.Size = new System.Drawing.Size(942, 398);
-            this.tabControlModesBottom.TabIndex = 14;
-            // 
-            // tabBottomPageStudents
-            // 
-            this.tabBottomPageStudents.Controls.Add(this.panelStudent);
-            this.tabBottomPageStudents.Location = new System.Drawing.Point(4, 22);
-            this.tabBottomPageStudents.Name = "tabBottomPageStudents";
-            this.tabBottomPageStudents.Padding = new System.Windows.Forms.Padding(3);
-            this.tabBottomPageStudents.Size = new System.Drawing.Size(934, 372);
-            this.tabBottomPageStudents.TabIndex = 0;
-            this.tabBottomPageStudents.Text = "Students";
-            this.tabBottomPageStudents.UseVisualStyleBackColor = true;
-            // 
             // tabBottomPageTeachers
             // 
             this.tabBottomPageTeachers.Location = new System.Drawing.Point(4, 22);
@@ -1227,6 +1122,7 @@
             // 
             // panelRoom
             // 
+            this.panelRoom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
             this.panelRoom.Controls.Add(this.panelRoomPrimaryLeft);
             this.panelRoom.Controls.Add(this.groupBoxRoom);
             this.panelRoom.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1278,24 +1174,34 @@
             // 
             // tbRoomPreferrability
             // 
+            this.tbRoomPreferrability.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.roomList, "Rank", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
             this.tbRoomPreferrability.Location = new System.Drawing.Point(61, 68);
             this.tbRoomPreferrability.Name = "tbRoomPreferrability";
             this.tbRoomPreferrability.Size = new System.Drawing.Size(87, 20);
             this.tbRoomPreferrability.TabIndex = 2;
+            this.tbRoomPreferrability.TextChanged += new System.EventHandler(this.tbRoomPreferrability_TextChanged);
+            // 
+            // roomList
+            // 
+            this.roomList.DataSource = typeof(RecordKeeper.Room);
             // 
             // tbRoomCapacity
             // 
+            this.tbRoomCapacity.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.roomList, "Capacity", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N0"));
             this.tbRoomCapacity.Location = new System.Drawing.Point(61, 39);
             this.tbRoomCapacity.Name = "tbRoomCapacity";
             this.tbRoomCapacity.Size = new System.Drawing.Size(87, 20);
             this.tbRoomCapacity.TabIndex = 1;
+            this.tbRoomCapacity.TextChanged += new System.EventHandler(this.tbRoomCapacity_TextChanged);
             // 
             // tbRoomName
             // 
+            this.tbRoomName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.roomList, "Name", true));
             this.tbRoomName.Location = new System.Drawing.Point(61, 10);
             this.tbRoomName.Name = "tbRoomName";
             this.tbRoomName.Size = new System.Drawing.Size(87, 20);
             this.tbRoomName.TabIndex = 0;
+            this.tbRoomName.TextChanged += new System.EventHandler(this.tbRoomName_TextChanged);
             // 
             // groupBoxRoom
             // 
@@ -1332,19 +1238,23 @@
             // 
             this.tbRoomComments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbRoomComments.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.roomList, "Comments", true));
             this.tbRoomComments.Location = new System.Drawing.Point(206, 78);
             this.tbRoomComments.Name = "tbRoomComments";
             this.tbRoomComments.Size = new System.Drawing.Size(716, 20);
             this.tbRoomComments.TabIndex = 1;
+            this.tbRoomComments.TextChanged += new System.EventHandler(this.tbRoomComments_TextChanged);
             // 
             // tbRoomTags
             // 
             this.tbRoomTags.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbRoomTags.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.roomList, "Tags", true));
             this.tbRoomTags.Location = new System.Drawing.Point(206, 32);
             this.tbRoomTags.Name = "tbRoomTags";
             this.tbRoomTags.Size = new System.Drawing.Size(716, 20);
             this.tbRoomTags.TabIndex = 0;
+            this.tbRoomTags.TextChanged += new System.EventHandler(this.tbRoomTags_TextChanged);
             // 
             // tabBottomPageLessons
             // 
@@ -1444,6 +1354,122 @@
             this.tabTopPageStudents.Text = "Students";
             this.tabTopPageStudents.UseVisualStyleBackColor = true;
             // 
+            // dataGridViewStudents
+            // 
+            this.dataGridViewStudents.AllowUserToAddRows = false;
+            this.dataGridViewStudents.AllowUserToDeleteRows = false;
+            this.dataGridViewStudents.AllowUserToOrderColumns = true;
+            this.dataGridViewStudents.AutoGenerateColumns = false;
+            this.dataGridViewStudents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewStudents.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvStudColumnStatus,
+            this.dgvStudColumnFirstName,
+            this.dgvStudColumnLastName,
+            this.dgvStudColumnEmail,
+            this.dgvStudColumnPhone,
+            this.dgvStudColumnLearningLanguage,
+            this.dgvStudColumnLevel,
+            this.dgvStudColumnNativeLanguage,
+            this.dgvStudColumnOtherLanguage,
+            this.dgvStudColumnBirthday,
+            this.dgvStudColumnSource,
+            this.dgvStudColumnAddress});
+            this.dataGridViewStudents.DataSource = this.studentList;
+            this.dataGridViewStudents.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewStudents.Location = new System.Drawing.Point(3, 3);
+            this.dataGridViewStudents.Name = "dataGridViewStudents";
+            this.dataGridViewStudents.ReadOnly = true;
+            this.dataGridViewStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewStudents.Size = new System.Drawing.Size(1015, 361);
+            this.dataGridViewStudents.TabIndex = 13;
+            this.dataGridViewStudents.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridViewStudents.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_ColumnHeaderMouseClick);
+            // 
+            // dgvStudColumnStatus
+            // 
+            this.dgvStudColumnStatus.DataPropertyName = "Status";
+            this.dgvStudColumnStatus.HeaderText = "Status";
+            this.dgvStudColumnStatus.Name = "dgvStudColumnStatus";
+            this.dgvStudColumnStatus.ReadOnly = true;
+            // 
+            // dgvStudColumnFirstName
+            // 
+            this.dgvStudColumnFirstName.DataPropertyName = "FirstName";
+            this.dgvStudColumnFirstName.HeaderText = "First Name";
+            this.dgvStudColumnFirstName.Name = "dgvStudColumnFirstName";
+            this.dgvStudColumnFirstName.ReadOnly = true;
+            // 
+            // dgvStudColumnLastName
+            // 
+            this.dgvStudColumnLastName.DataPropertyName = "LastName";
+            this.dgvStudColumnLastName.HeaderText = "Last Name";
+            this.dgvStudColumnLastName.Name = "dgvStudColumnLastName";
+            this.dgvStudColumnLastName.ReadOnly = true;
+            // 
+            // dgvStudColumnEmail
+            // 
+            this.dgvStudColumnEmail.DataPropertyName = "Email";
+            this.dgvStudColumnEmail.HeaderText = "Email";
+            this.dgvStudColumnEmail.Name = "dgvStudColumnEmail";
+            this.dgvStudColumnEmail.ReadOnly = true;
+            // 
+            // dgvStudColumnPhone
+            // 
+            this.dgvStudColumnPhone.DataPropertyName = "Phone";
+            this.dgvStudColumnPhone.HeaderText = "Phone";
+            this.dgvStudColumnPhone.Name = "dgvStudColumnPhone";
+            this.dgvStudColumnPhone.ReadOnly = true;
+            // 
+            // dgvStudColumnLearningLanguage
+            // 
+            this.dgvStudColumnLearningLanguage.DataPropertyName = "LearningLanguage";
+            this.dgvStudColumnLearningLanguage.HeaderText = "Learning";
+            this.dgvStudColumnLearningLanguage.Name = "dgvStudColumnLearningLanguage";
+            this.dgvStudColumnLearningLanguage.ReadOnly = true;
+            // 
+            // dgvStudColumnLevel
+            // 
+            this.dgvStudColumnLevel.DataPropertyName = "Level";
+            this.dgvStudColumnLevel.HeaderText = "Level";
+            this.dgvStudColumnLevel.Name = "dgvStudColumnLevel";
+            this.dgvStudColumnLevel.ReadOnly = true;
+            // 
+            // dgvStudColumnNativeLanguage
+            // 
+            this.dgvStudColumnNativeLanguage.DataPropertyName = "NativeLanguage";
+            this.dgvStudColumnNativeLanguage.HeaderText = "Native";
+            this.dgvStudColumnNativeLanguage.Name = "dgvStudColumnNativeLanguage";
+            this.dgvStudColumnNativeLanguage.ReadOnly = true;
+            // 
+            // dgvStudColumnOtherLanguage
+            // 
+            this.dgvStudColumnOtherLanguage.DataPropertyName = "OtherLanguage";
+            this.dgvStudColumnOtherLanguage.HeaderText = "Other";
+            this.dgvStudColumnOtherLanguage.Name = "dgvStudColumnOtherLanguage";
+            this.dgvStudColumnOtherLanguage.ReadOnly = true;
+            // 
+            // dgvStudColumnBirthday
+            // 
+            this.dgvStudColumnBirthday.DataPropertyName = "Birthday";
+            this.dgvStudColumnBirthday.HeaderText = "Birthday";
+            this.dgvStudColumnBirthday.Name = "dgvStudColumnBirthday";
+            this.dgvStudColumnBirthday.ReadOnly = true;
+            // 
+            // dgvStudColumnSource
+            // 
+            this.dgvStudColumnSource.DataPropertyName = "Source";
+            this.dgvStudColumnSource.HeaderText = "Source";
+            this.dgvStudColumnSource.Name = "dgvStudColumnSource";
+            this.dgvStudColumnSource.ReadOnly = true;
+            // 
+            // dgvStudColumnAddress
+            // 
+            this.dgvStudColumnAddress.DataPropertyName = "MailingAddress";
+            this.dgvStudColumnAddress.HeaderText = "Address";
+            this.dgvStudColumnAddress.Name = "dgvStudColumnAddress";
+            this.dgvStudColumnAddress.ReadOnly = true;
+            // 
             // tabTopPageTeachers
             // 
             this.tabTopPageTeachers.Location = new System.Drawing.Point(4, 22);
@@ -1466,6 +1492,7 @@
             // 
             // tabTopPageRooms
             // 
+            this.tabTopPageRooms.Controls.Add(this.dataGridView1);
             this.tabTopPageRooms.Location = new System.Drawing.Point(4, 22);
             this.tabTopPageRooms.Name = "tabTopPageRooms";
             this.tabTopPageRooms.Padding = new System.Windows.Forms.Padding(3);
@@ -1473,6 +1500,70 @@
             this.tabTopPageRooms.TabIndex = 3;
             this.tabTopPageRooms.Text = "Rooms";
             this.tabTopPageRooms.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.AutoGenerateColumns = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nameDataGridViewTextBoxColumn,
+            this.capacityDataGridViewTextBoxColumn,
+            this.rankDataGridViewTextBoxColumn,
+            this.tagsDataGridViewTextBoxColumn,
+            this.descriptionDataGridViewTextBoxColumn,
+            this.commentsDataGridViewTextBoxColumn});
+            this.dataGridView1.DataSource = this.roomList;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(1015, 361);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            this.nameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // capacityDataGridViewTextBoxColumn
+            // 
+            this.capacityDataGridViewTextBoxColumn.DataPropertyName = "Capacity";
+            this.capacityDataGridViewTextBoxColumn.HeaderText = "Capacity";
+            this.capacityDataGridViewTextBoxColumn.Name = "capacityDataGridViewTextBoxColumn";
+            this.capacityDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // rankDataGridViewTextBoxColumn
+            // 
+            this.rankDataGridViewTextBoxColumn.DataPropertyName = "Rank";
+            this.rankDataGridViewTextBoxColumn.HeaderText = "Rank";
+            this.rankDataGridViewTextBoxColumn.Name = "rankDataGridViewTextBoxColumn";
+            this.rankDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // tagsDataGridViewTextBoxColumn
+            // 
+            this.tagsDataGridViewTextBoxColumn.DataPropertyName = "Tags";
+            this.tagsDataGridViewTextBoxColumn.HeaderText = "Tags";
+            this.tagsDataGridViewTextBoxColumn.Name = "tagsDataGridViewTextBoxColumn";
+            this.tagsDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // commentsDataGridViewTextBoxColumn
+            // 
+            this.commentsDataGridViewTextBoxColumn.DataPropertyName = "Comments";
+            this.commentsDataGridViewTextBoxColumn.HeaderText = "Comments";
+            this.commentsDataGridViewTextBoxColumn.Name = "commentsDataGridViewTextBoxColumn";
+            this.commentsDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // tabTopPageLessons
             // 
@@ -1534,12 +1625,14 @@
             this.panelGlobSearch.PerformLayout();
             this.panelStudSearch.ResumeLayout(false);
             this.panelStudSearch.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudents)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.studentList)).EndInit();
+            this.panelGlobEdit.ResumeLayout(false);
+            this.tabControlModesBottom.ResumeLayout(false);
+            this.tabBottomPageStudents.ResumeLayout(false);
             this.panelStudent.ResumeLayout(false);
             this.panelStudPrimary.ResumeLayout(false);
             this.groupBoxStudPrinaryRight.ResumeLayout(false);
             this.groupBoxStudPrinaryRight.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.studentList)).EndInit();
             this.panelStudPrimaryLeft.ResumeLayout(false);
             this.panelStudPrimaryLeft.PerformLayout();
             this.panelStudSecondary.ResumeLayout(false);
@@ -1547,13 +1640,11 @@
             this.groupBoxStudSecondaryRight.PerformLayout();
             this.panelStudSecondaryLeft.ResumeLayout(false);
             this.panelStudSecondaryLeft.PerformLayout();
-            this.panelGlobEdit.ResumeLayout(false);
-            this.tabControlModesBottom.ResumeLayout(false);
-            this.tabBottomPageStudents.ResumeLayout(false);
             this.tabBottomPageRooms.ResumeLayout(false);
             this.panelRoom.ResumeLayout(false);
             this.panelRoomPrimaryLeft.ResumeLayout(false);
             this.panelRoomPrimaryLeft.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.roomList)).EndInit();
             this.groupBoxRoom.ResumeLayout(false);
             this.groupBoxRoom.PerformLayout();
             this.panelGlobPrevDelete.ResumeLayout(false);
@@ -1566,6 +1657,9 @@
             this.splitContainerGlobMasterDetail.ResumeLayout(false);
             this.tabControlModesTop.ResumeLayout(false);
             this.tabTopPageStudents.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudents)).EndInit();
+            this.tabTopPageRooms.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.splitContainerGlobDataControls.Panel1.ResumeLayout(false);
             this.splitContainerGlobDataControls.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerGlobDataControls)).EndInit();
@@ -1680,14 +1774,14 @@
         private System.Windows.Forms.Panel panelStudPrimary;
         private System.Windows.Forms.ComboBox cbGlobMode;
         private System.Windows.Forms.Panel panelStudSearch;
-        private System.Windows.Forms.TabControl tabControlModesBottom;
+        private HiddenTabControl tabControlModesBottom;
         private System.Windows.Forms.TabPage tabBottomPageStudents;
         private System.Windows.Forms.TabPage tabBottomPageTeachers;
         private System.Windows.Forms.TabPage tabBottomPagePrograms;
         private System.Windows.Forms.Panel panelGlobPrevDelete;
         private System.Windows.Forms.TabPage tabBottomPageRooms;
         private System.Windows.Forms.TabPage tabBottomPageLessons;
-        private System.Windows.Forms.TabControl tabControlModesTop;
+        private HiddenTabControl tabControlModesTop;
         private System.Windows.Forms.TabPage tabTopPageStudents;
         private System.Windows.Forms.TabPage tabTopPageTeachers;
         private System.Windows.Forms.TabPage tabTopPagePrograms;
@@ -1706,7 +1800,14 @@
         private System.Windows.Forms.TextBox tbRoomName;
         private System.Windows.Forms.Label labelRoomComments;
         private System.Windows.Forms.Label labelRoomTags;
-
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn capacityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rankDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tagsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn commentsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource roomList;
     }
 }
 

@@ -23,6 +23,21 @@ namespace RecordKeeper
         {
 
         }
+
+        public override bool ReadFile()
+        {
+            return ReadRecordsFile<Student>();
+        }
+        public override bool DownloadFile()
+        {
+            return Download<Student>();
+        }
+        public override bool UploadFile()
+        {
+            return Upload<Student>();
+        }
+
+
         public override void ShowCount()
         {
             m_glob.ShowStudentCount();
