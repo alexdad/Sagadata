@@ -22,7 +22,7 @@ namespace RecordKeeper
         }
         private void ProgramToFormConst2()
         {
-            cbGlobMode.Items.Add(Modes.Program.ToString());
+            cbGlobMode.Items.Add(Modes.Program.ToString() + "s");
         }
 
         public void DoProgramSelection()

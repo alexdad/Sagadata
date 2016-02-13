@@ -256,6 +256,8 @@ namespace RecordKeeper
             SetMode(newMode);
             if (!Loaded)
                 ReadCurrentFile();
+
+            ShowCurrentCount();
         }
 
         private void cbGlobType_SelectedIndexChanged(object sender, EventArgs e)

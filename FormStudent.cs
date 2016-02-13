@@ -30,7 +30,7 @@ namespace RecordKeeper
         }
         private void StudentToFormConst2()
         {
-            cbGlobMode.Items.Add(Modes.Student.ToString());
+            cbGlobMode.Items.Add(Modes.Student.ToString() + "s");
         }
 
         public void ReplaceStudentList(Student[] target)

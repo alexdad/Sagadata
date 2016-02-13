@@ -27,7 +27,7 @@ namespace RecordKeeper
         }
         private void RoomToFormConst2()
         {
-            cbGlobMode.Items.Add(Modes.Room.ToString());
+            cbGlobMode.Items.Add(Modes.Room.ToString() + "s");
         }
 
         public void DoRoomSelection()

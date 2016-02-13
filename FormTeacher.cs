@@ -24,7 +24,7 @@ namespace RecordKeeper
         }
         private void TeacherToFormConst2()
         {
-            cbGlobMode.Items.Add(Modes.Teacher.ToString());
+            cbGlobMode.Items.Add(Modes.Teacher.ToString() + "s");
         }
 
         public void DoTeacherSelection()
