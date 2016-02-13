@@ -15,7 +15,7 @@ namespace RecordKeeper
         {
         }
 
-        public override Modes Mode { get { return Modes.Room;} }
+        public override Modes Mode { get { return Modes.Rooms;} }
 
         public override bool ReadFile()
         {

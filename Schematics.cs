@@ -14,11 +14,11 @@ namespace RecordKeeper
 {
     public enum Modes
     {
-        Student = 0,
-        Teacher = 1,
-        Program = 2,
-        Room = 3,
-        Lesson = 4,
+        Students = 0,
+        Teachers = 1,
+        Programs = 2,
+        Rooms = 3,
+        Lessons = 4,
         MaxMode = 5
     }
     public enum Clouds
@@ -107,11 +107,11 @@ namespace RecordKeeper
 
         private void AssignEnums()
         {
-            cbStudSelectLearns.Items.AddRange(m_enumLanguage);
-            cbStudSelectSpeaks.Items.AddRange(m_enumLanguage);
+            cbStudSearchLearns.Items.AddRange(m_enumLanguage);
+            cbStudSearchSpeaks.Items.AddRange(m_enumLanguage);
             cbStudSelectStatus.Items.AddRange(m_enumStatus);
-            cbStudSelectSource.Items.AddRange(m_enumSource);
-            cbStudSelectLevel.Items.AddRange(m_enumLevel);
+            cbStudSearchSource.Items.AddRange(m_enumSource);
+            cbStudSearchLevel.Items.AddRange(m_enumLevel);
 
             cbStudLearns.Items.AddRange(m_enumLanguage);
             cbStudOther.Items.AddRange(m_enumLanguage);
@@ -123,6 +123,9 @@ namespace RecordKeeper
             cbTeachLanguage.Items.AddRange(m_enumLanguage);
             cbTeachLanguage2.Items.AddRange(m_enumLanguage);
             cbTeachStatus.Items.AddRange(m_enumStatus);
+
+            cbSearchTeachLang1.Items.AddRange(m_enumLanguage);
+            cbSearchTeachStatus.Items.AddRange(m_enumStatus);
 
             cbProgLanguage.Items.AddRange(m_enumLanguage);
             cbProgLevel.Items.AddRange(m_enumLevel);

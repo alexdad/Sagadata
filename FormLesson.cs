@@ -19,12 +19,12 @@ namespace RecordKeeper
 
         private void LessonToFormConst1()
         {
-            m_dataTypes.Add(Modes.Lesson, typeof(Lesson));
-            m_recordTypes.Add(Modes.Lesson, new LessonType(this));
+            m_dataTypes.Add(Modes.Lessons, typeof(Lesson));
+            m_recordTypes.Add(Modes.Lessons, new LessonType(this));
         }
         private void LessonToFormConst2()
         {
-            cbGlobMode.Items.Add(Modes.Lesson.ToString() + "s");
+            cbGlobMode.Items.Add(Modes.Lessons.ToString());
         }
 
         public void DoLessonSelection()

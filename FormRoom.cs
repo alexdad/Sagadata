@@ -22,12 +22,12 @@ namespace RecordKeeper
 
         private void RoomToFormConst1()
         {
-            m_dataTypes.Add(Modes.Room, typeof(Room));
-            m_recordTypes.Add(Modes.Room, new RoomType(this));
+            m_dataTypes.Add(Modes.Rooms, typeof(Room));
+            m_recordTypes.Add(Modes.Rooms, new RoomType(this));
         }
         private void RoomToFormConst2()
         {
-            cbGlobMode.Items.Add(Modes.Room.ToString() + "s");
+            cbGlobMode.Items.Add(Modes.Rooms.ToString() );
         }
 
         public void DoRoomSelection()

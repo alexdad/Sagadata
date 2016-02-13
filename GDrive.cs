@@ -63,7 +63,7 @@ namespace GDrive
                 ApplicationName = ApplicationName,
             });
 
-            // Find our file on the drive
+            // Find our file on the drive, under the RecordKeeper directory
             string fileId = null;
 
             FilesResource.ListRequest listRequest = service.Files.List();
@@ -76,10 +76,7 @@ namespace GDrive
                 {
                     string name = file.Name;
                     if (name != null && name.ToLower() == cloudName.ToLower())
-                    {
                         fileId = file.Id;
-                        break;
-                    }
                 }
             }
 

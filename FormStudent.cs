@@ -24,13 +24,13 @@ namespace RecordKeeper
 
         private void StudentToFormConst1()
         {
-            m_dataTypes.Add(Modes.Student, typeof(Student));
-            m_recordTypes.Add(Modes.Student, new StudentType(this));
+            m_dataTypes.Add(Modes.Students, typeof(Student));
+            m_recordTypes.Add(Modes.Students, new StudentType(this));
 
         }
         private void StudentToFormConst2()
         {
-            cbGlobMode.Items.Add(Modes.Student.ToString() + "s");
+            cbGlobMode.Items.Add(Modes.Students.ToString());
         }
 
         public void ReplaceStudentList(Student[] target)

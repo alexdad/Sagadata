@@ -15,16 +15,19 @@ namespace RecordKeeper
 {
     public partial class FormGlob : Form
     {
-        //string m_RoomSelectionCapacity;
+        string m_teacherSelectionStatus;
+        string m_teacherSelectionLanguage;
+        string m_teacherSelectionFirstName;
+        string m_teacherSelectionLastname;
 
         private void TeacherToFormConst1()
         {
-            m_dataTypes.Add(Modes.Teacher, typeof(Lesson));
-            m_recordTypes.Add(Modes.Teacher, new TeacherType(this));
+            m_dataTypes.Add(Modes.Teachers, typeof(Lesson));
+            m_recordTypes.Add(Modes.Teachers, new TeacherType(this));
         }
         private void TeacherToFormConst2()
         {
-            cbGlobMode.Items.Add(Modes.Teacher.ToString() + "s");
+            cbGlobMode.Items.Add(Modes.Teachers.ToString());
         }
 
         public void DoTeacherSelection()
@@ -38,9 +41,16 @@ namespace RecordKeeper
             DataList.Clear();
             foreach (Teacher s in SavedFullListDuringSelection)
             {
-                // TODO - make it >= number
-                //if (!m_curType.Fit(m_RoomSelectionCapacity, s.Capacity.ToString(), true))
-                //    continue;
+                if (!CurrentType.Fit(m_teacherSelectionStatus, s.Status, true))
+                    continue;
+                if (!CurrentType.Fit(m_teacherSelectionLanguage, s.Language, true) &&
+                    !CurrentType.Fit(m_teacherSelectionLanguage, s.Language2, true))
+                    continue;
+                if (!CurrentType.Fit(m_teacherSelectionFirstName, s.FirstName, false))
+                    continue;
+                if (!CurrentType.Fit(m_teacherSelectionLastname, s.LastName, false))
+                    continue;
+
                 DataList.Add(s);
             }
             ShowCurrentCount();

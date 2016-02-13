@@ -117,15 +117,15 @@ namespace RecordKeeper
                 // Here are links between manually crafted per-record-type UI and modes
                 switch(m_mode)
                 {
-                    case Modes.Program:
+                    case Modes.Programs:
                         return programList;
-                    case Modes.Room:
+                    case Modes.Rooms:
                         return roomList;
-                    case Modes.Student:
+                    case Modes.Students:
                         return studentList;
-                    case Modes.Teacher:
+                    case Modes.Teachers:
                         return teacherList;
-                    case Modes.Lesson:
+                    case Modes.Lessons:
                         return lessonList;
 
                     default:
@@ -232,6 +232,11 @@ namespace RecordKeeper
             m_StudentSelectionLastName = null;
             m_StudentSelectionSource = null;
 
+            m_teacherSelectionFirstName = null;
+            m_teacherSelectionLanguage = null;
+            m_teacherSelectionLastname = null;
+            m_teacherSelectionStatus = null;
+
             m_RoomSelectionCapacity = null;
             m_RoomSelectionName = null;
             m_RoomSelectionRank = null;
@@ -249,13 +254,19 @@ namespace RecordKeeper
             m_mode = mode;
             tabControlModesBottom.SelectedIndex = (int)m_mode;
             tabControlModesTop.SelectedIndex = (int)m_mode;
+            tabControlSearch.SelectedIndex = (int)m_mode;
 
         }
 
         private void ChangeMode(Modes newMode)
         {
+            CurrentType.EndSelectionMode();
+
             if (AnyFileChanged)
                 SaveChangedFiles();
+
+            SelectionMode = false;
+            SavedFullListDuringSelection = null;
 
             SetMode(newMode);
             if (!Loaded)
@@ -407,12 +418,19 @@ namespace RecordKeeper
             SelectionLevel = null;
 
             cbStudSelectStatus.SelectedIndex = 0;
-            cbStudSelectLearns.SelectedIndex = 0;
-            cbStudSelectSpeaks.SelectedIndex = 0;
-            tbStudSelectFirstName.Text = "";
-            tbStudSelectLastName.Text = "";
-            cbStudSelectSource.SelectedIndex = 0;
-            cbStudSelectLevel.SelectedIndex = 0;
+            cbStudSearchLearns.SelectedIndex = 0;
+            cbStudSearchSpeaks.SelectedIndex = 0;
+            tbStudSearchFirstName.Text = "";
+            tbStudSearchLastName.Text = "";
+            cbStudSearchSource.SelectedIndex = 0;
+            cbStudSearchLevel.SelectedIndex = 0;
+
+            cbTeachLanguage.SelectedIndex = 0;
+            cbTeachLanguage2.SelectedIndex = 0;
+            cbTeachStatus.SelectedIndex = 0;
+            tbSearchTeachFirstName.Text = "";
+            tbSearchTeachLastName.Text = "";
+
             // Changed
         }
 
@@ -545,6 +563,36 @@ namespace RecordKeeper
 
 
         #endregion
+
+        #region Teacher-related UI
+        private void cbSearchTeachStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            m_teacherSelectionStatus = (string)comboBox.SelectedItem;
+            CurrentType.DoSelection();
+        }
+
+        private void cbSearchTeachLang1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            m_teacherSelectionLanguage = (string)comboBox.SelectedItem;
+            CurrentType.DoSelection();
+        }
+
+        private void tbSearchTeachFirstName_TextChanged(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            m_teacherSelectionFirstName = (string)tb.Text;
+            CurrentType.DoSelection();
+        }
+
+        private void tbSearchTeachLastName_TextChanged(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            m_teacherSelectionLastname = (string)tb.Text;
+            CurrentType.DoSelection();
+        }
+#endregion
 
         #region Room-related UI
         private void tbRoomName_TextChanged(object sender, EventArgs e)

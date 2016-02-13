@@ -17,12 +17,12 @@ namespace RecordKeeper
     {
         private void ProgramToFormConst1()
         {
-            m_dataTypes.Add(Modes.Program, typeof(Program));
-            m_recordTypes.Add(Modes.Program, new ProgramType(this));
+            m_dataTypes.Add(Modes.Programs, typeof(Program));
+            m_recordTypes.Add(Modes.Programs, new ProgramType(this));
         }
         private void ProgramToFormConst2()
         {
-            cbGlobMode.Items.Add(Modes.Program.ToString() + "s");
+            cbGlobMode.Items.Add(Modes.Programs.ToString());
         }
 
         public void DoProgramSelection()
