@@ -33,7 +33,9 @@ namespace RecordKeeper
         Ignore,
         Number,
         Text,
-        Timing,
+        Date,
+        Time,
+        State,
         Phone,
         Email,
         Status,
@@ -55,8 +57,11 @@ namespace RecordKeeper
                 case "text":
                     Validation = Validations.Text;
                     break;
-                case "timing":
-                    Validation = Validations.Timing;
+                case "time":
+                    Validation = Validations.Time;
+                    break;
+                case "date":
+                    Validation = Validations.Date;
                     break;
                 case "phone":
                     Validation = Validations.Phone;
@@ -75,6 +80,9 @@ namespace RecordKeeper
                     break;
                 case "Source":
                     Validation = Validations.Source;
+                    break;
+                case "State":
+                    Validation = Validations.State;
                     break;
                 default:
                     throw new Exception("Unknown schema type " + v);
@@ -118,6 +126,10 @@ namespace RecordKeeper
 
             cbProgLanguage.Items.AddRange(m_enumLanguage);
             cbProgLevel.Items.AddRange(m_enumLevel);
+
+            cbLessonState.Items.AddRange(m_enumState);
+            cbLessonStart.Items.AddRange(m_enumTimeSlot);
+            cbLessonEnd.Items.AddRange(m_enumTimeSlot);
         }
 
         public bool SelectionMode
@@ -144,7 +156,7 @@ namespace RecordKeeper
         }
         public void ShowLessonCount()
         {
-            //labelGlobCount.Text = lessonList.Count.ToString();
+            labelGlobCount.Text = lessonList.Count.ToString();
         }
 
         void PrepareDataDirectories()
@@ -204,6 +216,20 @@ namespace RecordKeeper
             return schemaList.ToArray();
         }
 
+        void PopulateEnumTimeslots()
+        {
+            m_enumTimeSlot = new string[2 * (23 - 7)];
+            int i = 0;
+            for (int h = 7; h < 12; h++)
+                for (int m = 0; m < 60; m += 30)
+                    m_enumTimeSlot[i++] = h.ToString() + ":" + m.ToString() + " am";
+            m_enumTimeSlot[i++] = "12:00 pm";
+            m_enumTimeSlot[i++] = "12:30 pm";
+            for (int h = 1; h < 11; h++)
+                for (int m = 0; m < 60; m += 30)
+                    m_enumTimeSlot[i++] = h.ToString() + ":" + m.ToString() + " pm";
+        }
+
         void ReadSchemas()
         {
             string binLocation = Directory.GetCurrentDirectory();
@@ -211,6 +237,9 @@ namespace RecordKeeper
             m_enumLevel = File.ReadAllLines(Path.Combine(binLocation, "EnumLevel.csv").ToString());
             m_enumSource = File.ReadAllLines(Path.Combine(binLocation, "EnumSource.csv").ToString());
             m_enumStatus = File.ReadAllLines(Path.Combine(binLocation, "EnumStatus.csv").ToString());
+            m_enumState = File.ReadAllLines(Path.Combine(binLocation, "EnumState.csv").ToString());
+
+            PopulateEnumTimeslots();
 
             SchemaField[] schemaRecord = ReadSchema("Record", null);  // common fields
 

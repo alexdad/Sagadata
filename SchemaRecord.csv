@@ -1,6 +1,6 @@
 id,number,
-DateTimeCreated,timing,
-DateTimeChanged,timing,
+DateTimeCreated,time,
+DateTimeChanged,time,
 CreatedBy,text,
 ChangedBy,text,
 Comments,text,

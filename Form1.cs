@@ -20,6 +20,8 @@ namespace RecordKeeper
         string[] m_enumLevel;
         string[] m_enumSource;
         string[] m_enumStatus;
+        string[] m_enumState;
+        string[] m_enumTimeSlot;
 
         Modes m_mode;
         Dictionary<Modes, RecordType> m_recordTypes;
@@ -123,7 +125,9 @@ namespace RecordKeeper
                         return studentList;
                     case Modes.Teacher:
                         return teacherList;
-                        
+                    case Modes.Lesson:
+                        return lessonList;
+
                     default:
                         return null;
                 }
@@ -269,8 +273,7 @@ namespace RecordKeeper
             ChangeMode(newMode);
         }
         #endregion
-
-
+        
         #region "DataGridClicks"
         private void dgvColumnSort<T>(DataGridView dgv, T[] temp, int column) where T : Record
         {
@@ -347,6 +350,19 @@ namespace RecordKeeper
             dgvColumnSort<Room>(
                 sender as DataGridView,
                 CurrentType.ForkOut<Room>(0),
+                e.ColumnIndex);
+        }
+
+        private void dgvLesson_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvCellCopy(sender as DataGridView, e.RowIndex, e.ColumnIndex);
+        }
+
+        private void dgvLesson_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            dgvColumnSort<Lesson>(
+                sender as DataGridView,
+                CurrentType.ForkOut<Lesson>(0),
                 e.ColumnIndex);
         }
 
@@ -578,7 +594,7 @@ namespace RecordKeeper
 
         }
 
-        private void tbProgProce_TextChanged(object sender, EventArgs e)
+        private void tbProgPrice_TextChanged(object sender, EventArgs e)
         {
             Modified = true;
         }
@@ -593,5 +609,103 @@ namespace RecordKeeper
             Modified = true;
         }
         #endregion
+
+        #region Lesson-related UI
+        private void cbLessonState_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            Modified = true;
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+
+        private void cbLessonRoom_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+
+        private void cbLessonStart_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+
+        private void cbLessonEnd_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+
+        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+
+        private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+
+        private void cbLessonStudent3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+
+        private void cbLessonStudent4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+
+        private void cbLessonStudent5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+
+        private void cbLessonStudent6_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+
+        private void cbLessonStudent7_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+
+        private void cbLessonStudent8_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+
+        private void cbLessonStudent9_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+
+        private void cbLessonStudent10_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+
+        private void tbLEssonComment_TextChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+        #endregion
+
     }
 }
