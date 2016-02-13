@@ -1,1 +1,6 @@
+Code,text,
+Summary,text,
 Name,text,
+Language,Language,
+Level,Level,
+Price,number,

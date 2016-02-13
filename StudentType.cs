@@ -43,7 +43,7 @@ namespace RecordKeeper
 
         public override void SortRecords(string hdr, Record[] temp)
         {
-            SortStudents(hdr, temp as Student[]);
+            SortStudents(hdr, (Student[])temp );
         }
         public void SortStudents(string hdr, Student[] temp)
         {

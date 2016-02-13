@@ -8,16 +8,29 @@ namespace RecordKeeper
 {
     public class Teacher : Record
     {
-        public string Name { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Status { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
+        public string Birthday { get; set; }
+        public String Language { get; set; }
+        public String Language2 { get; set; }
+        public String LanguageDetail { get; set; }
+        public string MailingAddress { get; set; }
+        public String Vacations { get; set; }
+
+
         public override string Description
         {
-            get { return Name; }
+            get { return FirstName + " " + LastName; }
         }
         public override string Abbreviation
         {
             get
             {
-                return (Name.Length > 0 ? Name.Substring(0, 1) : "X");
+                return ((FirstName.Length > 0 ? FirstName.Substring(0, 1) : "X") +
+                        (LastName.Length  > 0 ? LastName.Substring(0, 1)  : "Y"));
             }
         }
 
@@ -28,8 +41,38 @@ namespace RecordKeeper
                 return true;
             switch (field)
             {
-                case "Name":
-                    this.Name = value;
+                case "Birthday":
+                    this.Birthday = value;
+                    break;
+                case "Email":
+                    this.Email = value;
+                    break;
+                case "FirstName":
+                    this.FirstName = value;
+                    break;
+                case "LastName":
+                    this.LastName = value;
+                    break;
+                case "Language":
+                    this.Language = value;
+                    break;
+                case "Language2":
+                    this.Language2 = value;
+                    break;
+                case "LanguageDetail":
+                    this.LanguageDetail = value;
+                    break;
+                case "MailingAddress":
+                    this.MailingAddress = value;
+                    break;
+                case "Phone":
+                    this.Phone = value;
+                    break;
+                case "Status":
+                    this.Status = value;
+                    break;
+                case "Vacations":
+                    this.Vacations = value;
                     break;
                 default:
                     throw new Exception("unknown field " + field);
@@ -39,7 +82,17 @@ namespace RecordKeeper
 
         public Teacher()
         {
-            Name = "?";
+            Birthday = "";
+            Email = "";
+            FirstName = "";
+            LastName = "";
+            Language = "?";
+            Language2 = "?";
+            LanguageDetail = "";
+            MailingAddress = "";
+            Phone = "";
+            Status = "?";
+            Vacations = "";
         }
 
         public override string Get(string field)
@@ -50,20 +103,109 @@ namespace RecordKeeper
 
             switch (field)
             {
-                case "Name":
-                    return Name;
+                case "Birthday":
+                    return this.Birthday;
+                case "Email":
+                    return this.Email;
+                case "FirstName":
+                    return this.FirstName;
+                case "LastName":
+                    return this.LastName;
+                case "Language":
+                    return this.Language;
+                case "Language2":
+                    return this.Language2;
+                case "LanguageDetail":
+                    return this.LanguageDetail;
+                case "MailingAddress":
+                    return this.MailingAddress;
+                case "Phone":
+                    return this.Phone;
+                case "Status":
+                    return this.Status;
+                case "Vacations":
+                    return this.Vacations;
                 default:
                     throw new Exception("unknown field " + field);
-
             }
         }
 
         #region "Comparers"
-        public class ComparerByName : IComparer<Room>
+        public class ComparerByBirthday : IComparer<Teacher>
         {
-            public int Compare(Room y, Room x)
+            public int Compare(Teacher y, Teacher x)
             {
-                return y.Name.CompareTo(x.Name);
+                return y.Birthday.CompareTo(x.Birthday);
+            }
+        }
+        public class ComparerByEmail : IComparer<Teacher>
+        {
+            public int Compare(Teacher y, Teacher x)
+            {
+                return y.Email.CompareTo(x.Email);
+            }
+        }
+        public class ComparerByFirstName : IComparer<Teacher>
+        {
+            public int Compare(Teacher y, Teacher x)
+            {
+                return y.FirstName.CompareTo(x.FirstName);
+            }
+        }
+        public class ComparerByLastName : IComparer<Teacher>
+        {
+            public int Compare(Teacher y, Teacher x)
+            {
+                return y.LastName.CompareTo(x.LastName);
+            }
+        }
+        public class ComparerByLanguage : IComparer<Teacher>
+        {
+            public int Compare(Teacher y, Teacher x)
+            {
+                return y.Language.CompareTo(x.Language);
+            }
+        }
+        public class ComparerByLanguage2 : IComparer<Teacher>
+        {
+            public int Compare(Teacher y, Teacher x)
+            {
+                return y.Language2.CompareTo(x.Language2);
+            }
+        }
+        public class ComparerByLanguageDetail : IComparer<Teacher>
+        {
+            public int Compare(Teacher y, Teacher x)
+            {
+                return y.LanguageDetail.CompareTo(x.LanguageDetail);
+            }
+        }
+        public class ComparerByMailingAddress : IComparer<Teacher>
+        {
+            public int Compare(Teacher y, Teacher x)
+            {
+                return y.MailingAddress.CompareTo(x.MailingAddress);
+            }
+        }
+        public class ComparerByPhone : IComparer<Teacher>
+        {
+            public int Compare(Teacher y, Teacher x)
+            {
+                return y.Phone.CompareTo(x.Phone);
+            }
+        }
+        public class ComparerByStatus : IComparer<Teacher>
+        {
+            public int Compare(Teacher y, Teacher x)
+            {
+                return y.Status.CompareTo(x.Status);
+            }
+        }
+        public class ComparerByVacations : IComparer<Teacher>
+        {
+            public int Compare(Teacher y, Teacher x)
+            {
+                return y.Vacations.CompareTo(x.Vacations);
             }
         }
         #endregion

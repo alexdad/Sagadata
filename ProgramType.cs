@@ -49,8 +49,23 @@ namespace RecordKeeper
         {
             switch (hdr)
             {
+                case "Code":
+                    Array.Sort(temp, new Program.ComparerByCode());
+                    break;
+                case "Language":
+                    Array.Sort(temp, new Program.ComparerByLanguage());
+                    break;
+                case "Level":
+                    Array.Sort(temp, new Program.ComparerByLevel());
+                    break;
                 case "Name":
-                    //Array.Sort(temp, new Program.ComparerByName());
+                    Array.Sort(temp, new Program.ComparerByName());
+                    break;
+                case "Price":
+                    Array.Sort(temp, new Program.ComparerByPrice());
+                    break;
+                case "Summary":
+                    Array.Sort(temp, new Program.ComparerBySummary());
                     break;
                 default:
                     Record.NeedToReverse = false;

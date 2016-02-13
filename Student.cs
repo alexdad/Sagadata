@@ -48,16 +48,10 @@ namespace RecordKeeper
             Background = "";
             Birthday = "";
             CellPhone = "";
-            ChangedBy = FormGlob.Client;
-            CreatedBy = FormGlob.Client;
-            Comments = "";
-            Created = DateTime.Now;
-            Changed = DateTime.Now;
             Email = "";
             FirstName = "";
             Goals = "";
             HomePhone = "";
-            Id = 0;
             Interests = "";
             LastName = "";
             LearningLanguage = "?";

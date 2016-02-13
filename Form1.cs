@@ -115,10 +115,15 @@ namespace RecordKeeper
                 // Here are links between manually crafted per-record-type UI and modes
                 switch(m_mode)
                 {
-                    case Modes.Student:
-                        return studentList;
+                    case Modes.Program:
+                        return programList;
                     case Modes.Room:
                         return roomList;
+                    case Modes.Student:
+                        return studentList;
+                    case Modes.Teacher:
+                        return teacherList;
+                        
                     default:
                         return null;
                 }
@@ -265,29 +270,82 @@ namespace RecordKeeper
 
 
         #region "DataGridClicks"
-        private void dataGridView1_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void dgvColumnSort<T>(DataGridView dgv, T[] temp, int column) where T : Record
         {
-            if (e.ColumnIndex != Record.LastColumnSorted)
+            if (column != Record.LastColumnSorted)
             {
-                Record.LastColumnSorted = e.ColumnIndex;
+                Record.LastColumnSorted = column;
                 Record.NeedToReverse = false;
             }
             else
                 Record.NeedToReverse = !Record.NeedToReverse;
 
-            DataGridViewColumn col = dataGridViewStudents.Columns[e.ColumnIndex];
-            Record[] temp = CurrentType.ForkOut<Record>(0);
+            DataGridViewColumn col = dgv.Columns[column];
             CurrentType.SortRecords(col.HeaderText, temp);
             CurrentType.ReplaceRecordList(temp);
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvCellCopy(DataGridView dgv, int row, int column)
         {
-            if (e.ColumnIndex >= 0 && e.ColumnIndex < dataGridViewStudents.ColumnCount &&
-                e.RowIndex >= 0 && e.RowIndex < dataGridViewStudents.RowCount &&
-                dataGridViewStudents[e.ColumnIndex, e.RowIndex].Value != null)
+            if (column >= 0 && column < dgv.ColumnCount &&
+                row >= 0 && row < dgv.RowCount &&
+                dgv[column, row].Value != null)
 
-                Clipboard.SetText(dataGridViewStudents[e.ColumnIndex, e.RowIndex].Value.ToString());
+                Clipboard.SetText(dgv[column, row].Value.ToString());
+        }
+
+
+        private void dgvStudents_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            dgvColumnSort<Student>(
+                sender as DataGridView,
+                CurrentType.ForkOut<Student>(0),
+                e.ColumnIndex);
+        }
+
+        private void dgvStudents_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvCellCopy(sender as DataGridView, e.RowIndex, e.ColumnIndex);
+        }
+
+        private void dgvTeachers_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            dgvColumnSort<Teacher>(
+                sender as DataGridView,
+                CurrentType.ForkOut<Teacher>(0),
+                e.ColumnIndex);
+        }
+
+        private void dgvTeachers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvCellCopy(sender as DataGridView, e.RowIndex, e.ColumnIndex);
+        }
+
+
+        private void dgvPrograms_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvCellCopy(sender as DataGridView, e.RowIndex, e.ColumnIndex);
+        }
+
+        private void dgvPrograms_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            dgvColumnSort<Program>(
+                sender as DataGridView,
+                CurrentType.ForkOut<Program>(0),
+                e.ColumnIndex);
+        }
+
+        private void dgvRooms_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvCellCopy(sender as DataGridView, e.RowIndex, e.ColumnIndex);
+        }
+
+        private void dgvRooms_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            dgvColumnSort<Room>(
+                sender as DataGridView,
+                CurrentType.ForkOut<Room>(0),
+                e.ColumnIndex);
         }
 
         #endregion
@@ -492,6 +550,43 @@ namespace RecordKeeper
         }
 
         private void tbRoomComments_TextChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+        #endregion
+
+        #region Program-related UI
+        private void tbProgCode_TextChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+
+        private void tbProgName_TextChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+
+        private void cbProgLanguage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbProgLevel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbProgProce_TextChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+
+        private void tbProgSummary_TextChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+
+        private void tbProgComments_TextChanged(object sender, EventArgs e)
         {
             Modified = true;
         }

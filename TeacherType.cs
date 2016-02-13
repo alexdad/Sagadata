@@ -49,8 +49,38 @@ namespace RecordKeeper
         {
             switch (hdr)
             {
-                case "Name":
-                    //Array.Sort(temp, new Teacher.ComparerByName());
+                case "Birthday":
+                    Array.Sort(temp, new Teacher.ComparerByBirthday());
+                    break;
+                case "Email":
+                    Array.Sort(temp, new Teacher.ComparerByEmail());
+                    break;
+                case "FirstName":
+                    Array.Sort(temp, new Teacher.ComparerByFirstName());
+                    break;
+                case "LastName":
+                    Array.Sort(temp, new Teacher.ComparerByLastName());
+                    break;
+                case "Language":
+                    Array.Sort(temp, new Teacher.ComparerByLanguage());
+                    break;
+                case "Language2":
+                    Array.Sort(temp, new Teacher.ComparerByLanguage2());
+                    break;
+                case "LanguageDetail":
+                    Array.Sort(temp, new Teacher.ComparerByLanguageDetail());
+                    break;
+                case "MailingAddress":
+                    Array.Sort(temp, new Teacher.ComparerByMailingAddress());
+                    break;
+                case "Phone":
+                    Array.Sort(temp, new Teacher.ComparerByPhone());
+                    break;
+                case "Status":
+                    Array.Sort(temp, new Teacher.ComparerByStatus());
+                    break;
+                case "Vacations":
+                    Array.Sort(temp, new Teacher.ComparerByVacations());
                     break;
                 default:
                     Record.NeedToReverse = false;

@@ -29,7 +29,7 @@ namespace RecordKeeper
 
         public string FilePath
         {
-            get { return Path.Combine(m_glob.DataLocation, Mode.ToString() + ".csv"); }
+            get { return Path.Combine(m_glob.DataLocation, m_glob.CurrentModeName + ".csv"); }
         }
 
         public abstract Modes Mode { get;  }

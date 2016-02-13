@@ -20,7 +20,7 @@ namespace RecordKeeper
         private void TeacherToFormConst1()
         {
             m_dataTypes.Add(Modes.Teacher, typeof(Lesson));
-            m_recordTypes.Add(Modes.Teacher, new LessonType(this));
+            m_recordTypes.Add(Modes.Teacher, new TeacherType(this));
         }
         private void TeacherToFormConst2()
         {

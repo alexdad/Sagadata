@@ -15,8 +15,6 @@ namespace RecordKeeper
 {
     public partial class FormGlob : Form
     {
-        //string m_RoomSelectionCapacity;
-
         private void ProgramToFormConst1()
         {
             m_dataTypes.Add(Modes.Program, typeof(Program));

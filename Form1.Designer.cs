@@ -115,7 +115,55 @@
             this.labelStudSchedule = new System.Windows.Forms.Label();
             this.labelStudInterests = new System.Windows.Forms.Label();
             this.tabBottomPageTeachers = new System.Windows.Forms.TabPage();
+            this.panelTeacherSecondary = new System.Windows.Forms.Panel();
+            this.panelTeacherPrimary = new System.Windows.Forms.Panel();
+            this.groupBoxTeacherPrimaryRight = new System.Windows.Forms.GroupBox();
+            this.tbTeachComment = new System.Windows.Forms.TextBox();
+            this.teacherList = new System.Windows.Forms.BindingSource(this.components);
+            this.tbTeachVacations = new System.Windows.Forms.TextBox();
+            this.tbTeachAddress = new System.Windows.Forms.TextBox();
+            this.labelTeachComment = new System.Windows.Forms.Label();
+            this.labelTeachVacations = new System.Windows.Forms.Label();
+            this.labelTeachAddress = new System.Windows.Forms.Label();
+            this.panelTeacherPrimaryLeft = new System.Windows.Forms.Panel();
+            this.tbTeachLanguageDetail = new System.Windows.Forms.TextBox();
+            this.cbTeachLanguage2 = new System.Windows.Forms.ComboBox();
+            this.cbTeachLanguage = new System.Windows.Forms.ComboBox();
+            this.labelTeachLabguageDetail = new System.Windows.Forms.Label();
+            this.labelTeachLanguage2 = new System.Windows.Forms.Label();
+            this.labelLanguage = new System.Windows.Forms.Label();
+            this.cbTeachStatus = new System.Windows.Forms.ComboBox();
+            this.tbTeachLastBirthday = new System.Windows.Forms.TextBox();
+            this.tbTeachPhone = new System.Windows.Forms.TextBox();
+            this.labelTeachBirthday = new System.Windows.Forms.Label();
+            this.labelTeachPhone = new System.Windows.Forms.Label();
+            this.labelTeachStatus = new System.Windows.Forms.Label();
+            this.tbTeachEmail = new System.Windows.Forms.TextBox();
+            this.tbTeachLastName = new System.Windows.Forms.TextBox();
+            this.tbTeachFirstName = new System.Windows.Forms.TextBox();
+            this.labelTeachEmail = new System.Windows.Forms.Label();
+            this.labelTeachLastName = new System.Windows.Forms.Label();
+            this.labelTeachFirstName = new System.Windows.Forms.Label();
             this.tabBottomPagePrograms = new System.Windows.Forms.TabPage();
+            this.panelProgram = new System.Windows.Forms.Panel();
+            this.groupBoxProgram = new System.Windows.Forms.GroupBox();
+            this.tbProgComments = new System.Windows.Forms.TextBox();
+            this.programList = new System.Windows.Forms.BindingSource(this.components);
+            this.tbProgSummary = new System.Windows.Forms.TextBox();
+            this.labelProgComments = new System.Windows.Forms.Label();
+            this.labelProgSummary = new System.Windows.Forms.Label();
+            this.panelProgramPrimaryLeft = new System.Windows.Forms.Panel();
+            this.labelProgExplanation = new System.Windows.Forms.Label();
+            this.tbProgProce = new System.Windows.Forms.TextBox();
+            this.labelProgPrice = new System.Windows.Forms.Label();
+            this.cbProgLevel = new System.Windows.Forms.ComboBox();
+            this.labelProgLevel = new System.Windows.Forms.Label();
+            this.cbProgLanguage = new System.Windows.Forms.ComboBox();
+            this.labelProgLanguage = new System.Windows.Forms.Label();
+            this.tbProgName = new System.Windows.Forms.TextBox();
+            this.labelProgName = new System.Windows.Forms.Label();
+            this.tbProgCode = new System.Windows.Forms.TextBox();
+            this.labelProgCode = new System.Windows.Forms.Label();
             this.tabBottomPageRooms = new System.Windows.Forms.TabPage();
             this.panelRoom = new System.Windows.Forms.Panel();
             this.panelRoomPrimaryLeft = new System.Windows.Forms.Panel();
@@ -139,7 +187,7 @@
             this.splitContainerGlobMasterDetail = new System.Windows.Forms.SplitContainer();
             this.tabControlModesTop = new RecordKeeper.HiddenTabControl();
             this.tabTopPageStudents = new System.Windows.Forms.TabPage();
-            this.dataGridViewStudents = new System.Windows.Forms.DataGridView();
+            this.dgvStudents = new System.Windows.Forms.DataGridView();
             this.dgvStudColumnStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvStudColumnFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvStudColumnLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -153,9 +201,29 @@
             this.dgvStudColumnSource = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvStudColumnAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabTopPageTeachers = new System.Windows.Forms.TabPage();
+            this.dgvTeachers = new System.Windows.Forms.DataGridView();
+            this.statusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.emailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.languageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.language2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.languageDetailDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.vacationsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.commentsDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mailingAddressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.birthdayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabTopPagePrograms = new System.Windows.Forms.TabPage();
+            this.dgvPrograms = new System.Windows.Forms.DataGridView();
+            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.languageDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.levelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Summary = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabTopPageRooms = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvRooms = new System.Windows.Forms.DataGridView();
             this.nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.capacityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rankDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -180,6 +248,16 @@
             this.panelStudSecondary.SuspendLayout();
             this.groupBoxStudSecondaryRight.SuspendLayout();
             this.panelStudSecondaryLeft.SuspendLayout();
+            this.tabBottomPageTeachers.SuspendLayout();
+            this.panelTeacherPrimary.SuspendLayout();
+            this.groupBoxTeacherPrimaryRight.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.teacherList)).BeginInit();
+            this.panelTeacherPrimaryLeft.SuspendLayout();
+            this.tabBottomPagePrograms.SuspendLayout();
+            this.panelProgram.SuspendLayout();
+            this.groupBoxProgram.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.programList)).BeginInit();
+            this.panelProgramPrimaryLeft.SuspendLayout();
             this.tabBottomPageRooms.SuspendLayout();
             this.panelRoom.SuspendLayout();
             this.panelRoomPrimaryLeft.SuspendLayout();
@@ -194,9 +272,13 @@
             this.splitContainerGlobMasterDetail.SuspendLayout();
             this.tabControlModesTop.SuspendLayout();
             this.tabTopPageStudents.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudents)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
+            this.tabTopPageTeachers.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTeachers)).BeginInit();
+            this.tabTopPagePrograms.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPrograms)).BeginInit();
             this.tabTopPageRooms.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRooms)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerGlobDataControls)).BeginInit();
             this.splitContainerGlobDataControls.Panel1.SuspendLayout();
             this.splitContainerGlobDataControls.Panel2.SuspendLayout();
@@ -634,6 +716,7 @@
             // labelStudDetailsSource
             // 
             this.labelStudDetailsSource.AutoSize = true;
+            this.labelStudDetailsSource.ForeColor = System.Drawing.SystemColors.ControlText;
             this.labelStudDetailsSource.Location = new System.Drawing.Point(17, 110);
             this.labelStudDetailsSource.Name = "labelStudDetailsSource";
             this.labelStudDetailsSource.Size = new System.Drawing.Size(80, 13);
@@ -643,6 +726,7 @@
             // labelStudDetailsLanguage
             // 
             this.labelStudDetailsLanguage.AutoSize = true;
+            this.labelStudDetailsLanguage.ForeColor = System.Drawing.SystemColors.ControlText;
             this.labelStudDetailsLanguage.Location = new System.Drawing.Point(17, 72);
             this.labelStudDetailsLanguage.Name = "labelStudDetailsLanguage";
             this.labelStudDetailsLanguage.Size = new System.Drawing.Size(92, 13);
@@ -652,6 +736,7 @@
             // labelStudAddress1
             // 
             this.labelStudAddress1.AutoSize = true;
+            this.labelStudAddress1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.labelStudAddress1.Location = new System.Drawing.Point(17, 32);
             this.labelStudAddress1.Name = "labelStudAddress1";
             this.labelStudAddress1.Size = new System.Drawing.Size(48, 13);
@@ -1091,6 +1176,8 @@
             // 
             // tabBottomPageTeachers
             // 
+            this.tabBottomPageTeachers.Controls.Add(this.panelTeacherSecondary);
+            this.tabBottomPageTeachers.Controls.Add(this.panelTeacherPrimary);
             this.tabBottomPageTeachers.Location = new System.Drawing.Point(4, 22);
             this.tabBottomPageTeachers.Name = "tabBottomPageTeachers";
             this.tabBottomPageTeachers.Padding = new System.Windows.Forms.Padding(3);
@@ -1099,8 +1186,283 @@
             this.tabBottomPageTeachers.Text = "Teachers";
             this.tabBottomPageTeachers.UseVisualStyleBackColor = true;
             // 
+            // panelTeacherSecondary
+            // 
+            this.panelTeacherSecondary.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelTeacherSecondary.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
+            this.panelTeacherSecondary.Location = new System.Drawing.Point(3, 220);
+            this.panelTeacherSecondary.Name = "panelTeacherSecondary";
+            this.panelTeacherSecondary.Size = new System.Drawing.Size(928, 153);
+            this.panelTeacherSecondary.TabIndex = 1;
+            // 
+            // panelTeacherPrimary
+            // 
+            this.panelTeacherPrimary.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
+            this.panelTeacherPrimary.Controls.Add(this.groupBoxTeacherPrimaryRight);
+            this.panelTeacherPrimary.Controls.Add(this.panelTeacherPrimaryLeft);
+            this.panelTeacherPrimary.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTeacherPrimary.Location = new System.Drawing.Point(3, 3);
+            this.panelTeacherPrimary.Name = "panelTeacherPrimary";
+            this.panelTeacherPrimary.Size = new System.Drawing.Size(928, 213);
+            this.panelTeacherPrimary.TabIndex = 0;
+            // 
+            // groupBoxTeacherPrimaryRight
+            // 
+            this.groupBoxTeacherPrimaryRight.Controls.Add(this.tbTeachComment);
+            this.groupBoxTeacherPrimaryRight.Controls.Add(this.tbTeachVacations);
+            this.groupBoxTeacherPrimaryRight.Controls.Add(this.tbTeachAddress);
+            this.groupBoxTeacherPrimaryRight.Controls.Add(this.labelTeachComment);
+            this.groupBoxTeacherPrimaryRight.Controls.Add(this.labelTeachVacations);
+            this.groupBoxTeacherPrimaryRight.Controls.Add(this.labelTeachAddress);
+            this.groupBoxTeacherPrimaryRight.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxTeacherPrimaryRight.Location = new System.Drawing.Point(470, 0);
+            this.groupBoxTeacherPrimaryRight.Name = "groupBoxTeacherPrimaryRight";
+            this.groupBoxTeacherPrimaryRight.Size = new System.Drawing.Size(458, 213);
+            this.groupBoxTeacherPrimaryRight.TabIndex = 1;
+            this.groupBoxTeacherPrimaryRight.TabStop = false;
+            // 
+            // tbTeachComment
+            // 
+            this.tbTeachComment.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.teacherList, "Comments", true));
+            this.tbTeachComment.Location = new System.Drawing.Point(15, 92);
+            this.tbTeachComment.Name = "tbTeachComment";
+            this.tbTeachComment.Size = new System.Drawing.Size(437, 20);
+            this.tbTeachComment.TabIndex = 5;
+            // 
+            // teacherList
+            // 
+            this.teacherList.DataSource = typeof(RecordKeeper.Teacher);
+            // 
+            // tbTeachVacations
+            // 
+            this.tbTeachVacations.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.teacherList, "Vacations", true));
+            this.tbTeachVacations.Location = new System.Drawing.Point(15, 55);
+            this.tbTeachVacations.Name = "tbTeachVacations";
+            this.tbTeachVacations.Size = new System.Drawing.Size(437, 20);
+            this.tbTeachVacations.TabIndex = 4;
+            // 
+            // tbTeachAddress
+            // 
+            this.tbTeachAddress.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.teacherList, "MailingAddress", true));
+            this.tbTeachAddress.Location = new System.Drawing.Point(15, 18);
+            this.tbTeachAddress.Name = "tbTeachAddress";
+            this.tbTeachAddress.Size = new System.Drawing.Size(437, 20);
+            this.tbTeachAddress.TabIndex = 3;
+            // 
+            // labelTeachComment
+            // 
+            this.labelTeachComment.AutoSize = true;
+            this.labelTeachComment.Location = new System.Drawing.Point(39, 76);
+            this.labelTeachComment.Name = "labelTeachComment";
+            this.labelTeachComment.Size = new System.Drawing.Size(54, 13);
+            this.labelTeachComment.TabIndex = 2;
+            this.labelTeachComment.Text = "Comment:";
+            // 
+            // labelTeachVacations
+            // 
+            this.labelTeachVacations.AutoSize = true;
+            this.labelTeachVacations.Location = new System.Drawing.Point(39, 38);
+            this.labelTeachVacations.Name = "labelTeachVacations";
+            this.labelTeachVacations.Size = new System.Drawing.Size(57, 13);
+            this.labelTeachVacations.TabIndex = 1;
+            this.labelTeachVacations.Text = "Vacations:";
+            // 
+            // labelTeachAddress
+            // 
+            this.labelTeachAddress.AutoSize = true;
+            this.labelTeachAddress.Location = new System.Drawing.Point(39, 3);
+            this.labelTeachAddress.Name = "labelTeachAddress";
+            this.labelTeachAddress.Size = new System.Drawing.Size(48, 13);
+            this.labelTeachAddress.TabIndex = 0;
+            this.labelTeachAddress.Text = "Address:";
+            // 
+            // panelTeacherPrimaryLeft
+            // 
+            this.panelTeacherPrimaryLeft.Controls.Add(this.tbTeachLanguageDetail);
+            this.panelTeacherPrimaryLeft.Controls.Add(this.cbTeachLanguage2);
+            this.panelTeacherPrimaryLeft.Controls.Add(this.cbTeachLanguage);
+            this.panelTeacherPrimaryLeft.Controls.Add(this.labelTeachLabguageDetail);
+            this.panelTeacherPrimaryLeft.Controls.Add(this.labelTeachLanguage2);
+            this.panelTeacherPrimaryLeft.Controls.Add(this.labelLanguage);
+            this.panelTeacherPrimaryLeft.Controls.Add(this.cbTeachStatus);
+            this.panelTeacherPrimaryLeft.Controls.Add(this.tbTeachLastBirthday);
+            this.panelTeacherPrimaryLeft.Controls.Add(this.tbTeachPhone);
+            this.panelTeacherPrimaryLeft.Controls.Add(this.labelTeachBirthday);
+            this.panelTeacherPrimaryLeft.Controls.Add(this.labelTeachPhone);
+            this.panelTeacherPrimaryLeft.Controls.Add(this.labelTeachStatus);
+            this.panelTeacherPrimaryLeft.Controls.Add(this.tbTeachEmail);
+            this.panelTeacherPrimaryLeft.Controls.Add(this.tbTeachLastName);
+            this.panelTeacherPrimaryLeft.Controls.Add(this.tbTeachFirstName);
+            this.panelTeacherPrimaryLeft.Controls.Add(this.labelTeachEmail);
+            this.panelTeacherPrimaryLeft.Controls.Add(this.labelTeachLastName);
+            this.panelTeacherPrimaryLeft.Controls.Add(this.labelTeachFirstName);
+            this.panelTeacherPrimaryLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelTeacherPrimaryLeft.Location = new System.Drawing.Point(0, 0);
+            this.panelTeacherPrimaryLeft.Name = "panelTeacherPrimaryLeft";
+            this.panelTeacherPrimaryLeft.Size = new System.Drawing.Size(470, 213);
+            this.panelTeacherPrimaryLeft.TabIndex = 0;
+            // 
+            // tbTeachLanguageDetail
+            // 
+            this.tbTeachLanguageDetail.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.teacherList, "LanguageDetail", true));
+            this.tbTeachLanguageDetail.Location = new System.Drawing.Point(301, 92);
+            this.tbTeachLanguageDetail.Name = "tbTeachLanguageDetail";
+            this.tbTeachLanguageDetail.Size = new System.Drawing.Size(163, 20);
+            this.tbTeachLanguageDetail.TabIndex = 18;
+            // 
+            // cbTeachLanguage2
+            // 
+            this.cbTeachLanguage2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.teacherList, "Language2", true));
+            this.cbTeachLanguage2.FormattingEnabled = true;
+            this.cbTeachLanguage2.Location = new System.Drawing.Point(144, 92);
+            this.cbTeachLanguage2.Name = "cbTeachLanguage2";
+            this.cbTeachLanguage2.Size = new System.Drawing.Size(121, 21);
+            this.cbTeachLanguage2.TabIndex = 17;
+            // 
+            // cbTeachLanguage
+            // 
+            this.cbTeachLanguage.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.teacherList, "Language", true));
+            this.cbTeachLanguage.FormattingEnabled = true;
+            this.cbTeachLanguage.Location = new System.Drawing.Point(7, 91);
+            this.cbTeachLanguage.Name = "cbTeachLanguage";
+            this.cbTeachLanguage.Size = new System.Drawing.Size(121, 21);
+            this.cbTeachLanguage.TabIndex = 16;
+            // 
+            // labelTeachLabguageDetail
+            // 
+            this.labelTeachLabguageDetail.AutoSize = true;
+            this.labelTeachLabguageDetail.Location = new System.Drawing.Point(309, 76);
+            this.labelTeachLabguageDetail.Name = "labelTeachLabguageDetail";
+            this.labelTeachLabguageDetail.Size = new System.Drawing.Size(86, 13);
+            this.labelTeachLabguageDetail.TabIndex = 15;
+            this.labelTeachLabguageDetail.Text = "Language detail:";
+            // 
+            // labelTeachLanguage2
+            // 
+            this.labelTeachLanguage2.AutoSize = true;
+            this.labelTeachLanguage2.Location = new System.Drawing.Point(151, 76);
+            this.labelTeachLanguage2.Name = "labelTeachLanguage2";
+            this.labelTeachLanguage2.Size = new System.Drawing.Size(67, 13);
+            this.labelTeachLanguage2.TabIndex = 14;
+            this.labelTeachLanguage2.Text = "Language 2:";
+            // 
+            // labelLanguage
+            // 
+            this.labelLanguage.AutoSize = true;
+            this.labelLanguage.Location = new System.Drawing.Point(17, 76);
+            this.labelLanguage.Name = "labelLanguage";
+            this.labelLanguage.Size = new System.Drawing.Size(58, 13);
+            this.labelLanguage.TabIndex = 13;
+            this.labelLanguage.Text = "Language:";
+            // 
+            // cbTeachStatus
+            // 
+            this.cbTeachStatus.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.teacherList, "Status", true));
+            this.cbTeachStatus.FormattingEnabled = true;
+            this.cbTeachStatus.Location = new System.Drawing.Point(7, 52);
+            this.cbTeachStatus.Name = "cbTeachStatus";
+            this.cbTeachStatus.Size = new System.Drawing.Size(131, 21);
+            this.cbTeachStatus.TabIndex = 12;
+            // 
+            // tbTeachLastBirthday
+            // 
+            this.tbTeachLastBirthday.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.teacherList, "Birthday", true));
+            this.tbTeachLastBirthday.Location = new System.Drawing.Point(301, 53);
+            this.tbTeachLastBirthday.Name = "tbTeachLastBirthday";
+            this.tbTeachLastBirthday.Size = new System.Drawing.Size(163, 20);
+            this.tbTeachLastBirthday.TabIndex = 11;
+            // 
+            // tbTeachPhone
+            // 
+            this.tbTeachPhone.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.teacherList, "Phone", true));
+            this.tbTeachPhone.Location = new System.Drawing.Point(144, 53);
+            this.tbTeachPhone.Name = "tbTeachPhone";
+            this.tbTeachPhone.Size = new System.Drawing.Size(151, 20);
+            this.tbTeachPhone.TabIndex = 10;
+            // 
+            // labelTeachBirthday
+            // 
+            this.labelTeachBirthday.AutoSize = true;
+            this.labelTeachBirthday.Location = new System.Drawing.Point(309, 41);
+            this.labelTeachBirthday.Name = "labelTeachBirthday";
+            this.labelTeachBirthday.Size = new System.Drawing.Size(48, 13);
+            this.labelTeachBirthday.TabIndex = 8;
+            this.labelTeachBirthday.Text = "Birthday:";
+            // 
+            // labelTeachPhone
+            // 
+            this.labelTeachPhone.AutoSize = true;
+            this.labelTeachPhone.Location = new System.Drawing.Point(151, 41);
+            this.labelTeachPhone.Name = "labelTeachPhone";
+            this.labelTeachPhone.Size = new System.Drawing.Size(41, 13);
+            this.labelTeachPhone.TabIndex = 7;
+            this.labelTeachPhone.Text = "Phone:";
+            // 
+            // labelTeachStatus
+            // 
+            this.labelTeachStatus.AutoSize = true;
+            this.labelTeachStatus.Location = new System.Drawing.Point(17, 38);
+            this.labelTeachStatus.Name = "labelTeachStatus";
+            this.labelTeachStatus.Size = new System.Drawing.Size(40, 13);
+            this.labelTeachStatus.TabIndex = 6;
+            this.labelTeachStatus.Text = "Status:";
+            // 
+            // tbTeachEmail
+            // 
+            this.tbTeachEmail.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.teacherList, "Email", true));
+            this.tbTeachEmail.Location = new System.Drawing.Point(301, 19);
+            this.tbTeachEmail.Name = "tbTeachEmail";
+            this.tbTeachEmail.Size = new System.Drawing.Size(163, 20);
+            this.tbTeachEmail.TabIndex = 5;
+            // 
+            // tbTeachLastName
+            // 
+            this.tbTeachLastName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.teacherList, "LastName", true));
+            this.tbTeachLastName.Location = new System.Drawing.Point(144, 19);
+            this.tbTeachLastName.Name = "tbTeachLastName";
+            this.tbTeachLastName.Size = new System.Drawing.Size(151, 20);
+            this.tbTeachLastName.TabIndex = 4;
+            // 
+            // tbTeachFirstName
+            // 
+            this.tbTeachFirstName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.teacherList, "FirstName", true));
+            this.tbTeachFirstName.Location = new System.Drawing.Point(7, 18);
+            this.tbTeachFirstName.Name = "tbTeachFirstName";
+            this.tbTeachFirstName.Size = new System.Drawing.Size(131, 20);
+            this.tbTeachFirstName.TabIndex = 3;
+            // 
+            // labelTeachEmail
+            // 
+            this.labelTeachEmail.AutoSize = true;
+            this.labelTeachEmail.Location = new System.Drawing.Point(309, 3);
+            this.labelTeachEmail.Name = "labelTeachEmail";
+            this.labelTeachEmail.Size = new System.Drawing.Size(35, 13);
+            this.labelTeachEmail.TabIndex = 2;
+            this.labelTeachEmail.Text = "Email:";
+            // 
+            // labelTeachLastName
+            // 
+            this.labelTeachLastName.AutoSize = true;
+            this.labelTeachLastName.Location = new System.Drawing.Point(151, 3);
+            this.labelTeachLastName.Name = "labelTeachLastName";
+            this.labelTeachLastName.Size = new System.Drawing.Size(59, 13);
+            this.labelTeachLastName.TabIndex = 1;
+            this.labelTeachLastName.Text = "Last name:";
+            // 
+            // labelTeachFirstName
+            // 
+            this.labelTeachFirstName.AutoSize = true;
+            this.labelTeachFirstName.Location = new System.Drawing.Point(17, 2);
+            this.labelTeachFirstName.Name = "labelTeachFirstName";
+            this.labelTeachFirstName.Size = new System.Drawing.Size(58, 13);
+            this.labelTeachFirstName.TabIndex = 0;
+            this.labelTeachFirstName.Text = "First name:";
+            // 
             // tabBottomPagePrograms
             // 
+            this.tabBottomPagePrograms.Controls.Add(this.panelProgram);
             this.tabBottomPagePrograms.Location = new System.Drawing.Point(4, 22);
             this.tabBottomPagePrograms.Name = "tabBottomPagePrograms";
             this.tabBottomPagePrograms.Padding = new System.Windows.Forms.Padding(3);
@@ -1108,6 +1470,194 @@
             this.tabBottomPagePrograms.TabIndex = 2;
             this.tabBottomPagePrograms.Text = "Programs";
             this.tabBottomPagePrograms.UseVisualStyleBackColor = true;
+            // 
+            // panelProgram
+            // 
+            this.panelProgram.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
+            this.panelProgram.Controls.Add(this.groupBoxProgram);
+            this.panelProgram.Controls.Add(this.panelProgramPrimaryLeft);
+            this.panelProgram.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelProgram.Location = new System.Drawing.Point(3, 3);
+            this.panelProgram.Name = "panelProgram";
+            this.panelProgram.Size = new System.Drawing.Size(928, 366);
+            this.panelProgram.TabIndex = 0;
+            // 
+            // groupBoxProgram
+            // 
+            this.groupBoxProgram.Controls.Add(this.tbProgComments);
+            this.groupBoxProgram.Controls.Add(this.tbProgSummary);
+            this.groupBoxProgram.Controls.Add(this.labelProgComments);
+            this.groupBoxProgram.Controls.Add(this.labelProgSummary);
+            this.groupBoxProgram.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBoxProgram.Location = new System.Drawing.Point(241, 0);
+            this.groupBoxProgram.Name = "groupBoxProgram";
+            this.groupBoxProgram.Size = new System.Drawing.Size(687, 366);
+            this.groupBoxProgram.TabIndex = 1;
+            this.groupBoxProgram.TabStop = false;
+            // 
+            // tbProgComments
+            // 
+            this.tbProgComments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbProgComments.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programList, "Comments", true));
+            this.tbProgComments.Location = new System.Drawing.Point(88, 88);
+            this.tbProgComments.Name = "tbProgComments";
+            this.tbProgComments.Size = new System.Drawing.Size(593, 20);
+            this.tbProgComments.TabIndex = 3;
+            this.tbProgComments.TextChanged += new System.EventHandler(this.tbProgComments_TextChanged);
+            // 
+            // programList
+            // 
+            this.programList.DataSource = typeof(RecordKeeper.Program);
+            // 
+            // tbProgSummary
+            // 
+            this.tbProgSummary.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbProgSummary.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programList, "Summary", true));
+            this.tbProgSummary.Location = new System.Drawing.Point(88, 22);
+            this.tbProgSummary.Name = "tbProgSummary";
+            this.tbProgSummary.Size = new System.Drawing.Size(593, 20);
+            this.tbProgSummary.TabIndex = 2;
+            this.tbProgSummary.TextChanged += new System.EventHandler(this.tbProgSummary_TextChanged);
+            // 
+            // labelProgComments
+            // 
+            this.labelProgComments.AutoSize = true;
+            this.labelProgComments.Location = new System.Drawing.Point(20, 91);
+            this.labelProgComments.Name = "labelProgComments";
+            this.labelProgComments.Size = new System.Drawing.Size(59, 13);
+            this.labelProgComments.TabIndex = 1;
+            this.labelProgComments.Text = "Comments:";
+            // 
+            // labelProgSummary
+            // 
+            this.labelProgSummary.AutoSize = true;
+            this.labelProgSummary.Location = new System.Drawing.Point(20, 25);
+            this.labelProgSummary.Name = "labelProgSummary";
+            this.labelProgSummary.Size = new System.Drawing.Size(53, 13);
+            this.labelProgSummary.TabIndex = 0;
+            this.labelProgSummary.Text = "Summary:";
+            // 
+            // panelProgramPrimaryLeft
+            // 
+            this.panelProgramPrimaryLeft.Controls.Add(this.labelProgExplanation);
+            this.panelProgramPrimaryLeft.Controls.Add(this.tbProgProce);
+            this.panelProgramPrimaryLeft.Controls.Add(this.labelProgPrice);
+            this.panelProgramPrimaryLeft.Controls.Add(this.cbProgLevel);
+            this.panelProgramPrimaryLeft.Controls.Add(this.labelProgLevel);
+            this.panelProgramPrimaryLeft.Controls.Add(this.cbProgLanguage);
+            this.panelProgramPrimaryLeft.Controls.Add(this.labelProgLanguage);
+            this.panelProgramPrimaryLeft.Controls.Add(this.tbProgName);
+            this.panelProgramPrimaryLeft.Controls.Add(this.labelProgName);
+            this.panelProgramPrimaryLeft.Controls.Add(this.tbProgCode);
+            this.panelProgramPrimaryLeft.Controls.Add(this.labelProgCode);
+            this.panelProgramPrimaryLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelProgramPrimaryLeft.Location = new System.Drawing.Point(0, 0);
+            this.panelProgramPrimaryLeft.Name = "panelProgramPrimaryLeft";
+            this.panelProgramPrimaryLeft.Size = new System.Drawing.Size(241, 366);
+            this.panelProgramPrimaryLeft.TabIndex = 0;
+            // 
+            // labelProgExplanation
+            // 
+            this.labelProgExplanation.AutoSize = true;
+            this.labelProgExplanation.Location = new System.Drawing.Point(117, 190);
+            this.labelProgExplanation.Name = "labelProgExplanation";
+            this.labelProgExplanation.Size = new System.Drawing.Size(103, 13);
+            this.labelProgExplanation.TabIndex = 4;
+            this.labelProgExplanation.Text = "Per hour, per person";
+            // 
+            // tbProgProce
+            // 
+            this.tbProgProce.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programList, "Price", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C0"));
+            this.tbProgProce.Location = new System.Drawing.Point(74, 167);
+            this.tbProgProce.Name = "tbProgProce";
+            this.tbProgProce.Size = new System.Drawing.Size(146, 20);
+            this.tbProgProce.TabIndex = 9;
+            this.tbProgProce.TextChanged += new System.EventHandler(this.tbProgProce_TextChanged);
+            // 
+            // labelProgPrice
+            // 
+            this.labelProgPrice.AutoSize = true;
+            this.labelProgPrice.Location = new System.Drawing.Point(10, 170);
+            this.labelProgPrice.Name = "labelProgPrice";
+            this.labelProgPrice.Size = new System.Drawing.Size(31, 13);
+            this.labelProgPrice.TabIndex = 8;
+            this.labelProgPrice.Text = "Price";
+            // 
+            // cbProgLevel
+            // 
+            this.cbProgLevel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programList, "Level", true));
+            this.cbProgLevel.FormattingEnabled = true;
+            this.cbProgLevel.Location = new System.Drawing.Point(74, 130);
+            this.cbProgLevel.Name = "cbProgLevel";
+            this.cbProgLevel.Size = new System.Drawing.Size(146, 21);
+            this.cbProgLevel.TabIndex = 7;
+            this.cbProgLevel.SelectedIndexChanged += new System.EventHandler(this.cbProgLevel_SelectedIndexChanged);
+            // 
+            // labelProgLevel
+            // 
+            this.labelProgLevel.AutoSize = true;
+            this.labelProgLevel.Location = new System.Drawing.Point(10, 130);
+            this.labelProgLevel.Name = "labelProgLevel";
+            this.labelProgLevel.Size = new System.Drawing.Size(36, 13);
+            this.labelProgLevel.TabIndex = 6;
+            this.labelProgLevel.Text = "Level:";
+            // 
+            // cbProgLanguage
+            // 
+            this.cbProgLanguage.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programList, "Language", true));
+            this.cbProgLanguage.FormattingEnabled = true;
+            this.cbProgLanguage.Location = new System.Drawing.Point(74, 91);
+            this.cbProgLanguage.Name = "cbProgLanguage";
+            this.cbProgLanguage.Size = new System.Drawing.Size(146, 21);
+            this.cbProgLanguage.TabIndex = 5;
+            this.cbProgLanguage.SelectedIndexChanged += new System.EventHandler(this.cbProgLanguage_SelectedIndexChanged);
+            // 
+            // labelProgLanguage
+            // 
+            this.labelProgLanguage.AutoSize = true;
+            this.labelProgLanguage.Location = new System.Drawing.Point(10, 94);
+            this.labelProgLanguage.Name = "labelProgLanguage";
+            this.labelProgLanguage.Size = new System.Drawing.Size(58, 13);
+            this.labelProgLanguage.TabIndex = 4;
+            this.labelProgLanguage.Text = "Language:";
+            // 
+            // tbProgName
+            // 
+            this.tbProgName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programList, "Name", true));
+            this.tbProgName.Location = new System.Drawing.Point(74, 56);
+            this.tbProgName.Name = "tbProgName";
+            this.tbProgName.Size = new System.Drawing.Size(146, 20);
+            this.tbProgName.TabIndex = 3;
+            this.tbProgName.TextChanged += new System.EventHandler(this.tbProgName_TextChanged);
+            // 
+            // labelProgName
+            // 
+            this.labelProgName.AutoSize = true;
+            this.labelProgName.Location = new System.Drawing.Point(10, 56);
+            this.labelProgName.Name = "labelProgName";
+            this.labelProgName.Size = new System.Drawing.Size(38, 13);
+            this.labelProgName.TabIndex = 2;
+            this.labelProgName.Text = "Name:";
+            // 
+            // tbProgCode
+            // 
+            this.tbProgCode.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programList, "Code", true));
+            this.tbProgCode.Location = new System.Drawing.Point(74, 22);
+            this.tbProgCode.Name = "tbProgCode";
+            this.tbProgCode.Size = new System.Drawing.Size(146, 20);
+            this.tbProgCode.TabIndex = 1;
+            this.tbProgCode.TextChanged += new System.EventHandler(this.tbProgCode_TextChanged);
+            // 
+            // labelProgCode
+            // 
+            this.labelProgCode.AutoSize = true;
+            this.labelProgCode.Location = new System.Drawing.Point(10, 25);
+            this.labelProgCode.Name = "labelProgCode";
+            this.labelProgCode.Size = new System.Drawing.Size(35, 13);
+            this.labelProgCode.TabIndex = 0;
+            this.labelProgCode.Text = "Code:";
             // 
             // tabBottomPageRooms
             // 
@@ -1345,7 +1895,7 @@
             // 
             // tabTopPageStudents
             // 
-            this.tabTopPageStudents.Controls.Add(this.dataGridViewStudents);
+            this.tabTopPageStudents.Controls.Add(this.dgvStudents);
             this.tabTopPageStudents.Location = new System.Drawing.Point(4, 22);
             this.tabTopPageStudents.Name = "tabTopPageStudents";
             this.tabTopPageStudents.Padding = new System.Windows.Forms.Padding(3);
@@ -1354,15 +1904,15 @@
             this.tabTopPageStudents.Text = "Students";
             this.tabTopPageStudents.UseVisualStyleBackColor = true;
             // 
-            // dataGridViewStudents
+            // dgvStudents
             // 
-            this.dataGridViewStudents.AllowUserToAddRows = false;
-            this.dataGridViewStudents.AllowUserToDeleteRows = false;
-            this.dataGridViewStudents.AllowUserToOrderColumns = true;
-            this.dataGridViewStudents.AutoGenerateColumns = false;
-            this.dataGridViewStudents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewStudents.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvStudents.AllowUserToAddRows = false;
+            this.dgvStudents.AllowUserToDeleteRows = false;
+            this.dgvStudents.AllowUserToOrderColumns = true;
+            this.dgvStudents.AutoGenerateColumns = false;
+            this.dgvStudents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvStudents.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dgvStudColumnStatus,
             this.dgvStudColumnFirstName,
             this.dgvStudColumnLastName,
@@ -1375,16 +1925,16 @@
             this.dgvStudColumnBirthday,
             this.dgvStudColumnSource,
             this.dgvStudColumnAddress});
-            this.dataGridViewStudents.DataSource = this.studentList;
-            this.dataGridViewStudents.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewStudents.Location = new System.Drawing.Point(3, 3);
-            this.dataGridViewStudents.Name = "dataGridViewStudents";
-            this.dataGridViewStudents.ReadOnly = true;
-            this.dataGridViewStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewStudents.Size = new System.Drawing.Size(1015, 361);
-            this.dataGridViewStudents.TabIndex = 13;
-            this.dataGridViewStudents.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            this.dataGridViewStudents.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_ColumnHeaderMouseClick);
+            this.dgvStudents.DataSource = this.studentList;
+            this.dgvStudents.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvStudents.Location = new System.Drawing.Point(3, 3);
+            this.dgvStudents.Name = "dgvStudents";
+            this.dgvStudents.ReadOnly = true;
+            this.dgvStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvStudents.Size = new System.Drawing.Size(1015, 361);
+            this.dgvStudents.TabIndex = 13;
+            this.dgvStudents.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudents_CellContentClick);
+            this.dgvStudents.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvStudents_ColumnHeaderMouseClick);
             // 
             // dgvStudColumnStatus
             // 
@@ -1472,6 +2022,7 @@
             // 
             // tabTopPageTeachers
             // 
+            this.tabTopPageTeachers.Controls.Add(this.dgvTeachers);
             this.tabTopPageTeachers.Location = new System.Drawing.Point(4, 22);
             this.tabTopPageTeachers.Name = "tabTopPageTeachers";
             this.tabTopPageTeachers.Padding = new System.Windows.Forms.Padding(3);
@@ -1480,8 +2031,123 @@
             this.tabTopPageTeachers.Text = "Teachers";
             this.tabTopPageTeachers.UseVisualStyleBackColor = true;
             // 
+            // dgvTeachers
+            // 
+            this.dgvTeachers.AllowUserToAddRows = false;
+            this.dgvTeachers.AllowUserToDeleteRows = false;
+            this.dgvTeachers.AllowUserToOrderColumns = true;
+            this.dgvTeachers.AutoGenerateColumns = false;
+            this.dgvTeachers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTeachers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.statusDataGridViewTextBoxColumn,
+            this.firstNameDataGridViewTextBoxColumn,
+            this.lastNameDataGridViewTextBoxColumn,
+            this.emailDataGridViewTextBoxColumn,
+            this.phoneDataGridViewTextBoxColumn,
+            this.languageDataGridViewTextBoxColumn,
+            this.language2DataGridViewTextBoxColumn,
+            this.languageDetailDataGridViewTextBoxColumn,
+            this.vacationsDataGridViewTextBoxColumn,
+            this.commentsDataGridViewTextBoxColumn1,
+            this.mailingAddressDataGridViewTextBoxColumn,
+            this.birthdayDataGridViewTextBoxColumn});
+            this.dgvTeachers.DataSource = this.teacherList;
+            this.dgvTeachers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvTeachers.Location = new System.Drawing.Point(3, 3);
+            this.dgvTeachers.Name = "dgvTeachers";
+            this.dgvTeachers.ReadOnly = true;
+            this.dgvTeachers.Size = new System.Drawing.Size(1015, 361);
+            this.dgvTeachers.TabIndex = 1;
+            this.dgvTeachers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTeachers_CellContentClick);
+            this.dgvTeachers.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTeachers_ColumnHeaderMouseClick);
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            this.statusDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            this.firstNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            this.lastNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            this.emailDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // phoneDataGridViewTextBoxColumn
+            // 
+            this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
+            this.phoneDataGridViewTextBoxColumn.HeaderText = "Phone";
+            this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
+            this.phoneDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // languageDataGridViewTextBoxColumn
+            // 
+            this.languageDataGridViewTextBoxColumn.DataPropertyName = "Language";
+            this.languageDataGridViewTextBoxColumn.HeaderText = "Language";
+            this.languageDataGridViewTextBoxColumn.Name = "languageDataGridViewTextBoxColumn";
+            this.languageDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // language2DataGridViewTextBoxColumn
+            // 
+            this.language2DataGridViewTextBoxColumn.DataPropertyName = "Language2";
+            this.language2DataGridViewTextBoxColumn.HeaderText = "Language2";
+            this.language2DataGridViewTextBoxColumn.Name = "language2DataGridViewTextBoxColumn";
+            this.language2DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // languageDetailDataGridViewTextBoxColumn
+            // 
+            this.languageDetailDataGridViewTextBoxColumn.DataPropertyName = "LanguageDetail";
+            this.languageDetailDataGridViewTextBoxColumn.HeaderText = "LanguageDetail";
+            this.languageDetailDataGridViewTextBoxColumn.Name = "languageDetailDataGridViewTextBoxColumn";
+            this.languageDetailDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // vacationsDataGridViewTextBoxColumn
+            // 
+            this.vacationsDataGridViewTextBoxColumn.DataPropertyName = "Vacations";
+            this.vacationsDataGridViewTextBoxColumn.HeaderText = "Vacations";
+            this.vacationsDataGridViewTextBoxColumn.Name = "vacationsDataGridViewTextBoxColumn";
+            this.vacationsDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // commentsDataGridViewTextBoxColumn1
+            // 
+            this.commentsDataGridViewTextBoxColumn1.DataPropertyName = "Comments";
+            this.commentsDataGridViewTextBoxColumn1.HeaderText = "Comments";
+            this.commentsDataGridViewTextBoxColumn1.Name = "commentsDataGridViewTextBoxColumn1";
+            this.commentsDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // mailingAddressDataGridViewTextBoxColumn
+            // 
+            this.mailingAddressDataGridViewTextBoxColumn.DataPropertyName = "MailingAddress";
+            this.mailingAddressDataGridViewTextBoxColumn.HeaderText = "MailingAddress";
+            this.mailingAddressDataGridViewTextBoxColumn.Name = "mailingAddressDataGridViewTextBoxColumn";
+            this.mailingAddressDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // birthdayDataGridViewTextBoxColumn
+            // 
+            this.birthdayDataGridViewTextBoxColumn.DataPropertyName = "Birthday";
+            this.birthdayDataGridViewTextBoxColumn.HeaderText = "Birthday";
+            this.birthdayDataGridViewTextBoxColumn.Name = "birthdayDataGridViewTextBoxColumn";
+            this.birthdayDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // tabTopPagePrograms
             // 
+            this.tabTopPagePrograms.Controls.Add(this.dgvPrograms);
             this.tabTopPagePrograms.Location = new System.Drawing.Point(4, 22);
             this.tabTopPagePrograms.Name = "tabTopPagePrograms";
             this.tabTopPagePrograms.Padding = new System.Windows.Forms.Padding(3);
@@ -1490,9 +2156,75 @@
             this.tabTopPagePrograms.Text = "Programs";
             this.tabTopPagePrograms.UseVisualStyleBackColor = true;
             // 
+            // dgvPrograms
+            // 
+            this.dgvPrograms.AllowUserToAddRows = false;
+            this.dgvPrograms.AllowUserToDeleteRows = false;
+            this.dgvPrograms.AllowUserToOrderColumns = true;
+            this.dgvPrograms.AutoGenerateColumns = false;
+            this.dgvPrograms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPrograms.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.codeDataGridViewTextBoxColumn,
+            this.languageDataGridViewTextBoxColumn1,
+            this.levelDataGridViewTextBoxColumn,
+            this.nameDataGridViewTextBoxColumn1,
+            this.priceDataGridViewTextBoxColumn,
+            this.Summary});
+            this.dgvPrograms.DataSource = this.programList;
+            this.dgvPrograms.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvPrograms.Location = new System.Drawing.Point(3, 3);
+            this.dgvPrograms.Name = "dgvPrograms";
+            this.dgvPrograms.ReadOnly = true;
+            this.dgvPrograms.Size = new System.Drawing.Size(1015, 361);
+            this.dgvPrograms.TabIndex = 0;
+            this.dgvPrograms.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPrograms_CellContentClick);
+            this.dgvPrograms.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPrograms_ColumnHeaderMouseClick);
+            // 
+            // codeDataGridViewTextBoxColumn
+            // 
+            this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
+            this.codeDataGridViewTextBoxColumn.HeaderText = "Code";
+            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
+            this.codeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // languageDataGridViewTextBoxColumn1
+            // 
+            this.languageDataGridViewTextBoxColumn1.DataPropertyName = "Language";
+            this.languageDataGridViewTextBoxColumn1.HeaderText = "Language";
+            this.languageDataGridViewTextBoxColumn1.Name = "languageDataGridViewTextBoxColumn1";
+            this.languageDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // levelDataGridViewTextBoxColumn
+            // 
+            this.levelDataGridViewTextBoxColumn.DataPropertyName = "Level";
+            this.levelDataGridViewTextBoxColumn.HeaderText = "Level";
+            this.levelDataGridViewTextBoxColumn.Name = "levelDataGridViewTextBoxColumn";
+            this.levelDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nameDataGridViewTextBoxColumn1
+            // 
+            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn1.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
+            this.nameDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Summary
+            // 
+            this.Summary.DataPropertyName = "Summary";
+            this.Summary.HeaderText = "Summary";
+            this.Summary.Name = "Summary";
+            this.Summary.ReadOnly = true;
+            // 
             // tabTopPageRooms
             // 
-            this.tabTopPageRooms.Controls.Add(this.dataGridView1);
+            this.tabTopPageRooms.Controls.Add(this.dgvRooms);
             this.tabTopPageRooms.Location = new System.Drawing.Point(4, 22);
             this.tabTopPageRooms.Name = "tabTopPageRooms";
             this.tabTopPageRooms.Padding = new System.Windows.Forms.Padding(3);
@@ -1501,27 +2233,29 @@
             this.tabTopPageRooms.Text = "Rooms";
             this.tabTopPageRooms.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dgvRooms
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvRooms.AllowUserToAddRows = false;
+            this.dgvRooms.AllowUserToDeleteRows = false;
+            this.dgvRooms.AllowUserToOrderColumns = true;
+            this.dgvRooms.AutoGenerateColumns = false;
+            this.dgvRooms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRooms.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nameDataGridViewTextBoxColumn,
             this.capacityDataGridViewTextBoxColumn,
             this.rankDataGridViewTextBoxColumn,
             this.tagsDataGridViewTextBoxColumn,
             this.descriptionDataGridViewTextBoxColumn,
             this.commentsDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.roomList;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 3);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(1015, 361);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvRooms.DataSource = this.roomList;
+            this.dgvRooms.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvRooms.Location = new System.Drawing.Point(3, 3);
+            this.dgvRooms.Name = "dgvRooms";
+            this.dgvRooms.ReadOnly = true;
+            this.dgvRooms.Size = new System.Drawing.Size(1015, 361);
+            this.dgvRooms.TabIndex = 0;
+            this.dgvRooms.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRooms_CellContentClick);
+            this.dgvRooms.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvRooms_ColumnHeaderMouseClick);
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -1640,6 +2374,20 @@
             this.groupBoxStudSecondaryRight.PerformLayout();
             this.panelStudSecondaryLeft.ResumeLayout(false);
             this.panelStudSecondaryLeft.PerformLayout();
+            this.tabBottomPageTeachers.ResumeLayout(false);
+            this.panelTeacherPrimary.ResumeLayout(false);
+            this.groupBoxTeacherPrimaryRight.ResumeLayout(false);
+            this.groupBoxTeacherPrimaryRight.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.teacherList)).EndInit();
+            this.panelTeacherPrimaryLeft.ResumeLayout(false);
+            this.panelTeacherPrimaryLeft.PerformLayout();
+            this.tabBottomPagePrograms.ResumeLayout(false);
+            this.panelProgram.ResumeLayout(false);
+            this.groupBoxProgram.ResumeLayout(false);
+            this.groupBoxProgram.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.programList)).EndInit();
+            this.panelProgramPrimaryLeft.ResumeLayout(false);
+            this.panelProgramPrimaryLeft.PerformLayout();
             this.tabBottomPageRooms.ResumeLayout(false);
             this.panelRoom.ResumeLayout(false);
             this.panelRoomPrimaryLeft.ResumeLayout(false);
@@ -1657,9 +2405,13 @@
             this.splitContainerGlobMasterDetail.ResumeLayout(false);
             this.tabControlModesTop.ResumeLayout(false);
             this.tabTopPageStudents.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewStudents)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).EndInit();
+            this.tabTopPageTeachers.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTeachers)).EndInit();
+            this.tabTopPagePrograms.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPrograms)).EndInit();
             this.tabTopPageRooms.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRooms)).EndInit();
             this.splitContainerGlobDataControls.Panel1.ResumeLayout(false);
             this.splitContainerGlobDataControls.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerGlobDataControls)).EndInit();
@@ -1691,7 +2443,7 @@
         private System.Windows.Forms.Label labelGlobSagalingua;
         private System.Windows.Forms.Panel panelGlobSearch;
         private System.Windows.Forms.ToolStripMenuItem menuItemGlobExit;
-        private System.Windows.Forms.DataGridView dataGridViewStudents;
+        private System.Windows.Forms.DataGridView dgvStudents;
         private System.Windows.Forms.BindingSource studentList;
         private System.Windows.Forms.Button butGlobalPrev;
         private System.Windows.Forms.Button butGlobalAdd;
@@ -1800,7 +2552,7 @@
         private System.Windows.Forms.TextBox tbRoomName;
         private System.Windows.Forms.Label labelRoomComments;
         private System.Windows.Forms.Label labelRoomTags;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvRooms;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn capacityDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn rankDataGridViewTextBoxColumn;
@@ -1808,6 +2560,74 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn commentsDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource roomList;
+        private System.Windows.Forms.DataGridView dgvTeachers;
+        private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn languageDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn language2DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn languageDetailDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn vacationsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn commentsDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mailingAddressDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn birthdayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource teacherList;
+        private System.Windows.Forms.Panel panelTeacherSecondary;
+        private System.Windows.Forms.Panel panelTeacherPrimary;
+        private System.Windows.Forms.GroupBox groupBoxTeacherPrimaryRight;
+        private System.Windows.Forms.Panel panelTeacherPrimaryLeft;
+        private System.Windows.Forms.TextBox tbTeachLanguageDetail;
+        private System.Windows.Forms.ComboBox cbTeachLanguage2;
+        private System.Windows.Forms.ComboBox cbTeachLanguage;
+        private System.Windows.Forms.Label labelTeachLabguageDetail;
+        private System.Windows.Forms.Label labelTeachLanguage2;
+        private System.Windows.Forms.Label labelLanguage;
+        private System.Windows.Forms.ComboBox cbTeachStatus;
+        private System.Windows.Forms.TextBox tbTeachLastBirthday;
+        private System.Windows.Forms.TextBox tbTeachPhone;
+        private System.Windows.Forms.Label labelTeachBirthday;
+        private System.Windows.Forms.Label labelTeachPhone;
+        private System.Windows.Forms.Label labelTeachStatus;
+        private System.Windows.Forms.TextBox tbTeachEmail;
+        private System.Windows.Forms.TextBox tbTeachLastName;
+        private System.Windows.Forms.TextBox tbTeachFirstName;
+        private System.Windows.Forms.Label labelTeachEmail;
+        private System.Windows.Forms.Label labelTeachLastName;
+        private System.Windows.Forms.Label labelTeachFirstName;
+        private System.Windows.Forms.TextBox tbTeachComment;
+        private System.Windows.Forms.TextBox tbTeachVacations;
+        private System.Windows.Forms.TextBox tbTeachAddress;
+        private System.Windows.Forms.Label labelTeachComment;
+        private System.Windows.Forms.Label labelTeachVacations;
+        private System.Windows.Forms.Label labelTeachAddress;
+        private System.Windows.Forms.DataGridView dgvPrograms;
+        private System.Windows.Forms.BindingSource programList;
+        private System.Windows.Forms.Panel panelProgram;
+        private System.Windows.Forms.GroupBox groupBoxProgram;
+        private System.Windows.Forms.Panel panelProgramPrimaryLeft;
+        private System.Windows.Forms.TextBox tbProgComments;
+        private System.Windows.Forms.TextBox tbProgSummary;
+        private System.Windows.Forms.Label labelProgComments;
+        private System.Windows.Forms.Label labelProgSummary;
+        private System.Windows.Forms.TextBox tbProgProce;
+        private System.Windows.Forms.Label labelProgPrice;
+        private System.Windows.Forms.ComboBox cbProgLevel;
+        private System.Windows.Forms.Label labelProgLevel;
+        private System.Windows.Forms.ComboBox cbProgLanguage;
+        private System.Windows.Forms.Label labelProgLanguage;
+        private System.Windows.Forms.TextBox tbProgName;
+        private System.Windows.Forms.Label labelProgName;
+        private System.Windows.Forms.TextBox tbProgCode;
+        private System.Windows.Forms.Label labelProgCode;
+        private System.Windows.Forms.Label labelProgExplanation;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn languageDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn levelDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Summary;
     }
 }
 

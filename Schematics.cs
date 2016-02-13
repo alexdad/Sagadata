@@ -111,6 +111,13 @@ namespace RecordKeeper
             cbStudLevel.Items.AddRange(m_enumLevel);
             cbStudSource.Items.AddRange(m_enumSource);
             cbStudStatus.Items.AddRange(m_enumStatus);
+
+            cbTeachLanguage.Items.AddRange(m_enumLanguage);
+            cbTeachLanguage2.Items.AddRange(m_enumLanguage);
+            cbTeachStatus.Items.AddRange(m_enumStatus);
+
+            cbProgLanguage.Items.AddRange(m_enumLanguage);
+            cbProgLevel.Items.AddRange(m_enumLevel);
         }
 
         public bool SelectionMode
@@ -129,11 +136,11 @@ namespace RecordKeeper
         }
         public void ShowTeacherCount()
         {
-            //labelGlobCount.Text = teacherList.Count.ToString();
+            labelGlobCount.Text = teacherList.Count.ToString();
         }
         public void ShowProgramCount()
         {
-            //labelGlobCount.Text = programList.Count.ToString();
+            labelGlobCount.Text = programList.Count.ToString();
         }
         public void ShowLessonCount()
         {
