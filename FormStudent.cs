@@ -21,6 +21,7 @@ namespace RecordKeeper
         string m_StudentSelectionFirstName;
         string m_StudentSelectionLastName;
         string m_StudentSelectionSource;
+        string m_StudentSelectionLevel;
 
         private void StudentToFormConst1()
         {
@@ -63,7 +64,7 @@ namespace RecordKeeper
                     continue;
                 if (!CurrentType.Fit(m_StudentSelectionSource, s.Source, true))
                     continue;
-                if (!CurrentType.Fit(SelectionLevel, s.Level, true))
+                if (!CurrentType.Fit(m_StudentSelectionLevel, s.Level, true))
                     continue;
 
                 DataList.Add(s);

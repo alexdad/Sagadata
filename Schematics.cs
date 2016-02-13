@@ -130,6 +130,9 @@ namespace RecordKeeper
             cbProgLanguage.Items.AddRange(m_enumLanguage);
             cbProgLevel.Items.AddRange(m_enumLevel);
 
+            cbSearchProgLanguage.Items.AddRange(m_enumLanguage);
+            cbSearchProgLevel.Items.AddRange(m_enumLevel);
+
             cbLessonState.Items.AddRange(m_enumState);
             cbLessonStart.Items.AddRange(m_enumTimeSlot);
             cbLessonEnd.Items.AddRange(m_enumTimeSlot);

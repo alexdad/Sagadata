@@ -100,8 +100,6 @@ namespace RecordKeeper
             }
         }
 
-        public string SelectionLevel { get; set; }
-
         public List<string> DeletedKeys { get; set;  }
         public Dictionary<string, Record> RecordsAsRead { get; set; }
         public Record[] SavedFullListDuringSelection { get; set; }
@@ -231,6 +229,7 @@ namespace RecordKeeper
             m_StudentSelectionFirstName = null;
             m_StudentSelectionLastName = null;
             m_StudentSelectionSource = null;
+            m_StudentSelectionLevel = null;
 
             m_teacherSelectionFirstName = null;
             m_teacherSelectionLanguage = null;
@@ -242,6 +241,8 @@ namespace RecordKeeper
             m_RoomSelectionRank = null;
             m_RoomSelectionTags = null;
 
+            m_ProgramSelectionLanguage = null;
+            m_ProgramSelectionLevel = null;
 
         }
 
@@ -396,6 +397,8 @@ namespace RecordKeeper
         {
             Record st = (Record)DataList.AddNew();
             st.Id = FormGlob.AllocateID();
+            st.ChangedBy = Client;
+            st.CreatedBy = Client;
             ShowCurrentCount();
             Modified = true;
             //tbStudFirstName.Select();  -- TODO
@@ -415,7 +418,6 @@ namespace RecordKeeper
             CurrentType.EndSelectionMode();
 
             ShowAllCurrent();
-            SelectionLevel = null;
 
             cbStudSelectStatus.SelectedIndex = 0;
             cbStudSearchLearns.SelectedIndex = 0;
@@ -431,6 +433,9 @@ namespace RecordKeeper
             tbSearchTeachFirstName.Text = "";
             tbSearchTeachLastName.Text = "";
 
+            cbProgLanguage.SelectedIndex = 0;
+            cbProgLevel.SelectedIndex = 0;
+
             // Changed
         }
 
@@ -444,119 +449,119 @@ namespace RecordKeeper
         #endregion
 
         #region Student-related UI 
-        private void comboBoxSelectStatus_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbSearchStudStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
             m_StudentSelectionStatus = (string)comboBox.SelectedItem;
             CurrentType.DoSelection();
         }
 
-        private void comboBoxSelectLearns_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbSearchStudLearns_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
             m_StudentSelectionLearns = (string)comboBox.SelectedItem;
             CurrentType.DoSelection();
         }
 
-        private void comboBoxSelectSpeaks_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbSearchStudSpeaks_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
             m_StudentSelectionSpeaks = (string)comboBox.SelectedItem;
             CurrentType.DoSelection();
         }
-        private void comboBoxSelectSource_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbSearchStudSource_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
             m_StudentSelectionSource = (string)comboBox.SelectedItem;
             CurrentType.DoSelection();
         }
-        private void comboBoxSelectLevel_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbSearchStudLevel_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
-            SelectionLevel = (string)comboBox.SelectedItem;
+            m_StudentSelectionLevel = (string)comboBox.SelectedItem;
             CurrentType.DoSelection();
         }
 
 
-        private void textBoxSelectFirstName_TextChanged(object sender, EventArgs e)
+        private void tbSearchStudFirstName_TextChanged(object sender, EventArgs e)
         {
             TextBox testBox = (TextBox)sender;
             m_StudentSelectionFirstName = testBox.Text;
             CurrentType.DoSelection();
         }
 
-        private void textBoxSelectLastName_TextChanged(object sender, EventArgs e)
+        private void tbSearchStudLastName_TextChanged(object sender, EventArgs e)
         {
             TextBox testBox = (TextBox)sender;
             m_StudentSelectionLastName = (string)testBox.Text;
             CurrentType.DoSelection();
         }
-        private void textBoxComments_TextChanged(object sender, EventArgs e)
+        private void tbStudComments_TextChanged(object sender, EventArgs e)
         {
             Modified = true;
         }
 
-        private void textBoxEmail_TextChanged(object sender, EventArgs e)
+        private void tbStudEmail_TextChanged(object sender, EventArgs e)
         {
             Modified = true;
         }
 
-        private void textBoxFirstName_TextChanged(object sender, EventArgs e)
+        private void tbStudFirstName_TextChanged(object sender, EventArgs e)
         {
             Modified = true;
         }
 
-        private void textBoxLastName_TextChanged(object sender, EventArgs e)
+        private void tbStudLastName_TextChanged(object sender, EventArgs e)
         {
             Modified = true;
         }
 
-        private void textBoxCellPhone_TextChanged(object sender, EventArgs e)
+        private void tbStudCellPhone_TextChanged(object sender, EventArgs e)
         {
             Modified = true;
         }
 
-        private void textBoxHomePhone_TextChanged(object sender, EventArgs e)
+        private void tbStudHomePhone_TextChanged(object sender, EventArgs e)
         {
             Modified = true;
         }
 
-        private void textBoxAddress1_TextChanged(object sender, EventArgs e)
+        private void tbStudAddress_TextChanged(object sender, EventArgs e)
         {
             Modified = true;
         }
 
-        private void textBoxLanguageDetail_TextChanged(object sender, EventArgs e)
+        private void tbStudLanguageDetail_TextChanged(object sender, EventArgs e)
         {
             Modified = true;
         }
 
-        private void textBoxBirthday_TextChanged(object sender, EventArgs e)
+        private void tbStudBirthday_TextChanged(object sender, EventArgs e)
         {
             Modified = true;
         }
 
-        private void textBoxSourceDetail_TextChanged(object sender, EventArgs e)
+        private void tbStudxSourceDetail_TextChanged(object sender, EventArgs e)
         {
             Modified = true;
         }
 
-        private void textBoxSchedule_TextChanged(object sender, EventArgs e)
+        private void tbStudSchedule_TextChanged(object sender, EventArgs e)
         {
             Modified = true;
         }
 
-        private void textBoxInterests_TextChanged(object sender, EventArgs e)
+        private void tbStudInterests_TextChanged(object sender, EventArgs e)
         {
             Modified = true;
         }
 
-        private void textBoxGoals_TextChanged(object sender, EventArgs e)
+        private void tbStudGoals_TextChanged(object sender, EventArgs e)
         {
             Modified = true;
         }
 
-        private void textBoxBackground_TextChanged(object sender, EventArgs e)
+        private void tbStudBackground_TextChanged(object sender, EventArgs e)
         {
             Modified = true;
         }
@@ -592,7 +597,68 @@ namespace RecordKeeper
             m_teacherSelectionLastname = (string)tb.Text;
             CurrentType.DoSelection();
         }
-#endregion
+
+        private void tbTeachFirstName_TextChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+
+        private void tbTeachLastName_TextChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+
+        private void tbTeachEmail_TextChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+
+        private void tbTeachLastBirthday_TextChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+
+        private void tbTeachPhone_TextChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+
+        private void cbTeachStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+
+        private void cbTeachLanguage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+
+        private void cbTeachLanguage2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+
+        private void tbTeachLanguageDetail_TextChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+
+        private void tbTeachAddress_TextChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+
+        private void tbTeachVacations_TextChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+
+        private void tbTeachComment_TextChanged(object sender, EventArgs e)
+        {
+            Modified = true;
+        }
+
+        #endregion
 
         #region Room-related UI
         private void tbRoomName_TextChanged(object sender, EventArgs e)
@@ -634,12 +700,12 @@ namespace RecordKeeper
 
         private void cbProgLanguage_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            Modified = true;
         }
 
         private void cbProgLevel_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            Modified = true;
         }
 
         private void tbProgPrice_TextChanged(object sender, EventArgs e)
@@ -655,6 +721,20 @@ namespace RecordKeeper
         private void tbProgComments_TextChanged(object sender, EventArgs e)
         {
             Modified = true;
+        }
+
+        private void cbSearchProgLanguage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            m_ProgramSelectionLanguage = (string)comboBox.SelectedItem;
+            CurrentType.DoSelection();
+        }
+
+        private void cbSearchProgLevel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            m_ProgramSelectionLevel = (string)comboBox.SelectedItem;
+            CurrentType.DoSelection();
         }
         #endregion
 
@@ -753,6 +833,7 @@ namespace RecordKeeper
         {
             Modified = true;
         }
+
         #endregion
 
     }

@@ -15,6 +15,9 @@ namespace RecordKeeper
 {
     public partial class FormGlob : Form
     {
+        string m_ProgramSelectionLanguage;
+        string m_ProgramSelectionLevel;
+
         private void ProgramToFormConst1()
         {
             m_dataTypes.Add(Modes.Programs, typeof(Program));
@@ -36,14 +39,15 @@ namespace RecordKeeper
             DataList.Clear();
             foreach (Program s in SavedFullListDuringSelection)
             {
-                // TODO - make it >= number
-                //if (!m_curType.Fit(m_RoomSelectionCapacity, s.Capacity.ToString(), true))
-                //    continue;
+                if (!CurrentType.Fit(m_ProgramSelectionLanguage, s.Language, true))
+                    continue;
+                if (!CurrentType.Fit(m_ProgramSelectionLevel, s.Level, true))
+                    continue;
+
                 DataList.Add(s);
             }
             ShowCurrentCount();
             Modified = true;
         }
-
     }
 }
