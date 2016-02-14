@@ -18,6 +18,12 @@ namespace RecordKeeper
         string m_ProgramSelectionLanguage;
         string m_ProgramSelectionLevel;
 
+        private void DropProgramSelection()
+        {
+            m_ProgramSelectionLanguage = null;
+            m_ProgramSelectionLevel = null;
+        }
+
         private void ProgramToFormConst1()
         {
             m_dataTypes.Add(Modes.Programs, typeof(Program));

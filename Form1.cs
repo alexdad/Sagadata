@@ -222,28 +222,11 @@ namespace RecordKeeper
         }
         private void ShowAllCurrent()
         {
-            // TODO make it only for current type. Maybe new friend of Form object per rec type.
-            m_StudentSelectionStatus = null;
-            m_StudentSelectionLearns = null;
-            m_StudentSelectionSpeaks = null;
-            m_StudentSelectionFirstName = null;
-            m_StudentSelectionLastName = null;
-            m_StudentSelectionSource = null;
-            m_StudentSelectionLevel = null;
-
-            m_teacherSelectionFirstName = null;
-            m_teacherSelectionLanguage = null;
-            m_teacherSelectionLastname = null;
-            m_teacherSelectionStatus = null;
-
-            m_RoomSelectionCapacity = null;
-            m_RoomSelectionName = null;
-            m_RoomSelectionRank = null;
-            m_RoomSelectionTags = null;
-
-            m_ProgramSelectionLanguage = null;
-            m_ProgramSelectionLevel = null;
-
+            DropStudentSelections();
+            DropTeacherSelection();
+            DropRoomSelection();
+            DropProgramSelection();
+            DropLessonSelection();
         }
 
         private void SetMode(int mode)
@@ -274,6 +257,18 @@ namespace RecordKeeper
                 ReadCurrentFile();
 
             ShowCurrentCount();
+            ManageSearchWindow();
+        }
+
+        void ManageSearchWindow()
+        {
+            // For now we may only supply few searches
+            this.panelGlobSearch.Visible = 
+                (m_mode == Modes.Students || 
+                 m_mode == Modes.Teachers ||
+                 m_mode == Modes.Lessons  ||
+                 m_mode == Modes.Programs);
+            
         }
 
         private void cbGlobType_SelectedIndexChanged(object sender, EventArgs e)
@@ -834,7 +829,41 @@ namespace RecordKeeper
             Modified = true;
         }
 
-        #endregion
 
+        private void tbSearchLessonStudent_TextChanged(object sender, EventArgs e)
+        {
+            TextBox comboBox = (TextBox)sender;
+            m_LessonSelectionStudent = comboBox.Text;
+            CurrentType.DoSelection();
+        }
+
+        private void tbSearchLessonTeacher_TextChanged(object sender, EventArgs e)
+        {
+            TextBox comboBox = (TextBox)sender;
+            m_LessonSelectionTeacher = comboBox.Text;
+            CurrentType.DoSelection();
+        }
+
+        private void tbSearchLessonDate_TextChanged(object sender, EventArgs e)
+        {
+            TextBox comboBox = (TextBox)sender;
+            m_LessonSelectionDay = comboBox.Text;
+            CurrentType.DoSelection();
+        }
+
+        private void cbSearchLessonProgram_TextChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            m_LessonSelectionProgram = comboBox.Text;
+            CurrentType.DoSelection();
+        }
+
+        private void cbSearchLessonRoom_TextChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            m_LessonSelectionRoom = comboBox.Text;
+            CurrentType.DoSelection();
+        }
+        #endregion
     }
 }

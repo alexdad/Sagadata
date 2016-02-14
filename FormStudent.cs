@@ -23,6 +23,17 @@ namespace RecordKeeper
         string m_StudentSelectionSource;
         string m_StudentSelectionLevel;
 
+        private void DropStudentSelections()
+        {
+            m_StudentSelectionStatus = null;
+            m_StudentSelectionLearns = null;
+            m_StudentSelectionSpeaks = null;
+            m_StudentSelectionFirstName = null;
+            m_StudentSelectionLastName = null;
+            m_StudentSelectionSource = null;
+            m_StudentSelectionLevel = null;
+        }
+
         private void StudentToFormConst1()
         {
             m_dataTypes.Add(Modes.Students, typeof(Student));

@@ -20,6 +20,14 @@ namespace RecordKeeper
         string m_RoomSelectionRank;
         string m_RoomSelectionTags;
 
+        private void DropRoomSelection()
+        {
+            m_RoomSelectionCapacity = null;
+            m_RoomSelectionName = null;
+            m_RoomSelectionRank = null;
+            m_RoomSelectionTags = null;
+        }
+
         private void RoomToFormConst1()
         {
             m_dataTypes.Add(Modes.Rooms, typeof(Room));

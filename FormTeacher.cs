@@ -20,6 +20,15 @@ namespace RecordKeeper
         string m_teacherSelectionFirstName;
         string m_teacherSelectionLastname;
 
+        private void DropTeacherSelection()
+        {
+            m_teacherSelectionFirstName = null;
+            m_teacherSelectionLanguage = null;
+            m_teacherSelectionLastname = null;
+            m_teacherSelectionStatus = null;
+        }
+
+
         private void TeacherToFormConst1()
         {
             m_dataTypes.Add(Modes.Teachers, typeof(Lesson));
