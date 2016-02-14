@@ -303,7 +303,7 @@ namespace RecordKeeper
         }
         #endregion
         
-        #region "DataGridClicks"
+        #region "Data Grid Clicks"
         private void dgvColumnSort<T>(DataGridView dgv, T[] temp, int column) where T : Record
         {
             if (column != Record.LastColumnSorted)
@@ -404,7 +404,7 @@ namespace RecordKeeper
 
         #endregion
 
-        #region "ButtonClicks"
+        #region "Global Button Clicks"
         private void buttonNext_Click(object sender, EventArgs e)
         {
             if (!CheckSafety())
@@ -700,6 +700,11 @@ namespace RecordKeeper
         {
             Modified = true;
         }
+        private void availAcceptButton_Click(object sender, EventArgs e)
+        {
+            AcceptAvailabilityEdits();
+        }
+
         #endregion
 
         #region Room-related UI

@@ -188,14 +188,12 @@ namespace RecordKeeper
         private void FlagUnsavedAvailabilityChanges()
         {
             m_unsavedAvailabilityChanges = true;
-            buttonTeach_GrabAvailChanges.BackColor =
-                System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(127)))), ((int)(((byte)(39)))));
-
+            buttonTeach_GrabAvailChanges.Visible = true;
         }
         private void DropFlagUnsavedAvailabilityChanges()
         {
             m_unsavedAvailabilityChanges = false;
-            buttonTeach_GrabAvailChanges.BackColor = Color.Gray;
+            buttonTeach_GrabAvailChanges.Visible = false;
         }
 
         private void availTopButton_Click(object sender, EventArgs e)
@@ -261,7 +259,7 @@ namespace RecordKeeper
                 }
             }
         }
-        private void availabilityGrabButton_Click(object sender, EventArgs e)
+        private void AcceptAvailabilityEdits()
         {
             for (int i = 0; i < 7; i++)
             {

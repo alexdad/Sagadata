@@ -43,6 +43,16 @@ namespace RecordKeeper
             SaveChangedFiles();
         }
 
+        private void editToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabControlOps.SelectedIndex = 0;
+        }
+
+        private void planToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabControlOps.SelectedIndex = 1;
+        }
+
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!CheckSafety())
