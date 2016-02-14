@@ -18,11 +18,15 @@ namespace RecordKeeper
         //----------------------------------------------------
         private void downloadToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (!CheckSafety())
+                return;
             DownloadCurrentFile();
         }
 
         private void uploadToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (!CheckSafety())
+                return;
             CurrentType.EndSelectionMode();
             List<Modes> temp = SaveChangedFiles();
             if (!temp.Contains(CurrentMode))
@@ -33,12 +37,16 @@ namespace RecordKeeper
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (!CheckSafety())
+                return;
             CurrentType.EndSelectionMode();
             SaveChangedFiles();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (!CheckSafety())
+                return;
             AskAndUploadChangedFiles();
             Application.Exit();
         }

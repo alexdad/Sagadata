@@ -19,7 +19,13 @@ namespace RecordKeeper
         public String LanguageDetail { get; set; }
         public string MailingAddress { get; set; }
         public String Vacations { get; set; }
-
+        public String Monday { get; set; }
+        public String Tuesday { get; set; }
+        public String Wednesday { get; set; }
+        public String Thursday { get; set; }
+        public String Friday { get; set; }
+        public String Saturday { get; set; }
+        public String Sunday { get; set; }
 
         public override string Description
         {
@@ -74,6 +80,27 @@ namespace RecordKeeper
                 case "Vacations":
                     this.Vacations = value;
                     break;
+                case "Monday":
+                    this.Monday = value;
+                    break;
+                case "Tuesday":
+                    this.Tuesday = value;
+                    break;
+                case "Wednesday":
+                    this.Wednesday = value;
+                    break;
+                case "Thursday":
+                    this.Thursday = value;
+                    break;
+                case "Friday":
+                    this.Friday = value;
+                    break;
+                case "Saturday":
+                    this.Saturday = value;
+                    break;
+                case "Sunday":
+                    this.Sunday = value;
+                    break;
                 default:
                     throw new Exception("unknown field " + field);
             }
@@ -93,6 +120,13 @@ namespace RecordKeeper
             Phone = "";
             Status = "?";
             Vacations = "";
+            Monday="";
+            Tuesday="";
+            Wednesday="";
+            Thursday="";
+            Friday="";
+            Saturday="";
+            Sunday="";
         }
 
         public override string Get(string field)
@@ -125,6 +159,20 @@ namespace RecordKeeper
                     return this.Status;
                 case "Vacations":
                     return this.Vacations;
+                case "Monday":
+                    return this.Monday;
+                case "Tuesday":
+                    return this.Tuesday;
+                case "Wednesday":
+                    return this.Wednesday;
+                case "Thursday":
+                    return this.Thursday;
+                case "Friday":
+                    return this.Friday;
+                case "Saturday":
+                    return this.Saturday;
+                case "Sunday":
+                    return this.Sunday;
                 default:
                     throw new Exception("unknown field " + field);
             }

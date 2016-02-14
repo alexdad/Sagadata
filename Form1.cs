@@ -244,6 +244,11 @@ namespace RecordKeeper
 
         private void ChangeMode(Modes newMode)
         {
+            if (!CheckSafety())
+                return;
+
+            this.splitContainerGlobDataControls.Panel1.Visible = false;
+
             CurrentType.EndSelectionMode();
 
             if (AnyFileChanged)
@@ -251,13 +256,30 @@ namespace RecordKeeper
 
             SelectionMode = false;
             SavedFullListDuringSelection = null;
-
             SetMode(newMode);
             if (!Loaded)
                 ReadCurrentFile();
 
             ShowCurrentCount();
             ManageSearchWindow();
+
+            this.splitContainerGlobDataControls.Panel1.Visible = true;
+        }
+
+        public bool CheckSafety()
+        {
+            if (m_unsavedAvailabilityChanges)
+            {
+                if (MessageBox.Show(
+                    "Want to lose them?",
+                    "You did not grab changes in availability form",
+                    MessageBoxButtons.YesNo)
+                                            != DialogResult.Yes)
+                    return false;
+                else
+                    DropFlagUnsavedAvailabilityChanges();
+            }
+            return true;
         }
 
         void ManageSearchWindow()
@@ -332,7 +354,14 @@ namespace RecordKeeper
         {
             dgvCellCopy(sender as DataGridView, e.RowIndex, e.ColumnIndex);
         }
-
+        private void dgvTeachers__CurrentChanged(object sender, EventArgs e)
+        {
+            if (m_unsavedAvailabilityChanges)
+            {
+                MessageBox.Show("You've lost changes in the availability form!");
+                DropFlagUnsavedAvailabilityChanges();
+            }
+        }
 
         private void dgvPrograms_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -378,18 +407,24 @@ namespace RecordKeeper
         #region "ButtonClicks"
         private void buttonNext_Click(object sender, EventArgs e)
         {
+            if (!CheckSafety())
+                return;
             if (DataList.CurrencyManager.Position < DataList.Count - 1)
                 DataList.CurrencyManager.Position++;
         }
 
         private void buttonPrev_Click(object sender, EventArgs e)
         {
+            if (!CheckSafety())
+                return;
             if (DataList.CurrencyManager.Position > 0)
                 DataList.CurrencyManager.Position--;
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
+            if (!CheckSafety())
+                return;
             Record st = (Record)DataList.AddNew();
             st.Id = FormGlob.AllocateID();
             st.ChangedBy = Client;
@@ -401,6 +436,8 @@ namespace RecordKeeper
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
+            if (!CheckSafety())
+                return;
             Record s = (Record)DataList.Current;
             DeletedKeys.Add(s.Key);
             DataList.RemoveCurrent();
@@ -565,6 +602,17 @@ namespace RecordKeeper
         #endregion
 
         #region Teacher-related UI
+        private void dgvTeachers_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dgvTeachers.CurrentRow == null)
+                return;  
+            if (dgvTeachers.CurrentRow.Index != m_teacherDgvCurrentRow)
+            {
+                m_teacherDgvCurrentRow = dgvTeachers.CurrentRow.Index;
+                ShowAvailabilityForm();
+            }
+        }
+
         private void cbSearchTeachStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
@@ -652,7 +700,6 @@ namespace RecordKeeper
         {
             Modified = true;
         }
-
         #endregion
 
         #region Room-related UI

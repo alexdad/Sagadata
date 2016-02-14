@@ -37,6 +37,8 @@ namespace RecordKeeper
 
         public override void DoSelection()
         {
+            if (!m_glob.CheckSafety())
+                return;
             m_glob.DoRoomSelection();
         }
 

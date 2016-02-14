@@ -78,6 +78,16 @@
             this.panelSearchRoom = new System.Windows.Forms.Panel();
             this.tabPageSearchLesson = new System.Windows.Forms.TabPage();
             this.panelSearchLesson = new System.Windows.Forms.Panel();
+            this.tbSearchLessonDate = new System.Windows.Forms.TextBox();
+            this.lbSearchLessonStudent = new System.Windows.Forms.Label();
+            this.cbSearchLessonRoom = new System.Windows.Forms.ComboBox();
+            this.lbSearchLessonRoom = new System.Windows.Forms.Label();
+            this.cbSearchLessonProgram = new System.Windows.Forms.ComboBox();
+            this.lbSearchLessonProgram = new System.Windows.Forms.Label();
+            this.tbSearchLessonTeacher = new System.Windows.Forms.TextBox();
+            this.lbSearchTeacher = new System.Windows.Forms.Label();
+            this.tbSearchLessonStudent = new System.Windows.Forms.TextBox();
+            this.lbSearchLessonDay = new System.Windows.Forms.Label();
             this.panelSearchLabels = new System.Windows.Forms.Panel();
             this.labelGlobSearch = new System.Windows.Forms.Label();
             this.labelGlobCount = new System.Windows.Forms.Label();
@@ -312,16 +322,7 @@
             this.butGlobalAdd = new System.Windows.Forms.Button();
             this.butGlobalNext = new System.Windows.Forms.Button();
             this.panelGlobIndicators = new System.Windows.Forms.Panel();
-            this.lbSearchLessonDay = new System.Windows.Forms.Label();
-            this.tbSearchLessonStudent = new System.Windows.Forms.TextBox();
-            this.lbSearchTeacher = new System.Windows.Forms.Label();
-            this.tbSearchLessonTeacher = new System.Windows.Forms.TextBox();
-            this.lbSearchLessonProgram = new System.Windows.Forms.Label();
-            this.cbSearchLessonProgram = new System.Windows.Forms.ComboBox();
-            this.lbSearchLessonRoom = new System.Windows.Forms.Label();
-            this.cbSearchLessonRoom = new System.Windows.Forms.ComboBox();
-            this.lbSearchLessonStudent = new System.Windows.Forms.Label();
-            this.tbSearchLessonDate = new System.Windows.Forms.TextBox();
+            this.buttonTeach_GrabAvailChanges = new System.Windows.Forms.Button();
             this.menuStripGlobalOps.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGlobIcon)).BeginInit();
             this.panelGlobSearch.SuspendLayout();
@@ -373,6 +374,7 @@
             this.groupBoxStudSecondaryRight.SuspendLayout();
             this.panelStudSecondaryLeft.SuspendLayout();
             this.tabBottomPageTeachers.SuspendLayout();
+            this.panelTeacherSecondary.SuspendLayout();
             this.panelTeacherPrimary.SuspendLayout();
             this.groupBoxTeacherPrimaryRight.SuspendLayout();
             this.panelTeacherPrimaryLeft.SuspendLayout();
@@ -884,6 +886,93 @@
             this.panelSearchLesson.Size = new System.Drawing.Size(205, 265);
             this.panelSearchLesson.TabIndex = 53;
             // 
+            // tbSearchLessonDate
+            // 
+            this.tbSearchLessonDate.Location = new System.Drawing.Point(70, 210);
+            this.tbSearchLessonDate.Name = "tbSearchLessonDate";
+            this.tbSearchLessonDate.Size = new System.Drawing.Size(121, 20);
+            this.tbSearchLessonDate.TabIndex = 10;
+            this.tbSearchLessonDate.TextChanged += new System.EventHandler(this.tbSearchLessonDate_TextChanged);
+            // 
+            // lbSearchLessonStudent
+            // 
+            this.lbSearchLessonStudent.AutoSize = true;
+            this.lbSearchLessonStudent.Location = new System.Drawing.Point(15, 9);
+            this.lbSearchLessonStudent.Name = "lbSearchLessonStudent";
+            this.lbSearchLessonStudent.Size = new System.Drawing.Size(47, 13);
+            this.lbSearchLessonStudent.TabIndex = 9;
+            this.lbSearchLessonStudent.Text = "Student:";
+            // 
+            // cbSearchLessonRoom
+            // 
+            this.cbSearchLessonRoom.FormattingEnabled = true;
+            this.cbSearchLessonRoom.Location = new System.Drawing.Point(70, 158);
+            this.cbSearchLessonRoom.Name = "cbSearchLessonRoom";
+            this.cbSearchLessonRoom.Size = new System.Drawing.Size(121, 21);
+            this.cbSearchLessonRoom.TabIndex = 8;
+            this.cbSearchLessonRoom.TextChanged += new System.EventHandler(this.cbSearchLessonRoom_TextChanged);
+            // 
+            // lbSearchLessonRoom
+            // 
+            this.lbSearchLessonRoom.AutoSize = true;
+            this.lbSearchLessonRoom.Location = new System.Drawing.Point(13, 136);
+            this.lbSearchLessonRoom.Name = "lbSearchLessonRoom";
+            this.lbSearchLessonRoom.Size = new System.Drawing.Size(38, 13);
+            this.lbSearchLessonRoom.TabIndex = 6;
+            this.lbSearchLessonRoom.Text = "Room:";
+            // 
+            // cbSearchLessonProgram
+            // 
+            this.cbSearchLessonProgram.FormattingEnabled = true;
+            this.cbSearchLessonProgram.Location = new System.Drawing.Point(70, 105);
+            this.cbSearchLessonProgram.Name = "cbSearchLessonProgram";
+            this.cbSearchLessonProgram.Size = new System.Drawing.Size(121, 21);
+            this.cbSearchLessonProgram.TabIndex = 5;
+            this.cbSearchLessonProgram.TextChanged += new System.EventHandler(this.cbSearchLessonProgram_TextChanged);
+            // 
+            // lbSearchLessonProgram
+            // 
+            this.lbSearchLessonProgram.AutoSize = true;
+            this.lbSearchLessonProgram.Location = new System.Drawing.Point(13, 94);
+            this.lbSearchLessonProgram.Name = "lbSearchLessonProgram";
+            this.lbSearchLessonProgram.Size = new System.Drawing.Size(49, 13);
+            this.lbSearchLessonProgram.TabIndex = 4;
+            this.lbSearchLessonProgram.Text = "Program:";
+            // 
+            // tbSearchLessonTeacher
+            // 
+            this.tbSearchLessonTeacher.Location = new System.Drawing.Point(70, 62);
+            this.tbSearchLessonTeacher.Name = "tbSearchLessonTeacher";
+            this.tbSearchLessonTeacher.Size = new System.Drawing.Size(121, 20);
+            this.tbSearchLessonTeacher.TabIndex = 3;
+            this.tbSearchLessonTeacher.TextChanged += new System.EventHandler(this.tbSearchLessonTeacher_TextChanged);
+            // 
+            // lbSearchTeacher
+            // 
+            this.lbSearchTeacher.AutoSize = true;
+            this.lbSearchTeacher.Location = new System.Drawing.Point(13, 47);
+            this.lbSearchTeacher.Name = "lbSearchTeacher";
+            this.lbSearchTeacher.Size = new System.Drawing.Size(50, 13);
+            this.lbSearchTeacher.TabIndex = 2;
+            this.lbSearchTeacher.Text = "Teacher:";
+            // 
+            // tbSearchLessonStudent
+            // 
+            this.tbSearchLessonStudent.Location = new System.Drawing.Point(70, 12);
+            this.tbSearchLessonStudent.Name = "tbSearchLessonStudent";
+            this.tbSearchLessonStudent.Size = new System.Drawing.Size(121, 20);
+            this.tbSearchLessonStudent.TabIndex = 1;
+            this.tbSearchLessonStudent.TextChanged += new System.EventHandler(this.tbSearchLessonStudent_TextChanged);
+            // 
+            // lbSearchLessonDay
+            // 
+            this.lbSearchLessonDay.AutoSize = true;
+            this.lbSearchLessonDay.Location = new System.Drawing.Point(15, 189);
+            this.lbSearchLessonDay.Name = "lbSearchLessonDay";
+            this.lbSearchLessonDay.Size = new System.Drawing.Size(33, 13);
+            this.lbSearchLessonDay.TabIndex = 0;
+            this.lbSearchLessonDay.Text = "Date:";
+            // 
             // panelSearchLabels
             // 
             this.panelSearchLabels.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1180,6 +1269,7 @@
             this.dgvTeachers.TabIndex = 1;
             this.dgvTeachers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTeachers_CellContentClick);
             this.dgvTeachers.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTeachers_ColumnHeaderMouseClick);
+            this.dgvTeachers.SelectionChanged += new System.EventHandler(this.dgvTeachers_SelectionChanged);
             // 
             // statusDataGridViewTextBoxColumn
             // 
@@ -1268,6 +1358,7 @@
             // teacherList
             // 
             this.teacherList.DataSource = typeof(RecordKeeper.Teacher);
+            this.teacherList.CurrentChanged += new System.EventHandler(this.dgvTeachers__CurrentChanged);
             // 
             // tabTopPagePrograms
             // 
@@ -2127,9 +2218,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelTeacherSecondary.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
-            this.panelTeacherSecondary.Location = new System.Drawing.Point(3, 220);
+            this.panelTeacherSecondary.Controls.Add(this.buttonTeach_GrabAvailChanges);
+            this.panelTeacherSecondary.Location = new System.Drawing.Point(3, 135);
             this.panelTeacherSecondary.Name = "panelTeacherSecondary";
-            this.panelTeacherSecondary.Size = new System.Drawing.Size(928, 153);
+            this.panelTeacherSecondary.Size = new System.Drawing.Size(928, 238);
             this.panelTeacherSecondary.TabIndex = 1;
             // 
             // panelTeacherPrimary
@@ -2140,7 +2232,7 @@
             this.panelTeacherPrimary.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTeacherPrimary.Location = new System.Drawing.Point(3, 3);
             this.panelTeacherPrimary.Name = "panelTeacherPrimary";
-            this.panelTeacherPrimary.Size = new System.Drawing.Size(928, 213);
+            this.panelTeacherPrimary.Size = new System.Drawing.Size(928, 131);
             this.panelTeacherPrimary.TabIndex = 0;
             // 
             // groupBoxTeacherPrimaryRight
@@ -2154,7 +2246,7 @@
             this.groupBoxTeacherPrimaryRight.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxTeacherPrimaryRight.Location = new System.Drawing.Point(470, 0);
             this.groupBoxTeacherPrimaryRight.Name = "groupBoxTeacherPrimaryRight";
-            this.groupBoxTeacherPrimaryRight.Size = new System.Drawing.Size(458, 213);
+            this.groupBoxTeacherPrimaryRight.Size = new System.Drawing.Size(458, 131);
             this.groupBoxTeacherPrimaryRight.TabIndex = 1;
             this.groupBoxTeacherPrimaryRight.TabStop = false;
             // 
@@ -2235,7 +2327,7 @@
             this.panelTeacherPrimaryLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelTeacherPrimaryLeft.Location = new System.Drawing.Point(0, 0);
             this.panelTeacherPrimaryLeft.Name = "panelTeacherPrimaryLeft";
-            this.panelTeacherPrimaryLeft.Size = new System.Drawing.Size(470, 213);
+            this.panelTeacherPrimaryLeft.Size = new System.Drawing.Size(470, 131);
             this.panelTeacherPrimaryLeft.TabIndex = 0;
             // 
             // tbTeachLanguageDetail
@@ -3245,92 +3337,15 @@
             this.panelGlobIndicators.Size = new System.Drawing.Size(829, 24);
             this.panelGlobIndicators.TabIndex = 27;
             // 
-            // lbSearchLessonDay
+            // buttonTeach_GrabAvailChanges
             // 
-            this.lbSearchLessonDay.AutoSize = true;
-            this.lbSearchLessonDay.Location = new System.Drawing.Point(15, 189);
-            this.lbSearchLessonDay.Name = "lbSearchLessonDay";
-            this.lbSearchLessonDay.Size = new System.Drawing.Size(33, 13);
-            this.lbSearchLessonDay.TabIndex = 0;
-            this.lbSearchLessonDay.Text = "Date:";
-            // 
-            // tbSearchLessonStudent
-            // 
-            this.tbSearchLessonStudent.Location = new System.Drawing.Point(70, 12);
-            this.tbSearchLessonStudent.Name = "tbSearchLessonStudent";
-            this.tbSearchLessonStudent.Size = new System.Drawing.Size(121, 20);
-            this.tbSearchLessonStudent.TabIndex = 1;
-            this.tbSearchLessonStudent.TextChanged += new System.EventHandler(this.tbSearchLessonStudent_TextChanged);
-            // 
-            // lbSearchTeacher
-            // 
-            this.lbSearchTeacher.AutoSize = true;
-            this.lbSearchTeacher.Location = new System.Drawing.Point(13, 47);
-            this.lbSearchTeacher.Name = "lbSearchTeacher";
-            this.lbSearchTeacher.Size = new System.Drawing.Size(50, 13);
-            this.lbSearchTeacher.TabIndex = 2;
-            this.lbSearchTeacher.Text = "Teacher:";
-            // 
-            // tbSearchLessonTeacher
-            // 
-            this.tbSearchLessonTeacher.Location = new System.Drawing.Point(70, 62);
-            this.tbSearchLessonTeacher.Name = "tbSearchLessonTeacher";
-            this.tbSearchLessonTeacher.Size = new System.Drawing.Size(121, 20);
-            this.tbSearchLessonTeacher.TabIndex = 3;
-            this.tbSearchLessonTeacher.TextChanged += new System.EventHandler(this.tbSearchLessonTeacher_TextChanged);
-            // 
-            // lbSearchLessonProgram
-            // 
-            this.lbSearchLessonProgram.AutoSize = true;
-            this.lbSearchLessonProgram.Location = new System.Drawing.Point(13, 94);
-            this.lbSearchLessonProgram.Name = "lbSearchLessonProgram";
-            this.lbSearchLessonProgram.Size = new System.Drawing.Size(49, 13);
-            this.lbSearchLessonProgram.TabIndex = 4;
-            this.lbSearchLessonProgram.Text = "Program:";
-            // 
-            // cbSearchLessonProgram
-            // 
-            this.cbSearchLessonProgram.FormattingEnabled = true;
-            this.cbSearchLessonProgram.Location = new System.Drawing.Point(70, 105);
-            this.cbSearchLessonProgram.Name = "cbSearchLessonProgram";
-            this.cbSearchLessonProgram.Size = new System.Drawing.Size(121, 21);
-            this.cbSearchLessonProgram.TabIndex = 5;
-            this.cbSearchLessonProgram.TextChanged += new System.EventHandler(this.cbSearchLessonProgram_TextChanged);
-            // 
-            // lbSearchLessonRoom
-            // 
-            this.lbSearchLessonRoom.AutoSize = true;
-            this.lbSearchLessonRoom.Location = new System.Drawing.Point(13, 136);
-            this.lbSearchLessonRoom.Name = "lbSearchLessonRoom";
-            this.lbSearchLessonRoom.Size = new System.Drawing.Size(38, 13);
-            this.lbSearchLessonRoom.TabIndex = 6;
-            this.lbSearchLessonRoom.Text = "Room:";
-            // 
-            // cbSearchLessonRoom
-            // 
-            this.cbSearchLessonRoom.FormattingEnabled = true;
-            this.cbSearchLessonRoom.Location = new System.Drawing.Point(70, 158);
-            this.cbSearchLessonRoom.Name = "cbSearchLessonRoom";
-            this.cbSearchLessonRoom.Size = new System.Drawing.Size(121, 21);
-            this.cbSearchLessonRoom.TabIndex = 8;
-            this.cbSearchLessonRoom.TextChanged += new System.EventHandler(this.cbSearchLessonRoom_TextChanged);
-            // 
-            // lbSearchLessonStudent
-            // 
-            this.lbSearchLessonStudent.AutoSize = true;
-            this.lbSearchLessonStudent.Location = new System.Drawing.Point(15, 9);
-            this.lbSearchLessonStudent.Name = "lbSearchLessonStudent";
-            this.lbSearchLessonStudent.Size = new System.Drawing.Size(47, 13);
-            this.lbSearchLessonStudent.TabIndex = 9;
-            this.lbSearchLessonStudent.Text = "Student:";
-            // 
-            // tbSearchLessonDate
-            // 
-            this.tbSearchLessonDate.Location = new System.Drawing.Point(70, 210);
-            this.tbSearchLessonDate.Name = "tbSearchLessonDate";
-            this.tbSearchLessonDate.Size = new System.Drawing.Size(121, 20);
-            this.tbSearchLessonDate.TabIndex = 10;
-            this.tbSearchLessonDate.TextChanged += new System.EventHandler(this.tbSearchLessonDate_TextChanged);
+            this.buttonTeach_GrabAvailChanges.Location = new System.Drawing.Point(100, 180);
+            this.buttonTeach_GrabAvailChanges.Name = "buttonTeach_GrabAvailChanges";
+            this.buttonTeach_GrabAvailChanges.Size = new System.Drawing.Size(200, 40);
+            this.buttonTeach_GrabAvailChanges.TabIndex = 0;
+            this.buttonTeach_GrabAvailChanges.Text = "Grab Availability Changes";
+            this.buttonTeach_GrabAvailChanges.UseVisualStyleBackColor = true;
+            this.buttonTeach_GrabAvailChanges.Click += new System.EventHandler(this.availabilityGrabButton_Click);
             // 
             // FormGlob
             // 
@@ -3408,6 +3423,7 @@
             this.panelStudSecondaryLeft.ResumeLayout(false);
             this.panelStudSecondaryLeft.PerformLayout();
             this.tabBottomPageTeachers.ResumeLayout(false);
+            this.panelTeacherSecondary.ResumeLayout(false);
             this.panelTeacherPrimary.ResumeLayout(false);
             this.groupBoxTeacherPrimaryRight.ResumeLayout(false);
             this.groupBoxTeacherPrimaryRight.PerformLayout();
@@ -3731,6 +3747,7 @@
         private System.Windows.Forms.Label lbSearchTeacher;
         private System.Windows.Forms.TextBox tbSearchLessonStudent;
         private System.Windows.Forms.Label lbSearchLessonDay;
+        private System.Windows.Forms.Button buttonTeach_GrabAvailChanges;
     }
 }
 
