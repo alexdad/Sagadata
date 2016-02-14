@@ -44,66 +44,11 @@
             this.menuItemGlobSave = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemGlobUpload = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemGlobExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.pictureBoxGlobIcon = new System.Windows.Forms.PictureBox();
-            this.labelGlobSagalingua = new System.Windows.Forms.Label();
-            this.panelGlobSearch = new System.Windows.Forms.Panel();
-            this.panelSearchButtons = new System.Windows.Forms.Panel();
-            this.butGlobalToExcel = new System.Windows.Forms.Button();
-            this.buttGlobalShowAll = new System.Windows.Forms.Button();
-            this.tabControlSearch = new RecordKeeper.HiddenTabControl();
-            this.tabPageSearchStudent = new System.Windows.Forms.TabPage();
-            this.panelStudSearch = new System.Windows.Forms.Panel();
-            this.lbStudSearchStatus = new System.Windows.Forms.Label();
-            this.lbStudSearchLearns = new System.Windows.Forms.Label();
-            this.lbStudSearchSpeaks = new System.Windows.Forms.Label();
-            this.cbStudSearchLevel = new System.Windows.Forms.ComboBox();
-            this.cbStudSearchLearns = new System.Windows.Forms.ComboBox();
-            this.lbStudSearchLevel = new System.Windows.Forms.Label();
-            this.cbStudSearchSpeaks = new System.Windows.Forms.ComboBox();
-            this.lbStudSearchFirstName1 = new System.Windows.Forms.Label();
-            this.cbStudSearchSource = new System.Windows.Forms.ComboBox();
-            this.tbStudSearchFirstName = new System.Windows.Forms.TextBox();
-            this.lbStudSearchSource = new System.Windows.Forms.Label();
-            this.cbStudSelectStatus = new System.Windows.Forms.ComboBox();
-            this.lbStudSearchLastName = new System.Windows.Forms.Label();
-            this.tbStudSearchLastName = new System.Windows.Forms.TextBox();
-            this.tabPageSearchTeacher = new System.Windows.Forms.TabPage();
-            this.panelSearchTeacher = new System.Windows.Forms.Panel();
-            this.tbSearchTeachLastName = new System.Windows.Forms.TextBox();
-            this.tbSearchTeachFirstName = new System.Windows.Forms.TextBox();
-            this.cbSearchTeachLang1 = new System.Windows.Forms.ComboBox();
-            this.cbSearchTeachStatus = new System.Windows.Forms.ComboBox();
-            this.lbSerchTeachLastName = new System.Windows.Forms.Label();
-            this.lbSerchTeachFirstName = new System.Windows.Forms.Label();
-            this.lbSerchTeachLang1 = new System.Windows.Forms.Label();
-            this.lbSerchTeachStatus = new System.Windows.Forms.Label();
-            this.tabPageSearchProgram = new System.Windows.Forms.TabPage();
-            this.panelSearchProgram = new System.Windows.Forms.Panel();
-            this.cbSearchProgLevel = new System.Windows.Forms.ComboBox();
-            this.cbSearchProgLanguage = new System.Windows.Forms.ComboBox();
-            this.lbSearchProgLevel = new System.Windows.Forms.Label();
-            this.lbSearchProgLanguage = new System.Windows.Forms.Label();
-            this.tabPageSearchRoom = new System.Windows.Forms.TabPage();
-            this.panelSearchRoom = new System.Windows.Forms.Panel();
-            this.tabPageSearchLesson = new System.Windows.Forms.TabPage();
-            this.panelSearchLesson = new System.Windows.Forms.Panel();
-            this.tbSearchLessonDate = new System.Windows.Forms.TextBox();
-            this.lbSearchLessonStudent = new System.Windows.Forms.Label();
-            this.cbSearchLessonRoom = new System.Windows.Forms.ComboBox();
-            this.lbSearchLessonRoom = new System.Windows.Forms.Label();
-            this.cbSearchLessonProgram = new System.Windows.Forms.ComboBox();
-            this.lbSearchLessonProgram = new System.Windows.Forms.Label();
-            this.tbSearchLessonTeacher = new System.Windows.Forms.TextBox();
-            this.lbSearchTeacher = new System.Windows.Forms.Label();
-            this.tbSearchLessonStudent = new System.Windows.Forms.TextBox();
-            this.lbSearchLessonDay = new System.Windows.Forms.Label();
-            this.panelSearchLabels = new System.Windows.Forms.Panel();
-            this.labelGlobSearch = new System.Windows.Forms.Label();
-            this.labelGlobCount = new System.Windows.Forms.Label();
             this.labelGlobLastDownload = new System.Windows.Forms.Label();
             this.labelGlobLastUpload = new System.Windows.Forms.Label();
-            this.panelGlobLogo = new System.Windows.Forms.Panel();
-            this.cbGlobMode = new System.Windows.Forms.ComboBox();
+            this.panelGlobIndicators = new System.Windows.Forms.Panel();
+            this.tabControlOps = new RecordKeeper.HiddenTabControl();
+            this.tabEdit = new System.Windows.Forms.TabPage();
             this.splitContainerGlobDataControls = new System.Windows.Forms.SplitContainer();
             this.splitContainerGlobMasterDetail = new System.Windows.Forms.SplitContainer();
             this.tabControlModesTop = new RecordKeeper.HiddenTabControl();
@@ -331,26 +276,82 @@
             this.panelGlobNextNew = new System.Windows.Forms.Panel();
             this.butGlobalAdd = new System.Windows.Forms.Button();
             this.butGlobalNext = new System.Windows.Forms.Button();
-            this.panelGlobIndicators = new System.Windows.Forms.Panel();
-            this.tabControlOps = new RecordKeeper.HiddenTabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.panelGlobSearch = new System.Windows.Forms.Panel();
+            this.panelSearchButtons = new System.Windows.Forms.Panel();
+            this.butGlobalToExcel = new System.Windows.Forms.Button();
+            this.buttGlobalShowAll = new System.Windows.Forms.Button();
+            this.tabControlSearch = new RecordKeeper.HiddenTabControl();
+            this.tabPageSearchStudent = new System.Windows.Forms.TabPage();
+            this.panelStudSearch = new System.Windows.Forms.Panel();
+            this.lbStudSearchStatus = new System.Windows.Forms.Label();
+            this.lbStudSearchLearns = new System.Windows.Forms.Label();
+            this.lbStudSearchSpeaks = new System.Windows.Forms.Label();
+            this.cbStudSearchLevel = new System.Windows.Forms.ComboBox();
+            this.cbStudSearchLearns = new System.Windows.Forms.ComboBox();
+            this.lbStudSearchLevel = new System.Windows.Forms.Label();
+            this.cbStudSearchSpeaks = new System.Windows.Forms.ComboBox();
+            this.lbStudSearchFirstName1 = new System.Windows.Forms.Label();
+            this.cbStudSearchSource = new System.Windows.Forms.ComboBox();
+            this.tbStudSearchFirstName = new System.Windows.Forms.TextBox();
+            this.lbStudSearchSource = new System.Windows.Forms.Label();
+            this.cbStudSelectStatus = new System.Windows.Forms.ComboBox();
+            this.lbStudSearchLastName = new System.Windows.Forms.Label();
+            this.tbStudSearchLastName = new System.Windows.Forms.TextBox();
+            this.tabPageSearchTeacher = new System.Windows.Forms.TabPage();
+            this.panelSearchTeacher = new System.Windows.Forms.Panel();
+            this.tbSearchTeachLastName = new System.Windows.Forms.TextBox();
+            this.tbSearchTeachFirstName = new System.Windows.Forms.TextBox();
+            this.cbSearchTeachLang1 = new System.Windows.Forms.ComboBox();
+            this.cbSearchTeachStatus = new System.Windows.Forms.ComboBox();
+            this.lbSerchTeachLastName = new System.Windows.Forms.Label();
+            this.lbSerchTeachFirstName = new System.Windows.Forms.Label();
+            this.lbSerchTeachLang1 = new System.Windows.Forms.Label();
+            this.lbSerchTeachStatus = new System.Windows.Forms.Label();
+            this.tabPageSearchProgram = new System.Windows.Forms.TabPage();
+            this.panelSearchProgram = new System.Windows.Forms.Panel();
+            this.cbSearchProgLevel = new System.Windows.Forms.ComboBox();
+            this.cbSearchProgLanguage = new System.Windows.Forms.ComboBox();
+            this.lbSearchProgLevel = new System.Windows.Forms.Label();
+            this.lbSearchProgLanguage = new System.Windows.Forms.Label();
+            this.tabPageSearchRoom = new System.Windows.Forms.TabPage();
+            this.panelSearchRoom = new System.Windows.Forms.Panel();
+            this.tabPageSearchLesson = new System.Windows.Forms.TabPage();
+            this.panelSearchLesson = new System.Windows.Forms.Panel();
+            this.tbSearchLessonDate = new System.Windows.Forms.TextBox();
+            this.lbSearchLessonStudent = new System.Windows.Forms.Label();
+            this.cbSearchLessonRoom = new System.Windows.Forms.ComboBox();
+            this.lbSearchLessonRoom = new System.Windows.Forms.Label();
+            this.cbSearchLessonProgram = new System.Windows.Forms.ComboBox();
+            this.lbSearchLessonProgram = new System.Windows.Forms.Label();
+            this.tbSearchLessonTeacher = new System.Windows.Forms.TextBox();
+            this.lbSearchTeacher = new System.Windows.Forms.Label();
+            this.tbSearchLessonStudent = new System.Windows.Forms.TextBox();
+            this.lbSearchLessonDay = new System.Windows.Forms.Label();
+            this.panelSearchLabels = new System.Windows.Forms.Panel();
+            this.labelGlobSearch = new System.Windows.Forms.Label();
+            this.panelGlobLogo = new System.Windows.Forms.Panel();
+            this.cbGlobMode = new System.Windows.Forms.ComboBox();
+            this.pictureBoxGlobIcon = new System.Windows.Forms.PictureBox();
+            this.labelGlobSagalingua = new System.Windows.Forms.Label();
+            this.labelGlobCount = new System.Windows.Forms.Label();
+            this.tabSchedPlan = new System.Windows.Forms.TabPage();
+            this.lbSchedPlanName = new System.Windows.Forms.Label();
+            this.tabSchedShow = new System.Windows.Forms.TabPage();
+            this.lbSchedShowName = new System.Windows.Forms.Label();
+            this.tabSchedCancel = new System.Windows.Forms.TabPage();
+            this.lbSchedCancelName = new System.Windows.Forms.Label();
+            this.tabPayStud = new System.Windows.Forms.TabPage();
+            this.lbPayStudName = new System.Windows.Forms.Label();
+            this.tabPayTeach = new System.Windows.Forms.TabPage();
+            this.lbPayTeachName = new System.Windows.Forms.Label();
+            this.tabPayExpense = new System.Windows.Forms.TabPage();
+            this.lbPayExpenseName = new System.Windows.Forms.Label();
+            this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.lbFutureOpName = new System.Windows.Forms.Label();
             this.menuStripGlobalOps.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGlobIcon)).BeginInit();
-            this.panelGlobSearch.SuspendLayout();
-            this.panelSearchButtons.SuspendLayout();
-            this.tabControlSearch.SuspendLayout();
-            this.tabPageSearchStudent.SuspendLayout();
-            this.panelStudSearch.SuspendLayout();
-            this.tabPageSearchTeacher.SuspendLayout();
-            this.panelSearchTeacher.SuspendLayout();
-            this.tabPageSearchProgram.SuspendLayout();
-            this.panelSearchProgram.SuspendLayout();
-            this.tabPageSearchRoom.SuspendLayout();
-            this.tabPageSearchLesson.SuspendLayout();
-            this.panelSearchLesson.SuspendLayout();
-            this.panelSearchLabels.SuspendLayout();
-            this.panelGlobLogo.SuspendLayout();
+            this.panelGlobIndicators.SuspendLayout();
+            this.tabControlOps.SuspendLayout();
+            this.tabEdit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerGlobDataControls)).BeginInit();
             this.splitContainerGlobDataControls.Panel1.SuspendLayout();
             this.splitContainerGlobDataControls.Panel2.SuspendLayout();
@@ -402,9 +403,28 @@
             this.panelLesson.SuspendLayout();
             this.panelGlobPrevDelete.SuspendLayout();
             this.panelGlobNextNew.SuspendLayout();
-            this.panelGlobIndicators.SuspendLayout();
-            this.tabControlOps.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.panelGlobSearch.SuspendLayout();
+            this.panelSearchButtons.SuspendLayout();
+            this.tabControlSearch.SuspendLayout();
+            this.tabPageSearchStudent.SuspendLayout();
+            this.panelStudSearch.SuspendLayout();
+            this.tabPageSearchTeacher.SuspendLayout();
+            this.panelSearchTeacher.SuspendLayout();
+            this.tabPageSearchProgram.SuspendLayout();
+            this.panelSearchProgram.SuspendLayout();
+            this.tabPageSearchRoom.SuspendLayout();
+            this.tabPageSearchLesson.SuspendLayout();
+            this.panelSearchLesson.SuspendLayout();
+            this.panelSearchLabels.SuspendLayout();
+            this.panelGlobLogo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGlobIcon)).BeginInit();
+            this.tabSchedPlan.SuspendLayout();
+            this.tabSchedShow.SuspendLayout();
+            this.tabSchedCancel.SuspendLayout();
+            this.tabPayStud.SuspendLayout();
+            this.tabPayTeach.SuspendLayout();
+            this.tabPayExpense.SuspendLayout();
+            this.tabPage8.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripGlobalOps
@@ -452,6 +472,7 @@
             this.showToolStripMenuItem.Name = "showToolStripMenuItem";
             this.showToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.showToolStripMenuItem.Text = "Show";
+            this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
             // 
             // planToolStripMenuItem
             // 
@@ -465,6 +486,7 @@
             this.cancelToolStripMenuItem.Name = "cancelToolStripMenuItem";
             this.cancelToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.cancelToolStripMenuItem.Text = "Cancel";
+            this.cancelToolStripMenuItem.Click += new System.EventHandler(this.cancelToolStripMenuItem_Click);
             // 
             // payToolStripMenuItem
             // 
@@ -481,18 +503,21 @@
             this.studentsToolStripMenuItem.Name = "studentsToolStripMenuItem";
             this.studentsToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.studentsToolStripMenuItem.Text = "Students";
+            this.studentsToolStripMenuItem.Click += new System.EventHandler(this.studentsToolStripMenuItem_Click);
             // 
             // teachersToolStripMenuItem
             // 
             this.teachersToolStripMenuItem.Name = "teachersToolStripMenuItem";
             this.teachersToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.teachersToolStripMenuItem.Text = "Teachers";
+            this.teachersToolStripMenuItem.Click += new System.EventHandler(this.teachersToolStripMenuItem_Click);
             // 
             // reportExpenseToolStripMenuItem
             // 
             this.reportExpenseToolStripMenuItem.Name = "reportExpenseToolStripMenuItem";
             this.reportExpenseToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
             this.reportExpenseToolStripMenuItem.Text = "Expenses";
+            this.reportExpenseToolStripMenuItem.Click += new System.EventHandler(this.reportExpenseToolStripMenuItem_Click);
             // 
             // menuItemGlobSave
             // 
@@ -515,577 +540,6 @@
             this.menuItemGlobExit.Text = "Exit";
             this.menuItemGlobExit.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // pictureBoxGlobIcon
-            // 
-            this.pictureBoxGlobIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxGlobIcon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxGlobIcon.BackgroundImage")));
-            this.pictureBoxGlobIcon.Location = new System.Drawing.Point(13, 123);
-            this.pictureBoxGlobIcon.Name = "pictureBoxGlobIcon";
-            this.pictureBoxGlobIcon.Size = new System.Drawing.Size(151, 199);
-            this.pictureBoxGlobIcon.TabIndex = 7;
-            this.pictureBoxGlobIcon.TabStop = false;
-            // 
-            // labelGlobSagalingua
-            // 
-            this.labelGlobSagalingua.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelGlobSagalingua.AutoSize = true;
-            this.labelGlobSagalingua.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGlobSagalingua.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(119)))), ((int)(((byte)(237)))));
-            this.labelGlobSagalingua.Location = new System.Drawing.Point(-2, 0);
-            this.labelGlobSagalingua.Name = "labelGlobSagalingua";
-            this.labelGlobSagalingua.Size = new System.Drawing.Size(137, 25);
-            this.labelGlobSagalingua.TabIndex = 8;
-            this.labelGlobSagalingua.Text = "Sagalingua ";
-            // 
-            // panelGlobSearch
-            // 
-            this.panelGlobSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(195)))), ((int)(((byte)(178)))));
-            this.panelGlobSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelGlobSearch.Controls.Add(this.panelSearchButtons);
-            this.panelGlobSearch.Controls.Add(this.tabControlSearch);
-            this.panelGlobSearch.Controls.Add(this.panelSearchLabels);
-            this.panelGlobSearch.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelGlobSearch.Location = new System.Drawing.Point(0, 408);
-            this.panelGlobSearch.Name = "panelGlobSearch";
-            this.panelGlobSearch.Size = new System.Drawing.Size(248, 367);
-            this.panelGlobSearch.TabIndex = 11;
-            // 
-            // panelSearchButtons
-            // 
-            this.panelSearchButtons.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelSearchButtons.Controls.Add(this.butGlobalToExcel);
-            this.panelSearchButtons.Controls.Add(this.buttGlobalShowAll);
-            this.panelSearchButtons.Location = new System.Drawing.Point(28, 332);
-            this.panelSearchButtons.Name = "panelSearchButtons";
-            this.panelSearchButtons.Size = new System.Drawing.Size(213, 34);
-            this.panelSearchButtons.TabIndex = 51;
-            // 
-            // butGlobalToExcel
-            // 
-            this.butGlobalToExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(210)))), ((int)(((byte)(47)))));
-            this.butGlobalToExcel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.butGlobalToExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.butGlobalToExcel.Location = new System.Drawing.Point(3, 8);
-            this.butGlobalToExcel.Name = "butGlobalToExcel";
-            this.butGlobalToExcel.Size = new System.Drawing.Size(82, 23);
-            this.butGlobalToExcel.TabIndex = 47;
-            this.butGlobalToExcel.Text = "To Excel";
-            this.butGlobalToExcel.UseVisualStyleBackColor = false;
-            this.butGlobalToExcel.Click += new System.EventHandler(this.buttonToExcel_Click);
-            // 
-            // buttGlobalShowAll
-            // 
-            this.buttGlobalShowAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(210)))), ((int)(((byte)(47)))));
-            this.buttGlobalShowAll.Enabled = false;
-            this.buttGlobalShowAll.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttGlobalShowAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttGlobalShowAll.Location = new System.Drawing.Point(128, 8);
-            this.buttGlobalShowAll.Name = "buttGlobalShowAll";
-            this.buttGlobalShowAll.Size = new System.Drawing.Size(82, 23);
-            this.buttGlobalShowAll.TabIndex = 48;
-            this.buttGlobalShowAll.Text = "Show all";
-            this.buttGlobalShowAll.UseVisualStyleBackColor = false;
-            this.buttGlobalShowAll.Click += new System.EventHandler(this.buttonShowAll_Click);
-            // 
-            // tabControlSearch
-            // 
-            this.tabControlSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControlSearch.Controls.Add(this.tabPageSearchStudent);
-            this.tabControlSearch.Controls.Add(this.tabPageSearchTeacher);
-            this.tabControlSearch.Controls.Add(this.tabPageSearchProgram);
-            this.tabControlSearch.Controls.Add(this.tabPageSearchRoom);
-            this.tabControlSearch.Controls.Add(this.tabPageSearchLesson);
-            this.tabControlSearch.Location = new System.Drawing.Point(24, 36);
-            this.tabControlSearch.Name = "tabControlSearch";
-            this.tabControlSearch.SelectedIndex = 0;
-            this.tabControlSearch.Size = new System.Drawing.Size(219, 297);
-            this.tabControlSearch.TabIndex = 49;
-            // 
-            // tabPageSearchStudent
-            // 
-            this.tabPageSearchStudent.Controls.Add(this.panelStudSearch);
-            this.tabPageSearchStudent.Location = new System.Drawing.Point(4, 22);
-            this.tabPageSearchStudent.Name = "tabPageSearchStudent";
-            this.tabPageSearchStudent.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSearchStudent.Size = new System.Drawing.Size(211, 271);
-            this.tabPageSearchStudent.TabIndex = 0;
-            this.tabPageSearchStudent.Text = "t1";
-            this.tabPageSearchStudent.UseVisualStyleBackColor = true;
-            // 
-            // panelStudSearch
-            // 
-            this.panelStudSearch.Controls.Add(this.lbStudSearchStatus);
-            this.panelStudSearch.Controls.Add(this.lbStudSearchLearns);
-            this.panelStudSearch.Controls.Add(this.lbStudSearchSpeaks);
-            this.panelStudSearch.Controls.Add(this.cbStudSearchLevel);
-            this.panelStudSearch.Controls.Add(this.cbStudSearchLearns);
-            this.panelStudSearch.Controls.Add(this.lbStudSearchLevel);
-            this.panelStudSearch.Controls.Add(this.cbStudSearchSpeaks);
-            this.panelStudSearch.Controls.Add(this.lbStudSearchFirstName1);
-            this.panelStudSearch.Controls.Add(this.cbStudSearchSource);
-            this.panelStudSearch.Controls.Add(this.tbStudSearchFirstName);
-            this.panelStudSearch.Controls.Add(this.lbStudSearchSource);
-            this.panelStudSearch.Controls.Add(this.cbStudSelectStatus);
-            this.panelStudSearch.Controls.Add(this.lbStudSearchLastName);
-            this.panelStudSearch.Controls.Add(this.tbStudSearchLastName);
-            this.panelStudSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelStudSearch.Location = new System.Drawing.Point(3, 3);
-            this.panelStudSearch.Name = "panelStudSearch";
-            this.panelStudSearch.Size = new System.Drawing.Size(205, 265);
-            this.panelStudSearch.TabIndex = 19;
-            // 
-            // lbStudSearchStatus
-            // 
-            this.lbStudSearchStatus.AutoSize = true;
-            this.lbStudSearchStatus.Location = new System.Drawing.Point(14, 7);
-            this.lbStudSearchStatus.Name = "lbStudSearchStatus";
-            this.lbStudSearchStatus.Size = new System.Drawing.Size(40, 13);
-            this.lbStudSearchStatus.TabIndex = 0;
-            this.lbStudSearchStatus.Text = "Status:";
-            // 
-            // lbStudSearchLearns
-            // 
-            this.lbStudSearchLearns.AutoSize = true;
-            this.lbStudSearchLearns.Location = new System.Drawing.Point(16, 45);
-            this.lbStudSearchLearns.Name = "lbStudSearchLearns";
-            this.lbStudSearchLearns.Size = new System.Drawing.Size(42, 13);
-            this.lbStudSearchLearns.TabIndex = 4;
-            this.lbStudSearchLearns.Text = "Learns:";
-            // 
-            // lbStudSearchSpeaks
-            // 
-            this.lbStudSearchSpeaks.AutoSize = true;
-            this.lbStudSearchSpeaks.Location = new System.Drawing.Point(14, 73);
-            this.lbStudSearchSpeaks.Name = "lbStudSearchSpeaks";
-            this.lbStudSearchSpeaks.Size = new System.Drawing.Size(46, 13);
-            this.lbStudSearchSpeaks.TabIndex = 6;
-            this.lbStudSearchSpeaks.Text = "Speaks:";
-            // 
-            // cbStudSearchLevel
-            // 
-            this.cbStudSearchLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbStudSearchLevel.FormattingEnabled = true;
-            this.cbStudSearchLevel.Location = new System.Drawing.Point(69, 205);
-            this.cbStudSearchLevel.Name = "cbStudSearchLevel";
-            this.cbStudSearchLevel.Size = new System.Drawing.Size(121, 21);
-            this.cbStudSearchLevel.TabIndex = 45;
-            this.cbStudSearchLevel.SelectedIndexChanged += new System.EventHandler(this.cbSearchStudLevel_SelectedIndexChanged);
-            // 
-            // cbStudSearchLearns
-            // 
-            this.cbStudSearchLearns.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbStudSearchLearns.FormattingEnabled = true;
-            this.cbStudSearchLearns.Location = new System.Drawing.Point(71, 57);
-            this.cbStudSearchLearns.Name = "cbStudSearchLearns";
-            this.cbStudSearchLearns.Size = new System.Drawing.Size(121, 21);
-            this.cbStudSearchLearns.TabIndex = 41;
-            this.cbStudSearchLearns.SelectedIndexChanged += new System.EventHandler(this.cbSearchStudLearns_SelectedIndexChanged);
-            // 
-            // lbStudSearchLevel
-            // 
-            this.lbStudSearchLevel.AutoSize = true;
-            this.lbStudSearchLevel.Location = new System.Drawing.Point(16, 196);
-            this.lbStudSearchLevel.Name = "lbStudSearchLevel";
-            this.lbStudSearchLevel.Size = new System.Drawing.Size(36, 13);
-            this.lbStudSearchLevel.TabIndex = 15;
-            this.lbStudSearchLevel.Text = "Level:";
-            // 
-            // cbStudSearchSpeaks
-            // 
-            this.cbStudSearchSpeaks.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbStudSearchSpeaks.FormattingEnabled = true;
-            this.cbStudSearchSpeaks.Location = new System.Drawing.Point(71, 90);
-            this.cbStudSearchSpeaks.Name = "cbStudSearchSpeaks";
-            this.cbStudSearchSpeaks.Size = new System.Drawing.Size(121, 21);
-            this.cbStudSearchSpeaks.TabIndex = 42;
-            this.cbStudSearchSpeaks.SelectedIndexChanged += new System.EventHandler(this.cbSearchStudSpeaks_SelectedIndexChanged);
-            // 
-            // lbStudSearchFirstName1
-            // 
-            this.lbStudSearchFirstName1.AutoSize = true;
-            this.lbStudSearchFirstName1.Location = new System.Drawing.Point(16, 114);
-            this.lbStudSearchFirstName1.Name = "lbStudSearchFirstName1";
-            this.lbStudSearchFirstName1.Size = new System.Drawing.Size(60, 13);
-            this.lbStudSearchFirstName1.TabIndex = 8;
-            this.lbStudSearchFirstName1.Text = "First Name:";
-            // 
-            // cbStudSearchSource
-            // 
-            this.cbStudSearchSource.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbStudSearchSource.FormattingEnabled = true;
-            this.cbStudSearchSource.Location = new System.Drawing.Point(69, 239);
-            this.cbStudSearchSource.Name = "cbStudSearchSource";
-            this.cbStudSearchSource.Size = new System.Drawing.Size(121, 21);
-            this.cbStudSearchSource.TabIndex = 46;
-            this.cbStudSearchSource.SelectedIndexChanged += new System.EventHandler(this.cbSearchStudSource_SelectedIndexChanged);
-            // 
-            // tbStudSearchFirstName
-            // 
-            this.tbStudSearchFirstName.Location = new System.Drawing.Point(69, 130);
-            this.tbStudSearchFirstName.Name = "tbStudSearchFirstName";
-            this.tbStudSearchFirstName.Size = new System.Drawing.Size(121, 20);
-            this.tbStudSearchFirstName.TabIndex = 43;
-            this.tbStudSearchFirstName.TextChanged += new System.EventHandler(this.tbSearchStudFirstName_TextChanged);
-            // 
-            // lbStudSearchSource
-            // 
-            this.lbStudSearchSource.AutoSize = true;
-            this.lbStudSearchSource.Location = new System.Drawing.Point(16, 230);
-            this.lbStudSearchSource.Name = "lbStudSearchSource";
-            this.lbStudSearchSource.Size = new System.Drawing.Size(44, 13);
-            this.lbStudSearchSource.TabIndex = 12;
-            this.lbStudSearchSource.Text = "Source:";
-            // 
-            // cbStudSelectStatus
-            // 
-            this.cbStudSelectStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbStudSelectStatus.FormattingEnabled = true;
-            this.cbStudSelectStatus.Location = new System.Drawing.Point(69, 15);
-            this.cbStudSelectStatus.Name = "cbStudSelectStatus";
-            this.cbStudSelectStatus.Size = new System.Drawing.Size(120, 21);
-            this.cbStudSelectStatus.TabIndex = 40;
-            this.cbStudSelectStatus.SelectedIndexChanged += new System.EventHandler(this.cbSearchStudStatus_SelectedIndexChanged);
-            // 
-            // lbStudSearchLastName
-            // 
-            this.lbStudSearchLastName.AutoSize = true;
-            this.lbStudSearchLastName.Location = new System.Drawing.Point(16, 151);
-            this.lbStudSearchLastName.Name = "lbStudSearchLastName";
-            this.lbStudSearchLastName.Size = new System.Drawing.Size(61, 13);
-            this.lbStudSearchLastName.TabIndex = 10;
-            this.lbStudSearchLastName.Text = "Last Name:";
-            // 
-            // tbStudSearchLastName
-            // 
-            this.tbStudSearchLastName.Location = new System.Drawing.Point(69, 168);
-            this.tbStudSearchLastName.Name = "tbStudSearchLastName";
-            this.tbStudSearchLastName.Size = new System.Drawing.Size(120, 20);
-            this.tbStudSearchLastName.TabIndex = 44;
-            this.tbStudSearchLastName.TextChanged += new System.EventHandler(this.tbSearchStudLastName_TextChanged);
-            // 
-            // tabPageSearchTeacher
-            // 
-            this.tabPageSearchTeacher.Controls.Add(this.panelSearchTeacher);
-            this.tabPageSearchTeacher.Location = new System.Drawing.Point(4, 22);
-            this.tabPageSearchTeacher.Name = "tabPageSearchTeacher";
-            this.tabPageSearchTeacher.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSearchTeacher.Size = new System.Drawing.Size(211, 271);
-            this.tabPageSearchTeacher.TabIndex = 1;
-            this.tabPageSearchTeacher.Text = "t2";
-            this.tabPageSearchTeacher.UseVisualStyleBackColor = true;
-            // 
-            // panelSearchTeacher
-            // 
-            this.panelSearchTeacher.Controls.Add(this.tbSearchTeachLastName);
-            this.panelSearchTeacher.Controls.Add(this.tbSearchTeachFirstName);
-            this.panelSearchTeacher.Controls.Add(this.cbSearchTeachLang1);
-            this.panelSearchTeacher.Controls.Add(this.cbSearchTeachStatus);
-            this.panelSearchTeacher.Controls.Add(this.lbSerchTeachLastName);
-            this.panelSearchTeacher.Controls.Add(this.lbSerchTeachFirstName);
-            this.panelSearchTeacher.Controls.Add(this.lbSerchTeachLang1);
-            this.panelSearchTeacher.Controls.Add(this.lbSerchTeachStatus);
-            this.panelSearchTeacher.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelSearchTeacher.Location = new System.Drawing.Point(3, 3);
-            this.panelSearchTeacher.Name = "panelSearchTeacher";
-            this.panelSearchTeacher.Size = new System.Drawing.Size(205, 265);
-            this.panelSearchTeacher.TabIndex = 52;
-            // 
-            // tbSearchTeachLastName
-            // 
-            this.tbSearchTeachLastName.Location = new System.Drawing.Point(30, 158);
-            this.tbSearchTeachLastName.Name = "tbSearchTeachLastName";
-            this.tbSearchTeachLastName.Size = new System.Drawing.Size(148, 20);
-            this.tbSearchTeachLastName.TabIndex = 9;
-            this.tbSearchTeachLastName.TextChanged += new System.EventHandler(this.tbSearchTeachLastName_TextChanged);
-            // 
-            // tbSearchTeachFirstName
-            // 
-            this.tbSearchTeachFirstName.Location = new System.Drawing.Point(30, 113);
-            this.tbSearchTeachFirstName.Name = "tbSearchTeachFirstName";
-            this.tbSearchTeachFirstName.Size = new System.Drawing.Size(148, 20);
-            this.tbSearchTeachFirstName.TabIndex = 8;
-            this.tbSearchTeachFirstName.TextChanged += new System.EventHandler(this.tbSearchTeachFirstName_TextChanged);
-            // 
-            // cbSearchTeachLang1
-            // 
-            this.cbSearchTeachLang1.FormattingEnabled = true;
-            this.cbSearchTeachLang1.Location = new System.Drawing.Point(30, 64);
-            this.cbSearchTeachLang1.Name = "cbSearchTeachLang1";
-            this.cbSearchTeachLang1.Size = new System.Drawing.Size(148, 21);
-            this.cbSearchTeachLang1.TabIndex = 6;
-            this.cbSearchTeachLang1.SelectedIndexChanged += new System.EventHandler(this.cbSearchTeachLang1_SelectedIndexChanged);
-            // 
-            // cbSearchTeachStatus
-            // 
-            this.cbSearchTeachStatus.FormattingEnabled = true;
-            this.cbSearchTeachStatus.Location = new System.Drawing.Point(30, 24);
-            this.cbSearchTeachStatus.Name = "cbSearchTeachStatus";
-            this.cbSearchTeachStatus.Size = new System.Drawing.Size(148, 21);
-            this.cbSearchTeachStatus.TabIndex = 5;
-            this.cbSearchTeachStatus.SelectedIndexChanged += new System.EventHandler(this.cbSearchTeachStatus_SelectedIndexChanged);
-            // 
-            // lbSerchTeachLastName
-            // 
-            this.lbSerchTeachLastName.AutoSize = true;
-            this.lbSerchTeachLastName.Location = new System.Drawing.Point(15, 140);
-            this.lbSerchTeachLastName.Name = "lbSerchTeachLastName";
-            this.lbSerchTeachLastName.Size = new System.Drawing.Size(59, 13);
-            this.lbSerchTeachLastName.TabIndex = 4;
-            this.lbSerchTeachLastName.Text = "Last name:";
-            // 
-            // lbSerchTeachFirstName
-            // 
-            this.lbSerchTeachFirstName.AutoSize = true;
-            this.lbSerchTeachFirstName.Location = new System.Drawing.Point(15, 94);
-            this.lbSerchTeachFirstName.Name = "lbSerchTeachFirstName";
-            this.lbSerchTeachFirstName.Size = new System.Drawing.Size(58, 13);
-            this.lbSerchTeachFirstName.TabIndex = 3;
-            this.lbSerchTeachFirstName.Text = "First name:";
-            // 
-            // lbSerchTeachLang1
-            // 
-            this.lbSerchTeachLang1.AutoSize = true;
-            this.lbSerchTeachLang1.Location = new System.Drawing.Point(15, 48);
-            this.lbSerchTeachLang1.Name = "lbSerchTeachLang1";
-            this.lbSerchTeachLang1.Size = new System.Drawing.Size(58, 13);
-            this.lbSerchTeachLang1.TabIndex = 1;
-            this.lbSerchTeachLang1.Text = "Language:";
-            // 
-            // lbSerchTeachStatus
-            // 
-            this.lbSerchTeachStatus.AutoSize = true;
-            this.lbSerchTeachStatus.Location = new System.Drawing.Point(15, 9);
-            this.lbSerchTeachStatus.Name = "lbSerchTeachStatus";
-            this.lbSerchTeachStatus.Size = new System.Drawing.Size(40, 13);
-            this.lbSerchTeachStatus.TabIndex = 0;
-            this.lbSerchTeachStatus.Text = "Status:";
-            // 
-            // tabPageSearchProgram
-            // 
-            this.tabPageSearchProgram.Controls.Add(this.panelSearchProgram);
-            this.tabPageSearchProgram.Location = new System.Drawing.Point(4, 22);
-            this.tabPageSearchProgram.Name = "tabPageSearchProgram";
-            this.tabPageSearchProgram.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSearchProgram.Size = new System.Drawing.Size(211, 271);
-            this.tabPageSearchProgram.TabIndex = 2;
-            this.tabPageSearchProgram.Text = "t3";
-            this.tabPageSearchProgram.UseVisualStyleBackColor = true;
-            // 
-            // panelSearchProgram
-            // 
-            this.panelSearchProgram.Controls.Add(this.cbSearchProgLevel);
-            this.panelSearchProgram.Controls.Add(this.cbSearchProgLanguage);
-            this.panelSearchProgram.Controls.Add(this.lbSearchProgLevel);
-            this.panelSearchProgram.Controls.Add(this.lbSearchProgLanguage);
-            this.panelSearchProgram.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelSearchProgram.Location = new System.Drawing.Point(3, 3);
-            this.panelSearchProgram.Name = "panelSearchProgram";
-            this.panelSearchProgram.Size = new System.Drawing.Size(205, 265);
-            this.panelSearchProgram.TabIndex = 53;
-            // 
-            // cbSearchProgLevel
-            // 
-            this.cbSearchProgLevel.FormattingEnabled = true;
-            this.cbSearchProgLevel.Location = new System.Drawing.Point(54, 63);
-            this.cbSearchProgLevel.Name = "cbSearchProgLevel";
-            this.cbSearchProgLevel.Size = new System.Drawing.Size(121, 21);
-            this.cbSearchProgLevel.TabIndex = 3;
-            this.cbSearchProgLevel.SelectedIndexChanged += new System.EventHandler(this.cbSearchProgLevel_SelectedIndexChanged);
-            // 
-            // cbSearchProgLanguage
-            // 
-            this.cbSearchProgLanguage.FormattingEnabled = true;
-            this.cbSearchProgLanguage.Location = new System.Drawing.Point(54, 23);
-            this.cbSearchProgLanguage.Name = "cbSearchProgLanguage";
-            this.cbSearchProgLanguage.Size = new System.Drawing.Size(121, 21);
-            this.cbSearchProgLanguage.TabIndex = 2;
-            this.cbSearchProgLanguage.SelectedIndexChanged += new System.EventHandler(this.cbSearchProgLanguage_SelectedIndexChanged);
-            // 
-            // lbSearchProgLevel
-            // 
-            this.lbSearchProgLevel.AutoSize = true;
-            this.lbSearchProgLevel.Location = new System.Drawing.Point(13, 50);
-            this.lbSearchProgLevel.Name = "lbSearchProgLevel";
-            this.lbSearchProgLevel.Size = new System.Drawing.Size(36, 13);
-            this.lbSearchProgLevel.TabIndex = 1;
-            this.lbSearchProgLevel.Text = "Level:";
-            // 
-            // lbSearchProgLanguage
-            // 
-            this.lbSearchProgLanguage.AutoSize = true;
-            this.lbSearchProgLanguage.Location = new System.Drawing.Point(13, 8);
-            this.lbSearchProgLanguage.Name = "lbSearchProgLanguage";
-            this.lbSearchProgLanguage.Size = new System.Drawing.Size(58, 13);
-            this.lbSearchProgLanguage.TabIndex = 0;
-            this.lbSearchProgLanguage.Text = "Language:";
-            // 
-            // tabPageSearchRoom
-            // 
-            this.tabPageSearchRoom.Controls.Add(this.panelSearchRoom);
-            this.tabPageSearchRoom.Location = new System.Drawing.Point(4, 22);
-            this.tabPageSearchRoom.Name = "tabPageSearchRoom";
-            this.tabPageSearchRoom.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSearchRoom.Size = new System.Drawing.Size(211, 271);
-            this.tabPageSearchRoom.TabIndex = 3;
-            this.tabPageSearchRoom.Text = "t4";
-            this.tabPageSearchRoom.UseVisualStyleBackColor = true;
-            // 
-            // panelSearchRoom
-            // 
-            this.panelSearchRoom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelSearchRoom.Location = new System.Drawing.Point(3, 3);
-            this.panelSearchRoom.Name = "panelSearchRoom";
-            this.panelSearchRoom.Size = new System.Drawing.Size(205, 265);
-            this.panelSearchRoom.TabIndex = 52;
-            // 
-            // tabPageSearchLesson
-            // 
-            this.tabPageSearchLesson.Controls.Add(this.panelSearchLesson);
-            this.tabPageSearchLesson.Location = new System.Drawing.Point(4, 22);
-            this.tabPageSearchLesson.Name = "tabPageSearchLesson";
-            this.tabPageSearchLesson.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSearchLesson.Size = new System.Drawing.Size(211, 271);
-            this.tabPageSearchLesson.TabIndex = 4;
-            this.tabPageSearchLesson.Text = "t5";
-            this.tabPageSearchLesson.UseVisualStyleBackColor = true;
-            // 
-            // panelSearchLesson
-            // 
-            this.panelSearchLesson.Controls.Add(this.tbSearchLessonDate);
-            this.panelSearchLesson.Controls.Add(this.lbSearchLessonStudent);
-            this.panelSearchLesson.Controls.Add(this.cbSearchLessonRoom);
-            this.panelSearchLesson.Controls.Add(this.lbSearchLessonRoom);
-            this.panelSearchLesson.Controls.Add(this.cbSearchLessonProgram);
-            this.panelSearchLesson.Controls.Add(this.lbSearchLessonProgram);
-            this.panelSearchLesson.Controls.Add(this.tbSearchLessonTeacher);
-            this.panelSearchLesson.Controls.Add(this.lbSearchTeacher);
-            this.panelSearchLesson.Controls.Add(this.tbSearchLessonStudent);
-            this.panelSearchLesson.Controls.Add(this.lbSearchLessonDay);
-            this.panelSearchLesson.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelSearchLesson.Location = new System.Drawing.Point(3, 3);
-            this.panelSearchLesson.Name = "panelSearchLesson";
-            this.panelSearchLesson.Size = new System.Drawing.Size(205, 265);
-            this.panelSearchLesson.TabIndex = 53;
-            // 
-            // tbSearchLessonDate
-            // 
-            this.tbSearchLessonDate.Location = new System.Drawing.Point(70, 210);
-            this.tbSearchLessonDate.Name = "tbSearchLessonDate";
-            this.tbSearchLessonDate.Size = new System.Drawing.Size(121, 20);
-            this.tbSearchLessonDate.TabIndex = 10;
-            this.tbSearchLessonDate.TextChanged += new System.EventHandler(this.tbSearchLessonDate_TextChanged);
-            // 
-            // lbSearchLessonStudent
-            // 
-            this.lbSearchLessonStudent.AutoSize = true;
-            this.lbSearchLessonStudent.Location = new System.Drawing.Point(15, 9);
-            this.lbSearchLessonStudent.Name = "lbSearchLessonStudent";
-            this.lbSearchLessonStudent.Size = new System.Drawing.Size(47, 13);
-            this.lbSearchLessonStudent.TabIndex = 9;
-            this.lbSearchLessonStudent.Text = "Student:";
-            // 
-            // cbSearchLessonRoom
-            // 
-            this.cbSearchLessonRoom.FormattingEnabled = true;
-            this.cbSearchLessonRoom.Location = new System.Drawing.Point(70, 158);
-            this.cbSearchLessonRoom.Name = "cbSearchLessonRoom";
-            this.cbSearchLessonRoom.Size = new System.Drawing.Size(121, 21);
-            this.cbSearchLessonRoom.TabIndex = 8;
-            this.cbSearchLessonRoom.TextChanged += new System.EventHandler(this.cbSearchLessonRoom_TextChanged);
-            // 
-            // lbSearchLessonRoom
-            // 
-            this.lbSearchLessonRoom.AutoSize = true;
-            this.lbSearchLessonRoom.Location = new System.Drawing.Point(13, 136);
-            this.lbSearchLessonRoom.Name = "lbSearchLessonRoom";
-            this.lbSearchLessonRoom.Size = new System.Drawing.Size(38, 13);
-            this.lbSearchLessonRoom.TabIndex = 6;
-            this.lbSearchLessonRoom.Text = "Room:";
-            // 
-            // cbSearchLessonProgram
-            // 
-            this.cbSearchLessonProgram.FormattingEnabled = true;
-            this.cbSearchLessonProgram.Location = new System.Drawing.Point(70, 105);
-            this.cbSearchLessonProgram.Name = "cbSearchLessonProgram";
-            this.cbSearchLessonProgram.Size = new System.Drawing.Size(121, 21);
-            this.cbSearchLessonProgram.TabIndex = 5;
-            this.cbSearchLessonProgram.TextChanged += new System.EventHandler(this.cbSearchLessonProgram_TextChanged);
-            // 
-            // lbSearchLessonProgram
-            // 
-            this.lbSearchLessonProgram.AutoSize = true;
-            this.lbSearchLessonProgram.Location = new System.Drawing.Point(13, 94);
-            this.lbSearchLessonProgram.Name = "lbSearchLessonProgram";
-            this.lbSearchLessonProgram.Size = new System.Drawing.Size(49, 13);
-            this.lbSearchLessonProgram.TabIndex = 4;
-            this.lbSearchLessonProgram.Text = "Program:";
-            // 
-            // tbSearchLessonTeacher
-            // 
-            this.tbSearchLessonTeacher.Location = new System.Drawing.Point(70, 62);
-            this.tbSearchLessonTeacher.Name = "tbSearchLessonTeacher";
-            this.tbSearchLessonTeacher.Size = new System.Drawing.Size(121, 20);
-            this.tbSearchLessonTeacher.TabIndex = 3;
-            this.tbSearchLessonTeacher.TextChanged += new System.EventHandler(this.tbSearchLessonTeacher_TextChanged);
-            // 
-            // lbSearchTeacher
-            // 
-            this.lbSearchTeacher.AutoSize = true;
-            this.lbSearchTeacher.Location = new System.Drawing.Point(13, 47);
-            this.lbSearchTeacher.Name = "lbSearchTeacher";
-            this.lbSearchTeacher.Size = new System.Drawing.Size(50, 13);
-            this.lbSearchTeacher.TabIndex = 2;
-            this.lbSearchTeacher.Text = "Teacher:";
-            // 
-            // tbSearchLessonStudent
-            // 
-            this.tbSearchLessonStudent.Location = new System.Drawing.Point(70, 12);
-            this.tbSearchLessonStudent.Name = "tbSearchLessonStudent";
-            this.tbSearchLessonStudent.Size = new System.Drawing.Size(121, 20);
-            this.tbSearchLessonStudent.TabIndex = 1;
-            this.tbSearchLessonStudent.TextChanged += new System.EventHandler(this.tbSearchLessonStudent_TextChanged);
-            // 
-            // lbSearchLessonDay
-            // 
-            this.lbSearchLessonDay.AutoSize = true;
-            this.lbSearchLessonDay.Location = new System.Drawing.Point(15, 189);
-            this.lbSearchLessonDay.Name = "lbSearchLessonDay";
-            this.lbSearchLessonDay.Size = new System.Drawing.Size(33, 13);
-            this.lbSearchLessonDay.TabIndex = 0;
-            this.lbSearchLessonDay.Text = "Date:";
-            // 
-            // panelSearchLabels
-            // 
-            this.panelSearchLabels.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelSearchLabels.Controls.Add(this.labelGlobSearch);
-            this.panelSearchLabels.Location = new System.Drawing.Point(22, 3);
-            this.panelSearchLabels.Name = "panelSearchLabels";
-            this.panelSearchLabels.Size = new System.Drawing.Size(200, 30);
-            this.panelSearchLabels.TabIndex = 50;
-            // 
-            // labelGlobSearch
-            // 
-            this.labelGlobSearch.AutoSize = true;
-            this.labelGlobSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(210)))), ((int)(((byte)(47)))));
-            this.labelGlobSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGlobSearch.Location = new System.Drawing.Point(68, 9);
-            this.labelGlobSearch.Name = "labelGlobSearch";
-            this.labelGlobSearch.Size = new System.Drawing.Size(47, 15);
-            this.labelGlobSearch.TabIndex = 17;
-            this.labelGlobSearch.Text = "Select";
-            // 
-            // labelGlobCount
-            // 
-            this.labelGlobCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelGlobCount.AutoSize = true;
-            this.labelGlobCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGlobCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(119)))), ((int)(((byte)(237)))));
-            this.labelGlobCount.Location = new System.Drawing.Point(59, 78);
-            this.labelGlobCount.MinimumSize = new System.Drawing.Size(50, 20);
-            this.labelGlobCount.Name = "labelGlobCount";
-            this.labelGlobCount.Size = new System.Drawing.Size(50, 24);
-            this.labelGlobCount.TabIndex = 20;
-            // 
             // labelGlobLastDownload
             // 
             this.labelGlobLastDownload.AutoSize = true;
@@ -1104,28 +558,44 @@
             this.labelGlobLastUpload.Size = new System.Drawing.Size(0, 13);
             this.labelGlobLastUpload.TabIndex = 22;
             // 
-            // panelGlobLogo
+            // panelGlobIndicators
             // 
-            this.panelGlobLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelGlobLogo.Controls.Add(this.cbGlobMode);
-            this.panelGlobLogo.Controls.Add(this.pictureBoxGlobIcon);
-            this.panelGlobLogo.Controls.Add(this.labelGlobSagalingua);
-            this.panelGlobLogo.Controls.Add(this.labelGlobCount);
-            this.panelGlobLogo.Location = new System.Drawing.Point(59, 3);
-            this.panelGlobLogo.Name = "panelGlobLogo";
-            this.panelGlobLogo.Size = new System.Drawing.Size(183, 325);
-            this.panelGlobLogo.TabIndex = 24;
+            this.panelGlobIndicators.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelGlobIndicators.Controls.Add(this.labelGlobLastUpload);
+            this.panelGlobIndicators.Controls.Add(this.labelGlobLastDownload);
+            this.panelGlobIndicators.Location = new System.Drawing.Point(365, 0);
+            this.panelGlobIndicators.Name = "panelGlobIndicators";
+            this.panelGlobIndicators.Size = new System.Drawing.Size(923, 24);
+            this.panelGlobIndicators.TabIndex = 27;
             // 
-            // cbGlobMode
+            // tabControlOps
             // 
-            this.cbGlobMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbGlobMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(119)))), ((int)(((byte)(237)))));
-            this.cbGlobMode.FormattingEnabled = true;
-            this.cbGlobMode.Location = new System.Drawing.Point(3, 28);
-            this.cbGlobMode.Name = "cbGlobMode";
-            this.cbGlobMode.Size = new System.Drawing.Size(145, 33);
-            this.cbGlobMode.TabIndex = 21;
-            this.cbGlobMode.SelectedIndexChanged += new System.EventHandler(this.cbGlobType_SelectedIndexChanged);
+            this.tabControlOps.Controls.Add(this.tabEdit);
+            this.tabControlOps.Controls.Add(this.tabSchedPlan);
+            this.tabControlOps.Controls.Add(this.tabSchedShow);
+            this.tabControlOps.Controls.Add(this.tabSchedCancel);
+            this.tabControlOps.Controls.Add(this.tabPayStud);
+            this.tabControlOps.Controls.Add(this.tabPayTeach);
+            this.tabControlOps.Controls.Add(this.tabPayExpense);
+            this.tabControlOps.Controls.Add(this.tabPage8);
+            this.tabControlOps.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlOps.Location = new System.Drawing.Point(0, 24);
+            this.tabControlOps.Name = "tabControlOps";
+            this.tabControlOps.SelectedIndex = 0;
+            this.tabControlOps.Size = new System.Drawing.Size(1291, 807);
+            this.tabControlOps.TabIndex = 14;
+            // 
+            // tabEdit
+            // 
+            this.tabEdit.Controls.Add(this.splitContainerGlobDataControls);
+            this.tabEdit.Location = new System.Drawing.Point(4, 22);
+            this.tabEdit.Name = "tabEdit";
+            this.tabEdit.Padding = new System.Windows.Forms.Padding(3);
+            this.tabEdit.Size = new System.Drawing.Size(1283, 781);
+            this.tabEdit.TabIndex = 0;
+            this.tabEdit.Text = "Edit";
+            this.tabEdit.UseVisualStyleBackColor = true;
             // 
             // splitContainerGlobDataControls
             // 
@@ -3420,48 +2890,746 @@
             this.butGlobalNext.UseVisualStyleBackColor = false;
             this.butGlobalNext.Click += new System.EventHandler(this.buttonNext_Click);
             // 
-            // panelGlobIndicators
+            // panelGlobSearch
             // 
-            this.panelGlobIndicators.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelGlobIndicators.Controls.Add(this.labelGlobLastUpload);
-            this.panelGlobIndicators.Controls.Add(this.labelGlobLastDownload);
-            this.panelGlobIndicators.Location = new System.Drawing.Point(365, 0);
-            this.panelGlobIndicators.Name = "panelGlobIndicators";
-            this.panelGlobIndicators.Size = new System.Drawing.Size(923, 24);
-            this.panelGlobIndicators.TabIndex = 27;
+            this.panelGlobSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(195)))), ((int)(((byte)(178)))));
+            this.panelGlobSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelGlobSearch.Controls.Add(this.panelSearchButtons);
+            this.panelGlobSearch.Controls.Add(this.tabControlSearch);
+            this.panelGlobSearch.Controls.Add(this.panelSearchLabels);
+            this.panelGlobSearch.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelGlobSearch.Location = new System.Drawing.Point(0, 408);
+            this.panelGlobSearch.Name = "panelGlobSearch";
+            this.panelGlobSearch.Size = new System.Drawing.Size(248, 367);
+            this.panelGlobSearch.TabIndex = 11;
             // 
-            // tabControlOps
+            // panelSearchButtons
             // 
-            this.tabControlOps.Controls.Add(this.tabPage1);
-            this.tabControlOps.Controls.Add(this.tabPage2);
-            this.tabControlOps.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControlOps.Location = new System.Drawing.Point(0, 24);
-            this.tabControlOps.Name = "tabControlOps";
-            this.tabControlOps.SelectedIndex = 0;
-            this.tabControlOps.Size = new System.Drawing.Size(1291, 807);
-            this.tabControlOps.TabIndex = 14;
+            this.panelSearchButtons.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelSearchButtons.Controls.Add(this.butGlobalToExcel);
+            this.panelSearchButtons.Controls.Add(this.buttGlobalShowAll);
+            this.panelSearchButtons.Location = new System.Drawing.Point(28, 332);
+            this.panelSearchButtons.Name = "panelSearchButtons";
+            this.panelSearchButtons.Size = new System.Drawing.Size(213, 34);
+            this.panelSearchButtons.TabIndex = 51;
             // 
-            // tabPage1
+            // butGlobalToExcel
             // 
-            this.tabPage1.Controls.Add(this.splitContainerGlobDataControls);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1283, 781);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.butGlobalToExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(210)))), ((int)(((byte)(47)))));
+            this.butGlobalToExcel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.butGlobalToExcel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.butGlobalToExcel.Location = new System.Drawing.Point(3, 8);
+            this.butGlobalToExcel.Name = "butGlobalToExcel";
+            this.butGlobalToExcel.Size = new System.Drawing.Size(82, 23);
+            this.butGlobalToExcel.TabIndex = 47;
+            this.butGlobalToExcel.Text = "To Excel";
+            this.butGlobalToExcel.UseVisualStyleBackColor = false;
+            this.butGlobalToExcel.Click += new System.EventHandler(this.buttonToExcel_Click);
             // 
-            // tabPage2
+            // buttGlobalShowAll
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1283, 781);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.buttGlobalShowAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(210)))), ((int)(((byte)(47)))));
+            this.buttGlobalShowAll.Enabled = false;
+            this.buttGlobalShowAll.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.buttGlobalShowAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttGlobalShowAll.Location = new System.Drawing.Point(128, 8);
+            this.buttGlobalShowAll.Name = "buttGlobalShowAll";
+            this.buttGlobalShowAll.Size = new System.Drawing.Size(82, 23);
+            this.buttGlobalShowAll.TabIndex = 48;
+            this.buttGlobalShowAll.Text = "Show all";
+            this.buttGlobalShowAll.UseVisualStyleBackColor = false;
+            this.buttGlobalShowAll.Click += new System.EventHandler(this.buttonShowAll_Click);
+            // 
+            // tabControlSearch
+            // 
+            this.tabControlSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControlSearch.Controls.Add(this.tabPageSearchStudent);
+            this.tabControlSearch.Controls.Add(this.tabPageSearchTeacher);
+            this.tabControlSearch.Controls.Add(this.tabPageSearchProgram);
+            this.tabControlSearch.Controls.Add(this.tabPageSearchRoom);
+            this.tabControlSearch.Controls.Add(this.tabPageSearchLesson);
+            this.tabControlSearch.Location = new System.Drawing.Point(24, 36);
+            this.tabControlSearch.Name = "tabControlSearch";
+            this.tabControlSearch.SelectedIndex = 0;
+            this.tabControlSearch.Size = new System.Drawing.Size(219, 297);
+            this.tabControlSearch.TabIndex = 49;
+            // 
+            // tabPageSearchStudent
+            // 
+            this.tabPageSearchStudent.Controls.Add(this.panelStudSearch);
+            this.tabPageSearchStudent.Location = new System.Drawing.Point(4, 22);
+            this.tabPageSearchStudent.Name = "tabPageSearchStudent";
+            this.tabPageSearchStudent.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageSearchStudent.Size = new System.Drawing.Size(211, 271);
+            this.tabPageSearchStudent.TabIndex = 0;
+            this.tabPageSearchStudent.Text = "t1";
+            this.tabPageSearchStudent.UseVisualStyleBackColor = true;
+            // 
+            // panelStudSearch
+            // 
+            this.panelStudSearch.Controls.Add(this.lbStudSearchStatus);
+            this.panelStudSearch.Controls.Add(this.lbStudSearchLearns);
+            this.panelStudSearch.Controls.Add(this.lbStudSearchSpeaks);
+            this.panelStudSearch.Controls.Add(this.cbStudSearchLevel);
+            this.panelStudSearch.Controls.Add(this.cbStudSearchLearns);
+            this.panelStudSearch.Controls.Add(this.lbStudSearchLevel);
+            this.panelStudSearch.Controls.Add(this.cbStudSearchSpeaks);
+            this.panelStudSearch.Controls.Add(this.lbStudSearchFirstName1);
+            this.panelStudSearch.Controls.Add(this.cbStudSearchSource);
+            this.panelStudSearch.Controls.Add(this.tbStudSearchFirstName);
+            this.panelStudSearch.Controls.Add(this.lbStudSearchSource);
+            this.panelStudSearch.Controls.Add(this.cbStudSelectStatus);
+            this.panelStudSearch.Controls.Add(this.lbStudSearchLastName);
+            this.panelStudSearch.Controls.Add(this.tbStudSearchLastName);
+            this.panelStudSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelStudSearch.Location = new System.Drawing.Point(3, 3);
+            this.panelStudSearch.Name = "panelStudSearch";
+            this.panelStudSearch.Size = new System.Drawing.Size(205, 265);
+            this.panelStudSearch.TabIndex = 19;
+            // 
+            // lbStudSearchStatus
+            // 
+            this.lbStudSearchStatus.AutoSize = true;
+            this.lbStudSearchStatus.Location = new System.Drawing.Point(14, 7);
+            this.lbStudSearchStatus.Name = "lbStudSearchStatus";
+            this.lbStudSearchStatus.Size = new System.Drawing.Size(40, 13);
+            this.lbStudSearchStatus.TabIndex = 0;
+            this.lbStudSearchStatus.Text = "Status:";
+            // 
+            // lbStudSearchLearns
+            // 
+            this.lbStudSearchLearns.AutoSize = true;
+            this.lbStudSearchLearns.Location = new System.Drawing.Point(16, 45);
+            this.lbStudSearchLearns.Name = "lbStudSearchLearns";
+            this.lbStudSearchLearns.Size = new System.Drawing.Size(42, 13);
+            this.lbStudSearchLearns.TabIndex = 4;
+            this.lbStudSearchLearns.Text = "Learns:";
+            // 
+            // lbStudSearchSpeaks
+            // 
+            this.lbStudSearchSpeaks.AutoSize = true;
+            this.lbStudSearchSpeaks.Location = new System.Drawing.Point(14, 73);
+            this.lbStudSearchSpeaks.Name = "lbStudSearchSpeaks";
+            this.lbStudSearchSpeaks.Size = new System.Drawing.Size(46, 13);
+            this.lbStudSearchSpeaks.TabIndex = 6;
+            this.lbStudSearchSpeaks.Text = "Speaks:";
+            // 
+            // cbStudSearchLevel
+            // 
+            this.cbStudSearchLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStudSearchLevel.FormattingEnabled = true;
+            this.cbStudSearchLevel.Location = new System.Drawing.Point(69, 205);
+            this.cbStudSearchLevel.Name = "cbStudSearchLevel";
+            this.cbStudSearchLevel.Size = new System.Drawing.Size(121, 21);
+            this.cbStudSearchLevel.TabIndex = 45;
+            this.cbStudSearchLevel.SelectedIndexChanged += new System.EventHandler(this.cbSearchStudLevel_SelectedIndexChanged);
+            // 
+            // cbStudSearchLearns
+            // 
+            this.cbStudSearchLearns.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStudSearchLearns.FormattingEnabled = true;
+            this.cbStudSearchLearns.Location = new System.Drawing.Point(71, 57);
+            this.cbStudSearchLearns.Name = "cbStudSearchLearns";
+            this.cbStudSearchLearns.Size = new System.Drawing.Size(121, 21);
+            this.cbStudSearchLearns.TabIndex = 41;
+            this.cbStudSearchLearns.SelectedIndexChanged += new System.EventHandler(this.cbSearchStudLearns_SelectedIndexChanged);
+            // 
+            // lbStudSearchLevel
+            // 
+            this.lbStudSearchLevel.AutoSize = true;
+            this.lbStudSearchLevel.Location = new System.Drawing.Point(16, 196);
+            this.lbStudSearchLevel.Name = "lbStudSearchLevel";
+            this.lbStudSearchLevel.Size = new System.Drawing.Size(36, 13);
+            this.lbStudSearchLevel.TabIndex = 15;
+            this.lbStudSearchLevel.Text = "Level:";
+            // 
+            // cbStudSearchSpeaks
+            // 
+            this.cbStudSearchSpeaks.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStudSearchSpeaks.FormattingEnabled = true;
+            this.cbStudSearchSpeaks.Location = new System.Drawing.Point(71, 90);
+            this.cbStudSearchSpeaks.Name = "cbStudSearchSpeaks";
+            this.cbStudSearchSpeaks.Size = new System.Drawing.Size(121, 21);
+            this.cbStudSearchSpeaks.TabIndex = 42;
+            this.cbStudSearchSpeaks.SelectedIndexChanged += new System.EventHandler(this.cbSearchStudSpeaks_SelectedIndexChanged);
+            // 
+            // lbStudSearchFirstName1
+            // 
+            this.lbStudSearchFirstName1.AutoSize = true;
+            this.lbStudSearchFirstName1.Location = new System.Drawing.Point(16, 114);
+            this.lbStudSearchFirstName1.Name = "lbStudSearchFirstName1";
+            this.lbStudSearchFirstName1.Size = new System.Drawing.Size(60, 13);
+            this.lbStudSearchFirstName1.TabIndex = 8;
+            this.lbStudSearchFirstName1.Text = "First Name:";
+            // 
+            // cbStudSearchSource
+            // 
+            this.cbStudSearchSource.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStudSearchSource.FormattingEnabled = true;
+            this.cbStudSearchSource.Location = new System.Drawing.Point(69, 239);
+            this.cbStudSearchSource.Name = "cbStudSearchSource";
+            this.cbStudSearchSource.Size = new System.Drawing.Size(121, 21);
+            this.cbStudSearchSource.TabIndex = 46;
+            this.cbStudSearchSource.SelectedIndexChanged += new System.EventHandler(this.cbSearchStudSource_SelectedIndexChanged);
+            // 
+            // tbStudSearchFirstName
+            // 
+            this.tbStudSearchFirstName.Location = new System.Drawing.Point(69, 130);
+            this.tbStudSearchFirstName.Name = "tbStudSearchFirstName";
+            this.tbStudSearchFirstName.Size = new System.Drawing.Size(121, 20);
+            this.tbStudSearchFirstName.TabIndex = 43;
+            this.tbStudSearchFirstName.TextChanged += new System.EventHandler(this.tbSearchStudFirstName_TextChanged);
+            // 
+            // lbStudSearchSource
+            // 
+            this.lbStudSearchSource.AutoSize = true;
+            this.lbStudSearchSource.Location = new System.Drawing.Point(16, 230);
+            this.lbStudSearchSource.Name = "lbStudSearchSource";
+            this.lbStudSearchSource.Size = new System.Drawing.Size(44, 13);
+            this.lbStudSearchSource.TabIndex = 12;
+            this.lbStudSearchSource.Text = "Source:";
+            // 
+            // cbStudSelectStatus
+            // 
+            this.cbStudSelectStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStudSelectStatus.FormattingEnabled = true;
+            this.cbStudSelectStatus.Location = new System.Drawing.Point(69, 15);
+            this.cbStudSelectStatus.Name = "cbStudSelectStatus";
+            this.cbStudSelectStatus.Size = new System.Drawing.Size(120, 21);
+            this.cbStudSelectStatus.TabIndex = 40;
+            this.cbStudSelectStatus.SelectedIndexChanged += new System.EventHandler(this.cbSearchStudStatus_SelectedIndexChanged);
+            // 
+            // lbStudSearchLastName
+            // 
+            this.lbStudSearchLastName.AutoSize = true;
+            this.lbStudSearchLastName.Location = new System.Drawing.Point(16, 151);
+            this.lbStudSearchLastName.Name = "lbStudSearchLastName";
+            this.lbStudSearchLastName.Size = new System.Drawing.Size(61, 13);
+            this.lbStudSearchLastName.TabIndex = 10;
+            this.lbStudSearchLastName.Text = "Last Name:";
+            // 
+            // tbStudSearchLastName
+            // 
+            this.tbStudSearchLastName.Location = new System.Drawing.Point(69, 168);
+            this.tbStudSearchLastName.Name = "tbStudSearchLastName";
+            this.tbStudSearchLastName.Size = new System.Drawing.Size(120, 20);
+            this.tbStudSearchLastName.TabIndex = 44;
+            this.tbStudSearchLastName.TextChanged += new System.EventHandler(this.tbSearchStudLastName_TextChanged);
+            // 
+            // tabPageSearchTeacher
+            // 
+            this.tabPageSearchTeacher.Controls.Add(this.panelSearchTeacher);
+            this.tabPageSearchTeacher.Location = new System.Drawing.Point(4, 22);
+            this.tabPageSearchTeacher.Name = "tabPageSearchTeacher";
+            this.tabPageSearchTeacher.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageSearchTeacher.Size = new System.Drawing.Size(211, 271);
+            this.tabPageSearchTeacher.TabIndex = 1;
+            this.tabPageSearchTeacher.Text = "t2";
+            this.tabPageSearchTeacher.UseVisualStyleBackColor = true;
+            // 
+            // panelSearchTeacher
+            // 
+            this.panelSearchTeacher.Controls.Add(this.tbSearchTeachLastName);
+            this.panelSearchTeacher.Controls.Add(this.tbSearchTeachFirstName);
+            this.panelSearchTeacher.Controls.Add(this.cbSearchTeachLang1);
+            this.panelSearchTeacher.Controls.Add(this.cbSearchTeachStatus);
+            this.panelSearchTeacher.Controls.Add(this.lbSerchTeachLastName);
+            this.panelSearchTeacher.Controls.Add(this.lbSerchTeachFirstName);
+            this.panelSearchTeacher.Controls.Add(this.lbSerchTeachLang1);
+            this.panelSearchTeacher.Controls.Add(this.lbSerchTeachStatus);
+            this.panelSearchTeacher.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelSearchTeacher.Location = new System.Drawing.Point(3, 3);
+            this.panelSearchTeacher.Name = "panelSearchTeacher";
+            this.panelSearchTeacher.Size = new System.Drawing.Size(205, 265);
+            this.panelSearchTeacher.TabIndex = 52;
+            // 
+            // tbSearchTeachLastName
+            // 
+            this.tbSearchTeachLastName.Location = new System.Drawing.Point(30, 158);
+            this.tbSearchTeachLastName.Name = "tbSearchTeachLastName";
+            this.tbSearchTeachLastName.Size = new System.Drawing.Size(148, 20);
+            this.tbSearchTeachLastName.TabIndex = 9;
+            this.tbSearchTeachLastName.TextChanged += new System.EventHandler(this.tbSearchTeachLastName_TextChanged);
+            // 
+            // tbSearchTeachFirstName
+            // 
+            this.tbSearchTeachFirstName.Location = new System.Drawing.Point(30, 113);
+            this.tbSearchTeachFirstName.Name = "tbSearchTeachFirstName";
+            this.tbSearchTeachFirstName.Size = new System.Drawing.Size(148, 20);
+            this.tbSearchTeachFirstName.TabIndex = 8;
+            this.tbSearchTeachFirstName.TextChanged += new System.EventHandler(this.tbSearchTeachFirstName_TextChanged);
+            // 
+            // cbSearchTeachLang1
+            // 
+            this.cbSearchTeachLang1.FormattingEnabled = true;
+            this.cbSearchTeachLang1.Location = new System.Drawing.Point(30, 64);
+            this.cbSearchTeachLang1.Name = "cbSearchTeachLang1";
+            this.cbSearchTeachLang1.Size = new System.Drawing.Size(148, 21);
+            this.cbSearchTeachLang1.TabIndex = 6;
+            this.cbSearchTeachLang1.SelectedIndexChanged += new System.EventHandler(this.cbSearchTeachLang1_SelectedIndexChanged);
+            // 
+            // cbSearchTeachStatus
+            // 
+            this.cbSearchTeachStatus.FormattingEnabled = true;
+            this.cbSearchTeachStatus.Location = new System.Drawing.Point(30, 24);
+            this.cbSearchTeachStatus.Name = "cbSearchTeachStatus";
+            this.cbSearchTeachStatus.Size = new System.Drawing.Size(148, 21);
+            this.cbSearchTeachStatus.TabIndex = 5;
+            this.cbSearchTeachStatus.SelectedIndexChanged += new System.EventHandler(this.cbSearchTeachStatus_SelectedIndexChanged);
+            // 
+            // lbSerchTeachLastName
+            // 
+            this.lbSerchTeachLastName.AutoSize = true;
+            this.lbSerchTeachLastName.Location = new System.Drawing.Point(15, 140);
+            this.lbSerchTeachLastName.Name = "lbSerchTeachLastName";
+            this.lbSerchTeachLastName.Size = new System.Drawing.Size(59, 13);
+            this.lbSerchTeachLastName.TabIndex = 4;
+            this.lbSerchTeachLastName.Text = "Last name:";
+            // 
+            // lbSerchTeachFirstName
+            // 
+            this.lbSerchTeachFirstName.AutoSize = true;
+            this.lbSerchTeachFirstName.Location = new System.Drawing.Point(15, 94);
+            this.lbSerchTeachFirstName.Name = "lbSerchTeachFirstName";
+            this.lbSerchTeachFirstName.Size = new System.Drawing.Size(58, 13);
+            this.lbSerchTeachFirstName.TabIndex = 3;
+            this.lbSerchTeachFirstName.Text = "First name:";
+            // 
+            // lbSerchTeachLang1
+            // 
+            this.lbSerchTeachLang1.AutoSize = true;
+            this.lbSerchTeachLang1.Location = new System.Drawing.Point(15, 48);
+            this.lbSerchTeachLang1.Name = "lbSerchTeachLang1";
+            this.lbSerchTeachLang1.Size = new System.Drawing.Size(58, 13);
+            this.lbSerchTeachLang1.TabIndex = 1;
+            this.lbSerchTeachLang1.Text = "Language:";
+            // 
+            // lbSerchTeachStatus
+            // 
+            this.lbSerchTeachStatus.AutoSize = true;
+            this.lbSerchTeachStatus.Location = new System.Drawing.Point(15, 9);
+            this.lbSerchTeachStatus.Name = "lbSerchTeachStatus";
+            this.lbSerchTeachStatus.Size = new System.Drawing.Size(40, 13);
+            this.lbSerchTeachStatus.TabIndex = 0;
+            this.lbSerchTeachStatus.Text = "Status:";
+            // 
+            // tabPageSearchProgram
+            // 
+            this.tabPageSearchProgram.Controls.Add(this.panelSearchProgram);
+            this.tabPageSearchProgram.Location = new System.Drawing.Point(4, 22);
+            this.tabPageSearchProgram.Name = "tabPageSearchProgram";
+            this.tabPageSearchProgram.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageSearchProgram.Size = new System.Drawing.Size(211, 271);
+            this.tabPageSearchProgram.TabIndex = 2;
+            this.tabPageSearchProgram.Text = "t3";
+            this.tabPageSearchProgram.UseVisualStyleBackColor = true;
+            // 
+            // panelSearchProgram
+            // 
+            this.panelSearchProgram.Controls.Add(this.cbSearchProgLevel);
+            this.panelSearchProgram.Controls.Add(this.cbSearchProgLanguage);
+            this.panelSearchProgram.Controls.Add(this.lbSearchProgLevel);
+            this.panelSearchProgram.Controls.Add(this.lbSearchProgLanguage);
+            this.panelSearchProgram.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelSearchProgram.Location = new System.Drawing.Point(3, 3);
+            this.panelSearchProgram.Name = "panelSearchProgram";
+            this.panelSearchProgram.Size = new System.Drawing.Size(205, 265);
+            this.panelSearchProgram.TabIndex = 53;
+            // 
+            // cbSearchProgLevel
+            // 
+            this.cbSearchProgLevel.FormattingEnabled = true;
+            this.cbSearchProgLevel.Location = new System.Drawing.Point(54, 63);
+            this.cbSearchProgLevel.Name = "cbSearchProgLevel";
+            this.cbSearchProgLevel.Size = new System.Drawing.Size(121, 21);
+            this.cbSearchProgLevel.TabIndex = 3;
+            this.cbSearchProgLevel.SelectedIndexChanged += new System.EventHandler(this.cbSearchProgLevel_SelectedIndexChanged);
+            // 
+            // cbSearchProgLanguage
+            // 
+            this.cbSearchProgLanguage.FormattingEnabled = true;
+            this.cbSearchProgLanguage.Location = new System.Drawing.Point(54, 23);
+            this.cbSearchProgLanguage.Name = "cbSearchProgLanguage";
+            this.cbSearchProgLanguage.Size = new System.Drawing.Size(121, 21);
+            this.cbSearchProgLanguage.TabIndex = 2;
+            this.cbSearchProgLanguage.SelectedIndexChanged += new System.EventHandler(this.cbSearchProgLanguage_SelectedIndexChanged);
+            // 
+            // lbSearchProgLevel
+            // 
+            this.lbSearchProgLevel.AutoSize = true;
+            this.lbSearchProgLevel.Location = new System.Drawing.Point(13, 50);
+            this.lbSearchProgLevel.Name = "lbSearchProgLevel";
+            this.lbSearchProgLevel.Size = new System.Drawing.Size(36, 13);
+            this.lbSearchProgLevel.TabIndex = 1;
+            this.lbSearchProgLevel.Text = "Level:";
+            // 
+            // lbSearchProgLanguage
+            // 
+            this.lbSearchProgLanguage.AutoSize = true;
+            this.lbSearchProgLanguage.Location = new System.Drawing.Point(13, 8);
+            this.lbSearchProgLanguage.Name = "lbSearchProgLanguage";
+            this.lbSearchProgLanguage.Size = new System.Drawing.Size(58, 13);
+            this.lbSearchProgLanguage.TabIndex = 0;
+            this.lbSearchProgLanguage.Text = "Language:";
+            // 
+            // tabPageSearchRoom
+            // 
+            this.tabPageSearchRoom.Controls.Add(this.panelSearchRoom);
+            this.tabPageSearchRoom.Location = new System.Drawing.Point(4, 22);
+            this.tabPageSearchRoom.Name = "tabPageSearchRoom";
+            this.tabPageSearchRoom.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageSearchRoom.Size = new System.Drawing.Size(211, 271);
+            this.tabPageSearchRoom.TabIndex = 3;
+            this.tabPageSearchRoom.Text = "t4";
+            this.tabPageSearchRoom.UseVisualStyleBackColor = true;
+            // 
+            // panelSearchRoom
+            // 
+            this.panelSearchRoom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelSearchRoom.Location = new System.Drawing.Point(3, 3);
+            this.panelSearchRoom.Name = "panelSearchRoom";
+            this.panelSearchRoom.Size = new System.Drawing.Size(205, 265);
+            this.panelSearchRoom.TabIndex = 52;
+            // 
+            // tabPageSearchLesson
+            // 
+            this.tabPageSearchLesson.Controls.Add(this.panelSearchLesson);
+            this.tabPageSearchLesson.Location = new System.Drawing.Point(4, 22);
+            this.tabPageSearchLesson.Name = "tabPageSearchLesson";
+            this.tabPageSearchLesson.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageSearchLesson.Size = new System.Drawing.Size(211, 271);
+            this.tabPageSearchLesson.TabIndex = 4;
+            this.tabPageSearchLesson.Text = "t5";
+            this.tabPageSearchLesson.UseVisualStyleBackColor = true;
+            // 
+            // panelSearchLesson
+            // 
+            this.panelSearchLesson.Controls.Add(this.tbSearchLessonDate);
+            this.panelSearchLesson.Controls.Add(this.lbSearchLessonStudent);
+            this.panelSearchLesson.Controls.Add(this.cbSearchLessonRoom);
+            this.panelSearchLesson.Controls.Add(this.lbSearchLessonRoom);
+            this.panelSearchLesson.Controls.Add(this.cbSearchLessonProgram);
+            this.panelSearchLesson.Controls.Add(this.lbSearchLessonProgram);
+            this.panelSearchLesson.Controls.Add(this.tbSearchLessonTeacher);
+            this.panelSearchLesson.Controls.Add(this.lbSearchTeacher);
+            this.panelSearchLesson.Controls.Add(this.tbSearchLessonStudent);
+            this.panelSearchLesson.Controls.Add(this.lbSearchLessonDay);
+            this.panelSearchLesson.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelSearchLesson.Location = new System.Drawing.Point(3, 3);
+            this.panelSearchLesson.Name = "panelSearchLesson";
+            this.panelSearchLesson.Size = new System.Drawing.Size(205, 265);
+            this.panelSearchLesson.TabIndex = 53;
+            // 
+            // tbSearchLessonDate
+            // 
+            this.tbSearchLessonDate.Location = new System.Drawing.Point(70, 210);
+            this.tbSearchLessonDate.Name = "tbSearchLessonDate";
+            this.tbSearchLessonDate.Size = new System.Drawing.Size(121, 20);
+            this.tbSearchLessonDate.TabIndex = 10;
+            this.tbSearchLessonDate.TextChanged += new System.EventHandler(this.tbSearchLessonDate_TextChanged);
+            // 
+            // lbSearchLessonStudent
+            // 
+            this.lbSearchLessonStudent.AutoSize = true;
+            this.lbSearchLessonStudent.Location = new System.Drawing.Point(15, 9);
+            this.lbSearchLessonStudent.Name = "lbSearchLessonStudent";
+            this.lbSearchLessonStudent.Size = new System.Drawing.Size(47, 13);
+            this.lbSearchLessonStudent.TabIndex = 9;
+            this.lbSearchLessonStudent.Text = "Student:";
+            // 
+            // cbSearchLessonRoom
+            // 
+            this.cbSearchLessonRoom.FormattingEnabled = true;
+            this.cbSearchLessonRoom.Location = new System.Drawing.Point(70, 158);
+            this.cbSearchLessonRoom.Name = "cbSearchLessonRoom";
+            this.cbSearchLessonRoom.Size = new System.Drawing.Size(121, 21);
+            this.cbSearchLessonRoom.TabIndex = 8;
+            this.cbSearchLessonRoom.TextChanged += new System.EventHandler(this.cbSearchLessonRoom_TextChanged);
+            // 
+            // lbSearchLessonRoom
+            // 
+            this.lbSearchLessonRoom.AutoSize = true;
+            this.lbSearchLessonRoom.Location = new System.Drawing.Point(13, 136);
+            this.lbSearchLessonRoom.Name = "lbSearchLessonRoom";
+            this.lbSearchLessonRoom.Size = new System.Drawing.Size(38, 13);
+            this.lbSearchLessonRoom.TabIndex = 6;
+            this.lbSearchLessonRoom.Text = "Room:";
+            // 
+            // cbSearchLessonProgram
+            // 
+            this.cbSearchLessonProgram.FormattingEnabled = true;
+            this.cbSearchLessonProgram.Location = new System.Drawing.Point(70, 105);
+            this.cbSearchLessonProgram.Name = "cbSearchLessonProgram";
+            this.cbSearchLessonProgram.Size = new System.Drawing.Size(121, 21);
+            this.cbSearchLessonProgram.TabIndex = 5;
+            this.cbSearchLessonProgram.TextChanged += new System.EventHandler(this.cbSearchLessonProgram_TextChanged);
+            // 
+            // lbSearchLessonProgram
+            // 
+            this.lbSearchLessonProgram.AutoSize = true;
+            this.lbSearchLessonProgram.Location = new System.Drawing.Point(13, 94);
+            this.lbSearchLessonProgram.Name = "lbSearchLessonProgram";
+            this.lbSearchLessonProgram.Size = new System.Drawing.Size(49, 13);
+            this.lbSearchLessonProgram.TabIndex = 4;
+            this.lbSearchLessonProgram.Text = "Program:";
+            // 
+            // tbSearchLessonTeacher
+            // 
+            this.tbSearchLessonTeacher.Location = new System.Drawing.Point(70, 62);
+            this.tbSearchLessonTeacher.Name = "tbSearchLessonTeacher";
+            this.tbSearchLessonTeacher.Size = new System.Drawing.Size(121, 20);
+            this.tbSearchLessonTeacher.TabIndex = 3;
+            this.tbSearchLessonTeacher.TextChanged += new System.EventHandler(this.tbSearchLessonTeacher_TextChanged);
+            // 
+            // lbSearchTeacher
+            // 
+            this.lbSearchTeacher.AutoSize = true;
+            this.lbSearchTeacher.Location = new System.Drawing.Point(13, 47);
+            this.lbSearchTeacher.Name = "lbSearchTeacher";
+            this.lbSearchTeacher.Size = new System.Drawing.Size(50, 13);
+            this.lbSearchTeacher.TabIndex = 2;
+            this.lbSearchTeacher.Text = "Teacher:";
+            // 
+            // tbSearchLessonStudent
+            // 
+            this.tbSearchLessonStudent.Location = new System.Drawing.Point(70, 12);
+            this.tbSearchLessonStudent.Name = "tbSearchLessonStudent";
+            this.tbSearchLessonStudent.Size = new System.Drawing.Size(121, 20);
+            this.tbSearchLessonStudent.TabIndex = 1;
+            this.tbSearchLessonStudent.TextChanged += new System.EventHandler(this.tbSearchLessonStudent_TextChanged);
+            // 
+            // lbSearchLessonDay
+            // 
+            this.lbSearchLessonDay.AutoSize = true;
+            this.lbSearchLessonDay.Location = new System.Drawing.Point(15, 189);
+            this.lbSearchLessonDay.Name = "lbSearchLessonDay";
+            this.lbSearchLessonDay.Size = new System.Drawing.Size(33, 13);
+            this.lbSearchLessonDay.TabIndex = 0;
+            this.lbSearchLessonDay.Text = "Date:";
+            // 
+            // panelSearchLabels
+            // 
+            this.panelSearchLabels.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelSearchLabels.Controls.Add(this.labelGlobSearch);
+            this.panelSearchLabels.Location = new System.Drawing.Point(22, 3);
+            this.panelSearchLabels.Name = "panelSearchLabels";
+            this.panelSearchLabels.Size = new System.Drawing.Size(200, 30);
+            this.panelSearchLabels.TabIndex = 50;
+            // 
+            // labelGlobSearch
+            // 
+            this.labelGlobSearch.AutoSize = true;
+            this.labelGlobSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(210)))), ((int)(((byte)(47)))));
+            this.labelGlobSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGlobSearch.Location = new System.Drawing.Point(68, 9);
+            this.labelGlobSearch.Name = "labelGlobSearch";
+            this.labelGlobSearch.Size = new System.Drawing.Size(47, 15);
+            this.labelGlobSearch.TabIndex = 17;
+            this.labelGlobSearch.Text = "Select";
+            // 
+            // panelGlobLogo
+            // 
+            this.panelGlobLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelGlobLogo.Controls.Add(this.cbGlobMode);
+            this.panelGlobLogo.Controls.Add(this.pictureBoxGlobIcon);
+            this.panelGlobLogo.Controls.Add(this.labelGlobSagalingua);
+            this.panelGlobLogo.Controls.Add(this.labelGlobCount);
+            this.panelGlobLogo.Location = new System.Drawing.Point(59, 3);
+            this.panelGlobLogo.Name = "panelGlobLogo";
+            this.panelGlobLogo.Size = new System.Drawing.Size(183, 325);
+            this.panelGlobLogo.TabIndex = 24;
+            // 
+            // cbGlobMode
+            // 
+            this.cbGlobMode.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbGlobMode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(119)))), ((int)(((byte)(237)))));
+            this.cbGlobMode.FormattingEnabled = true;
+            this.cbGlobMode.Location = new System.Drawing.Point(3, 28);
+            this.cbGlobMode.Name = "cbGlobMode";
+            this.cbGlobMode.Size = new System.Drawing.Size(145, 33);
+            this.cbGlobMode.TabIndex = 21;
+            this.cbGlobMode.SelectedIndexChanged += new System.EventHandler(this.cbGlobType_SelectedIndexChanged);
+            // 
+            // pictureBoxGlobIcon
+            // 
+            this.pictureBoxGlobIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxGlobIcon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxGlobIcon.BackgroundImage")));
+            this.pictureBoxGlobIcon.Location = new System.Drawing.Point(13, 123);
+            this.pictureBoxGlobIcon.Name = "pictureBoxGlobIcon";
+            this.pictureBoxGlobIcon.Size = new System.Drawing.Size(151, 199);
+            this.pictureBoxGlobIcon.TabIndex = 7;
+            this.pictureBoxGlobIcon.TabStop = false;
+            // 
+            // labelGlobSagalingua
+            // 
+            this.labelGlobSagalingua.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelGlobSagalingua.AutoSize = true;
+            this.labelGlobSagalingua.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGlobSagalingua.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(119)))), ((int)(((byte)(237)))));
+            this.labelGlobSagalingua.Location = new System.Drawing.Point(-2, 0);
+            this.labelGlobSagalingua.Name = "labelGlobSagalingua";
+            this.labelGlobSagalingua.Size = new System.Drawing.Size(137, 25);
+            this.labelGlobSagalingua.TabIndex = 8;
+            this.labelGlobSagalingua.Text = "Sagalingua ";
+            // 
+            // labelGlobCount
+            // 
+            this.labelGlobCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelGlobCount.AutoSize = true;
+            this.labelGlobCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGlobCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(119)))), ((int)(((byte)(237)))));
+            this.labelGlobCount.Location = new System.Drawing.Point(59, 78);
+            this.labelGlobCount.MinimumSize = new System.Drawing.Size(50, 20);
+            this.labelGlobCount.Name = "labelGlobCount";
+            this.labelGlobCount.Size = new System.Drawing.Size(50, 24);
+            this.labelGlobCount.TabIndex = 20;
+            // 
+            // tabSchedPlan
+            // 
+            this.tabSchedPlan.Controls.Add(this.lbSchedPlanName);
+            this.tabSchedPlan.Location = new System.Drawing.Point(4, 22);
+            this.tabSchedPlan.Name = "tabSchedPlan";
+            this.tabSchedPlan.Padding = new System.Windows.Forms.Padding(3);
+            this.tabSchedPlan.Size = new System.Drawing.Size(1283, 781);
+            this.tabSchedPlan.TabIndex = 1;
+            this.tabSchedPlan.Text = "SchedPlan";
+            this.tabSchedPlan.UseVisualStyleBackColor = true;
+            // 
+            // lbSchedPlanName
+            // 
+            this.lbSchedPlanName.AutoSize = true;
+            this.lbSchedPlanName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSchedPlanName.Location = new System.Drawing.Point(361, 25);
+            this.lbSchedPlanName.Name = "lbSchedPlanName";
+            this.lbSchedPlanName.Size = new System.Drawing.Size(239, 25);
+            this.lbSchedPlanName.TabIndex = 0;
+            this.lbSchedPlanName.Text = "Planning New Lesson";
+            // 
+            // tabSchedShow
+            // 
+            this.tabSchedShow.Controls.Add(this.lbSchedShowName);
+            this.tabSchedShow.Location = new System.Drawing.Point(4, 22);
+            this.tabSchedShow.Name = "tabSchedShow";
+            this.tabSchedShow.Padding = new System.Windows.Forms.Padding(3);
+            this.tabSchedShow.Size = new System.Drawing.Size(1283, 781);
+            this.tabSchedShow.TabIndex = 2;
+            this.tabSchedShow.Text = "SchedShow";
+            this.tabSchedShow.UseVisualStyleBackColor = true;
+            // 
+            // lbSchedShowName
+            // 
+            this.lbSchedShowName.AutoSize = true;
+            this.lbSchedShowName.Font = this.lbSchedPlanName.Font;
+            this.lbSchedShowName.Location = this.lbSchedPlanName.Location;
+            this.lbSchedShowName.Name = "lbSchedShowName";
+            this.lbSchedPlanName.Size = this.lbSchedPlanName.Size;
+            this.lbSchedShowName.TabIndex = 0;
+            this.lbSchedShowName.Text = "Current Schedule";
+            // 
+            // tabSchedCancel
+            // 
+            this.tabSchedCancel.Controls.Add(this.lbSchedCancelName);
+            this.tabSchedCancel.Location = new System.Drawing.Point(4, 22);
+            this.tabSchedCancel.Name = "tabSchedCancel";
+            this.tabSchedCancel.Padding = new System.Windows.Forms.Padding(3);
+            this.tabSchedCancel.Size = new System.Drawing.Size(1283, 781);
+            this.tabSchedCancel.TabIndex = 3;
+            this.tabSchedCancel.Text = "SchedCancel";
+            this.tabSchedCancel.UseVisualStyleBackColor = true;
+            // 
+            // lbSchedCancelName
+            // 
+            this.lbSchedCancelName.AutoSize = true;
+            this.lbSchedCancelName.Font = this.lbSchedPlanName.Font;
+            this.lbSchedCancelName.Location = this.lbSchedPlanName.Location;
+            this.lbSchedCancelName.Name = "lbSchedCancelName";
+            this.lbSchedCancelName.Size = this.lbSchedPlanName.Size;
+            this.lbSchedCancelName.TabIndex = 0;
+            this.lbSchedCancelName.Text = "Cancel a Lesson";
+            // 
+            // tabPayStud
+            // 
+            this.tabPayStud.Controls.Add(this.lbPayStudName);
+            this.tabPayStud.Location = new System.Drawing.Point(4, 22);
+            this.tabPayStud.Name = "tabPayStud";
+            this.tabPayStud.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPayStud.Size = new System.Drawing.Size(1283, 781);
+            this.tabPayStud.TabIndex = 4;
+            this.tabPayStud.Text = "PayStud";
+            this.tabPayStud.UseVisualStyleBackColor = true;
+            // 
+            // lbPayStudName
+            // 
+            this.lbPayStudName.AutoSize = true;
+            this.lbPayStudName.Font = this.lbSchedPlanName.Font;
+            this.lbPayStudName.Location = this.lbSchedPlanName.Location;
+            this.lbPayStudName.Name = "lbPayStudName";
+            this.lbPayStudName.Size = this.lbSchedPlanName.Size;
+            this.lbPayStudName.TabIndex = 0;
+            this.lbPayStudName.Text = "Enter Student Payment";
+            // 
+            // tabPayTeach
+            // 
+            this.tabPayTeach.Controls.Add(this.lbPayTeachName);
+            this.tabPayTeach.Location = new System.Drawing.Point(4, 22);
+            this.tabPayTeach.Name = "tabPayTeach";
+            this.tabPayTeach.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPayTeach.Size = new System.Drawing.Size(1283, 781);
+            this.tabPayTeach.TabIndex = 5;
+            this.tabPayTeach.Text = "PayTeach";
+            this.tabPayTeach.UseVisualStyleBackColor = true;
+            // 
+            // lbPayTeachName
+            // 
+            this.lbPayTeachName.AutoSize = true;
+            this.lbPayTeachName.Font = this.lbSchedPlanName.Font;
+            this.lbPayTeachName.Location = this.lbSchedPlanName.Location;
+            this.lbPayTeachName.Name = "lbPayTeachName";
+            this.lbPayTeachName.Size = this.lbSchedPlanName.Size;
+            this.lbPayTeachName.TabIndex = 0;
+            this.lbPayTeachName.Text = "Enter Teacher Payment";
+            // 
+            // tabPayExpense
+            // 
+            this.tabPayExpense.Controls.Add(this.lbPayExpenseName);
+            this.tabPayExpense.Location = new System.Drawing.Point(4, 22);
+            this.tabPayExpense.Name = "tabPayExpense";
+            this.tabPayExpense.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPayExpense.Size = new System.Drawing.Size(1283, 781);
+            this.tabPayExpense.TabIndex = 6;
+            this.tabPayExpense.Text = "PayExpense";
+            this.tabPayExpense.UseVisualStyleBackColor = true;
+            // 
+            // lbPayExpenseName
+            // 
+            this.lbPayExpenseName.AutoSize = true;
+            this.lbPayExpenseName.Font = this.lbSchedPlanName.Font;
+            this.lbPayExpenseName.Location = this.lbSchedPlanName.Location;
+            this.lbPayExpenseName.Name = "lbPayExpenseName";
+            this.lbPayExpenseName.Size = this.lbSchedPlanName.Size;
+            this.lbPayExpenseName.TabIndex = 0;
+            this.lbPayExpenseName.Text = "Report New Expense";
+            // 
+            // tabPage8
+            // 
+            this.tabPage8.Controls.Add(this.lbFutureOpName);
+            this.tabPage8.Location = new System.Drawing.Point(4, 22);
+            this.tabPage8.Name = "tabPage8";
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage8.Size = new System.Drawing.Size(1283, 781);
+            this.tabPage8.TabIndex = 7;
+            this.tabPage8.Text = "tabPage8";
+            this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // lbFutureOpName
+            // 
+            this.lbFutureOpName.AutoSize = true;
+            this.lbFutureOpName.Font = this.lbSchedPlanName.Font;
+            this.lbFutureOpName.Location = this.lbSchedPlanName.Location;
+            this.lbFutureOpName.Name = "lbFutureOpName";
+            this.lbFutureOpName.Size = this.lbSchedPlanName.Size;
+            this.lbFutureOpName.TabIndex = 0;
+            this.lbFutureOpName.Text = "Future Operation";
             // 
             // FormGlob
             // 
@@ -3479,27 +3647,10 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStripGlobalOps.ResumeLayout(false);
             this.menuStripGlobalOps.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGlobIcon)).EndInit();
-            this.panelGlobSearch.ResumeLayout(false);
-            this.panelSearchButtons.ResumeLayout(false);
-            this.tabControlSearch.ResumeLayout(false);
-            this.tabPageSearchStudent.ResumeLayout(false);
-            this.panelStudSearch.ResumeLayout(false);
-            this.panelStudSearch.PerformLayout();
-            this.tabPageSearchTeacher.ResumeLayout(false);
-            this.panelSearchTeacher.ResumeLayout(false);
-            this.panelSearchTeacher.PerformLayout();
-            this.tabPageSearchProgram.ResumeLayout(false);
-            this.panelSearchProgram.ResumeLayout(false);
-            this.panelSearchProgram.PerformLayout();
-            this.tabPageSearchRoom.ResumeLayout(false);
-            this.tabPageSearchLesson.ResumeLayout(false);
-            this.panelSearchLesson.ResumeLayout(false);
-            this.panelSearchLesson.PerformLayout();
-            this.panelSearchLabels.ResumeLayout(false);
-            this.panelSearchLabels.PerformLayout();
-            this.panelGlobLogo.ResumeLayout(false);
-            this.panelGlobLogo.PerformLayout();
+            this.panelGlobIndicators.ResumeLayout(false);
+            this.panelGlobIndicators.PerformLayout();
+            this.tabControlOps.ResumeLayout(false);
+            this.tabEdit.ResumeLayout(false);
             this.splitContainerGlobDataControls.Panel1.ResumeLayout(false);
             this.splitContainerGlobDataControls.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerGlobDataControls)).EndInit();
@@ -3562,10 +3713,41 @@
             this.panelLesson.PerformLayout();
             this.panelGlobPrevDelete.ResumeLayout(false);
             this.panelGlobNextNew.ResumeLayout(false);
-            this.panelGlobIndicators.ResumeLayout(false);
-            this.panelGlobIndicators.PerformLayout();
-            this.tabControlOps.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
+            this.panelGlobSearch.ResumeLayout(false);
+            this.panelSearchButtons.ResumeLayout(false);
+            this.tabControlSearch.ResumeLayout(false);
+            this.tabPageSearchStudent.ResumeLayout(false);
+            this.panelStudSearch.ResumeLayout(false);
+            this.panelStudSearch.PerformLayout();
+            this.tabPageSearchTeacher.ResumeLayout(false);
+            this.panelSearchTeacher.ResumeLayout(false);
+            this.panelSearchTeacher.PerformLayout();
+            this.tabPageSearchProgram.ResumeLayout(false);
+            this.panelSearchProgram.ResumeLayout(false);
+            this.panelSearchProgram.PerformLayout();
+            this.tabPageSearchRoom.ResumeLayout(false);
+            this.tabPageSearchLesson.ResumeLayout(false);
+            this.panelSearchLesson.ResumeLayout(false);
+            this.panelSearchLesson.PerformLayout();
+            this.panelSearchLabels.ResumeLayout(false);
+            this.panelSearchLabels.PerformLayout();
+            this.panelGlobLogo.ResumeLayout(false);
+            this.panelGlobLogo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGlobIcon)).EndInit();
+            this.tabSchedPlan.ResumeLayout(false);
+            this.tabSchedPlan.PerformLayout();
+            this.tabSchedShow.ResumeLayout(false);
+            this.tabSchedShow.PerformLayout();
+            this.tabSchedCancel.ResumeLayout(false);
+            this.tabSchedCancel.PerformLayout();
+            this.tabPayStud.ResumeLayout(false);
+            this.tabPayStud.PerformLayout();
+            this.tabPayTeach.ResumeLayout(false);
+            this.tabPayTeach.PerformLayout();
+            this.tabPayExpense.ResumeLayout(false);
+            this.tabPayExpense.PerformLayout();
+            this.tabPage8.ResumeLayout(false);
+            this.tabPage8.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3874,10 +4056,23 @@
         private System.Windows.Forms.ToolStripMenuItem studentsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem teachersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportExpenseToolStripMenuItem;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabEdit;
+        private System.Windows.Forms.TabPage tabSchedPlan;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private HiddenTabControl tabControlOps;
+        private System.Windows.Forms.TabPage tabSchedShow;
+        private System.Windows.Forms.TabPage tabSchedCancel;
+        private System.Windows.Forms.TabPage tabPayStud;
+        private System.Windows.Forms.TabPage tabPayTeach;
+        private System.Windows.Forms.TabPage tabPayExpense;
+        private System.Windows.Forms.TabPage tabPage8;
+        private System.Windows.Forms.Label lbSchedPlanName;
+        private System.Windows.Forms.Label lbSchedShowName;
+        private System.Windows.Forms.Label lbSchedCancelName;
+        private System.Windows.Forms.Label lbPayStudName;
+        private System.Windows.Forms.Label lbPayTeachName;
+        private System.Windows.Forms.Label lbPayExpenseName;
+        private System.Windows.Forms.Label lbFutureOpName;
     }
 }
 

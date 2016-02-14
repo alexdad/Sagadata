@@ -47,10 +47,37 @@ namespace RecordKeeper
         {
             tabControlOps.SelectedIndex = 0;
         }
-
         private void planToolStripMenuItem_Click(object sender, EventArgs e)
         {
             tabControlOps.SelectedIndex = 1;
+        }
+        private void showToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabControlOps.SelectedIndex = 2;
+        }
+
+        private void cancelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabControlOps.SelectedIndex = 3;
+
+        }
+
+        private void studentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabControlOps.SelectedIndex = 4;
+
+        }
+
+        private void teachersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabControlOps.SelectedIndex = 5;
+
+        }
+
+        private void reportExpenseToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabControlOps.SelectedIndex = 6;
+
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
