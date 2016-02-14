@@ -136,6 +136,8 @@ namespace RecordKeeper
             cbLessonState.Items.AddRange(m_enumState);
             cbLessonStart.Items.AddRange(m_enumTimeSlot);
             cbLessonEnd.Items.AddRange(m_enumTimeSlot);
+
+            cbSchedNewLanguage.Items.AddRange(m_enumLanguage);
         }
 
         public bool SelectionMode

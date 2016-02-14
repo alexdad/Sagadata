@@ -918,5 +918,13 @@ namespace RecordKeeper
         }
         #endregion
 
+        #region Schedule-related UI
+        private void dtpSchedNew_ValueChanged(object sender, EventArgs e)
+        {
+            DateTimePicker dtp = (DateTimePicker)sender;
+            m_chosenDate = dtp.Value.Date;
+            SchedNewLesson();
+        }
+        #endregion
     }
 }
