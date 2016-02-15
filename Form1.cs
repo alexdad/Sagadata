@@ -399,6 +399,12 @@ namespace RecordKeeper
                 e.ColumnIndex);
         }
 
+        private void dgvSchedNew_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ProposeNewLesson(sender as DataGridView, e.RowIndex, e.ColumnIndex);
+        }
+
+
         #endregion
 
         #region "Global Button Clicks"
@@ -919,37 +925,52 @@ namespace RecordKeeper
         private void dtpSchedNew_ValueChanged(object sender, EventArgs e)
         {
             DateTimePicker dtp = (DateTimePicker)sender;
-            m_chosenDate = dtp.Value.Date;
-            SchedNewLesson();
+            m_schedNew_chosenDate = dtp.Value.Date;
+            SchedNewShowDataIfReady();
         }
         private void cbSchedNewLanguage_SelectedIndexChanged(object sender, EventArgs e)
         {
             SchedNewLessonLanguageChosen();
+            SchedNewShowDataIfReady();
         }
-
+        private void cbSchedNewTeacher_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox cb = sender as ComboBox;
+            PopulateTeacherVacation(cb.SelectedItem as string, lbSchedNewTeachVacation);
+            SchedNewShowDataIfReady();
+        }
         private void cbSchedNewStud1_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cb = sender as ComboBox;
-            PopulateStudentPossibleSchedule(cb.SelectedValue as string, tbSchedNewStudSchedule1);
+            PopulateStudentPossibleSchedule(cb.SelectedItem as string, lbSchedNewStudSchedule1);
+            SchedNewShowDataIfReady();
         }
 
         private void cbSchedNewStud2_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cb = sender as ComboBox;
-            PopulateStudentPossibleSchedule(cb.SelectedValue as string, tbSchedNewStudSchedule2);
+            PopulateStudentPossibleSchedule(cb.SelectedItem as string, lbSchedNewStudSchedule2);
+            SchedNewShowDataIfReady();
         }
 
         private void cbSchedNewStud3_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cb = sender as ComboBox;
-            PopulateStudentPossibleSchedule(cb.SelectedValue as string, tbSchedNewStudSchedule3);
+            PopulateStudentPossibleSchedule(cb.SelectedItem as string, lbSchedNewStudSchedule3);
+            SchedNewShowDataIfReady();
         }
 
         private void cbSchedNewStud4_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cb = sender as ComboBox;
-            PopulateStudentPossibleSchedule(cb.SelectedValue as string, tbSchedNewStudSchedule4);
+            PopulateStudentPossibleSchedule(cb.SelectedItem as string, lbSchedNewStudSchedule4);
+            SchedNewShowDataIfReady();
+        }
+        private void butSchedNewAccept_Click(object sender, EventArgs e)
+        {
+            AcceptNewLesson();
         }
         #endregion
+
     }
 }

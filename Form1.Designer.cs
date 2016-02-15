@@ -337,19 +337,33 @@
             this.labelGlobCount = new System.Windows.Forms.Label();
             this.tabSchedPlan = new System.Windows.Forms.TabPage();
             this.panelSchedNewMatrix = new System.Windows.Forms.Panel();
+            this.dgvSchedNew = new System.Windows.Forms.DataGridView();
+            this.Slot = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mondayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tuesdayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.wednesdayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.thursdayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fridayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.saturdayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sundayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.schedNewSlotList = new System.Windows.Forms.BindingSource(this.components);
             this.panelSchedNewParams = new System.Windows.Forms.Panel();
+            this.tbSchedNewComment = new System.Windows.Forms.TextBox();
+            this.lbSchedNewComment = new System.Windows.Forms.Label();
+            this.lbSchedNewTeachVacation = new System.Windows.Forms.Label();
+            this.lbSchedNewStudSchedule4 = new System.Windows.Forms.Label();
+            this.lbSchedNewStudSchedule3 = new System.Windows.Forms.Label();
+            this.lbSchedNewStudSchedule2 = new System.Windows.Forms.Label();
+            this.lbSchedNewStudSchedule1 = new System.Windows.Forms.Label();
+            this.butSchedNewAccept = new System.Windows.Forms.Button();
             this.cbSchedNewDuration = new System.Windows.Forms.ComboBox();
             this.lbSchedNewDuration = new System.Windows.Forms.Label();
             this.dtpSchedNew = new System.Windows.Forms.DateTimePicker();
             this.cbSchedNewTeacher = new System.Windows.Forms.ComboBox();
             this.lbSchedNewTeacher = new System.Windows.Forms.Label();
-            this.tbSchedNewStudSchedule2 = new System.Windows.Forms.TextBox();
             this.lbSchedPlanName = new System.Windows.Forms.Label();
-            this.tbSchedNewStudSchedule4 = new System.Windows.Forms.TextBox();
             this.lbSchedNewWeek = new System.Windows.Forms.Label();
-            this.tbSchedNewStudSchedule3 = new System.Windows.Forms.TextBox();
             this.cbSchedNewLanguage = new System.Windows.Forms.ComboBox();
-            this.tbSchedNewStudSchedule1 = new System.Windows.Forms.TextBox();
             this.lbSchedNewLanguage = new System.Windows.Forms.Label();
             this.cbSchedNewStud4 = new System.Windows.Forms.ComboBox();
             this.lbSchedNewStud1 = new System.Windows.Forms.Label();
@@ -442,6 +456,9 @@
             this.panelGlobLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGlobIcon)).BeginInit();
             this.tabSchedPlan.SuspendLayout();
+            this.panelSchedNewMatrix.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSchedNew)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.schedNewSlotList)).BeginInit();
             this.panelSchedNewParams.SuspendLayout();
             this.tabSchedShow.SuspendLayout();
             this.tabSchedCancel.SuspendLayout();
@@ -3537,27 +3554,119 @@
             this.panelSchedNewMatrix.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelSchedNewMatrix.AutoScroll = true;
-            this.panelSchedNewMatrix.Location = new System.Drawing.Point(3, 191);
+            this.panelSchedNewMatrix.Controls.Add(this.dgvSchedNew);
+            this.panelSchedNewMatrix.Location = new System.Drawing.Point(3, 241);
             this.panelSchedNewMatrix.Name = "panelSchedNewMatrix";
-            this.panelSchedNewMatrix.Size = new System.Drawing.Size(1269, 394);
+            this.panelSchedNewMatrix.Size = new System.Drawing.Size(1269, 344);
             this.panelSchedNewMatrix.TabIndex = 18;
+            // 
+            // dgvSchedNew
+            // 
+            this.dgvSchedNew.AllowUserToAddRows = false;
+            this.dgvSchedNew.AllowUserToDeleteRows = false;
+            this.dgvSchedNew.AutoGenerateColumns = false;
+            this.dgvSchedNew.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvSchedNew.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Slot,
+            this.mondayDataGridViewTextBoxColumn,
+            this.tuesdayDataGridViewTextBoxColumn,
+            this.wednesdayDataGridViewTextBoxColumn,
+            this.thursdayDataGridViewTextBoxColumn,
+            this.fridayDataGridViewTextBoxColumn,
+            this.saturdayDataGridViewTextBoxColumn,
+            this.sundayDataGridViewTextBoxColumn});
+            this.dgvSchedNew.DataSource = this.schedNewSlotList;
+            this.dgvSchedNew.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvSchedNew.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvSchedNew.Location = new System.Drawing.Point(0, 0);
+            this.dgvSchedNew.MultiSelect = false;
+            this.dgvSchedNew.Name = "dgvSchedNew";
+            this.dgvSchedNew.ReadOnly = true;
+            this.dgvSchedNew.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvSchedNew.Size = new System.Drawing.Size(1269, 344);
+            this.dgvSchedNew.TabIndex = 0;
+            this.dgvSchedNew.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSchedNew_CellClick);
+            // 
+            // Slot
+            // 
+            this.Slot.DataPropertyName = "SlotName";
+            this.Slot.HeaderText = "Time";
+            this.Slot.Name = "Slot";
+            this.Slot.ReadOnly = true;
+            // 
+            // mondayDataGridViewTextBoxColumn
+            // 
+            this.mondayDataGridViewTextBoxColumn.DataPropertyName = "Monday";
+            this.mondayDataGridViewTextBoxColumn.HeaderText = "Monday";
+            this.mondayDataGridViewTextBoxColumn.Name = "mondayDataGridViewTextBoxColumn";
+            this.mondayDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // tuesdayDataGridViewTextBoxColumn
+            // 
+            this.tuesdayDataGridViewTextBoxColumn.DataPropertyName = "Tuesday";
+            this.tuesdayDataGridViewTextBoxColumn.HeaderText = "Tuesday";
+            this.tuesdayDataGridViewTextBoxColumn.Name = "tuesdayDataGridViewTextBoxColumn";
+            this.tuesdayDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // wednesdayDataGridViewTextBoxColumn
+            // 
+            this.wednesdayDataGridViewTextBoxColumn.DataPropertyName = "Wednesday";
+            this.wednesdayDataGridViewTextBoxColumn.HeaderText = "Wednesday";
+            this.wednesdayDataGridViewTextBoxColumn.Name = "wednesdayDataGridViewTextBoxColumn";
+            this.wednesdayDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // thursdayDataGridViewTextBoxColumn
+            // 
+            this.thursdayDataGridViewTextBoxColumn.DataPropertyName = "Thursday";
+            this.thursdayDataGridViewTextBoxColumn.HeaderText = "Thursday";
+            this.thursdayDataGridViewTextBoxColumn.Name = "thursdayDataGridViewTextBoxColumn";
+            this.thursdayDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fridayDataGridViewTextBoxColumn
+            // 
+            this.fridayDataGridViewTextBoxColumn.DataPropertyName = "Friday";
+            this.fridayDataGridViewTextBoxColumn.HeaderText = "Friday";
+            this.fridayDataGridViewTextBoxColumn.Name = "fridayDataGridViewTextBoxColumn";
+            this.fridayDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // saturdayDataGridViewTextBoxColumn
+            // 
+            this.saturdayDataGridViewTextBoxColumn.DataPropertyName = "Saturday";
+            this.saturdayDataGridViewTextBoxColumn.HeaderText = "Saturday";
+            this.saturdayDataGridViewTextBoxColumn.Name = "saturdayDataGridViewTextBoxColumn";
+            this.saturdayDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // sundayDataGridViewTextBoxColumn
+            // 
+            this.sundayDataGridViewTextBoxColumn.DataPropertyName = "Sunday";
+            this.sundayDataGridViewTextBoxColumn.HeaderText = "Sunday";
+            this.sundayDataGridViewTextBoxColumn.Name = "sundayDataGridViewTextBoxColumn";
+            this.sundayDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // schedNewSlotList
+            // 
+            this.schedNewSlotList.DataSource = typeof(RecordKeeper.Slot);
             // 
             // panelSchedNewParams
             // 
             this.panelSchedNewParams.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelSchedNewParams.Controls.Add(this.tbSchedNewComment);
+            this.panelSchedNewParams.Controls.Add(this.lbSchedNewComment);
+            this.panelSchedNewParams.Controls.Add(this.lbSchedNewTeachVacation);
+            this.panelSchedNewParams.Controls.Add(this.lbSchedNewStudSchedule4);
+            this.panelSchedNewParams.Controls.Add(this.lbSchedNewStudSchedule3);
+            this.panelSchedNewParams.Controls.Add(this.lbSchedNewStudSchedule2);
+            this.panelSchedNewParams.Controls.Add(this.lbSchedNewStudSchedule1);
+            this.panelSchedNewParams.Controls.Add(this.butSchedNewAccept);
             this.panelSchedNewParams.Controls.Add(this.cbSchedNewDuration);
             this.panelSchedNewParams.Controls.Add(this.lbSchedNewDuration);
             this.panelSchedNewParams.Controls.Add(this.dtpSchedNew);
             this.panelSchedNewParams.Controls.Add(this.cbSchedNewTeacher);
             this.panelSchedNewParams.Controls.Add(this.lbSchedNewTeacher);
-            this.panelSchedNewParams.Controls.Add(this.tbSchedNewStudSchedule2);
             this.panelSchedNewParams.Controls.Add(this.lbSchedPlanName);
-            this.panelSchedNewParams.Controls.Add(this.tbSchedNewStudSchedule4);
             this.panelSchedNewParams.Controls.Add(this.lbSchedNewWeek);
-            this.panelSchedNewParams.Controls.Add(this.tbSchedNewStudSchedule3);
             this.panelSchedNewParams.Controls.Add(this.cbSchedNewLanguage);
-            this.panelSchedNewParams.Controls.Add(this.tbSchedNewStudSchedule1);
             this.panelSchedNewParams.Controls.Add(this.lbSchedNewLanguage);
             this.panelSchedNewParams.Controls.Add(this.cbSchedNewStud4);
             this.panelSchedNewParams.Controls.Add(this.lbSchedNewStud1);
@@ -3569,13 +3678,96 @@
             this.panelSchedNewParams.Controls.Add(this.lbSchedNewStud4);
             this.panelSchedNewParams.Location = new System.Drawing.Point(3, 6);
             this.panelSchedNewParams.Name = "panelSchedNewParams";
-            this.panelSchedNewParams.Size = new System.Drawing.Size(1269, 179);
+            this.panelSchedNewParams.Size = new System.Drawing.Size(1269, 229);
             this.panelSchedNewParams.TabIndex = 17;
+            // 
+            // tbSchedNewComment
+            // 
+            this.tbSchedNewComment.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbSchedNewComment.Location = new System.Drawing.Point(352, 177);
+            this.tbSchedNewComment.Name = "tbSchedNewComment";
+            this.tbSchedNewComment.Size = new System.Drawing.Size(901, 20);
+            this.tbSchedNewComment.TabIndex = 29;
+            // 
+            // lbSchedNewComment
+            // 
+            this.lbSchedNewComment.AutoSize = true;
+            this.lbSchedNewComment.Location = new System.Drawing.Point(276, 177);
+            this.lbSchedNewComment.Name = "lbSchedNewComment";
+            this.lbSchedNewComment.Size = new System.Drawing.Size(54, 13);
+            this.lbSchedNewComment.TabIndex = 28;
+            this.lbSchedNewComment.Text = "Comment:";
+            // 
+            // lbSchedNewTeachVacation
+            // 
+            this.lbSchedNewTeachVacation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbSchedNewTeachVacation.AutoSize = true;
+            this.lbSchedNewTeachVacation.Location = new System.Drawing.Point(498, 11);
+            this.lbSchedNewTeachVacation.Name = "lbSchedNewTeachVacation";
+            this.lbSchedNewTeachVacation.Size = new System.Drawing.Size(54, 13);
+            this.lbSchedNewTeachVacation.TabIndex = 27;
+            this.lbSchedNewTeachVacation.Text = "Vacations";
+            // 
+            // lbSchedNewStudSchedule4
+            // 
+            this.lbSchedNewStudSchedule4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbSchedNewStudSchedule4.AutoSize = true;
+            this.lbSchedNewStudSchedule4.Location = new System.Drawing.Point(498, 148);
+            this.lbSchedNewStudSchedule4.Name = "lbSchedNewStudSchedule4";
+            this.lbSchedNewStudSchedule4.Size = new System.Drawing.Size(87, 13);
+            this.lbSchedNewStudSchedule4.TabIndex = 26;
+            this.lbSchedNewStudSchedule4.Text = "possible schedile";
+            // 
+            // lbSchedNewStudSchedule3
+            // 
+            this.lbSchedNewStudSchedule3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbSchedNewStudSchedule3.AutoSize = true;
+            this.lbSchedNewStudSchedule3.Location = new System.Drawing.Point(498, 112);
+            this.lbSchedNewStudSchedule3.Name = "lbSchedNewStudSchedule3";
+            this.lbSchedNewStudSchedule3.Size = new System.Drawing.Size(87, 13);
+            this.lbSchedNewStudSchedule3.TabIndex = 25;
+            this.lbSchedNewStudSchedule3.Text = "possible schedile";
+            // 
+            // lbSchedNewStudSchedule2
+            // 
+            this.lbSchedNewStudSchedule2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbSchedNewStudSchedule2.AutoSize = true;
+            this.lbSchedNewStudSchedule2.Location = new System.Drawing.Point(498, 79);
+            this.lbSchedNewStudSchedule2.Name = "lbSchedNewStudSchedule2";
+            this.lbSchedNewStudSchedule2.Size = new System.Drawing.Size(87, 13);
+            this.lbSchedNewStudSchedule2.TabIndex = 24;
+            this.lbSchedNewStudSchedule2.Text = "possible schedile";
+            // 
+            // lbSchedNewStudSchedule1
+            // 
+            this.lbSchedNewStudSchedule1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbSchedNewStudSchedule1.AutoSize = true;
+            this.lbSchedNewStudSchedule1.Location = new System.Drawing.Point(498, 43);
+            this.lbSchedNewStudSchedule1.Name = "lbSchedNewStudSchedule1";
+            this.lbSchedNewStudSchedule1.Size = new System.Drawing.Size(87, 13);
+            this.lbSchedNewStudSchedule1.TabIndex = 23;
+            this.lbSchedNewStudSchedule1.Text = "possible schedile";
+            // 
+            // butSchedNewAccept
+            // 
+            this.butSchedNewAccept.Location = new System.Drawing.Point(352, 203);
+            this.butSchedNewAccept.Name = "butSchedNewAccept";
+            this.butSchedNewAccept.Size = new System.Drawing.Size(75, 23);
+            this.butSchedNewAccept.TabIndex = 22;
+            this.butSchedNewAccept.Text = "Accept";
+            this.butSchedNewAccept.UseVisualStyleBackColor = true;
+            this.butSchedNewAccept.Click += new System.EventHandler(this.butSchedNewAccept_Click);
             // 
             // cbSchedNewDuration
             // 
             this.cbSchedNewDuration.FormattingEnabled = true;
-            this.cbSchedNewDuration.Location = new System.Drawing.Point(126, 145);
+            this.cbSchedNewDuration.Location = new System.Drawing.Point(126, 112);
             this.cbSchedNewDuration.Name = "cbSchedNewDuration";
             this.cbSchedNewDuration.Size = new System.Drawing.Size(121, 21);
             this.cbSchedNewDuration.TabIndex = 20;
@@ -3583,7 +3775,7 @@
             // lbSchedNewDuration
             // 
             this.lbSchedNewDuration.AutoSize = true;
-            this.lbSchedNewDuration.Location = new System.Drawing.Point(57, 145);
+            this.lbSchedNewDuration.Location = new System.Drawing.Point(57, 112);
             this.lbSchedNewDuration.Name = "lbSchedNewDuration";
             this.lbSchedNewDuration.Size = new System.Drawing.Size(50, 13);
             this.lbSchedNewDuration.TabIndex = 19;
@@ -3601,26 +3793,20 @@
             // cbSchedNewTeacher
             // 
             this.cbSchedNewTeacher.FormattingEnabled = true;
-            this.cbSchedNewTeacher.Location = new System.Drawing.Point(126, 109);
+            this.cbSchedNewTeacher.Location = new System.Drawing.Point(352, 8);
             this.cbSchedNewTeacher.Name = "cbSchedNewTeacher";
             this.cbSchedNewTeacher.Size = new System.Drawing.Size(121, 21);
             this.cbSchedNewTeacher.TabIndex = 18;
+            this.cbSchedNewTeacher.SelectedIndexChanged += new System.EventHandler(this.cbSchedNewTeacher_SelectedIndexChanged);
             // 
             // lbSchedNewTeacher
             // 
             this.lbSchedNewTeacher.AutoSize = true;
-            this.lbSchedNewTeacher.Location = new System.Drawing.Point(57, 112);
+            this.lbSchedNewTeacher.Location = new System.Drawing.Point(276, 11);
             this.lbSchedNewTeacher.Name = "lbSchedNewTeacher";
             this.lbSchedNewTeacher.Size = new System.Drawing.Size(50, 13);
             this.lbSchedNewTeacher.TabIndex = 17;
             this.lbSchedNewTeacher.Text = "Teacher:";
-            // 
-            // tbSchedNewStudSchedule2
-            // 
-            this.tbSchedNewStudSchedule2.Location = new System.Drawing.Point(510, 73);
-            this.tbSchedNewStudSchedule2.Name = "tbSchedNewStudSchedule2";
-            this.tbSchedNewStudSchedule2.Size = new System.Drawing.Size(756, 20);
-            this.tbSchedNewStudSchedule2.TabIndex = 14;
             // 
             // lbSchedPlanName
             // 
@@ -3632,13 +3818,6 @@
             this.lbSchedPlanName.TabIndex = 0;
             this.lbSchedPlanName.Text = "Planning New Lesson";
             // 
-            // tbSchedNewStudSchedule4
-            // 
-            this.tbSchedNewStudSchedule4.Location = new System.Drawing.Point(510, 145);
-            this.tbSchedNewStudSchedule4.Name = "tbSchedNewStudSchedule4";
-            this.tbSchedNewStudSchedule4.Size = new System.Drawing.Size(756, 20);
-            this.tbSchedNewStudSchedule4.TabIndex = 16;
-            // 
             // lbSchedNewWeek
             // 
             this.lbSchedNewWeek.AutoSize = true;
@@ -3648,13 +3827,6 @@
             this.lbSchedNewWeek.TabIndex = 1;
             this.lbSchedNewWeek.Text = "Week:";
             // 
-            // tbSchedNewStudSchedule3
-            // 
-            this.tbSchedNewStudSchedule3.Location = new System.Drawing.Point(510, 109);
-            this.tbSchedNewStudSchedule3.Name = "tbSchedNewStudSchedule3";
-            this.tbSchedNewStudSchedule3.Size = new System.Drawing.Size(756, 20);
-            this.tbSchedNewStudSchedule3.TabIndex = 15;
-            // 
             // cbSchedNewLanguage
             // 
             this.cbSchedNewLanguage.FormattingEnabled = true;
@@ -3663,13 +3835,6 @@
             this.cbSchedNewLanguage.Size = new System.Drawing.Size(121, 21);
             this.cbSchedNewLanguage.TabIndex = 3;
             this.cbSchedNewLanguage.SelectedIndexChanged += new System.EventHandler(this.cbSchedNewLanguage_SelectedIndexChanged);
-            // 
-            // tbSchedNewStudSchedule1
-            // 
-            this.tbSchedNewStudSchedule1.Location = new System.Drawing.Point(510, 40);
-            this.tbSchedNewStudSchedule1.Name = "tbSchedNewStudSchedule1";
-            this.tbSchedNewStudSchedule1.Size = new System.Drawing.Size(756, 20);
-            this.tbSchedNewStudSchedule1.TabIndex = 13;
             // 
             // lbSchedNewLanguage
             // 
@@ -3982,6 +4147,9 @@
             this.panelGlobLogo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGlobIcon)).EndInit();
             this.tabSchedPlan.ResumeLayout(false);
+            this.panelSchedNewMatrix.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvSchedNew)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.schedNewSlotList)).EndInit();
             this.panelSchedNewParams.ResumeLayout(false);
             this.panelSchedNewParams.PerformLayout();
             this.tabSchedShow.ResumeLayout(false);
@@ -4325,12 +4493,8 @@
         private System.Windows.Forms.Panel panelSchedNewParams;
         private System.Windows.Forms.ComboBox cbSchedNewTeacher;
         private System.Windows.Forms.Label lbSchedNewTeacher;
-        private System.Windows.Forms.TextBox tbSchedNewStudSchedule2;
-        private System.Windows.Forms.TextBox tbSchedNewStudSchedule4;
         private System.Windows.Forms.Label lbSchedNewWeek;
-        private System.Windows.Forms.TextBox tbSchedNewStudSchedule3;
         private System.Windows.Forms.ComboBox cbSchedNewLanguage;
-        private System.Windows.Forms.TextBox tbSchedNewStudSchedule1;
         private System.Windows.Forms.Label lbSchedNewLanguage;
         private System.Windows.Forms.ComboBox cbSchedNewStud4;
         private System.Windows.Forms.Label lbSchedNewStud1;
@@ -4344,6 +4508,24 @@
         private System.Windows.Forms.Panel panelTeachMatrix;
         private System.Windows.Forms.ComboBox cbSchedNewDuration;
         private System.Windows.Forms.Label lbSchedNewDuration;
+        private System.Windows.Forms.Button butSchedNewAccept;
+        private System.Windows.Forms.DataGridView dgvSchedNew;
+        private System.Windows.Forms.BindingSource schedNewSlotList;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Slot;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mondayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tuesdayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn wednesdayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn thursdayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fridayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn saturdayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sundayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label lbSchedNewStudSchedule4;
+        private System.Windows.Forms.Label lbSchedNewStudSchedule3;
+        private System.Windows.Forms.Label lbSchedNewStudSchedule2;
+        private System.Windows.Forms.Label lbSchedNewStudSchedule1;
+        private System.Windows.Forms.TextBox tbSchedNewComment;
+        private System.Windows.Forms.Label lbSchedNewComment;
+        private System.Windows.Forms.Label lbSchedNewTeachVacation;
     }
 }
 
