@@ -49,6 +49,7 @@ namespace RecordKeeper
         }
         private void planToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            InitializeSchedNew(false);
             tabControlOps.SelectedIndex = 1;
         }
         private void showToolStripMenuItem_Click(object sender, EventArgs e)
@@ -108,25 +109,25 @@ namespace RecordKeeper
 
         private void UploadFiles(List<Modes> files)
         {
-            Modes modeWas = m_mode;
+            Modes modeWas = CurrentMode;
             foreach (Modes m in files)
             {
                 SetMode(m);
                 UploadCurrentFile();
             }
-            m_mode = modeWas;
+            CurrentMode = modeWas;
         }
 
         private void DownloadAllFiles()
         {
-            Modes modeWas = m_mode;
+            Modes modeWas = CurrentMode;
 
             for (Modes i = (Modes)0; i < Modes.MaxMode; i++)
             {
                 SetMode(i);
                 DownloadCurrentFile();
             }
-            m_mode = modeWas;
+            CurrentMode = modeWas;
         }
 
         private List<Modes> AskAndSaveChangedFiles()
@@ -143,7 +144,7 @@ namespace RecordKeeper
         private List<Modes> SaveChangedFiles()
         {
             List<Modes> saved = new List<Modes>();
-            Modes modeWas = m_mode;
+            Modes modeWas = CurrentMode;
             //this.Visible = false;
             for (Modes i = (Modes)0; i < Modes.MaxMode; i++)
             {

@@ -70,11 +70,6 @@ namespace RecordKeeper
             Modified = true;
         }
 
-        const int bW = 30;
-        const int bH = 20;
-        const int marginx = 10;
-        const int marginy = 10;
-
         private void ShowAvailabilityForm()
         {
             Teacher t = teacherList.Current as Teacher;
@@ -89,40 +84,45 @@ namespace RecordKeeper
 
         void PrepareAvailabilityMatrix()
         {
+            int marginx = 10;
+            int marginy = 10;
+            int bW = 100;
+            int bH = 20;
+
             string[] days = new string[7] { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
             int slots = m_enumTimeSlot.Length;
-            Button[] top = new Button[slots];
-            Button[] left = new Button[7];
-            m_AvailabilityCells = new Button[7, slots];
+            Button[] top = new Button[7];
+            Button[] left = new Button[slots];
+            m_AvailabilityCells = new Button[slots, 7];
 
-            for (int j = 0; j < slots; j++)
-            {
-                top[j] = new Button()
-                {
-                    Text = m_enumTimeSlot[j],
-                    Width = bW,
-                    Height = bH,
-                    Location = new Point((j + 1) * bW + marginx, marginy),
-                    Parent = this.panelTeacherSecondary,
-                    Tag = j
-                };
-                top[j].Click += new System.EventHandler(this.availTopButton_Click);
-            }
-
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < slots; i++)
             {
                 left[i] = new Button()
                 {
-                    Text = days[i],
+                    Text = m_enumTimeSlot[i],
                     Width = bW,
                     Height = bH,
                     Location = new Point(marginx, (i + 1) * bH + marginy),
-                    Parent = this.panelTeacherSecondary,
+                    Parent = this.panelTeachMatrix,
                     Tag = i
                 };
                 left[i].Click += new System.EventHandler(this.availLeftButton_Click);
+            }
 
-                for (int j = 0; j < slots; j++)
+            for (int j = 0; j < 7; j++)
+            {
+                top[j] = new Button()
+                {
+                    Text = days[j],
+                    Width = bW,
+                    Height = bH,
+                    Location = new Point((j + 1) * bW + marginx, marginy),
+                    Parent = this.panelTeachMatrix,
+                    Tag = j
+                };
+                top[j].Click += new System.EventHandler(this.availTopButton_Click);
+
+                for (int i = 0; i < slots; i++)
                 {
                     m_AvailabilityCells[i, j] = new Button()
                     {
@@ -130,8 +130,8 @@ namespace RecordKeeper
                         Width = bW,
                         Height = bH,
                         Location = new Point((j + 1) * bW + marginx,
-                                              (i + 1) * bH + marginy),
-                        Parent = this.panelTeacherSecondary,
+                                             (i + 1) * bH + marginy),
+                        Parent = this.panelTeachMatrix,
                     };
 
                     m_AvailabilityCells[i, j].Click += 
@@ -196,24 +196,24 @@ namespace RecordKeeper
             buttonTeach_GrabAvailChanges.Visible = false;
         }
 
-        private void availTopButton_Click(object sender, EventArgs e)
+        private void availLeftButton_Click(object sender, EventArgs e)
         {
             Button b = sender as Button;
             for (int i = 0; i < 7; i++)
             {
                 availabilityButton_Click(
-                    (object)m_AvailabilityCells[i, (int)b.Tag],
+                    (object)m_AvailabilityCells[(int)b.Tag, i],
                     null);
             }
         }
 
-        private void availLeftButton_Click(object sender, EventArgs e)
+        private void availTopButton_Click(object sender, EventArgs e)
         {
             Button b = sender as Button;
             for (int j = 0; j < m_enumTimeSlot.Length; j++)
             {
                 availabilityButton_Click(
-                    (object)m_AvailabilityCells[(int)b.Tag, j],
+                    (object)m_AvailabilityCells[j, (int)b.Tag],
                     null);
             }
         }
@@ -255,7 +255,7 @@ namespace RecordKeeper
 
                 for (int j = 0; j < slots; j++)
                 {
-                    m_AvailabilityCells[i, j].Text = f.Substring(j, 1);
+                    m_AvailabilityCells[j, i].Text = f.Substring(j, 1);
                 }
             }
         }
@@ -265,7 +265,7 @@ namespace RecordKeeper
             {
                 StringBuilder sb = new StringBuilder();
                 for (int j = 0; j < m_enumTimeSlot.Length; j++)
-                    sb.Append(m_AvailabilityCells[i, j].Text[0]);
+                    sb.Append(m_AvailabilityCells[j, i].Text[0]);
 
                 Teacher t = teacherList.Current as Teacher;
                 switch (i)

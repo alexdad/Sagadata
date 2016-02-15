@@ -162,7 +162,7 @@
     <Compile Include="RecordType.cs" />
     <Compile Include="Room.cs" />
     <Compile Include="RoomType.cs" />
-    <Compile Include="Scheduling.cs">
+    <Compile Include="FormSchedule.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Schematics.cs">

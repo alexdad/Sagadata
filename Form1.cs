@@ -22,8 +22,8 @@ namespace RecordKeeper
         string[] m_enumStatus;
         string[] m_enumState;
         string[] m_enumTimeSlot;
+        string[] m_enumDurations;
 
-        Modes m_mode;
         Dictionary<Modes, RecordType> m_recordTypes;
         Dictionary<Modes, Type> m_dataTypes;
 
@@ -31,13 +31,10 @@ namespace RecordKeeper
         string m_recordKeeperDir;       // place for local file subdirs
 
         // Public Propertirs 
-        public Modes CurrentMode
-        {
-            get { return m_mode; }
-        }
+        public Modes CurrentMode { get; set;   }
         public RecordType CurrentType
         {
-            get { return m_recordTypes[m_mode]; }
+            get { return m_recordTypes[CurrentMode]; }
         }
         public string CurrentModeName
         {
@@ -113,7 +110,7 @@ namespace RecordKeeper
             get
             {
                 // Here are links between manually crafted per-record-type UI and modes
-                switch(m_mode)
+                switch(CurrentMode)
                 {
                     case Modes.Programs:
                         return programList;
@@ -142,16 +139,16 @@ namespace RecordKeeper
             RecordsToFormConst1();
 
             // Initial mode is the first in the Modes enum
-            m_mode = (Modes)0 ;      
+            CurrentMode = (Modes)0 ;      
             Client = Environment.MachineName;
             ReadSettings();
             ReadSchemas();
             PrepareDataDirectories();
             InitializeComponent();
             AssignEnums();
-            SetMode(m_mode);
+            SetMode(CurrentMode);
             RecordsToFormConst2();
-            cbGlobMode.SelectedIndex = (int)m_mode;
+            cbGlobMode.SelectedIndex = (int)CurrentMode;
             SelectionMode = false;
             DeletedKeys = new List<string>();
             RecordsAsRead = new Dictionary<string, Record>();
@@ -235,10 +232,10 @@ namespace RecordKeeper
         }
         private void SetMode(Modes mode)
         {
-            m_mode = mode;
-            tabControlModesBottom.SelectedIndex = (int)m_mode;
-            tabControlModesTop.SelectedIndex = (int)m_mode;
-            tabControlSearch.SelectedIndex = (int)m_mode;
+            CurrentMode = mode;
+            tabControlModesBottom.SelectedIndex = (int)CurrentMode;
+            tabControlModesTop.SelectedIndex = (int)CurrentMode;
+            tabControlSearch.SelectedIndex = (int)CurrentMode;
 
         }
 
@@ -286,10 +283,10 @@ namespace RecordKeeper
         {
             // For now we may only supply few searches
             this.panelGlobSearch.Visible = 
-                (m_mode == Modes.Students || 
-                 m_mode == Modes.Teachers ||
-                 m_mode == Modes.Lessons  ||
-                 m_mode == Modes.Programs);
+                (CurrentMode == Modes.Students ||
+                 CurrentMode == Modes.Teachers ||
+                 CurrentMode == Modes.Lessons  ||
+                 CurrentMode == Modes.Programs);
             
         }
 
@@ -297,7 +294,7 @@ namespace RecordKeeper
         {
             ComboBox comboBox = (ComboBox)sender;
             Modes newMode = (Modes)comboBox.SelectedIndex;
-            if (newMode == m_mode)
+            if (newMode == CurrentMode)
                 return;
             ChangeMode(newMode);
         }
@@ -924,6 +921,34 @@ namespace RecordKeeper
             DateTimePicker dtp = (DateTimePicker)sender;
             m_chosenDate = dtp.Value.Date;
             SchedNewLesson();
+        }
+        private void cbSchedNewLanguage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SchedNewLessonLanguageChosen();
+        }
+
+        private void cbSchedNewStud1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox cb = sender as ComboBox;
+            PopulateStudentPossibleSchedule(cb.SelectedValue as string, tbSchedNewStudSchedule1);
+        }
+
+        private void cbSchedNewStud2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox cb = sender as ComboBox;
+            PopulateStudentPossibleSchedule(cb.SelectedValue as string, tbSchedNewStudSchedule2);
+        }
+
+        private void cbSchedNewStud3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox cb = sender as ComboBox;
+            PopulateStudentPossibleSchedule(cb.SelectedValue as string, tbSchedNewStudSchedule3);
+        }
+
+        private void cbSchedNewStud4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox cb = sender as ComboBox;
+            PopulateStudentPossibleSchedule(cb.SelectedValue as string, tbSchedNewStudSchedule4);
         }
         #endregion
     }

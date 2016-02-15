@@ -138,6 +138,9 @@ namespace RecordKeeper
             cbLessonEnd.Items.AddRange(m_enumTimeSlot);
 
             cbSchedNewLanguage.Items.AddRange(m_enumLanguage);
+            //cbSchedNewLanguage.SelectedIndex = 1;   // Starting from English
+            cbSchedNewDuration.Items.AddRange(m_enumDurations);
+            //cbSchedNewDuration.SelectedIndex = 5;   // Starting from 1:30
         }
 
         public bool SelectionMode
@@ -226,18 +229,32 @@ namespace RecordKeeper
 
         void PopulateEnumTimeslots()
         {
-            m_enumTimeSlot = new string[2 * (23 - 7)];
+            m_enumTimeSlot = new string[4 * (23 - 7)];
             int i = 0;
             for (int h = 7; h < 12; h++)
-                for (int m = 0; m < 60; m += 30)
+                for (int m = 0; m < 60; m += 15)
                     m_enumTimeSlot[i++] = h.ToString() + ":" + m.ToString() + " am";
-            m_enumTimeSlot[i++] = "12:00 pm";
-            m_enumTimeSlot[i++] = "12:30 pm";
+            for (int m = 0; m < 60; m += 15)
+                m_enumTimeSlot[i++] = "12:" + m.ToString() + " pm";
             for (int h = 1; h < 11; h++)
-                for (int m = 0; m < 60; m += 30)
+                for (int m = 0; m < 60; m += 15)
                     m_enumTimeSlot[i++] = h.ToString() + ":" + m.ToString() + " pm";
         }
 
+        void PopulateEnumDurations()
+        {
+            m_enumDurations = new string[4 * 4 - 1];
+            int i = 0;
+            for (int h = 0; h < 4; h++)
+                for (int m = 0; m < 60; m += 15)
+                {
+                    if (h == 0 && m == 0)
+                        continue;
+                    m_enumDurations[i++] =
+                        h.ToString() + ":" + m.ToString();
+                }
+        }
+        
         void ReadSchemas()
         {
             string binLocation = Directory.GetCurrentDirectory();
@@ -248,6 +265,7 @@ namespace RecordKeeper
             m_enumState = File.ReadAllLines(Path.Combine(binLocation, "EnumState.csv").ToString());
 
             PopulateEnumTimeslots();
+            PopulateEnumDurations();
 
             SchemaField[] schemaRecord = ReadSchema("Record", null);  // common fields
 
