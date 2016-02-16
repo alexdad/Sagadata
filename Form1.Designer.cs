@@ -3727,9 +3727,8 @@
             this.lbSchedNewTeachVacation.AutoSize = true;
             this.lbSchedNewTeachVacation.Location = new System.Drawing.Point(498, 11);
             this.lbSchedNewTeachVacation.Name = "lbSchedNewTeachVacation";
-            this.lbSchedNewTeachVacation.Size = new System.Drawing.Size(54, 13);
+            this.lbSchedNewTeachVacation.Size = new System.Drawing.Size(0, 13);
             this.lbSchedNewTeachVacation.TabIndex = 27;
-            this.lbSchedNewTeachVacation.Text = "Vacations";
             // 
             // lbSchedNewStudSchedule4
             // 
@@ -3738,9 +3737,8 @@
             this.lbSchedNewStudSchedule4.AutoSize = true;
             this.lbSchedNewStudSchedule4.Location = new System.Drawing.Point(498, 148);
             this.lbSchedNewStudSchedule4.Name = "lbSchedNewStudSchedule4";
-            this.lbSchedNewStudSchedule4.Size = new System.Drawing.Size(87, 13);
+            this.lbSchedNewStudSchedule4.Size = new System.Drawing.Size(0, 13);
             this.lbSchedNewStudSchedule4.TabIndex = 26;
-            this.lbSchedNewStudSchedule4.Text = "possible schedile";
             // 
             // lbSchedNewStudSchedule3
             // 
@@ -3749,9 +3747,8 @@
             this.lbSchedNewStudSchedule3.AutoSize = true;
             this.lbSchedNewStudSchedule3.Location = new System.Drawing.Point(498, 112);
             this.lbSchedNewStudSchedule3.Name = "lbSchedNewStudSchedule3";
-            this.lbSchedNewStudSchedule3.Size = new System.Drawing.Size(87, 13);
+            this.lbSchedNewStudSchedule3.Size = new System.Drawing.Size(0, 13);
             this.lbSchedNewStudSchedule3.TabIndex = 25;
-            this.lbSchedNewStudSchedule3.Text = "possible schedile";
             // 
             // lbSchedNewStudSchedule2
             // 
@@ -3760,9 +3757,8 @@
             this.lbSchedNewStudSchedule2.AutoSize = true;
             this.lbSchedNewStudSchedule2.Location = new System.Drawing.Point(498, 79);
             this.lbSchedNewStudSchedule2.Name = "lbSchedNewStudSchedule2";
-            this.lbSchedNewStudSchedule2.Size = new System.Drawing.Size(87, 13);
+            this.lbSchedNewStudSchedule2.Size = new System.Drawing.Size(0, 13);
             this.lbSchedNewStudSchedule2.TabIndex = 24;
-            this.lbSchedNewStudSchedule2.Text = "possible schedile";
             // 
             // lbSchedNewStudSchedule1
             // 
@@ -3771,9 +3767,8 @@
             this.lbSchedNewStudSchedule1.AutoSize = true;
             this.lbSchedNewStudSchedule1.Location = new System.Drawing.Point(498, 43);
             this.lbSchedNewStudSchedule1.Name = "lbSchedNewStudSchedule1";
-            this.lbSchedNewStudSchedule1.Size = new System.Drawing.Size(87, 13);
+            this.lbSchedNewStudSchedule1.Size = new System.Drawing.Size(0, 13);
             this.lbSchedNewStudSchedule1.TabIndex = 23;
-            this.lbSchedNewStudSchedule1.Text = "possible schedile";
             // 
             // butSchedNewAccept
             // 
