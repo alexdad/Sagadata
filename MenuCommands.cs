@@ -16,23 +16,18 @@ namespace RecordKeeper
         //----------------------------------------------------
         // Menu strip
         //----------------------------------------------------
+        private void syncToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CommandUpload();
+        }
+
         private void downloadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!CheckSafety())
-                return;
-            DownloadCurrentFile();
+            CommandDownload();
         }
 
         private void uploadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!CheckSafety())
-                return;
-            CurrentType.EndSelectionMode();
-            List<Modes> temp = SaveChangedFiles();
-            if (!temp.Contains(CurrentMode))
-                temp.Add(CurrentMode);
-            UploadFiles(temp);
-            Modified = false;
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -52,17 +47,6 @@ namespace RecordKeeper
             InitializeSchedNew(false);
             tabControlOps.SelectedIndex = 1;
         }
-        private void showToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            tabControlOps.SelectedIndex = 2;
-        }
-
-        private void cancelToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            tabControlOps.SelectedIndex = 3;
-
-        }
-
         private void studentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             tabControlOps.SelectedIndex = 4;
@@ -90,6 +74,25 @@ namespace RecordKeeper
         }
 
         // Support functions
+        private void CommandDownload()
+        {
+            if (!CheckSafety())
+                return;
+            DownloadCurrentFile();
+        }
+
+        private void CommandUpload()
+        {
+            if (!CheckSafety())
+                return;
+            CurrentType.EndSelectionMode();
+            List<Modes> temp = SaveChangedFiles();
+            if (!temp.Contains(CurrentMode))
+                temp.Add(CurrentMode);
+            UploadFiles(temp);
+            Modified = false;
+        }
+
         private void AskAndUploadChangedFiles()
         {
             if (AnyFileChanged)

@@ -98,14 +98,14 @@ namespace RecordKeeper
                 l.Student10 == desc);
         }
 
-        List<Lesson> LessonsByTeacherAndTime(string desc, DateTime t1, DateTime t2)
+        List<Lesson> LessonsByTeacher(string desc, DateTime t1, DateTime t2)
         {
             return FindLessons(l =>
                     (l.Teacher1 == desc || l.Teacher2 == desc) &&
                     l.DateTimeStart <= t2 && l.DateTimeEnd >= t1);
         }
 
-        List<Lesson> LessonsByStudentAndTime(string desc, DateTime t1, DateTime t2)
+        List<Lesson> LessonsByStudent(string desc, DateTime t1, DateTime t2)
         {
             return FindLessons(l =>
                    (l.Student1 == desc || l.Student2 == desc || l.Student3 == desc ||

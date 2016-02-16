@@ -31,18 +31,19 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGlob));
             this.menuStripGlobalOps = new System.Windows.Forms.MenuStrip();
-            this.menuItemGlobDownload = new System.Windows.Forms.ToolStripMenuItem();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.scheduleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.syncToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.planToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cancelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.payToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.studentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.teachersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportExpenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.advancedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.downloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reopenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.uploadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemGlobSave = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemGlobUpload = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemGlobExit = new System.Windows.Forms.ToolStripMenuItem();
             this.labelGlobLastDownload = new System.Windows.Forms.Label();
             this.labelGlobLastUpload = new System.Windows.Forms.Label();
@@ -350,6 +351,8 @@
             this.sundayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.schedNewSlotList = new System.Windows.Forms.BindingSource(this.components);
             this.panelSchedNewParams = new System.Windows.Forms.Panel();
+            this.tbSchedNewDuration = new System.Windows.Forms.TextBox();
+            this.lbSchedNewRepeat = new System.Windows.Forms.Label();
             this.tbSchedNewComment = new System.Windows.Forms.TextBox();
             this.lbSchedNewComment = new System.Windows.Forms.Label();
             this.lbSchedNewTeachVacation = new System.Windows.Forms.Label();
@@ -473,12 +476,13 @@
             // menuStripGlobalOps
             // 
             this.menuStripGlobalOps.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemGlobDownload,
+            this.syncToolStripMenuItem,
+            this.viewToolStripMenuItem,
+            this.planToolStripMenuItem,
             this.editToolStripMenuItem,
-            this.scheduleToolStripMenuItem,
             this.payToolStripMenuItem,
+            this.advancedToolStripMenuItem,
             this.menuItemGlobSave,
-            this.menuItemGlobUpload,
             this.menuItemGlobExit});
             this.menuStripGlobalOps.Location = new System.Drawing.Point(0, 0);
             this.menuStripGlobalOps.Name = "menuStripGlobalOps";
@@ -486,12 +490,25 @@
             this.menuStripGlobalOps.TabIndex = 0;
             this.menuStripGlobalOps.Text = "menuStrip1";
             // 
-            // menuItemGlobDownload
+            // syncToolStripMenuItem
             // 
-            this.menuItemGlobDownload.Name = "menuItemGlobDownload";
-            this.menuItemGlobDownload.Size = new System.Drawing.Size(73, 20);
-            this.menuItemGlobDownload.Text = "Download";
-            this.menuItemGlobDownload.Click += new System.EventHandler(this.downloadToolStripMenuItem_Click);
+            this.syncToolStripMenuItem.Name = "syncToolStripMenuItem";
+            this.syncToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.syncToolStripMenuItem.Text = "Sync";
+            this.syncToolStripMenuItem.Click += new System.EventHandler(this.syncToolStripMenuItem_Click);
+            // 
+            // viewToolStripMenuItem
+            // 
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.viewToolStripMenuItem.Text = "View";
+            // 
+            // planToolStripMenuItem
+            // 
+            this.planToolStripMenuItem.Name = "planToolStripMenuItem";
+            this.planToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
+            this.planToolStripMenuItem.Text = "Plan";
+            this.planToolStripMenuItem.Click += new System.EventHandler(this.planToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -500,37 +517,6 @@
             this.editToolStripMenuItem.Text = "Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
-            // scheduleToolStripMenuItem
-            // 
-            this.scheduleToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.showToolStripMenuItem,
-            this.planToolStripMenuItem,
-            this.cancelToolStripMenuItem});
-            this.scheduleToolStripMenuItem.Name = "scheduleToolStripMenuItem";
-            this.scheduleToolStripMenuItem.Size = new System.Drawing.Size(78, 20);
-            this.scheduleToolStripMenuItem.Text = "Scheduling";
-            // 
-            // showToolStripMenuItem
-            // 
-            this.showToolStripMenuItem.Name = "showToolStripMenuItem";
-            this.showToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
-            this.showToolStripMenuItem.Text = "Show";
-            this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
-            // 
-            // planToolStripMenuItem
-            // 
-            this.planToolStripMenuItem.Name = "planToolStripMenuItem";
-            this.planToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
-            this.planToolStripMenuItem.Text = "Plan";
-            this.planToolStripMenuItem.Click += new System.EventHandler(this.planToolStripMenuItem_Click);
-            // 
-            // cancelToolStripMenuItem
-            // 
-            this.cancelToolStripMenuItem.Name = "cancelToolStripMenuItem";
-            this.cancelToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
-            this.cancelToolStripMenuItem.Text = "Cancel";
-            this.cancelToolStripMenuItem.Click += new System.EventHandler(this.cancelToolStripMenuItem_Click);
-            // 
             // payToolStripMenuItem
             // 
             this.payToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -538,8 +524,8 @@
             this.teachersToolStripMenuItem,
             this.reportExpenseToolStripMenuItem});
             this.payToolStripMenuItem.Name = "payToolStripMenuItem";
-            this.payToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
-            this.payToolStripMenuItem.Text = "Payments";
+            this.payToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
+            this.payToolStripMenuItem.Text = "Pay";
             // 
             // studentsToolStripMenuItem
             // 
@@ -562,19 +548,42 @@
             this.reportExpenseToolStripMenuItem.Text = "Expenses";
             this.reportExpenseToolStripMenuItem.Click += new System.EventHandler(this.reportExpenseToolStripMenuItem_Click);
             // 
+            // advancedToolStripMenuItem
+            // 
+            this.advancedToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.downloadToolStripMenuItem,
+            this.reopenToolStripMenuItem,
+            this.uploadToolStripMenuItem});
+            this.advancedToolStripMenuItem.Name = "advancedToolStripMenuItem";
+            this.advancedToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
+            this.advancedToolStripMenuItem.Text = "Advanced";
+            // 
+            // downloadToolStripMenuItem
+            // 
+            this.downloadToolStripMenuItem.Name = "downloadToolStripMenuItem";
+            this.downloadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.downloadToolStripMenuItem.Text = "Download";
+            this.downloadToolStripMenuItem.Click += new System.EventHandler(this.downloadToolStripMenuItem_Click);
+            // 
+            // reopenToolStripMenuItem
+            // 
+            this.reopenToolStripMenuItem.Name = "reopenToolStripMenuItem";
+            this.reopenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.reopenToolStripMenuItem.Text = "Reopen";
+            // 
+            // uploadToolStripMenuItem
+            // 
+            this.uploadToolStripMenuItem.Name = "uploadToolStripMenuItem";
+            this.uploadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.uploadToolStripMenuItem.Text = "Upload";
+            this.uploadToolStripMenuItem.Click += new System.EventHandler(this.uploadToolStripMenuItem_Click);
+            // 
             // menuItemGlobSave
             // 
             this.menuItemGlobSave.Name = "menuItemGlobSave";
             this.menuItemGlobSave.Size = new System.Drawing.Size(43, 20);
             this.menuItemGlobSave.Text = "Save";
             this.menuItemGlobSave.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
-            // 
-            // menuItemGlobUpload
-            // 
-            this.menuItemGlobUpload.Name = "menuItemGlobUpload";
-            this.menuItemGlobUpload.Size = new System.Drawing.Size(57, 20);
-            this.menuItemGlobUpload.Text = "Upload";
-            this.menuItemGlobUpload.Click += new System.EventHandler(this.uploadToolStripMenuItem_Click);
             // 
             // menuItemGlobExit
             // 
@@ -607,7 +616,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelGlobIndicators.Controls.Add(this.labelGlobLastUpload);
             this.panelGlobIndicators.Controls.Add(this.labelGlobLastDownload);
-            this.panelGlobIndicators.Location = new System.Drawing.Point(417, 0);
+            this.panelGlobIndicators.Location = new System.Drawing.Point(713, 0);
             this.panelGlobIndicators.Name = "panelGlobIndicators";
             this.panelGlobIndicators.Size = new System.Drawing.Size(871, 24);
             this.panelGlobIndicators.TabIndex = 27;
@@ -3672,6 +3681,8 @@
             // 
             this.panelSchedNewParams.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelSchedNewParams.Controls.Add(this.tbSchedNewDuration);
+            this.panelSchedNewParams.Controls.Add(this.lbSchedNewRepeat);
             this.panelSchedNewParams.Controls.Add(this.tbSchedNewComment);
             this.panelSchedNewParams.Controls.Add(this.lbSchedNewComment);
             this.panelSchedNewParams.Controls.Add(this.lbSchedNewTeachVacation);
@@ -3701,6 +3712,22 @@
             this.panelSchedNewParams.Name = "panelSchedNewParams";
             this.panelSchedNewParams.Size = new System.Drawing.Size(1269, 229);
             this.panelSchedNewParams.TabIndex = 17;
+            // 
+            // tbSchedNewDuration
+            // 
+            this.tbSchedNewDuration.Location = new System.Drawing.Point(169, 168);
+            this.tbSchedNewDuration.Name = "tbSchedNewDuration";
+            this.tbSchedNewDuration.Size = new System.Drawing.Size(77, 20);
+            this.tbSchedNewDuration.TabIndex = 31;
+            // 
+            // lbSchedNewRepeat
+            // 
+            this.lbSchedNewRepeat.AutoSize = true;
+            this.lbSchedNewRepeat.Location = new System.Drawing.Point(60, 176);
+            this.lbSchedNewRepeat.Name = "lbSchedNewRepeat";
+            this.lbSchedNewRepeat.Size = new System.Drawing.Size(85, 13);
+            this.lbSchedNewRepeat.TabIndex = 30;
+            this.lbSchedNewRepeat.Text = "Repeat (weeks):";
             // 
             // tbSchedNewComment
             // 
@@ -4231,8 +4258,6 @@
         private System.Windows.Forms.Label lbStudSearchLevel;
         private System.Windows.Forms.Label labelGlobSearch;
         private System.Windows.Forms.Label labelGlobCount;
-        private System.Windows.Forms.ToolStripMenuItem menuItemGlobDownload;
-        private System.Windows.Forms.ToolStripMenuItem menuItemGlobUpload;
         private System.Windows.Forms.Label labelGlobLastDownload;
         private System.Windows.Forms.Label labelGlobLastUpload;
         private System.Windows.Forms.Panel panelStudent;
@@ -4468,10 +4493,7 @@
         private System.Windows.Forms.TextBox tbSearchLessonStudent;
         private System.Windows.Forms.Label lbSearchLessonDay;
         private System.Windows.Forms.Button buttonTeach_GrabAvailChanges;
-        private System.Windows.Forms.ToolStripMenuItem scheduleToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem showToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem planToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cancelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem payToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem studentsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem teachersToolStripMenuItem;
@@ -4547,6 +4569,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn teacher1DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn teacher2DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn commentsDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.TextBox tbSchedNewDuration;
+        private System.Windows.Forms.Label lbSchedNewRepeat;
+        private System.Windows.Forms.ToolStripMenuItem syncToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem advancedToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem downloadToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reopenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem uploadToolStripMenuItem;
     }
 }
 

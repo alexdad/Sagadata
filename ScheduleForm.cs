@@ -149,17 +149,9 @@ namespace RecordKeeper
             }
         }
 
-        private void SchedNewGetTeacherLessons()
+        private void MarkLessons(List<Lesson> lsn)
         {
-            DateTime ds = StartWeekOf(m_schedNew_chosenDate);
-            DateTime de = ds;
-            de =  de.AddDays(7);
-
-            List<Lesson> lsn = LessonsByTeacherAndTime(
-                cbSchedNewTeacher.SelectedItem as string, 
-                ds, de);
-
-            foreach(Lesson l in lsn)
+            foreach (Lesson l in lsn)
             {
                 string stud = l.Student1 as string;
                 int i = StandardizeDayOfTheWeek(l.DateTimeStart.DayOfWeek);
@@ -176,8 +168,34 @@ namespace RecordKeeper
                     dgvSchedNew.Rows[j + 1].Cells[i + 1].Tag = c;
                     dgvSchedNew.Rows[j + 1].Cells[i + 1].Value = stud;
                 }
-
             }
+        }
+
+        private void SchedNewGetTeacherLessons()
+        {
+            DateTime ds = StartWeekOf(m_schedNew_chosenDate);
+            DateTime de = ds;
+            de =  de.AddDays(7);
+
+            string t = cbSchedNewTeacher.SelectedItem as string;
+            if (t != null)
+                MarkLessons(LessonsByTeacher(t, ds, de) );
+
+            t = cbSchedNewStud1.SelectedItem as string;
+            if (t != null)
+                MarkLessons(LessonsByStudent(t, ds, de));
+
+            t = cbSchedNewStud2.SelectedItem as string;
+            if (t != null)
+                MarkLessons(LessonsByStudent(t, ds, de));
+
+            t = cbSchedNewStud3.SelectedItem as string;
+            if (t != null)
+                MarkLessons(LessonsByStudent(t, ds, de));
+
+            t = cbSchedNewStud4.SelectedItem as string;
+            if (t != null)
+                MarkLessons(LessonsByStudent(t, ds, de));
         }
 
         public char[,] GetTeacherAvailability(string description)
@@ -310,7 +328,7 @@ namespace RecordKeeper
 
         void SchedNewShowDataIfReady()
         {
-            if (cbSchedNewTeacher.SelectedItem as string != null &&
+            if (cbSchedNewTeacher.SelectedItem as string != null ||
                 cbSchedNewStud1.SelectedItem as string != null)
 
                 SchedNewShowData();
