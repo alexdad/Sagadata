@@ -54,7 +54,7 @@ namespace RecordKeeper
             }
 
             DataList.Clear();
-            foreach (Teacher s in SavedFullListDuringSelection)
+            foreach (Teacher s in m_recordTypes[Modes.Teachers].SavedFullListDuringSelection)
             {
                 if (!CurrentType.Fit(m_teacherSelectionStatus, s.Status, true))
                     continue;

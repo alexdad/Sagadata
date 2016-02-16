@@ -16,16 +16,24 @@ namespace RecordKeeper
     public abstract class RecordType
     {
         protected FormGlob m_glob;
+        protected Dictionary<string, Record> m_originalRecords;
 
         public RecordType(FormGlob glob)
         {
             m_glob = glob;
             Modified = false;
+            m_originalRecords = new Dictionary<string, Record>();
+            DeletedKeys = new List<string>();
+
         }
         public bool Modified { get; set; }
         public bool Loaded { get; set; }
         public SchemaField[] Schema { get; set; }
         public int[] Placements { get; set; }
+
+        public Dictionary<string, Record> OriginalRecords { get { return m_originalRecords; } }
+        public Record[] SavedFullListDuringSelection { get; set; }
+        public List<string> DeletedKeys { get; set; }
 
         public string FilePath
         {
@@ -52,7 +60,7 @@ namespace RecordKeeper
         public bool ReadRecordsFile<T>() where T : Record
         {
             m_glob.DataList.Clear();
-            m_glob.RecordsAsRead.Clear();
+            m_originalRecords.Clear();
             bool success = false;
             try
             {
@@ -65,7 +73,7 @@ namespace RecordKeeper
                     string safeStr = SafeGuard(sts[s]);
                     T st = ParseValues<T>(s, safeStr.Split(','));
                     m_glob.DataList.Add(st);
-                    m_glob.RecordsAsRead.Add(st.Key, st);
+                    m_originalRecords.Add(st.Key, st);
                     FormGlob.AccumulateID(st.Id);
                 }
                 success = true;
@@ -155,9 +163,9 @@ namespace RecordKeeper
             foreach (Record s in m_glob.DataList)
             {
                 Record st = s;
-                if (m_glob.RecordsAsRead.ContainsKey(st.Key))
+                if (m_originalRecords.ContainsKey(st.Key))
                 {
-                    Record oldSt = m_glob.RecordsAsRead[st.Key];
+                    Record oldSt = m_originalRecords[st.Key];
                     if (RecordDiffers(st, oldSt))
                     {
                         st.Changed = DateTime.Now;
@@ -348,7 +356,7 @@ namespace RecordKeeper
             foreach (T s in dict.Values)
                 m_glob.DataList.Add(s);
 
-            m_glob.DeletedKeys.Clear();
+            DeletedKeys.Clear();
             //Modified = modified;
         }
 
@@ -371,19 +379,19 @@ namespace RecordKeeper
         }
         public void StashRecordList()
         {
-            m_glob.SavedFullListDuringSelection = ForkOut<Record>(0);
+            SavedFullListDuringSelection = ForkOut<Record>(0);
         }
 
         public void RestoreRecordList()
         {
             m_glob.DataList.Clear();
-            foreach (Record s in m_glob.SavedFullListDuringSelection)
+            foreach (Record s in SavedFullListDuringSelection)
                 m_glob.DataList.Add(s);
-            m_glob.SavedFullListDuringSelection = null;
+            SavedFullListDuringSelection = null;
         }
         public bool IsRecordDeleted(Record s)
         {
-            return m_glob.DeletedKeys.Contains(s.Key);
+            return DeletedKeys.Contains(s.Key);
         }
 
         public bool RecordDiffers(Record s1, Record s2)

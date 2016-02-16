@@ -9,7 +9,6 @@ namespace RecordKeeper
     public class Lesson : Record
     {
         public string Day { get; set; }
-        public string End { get; set; }
         public string Program { get; set; }
         public string Room { get; set; }
         public string State { get; set; }
@@ -24,9 +23,29 @@ namespace RecordKeeper
         public string Student9 { get; set; }
         public string Student10 { get; set; }
         public string Start { get; set; }
+        public string End { get; set; }
         public string Teacher1 { get; set; }
         public string Teacher2 { get; set; }
 
+        public DateTime DateTimeStart
+        {
+            get
+            {
+                DateTime dtd = DateTime.Parse(Day);
+                DateTime dts = DateTime.Parse(Start);
+                return new DateTime(dtd.Year, dtd.Month, dtd.Day, dts.Hour, dts.Minute, 0);
+            }
+        }
+
+        public DateTime DateTimeEnd
+        {
+            get
+            {
+                DateTime dtd = DateTime.Parse(Day);
+                DateTime dte = DateTime.Parse(End);
+                return new DateTime(dtd.Year, dtd.Month, dtd.Day, dte.Hour, dte.Minute, 0);
+            }
+        }
 
         public override string Description
         {

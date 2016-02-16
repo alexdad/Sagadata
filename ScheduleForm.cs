@@ -79,7 +79,7 @@ namespace RecordKeeper
         {
             int day = StandardizeDayOfTheWeek(dt.DayOfWeek);
             DateTime d = dt;
-            d.AddDays(-day);
+            d = d.AddDays(-day);
 
             string[] w = new string[8];
             w[0] = hdr; 
@@ -95,7 +95,7 @@ namespace RecordKeeper
         {
             int day = StandardizeDayOfTheWeek(dt.DayOfWeek);
             DateTime d = dt;
-            d.AddDays(-day);
+            d = d.AddDays(-day);
             return new DateTime(d.Year, d.Month, d.Day, 0, 0, 0);
         }
 
@@ -104,9 +104,9 @@ namespace RecordKeeper
             // Find closest Monday backward, and add 8
             int dayToday = StandardizeDayOfTheWeek(DateTime.Now.DayOfWeek);
             DateTime bow = DateTime.Now;
-            bow.AddDays(-dayToday);
+            bow = bow.AddDays(-dayToday);
             DateTime eow = bow;
-            eow.AddDays(6);
+            eow = eow.AddDays(6);
 
             cb.Items.Clear();
             for (int i=0; i < 9; i++)
@@ -134,7 +134,7 @@ namespace RecordKeeper
             }
         }
 
-        private void SchedNewPopulateSlotsFromTeacherAvailability()
+        private void SchedNewGetTeacherAvailability()
         {
             char[,] charSlots = GetTeacherAvailability(
                 cbSchedNewTeacher.SelectedItem as string);
@@ -149,7 +149,7 @@ namespace RecordKeeper
             }
         }
 
-        private void SchedNewShowTeacherLessons()
+        private void SchedNewGetTeacherLessons()
         {
             DateTime ds = StartWeekOf(m_schedNew_chosenDate);
             DateTime de = ds;
@@ -161,18 +161,20 @@ namespace RecordKeeper
 
             foreach(Lesson l in lsn)
             {
-                DateTime ls = DateTime.Parse(l.Start);
-                DateTime le = DateTime.Parse(l.End);
-                if (ls < de && le>= ds)
+                string stud = l.Student1 as string;
+                int i = StandardizeDayOfTheWeek(l.DateTimeStart.DayOfWeek);
+                int js = l.DateTimeStart.Hour * 4 + l.DateTimeStart.Minute / 15 - 7 * 4;
+                int je = l.DateTimeEnd.Hour * 4 + l.DateTimeEnd.Minute / 15 - 7 * 4;
+                char c = '4';
+                for (int j = js; j < je; j++)
                 {
-                    string stud = l.Student1 as string;
-                    int i = StandardizeDayOfTheWeek(ls.DayOfWeek);
-                    int j = ls.Hour * 4 + ls.Minute / 15;
-                    char c = '4';
-                    dgvSchedNew.Rows[j + 1].Cells[i + 1].Style.BackColor = AvailabilityColor(c);
+                    Color bc = AvailabilityColor(c);
+                    Color fc = Color.FromArgb(255 - bc.R, 255 - bc.G, 255 - bc.B);
+                    dgvSchedNew.Rows[j + 1].Cells[i + 1].Style.BackColor = bc;
+                    dgvSchedNew.Rows[j + 1].Cells[i + 1].Style.ForeColor = fc;
+
                     dgvSchedNew.Rows[j + 1].Cells[i + 1].Tag = c;
-                    dgvSchedNew.Rows[j + 1].Cells[i + 1].Value = stud.Substring(1, 2);
-                    // TODO _ better abbreviation here
+                    dgvSchedNew.Rows[j + 1].Cells[i + 1].Value = stud;
                 }
 
             }
@@ -258,6 +260,12 @@ namespace RecordKeeper
                     m_recordTypes[Modes.Teachers].ReadRecordsFile<Teacher>();
                 }
 
+                if (lessonList == null || lessonList.Count == 0)
+                {
+                    CurrentMode = Modes.Lessons;
+                    m_recordTypes[Modes.Lessons].ReadRecordsFile<Lesson>();
+                }
+
                 CurrentMode = was;
             }
 
@@ -290,6 +298,8 @@ namespace RecordKeeper
                 cbSchedNewLanguage.SelectedIndex = 1;   // Starting from English
                 cbSchedNewDuration.SelectedIndex = 5;   // Starting from 1:30
             }
+
+            butSchedNewAccept.Visible = false;
         }
         void SchedNewLessonLanguageChosen()
         {
@@ -302,6 +312,7 @@ namespace RecordKeeper
         {
             if (cbSchedNewTeacher.SelectedItem as string != null &&
                 cbSchedNewStud1.SelectedItem as string != null)
+
                 SchedNewShowData();
         }
         void SchedNewShowData()
@@ -313,10 +324,10 @@ namespace RecordKeeper
                 schedNewSlotList.Add(new RecordKeeper.Slot(m_enumTimeSlot[i]));
 
             // Assign colors based on teacher availability
-            SchedNewPopulateSlotsFromTeacherAvailability();
+            SchedNewGetTeacherAvailability();
 
             // Add info about teacher's lessons
-            SchedNewShowTeacherLessons();
+            SchedNewGetTeacherLessons();
 
             // Add info about student's lessons
 
@@ -361,17 +372,30 @@ namespace RecordKeeper
                     v = "";
                 dgvSchedNew.Rows[r].Cells[m_schedNew_col].Value = "New " + v; 
             }
+            butSchedNewAccept.Visible = true; 
         }
 
         void AcceptNewLesson()
         {
-            Lesson l = new Lesson();
-            l.Day = dtpSchedNew.Value.ToString();
-            l.Start = m_enumTimeSlot[m_schedNew_row];
-            l.End = m_enumTimeSlot[m_schedNew_row + cbSchedNewDuration.SelectedIndex - 1];
+            Modes was = CurrentMode;
+            CurrentMode = Modes.Lessons;
+            buttonAdd_Click(null, null);
+            Lesson l = lessonList.Current as Lesson;
+            CurrentMode = was;
+
+            int weekdayPicked = StandardizeDayOfTheWeek(dtpSchedNew.Value.DayOfWeek);
+            DateTime mondayPicked = dtpSchedNew.Value;
+            mondayPicked = mondayPicked.AddDays(-weekdayPicked);
+
+            DateTime dts = mondayPicked;
+            dts = dts.AddDays(m_schedNew_col - 1);
+
+            l.Day = dts.ToShortDateString();
+            l.Start = m_enumTimeSlot[m_schedNew_row - 1];
+            l.End = m_enumTimeSlot[m_schedNew_row + cbSchedNewDuration.SelectedIndex];
             l.Program = "";
             l.Room = "";
-            l.State = m_enumState[0]; // Lesson state 0 = Planned
+            l.State = m_enumState[1]; // Lesson state 1 = Planned
             l.Student1 = cbSchedNewStud1.SelectedItem as string;
             l.Student2 = cbSchedNewStud2.SelectedItem as string;
             l.Student3 = cbSchedNewStud3.SelectedItem as string;
@@ -384,8 +408,10 @@ namespace RecordKeeper
             l.Student10 = "";
             l.Teacher1 = cbSchedNewTeacher.SelectedItem as string;
             l.Teacher2 = "";
+            l.Comments = tbSchedNewComment.Text;
 
-            lessonList.Add(l);
+            butSchedNewAccept.Visible = false;
+            SchedNewShowDataIfReady();
         }
     }
 }

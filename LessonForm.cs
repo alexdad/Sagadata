@@ -50,7 +50,7 @@ namespace RecordKeeper
             }
 
             DataList.Clear();
-            foreach (Lesson s in SavedFullListDuringSelection)
+            foreach (Lesson s in m_recordTypes[Modes.Lessons].SavedFullListDuringSelection)
             {
                 if (!CurrentType.Fit(m_LessonSelectionTeacher, s.Teacher1, false) &&
                     !CurrentType.Fit(m_LessonSelectionTeacher, s.Teacher2, false))
@@ -102,8 +102,7 @@ namespace RecordKeeper
         {
             return FindLessons(l =>
                     (l.Teacher1 == desc || l.Teacher2 == desc) &&
-                    DateTime.Parse(l.Start) <= t2 &&
-                    DateTime.Parse(l.End) >= t1);
+                    l.DateTimeStart <= t2 && l.DateTimeEnd >= t1);
         }
 
         List<Lesson> LessonsByStudentAndTime(string desc, DateTime t1, DateTime t2)
@@ -113,8 +112,8 @@ namespace RecordKeeper
                     l.Student4 == desc || l.Student5 == desc || l.Student6 == desc ||
                     l.Student7 == desc || l.Student8 == desc || l.Student9 == desc ||
                     l.Student10 == desc) &&
-                    DateTime.Parse(l.Start) <= t2 &&
-                    DateTime.Parse(l.End) >= t1);
+                    l.DateTimeStart <= t2 &&
+                    l.DateTimeEnd >= t1);
         }
 
         List<Lesson> FindLessons(EvaluateLesson comp)

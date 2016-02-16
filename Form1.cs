@@ -97,10 +97,6 @@ namespace RecordKeeper
             }
         }
 
-        public List<string> DeletedKeys { get; set;  }
-        public Dictionary<string, Record> RecordsAsRead { get; set; }
-        public Record[] SavedFullListDuringSelection { get; set; }
-
         // WinForm form child control-related
         public string LastDownloadText { set { labelGlobLastDownload.Text = value; } }
         public string LastUploadText { set { labelGlobLastUpload.Text = value; } }
@@ -150,8 +146,6 @@ namespace RecordKeeper
             RecordsToFormConst2();
             cbGlobMode.SelectedIndex = (int)CurrentMode;
             SelectionMode = false;
-            DeletedKeys = new List<string>();
-            RecordsAsRead = new Dictionary<string, Record>();
         }
 
         private void RecordsToFormConst1()
@@ -252,7 +246,7 @@ namespace RecordKeeper
                 SaveChangedFiles();
 
             SelectionMode = false;
-            SavedFullListDuringSelection = null;
+            CurrentType.SavedFullListDuringSelection = null;
             SetMode(newMode);
             if (!Loaded)
                 ReadCurrentFile();
@@ -442,7 +436,7 @@ namespace RecordKeeper
             if (!CheckSafety())
                 return;
             Record s = (Record)DataList.Current;
-            DeletedKeys.Add(s.Key);
+            CurrentType.DeletedKeys.Add(s.Key);
             DataList.RemoveCurrent();
             ShowCurrentCount();
             Modified = true;
@@ -970,7 +964,12 @@ namespace RecordKeeper
         {
             AcceptNewLesson();
         }
+
         #endregion
 
+        private void buttonGlobRefresh_Click(object sender, EventArgs e)
+        {
+            dgvLesson.Refresh();
+        }
     }
 }

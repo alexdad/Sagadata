@@ -63,7 +63,7 @@ namespace RecordKeeper
             }
 
             DataList.Clear();
-            foreach (Student s in SavedFullListDuringSelection)
+            foreach (Student s in m_recordTypes[Modes.Students].SavedFullListDuringSelection)
             {
                 if (!CurrentType.Fit(m_StudentSelectionStatus, s.Status, true))
                     continue;

@@ -104,17 +104,18 @@
             this.dgvLesson = new System.Windows.Forms.DataGridView();
             this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.startDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.endDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Start = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.End = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.programDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.roomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.teacher1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.teacher2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.student1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.student2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.student3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.student4DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.student5DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.student10DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Student4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.teacher1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.teacher2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.commentsDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lessonList = new System.Windows.Forms.BindingSource(this.components);
             this.panelGlobEdit = new System.Windows.Forms.Panel();
@@ -256,7 +257,7 @@
             this.cbLessonStudent1 = new System.Windows.Forms.ComboBox();
             this.cbLessonTeacher2 = new System.Windows.Forms.ComboBox();
             this.cbLessonTeacher1 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbLessonProg = new System.Windows.Forms.ComboBox();
             this.labelLessonStudent1 = new System.Windows.Forms.Label();
             this.labelLessonTeacher2 = new System.Windows.Forms.Label();
             this.labelLessonTeacher1 = new System.Windows.Forms.Label();
@@ -277,6 +278,7 @@
             this.panelGlobNextNew = new System.Windows.Forms.Panel();
             this.butGlobalAdd = new System.Windows.Forms.Button();
             this.butGlobalNext = new System.Windows.Forms.Button();
+            this.buttonGlobRefresh = new System.Windows.Forms.Button();
             this.panelGlobSearch = new System.Windows.Forms.Panel();
             this.panelSearchButtons = new System.Windows.Forms.Panel();
             this.butGlobalToExcel = new System.Windows.Forms.Button();
@@ -605,9 +607,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelGlobIndicators.Controls.Add(this.labelGlobLastUpload);
             this.panelGlobIndicators.Controls.Add(this.labelGlobLastDownload);
-            this.panelGlobIndicators.Location = new System.Drawing.Point(365, 0);
+            this.panelGlobIndicators.Location = new System.Drawing.Point(417, 0);
             this.panelGlobIndicators.Name = "panelGlobIndicators";
-            this.panelGlobIndicators.Size = new System.Drawing.Size(923, 24);
+            this.panelGlobIndicators.Size = new System.Drawing.Size(871, 24);
             this.panelGlobIndicators.TabIndex = 27;
             // 
             // tabControlOps
@@ -650,6 +652,7 @@
             // 
             // splitContainerGlobDataControls.Panel2
             // 
+            this.splitContainerGlobDataControls.Panel2.Controls.Add(this.buttonGlobRefresh);
             this.splitContainerGlobDataControls.Panel2.Controls.Add(this.panelGlobSearch);
             this.splitContainerGlobDataControls.Panel2.Controls.Add(this.panelGlobLogo);
             this.splitContainerGlobDataControls.Size = new System.Drawing.Size(1277, 775);
@@ -1135,17 +1138,18 @@
             this.dgvLesson.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.State,
             this.dayDataGridViewTextBoxColumn,
-            this.startDataGridViewTextBoxColumn,
-            this.endDataGridViewTextBoxColumn,
+            this.Start,
+            this.End,
             this.programDataGridViewTextBoxColumn,
             this.roomDataGridViewTextBoxColumn,
-            this.teacher1DataGridViewTextBoxColumn,
-            this.teacher2DataGridViewTextBoxColumn,
+            this.stateDataGridViewTextBoxColumn,
             this.student1DataGridViewTextBoxColumn,
             this.student2DataGridViewTextBoxColumn,
             this.student3DataGridViewTextBoxColumn,
-            this.student4DataGridViewTextBoxColumn,
-            this.student5DataGridViewTextBoxColumn,
+            this.student10DataGridViewTextBoxColumn,
+            this.Student4,
+            this.teacher1DataGridViewTextBoxColumn,
+            this.teacher2DataGridViewTextBoxColumn,
             this.commentsDataGridViewTextBoxColumn2});
             this.dgvLesson.DataSource = this.lessonList;
             this.dgvLesson.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1171,19 +1175,19 @@
             this.dayDataGridViewTextBoxColumn.Name = "dayDataGridViewTextBoxColumn";
             this.dayDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // startDataGridViewTextBoxColumn
+            // Start
             // 
-            this.startDataGridViewTextBoxColumn.DataPropertyName = "Start";
-            this.startDataGridViewTextBoxColumn.HeaderText = "Start";
-            this.startDataGridViewTextBoxColumn.Name = "startDataGridViewTextBoxColumn";
-            this.startDataGridViewTextBoxColumn.ReadOnly = true;
+            this.Start.DataPropertyName = "Start";
+            this.Start.HeaderText = "Start";
+            this.Start.Name = "Start";
+            this.Start.ReadOnly = true;
             // 
-            // endDataGridViewTextBoxColumn
+            // End
             // 
-            this.endDataGridViewTextBoxColumn.DataPropertyName = "End";
-            this.endDataGridViewTextBoxColumn.HeaderText = "End";
-            this.endDataGridViewTextBoxColumn.Name = "endDataGridViewTextBoxColumn";
-            this.endDataGridViewTextBoxColumn.ReadOnly = true;
+            this.End.DataPropertyName = "End";
+            this.End.HeaderText = "End";
+            this.End.Name = "End";
+            this.End.ReadOnly = true;
             // 
             // programDataGridViewTextBoxColumn
             // 
@@ -1199,19 +1203,12 @@
             this.roomDataGridViewTextBoxColumn.Name = "roomDataGridViewTextBoxColumn";
             this.roomDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // teacher1DataGridViewTextBoxColumn
+            // stateDataGridViewTextBoxColumn
             // 
-            this.teacher1DataGridViewTextBoxColumn.DataPropertyName = "Teacher1";
-            this.teacher1DataGridViewTextBoxColumn.HeaderText = "Teacher1";
-            this.teacher1DataGridViewTextBoxColumn.Name = "teacher1DataGridViewTextBoxColumn";
-            this.teacher1DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // teacher2DataGridViewTextBoxColumn
-            // 
-            this.teacher2DataGridViewTextBoxColumn.DataPropertyName = "Teacher2";
-            this.teacher2DataGridViewTextBoxColumn.HeaderText = "Teacher2";
-            this.teacher2DataGridViewTextBoxColumn.Name = "teacher2DataGridViewTextBoxColumn";
-            this.teacher2DataGridViewTextBoxColumn.ReadOnly = true;
+            this.stateDataGridViewTextBoxColumn.DataPropertyName = "State";
+            this.stateDataGridViewTextBoxColumn.HeaderText = "State";
+            this.stateDataGridViewTextBoxColumn.Name = "stateDataGridViewTextBoxColumn";
+            this.stateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // student1DataGridViewTextBoxColumn
             // 
@@ -1234,19 +1231,33 @@
             this.student3DataGridViewTextBoxColumn.Name = "student3DataGridViewTextBoxColumn";
             this.student3DataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // student4DataGridViewTextBoxColumn
+            // student10DataGridViewTextBoxColumn
             // 
-            this.student4DataGridViewTextBoxColumn.DataPropertyName = "Student4";
-            this.student4DataGridViewTextBoxColumn.HeaderText = "Student4";
-            this.student4DataGridViewTextBoxColumn.Name = "student4DataGridViewTextBoxColumn";
-            this.student4DataGridViewTextBoxColumn.ReadOnly = true;
+            this.student10DataGridViewTextBoxColumn.DataPropertyName = "Student10";
+            this.student10DataGridViewTextBoxColumn.HeaderText = "Student10";
+            this.student10DataGridViewTextBoxColumn.Name = "student10DataGridViewTextBoxColumn";
+            this.student10DataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // student5DataGridViewTextBoxColumn
+            // Student4
             // 
-            this.student5DataGridViewTextBoxColumn.DataPropertyName = "Student5";
-            this.student5DataGridViewTextBoxColumn.HeaderText = "Student5";
-            this.student5DataGridViewTextBoxColumn.Name = "student5DataGridViewTextBoxColumn";
-            this.student5DataGridViewTextBoxColumn.ReadOnly = true;
+            this.Student4.DataPropertyName = "Student4";
+            this.Student4.HeaderText = "Student4";
+            this.Student4.Name = "Student4";
+            this.Student4.ReadOnly = true;
+            // 
+            // teacher1DataGridViewTextBoxColumn
+            // 
+            this.teacher1DataGridViewTextBoxColumn.DataPropertyName = "Teacher1";
+            this.teacher1DataGridViewTextBoxColumn.HeaderText = "Teacher1";
+            this.teacher1DataGridViewTextBoxColumn.Name = "teacher1DataGridViewTextBoxColumn";
+            this.teacher1DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // teacher2DataGridViewTextBoxColumn
+            // 
+            this.teacher2DataGridViewTextBoxColumn.DataPropertyName = "Teacher2";
+            this.teacher2DataGridViewTextBoxColumn.HeaderText = "Teacher2";
+            this.teacher2DataGridViewTextBoxColumn.Name = "teacher2DataGridViewTextBoxColumn";
+            this.teacher2DataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // commentsDataGridViewTextBoxColumn2
             // 
@@ -2487,7 +2498,7 @@
             this.panelLesson.Controls.Add(this.cbLessonStudent1);
             this.panelLesson.Controls.Add(this.cbLessonTeacher2);
             this.panelLesson.Controls.Add(this.cbLessonTeacher1);
-            this.panelLesson.Controls.Add(this.comboBox1);
+            this.panelLesson.Controls.Add(this.cbLessonProg);
             this.panelLesson.Controls.Add(this.labelLessonStudent1);
             this.panelLesson.Controls.Add(this.labelLessonTeacher2);
             this.panelLesson.Controls.Add(this.labelLessonTeacher1);
@@ -2673,6 +2684,7 @@
             // 
             this.tbLEssonComment.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbLEssonComment.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "Comments", true));
             this.tbLEssonComment.Location = new System.Drawing.Point(9, 217);
             this.tbLEssonComment.Name = "tbLEssonComment";
             this.tbLEssonComment.Size = new System.Drawing.Size(891, 20);
@@ -2692,7 +2704,7 @@
             // labelLessonStudent2
             // 
             this.labelLessonStudent2.AutoSize = true;
-            this.labelLessonStudent2.Location = new System.Drawing.Point(377, 134);
+            this.labelLessonStudent2.Location = new System.Drawing.Point(303, 150);
             this.labelLessonStudent2.Name = "labelLessonStudent2";
             this.labelLessonStudent2.Size = new System.Drawing.Size(56, 13);
             this.labelLessonStudent2.TabIndex = 24;
@@ -2702,7 +2714,7 @@
             // 
             this.cbLessonStudent1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "Student1", true));
             this.cbLessonStudent1.FormattingEnabled = true;
-            this.cbLessonStudent1.Location = new System.Drawing.Point(263, 150);
+            this.cbLessonStudent1.Location = new System.Drawing.Point(373, 107);
             this.cbLessonStudent1.Name = "cbLessonStudent1";
             this.cbLessonStudent1.Size = new System.Drawing.Size(96, 21);
             this.cbLessonStudent1.TabIndex = 9;
@@ -2712,7 +2724,7 @@
             // 
             this.cbLessonTeacher2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "Teacher2", true));
             this.cbLessonTeacher2.FormattingEnabled = true;
-            this.cbLessonTeacher2.Location = new System.Drawing.Point(377, 106);
+            this.cbLessonTeacher2.Location = new System.Drawing.Point(582, 188);
             this.cbLessonTeacher2.Name = "cbLessonTeacher2";
             this.cbLessonTeacher2.Size = new System.Drawing.Size(92, 21);
             this.cbLessonTeacher2.TabIndex = 8;
@@ -2728,20 +2740,20 @@
             this.cbLessonTeacher1.TabIndex = 7;
             this.cbLessonTeacher1.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
-            // comboBox1
+            // cbLessonProg
             // 
-            this.comboBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "Program", true));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(263, 23);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(96, 21);
-            this.comboBox1.TabIndex = 3;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.cbLessonProg.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "Program", true));
+            this.cbLessonProg.FormattingEnabled = true;
+            this.cbLessonProg.Location = new System.Drawing.Point(263, 23);
+            this.cbLessonProg.Name = "cbLessonProg";
+            this.cbLessonProg.Size = new System.Drawing.Size(96, 21);
+            this.cbLessonProg.TabIndex = 3;
+            this.cbLessonProg.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // labelLessonStudent1
             // 
             this.labelLessonStudent1.AutoSize = true;
-            this.labelLessonStudent1.Location = new System.Drawing.Point(263, 134);
+            this.labelLessonStudent1.Location = new System.Drawing.Point(377, 89);
             this.labelLessonStudent1.Name = "labelLessonStudent1";
             this.labelLessonStudent1.Size = new System.Drawing.Size(56, 13);
             this.labelLessonStudent1.TabIndex = 19;
@@ -2750,7 +2762,7 @@
             // labelLessonTeacher2
             // 
             this.labelLessonTeacher2.AutoSize = true;
-            this.labelLessonTeacher2.Location = new System.Drawing.Point(383, 90);
+            this.labelLessonTeacher2.Location = new System.Drawing.Point(579, 174);
             this.labelLessonTeacher2.Name = "labelLessonTeacher2";
             this.labelLessonTeacher2.Size = new System.Drawing.Size(59, 13);
             this.labelLessonTeacher2.TabIndex = 17;
@@ -2815,7 +2827,6 @@
             // 
             // monthCalendar1
             // 
-            this.monthCalendar1.DataBindings.Add(new System.Windows.Forms.Binding("SelectionRange", this.lessonList, "Day", true));
             this.monthCalendar1.Location = new System.Drawing.Point(9, 47);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 2;
@@ -2942,6 +2953,16 @@
             this.butGlobalNext.Text = ">>";
             this.butGlobalNext.UseVisualStyleBackColor = false;
             this.butGlobalNext.Click += new System.EventHandler(this.buttonNext_Click);
+            // 
+            // buttonGlobRefresh
+            // 
+            this.buttonGlobRefresh.Location = new System.Drawing.Point(63, 334);
+            this.buttonGlobRefresh.Name = "buttonGlobRefresh";
+            this.buttonGlobRefresh.Size = new System.Drawing.Size(75, 23);
+            this.buttonGlobRefresh.TabIndex = 14;
+            this.buttonGlobRefresh.Text = "Refresh";
+            this.buttonGlobRefresh.UseVisualStyleBackColor = true;
+            this.buttonGlobRefresh.Click += new System.EventHandler(this.buttonGlobRefresh_Click);
             // 
             // panelGlobSearch
             // 
@@ -3756,12 +3777,15 @@
             // 
             // butSchedNewAccept
             // 
+            this.butSchedNewAccept.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(127)))), ((int)(((byte)(39)))));
+            this.butSchedNewAccept.Cursor = System.Windows.Forms.Cursors.Default;
             this.butSchedNewAccept.Location = new System.Drawing.Point(352, 203);
             this.butSchedNewAccept.Name = "butSchedNewAccept";
             this.butSchedNewAccept.Size = new System.Drawing.Size(75, 23);
             this.butSchedNewAccept.TabIndex = 22;
             this.butSchedNewAccept.Text = "Accept";
-            this.butSchedNewAccept.UseVisualStyleBackColor = true;
+            this.butSchedNewAccept.UseVisualStyleBackColor = false;
+            this.butSchedNewAccept.Visible = false;
             this.butSchedNewAccept.Click += new System.EventHandler(this.butSchedNewAccept_Click);
             // 
             // cbSchedNewDuration
@@ -4375,7 +4399,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Summary;
         private System.Windows.Forms.DataGridView dgvLesson;
-        private System.Windows.Forms.BindingSource lessonList;
         private System.Windows.Forms.Panel panelLesson;
         private System.Windows.Forms.Label labelLessonProgram;
         private System.Windows.Forms.ComboBox cbLessonState;
@@ -4411,24 +4434,10 @@
         private System.Windows.Forms.ComboBox cbLessonStudent1;
         private System.Windows.Forms.ComboBox cbLessonTeacher2;
         private System.Windows.Forms.ComboBox cbLessonTeacher1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbLessonProg;
         private System.Windows.Forms.Label labelLessonStudent1;
         private System.Windows.Forms.Label labelLessonTeacher2;
         private System.Windows.Forms.Label labelLessonTeacher1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn State;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dayDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn startDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn endDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn programDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn roomDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn teacher1DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn teacher2DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn student1DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn student2DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn student3DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn student4DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn student5DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn commentsDataGridViewTextBoxColumn2;
         private HiddenTabControl tabControlSearch;
         private System.Windows.Forms.TabPage tabPageSearchStudent;
         private System.Windows.Forms.TabPage tabPageSearchTeacher;
@@ -4526,6 +4535,23 @@
         private System.Windows.Forms.TextBox tbSchedNewComment;
         private System.Windows.Forms.Label lbSchedNewComment;
         private System.Windows.Forms.Label lbSchedNewTeachVacation;
+        private System.Windows.Forms.Button buttonGlobRefresh;
+        private System.Windows.Forms.BindingSource lessonList;
+        private System.Windows.Forms.DataGridViewTextBoxColumn State;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Start;
+        private System.Windows.Forms.DataGridViewTextBoxColumn End;
+        private System.Windows.Forms.DataGridViewTextBoxColumn programDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn roomDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn student1DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn student2DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn student3DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn student10DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Student4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn teacher1DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn teacher2DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn commentsDataGridViewTextBoxColumn2;
     }
 }
 

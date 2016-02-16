@@ -47,7 +47,7 @@ namespace RecordKeeper
             }
 
             DataList.Clear();
-            foreach (Room s in SavedFullListDuringSelection)
+            foreach (Room s in m_recordTypes[Modes.Rooms].SavedFullListDuringSelection)
             {
                 // TODO - make it >= number
                 if (!CurrentType.Fit(m_RoomSelectionCapacity, s.Capacity.ToString(), true))

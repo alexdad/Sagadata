@@ -35,11 +35,11 @@ namespace RecordKeeper
         public Record()
         {
             Changed = DateTime.Now;
-            ChangedBy = "";
+            ChangedBy = FormGlob.Client;
             Created = DateTime.Now;
-            CreatedBy = "";
+            CreatedBy = FormGlob.Client;
             Comments = "";
-            Id = 0;
+            Id = FormGlob.AllocateID();
         }
 
         public string SetRecordFields(string field, string value)

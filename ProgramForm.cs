@@ -43,7 +43,7 @@ namespace RecordKeeper
             }
 
             DataList.Clear();
-            foreach (Program s in SavedFullListDuringSelection)
+            foreach (Program s in m_recordTypes[Modes.Programs].SavedFullListDuringSelection)
             {
                 if (!CurrentType.Fit(m_ProgramSelectionLanguage, s.Language, true))
                     continue;
