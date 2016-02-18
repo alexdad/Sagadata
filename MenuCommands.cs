@@ -70,7 +70,7 @@ namespace RecordKeeper
         }
         private void planToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            InitializeSchedNew(false);
+            InitializePlan(false);
             tabControlOps.SelectedIndex = (int)TabControlOps.Plan;
         }
         private void studentsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -147,16 +147,34 @@ namespace RecordKeeper
             CurrentMode = modeWas;
         }
 
-        private void DownloadAllFiles()
+        private bool DownloadAllFiles()
         {
+            bool success = true;
             Modes modeWas = CurrentMode;
 
             for (Modes i = (Modes)0; i < Modes.MaxMode; i++)
             {
                 SetMode(i);
-                DownloadCurrentFile();
+                if (!DownloadCurrentFile())
+                    success = false;
             }
             CurrentMode = modeWas;
+            return success;  
+        }
+
+        private bool ReadAllFiles()
+        {
+            bool success = true;
+            Modes modeWas = CurrentMode;
+
+            for (Modes i = (Modes)0; i < Modes.MaxMode; i++)
+            {
+                SetMode(i);
+                if (!ReadCurrentFile())
+                    success = false;
+            }
+            CurrentMode = modeWas;
+            return success;
         }
 
         private List<Modes> AskAndSaveChangedFiles()

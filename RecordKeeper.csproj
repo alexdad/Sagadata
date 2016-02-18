@@ -170,11 +170,10 @@
     <Compile Include="StudentType.cs" />
     <Compile Include="Teacher.cs" />
     <Compile Include="TeacherType.cs" />
-    <Compile Include="ViewForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="ViewForm.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -214,6 +213,7 @@
     <None Include="Properties\DataSources\Slot.datasource" />
     <None Include="Properties\DataSources\Student.datasource" />
     <None Include="Properties\DataSources\Teacher.datasource" />
+    <None Include="Properties\DataSources\ViewSlot.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

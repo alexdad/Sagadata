@@ -58,11 +58,11 @@ namespace RecordKeeper
 
     public partial class FormGlob : Form
     {
-        DateTime m_schedNew_chosenDate = DateTime.Today;
-        string m_schedNew_chosenLanguage = "English";
-        bool m_schedNew_firstTimeSchedNew = true;
-        int m_schedNew_row = -1;
-        int m_schedNew_col = -1;
+        DateTime m_plan_chosenDate = DateTime.Today;
+        string m_plan_chosenLanguage = "English";
+        bool m_plan_firstTimePlan = true;
+        int m_plan_row = -1;
+        int m_plan_col = -1;
 
 
         int StandardizeDayOfTheWeek(DayOfWeek dw)
@@ -134,17 +134,17 @@ namespace RecordKeeper
             }
         }
 
-        private void SchedNewGetTeacherAvailability()
+        private void PlanGetTeacherAvailability()
         {
             char[,] charSlots = GetTeacherAvailability(
-                cbSchedNewTeacher.SelectedItem as string);
+                cbPlanTeacher.SelectedItem as string);
             for (int i = 0; i < 7; i++)
             {
                 for (int j = 0; j < m_enumTimeSlot.Length; j++)
                 {
                     char c = charSlots[i, j];
-                    dgvSchedNew.Rows[j + 1].Cells[i + 1].Style.BackColor = AvailabilityColor(c);
-                    dgvSchedNew.Rows[j + 1].Cells[i + 1].Tag = c;
+                    dgvPlan.Rows[j + 1].Cells[i + 1].Style.BackColor = AvailabilityColor(c);
+                    dgvPlan.Rows[j + 1].Cells[i + 1].Tag = c;
                 }
             }
         }
@@ -162,38 +162,38 @@ namespace RecordKeeper
                 {
                     Color bc = AvailabilityColor(c);
                     Color fc = Color.FromArgb(255 - bc.R, 255 - bc.G, 255 - bc.B);
-                    dgvSchedNew.Rows[j + 1].Cells[i + 1].Style.BackColor = bc;
-                    dgvSchedNew.Rows[j + 1].Cells[i + 1].Style.ForeColor = fc;
+                    dgvPlan.Rows[j + 1].Cells[i + 1].Style.BackColor = bc;
+                    dgvPlan.Rows[j + 1].Cells[i + 1].Style.ForeColor = fc;
 
-                    dgvSchedNew.Rows[j + 1].Cells[i + 1].Tag = c;
-                    dgvSchedNew.Rows[j + 1].Cells[i + 1].Value = stud;
+                    dgvPlan.Rows[j + 1].Cells[i + 1].Tag = c;
+                    dgvPlan.Rows[j + 1].Cells[i + 1].Value = stud;
                 }
             }
         }
 
-        private void SchedNewGetTeacherLessons()
+        private void PlanGetTeacherLessons()
         {
-            DateTime ds = StartWeekOf(m_schedNew_chosenDate);
+            DateTime ds = StartWeekOf(m_plan_chosenDate);
             DateTime de = ds;
             de =  de.AddDays(7);
 
-            string t = cbSchedNewTeacher.SelectedItem as string;
+            string t = cbPlanTeacher.SelectedItem as string;
             if (t != null)
                 MarkLessons(LessonsByTeacher(t, ds, de) );
 
-            t = cbSchedNewStud1.SelectedItem as string;
+            t = cbPlanStud1.SelectedItem as string;
             if (t != null)
                 MarkLessons(LessonsByStudent(t, ds, de));
 
-            t = cbSchedNewStud2.SelectedItem as string;
+            t = cbPlanStud2.SelectedItem as string;
             if (t != null)
                 MarkLessons(LessonsByStudent(t, ds, de));
 
-            t = cbSchedNewStud3.SelectedItem as string;
+            t = cbPlanStud3.SelectedItem as string;
             if (t != null)
                 MarkLessons(LessonsByStudent(t, ds, de));
 
-            t = cbSchedNewStud4.SelectedItem as string;
+            t = cbPlanStud4.SelectedItem as string;
             if (t != null)
                 MarkLessons(LessonsByStudent(t, ds, de));
         }
@@ -256,14 +256,14 @@ namespace RecordKeeper
         }
         
 
-        void SchedNewLesson()
+        void PlanLesson()
         {
-            //cbSchedNewDuration
+            //cbPlanDuration
         }
 
-        void InitializeSchedNew(bool force)
+        void InitializePlan(bool force)
         {
-            if (m_schedNew_firstTimeSchedNew)
+            if (m_plan_firstTimePlan)
             {
                 Modes was = CurrentMode;
                 if (studentList == null || studentList.Count == 0)
@@ -287,65 +287,65 @@ namespace RecordKeeper
                 CurrentMode = was;
             }
 
-            if (m_schedNew_firstTimeSchedNew || force)
+            if (m_plan_firstTimePlan || force)
             {
-                PopulateTeacherChoices(m_schedNew_chosenLanguage, cbSchedNewTeacher);
-                cbSchedNewTeacher.SelectedIndex = -1;
-                cbSchedNewTeacher.Text = "";
+                PopulateTeacherChoices(m_plan_chosenLanguage, cbPlanTeacher);
+                cbPlanTeacher.SelectedIndex = -1;
+                cbPlanTeacher.Text = "";
 
-                PopulateStudentChoices(m_schedNew_chosenLanguage, cbSchedNewStud1);
-                cbSchedNewStud1.SelectedIndex = -1;
-                cbSchedNewStud1.Text = "";
+                PopulateStudentChoices(m_plan_chosenLanguage, cbPlanStud1);
+                cbPlanStud1.SelectedIndex = -1;
+                cbPlanStud1.Text = "";
 
-                PopulateStudentChoices(m_schedNew_chosenLanguage, cbSchedNewStud2);
-                cbSchedNewStud2.SelectedIndex = -1;
-                cbSchedNewStud2.Text = "";
+                PopulateStudentChoices(m_plan_chosenLanguage, cbPlanStud2);
+                cbPlanStud2.SelectedIndex = -1;
+                cbPlanStud2.Text = "";
 
-                PopulateStudentChoices(m_schedNew_chosenLanguage, cbSchedNewStud3);
-                cbSchedNewStud3.SelectedIndex = -1;
-                cbSchedNewStud3.Text = "";
+                PopulateStudentChoices(m_plan_chosenLanguage, cbPlanStud3);
+                cbPlanStud3.SelectedIndex = -1;
+                cbPlanStud3.Text = "";
 
-                PopulateStudentChoices(m_schedNew_chosenLanguage, cbSchedNewStud4);
-                cbSchedNewStud4.SelectedIndex = -1;
-                cbSchedNewStud4.Text = "";
+                PopulateStudentChoices(m_plan_chosenLanguage, cbPlanStud4);
+                cbPlanStud4.SelectedIndex = -1;
+                cbPlanStud4.Text = "";
             }
 
-            if (m_schedNew_firstTimeSchedNew)
+            if (m_plan_firstTimePlan)
             {
-                m_schedNew_firstTimeSchedNew = false;
-                cbSchedNewLanguage.SelectedIndex = 1;   // Starting from English
-                cbSchedNewDuration.SelectedIndex = 5;   // Starting from 1:30
+                m_plan_firstTimePlan = false;
+                cbPlanLanguage.SelectedIndex = 1;   // Starting from English
+                cbPlanDuration.SelectedIndex = 5;   // Starting from 1:30
             }
 
-            butSchedNewAccept.Visible = false;
+            butPlanAccept.Visible = false;
         }
-        void SchedNewLessonLanguageChosen()
+        void PlanLessonLanguageChosen()
         {
-            string lang = (string)cbSchedNewLanguage.SelectedItem;
-            m_schedNew_chosenLanguage = lang;
-            InitializeSchedNew(true);
+            string lang = (string)cbPlanLanguage.SelectedItem;
+            m_plan_chosenLanguage = lang;
+            InitializePlan(true);
         }
 
-        void SchedNewShowDataIfReady()
+        void PlanShowDataIfReady()
         {
-            if (cbSchedNewTeacher.SelectedItem as string != null ||
-                cbSchedNewStud1.SelectedItem as string != null)
+            if (cbPlanTeacher.SelectedItem as string != null ||
+                cbPlanStud1.SelectedItem as string != null)
 
-                SchedNewShowData();
+                PlanShowData();
         }
-        void SchedNewShowData()
+        void PlanShowData()
         {
             // Form the grid
-            schedNewSlotList.Clear();
-            schedNewSlotList.Add(new RecordKeeper.Slot(WeekOf(m_schedNew_chosenDate, "")));
+            planSlotList.Clear();
+            planSlotList.Add(new RecordKeeper.Slot(WeekOf(m_plan_chosenDate, "")));
             for(int i=0; i < m_enumTimeSlot.Length; i++)
-                schedNewSlotList.Add(new RecordKeeper.Slot(m_enumTimeSlot[i]));
+                planSlotList.Add(new RecordKeeper.Slot(m_enumTimeSlot[i]));
 
             // Assign colors based on teacher availability
-            SchedNewGetTeacherAvailability();
+            PlanGetTeacherAvailability();
 
             // Add info about teacher's lessons
-            SchedNewGetTeacherLessons();
+            PlanGetTeacherLessons();
 
             // Add info about student's lessons
 
@@ -356,41 +356,41 @@ namespace RecordKeeper
 
         void ProposeNewLesson(DataGridView dgv, int row, int col)
         {
-            if (row < 0 || row >= dgvSchedNew.RowCount ||
-                col < 0 || col > dgvSchedNew.ColumnCount)
+            if (row < 0 || row >= dgvPlan.RowCount ||
+                col < 0 || col > dgvPlan.ColumnCount)
                 return;
 
-            if (m_schedNew_row >= 0 && m_schedNew_col >= 0 && 
-                m_schedNew_col < dgvSchedNew.ColumnCount)
+            if (m_plan_row >= 0 && m_plan_col >= 0 && 
+                m_plan_col < dgvPlan.ColumnCount)
             {
-                for (int r = m_schedNew_row; 
-                    r < m_schedNew_row + 32 && r < dgvSchedNew.RowCount; 
+                for (int r = m_plan_row; 
+                    r < m_plan_row + 32 && r < dgvPlan.RowCount; 
                     r++)
                 {
-                    string v = dgvSchedNew.Rows[r].Cells[m_schedNew_col].Value as string;
+                    string v = dgvPlan.Rows[r].Cells[m_plan_col].Value as string;
                     if (v == null)
                         v = "";
                     if (v.Length >= 4 && v.Substring(0, 4) == "New ")
-                        dgvSchedNew.Rows[r].Cells[m_schedNew_col].Value = v.Substring(4);
+                        dgvPlan.Rows[r].Cells[m_plan_col].Value = v.Substring(4);
                     else
                         break;
                 }
             }
 
-            m_schedNew_row = row;
-            m_schedNew_col = col;
-            int len = cbSchedNewDuration.SelectedIndex + 1;
+            m_plan_row = row;
+            m_plan_col = col;
+            int len = cbPlanDuration.SelectedIndex + 1;
 
-            for (int r = m_schedNew_row;
-                r < m_schedNew_row + len && r < dgvSchedNew.RowCount;
+            for (int r = m_plan_row;
+                r < m_plan_row + len && r < dgvPlan.RowCount;
                 r++)
             {
-                string v = dgvSchedNew.Rows[r].Cells[m_schedNew_col].Value as string;
+                string v = dgvPlan.Rows[r].Cells[m_plan_col].Value as string;
                 if (v == null)
                     v = "";
-                dgvSchedNew.Rows[r].Cells[m_schedNew_col].Value = "New " + v; 
+                dgvPlan.Rows[r].Cells[m_plan_col].Value = "New " + v; 
             }
-            butSchedNewAccept.Visible = true; 
+            butPlanAccept.Visible = true; 
         }
 
         void AcceptNewLesson()
@@ -401,35 +401,35 @@ namespace RecordKeeper
             Lesson l = lessonList.Current as Lesson;
             CurrentMode = was;
 
-            int weekdayPicked = StandardizeDayOfTheWeek(dtpSchedNew.Value.DayOfWeek);
-            DateTime mondayPicked = dtpSchedNew.Value;
+            int weekdayPicked = StandardizeDayOfTheWeek(dtpPlan.Value.DayOfWeek);
+            DateTime mondayPicked = dtpPlan.Value;
             mondayPicked = mondayPicked.AddDays(-weekdayPicked);
 
             DateTime dts = mondayPicked;
-            dts = dts.AddDays(m_schedNew_col - 1);
+            dts = dts.AddDays(m_plan_col - 1);
 
             l.Day = dts.ToShortDateString();
-            l.Start = m_enumTimeSlot[m_schedNew_row - 1];
-            l.End = m_enumTimeSlot[m_schedNew_row + cbSchedNewDuration.SelectedIndex];
+            l.Start = m_enumTimeSlot[m_plan_row - 1];
+            l.End = m_enumTimeSlot[m_plan_row + cbPlanDuration.SelectedIndex];
             l.Program = "";
             l.Room = "";
             l.State = m_enumState[1]; // Lesson state 1 = Planned
-            l.Student1 = cbSchedNewStud1.SelectedItem as string;
-            l.Student2 = cbSchedNewStud2.SelectedItem as string;
-            l.Student3 = cbSchedNewStud3.SelectedItem as string;
-            l.Student4 = cbSchedNewStud4.SelectedItem as string;
+            l.Student1 = cbPlanStud1.SelectedItem as string;
+            l.Student2 = cbPlanStud2.SelectedItem as string;
+            l.Student3 = cbPlanStud3.SelectedItem as string;
+            l.Student4 = cbPlanStud4.SelectedItem as string;
             l.Student5 = "";
             l.Student6 = "";
             l.Student7 = "";
             l.Student8 = "";
             l.Student9 = "";
             l.Student10 = "";
-            l.Teacher1 = cbSchedNewTeacher.SelectedItem as string;
+            l.Teacher1 = cbPlanTeacher.SelectedItem as string;
             l.Teacher2 = "";
-            l.Comments = tbSchedNewComment.Text;
+            l.Comments = tbPlanComment.Text;
 
-            butSchedNewAccept.Visible = false;
-            SchedNewShowDataIfReady();
+            butPlanAccept.Visible = false;
+            PlanShowDataIfReady();
         }
     }
 }

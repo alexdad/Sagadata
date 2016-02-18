@@ -169,11 +169,11 @@ namespace RecordKeeper
         {
             if (Properties.Settings.Default.InitialDownload.ToLower() != "no")
             {
-                if (!DownloadCurrentFile())
-                    ReadCurrentFile();
+                if (!DownloadAllFiles())
+                    ReadAllFiles();
             }
             else
-                ReadCurrentFile();
+                ReadAllFiles();
 
             ShowCurrentCount();
 
@@ -393,7 +393,7 @@ namespace RecordKeeper
                 e.ColumnIndex);
         }
 
-        private void dgvSchedNew_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvPlan_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             ProposeNewLesson(sender as DataGridView, e.RowIndex, e.ColumnIndex);
         }
@@ -916,51 +916,51 @@ namespace RecordKeeper
         #endregion
 
         #region Schedule-related UI
-        private void dtpSchedNew_ValueChanged(object sender, EventArgs e)
+        private void dtpPlan_ValueChanged(object sender, EventArgs e)
         {
             DateTimePicker dtp = (DateTimePicker)sender;
-            m_schedNew_chosenDate = dtp.Value.Date;
-            SchedNewShowDataIfReady();
+            m_plan_chosenDate = dtp.Value.Date;
+            PlanShowDataIfReady();
         }
-        private void cbSchedNewLanguage_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbPlanLanguage_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SchedNewLessonLanguageChosen();
-            SchedNewShowDataIfReady();
+            PlanLessonLanguageChosen();
+            PlanShowDataIfReady();
         }
-        private void cbSchedNewTeacher_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ComboBox cb = sender as ComboBox;
-            PopulateTeacherVacation(cb.SelectedItem as string, lbSchedNewTeachVacation);
-            SchedNewShowDataIfReady();
-        }
-        private void cbSchedNewStud1_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbPlanTeacher_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cb = sender as ComboBox;
-            PopulateStudentPossibleSchedule(cb.SelectedItem as string, lbSchedNewStudSchedule1);
-            SchedNewShowDataIfReady();
+            PopulateTeacherVacation(cb.SelectedItem as string, lbPlanTeachVacation);
+            PlanShowDataIfReady();
+        }
+        private void cbPlanStud1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox cb = sender as ComboBox;
+            PopulateStudentPossibleSchedule(cb.SelectedItem as string, lbPlanStudSchedule1);
+            PlanShowDataIfReady();
         }
 
-        private void cbSchedNewStud2_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbPlanStud2_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cb = sender as ComboBox;
-            PopulateStudentPossibleSchedule(cb.SelectedItem as string, lbSchedNewStudSchedule2);
-            SchedNewShowDataIfReady();
+            PopulateStudentPossibleSchedule(cb.SelectedItem as string, lbPlanStudSchedule2);
+            PlanShowDataIfReady();
         }
 
-        private void cbSchedNewStud3_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbPlanStud3_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cb = sender as ComboBox;
-            PopulateStudentPossibleSchedule(cb.SelectedItem as string, lbSchedNewStudSchedule3);
-            SchedNewShowDataIfReady();
+            PopulateStudentPossibleSchedule(cb.SelectedItem as string, lbPlanStudSchedule3);
+            PlanShowDataIfReady();
         }
 
-        private void cbSchedNewStud4_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbPlanStud4_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cb = sender as ComboBox;
-            PopulateStudentPossibleSchedule(cb.SelectedItem as string, lbSchedNewStudSchedule4);
-            SchedNewShowDataIfReady();
+            PopulateStudentPossibleSchedule(cb.SelectedItem as string, lbPlanStudSchedule4);
+            PlanShowDataIfReady();
         }
-        private void butSchedNewAccept_Click(object sender, EventArgs e)
+        private void butPlanAccept_Click(object sender, EventArgs e)
         {
             AcceptNewLesson();
         }
@@ -995,7 +995,41 @@ namespace RecordKeeper
                 (tabControlViewScales.SelectedIndex <
                     (int)TabControlScales.Slots);
         }
-        #endregion
+        private void dtpViewSlot_ValueChanged(object sender, EventArgs e)
+        {
+            DateTimePicker dtp = (DateTimePicker)sender;
+            m_view_chosenDate = dtp.Value.Date;
+            ViewShowSlots();
+        }
+
+        private void cbViewSelectStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox cb = sender as ComboBox;
+            m_view_chosen_status = cb.SelectedItem as string;
+            ViewShowSlots();
+        }
+
+        private void cbViewSelectStudent_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox cb = sender as ComboBox;
+            m_view_chosen_student= cb.SelectedItem as string;
+            ViewShowSlots();
+        }
+
+        private void cbViewSelectTeacher_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox cb = sender as ComboBox;
+            m_view_chosen_teacher= cb.SelectedItem as string;
+            ViewShowSlots();
+        }
+
+        private void cbViewSelectRoom_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox cb = sender as ComboBox;
+            m_view_chosen_room= cb.SelectedItem as string;
+            ViewShowSlots();
+        }
+
 
         private void tabControlViewScales_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1008,11 +1042,12 @@ namespace RecordKeeper
                     ShowDay();
                     break;
                 case (int)TabControlScales.Slots:
-                    ShowSlots();
+                    ViewShowSlots();
                     break;
                 default:
                     break;
             }
         }
+        #endregion
     }
 }

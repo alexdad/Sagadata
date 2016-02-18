@@ -128,5 +128,41 @@ namespace RecordKeeper
             return lessons;
         }
 
+        List<Lesson> FindLessonSlots(
+            string state,
+            string student,
+            string teacher,
+            string room,
+            DateTime t1,
+            DateTime t2)
+        {
+            List<Lesson> lessons = new List<Lesson>();
+            foreach (var tt in this.lessonList.List)
+            {
+                Lesson t = tt as Lesson;
+                if (t.DateTimeStart >= t2 || t.DateTimeEnd < t1)
+                    continue;
+                if (state != null && state.Trim().Length > 1 &&
+                    state != t.State)
+                    continue;
+                if (room != null && room.Trim().Length > 1 &&
+                    room != t.Room)
+                    continue;
+                if (teacher != null && teacher.Trim().Length > 1 &&
+                    teacher != t.Teacher1 && teacher != t.Teacher2)
+                    continue;
+                if (student != null && student.Trim().Length > 1 &&
+                    student != t.Student1 && student != t.Student2 &&
+                    student != t.Student3 && student != t.Student4 &&
+                    student != t.Student5 && student != t.Student6 &&
+                    student != t.Student7 && student != t.Student8 &&
+                    student != t.Student9 && student != t.Student10)
+                    continue;
+
+                lessons.Add(t);
+            }
+            return lessons;
+        }
+
     }
 }

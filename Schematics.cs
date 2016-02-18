@@ -137,10 +137,10 @@ namespace RecordKeeper
             cbLessonStart.Items.AddRange(m_enumTimeSlot);
             cbLessonEnd.Items.AddRange(m_enumTimeSlot);
 
-            cbSchedNewLanguage.Items.AddRange(m_enumLanguage);
-            //cbSchedNewLanguage.SelectedIndex = 1;   // Starting from English
-            cbSchedNewDuration.Items.AddRange(m_enumDurations);
-            //cbSchedNewDuration.SelectedIndex = 5;   // Starting from 1:30
+            cbPlanLanguage.Items.AddRange(m_enumLanguage);
+            //cbPlanLanguage.SelectedIndex = 1;   // Starting from English
+            cbPlanDuration.Items.AddRange(m_enumDurations);
+            //cbPlanDuration.SelectedIndex = 5;   // Starting from 1:30
         }
 
         public bool SelectionMode
