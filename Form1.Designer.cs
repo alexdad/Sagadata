@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGlob));
-            this.menuStripGlobalOps = new System.Windows.Forms.MenuStrip();
             this.syncToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.planToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,6 +44,7 @@
             this.uploadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemGlobSave = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemGlobExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStripGlobalOps = new System.Windows.Forms.MenuStrip();
             this.labelGlobLastDownload = new System.Windows.Forms.Label();
             this.labelGlobLastUpload = new System.Windows.Forms.Label();
             this.panelGlobIndicators = new System.Windows.Forms.Panel();
@@ -279,7 +279,6 @@
             this.panelGlobNextNew = new System.Windows.Forms.Panel();
             this.butGlobalAdd = new System.Windows.Forms.Button();
             this.butGlobalNext = new System.Windows.Forms.Button();
-            this.buttonGlobRefresh = new System.Windows.Forms.Button();
             this.panelGlobSearch = new System.Windows.Forms.Panel();
             this.panelSearchButtons = new System.Windows.Forms.Panel();
             this.butGlobalToExcel = new System.Windows.Forms.Button();
@@ -335,10 +334,10 @@
             this.labelGlobSearch = new System.Windows.Forms.Label();
             this.panelGlobLogo = new System.Windows.Forms.Panel();
             this.cbGlobMode = new System.Windows.Forms.ComboBox();
-            this.pictureBoxGlobIcon = new System.Windows.Forms.PictureBox();
+            this.picBoxGlobIcon = new System.Windows.Forms.PictureBox();
             this.labelGlobSagalingua = new System.Windows.Forms.Label();
             this.labelGlobCount = new System.Windows.Forms.Label();
-            this.tabSchedPlan = new System.Windows.Forms.TabPage();
+            this.tabPlan = new System.Windows.Forms.TabPage();
             this.panelSchedNewMatrix = new System.Windows.Forms.Panel();
             this.dgvSchedNew = new System.Windows.Forms.DataGridView();
             this.Slot = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -373,13 +372,48 @@
             this.cbSchedNewStud4 = new System.Windows.Forms.ComboBox();
             this.lbSchedNewStud1 = new System.Windows.Forms.Label();
             this.cbSchedNewStud3 = new System.Windows.Forms.ComboBox();
-            this.lbSchedNewStud2 = new System.Windows.Forms.Label();
             this.cbSchedNewStud2 = new System.Windows.Forms.ComboBox();
-            this.lbSchedNewStud3 = new System.Windows.Forms.Label();
             this.cbSchedNewStud1 = new System.Windows.Forms.ComboBox();
-            this.lbSchedNewStud4 = new System.Windows.Forms.Label();
-            this.tabSchedShow = new System.Windows.Forms.TabPage();
-            this.lbSchedShowName = new System.Windows.Forms.Label();
+            this.tabView = new System.Windows.Forms.TabPage();
+            this.splitCntViewMatrixCon = new System.Windows.Forms.SplitContainer();
+            this.tabControlViewScales = new RecordKeeper.HiddenTabControl();
+            this.tabPageViewWeek = new System.Windows.Forms.TabPage();
+            this.panelViewWeek = new System.Windows.Forms.Panel();
+            this.tabPageViewDay = new System.Windows.Forms.TabPage();
+            this.panelViewDay = new System.Windows.Forms.Panel();
+            this.tabPageViewSlots = new System.Windows.Forms.TabPage();
+            this.panelViewSlots = new System.Windows.Forms.Panel();
+            this.panelViewControl = new System.Windows.Forms.Panel();
+            this.panelViewSelect = new System.Windows.Forms.Panel();
+            this.cbViewSelectStatus = new System.Windows.Forms.ComboBox();
+            this.lbViewSelectStatus = new System.Windows.Forms.Label();
+            this.cbViewSelectRoom = new System.Windows.Forms.ComboBox();
+            this.cbViewSelectTeacher = new System.Windows.Forms.ComboBox();
+            this.cbViewSelectStudent = new System.Windows.Forms.ComboBox();
+            this.lbViewSelectRoom = new System.Windows.Forms.Label();
+            this.lbViewSelectTeacher = new System.Windows.Forms.Label();
+            this.lbViewSelectStudent = new System.Windows.Forms.Label();
+            this.butViewShowAll = new System.Windows.Forms.Button();
+            this.labelViewSelect = new System.Windows.Forms.Label();
+            this.groupBoxViewCurrent = new System.Windows.Forms.GroupBox();
+            this.lbViewGbProg = new System.Windows.Forms.Label();
+            this.lbViewGbStudent4 = new System.Windows.Forms.Label();
+            this.lbViewGbStudent2 = new System.Windows.Forms.Label();
+            this.lbViewGbStudent3 = new System.Windows.Forms.Label();
+            this.lbViewGbStudent1 = new System.Windows.Forms.Label();
+            this.lbViewGbRoom = new System.Windows.Forms.Label();
+            this.lbViewGbStart = new System.Windows.Forms.Label();
+            this.lbViewGbEnd = new System.Windows.Forms.Label();
+            this.lbViewGbTeacher = new System.Windows.Forms.Label();
+            this.lbViewGbDate = new System.Windows.Forms.Label();
+            this.lbViewLogo = new System.Windows.Forms.Label();
+            this.pboxViewIcon = new System.Windows.Forms.PictureBox();
+            this.lbViewCount = new System.Windows.Forms.Label();
+            this.panelViewCanvas = new System.Windows.Forms.Panel();
+            this.butViewNext = new System.Windows.Forms.Button();
+            this.butViewPrev = new System.Windows.Forms.Button();
+            this.butViewZoomIn = new System.Windows.Forms.Button();
+            this.butViewZoomOut = new System.Windows.Forms.Button();
             this.tabSchedCancel = new System.Windows.Forms.TabPage();
             this.lbSchedCancelName = new System.Windows.Forms.Label();
             this.tabPayStud = new System.Windows.Forms.TabPage();
@@ -459,36 +493,31 @@
             this.panelSearchLesson.SuspendLayout();
             this.panelSearchLabels.SuspendLayout();
             this.panelGlobLogo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGlobIcon)).BeginInit();
-            this.tabSchedPlan.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxGlobIcon)).BeginInit();
+            this.tabPlan.SuspendLayout();
             this.panelSchedNewMatrix.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSchedNew)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedNewSlotList)).BeginInit();
             this.panelSchedNewParams.SuspendLayout();
-            this.tabSchedShow.SuspendLayout();
+            this.tabView.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitCntViewMatrixCon)).BeginInit();
+            this.splitCntViewMatrixCon.Panel1.SuspendLayout();
+            this.splitCntViewMatrixCon.Panel2.SuspendLayout();
+            this.splitCntViewMatrixCon.SuspendLayout();
+            this.tabControlViewScales.SuspendLayout();
+            this.tabPageViewWeek.SuspendLayout();
+            this.tabPageViewDay.SuspendLayout();
+            this.tabPageViewSlots.SuspendLayout();
+            this.panelViewControl.SuspendLayout();
+            this.panelViewSelect.SuspendLayout();
+            this.groupBoxViewCurrent.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pboxViewIcon)).BeginInit();
             this.tabSchedCancel.SuspendLayout();
             this.tabPayStud.SuspendLayout();
             this.tabPayTeach.SuspendLayout();
             this.tabPayExpense.SuspendLayout();
             this.tabPage8.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // menuStripGlobalOps
-            // 
-            this.menuStripGlobalOps.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.syncToolStripMenuItem,
-            this.viewToolStripMenuItem,
-            this.planToolStripMenuItem,
-            this.editToolStripMenuItem,
-            this.payToolStripMenuItem,
-            this.advancedToolStripMenuItem,
-            this.menuItemGlobSave,
-            this.menuItemGlobExit});
-            this.menuStripGlobalOps.Location = new System.Drawing.Point(0, 0);
-            this.menuStripGlobalOps.Name = "menuStripGlobalOps";
-            this.menuStripGlobalOps.Size = new System.Drawing.Size(1291, 24);
-            this.menuStripGlobalOps.TabIndex = 0;
-            this.menuStripGlobalOps.Text = "menuStrip1";
             // 
             // syncToolStripMenuItem
             // 
@@ -502,6 +531,7 @@
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.viewToolStripMenuItem.Text = "View";
+            this.viewToolStripMenuItem.Click += new System.EventHandler(this.viewToolStripMenuItem_Click);
             // 
             // planToolStripMenuItem
             // 
@@ -561,20 +591,20 @@
             // downloadToolStripMenuItem
             // 
             this.downloadToolStripMenuItem.Name = "downloadToolStripMenuItem";
-            this.downloadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.downloadToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.downloadToolStripMenuItem.Text = "Download";
             this.downloadToolStripMenuItem.Click += new System.EventHandler(this.downloadToolStripMenuItem_Click);
             // 
             // reopenToolStripMenuItem
             // 
             this.reopenToolStripMenuItem.Name = "reopenToolStripMenuItem";
-            this.reopenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.reopenToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.reopenToolStripMenuItem.Text = "Reopen";
             // 
             // uploadToolStripMenuItem
             // 
             this.uploadToolStripMenuItem.Name = "uploadToolStripMenuItem";
-            this.uploadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.uploadToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.uploadToolStripMenuItem.Text = "Upload";
             this.uploadToolStripMenuItem.Click += new System.EventHandler(this.uploadToolStripMenuItem_Click);
             // 
@@ -591,6 +621,23 @@
             this.menuItemGlobExit.Size = new System.Drawing.Size(37, 20);
             this.menuItemGlobExit.Text = "Exit";
             this.menuItemGlobExit.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // menuStripGlobalOps
+            // 
+            this.menuStripGlobalOps.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.syncToolStripMenuItem,
+            this.viewToolStripMenuItem,
+            this.planToolStripMenuItem,
+            this.editToolStripMenuItem,
+            this.payToolStripMenuItem,
+            this.advancedToolStripMenuItem,
+            this.menuItemGlobSave,
+            this.menuItemGlobExit});
+            this.menuStripGlobalOps.Location = new System.Drawing.Point(0, 0);
+            this.menuStripGlobalOps.Name = "menuStripGlobalOps";
+            this.menuStripGlobalOps.Size = new System.Drawing.Size(1291, 24);
+            this.menuStripGlobalOps.TabIndex = 0;
+            this.menuStripGlobalOps.Text = "menuStrip1";
             // 
             // labelGlobLastDownload
             // 
@@ -624,8 +671,8 @@
             // tabControlOps
             // 
             this.tabControlOps.Controls.Add(this.tabEdit);
-            this.tabControlOps.Controls.Add(this.tabSchedPlan);
-            this.tabControlOps.Controls.Add(this.tabSchedShow);
+            this.tabControlOps.Controls.Add(this.tabPlan);
+            this.tabControlOps.Controls.Add(this.tabView);
             this.tabControlOps.Controls.Add(this.tabSchedCancel);
             this.tabControlOps.Controls.Add(this.tabPayStud);
             this.tabControlOps.Controls.Add(this.tabPayTeach);
@@ -661,7 +708,6 @@
             // 
             // splitContainerGlobDataControls.Panel2
             // 
-            this.splitContainerGlobDataControls.Panel2.Controls.Add(this.buttonGlobRefresh);
             this.splitContainerGlobDataControls.Panel2.Controls.Add(this.panelGlobSearch);
             this.splitContainerGlobDataControls.Panel2.Controls.Add(this.panelGlobLogo);
             this.splitContainerGlobDataControls.Size = new System.Drawing.Size(1277, 775);
@@ -2963,16 +3009,6 @@
             this.butGlobalNext.UseVisualStyleBackColor = false;
             this.butGlobalNext.Click += new System.EventHandler(this.buttonNext_Click);
             // 
-            // buttonGlobRefresh
-            // 
-            this.buttonGlobRefresh.Location = new System.Drawing.Point(63, 334);
-            this.buttonGlobRefresh.Name = "buttonGlobRefresh";
-            this.buttonGlobRefresh.Size = new System.Drawing.Size(75, 23);
-            this.buttonGlobRefresh.TabIndex = 14;
-            this.buttonGlobRefresh.Text = "Refresh";
-            this.buttonGlobRefresh.UseVisualStyleBackColor = true;
-            this.buttonGlobRefresh.Click += new System.EventHandler(this.buttonGlobRefresh_Click);
-            // 
             // panelGlobSearch
             // 
             this.panelGlobSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(195)))), ((int)(((byte)(178)))));
@@ -3514,7 +3550,7 @@
             // 
             this.panelGlobLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panelGlobLogo.Controls.Add(this.cbGlobMode);
-            this.panelGlobLogo.Controls.Add(this.pictureBoxGlobIcon);
+            this.panelGlobLogo.Controls.Add(this.picBoxGlobIcon);
             this.panelGlobLogo.Controls.Add(this.labelGlobSagalingua);
             this.panelGlobLogo.Controls.Add(this.labelGlobCount);
             this.panelGlobLogo.Location = new System.Drawing.Point(59, 3);
@@ -3533,15 +3569,15 @@
             this.cbGlobMode.TabIndex = 21;
             this.cbGlobMode.SelectedIndexChanged += new System.EventHandler(this.cbGlobType_SelectedIndexChanged);
             // 
-            // pictureBoxGlobIcon
+            // picBoxGlobIcon
             // 
-            this.pictureBoxGlobIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxGlobIcon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBoxGlobIcon.BackgroundImage")));
-            this.pictureBoxGlobIcon.Location = new System.Drawing.Point(13, 123);
-            this.pictureBoxGlobIcon.Name = "pictureBoxGlobIcon";
-            this.pictureBoxGlobIcon.Size = new System.Drawing.Size(151, 199);
-            this.pictureBoxGlobIcon.TabIndex = 7;
-            this.pictureBoxGlobIcon.TabStop = false;
+            this.picBoxGlobIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.picBoxGlobIcon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("picBoxGlobIcon.BackgroundImage")));
+            this.picBoxGlobIcon.Location = new System.Drawing.Point(13, 123);
+            this.picBoxGlobIcon.Name = "picBoxGlobIcon";
+            this.picBoxGlobIcon.Size = new System.Drawing.Size(151, 199);
+            this.picBoxGlobIcon.TabIndex = 7;
+            this.picBoxGlobIcon.TabStop = false;
             // 
             // labelGlobSagalingua
             // 
@@ -3567,17 +3603,17 @@
             this.labelGlobCount.Size = new System.Drawing.Size(50, 24);
             this.labelGlobCount.TabIndex = 20;
             // 
-            // tabSchedPlan
+            // tabPlan
             // 
-            this.tabSchedPlan.Controls.Add(this.panelSchedNewMatrix);
-            this.tabSchedPlan.Controls.Add(this.panelSchedNewParams);
-            this.tabSchedPlan.Location = new System.Drawing.Point(4, 22);
-            this.tabSchedPlan.Name = "tabSchedPlan";
-            this.tabSchedPlan.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSchedPlan.Size = new System.Drawing.Size(1283, 781);
-            this.tabSchedPlan.TabIndex = 1;
-            this.tabSchedPlan.Text = "SchedPlan";
-            this.tabSchedPlan.UseVisualStyleBackColor = true;
+            this.tabPlan.Controls.Add(this.panelSchedNewMatrix);
+            this.tabPlan.Controls.Add(this.panelSchedNewParams);
+            this.tabPlan.Location = new System.Drawing.Point(4, 22);
+            this.tabPlan.Name = "tabPlan";
+            this.tabPlan.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPlan.Size = new System.Drawing.Size(1283, 781);
+            this.tabPlan.TabIndex = 1;
+            this.tabPlan.Text = "Plan";
+            this.tabPlan.UseVisualStyleBackColor = true;
             // 
             // panelSchedNewMatrix
             // 
@@ -3703,11 +3739,8 @@
             this.panelSchedNewParams.Controls.Add(this.cbSchedNewStud4);
             this.panelSchedNewParams.Controls.Add(this.lbSchedNewStud1);
             this.panelSchedNewParams.Controls.Add(this.cbSchedNewStud3);
-            this.panelSchedNewParams.Controls.Add(this.lbSchedNewStud2);
             this.panelSchedNewParams.Controls.Add(this.cbSchedNewStud2);
-            this.panelSchedNewParams.Controls.Add(this.lbSchedNewStud3);
             this.panelSchedNewParams.Controls.Add(this.cbSchedNewStud1);
-            this.panelSchedNewParams.Controls.Add(this.lbSchedNewStud4);
             this.panelSchedNewParams.Location = new System.Drawing.Point(3, 6);
             this.panelSchedNewParams.Name = "panelSchedNewParams";
             this.panelSchedNewParams.Size = new System.Drawing.Size(1269, 229);
@@ -3894,7 +3927,7 @@
             // cbSchedNewStud4
             // 
             this.cbSchedNewStud4.FormattingEnabled = true;
-            this.cbSchedNewStud4.Location = new System.Drawing.Point(352, 145);
+            this.cbSchedNewStud4.Location = new System.Drawing.Point(352, 103);
             this.cbSchedNewStud4.Name = "cbSchedNewStud4";
             this.cbSchedNewStud4.Size = new System.Drawing.Size(121, 21);
             this.cbSchedNewStud4.TabIndex = 12;
@@ -3903,47 +3936,29 @@
             // lbSchedNewStud1
             // 
             this.lbSchedNewStud1.AutoSize = true;
-            this.lbSchedNewStud1.Location = new System.Drawing.Point(276, 47);
+            this.lbSchedNewStud1.Location = new System.Drawing.Point(283, 40);
             this.lbSchedNewStud1.Name = "lbSchedNewStud1";
-            this.lbSchedNewStud1.Size = new System.Drawing.Size(47, 13);
+            this.lbSchedNewStud1.Size = new System.Drawing.Size(52, 13);
             this.lbSchedNewStud1.TabIndex = 5;
-            this.lbSchedNewStud1.Text = "Student:";
+            this.lbSchedNewStud1.Text = "Students:";
             // 
             // cbSchedNewStud3
             // 
             this.cbSchedNewStud3.FormattingEnabled = true;
-            this.cbSchedNewStud3.Location = new System.Drawing.Point(352, 109);
+            this.cbSchedNewStud3.Location = new System.Drawing.Point(352, 82);
             this.cbSchedNewStud3.Name = "cbSchedNewStud3";
             this.cbSchedNewStud3.Size = new System.Drawing.Size(121, 21);
             this.cbSchedNewStud3.TabIndex = 11;
             this.cbSchedNewStud3.SelectedIndexChanged += new System.EventHandler(this.cbSchedNewStud3_SelectedIndexChanged);
             // 
-            // lbSchedNewStud2
-            // 
-            this.lbSchedNewStud2.AutoSize = true;
-            this.lbSchedNewStud2.Location = new System.Drawing.Point(276, 76);
-            this.lbSchedNewStud2.Name = "lbSchedNewStud2";
-            this.lbSchedNewStud2.Size = new System.Drawing.Size(47, 13);
-            this.lbSchedNewStud2.TabIndex = 6;
-            this.lbSchedNewStud2.Text = "Student:";
-            // 
             // cbSchedNewStud2
             // 
             this.cbSchedNewStud2.FormattingEnabled = true;
-            this.cbSchedNewStud2.Location = new System.Drawing.Point(352, 73);
+            this.cbSchedNewStud2.Location = new System.Drawing.Point(352, 61);
             this.cbSchedNewStud2.Name = "cbSchedNewStud2";
             this.cbSchedNewStud2.Size = new System.Drawing.Size(121, 21);
             this.cbSchedNewStud2.TabIndex = 10;
             this.cbSchedNewStud2.SelectedIndexChanged += new System.EventHandler(this.cbSchedNewStud2_SelectedIndexChanged);
-            // 
-            // lbSchedNewStud3
-            // 
-            this.lbSchedNewStud3.AutoSize = true;
-            this.lbSchedNewStud3.Location = new System.Drawing.Point(276, 112);
-            this.lbSchedNewStud3.Name = "lbSchedNewStud3";
-            this.lbSchedNewStud3.Size = new System.Drawing.Size(47, 13);
-            this.lbSchedNewStud3.TabIndex = 7;
-            this.lbSchedNewStud3.Text = "Student:";
             // 
             // cbSchedNewStud1
             // 
@@ -3954,35 +3969,437 @@
             this.cbSchedNewStud1.TabIndex = 9;
             this.cbSchedNewStud1.SelectedIndexChanged += new System.EventHandler(this.cbSchedNewStud1_SelectedIndexChanged);
             // 
-            // lbSchedNewStud4
+            // tabView
             // 
-            this.lbSchedNewStud4.AutoSize = true;
-            this.lbSchedNewStud4.Location = new System.Drawing.Point(276, 145);
-            this.lbSchedNewStud4.Name = "lbSchedNewStud4";
-            this.lbSchedNewStud4.Size = new System.Drawing.Size(44, 13);
-            this.lbSchedNewStud4.TabIndex = 8;
-            this.lbSchedNewStud4.Text = "Student";
+            this.tabView.Controls.Add(this.splitCntViewMatrixCon);
+            this.tabView.Controls.Add(this.panelViewCanvas);
+            this.tabView.Controls.Add(this.butViewNext);
+            this.tabView.Controls.Add(this.butViewPrev);
+            this.tabView.Controls.Add(this.butViewZoomIn);
+            this.tabView.Controls.Add(this.butViewZoomOut);
+            this.tabView.Location = new System.Drawing.Point(4, 22);
+            this.tabView.Name = "tabView";
+            this.tabView.Padding = new System.Windows.Forms.Padding(3);
+            this.tabView.Size = new System.Drawing.Size(1283, 781);
+            this.tabView.TabIndex = 2;
+            this.tabView.Text = "View";
+            this.tabView.UseVisualStyleBackColor = true;
             // 
-            // tabSchedShow
+            // splitCntViewMatrixCon
             // 
-            this.tabSchedShow.Controls.Add(this.lbSchedShowName);
-            this.tabSchedShow.Location = new System.Drawing.Point(4, 22);
-            this.tabSchedShow.Name = "tabSchedShow";
-            this.tabSchedShow.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSchedShow.Size = new System.Drawing.Size(1283, 781);
-            this.tabSchedShow.TabIndex = 2;
-            this.tabSchedShow.Text = "SchedShow";
-            this.tabSchedShow.UseVisualStyleBackColor = true;
+            this.splitCntViewMatrixCon.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitCntViewMatrixCon.Location = new System.Drawing.Point(27, 22);
+            this.splitCntViewMatrixCon.Name = "splitCntViewMatrixCon";
             // 
-            // lbSchedShowName
+            // splitCntViewMatrixCon.Panel1
             // 
-            this.lbSchedShowName.AutoSize = true;
-            this.lbSchedShowName.Font = this.lbSchedPlanName.Font;
-            this.lbSchedShowName.Location = this.lbSchedPlanName.Location;
-            this.lbSchedShowName.Name = "lbSchedShowName";
-            this.lbSchedShowName.Size = new System.Drawing.Size(195, 25);
-            this.lbSchedShowName.TabIndex = 0;
-            this.lbSchedShowName.Text = "Current Schedule";
+            this.splitCntViewMatrixCon.Panel1.Controls.Add(this.tabControlViewScales);
+            // 
+            // splitCntViewMatrixCon.Panel2
+            // 
+            this.splitCntViewMatrixCon.Panel2.Controls.Add(this.panelViewControl);
+            this.splitCntViewMatrixCon.Size = new System.Drawing.Size(1230, 733);
+            this.splitCntViewMatrixCon.SplitterDistance = 904;
+            this.splitCntViewMatrixCon.TabIndex = 0;
+            // 
+            // tabControlViewScales
+            // 
+            this.tabControlViewScales.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControlViewScales.Controls.Add(this.tabPageViewWeek);
+            this.tabControlViewScales.Controls.Add(this.tabPageViewDay);
+            this.tabControlViewScales.Controls.Add(this.tabPageViewSlots);
+            this.tabControlViewScales.Location = new System.Drawing.Point(3, 30);
+            this.tabControlViewScales.Name = "tabControlViewScales";
+            this.tabControlViewScales.SelectedIndex = 0;
+            this.tabControlViewScales.Size = new System.Drawing.Size(1724, 679);
+            this.tabControlViewScales.TabIndex = 0;
+            this.tabControlViewScales.SelectedIndexChanged += new System.EventHandler(this.tabControlViewScales_SelectedIndexChanged);
+            // 
+            // tabPageViewWeek
+            // 
+            this.tabPageViewWeek.Controls.Add(this.panelViewWeek);
+            this.tabPageViewWeek.Location = new System.Drawing.Point(4, 22);
+            this.tabPageViewWeek.Name = "tabPageViewWeek";
+            this.tabPageViewWeek.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageViewWeek.Size = new System.Drawing.Size(1716, 653);
+            this.tabPageViewWeek.TabIndex = 0;
+            this.tabPageViewWeek.Text = "Week";
+            this.tabPageViewWeek.UseVisualStyleBackColor = true;
+            // 
+            // panelViewWeek
+            // 
+            this.panelViewWeek.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelViewWeek.Location = new System.Drawing.Point(3, 3);
+            this.panelViewWeek.Name = "panelViewWeek";
+            this.panelViewWeek.Size = new System.Drawing.Size(1710, 647);
+            this.panelViewWeek.TabIndex = 0;
+            // 
+            // tabPageViewDay
+            // 
+            this.tabPageViewDay.Controls.Add(this.panelViewDay);
+            this.tabPageViewDay.Location = new System.Drawing.Point(4, 22);
+            this.tabPageViewDay.Name = "tabPageViewDay";
+            this.tabPageViewDay.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageViewDay.Size = new System.Drawing.Size(1716, 653);
+            this.tabPageViewDay.TabIndex = 1;
+            this.tabPageViewDay.Text = "Day";
+            this.tabPageViewDay.UseVisualStyleBackColor = true;
+            // 
+            // panelViewDay
+            // 
+            this.panelViewDay.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelViewDay.Location = new System.Drawing.Point(3, 3);
+            this.panelViewDay.Name = "panelViewDay";
+            this.panelViewDay.Size = new System.Drawing.Size(1710, 647);
+            this.panelViewDay.TabIndex = 0;
+            // 
+            // tabPageViewSlots
+            // 
+            this.tabPageViewSlots.Controls.Add(this.panelViewSlots);
+            this.tabPageViewSlots.Location = new System.Drawing.Point(4, 22);
+            this.tabPageViewSlots.Name = "tabPageViewSlots";
+            this.tabPageViewSlots.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageViewSlots.Size = new System.Drawing.Size(1716, 653);
+            this.tabPageViewSlots.TabIndex = 2;
+            this.tabPageViewSlots.Text = "Slots";
+            this.tabPageViewSlots.UseVisualStyleBackColor = true;
+            // 
+            // panelViewSlots
+            // 
+            this.panelViewSlots.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelViewSlots.Location = new System.Drawing.Point(3, 3);
+            this.panelViewSlots.Name = "panelViewSlots";
+            this.panelViewSlots.Size = new System.Drawing.Size(1710, 647);
+            this.panelViewSlots.TabIndex = 0;
+            // 
+            // panelViewControl
+            // 
+            this.panelViewControl.Controls.Add(this.panelViewSelect);
+            this.panelViewControl.Controls.Add(this.groupBoxViewCurrent);
+            this.panelViewControl.Controls.Add(this.lbViewLogo);
+            this.panelViewControl.Controls.Add(this.pboxViewIcon);
+            this.panelViewControl.Controls.Add(this.lbViewCount);
+            this.panelViewControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelViewControl.Location = new System.Drawing.Point(0, 0);
+            this.panelViewControl.Name = "panelViewControl";
+            this.panelViewControl.Size = new System.Drawing.Size(322, 733);
+            this.panelViewControl.TabIndex = 1;
+            // 
+            // panelViewSelect
+            // 
+            this.panelViewSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(62)))), ((int)(((byte)(195)))), ((int)(((byte)(178)))));
+            this.panelViewSelect.Controls.Add(this.cbViewSelectStatus);
+            this.panelViewSelect.Controls.Add(this.lbViewSelectStatus);
+            this.panelViewSelect.Controls.Add(this.cbViewSelectRoom);
+            this.panelViewSelect.Controls.Add(this.cbViewSelectTeacher);
+            this.panelViewSelect.Controls.Add(this.cbViewSelectStudent);
+            this.panelViewSelect.Controls.Add(this.lbViewSelectRoom);
+            this.panelViewSelect.Controls.Add(this.lbViewSelectTeacher);
+            this.panelViewSelect.Controls.Add(this.lbViewSelectStudent);
+            this.panelViewSelect.Controls.Add(this.butViewShowAll);
+            this.panelViewSelect.Controls.Add(this.labelViewSelect);
+            this.panelViewSelect.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelViewSelect.Location = new System.Drawing.Point(0, 543);
+            this.panelViewSelect.Name = "panelViewSelect";
+            this.panelViewSelect.Size = new System.Drawing.Size(322, 190);
+            this.panelViewSelect.TabIndex = 1;
+            // 
+            // cbViewSelectStatus
+            // 
+            this.cbViewSelectStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbViewSelectStatus.FormattingEnabled = true;
+            this.cbViewSelectStatus.Location = new System.Drawing.Point(205, 40);
+            this.cbViewSelectStatus.Name = "cbViewSelectStatus";
+            this.cbViewSelectStatus.Size = new System.Drawing.Size(110, 21);
+            this.cbViewSelectStatus.TabIndex = 1;
+            // 
+            // lbViewSelectStatus
+            // 
+            this.lbViewSelectStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbViewSelectStatus.AutoEllipsis = true;
+            this.lbViewSelectStatus.AutoSize = true;
+            this.lbViewSelectStatus.Location = new System.Drawing.Point(150, 45);
+            this.lbViewSelectStatus.Name = "lbViewSelectStatus";
+            this.lbViewSelectStatus.Size = new System.Drawing.Size(40, 13);
+            this.lbViewSelectStatus.TabIndex = 1;
+            this.lbViewSelectStatus.Text = "Status:";
+            // 
+            // cbViewSelectRoom
+            // 
+            this.cbViewSelectRoom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbViewSelectRoom.FormattingEnabled = true;
+            this.cbViewSelectRoom.Location = new System.Drawing.Point(205, 115);
+            this.cbViewSelectRoom.Name = "cbViewSelectRoom";
+            this.cbViewSelectRoom.Size = new System.Drawing.Size(110, 21);
+            this.cbViewSelectRoom.TabIndex = 7;
+            // 
+            // cbViewSelectTeacher
+            // 
+            this.cbViewSelectTeacher.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbViewSelectTeacher.FormattingEnabled = true;
+            this.cbViewSelectTeacher.Location = new System.Drawing.Point(205, 90);
+            this.cbViewSelectTeacher.Name = "cbViewSelectTeacher";
+            this.cbViewSelectTeacher.Size = new System.Drawing.Size(110, 21);
+            this.cbViewSelectTeacher.TabIndex = 6;
+            // 
+            // cbViewSelectStudent
+            // 
+            this.cbViewSelectStudent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbViewSelectStudent.FormattingEnabled = true;
+            this.cbViewSelectStudent.Location = new System.Drawing.Point(205, 65);
+            this.cbViewSelectStudent.Name = "cbViewSelectStudent";
+            this.cbViewSelectStudent.Size = new System.Drawing.Size(110, 21);
+            this.cbViewSelectStudent.TabIndex = 5;
+            // 
+            // lbViewSelectRoom
+            // 
+            this.lbViewSelectRoom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbViewSelectRoom.AutoSize = true;
+            this.lbViewSelectRoom.Location = new System.Drawing.Point(150, 120);
+            this.lbViewSelectRoom.Name = "lbViewSelectRoom";
+            this.lbViewSelectRoom.Size = new System.Drawing.Size(38, 13);
+            this.lbViewSelectRoom.TabIndex = 4;
+            this.lbViewSelectRoom.Text = "Room:";
+            // 
+            // lbViewSelectTeacher
+            // 
+            this.lbViewSelectTeacher.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbViewSelectTeacher.AutoSize = true;
+            this.lbViewSelectTeacher.Location = new System.Drawing.Point(150, 95);
+            this.lbViewSelectTeacher.Name = "lbViewSelectTeacher";
+            this.lbViewSelectTeacher.Size = new System.Drawing.Size(50, 13);
+            this.lbViewSelectTeacher.TabIndex = 3;
+            this.lbViewSelectTeacher.Text = "Teacher:";
+            // 
+            // lbViewSelectStudent
+            // 
+            this.lbViewSelectStudent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbViewSelectStudent.AutoSize = true;
+            this.lbViewSelectStudent.Location = new System.Drawing.Point(150, 70);
+            this.lbViewSelectStudent.Name = "lbViewSelectStudent";
+            this.lbViewSelectStudent.Size = new System.Drawing.Size(47, 13);
+            this.lbViewSelectStudent.TabIndex = 2;
+            this.lbViewSelectStudent.Text = "Student:";
+            // 
+            // butViewShowAll
+            // 
+            this.butViewShowAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.butViewShowAll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(210)))), ((int)(((byte)(47)))));
+            this.butViewShowAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.butViewShowAll.Location = new System.Drawing.Point(234, 150);
+            this.butViewShowAll.Name = "butViewShowAll";
+            this.butViewShowAll.Size = new System.Drawing.Size(75, 23);
+            this.butViewShowAll.TabIndex = 2;
+            this.butViewShowAll.Text = "Show All";
+            this.butViewShowAll.UseVisualStyleBackColor = false;
+            // 
+            // labelViewSelect
+            // 
+            this.labelViewSelect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelViewSelect.AutoSize = true;
+            this.labelViewSelect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(210)))), ((int)(((byte)(47)))));
+            this.labelViewSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelViewSelect.Location = new System.Drawing.Point(200, 15);
+            this.labelViewSelect.Name = "labelViewSelect";
+            this.labelViewSelect.Size = new System.Drawing.Size(47, 15);
+            this.labelViewSelect.TabIndex = 1;
+            this.labelViewSelect.Text = "Select";
+            // 
+            // groupBoxViewCurrent
+            // 
+            this.groupBoxViewCurrent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxViewCurrent.Controls.Add(this.lbViewGbProg);
+            this.groupBoxViewCurrent.Controls.Add(this.lbViewGbStudent4);
+            this.groupBoxViewCurrent.Controls.Add(this.lbViewGbStudent2);
+            this.groupBoxViewCurrent.Controls.Add(this.lbViewGbStudent3);
+            this.groupBoxViewCurrent.Controls.Add(this.lbViewGbStudent1);
+            this.groupBoxViewCurrent.Controls.Add(this.lbViewGbRoom);
+            this.groupBoxViewCurrent.Controls.Add(this.lbViewGbStart);
+            this.groupBoxViewCurrent.Controls.Add(this.lbViewGbEnd);
+            this.groupBoxViewCurrent.Controls.Add(this.lbViewGbTeacher);
+            this.groupBoxViewCurrent.Controls.Add(this.lbViewGbDate);
+            this.groupBoxViewCurrent.Location = new System.Drawing.Point(90, 47);
+            this.groupBoxViewCurrent.Name = "groupBoxViewCurrent";
+            this.groupBoxViewCurrent.Size = new System.Drawing.Size(205, 171);
+            this.groupBoxViewCurrent.TabIndex = 1;
+            this.groupBoxViewCurrent.TabStop = false;
+            this.groupBoxViewCurrent.Text = "Lesson";
+            // 
+            // lbViewGbProg
+            // 
+            this.lbViewGbProg.AutoSize = true;
+            this.lbViewGbProg.Location = new System.Drawing.Point(20, 100);
+            this.lbViewGbProg.Name = "lbViewGbProg";
+            this.lbViewGbProg.Size = new System.Drawing.Size(46, 13);
+            this.lbViewGbProg.TabIndex = 8;
+            this.lbViewGbProg.Text = "Program";
+            // 
+            // lbViewGbStudent4
+            // 
+            this.lbViewGbStudent4.AutoSize = true;
+            this.lbViewGbStudent4.Location = new System.Drawing.Point(130, 100);
+            this.lbViewGbStudent4.Name = "lbViewGbStudent4";
+            this.lbViewGbStudent4.Size = new System.Drawing.Size(51, 13);
+            this.lbViewGbStudent4.TabIndex = 7;
+            this.lbViewGbStudent4.Text = "student 4";
+            // 
+            // lbViewGbStudent2
+            // 
+            this.lbViewGbStudent2.AutoSize = true;
+            this.lbViewGbStudent2.Location = new System.Drawing.Point(20, 80);
+            this.lbViewGbStudent2.Name = "lbViewGbStudent2";
+            this.lbViewGbStudent2.Size = new System.Drawing.Size(51, 13);
+            this.lbViewGbStudent2.TabIndex = 6;
+            this.lbViewGbStudent2.Text = "student 2";
+            // 
+            // lbViewGbStudent3
+            // 
+            this.lbViewGbStudent3.AutoSize = true;
+            this.lbViewGbStudent3.Location = new System.Drawing.Point(130, 80);
+            this.lbViewGbStudent3.Name = "lbViewGbStudent3";
+            this.lbViewGbStudent3.Size = new System.Drawing.Size(51, 13);
+            this.lbViewGbStudent3.TabIndex = 5;
+            this.lbViewGbStudent3.Text = "student 3";
+            // 
+            // lbViewGbStudent1
+            // 
+            this.lbViewGbStudent1.AutoSize = true;
+            this.lbViewGbStudent1.Location = new System.Drawing.Point(130, 60);
+            this.lbViewGbStudent1.Name = "lbViewGbStudent1";
+            this.lbViewGbStudent1.Size = new System.Drawing.Size(51, 13);
+            this.lbViewGbStudent1.TabIndex = 4;
+            this.lbViewGbStudent1.Text = "student 1";
+            // 
+            // lbViewGbRoom
+            // 
+            this.lbViewGbRoom.AutoSize = true;
+            this.lbViewGbRoom.Location = new System.Drawing.Point(130, 20);
+            this.lbViewGbRoom.Name = "lbViewGbRoom";
+            this.lbViewGbRoom.Size = new System.Drawing.Size(30, 13);
+            this.lbViewGbRoom.TabIndex = 3;
+            this.lbViewGbRoom.Text = "room";
+            // 
+            // lbViewGbStart
+            // 
+            this.lbViewGbStart.AutoSize = true;
+            this.lbViewGbStart.Location = new System.Drawing.Point(20, 40);
+            this.lbViewGbStart.Name = "lbViewGbStart";
+            this.lbViewGbStart.Size = new System.Drawing.Size(27, 13);
+            this.lbViewGbStart.TabIndex = 2;
+            this.lbViewGbStart.Text = "from";
+            // 
+            // lbViewGbEnd
+            // 
+            this.lbViewGbEnd.AutoSize = true;
+            this.lbViewGbEnd.Location = new System.Drawing.Point(130, 40);
+            this.lbViewGbEnd.Name = "lbViewGbEnd";
+            this.lbViewGbEnd.Size = new System.Drawing.Size(16, 13);
+            this.lbViewGbEnd.TabIndex = 1;
+            this.lbViewGbEnd.Text = "to";
+            // 
+            // lbViewGbTeacher
+            // 
+            this.lbViewGbTeacher.AutoSize = true;
+            this.lbViewGbTeacher.Location = new System.Drawing.Point(20, 60);
+            this.lbViewGbTeacher.Name = "lbViewGbTeacher";
+            this.lbViewGbTeacher.Size = new System.Drawing.Size(43, 13);
+            this.lbViewGbTeacher.TabIndex = 0;
+            this.lbViewGbTeacher.Text = "teacher";
+            // 
+            // lbViewGbDate
+            // 
+            this.lbViewGbDate.AutoSize = true;
+            this.lbViewGbDate.Location = new System.Drawing.Point(20, 20);
+            this.lbViewGbDate.Name = "lbViewGbDate";
+            this.lbViewGbDate.Size = new System.Drawing.Size(30, 13);
+            this.lbViewGbDate.TabIndex = 1;
+            this.lbViewGbDate.Text = "Date";
+            // 
+            // lbViewLogo
+            // 
+            this.lbViewLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbViewLogo.AutoSize = true;
+            this.lbViewLogo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbViewLogo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(119)))), ((int)(((byte)(237)))));
+            this.lbViewLogo.Location = new System.Drawing.Point(121, 12);
+            this.lbViewLogo.Name = "lbViewLogo";
+            this.lbViewLogo.Size = new System.Drawing.Size(137, 25);
+            this.lbViewLogo.TabIndex = 25;
+            this.lbViewLogo.Text = "Sagalingua ";
+            // 
+            // pboxViewIcon
+            // 
+            this.pboxViewIcon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pboxViewIcon.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pboxViewIcon.BackgroundImage")));
+            this.pboxViewIcon.Location = new System.Drawing.Point(120, 240);
+            this.pboxViewIcon.Name = "pboxViewIcon";
+            this.pboxViewIcon.Size = new System.Drawing.Size(97, 128);
+            this.pboxViewIcon.TabIndex = 2;
+            this.pboxViewIcon.TabStop = false;
+            // 
+            // lbViewCount
+            // 
+            this.lbViewCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbViewCount.AutoSize = true;
+            this.lbViewCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbViewCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(119)))), ((int)(((byte)(237)))));
+            this.lbViewCount.Location = new System.Drawing.Point(230, 290);
+            this.lbViewCount.Name = "lbViewCount";
+            this.lbViewCount.Size = new System.Drawing.Size(65, 24);
+            this.lbViewCount.TabIndex = 1;
+            this.lbViewCount.Text = "Count";
+            // 
+            // panelViewCanvas
+            // 
+            this.panelViewCanvas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelViewCanvas.Location = new System.Drawing.Point(27, 22);
+            this.panelViewCanvas.Name = "panelViewCanvas";
+            this.panelViewCanvas.Size = new System.Drawing.Size(1230, 733);
+            this.panelViewCanvas.TabIndex = 4;
+            // 
+            // butViewNext
+            // 
+            this.butViewNext.Dock = System.Windows.Forms.DockStyle.Right;
+            this.butViewNext.Location = new System.Drawing.Point(1257, 22);
+            this.butViewNext.Name = "butViewNext";
+            this.butViewNext.Size = new System.Drawing.Size(23, 733);
+            this.butViewNext.TabIndex = 3;
+            this.butViewNext.Text = ">";
+            this.butViewNext.UseVisualStyleBackColor = true;
+            // 
+            // butViewPrev
+            // 
+            this.butViewPrev.Dock = System.Windows.Forms.DockStyle.Left;
+            this.butViewPrev.Location = new System.Drawing.Point(3, 22);
+            this.butViewPrev.Name = "butViewPrev";
+            this.butViewPrev.Size = new System.Drawing.Size(24, 733);
+            this.butViewPrev.TabIndex = 2;
+            this.butViewPrev.Text = "<";
+            this.butViewPrev.UseVisualStyleBackColor = true;
+            // 
+            // butViewZoomIn
+            // 
+            this.butViewZoomIn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.butViewZoomIn.Location = new System.Drawing.Point(3, 755);
+            this.butViewZoomIn.Name = "butViewZoomIn";
+            this.butViewZoomIn.Size = new System.Drawing.Size(1277, 23);
+            this.butViewZoomIn.TabIndex = 1;
+            this.butViewZoomIn.Text = "v";
+            this.butViewZoomIn.UseVisualStyleBackColor = true;
+            this.butViewZoomIn.Click += new System.EventHandler(this.butViewZoomIn_Click);
+            // 
+            // butViewZoomOut
+            // 
+            this.butViewZoomOut.Dock = System.Windows.Forms.DockStyle.Top;
+            this.butViewZoomOut.Location = new System.Drawing.Point(3, 3);
+            this.butViewZoomOut.Name = "butViewZoomOut";
+            this.butViewZoomOut.Size = new System.Drawing.Size(1277, 19);
+            this.butViewZoomOut.TabIndex = 0;
+            this.butViewZoomOut.Text = "^";
+            this.butViewZoomOut.UseVisualStyleBackColor = true;
+            this.butViewZoomOut.Click += new System.EventHandler(this.butViewZoomOut_Click);
             // 
             // tabSchedCancel
             // 
@@ -4191,15 +4608,29 @@
             this.panelSearchLabels.PerformLayout();
             this.panelGlobLogo.ResumeLayout(false);
             this.panelGlobLogo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGlobIcon)).EndInit();
-            this.tabSchedPlan.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picBoxGlobIcon)).EndInit();
+            this.tabPlan.ResumeLayout(false);
             this.panelSchedNewMatrix.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSchedNew)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedNewSlotList)).EndInit();
             this.panelSchedNewParams.ResumeLayout(false);
             this.panelSchedNewParams.PerformLayout();
-            this.tabSchedShow.ResumeLayout(false);
-            this.tabSchedShow.PerformLayout();
+            this.tabView.ResumeLayout(false);
+            this.splitCntViewMatrixCon.Panel1.ResumeLayout(false);
+            this.splitCntViewMatrixCon.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitCntViewMatrixCon)).EndInit();
+            this.splitCntViewMatrixCon.ResumeLayout(false);
+            this.tabControlViewScales.ResumeLayout(false);
+            this.tabPageViewWeek.ResumeLayout(false);
+            this.tabPageViewDay.ResumeLayout(false);
+            this.tabPageViewSlots.ResumeLayout(false);
+            this.panelViewControl.ResumeLayout(false);
+            this.panelViewControl.PerformLayout();
+            this.panelViewSelect.ResumeLayout(false);
+            this.panelViewSelect.PerformLayout();
+            this.groupBoxViewCurrent.ResumeLayout(false);
+            this.groupBoxViewCurrent.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pboxViewIcon)).EndInit();
             this.tabSchedCancel.ResumeLayout(false);
             this.tabSchedCancel.PerformLayout();
             this.tabPayStud.ResumeLayout(false);
@@ -4216,31 +4647,80 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip menuStripGlobalOps;
-        private System.Windows.Forms.ToolStripMenuItem menuItemGlobSave;
-        private System.Windows.Forms.Label lbStudSearchStatus;
-        private System.Windows.Forms.ComboBox cbStudSelectStatus;
-        private System.Windows.Forms.ComboBox cbStudSearchSpeaks;
-        private System.Windows.Forms.Label lbStudSearchSpeaks;
-        private System.Windows.Forms.ComboBox cbStudSearchLearns;
-        private System.Windows.Forms.Label lbStudSearchLearns;
-        private System.Windows.Forms.ComboBox cbStudSearchSource;
-        private System.Windows.Forms.Label lbStudSearchSource;
-        private System.Windows.Forms.TextBox tbStudSearchLastName;
-        private System.Windows.Forms.Label lbStudSearchLastName;
-        private System.Windows.Forms.TextBox tbStudSearchFirstName;
-        private System.Windows.Forms.Label lbStudSearchFirstName1;
-        private System.Windows.Forms.PictureBox pictureBoxGlobIcon;
-        private System.Windows.Forms.Label labelGlobSagalingua;
-        private System.Windows.Forms.Panel panelGlobSearch;
-        private System.Windows.Forms.ToolStripMenuItem menuItemGlobExit;
-        private System.Windows.Forms.DataGridView dgvStudents;
         private System.Windows.Forms.BindingSource studentList;
-        private System.Windows.Forms.Button butGlobalPrev;
-        private System.Windows.Forms.Button butGlobalAdd;
-        private System.Windows.Forms.Button butGlobalDelete;
-        private System.Windows.Forms.Button butGlobalNext;
+        private System.Windows.Forms.BindingSource roomList;
+        private System.Windows.Forms.BindingSource teacherList;
+        private System.Windows.Forms.BindingSource programList;
+        private System.Windows.Forms.BindingSource schedNewSlotList;
+        private System.Windows.Forms.BindingSource lessonList;
+        private System.Windows.Forms.TabPage tabPage8;
+        private System.Windows.Forms.Label lbFutureOpName;
+        private System.Windows.Forms.Label lbSchedPlanName;
+        private System.Windows.Forms.TabPage tabPayExpense;
+        private System.Windows.Forms.Label lbPayExpenseName;
+        private System.Windows.Forms.TabPage tabPayTeach;
+        private System.Windows.Forms.Label lbPayTeachName;
+        private System.Windows.Forms.TabPage tabPayStud;
+        private System.Windows.Forms.Label lbPayStudName;
+        private System.Windows.Forms.TabPage tabSchedCancel;
+        private System.Windows.Forms.Label lbSchedCancelName;
+        private System.Windows.Forms.TabPage tabView;
+        private System.Windows.Forms.SplitContainer splitCntViewMatrixCon;
+        private HiddenTabControl tabControlViewScales;
+        private System.Windows.Forms.TabPage tabPageViewWeek;
+        private System.Windows.Forms.Panel panelViewWeek;
+        private System.Windows.Forms.Label lbViewGbTeacher;
+        private System.Windows.Forms.TabPage tabPageViewDay;
+        private System.Windows.Forms.Panel panelViewDay;
+        private System.Windows.Forms.TabPage tabPageViewSlots;
+        private System.Windows.Forms.Panel panelViewSlots;
+        private System.Windows.Forms.Label lbViewLogo;
+        private System.Windows.Forms.Panel panelViewCanvas;
+        private System.Windows.Forms.Button butViewNext;
+        private System.Windows.Forms.Button butViewPrev;
+        private System.Windows.Forms.Button butViewZoomIn;
+        private System.Windows.Forms.Button butViewZoomOut;
+        private System.Windows.Forms.TabPage tabPlan;
+        private System.Windows.Forms.Panel panelSchedNewMatrix;
+        private System.Windows.Forms.DataGridView dgvSchedNew;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Slot;
+        private System.Windows.Forms.DataGridViewTextBoxColumn mondayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tuesdayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn wednesdayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn thursdayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fridayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn saturdayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sundayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Panel panelSchedNewParams;
+        private System.Windows.Forms.TextBox tbSchedNewDuration;
+        private System.Windows.Forms.Label lbSchedNewRepeat;
+        private System.Windows.Forms.TextBox tbSchedNewComment;
+        private System.Windows.Forms.Label lbSchedNewComment;
+        private System.Windows.Forms.Label lbSchedNewTeachVacation;
+        private System.Windows.Forms.Label lbSchedNewStudSchedule4;
+        private System.Windows.Forms.Label lbSchedNewStudSchedule3;
+        private System.Windows.Forms.Label lbSchedNewStudSchedule2;
+        private System.Windows.Forms.Label lbSchedNewStudSchedule1;
+        private System.Windows.Forms.Button butSchedNewAccept;
+        private System.Windows.Forms.ComboBox cbSchedNewDuration;
+        private System.Windows.Forms.Label lbSchedNewDuration;
+        private System.Windows.Forms.DateTimePicker dtpSchedNew;
+        private System.Windows.Forms.ComboBox cbSchedNewTeacher;
+        private System.Windows.Forms.Label lbSchedNewTeacher;
+        private System.Windows.Forms.Label lbSchedNewWeek;
+        private System.Windows.Forms.ComboBox cbSchedNewLanguage;
+        private System.Windows.Forms.Label lbSchedNewLanguage;
+        private System.Windows.Forms.ComboBox cbSchedNewStud4;
+        private System.Windows.Forms.Label lbSchedNewStud1;
+        private System.Windows.Forms.ComboBox cbSchedNewStud3;
+        private System.Windows.Forms.ComboBox cbSchedNewStud2;
+        private System.Windows.Forms.ComboBox cbSchedNewStud1;
+        private System.Windows.Forms.TabPage tabEdit;
+        private System.Windows.Forms.SplitContainer splitContainerGlobDataControls;
+        private System.Windows.Forms.SplitContainer splitContainerGlobMasterDetail;
+        private HiddenTabControl tabControlModesTop;
+        private System.Windows.Forms.TabPage tabTopPageStudents;
+        private System.Windows.Forms.DataGridView dgvStudents;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvStudColumnStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvStudColumnFirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvStudColumnLastName;
@@ -4253,103 +4733,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvStudColumnBirthday;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvStudColumnSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvStudColumnAddress;
-        private System.Windows.Forms.Button buttGlobalShowAll;
-        private System.Windows.Forms.ComboBox cbStudSearchLevel;
-        private System.Windows.Forms.Label lbStudSearchLevel;
-        private System.Windows.Forms.Label labelGlobSearch;
-        private System.Windows.Forms.Label labelGlobCount;
-        private System.Windows.Forms.Label labelGlobLastDownload;
-        private System.Windows.Forms.Label labelGlobLastUpload;
-        private System.Windows.Forms.Panel panelStudent;
-        private System.Windows.Forms.TextBox tbStudComments;
-        private System.Windows.Forms.TextBox tbStudLastName;
-        private System.Windows.Forms.TextBox tbStudSchedule;
-        private System.Windows.Forms.Label labelStudFirstname;
-        private System.Windows.Forms.TextBox tbStudInterests;
-        private System.Windows.Forms.TextBox tbStudFirstName;
-        private System.Windows.Forms.TextBox tbStudGoals;
-        private System.Windows.Forms.Label labelStudLastName1;
-        private System.Windows.Forms.TextBox tbStudBackground;
-        private System.Windows.Forms.Label labelStudEmail1;
-        private System.Windows.Forms.Label labelStudComments;
-        private System.Windows.Forms.TextBox tbStudEmail;
-        private System.Windows.Forms.Label labelStudSchedule;
-        private System.Windows.Forms.Label labelStudCellPhone;
-        private System.Windows.Forms.Label labelStudInterests;
-        private System.Windows.Forms.Label labelStudHomePhone;
-        private System.Windows.Forms.Label labelStudGoals;
-        private System.Windows.Forms.TextBox tbStudCellPhone;
-        private System.Windows.Forms.Label labelStudBackground;
-        private System.Windows.Forms.TextBox tbStudHomePhone;
-        private System.Windows.Forms.TextBox tbStudSourceDetail;
-        private System.Windows.Forms.Label labelStudAddress1;
-        private System.Windows.Forms.ComboBox cbStudSource;
-        private System.Windows.Forms.Label labelStudSpeaks2;
-        private System.Windows.Forms.Label labelStudSource1;
-        private System.Windows.Forms.TextBox tbStudAddress1;
-        private System.Windows.Forms.ComboBox cbStudLevel;
-        private System.Windows.Forms.Label labelStudLevel1;
-        private System.Windows.Forms.Label labelStudSpeaks1;
-        private System.Windows.Forms.TextBox tbStudBirthday;
-        private System.Windows.Forms.ComboBox cbStudLearns;
-        private System.Windows.Forms.ComboBox cbStudStatus;
-        private System.Windows.Forms.ComboBox cbStudSpeaks;
-        private System.Windows.Forms.Label labelStudStatus1;
-        private System.Windows.Forms.Label labelStudAlso;
-        private System.Windows.Forms.TextBox tbStudLanguageDetail;
-        private System.Windows.Forms.Label labelStudBirthday;
-        private System.Windows.Forms.ComboBox cbStudOther;
-        private System.Windows.Forms.Panel panelGlobEdit;
-        private System.Windows.Forms.Panel panelGlobLogo;
-        private System.Windows.Forms.SplitContainer splitContainerGlobMasterDetail;
-        private System.Windows.Forms.SplitContainer splitContainerGlobDataControls;
-        private System.Windows.Forms.Panel panelGlobIndicators;
-        private System.Windows.Forms.Panel panelGlobNextNew;
-        private System.Windows.Forms.Button butGlobalToExcel;
-        private System.Windows.Forms.Panel panelStudSecondary;
-        private System.Windows.Forms.Panel panelStudSecondaryLeft;
-        private System.Windows.Forms.GroupBox groupBoxStudSecondaryRight;
-        private System.Windows.Forms.GroupBox groupBoxStudPrinaryRight;
-        private System.Windows.Forms.Label labelStudDetailsSource;
-        private System.Windows.Forms.Label labelStudDetailsLanguage;
-        private System.Windows.Forms.Panel panelStudPrimaryLeft;
-        private System.Windows.Forms.Panel panelStudPrimary;
-        private System.Windows.Forms.ComboBox cbGlobMode;
-        private System.Windows.Forms.Panel panelStudSearch;
-        private HiddenTabControl tabControlModesBottom;
-        private System.Windows.Forms.TabPage tabBottomPageStudents;
-        private System.Windows.Forms.TabPage tabBottomPageTeachers;
-        private System.Windows.Forms.TabPage tabBottomPagePrograms;
-        private System.Windows.Forms.Panel panelGlobPrevDelete;
-        private System.Windows.Forms.TabPage tabBottomPageRooms;
-        private System.Windows.Forms.TabPage tabBottomPageLessons;
-        private HiddenTabControl tabControlModesTop;
-        private System.Windows.Forms.TabPage tabTopPageStudents;
         private System.Windows.Forms.TabPage tabTopPageTeachers;
-        private System.Windows.Forms.TabPage tabTopPagePrograms;
-        private System.Windows.Forms.TabPage tabTopPageRooms;
-        private System.Windows.Forms.TabPage tabTopPageLessons;
-        private System.Windows.Forms.Panel panelRoom;
-        private System.Windows.Forms.Panel panelRoomPrimaryLeft;
-        private System.Windows.Forms.GroupBox groupBoxRoom;
-        private System.Windows.Forms.TextBox tbRoomComments;
-        private System.Windows.Forms.TextBox tbRoomTags;
-        private System.Windows.Forms.Label labelRoomRank;
-        private System.Windows.Forms.Label labelRoomCapacity;
-        private System.Windows.Forms.Label labelRoomName;
-        private System.Windows.Forms.TextBox tbRoomPreferrability;
-        private System.Windows.Forms.TextBox tbRoomCapacity;
-        private System.Windows.Forms.TextBox tbRoomName;
-        private System.Windows.Forms.Label labelRoomComments;
-        private System.Windows.Forms.Label labelRoomTags;
-        private System.Windows.Forms.DataGridView dgvRooms;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn capacityDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn rankDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tagsDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn commentsDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource roomList;
         private System.Windows.Forms.DataGridView dgvTeachers;
         private System.Windows.Forms.DataGridViewTextBoxColumn statusDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
@@ -4363,10 +4747,101 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn commentsDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn mailingAddressDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn birthdayDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource teacherList;
+        private System.Windows.Forms.TabPage tabTopPagePrograms;
+        private System.Windows.Forms.DataGridView dgvPrograms;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn languageDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn levelDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Summary;
+        private System.Windows.Forms.TabPage tabTopPageRooms;
+        private System.Windows.Forms.DataGridView dgvRooms;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn capacityDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rankDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tagsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn commentsDataGridViewTextBoxColumn;
+        private System.Windows.Forms.TabPage tabTopPageLessons;
+        private System.Windows.Forms.DataGridView dgvLesson;
+        private System.Windows.Forms.DataGridViewTextBoxColumn State;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Start;
+        private System.Windows.Forms.DataGridViewTextBoxColumn End;
+        private System.Windows.Forms.DataGridViewTextBoxColumn programDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn roomDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn student1DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn student2DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn student3DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn student10DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Student4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn teacher1DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn teacher2DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn commentsDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.Panel panelGlobEdit;
+        private HiddenTabControl tabControlModesBottom;
+        private System.Windows.Forms.TabPage tabBottomPageStudents;
+        private System.Windows.Forms.Panel panelStudent;
+        private System.Windows.Forms.Panel panelStudPrimary;
+        private System.Windows.Forms.GroupBox groupBoxStudPrinaryRight;
+        private System.Windows.Forms.Label labelStudDetailsSource;
+        private System.Windows.Forms.Label labelStudDetailsLanguage;
+        private System.Windows.Forms.Label labelStudAddress1;
+        private System.Windows.Forms.TextBox tbStudAddress1;
+        private System.Windows.Forms.TextBox tbStudLanguageDetail;
+        private System.Windows.Forms.TextBox tbStudSourceDetail;
+        private System.Windows.Forms.Panel panelStudPrimaryLeft;
+        private System.Windows.Forms.ComboBox cbStudSpeaks;
+        private System.Windows.Forms.ComboBox cbStudOther;
+        private System.Windows.Forms.Label labelStudBirthday;
+        private System.Windows.Forms.TextBox tbStudLastName;
+        private System.Windows.Forms.Label labelStudAlso;
+        private System.Windows.Forms.Label labelStudFirstname;
+        private System.Windows.Forms.Label labelStudStatus1;
+        private System.Windows.Forms.TextBox tbStudFirstName;
+        private System.Windows.Forms.ComboBox cbStudStatus;
+        private System.Windows.Forms.Label labelStudLastName1;
+        private System.Windows.Forms.ComboBox cbStudLearns;
+        private System.Windows.Forms.Label labelStudEmail1;
+        private System.Windows.Forms.TextBox tbStudBirthday;
+        private System.Windows.Forms.TextBox tbStudEmail;
+        private System.Windows.Forms.Label labelStudSpeaks1;
+        private System.Windows.Forms.Label labelStudCellPhone;
+        private System.Windows.Forms.Label labelStudLevel1;
+        private System.Windows.Forms.Label labelStudHomePhone;
+        private System.Windows.Forms.ComboBox cbStudLevel;
+        private System.Windows.Forms.TextBox tbStudCellPhone;
+        private System.Windows.Forms.Label labelStudSource1;
+        private System.Windows.Forms.TextBox tbStudHomePhone;
+        private System.Windows.Forms.Label labelStudSpeaks2;
+        private System.Windows.Forms.ComboBox cbStudSource;
+        private System.Windows.Forms.Panel panelStudSecondary;
+        private System.Windows.Forms.GroupBox groupBoxStudSecondaryRight;
+        private System.Windows.Forms.TextBox tbStudComments;
+        private System.Windows.Forms.TextBox tbStudSchedule;
+        private System.Windows.Forms.TextBox tbStudInterests;
+        private System.Windows.Forms.TextBox tbStudGoals;
+        private System.Windows.Forms.TextBox tbStudBackground;
+        private System.Windows.Forms.Panel panelStudSecondaryLeft;
+        private System.Windows.Forms.Label labelStudGoals;
+        private System.Windows.Forms.Label labelStudBackground;
+        private System.Windows.Forms.Label labelStudComments;
+        private System.Windows.Forms.Label labelStudSchedule;
+        private System.Windows.Forms.Label labelStudInterests;
+        private System.Windows.Forms.TabPage tabBottomPageTeachers;
         private System.Windows.Forms.Panel panelTeacherSecondary;
+        private System.Windows.Forms.Panel panelTeachMatrix;
+        private System.Windows.Forms.Button buttonTeach_GrabAvailChanges;
         private System.Windows.Forms.Panel panelTeacherPrimary;
         private System.Windows.Forms.GroupBox groupBoxTeacherPrimaryRight;
+        private System.Windows.Forms.TextBox tbTeachComment;
+        private System.Windows.Forms.TextBox tbTeachVacations;
+        private System.Windows.Forms.TextBox tbTeachAddress;
+        private System.Windows.Forms.Label labelTeachComment;
+        private System.Windows.Forms.Label labelTeachVacations;
+        private System.Windows.Forms.Label labelTeachAddress;
         private System.Windows.Forms.Panel panelTeacherPrimaryLeft;
         private System.Windows.Forms.TextBox tbTeachLanguageDetail;
         private System.Windows.Forms.ComboBox cbTeachLanguage2;
@@ -4386,21 +4861,15 @@
         private System.Windows.Forms.Label labelTeachEmail;
         private System.Windows.Forms.Label labelTeachLastName;
         private System.Windows.Forms.Label labelTeachFirstName;
-        private System.Windows.Forms.TextBox tbTeachComment;
-        private System.Windows.Forms.TextBox tbTeachVacations;
-        private System.Windows.Forms.TextBox tbTeachAddress;
-        private System.Windows.Forms.Label labelTeachComment;
-        private System.Windows.Forms.Label labelTeachVacations;
-        private System.Windows.Forms.Label labelTeachAddress;
-        private System.Windows.Forms.DataGridView dgvPrograms;
-        private System.Windows.Forms.BindingSource programList;
+        private System.Windows.Forms.TabPage tabBottomPagePrograms;
         private System.Windows.Forms.Panel panelProgram;
         private System.Windows.Forms.GroupBox groupBoxProgram;
-        private System.Windows.Forms.Panel panelProgramPrimaryLeft;
         private System.Windows.Forms.TextBox tbProgComments;
         private System.Windows.Forms.TextBox tbProgSummary;
         private System.Windows.Forms.Label labelProgComments;
         private System.Windows.Forms.Label labelProgSummary;
+        private System.Windows.Forms.Panel panelProgramPrimaryLeft;
+        private System.Windows.Forms.Label labelProgExplanation;
         private System.Windows.Forms.TextBox tbProgProce;
         private System.Windows.Forms.Label labelProgPrice;
         private System.Windows.Forms.ComboBox cbProgLevel;
@@ -4411,26 +4880,22 @@
         private System.Windows.Forms.Label labelProgName;
         private System.Windows.Forms.TextBox tbProgCode;
         private System.Windows.Forms.Label labelProgCode;
-        private System.Windows.Forms.Label labelProgExplanation;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn languageDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn levelDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Summary;
-        private System.Windows.Forms.DataGridView dgvLesson;
+        private System.Windows.Forms.TabPage tabBottomPageRooms;
+        private System.Windows.Forms.Panel panelRoom;
+        private System.Windows.Forms.Panel panelRoomPrimaryLeft;
+        private System.Windows.Forms.Label labelRoomRank;
+        private System.Windows.Forms.Label labelRoomCapacity;
+        private System.Windows.Forms.Label labelRoomName;
+        private System.Windows.Forms.TextBox tbRoomPreferrability;
+        private System.Windows.Forms.TextBox tbRoomCapacity;
+        private System.Windows.Forms.TextBox tbRoomName;
+        private System.Windows.Forms.GroupBox groupBoxRoom;
+        private System.Windows.Forms.Label labelRoomComments;
+        private System.Windows.Forms.Label labelRoomTags;
+        private System.Windows.Forms.TextBox tbRoomComments;
+        private System.Windows.Forms.TextBox tbRoomTags;
+        private System.Windows.Forms.TabPage tabBottomPageLessons;
         private System.Windows.Forms.Panel panelLesson;
-        private System.Windows.Forms.Label labelLessonProgram;
-        private System.Windows.Forms.ComboBox cbLessonState;
-        private System.Windows.Forms.Label labelLessonState;
-        private System.Windows.Forms.ComboBox cbLessonEnd;
-        private System.Windows.Forms.ComboBox cbLessonStart;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
-        private System.Windows.Forms.ComboBox cbLessonRoom;
-        private System.Windows.Forms.Label labelLessonRoom;
-        private System.Windows.Forms.Label labelLessonEnd;
-        private System.Windows.Forms.Label labelLessonStart;
-        private System.Windows.Forms.Label labelLessonDate;
         private System.Windows.Forms.ComboBox cbLessonStudent10;
         private System.Windows.Forms.ComboBox cbLessonStudent9;
         private System.Windows.Forms.Label labelLessonStudent10;
@@ -4458,18 +4923,46 @@
         private System.Windows.Forms.Label labelLessonStudent1;
         private System.Windows.Forms.Label labelLessonTeacher2;
         private System.Windows.Forms.Label labelLessonTeacher1;
+        private System.Windows.Forms.Label labelLessonProgram;
+        private System.Windows.Forms.ComboBox cbLessonState;
+        private System.Windows.Forms.Label labelLessonState;
+        private System.Windows.Forms.ComboBox cbLessonEnd;
+        private System.Windows.Forms.ComboBox cbLessonStart;
+        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.ComboBox cbLessonRoom;
+        private System.Windows.Forms.Label labelLessonRoom;
+        private System.Windows.Forms.Label labelLessonEnd;
+        private System.Windows.Forms.Label labelLessonStart;
+        private System.Windows.Forms.Label labelLessonDate;
+        private System.Windows.Forms.Panel panelGlobPrevDelete;
+        private System.Windows.Forms.Button butGlobalDelete;
+        private System.Windows.Forms.Button butGlobalPrev;
+        private System.Windows.Forms.Panel panelGlobNextNew;
+        private System.Windows.Forms.Button butGlobalAdd;
+        private System.Windows.Forms.Button butGlobalNext;
+        private System.Windows.Forms.Panel panelGlobSearch;
+        private System.Windows.Forms.Panel panelSearchButtons;
+        private System.Windows.Forms.Button butGlobalToExcel;
+        private System.Windows.Forms.Button buttGlobalShowAll;
         private HiddenTabControl tabControlSearch;
         private System.Windows.Forms.TabPage tabPageSearchStudent;
+        private System.Windows.Forms.Panel panelStudSearch;
+        private System.Windows.Forms.Label lbStudSearchStatus;
+        private System.Windows.Forms.Label lbStudSearchLearns;
+        private System.Windows.Forms.Label lbStudSearchSpeaks;
+        private System.Windows.Forms.ComboBox cbStudSearchLevel;
+        private System.Windows.Forms.ComboBox cbStudSearchLearns;
+        private System.Windows.Forms.Label lbStudSearchLevel;
+        private System.Windows.Forms.ComboBox cbStudSearchSpeaks;
+        private System.Windows.Forms.Label lbStudSearchFirstName1;
+        private System.Windows.Forms.ComboBox cbStudSearchSource;
+        private System.Windows.Forms.TextBox tbStudSearchFirstName;
+        private System.Windows.Forms.Label lbStudSearchSource;
+        private System.Windows.Forms.ComboBox cbStudSelectStatus;
+        private System.Windows.Forms.Label lbStudSearchLastName;
+        private System.Windows.Forms.TextBox tbStudSearchLastName;
         private System.Windows.Forms.TabPage tabPageSearchTeacher;
-        private System.Windows.Forms.TabPage tabPageSearchProgram;
-        private System.Windows.Forms.TabPage tabPageSearchRoom;
-        private System.Windows.Forms.TabPage tabPageSearchLesson;
-        private System.Windows.Forms.Panel panelSearchButtons;
-        private System.Windows.Forms.Panel panelSearchLabels;
         private System.Windows.Forms.Panel panelSearchTeacher;
-        private System.Windows.Forms.Panel panelSearchProgram;
-        private System.Windows.Forms.Panel panelSearchRoom;
-        private System.Windows.Forms.Panel panelSearchLesson;
         private System.Windows.Forms.TextBox tbSearchTeachLastName;
         private System.Windows.Forms.TextBox tbSearchTeachFirstName;
         private System.Windows.Forms.ComboBox cbSearchTeachLang1;
@@ -4478,10 +4971,16 @@
         private System.Windows.Forms.Label lbSerchTeachFirstName;
         private System.Windows.Forms.Label lbSerchTeachLang1;
         private System.Windows.Forms.Label lbSerchTeachStatus;
+        private System.Windows.Forms.TabPage tabPageSearchProgram;
+        private System.Windows.Forms.Panel panelSearchProgram;
         private System.Windows.Forms.ComboBox cbSearchProgLevel;
         private System.Windows.Forms.ComboBox cbSearchProgLanguage;
         private System.Windows.Forms.Label lbSearchProgLevel;
         private System.Windows.Forms.Label lbSearchProgLanguage;
+        private System.Windows.Forms.TabPage tabPageSearchRoom;
+        private System.Windows.Forms.Panel panelSearchRoom;
+        private System.Windows.Forms.TabPage tabPageSearchLesson;
+        private System.Windows.Forms.Panel panelSearchLesson;
         private System.Windows.Forms.TextBox tbSearchLessonDate;
         private System.Windows.Forms.Label lbSearchLessonStudent;
         private System.Windows.Forms.ComboBox cbSearchLessonRoom;
@@ -4492,91 +4991,56 @@
         private System.Windows.Forms.Label lbSearchTeacher;
         private System.Windows.Forms.TextBox tbSearchLessonStudent;
         private System.Windows.Forms.Label lbSearchLessonDay;
-        private System.Windows.Forms.Button buttonTeach_GrabAvailChanges;
+        private System.Windows.Forms.Panel panelSearchLabels;
+        private System.Windows.Forms.Label labelGlobSearch;
+        private System.Windows.Forms.Panel panelGlobLogo;
+        private System.Windows.Forms.ComboBox cbGlobMode;
+        private System.Windows.Forms.PictureBox picBoxGlobIcon;
+        private System.Windows.Forms.Label labelGlobSagalingua;
+        private System.Windows.Forms.Label labelGlobCount;
+        private HiddenTabControl tabControlOps;
+        private System.Windows.Forms.ToolStripMenuItem syncToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem planToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem payToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem studentsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem teachersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reportExpenseToolStripMenuItem;
-        private System.Windows.Forms.TabPage tabEdit;
-        private System.Windows.Forms.TabPage tabSchedPlan;
-        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
-        private HiddenTabControl tabControlOps;
-        private System.Windows.Forms.TabPage tabSchedShow;
-        private System.Windows.Forms.TabPage tabSchedCancel;
-        private System.Windows.Forms.TabPage tabPayStud;
-        private System.Windows.Forms.TabPage tabPayTeach;
-        private System.Windows.Forms.TabPage tabPayExpense;
-        private System.Windows.Forms.TabPage tabPage8;
-        private System.Windows.Forms.Label lbSchedPlanName;
-        private System.Windows.Forms.Label lbSchedShowName;
-        private System.Windows.Forms.Label lbSchedCancelName;
-        private System.Windows.Forms.Label lbPayStudName;
-        private System.Windows.Forms.Label lbPayTeachName;
-        private System.Windows.Forms.Label lbPayExpenseName;
-        private System.Windows.Forms.Label lbFutureOpName;
-        private System.Windows.Forms.Panel panelSchedNewMatrix;
-        private System.Windows.Forms.Panel panelSchedNewParams;
-        private System.Windows.Forms.ComboBox cbSchedNewTeacher;
-        private System.Windows.Forms.Label lbSchedNewTeacher;
-        private System.Windows.Forms.Label lbSchedNewWeek;
-        private System.Windows.Forms.ComboBox cbSchedNewLanguage;
-        private System.Windows.Forms.Label lbSchedNewLanguage;
-        private System.Windows.Forms.ComboBox cbSchedNewStud4;
-        private System.Windows.Forms.Label lbSchedNewStud1;
-        private System.Windows.Forms.ComboBox cbSchedNewStud3;
-        private System.Windows.Forms.Label lbSchedNewStud2;
-        private System.Windows.Forms.ComboBox cbSchedNewStud2;
-        private System.Windows.Forms.Label lbSchedNewStud3;
-        private System.Windows.Forms.ComboBox cbSchedNewStud1;
-        private System.Windows.Forms.Label lbSchedNewStud4;
-        private System.Windows.Forms.DateTimePicker dtpSchedNew;
-        private System.Windows.Forms.Panel panelTeachMatrix;
-        private System.Windows.Forms.ComboBox cbSchedNewDuration;
-        private System.Windows.Forms.Label lbSchedNewDuration;
-        private System.Windows.Forms.Button butSchedNewAccept;
-        private System.Windows.Forms.DataGridView dgvSchedNew;
-        private System.Windows.Forms.BindingSource schedNewSlotList;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Slot;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mondayDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tuesdayDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn wednesdayDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn thursdayDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fridayDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn saturdayDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sundayDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Label lbSchedNewStudSchedule4;
-        private System.Windows.Forms.Label lbSchedNewStudSchedule3;
-        private System.Windows.Forms.Label lbSchedNewStudSchedule2;
-        private System.Windows.Forms.Label lbSchedNewStudSchedule1;
-        private System.Windows.Forms.TextBox tbSchedNewComment;
-        private System.Windows.Forms.Label lbSchedNewComment;
-        private System.Windows.Forms.Label lbSchedNewTeachVacation;
-        private System.Windows.Forms.Button buttonGlobRefresh;
-        private System.Windows.Forms.BindingSource lessonList;
-        private System.Windows.Forms.DataGridViewTextBoxColumn State;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dayDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Start;
-        private System.Windows.Forms.DataGridViewTextBoxColumn End;
-        private System.Windows.Forms.DataGridViewTextBoxColumn programDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn roomDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn student1DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn student2DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn student3DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn student10DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Student4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn teacher1DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn teacher2DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn commentsDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.TextBox tbSchedNewDuration;
-        private System.Windows.Forms.Label lbSchedNewRepeat;
-        private System.Windows.Forms.ToolStripMenuItem syncToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem advancedToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem downloadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reopenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem uploadToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem menuItemGlobSave;
+        private System.Windows.Forms.ToolStripMenuItem menuItemGlobExit;
+        private System.Windows.Forms.MenuStrip menuStripGlobalOps;
+        private System.Windows.Forms.Label labelGlobLastDownload;
+        private System.Windows.Forms.Label labelGlobLastUpload;
+        private System.Windows.Forms.Panel panelGlobIndicators;
+        private System.Windows.Forms.Label lbViewCount;
+        private System.Windows.Forms.PictureBox pboxViewIcon;
+        private System.Windows.Forms.Panel panelViewControl;
+        private System.Windows.Forms.GroupBox groupBoxViewCurrent;
+        private System.Windows.Forms.Panel panelViewSelect;
+        private System.Windows.Forms.ComboBox cbViewSelectStatus;
+        private System.Windows.Forms.Label lbViewSelectStatus;
+        private System.Windows.Forms.ComboBox cbViewSelectRoom;
+        private System.Windows.Forms.ComboBox cbViewSelectTeacher;
+        private System.Windows.Forms.ComboBox cbViewSelectStudent;
+        private System.Windows.Forms.Label lbViewSelectRoom;
+        private System.Windows.Forms.Label lbViewSelectTeacher;
+        private System.Windows.Forms.Label lbViewSelectStudent;
+        private System.Windows.Forms.Button butViewShowAll;
+        private System.Windows.Forms.Label labelViewSelect;
+        private System.Windows.Forms.Label lbViewGbRoom;
+        private System.Windows.Forms.Label lbViewGbStart;
+        private System.Windows.Forms.Label lbViewGbEnd;
+        private System.Windows.Forms.Label lbViewGbDate;
+        private System.Windows.Forms.Label lbViewGbProg;
+        private System.Windows.Forms.Label lbViewGbStudent4;
+        private System.Windows.Forms.Label lbViewGbStudent2;
+        private System.Windows.Forms.Label lbViewGbStudent3;
+        private System.Windows.Forms.Label lbViewGbStudent1;
     }
 }
 

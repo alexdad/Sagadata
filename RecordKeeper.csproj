@@ -170,6 +170,9 @@
     <Compile Include="StudentType.cs" />
     <Compile Include="Teacher.cs" />
     <Compile Include="TeacherType.cs" />
+    <Compile Include="ViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

@@ -967,9 +967,52 @@ namespace RecordKeeper
 
         #endregion
 
+        #region View-related UI
         private void buttonGlobRefresh_Click(object sender, EventArgs e)
         {
             dgvLesson.Refresh();
+        }
+
+        private void butViewZoomOut_Click(object sender, EventArgs e)
+        {
+            if (tabControlViewScales.SelectedIndex > (int)TabControlScales.Week)
+                tabControlViewScales.SelectedIndex--;
+            ReenableZoomoutButtons();
+        }
+        private void butViewZoomIn_Click(object sender, EventArgs e)
+        {
+            if (tabControlViewScales.SelectedIndex < (int)TabControlScales.Slots)
+                tabControlViewScales.SelectedIndex++;
+            ReenableZoomoutButtons();
+        }
+
+        private void ReenableZoomoutButtons()
+        {
+            butViewZoomOut.Enabled =
+                (tabControlViewScales.SelectedIndex >
+                    (int)TabControlScales.Week);
+            butViewZoomIn.Enabled =
+                (tabControlViewScales.SelectedIndex <
+                    (int)TabControlScales.Slots);
+        }
+        #endregion
+
+        private void tabControlViewScales_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch(tabControlViewScales.SelectedIndex)
+            {
+                case (int)TabControlScales.Week:
+                    ShowWeek();
+                    break;
+                case (int)TabControlScales.Day:
+                    ShowDay();
+                    break;
+                case (int)TabControlScales.Slots:
+                    ShowSlots();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }

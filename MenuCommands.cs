@@ -13,6 +13,25 @@ namespace RecordKeeper
 {
     public partial class FormGlob : Form
     {
+        public enum TabControlOps
+        {
+            Edit,
+            Plan,
+            View,
+            SchedCancel,
+            PayStud,
+            PayTeach,
+            PayExpense,
+            page8
+        };
+
+        public enum TabControlScales
+        {
+            Week,
+            Day,
+            Slots
+        };
+
         //----------------------------------------------------
         // Menu strip
         //----------------------------------------------------
@@ -38,30 +57,37 @@ namespace RecordKeeper
             SaveChangedFiles();
         }
 
+        private void viewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabControlOps.SelectedIndex = (int)TabControlOps.View;
+            tabControlViewScales.SelectedIndex = (int)TabControlScales.Day;
+            ReenableZoomoutButtons();
+        }
+
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tabControlOps.SelectedIndex = 0;
+            tabControlOps.SelectedIndex = (int)TabControlOps.Edit;
         }
         private void planToolStripMenuItem_Click(object sender, EventArgs e)
         {
             InitializeSchedNew(false);
-            tabControlOps.SelectedIndex = 1;
+            tabControlOps.SelectedIndex = (int)TabControlOps.Plan;
         }
         private void studentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tabControlOps.SelectedIndex = 4;
+            tabControlOps.SelectedIndex = (int)TabControlOps.PayStud;
 
         }
 
         private void teachersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tabControlOps.SelectedIndex = 5;
+            tabControlOps.SelectedIndex = (int)TabControlOps.PayTeach;
 
         }
 
         private void reportExpenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tabControlOps.SelectedIndex = 6;
+            tabControlOps.SelectedIndex = (int)TabControlOps.PayExpense;
 
         }
 
