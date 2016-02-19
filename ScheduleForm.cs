@@ -64,6 +64,19 @@ namespace RecordKeeper
         int m_plan_row = -1;
         int m_plan_col = -1;
 
+        enum StatusColors
+        {
+            Good, Warning, Bad, Attention, Unknown
+        };
+
+        Color[] m_statusColors = new Color[]
+        {
+                Color.FromArgb(179, 224, 158),      // light green
+                Color.FromArgb(239, 237, 143),      // yellow
+                Color.FromArgb(242, 223, 228),      // reddish
+                Color.FromArgb(128, 0, 0),          // red-brown
+                Color.FromArgb(192, 192, 192),      // gray
+        };
 
         int StandardizeDayOfTheWeek(DayOfWeek dw)
         {
@@ -115,22 +128,20 @@ namespace RecordKeeper
             }
         }
 
-        private Color AvailabilityColor(char c)
+        private Color TeacherAvailabilityColor(char c)
         {
-
-            // Todo - better array here. Also need color key on the screen.
             switch(c)
             {
                 case '0':   // light green - free
-                    return Color.FromArgb(179, 224, 158);
+                    return m_statusColors[(int)StatusColors.Good];
                 case '1':   // yellow - maybe
-                    return Color.FromArgb(239, 237, 143);
+                    return m_statusColors[(int)StatusColors.Warning];
                 case '2':   // reddish - unavailable
-                    return Color.FromArgb(242, 223, 228);
+                    return m_statusColors[(int)StatusColors.Bad];
                 case '4':   // red-brown - lesson    
-                    return Color.FromArgb(128, 0, 0);
+                    return m_statusColors[(int)StatusColors.Attention];
                 default:
-                    return Color.FromArgb(192, 192, 192);
+                    return m_statusColors[(int)StatusColors.Unknown];
             }
         }
 
@@ -143,7 +154,7 @@ namespace RecordKeeper
                 for (int j = 0; j < m_enumTimeSlot.Length; j++)
                 {
                     char c = charSlots[i, j];
-                    dgvPlan.Rows[j + 1].Cells[i + 1].Style.BackColor = AvailabilityColor(c);
+                    dgvPlan.Rows[j + 1].Cells[i + 1].Style.BackColor = TeacherAvailabilityColor(c);
                     dgvPlan.Rows[j + 1].Cells[i + 1].Tag = c;
                 }
             }
@@ -160,7 +171,7 @@ namespace RecordKeeper
                 char c = '4';
                 for (int j = js; j < je; j++)
                 {
-                    Color bc = AvailabilityColor(c);
+                    Color bc = TeacherAvailabilityColor(c);
                     Color fc = Color.FromArgb(255 - bc.R, 255 - bc.G, 255 - bc.B);
                     dgvPlan.Rows[j + 1].Cells[i + 1].Style.BackColor = bc;
                     dgvPlan.Rows[j + 1].Cells[i + 1].Style.ForeColor = fc;

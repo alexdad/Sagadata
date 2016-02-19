@@ -180,6 +180,7 @@ namespace RecordKeeper
             this.Size = Properties.Settings.Default.Form1Size;
             splitContainerGlobDataControls.SplitterDistance = Properties.Settings.Default.SplitDC;
             splitContainerGlobMasterDetail.SplitterDistance = Properties.Settings.Default.SplitMD;
+            splitCntViewMatrixCon.SplitterDistance = Properties.Settings.Default.SplitV;
 
             Modified = false;
         }
@@ -189,6 +190,7 @@ namespace RecordKeeper
             Properties.Settings.Default.Form1Size = this.Size;
             Properties.Settings.Default.SplitDC = splitContainerGlobDataControls.SplitterDistance;
             Properties.Settings.Default.SplitMD = splitContainerGlobMasterDetail.SplitterDistance;
+            Properties.Settings.Default.SplitV = splitCntViewMatrixCon.SplitterDistance;
             Properties.Settings.Default.Save();
         }
         #endregion
@@ -975,26 +977,30 @@ namespace RecordKeeper
 
         private void butViewZoomOut_Click(object sender, EventArgs e)
         {
-            if (tabControlViewScales.SelectedIndex > (int)TabControlScales.Week)
+            if (tabControlViewScales.SelectedIndex > 0)
                 tabControlViewScales.SelectedIndex--;
-            ReenableZoomoutButtons();
         }
         private void butViewZoomIn_Click(object sender, EventArgs e)
         {
-            if (tabControlViewScales.SelectedIndex < (int)TabControlScales.Slots)
+            if (tabControlViewScales.SelectedIndex < tabControlViewScales.TabCount-1)
                 tabControlViewScales.SelectedIndex++;
-            ReenableZoomoutButtons();
+        }
+        private void butViewNext_Click(object sender, EventArgs e)
+        {
+            int step = 1;
+            if (tabControlViewScales.SelectedIndex < 2) // Week or stats
+                step = 7;
+            dtpViewSlot.Value = dtpViewSlot.Value.Date.AddDays(step);
         }
 
-        private void ReenableZoomoutButtons()
+        private void butViewPrev_Click(object sender, EventArgs e)
         {
-            butViewZoomOut.Enabled =
-                (tabControlViewScales.SelectedIndex >
-                    (int)TabControlScales.Week);
-            butViewZoomIn.Enabled =
-                (tabControlViewScales.SelectedIndex <
-                    (int)TabControlScales.Slots);
+            int step = 1;
+            if (tabControlViewScales.SelectedIndex < 2) // Week or stats
+                step = 7;
+            dtpViewSlot.Value = dtpViewSlot.Value.Date.AddDays(-step);
         }
+
         private void dtpViewSlot_ValueChanged(object sender, EventArgs e)
         {
             DateTimePicker dtp = (DateTimePicker)sender;

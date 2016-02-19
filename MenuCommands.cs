@@ -61,7 +61,6 @@ namespace RecordKeeper
         {
             tabControlOps.SelectedIndex = (int)TabControlOps.View;
             tabControlViewScales.SelectedIndex = (int)TabControlScales.Day;
-            ReenableZoomoutButtons();
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)

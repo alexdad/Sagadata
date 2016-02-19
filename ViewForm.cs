@@ -137,11 +137,6 @@ namespace RecordKeeper
                 i++;
 
             }
-
-
-
-
-
         }
         public void ViewShowSlots()
         {
@@ -184,36 +179,76 @@ namespace RecordKeeper
 
             foreach (Lesson l in lsn)
             {
-                int slotIndex = (int)((l.DateTimeStart.Ticks - dts.Ticks) / ts.Ticks);
-                if (slotIndex < 0 || slotIndex >= m_enumTimeSlot.Length)
+                int slot1Index = (int)((l.DateTimeStart.Ticks - dts.Ticks) / ts.Ticks);
+                if (slot1Index < 0 || slot1Index >= m_enumTimeSlot.Length)
                     continue;
 
-                ViewSlot slot = new RecordKeeper.ViewSlot(m_enumTimeSlot[slotIndex]);
-                int roomIndex = slot.SetViewSlot(l.Room, l.Teacher1);
-                if (roomIndex < 0 || roomIndex >= 7)
+                int slot2Index = (int)((l.DateTimeEnd.Ticks - dts.Ticks) / ts.Ticks);
+                if (slot2Index < 0 || slot2Index >= m_enumTimeSlot.Length)
                     continue;
 
-                viewSlotList.Add(slot);
-                dgvViewSlots.Rows[slotIndex].Cells[roomIndex].Style.BackColor =
-                    m_viewSlotColors[roomIndex - 1];
-                dgvViewSlots.Rows[slotIndex].Cells[roomIndex].Style.Tag = l;
-                dgvViewSlots.Rows[slotIndex].Cells[roomIndex].Value = l.Teacher1;
+                for (int slotIndex = slot1Index; slotIndex <= slot2Index; slotIndex++)
+                {
+                    string text = "";
+                    switch(slotIndex - slot1Index)
+                    {
+                        case 0:
+                            text = l.Student1;
+                            break;
+                        case 1:
+                            text = "w/ " + l.Teacher1;
+                            break;
+                        case 2:
+                            text = "   " + l.Program;
+                            break;
+                        case 3:
+                            text = "   " + l.State;
+                            break;
+                        case 4:
+                            text = "+ " + l.Student2;
+                            break;
+                        case 5:
+                            text = "+ " + l.Student3;
+                            break;
+                        case 6:
+                            text = "+ " + l.Student4;
+                            break;
+                        default:
+                            break;
+                    }
+
+                    ViewSlot slot = new RecordKeeper.ViewSlot(m_enumTimeSlot[slotIndex]);
+                    int roomIndex = slot.SetViewSlot(l.Room, text);
+                    if (roomIndex < 0 || roomIndex >= 7)
+                        continue;
+
+                    
+                    viewSlotList.Add(slot);
+                    Color c1 = LessonStateColor(l.State);
+                    Color c2 = Color.FromArgb(255 - c1.R, 255 - c1.G, 255 - c1.B);
+                    dgvViewSlots.Rows[slotIndex].Cells[roomIndex].Style.BackColor = c1;
+                    dgvViewSlots.Rows[slotIndex].Cells[roomIndex].Style.ForeColor = c2;
+                    dgvViewSlots.Rows[slotIndex].Cells[roomIndex].Style.Tag = l;
+                    dgvViewSlots.Rows[slotIndex].Cells[roomIndex].Value = text;
+                }
             }
-
-            /*
-            viewSlotList.Add(new RecordKeeper.ViewSlot());
-            for (int i=0; i <7; i++)
-                dgvViewSlots.Rows[0].Cells[i + 1].Style.BackColor = m_viewSlotColors[i];
-            */
-
-
-
-            // Assign colors based on teacher availability
-            //PlanGetTeacherAvailability();
-
-
         }
-
+        private Color LessonStateColor(string state)
+        {
+            switch (state)
+            {
+                case "Done":   // light green - confirmed
+                    return m_statusColors[(int)StatusColors.Good];
+                case "Planned":   // yellow - planned
+                    return m_statusColors[(int)StatusColors.Warning];
+                case "Cancelled":   // reddish - cancelled
+                    return m_statusColors[(int)StatusColors.Bad];
+                case "Confirmed":   // red-brown - lesson    
+                    return m_statusColors[(int)StatusColors.Attention];
+                default:
+                    return m_statusColors[(int)StatusColors.Unknown];
+            }
+        }
 
     }
 }
