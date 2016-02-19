@@ -321,17 +321,21 @@ namespace RecordKeeper
             if (row < 0 || row >= dgvViewSlots.RowCount ||
                 col < 0 || col > dgvViewSlots.ColumnCount)
                 return;
-            Lesson l = m_dvgViewTags[row * 100 + col];
-            lbViewGbDate.Text = l.DateTimeStart.ToShortDateString();
-            lbViewGbRoom.Text = l.Room;
-            lbViewGbProg.Text = l.Program;
-            lbViewGbStart.Text = l.DateTimeStart.ToShortTimeString();
-            lbViewGbEnd.Text = l.DateTimeEnd.ToShortTimeString();
-            lbViewGbTeacher.Text = l.Teacher1;
-            lbViewGbStudent1.Text = l.Student1;
-            lbViewGbStudent2.Text = l.Student2;
-            lbViewGbStudent3.Text = l.Student3;
-            lbViewGbStudent4.Text = l.Student4;
+            int ind = row * 100 + col;
+            if (m_dvgViewTags.ContainsKey(ind))
+            {
+                Lesson l = m_dvgViewTags[ind];
+                lbViewGbDate.Text = l.DateTimeStart.ToShortDateString();
+                lbViewGbRoom.Text = l.Room;
+                lbViewGbProg.Text = l.Program;
+                lbViewGbStart.Text = l.DateTimeStart.ToShortTimeString();
+                lbViewGbEnd.Text = l.DateTimeEnd.ToShortTimeString();
+                lbViewGbTeacher.Text = l.Teacher1;
+                lbViewGbStudent1.Text = l.Student1;
+                lbViewGbStudent2.Text = l.Student2;
+                lbViewGbStudent3.Text = l.Student3;
+                lbViewGbStudent4.Text = l.Student4;
+            }
         }
     }
 }

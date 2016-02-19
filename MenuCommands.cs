@@ -172,7 +172,7 @@ namespace RecordKeeper
                 if (!ReadCurrentFile())
                     success = false;
             }
-            CurrentMode = modeWas;
+            SetMode(modeWas);
             return success;
         }
 

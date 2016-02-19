@@ -1083,5 +1083,9 @@ namespace RecordKeeper
         }
         #endregion
 
+        private void dgvViewSlots_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
