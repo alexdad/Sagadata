@@ -133,6 +133,7 @@ namespace RecordKeeper
             string student,
             string teacher,
             string room,
+            string program,
             DateTime t1,
             DateTime t2)
         {
@@ -147,6 +148,9 @@ namespace RecordKeeper
                     continue;
                 if (room != null && room.Trim().Length > 1 &&
                     room != t.Room)
+                    continue;
+                if (program != null && program.Trim().Length > 1 &&
+                    program != t.Program)
                     continue;
                 if (teacher != null && teacher.Trim().Length > 1 &&
                     teacher != t.Teacher1 && teacher != t.Teacher2)

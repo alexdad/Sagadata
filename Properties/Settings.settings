@@ -23,8 +23,5 @@
     <Setting Name="SplitMD" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">398</Value>
     </Setting>
-    <Setting Name="SplitV" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">943</Value>
-    </Setting>
   </Settings>
 </SettingsFile>

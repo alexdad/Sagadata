@@ -141,6 +141,8 @@ namespace RecordKeeper
             //cbPlanLanguage.SelectedIndex = 1;   // Starting from English
             cbPlanDuration.Items.AddRange(m_enumDurations);
             //cbPlanDuration.SelectedIndex = 5;   // Starting from 1:30
+
+            cbViewSelectState.Items.AddRange(m_enumState);
         }
 
         public bool SelectionMode

@@ -94,17 +94,5 @@ namespace RecordKeeper.Properties {
                 this["SplitMD"] = value;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("943")]
-        public int SplitV {
-            get {
-                return ((int)(this["SplitV"]));
-            }
-            set {
-                this["SplitV"] = value;
-            }
-        }
     }
 }

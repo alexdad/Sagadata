@@ -24,7 +24,7 @@ namespace RecordKeeper
             White = "";
             Pink = "";
             Outside = "";
-            Slot= "";
+            Slot = "";
         }
 
         public ViewSlot(string hdr)
@@ -50,7 +50,7 @@ namespace RecordKeeper
 
         public int SetViewSlot(string room, string text)
         {
-            switch(room)
+            switch (room)
             {
                 case "Red":
                     Red = text;
@@ -70,11 +70,11 @@ namespace RecordKeeper
                 case "Pink":
                     Pink = text;
                     return 6;
-                case "Ourside":
+                case "Outside":
                     Outside = text;
                     return 7;
                 default:
-                    return -1;
+                    return 7;   // No room = outside
             }
         }
     }
@@ -83,10 +83,14 @@ namespace RecordKeeper
     public partial class FormGlob : Form
     {
         DateTime m_view_chosenDate = DateTime.Today;
-        string m_view_chosen_status = "";
+        string m_view_chosen_state = "";
         string m_view_chosen_student = "";
         string m_view_chosen_teacher = "";
-        string m_view_chosen_room= "";
+        string m_view_chosen_room = "";
+        string m_view_chosen_program = "";
+
+        bool m_view_selection_mode = false;
+        Dictionary<int, Lesson> m_dvgViewTags = new Dictionary<int, Lesson>();
 
         int m_viewslots_row = -1;
         int m_viewslots_col = -1;
@@ -120,16 +124,19 @@ namespace RecordKeeper
             DateTime t1 = new DateTime(t.Year, t.Month, t.Day, 0, 0, 0);
             DateTime t2 = new DateTime(t.Year, t.Month, t.Day, 23, 59, 59);
             List<Lesson> lessons = LessonsByTime(t1, t2);
+            if (!m_view_selection_mode)
+                FillChoices(lessons);
+            lbViewCount.Text = lessons.Count.ToString();
 
             int i = 1;
-            foreach(Lesson l in lessons)
+            foreach (Lesson l in lessons)
             {
                 Button b = new Button()
                 {
                     Text = i.ToString(),
                     Width = 100,
                     Height = 30,
-                    Location = new Point(i * 30, i * 30 ),
+                    Location = new Point(i * 30, i * 30),
                     Parent = panelViewDay,
                     Tag = i
                 };
@@ -141,6 +148,7 @@ namespace RecordKeeper
         public void ViewShowSlots()
         {
             viewSlotList.Clear();
+            m_dvgViewTags.Clear();
             for (int i = 0; i < m_enumTimeSlot.Length; i++)
                 viewSlotList.Add(new RecordKeeper.ViewSlot(m_enumTimeSlot[i]));
 
@@ -157,11 +165,16 @@ namespace RecordKeeper
                 23, 59, 59);
 
             List<Lesson> lsn = FindLessonSlots(
-                m_view_chosen_status,
+                m_view_chosen_state,
                 m_view_chosen_student,
                 m_view_chosen_teacher,
                 m_view_chosen_room,
+                m_view_chosen_program,
                 dt1, dt2);
+
+            if (!m_view_selection_mode)
+                FillChoices(lsn);
+            lbViewCount.Text = lsn.Count.ToString();
 
             DateTime dts = new DateTime(
                m_view_chosenDate.Year,
@@ -190,7 +203,7 @@ namespace RecordKeeper
                 for (int slotIndex = slot1Index; slotIndex <= slot2Index; slotIndex++)
                 {
                     string text = "";
-                    switch(slotIndex - slot1Index)
+                    switch (slotIndex - slot1Index)
                     {
                         case 0:
                             text = l.Student1;
@@ -219,17 +232,18 @@ namespace RecordKeeper
 
                     ViewSlot slot = new RecordKeeper.ViewSlot(m_enumTimeSlot[slotIndex]);
                     int roomIndex = slot.SetViewSlot(l.Room, text);
-                    if (roomIndex < 0 || roomIndex >= 7)
+                    if (roomIndex < 0 || roomIndex > 7)
                         continue;
 
-                    
+
                     viewSlotList.Add(slot);
                     Color c1 = LessonStateColor(l.State);
                     Color c2 = Color.FromArgb(255 - c1.R, 255 - c1.G, 255 - c1.B);
                     dgvViewSlots.Rows[slotIndex].Cells[roomIndex].Style.BackColor = c1;
                     dgvViewSlots.Rows[slotIndex].Cells[roomIndex].Style.ForeColor = c2;
-                    dgvViewSlots.Rows[slotIndex].Cells[roomIndex].Style.Tag = l;
                     dgvViewSlots.Rows[slotIndex].Cells[roomIndex].Value = text;
+
+                    m_dvgViewTags[slotIndex * 100 + roomIndex] = l;
                 }
             }
         }
@@ -250,5 +264,74 @@ namespace RecordKeeper
             }
         }
 
+
+        private void CountString(string s, SortedDictionary<string, int> dict)
+        {
+            if (s != null && s.Trim().Length > 1)
+            {
+                if (dict.ContainsKey(s))
+                    dict[s] = dict[s] + 1;
+                else
+                    dict[s] = 1;
+            }
+        }
+
+        void FillChoices(List<Lesson> lsn)
+        {
+            SortedDictionary<string, int> students = new SortedDictionary<string, int>();
+            SortedDictionary<string, int> teachers = new SortedDictionary<string, int>();
+            SortedDictionary<string, int> rooms = new SortedDictionary<string, int>();
+            SortedDictionary<string, int> programs = new SortedDictionary<string, int>();
+
+            foreach (Lesson l in lsn)
+            {
+                CountString(l.Room, rooms);
+
+                CountString(l.Program, programs);
+
+                CountString(l.Teacher1, teachers);
+                CountString(l.Teacher2, teachers);
+
+                CountString(l.Student1, students);
+                CountString(l.Student2, students);
+                CountString(l.Student3, students);
+                CountString(l.Student4, students);
+                CountString(l.Student5, students);
+                CountString(l.Student6, students);
+                CountString(l.Student7, students);
+                CountString(l.Student8, students);
+                CountString(l.Student9, students);
+                CountString(l.Student10, students);
+            }
+            cbViewSelectProgram.Items.Clear();
+            cbViewSelectProgram.Items.AddRange(programs.Keys.ToArray());
+
+            cbViewSelectRoom.Items.Clear();
+            cbViewSelectRoom.Items.AddRange(rooms.Keys.ToArray());
+
+            cbViewSelectStudent.Items.Clear();
+            cbViewSelectStudent.Items.AddRange(students.Keys.ToArray());
+
+            cbViewSelectTeacher.Items.Clear();
+            cbViewSelectTeacher.Items.AddRange(teachers.Keys.ToArray());
+        }
+
+        void ViewSelectLesson(DataGridView dgv, int row, int col)
+        {
+            if (row < 0 || row >= dgvViewSlots.RowCount ||
+                col < 0 || col > dgvViewSlots.ColumnCount)
+                return;
+            Lesson l = m_dvgViewTags[row * 100 + col];
+            lbViewGbDate.Text = l.DateTimeStart.ToShortDateString();
+            lbViewGbRoom.Text = l.Room;
+            lbViewGbProg.Text = l.Program;
+            lbViewGbStart.Text = l.DateTimeStart.ToShortTimeString();
+            lbViewGbEnd.Text = l.DateTimeEnd.ToShortTimeString();
+            lbViewGbTeacher.Text = l.Teacher1;
+            lbViewGbStudent1.Text = l.Student1;
+            lbViewGbStudent2.Text = l.Student2;
+            lbViewGbStudent3.Text = l.Student3;
+            lbViewGbStudent4.Text = l.Student4;
+        }
     }
 }

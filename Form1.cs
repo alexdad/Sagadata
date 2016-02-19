@@ -180,7 +180,6 @@ namespace RecordKeeper
             this.Size = Properties.Settings.Default.Form1Size;
             splitContainerGlobDataControls.SplitterDistance = Properties.Settings.Default.SplitDC;
             splitContainerGlobMasterDetail.SplitterDistance = Properties.Settings.Default.SplitMD;
-            splitCntViewMatrixCon.SplitterDistance = Properties.Settings.Default.SplitV;
 
             Modified = false;
         }
@@ -190,7 +189,6 @@ namespace RecordKeeper
             Properties.Settings.Default.Form1Size = this.Size;
             Properties.Settings.Default.SplitDC = splitContainerGlobDataControls.SplitterDistance;
             Properties.Settings.Default.SplitMD = splitContainerGlobMasterDetail.SplitterDistance;
-            Properties.Settings.Default.SplitV = splitCntViewMatrixCon.SplitterDistance;
             Properties.Settings.Default.Save();
         }
         #endregion
@@ -400,6 +398,10 @@ namespace RecordKeeper
             ProposeNewLesson(sender as DataGridView, e.RowIndex, e.ColumnIndex);
         }
 
+        private void dgvViewSlots_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ViewSelectLesson(sender as DataGridView, e.RowIndex, e.ColumnIndex);
+        }
 
         #endregion
 
@@ -917,7 +919,7 @@ namespace RecordKeeper
         }
         #endregion
 
-        #region Schedule-related UI
+        #region Plan-related UI
         private void dtpPlan_ValueChanged(object sender, EventArgs e)
         {
             DateTimePicker dtp = (DateTimePicker)sender;
@@ -970,11 +972,6 @@ namespace RecordKeeper
         #endregion
 
         #region View-related UI
-        private void buttonGlobRefresh_Click(object sender, EventArgs e)
-        {
-            dgvLesson.Refresh();
-        }
-
         private void butViewZoomOut_Click(object sender, EventArgs e)
         {
             if (tabControlViewScales.SelectedIndex > 0)
@@ -1008,10 +1005,11 @@ namespace RecordKeeper
             ViewShowSlots();
         }
 
-        private void cbViewSelectStatus_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbViewSelectState_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cb = sender as ComboBox;
-            m_view_chosen_status = cb.SelectedItem as string;
+            m_view_chosen_state = cb.SelectedItem as string;
+            m_view_selection_mode = true;
             ViewShowSlots();
         }
 
@@ -1019,6 +1017,7 @@ namespace RecordKeeper
         {
             ComboBox cb = sender as ComboBox;
             m_view_chosen_student= cb.SelectedItem as string;
+            m_view_selection_mode = true;
             ViewShowSlots();
         }
 
@@ -1026,6 +1025,7 @@ namespace RecordKeeper
         {
             ComboBox cb = sender as ComboBox;
             m_view_chosen_teacher= cb.SelectedItem as string;
+            m_view_selection_mode = true;
             ViewShowSlots();
         }
 
@@ -1033,9 +1033,36 @@ namespace RecordKeeper
         {
             ComboBox cb = sender as ComboBox;
             m_view_chosen_room= cb.SelectedItem as string;
+            m_view_selection_mode = true;
+            ViewShowSlots();
+        }
+        private void cbViewSelectProgram_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox cb = sender as ComboBox;
+            m_view_chosen_program = cb.SelectedItem as string;
+            m_view_selection_mode = true;
             ViewShowSlots();
         }
 
+        void viewDropSelection()
+        {
+            m_view_chosen_room = null;
+            m_view_chosen_teacher = null;
+            m_view_chosen_student = null;
+            m_view_chosen_state = null;
+            m_view_selection_mode = false;
+
+            cbViewSelectProgram.SelectedIndex = -1;
+            cbViewSelectRoom.SelectedIndex = -1;
+            cbViewSelectTeacher.SelectedIndex = -1;
+            cbViewSelectStudent.SelectedIndex = -1;
+            cbViewSelectState.SelectedIndex = -1;
+        }
+        private void butViewShowAll_Click(object sender, EventArgs e)
+        {
+            viewDropSelection();
+            ViewShowSlots();
+        }
 
         private void tabControlViewScales_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1055,5 +1082,6 @@ namespace RecordKeeper
             }
         }
         #endregion
+
     }
 }
