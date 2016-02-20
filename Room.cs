@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Drawing;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,10 +12,18 @@ namespace RecordKeeper
         public string Name { get; set; }
         public int Rank { get; set; }
         public string Tags { get; set; }
+        public int ColorR { get; set; }
+        public int ColorG { get; set; }
+        public int ColorB { get; set; }
 
         public override string Description
         {
             get { return Name; }
+        }
+
+        public Color RoomColor
+        {
+            get { return Color.FromArgb(ColorR, ColorG, ColorB);  }
         }
         public override string Abbreviation
         {
@@ -43,6 +51,15 @@ namespace RecordKeeper
                     break;
                 case "Tags":
                     this.Tags = value;
+                    break;
+                case "ColorR":
+                    this.ColorR = int.Parse(value);
+                    break;
+                case "ColorG":
+                    this.ColorR = int.Parse(value);
+                    break;
+                case "ColorB":
+                    this.ColorR = int.Parse(value);
                     break;
                 default:
                     throw new Exception("unknown field " + field);
@@ -74,6 +91,12 @@ namespace RecordKeeper
                     return Rank.ToString();
                 case "Tags":
                     return Tags;
+                case "ColorR":
+                    return ColorR.ToString();
+                case "ColorG":
+                    return ColorR.ToString();
+                case "ColorB":
+                    return ColorR.ToString();
                 default:
                     throw new Exception("unknown field " + field);
 

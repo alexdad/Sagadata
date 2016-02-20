@@ -988,6 +988,8 @@ namespace RecordKeeper
             if (tabControlViewScales.SelectedIndex < 2) // Week or stats
                 step = 7;
             dtpViewSlot.Value = dtpViewSlot.Value.Date.AddDays(step);
+            m_view_chosenDate = dtpViewSlot.Value;
+            ShowView();
         }
 
         private void butViewPrev_Click(object sender, EventArgs e)
@@ -996,13 +998,22 @@ namespace RecordKeeper
             if (tabControlViewScales.SelectedIndex < 2) // Week or stats
                 step = 7;
             dtpViewSlot.Value = dtpViewSlot.Value.Date.AddDays(-step);
+            m_view_chosenDate = dtpViewSlot.Value;
+            ShowView();
         }
 
+        private void butViewShowDayLesson_Click(object sender, EventArgs e)
+        {
+            Button b = sender as Button;
+            if (b != null && (b.Tag as Lesson) != null)
+                ShowCurrentLesson(b.Tag as Lesson);
+        }
+        
         private void dtpViewSlot_ValueChanged(object sender, EventArgs e)
         {
             DateTimePicker dtp = (DateTimePicker)sender;
             m_view_chosenDate = dtp.Value.Date;
-            ViewShowSlots();
+            ShowView();
         }
 
         private void cbViewSelectState_SelectedIndexChanged(object sender, EventArgs e)
@@ -1010,7 +1021,7 @@ namespace RecordKeeper
             ComboBox cb = sender as ComboBox;
             m_view_chosen_state = cb.SelectedItem as string;
             m_view_selection_mode = true;
-            ViewShowSlots();
+            ShowView();
         }
 
         private void cbViewSelectStudent_SelectedIndexChanged(object sender, EventArgs e)
@@ -1018,7 +1029,7 @@ namespace RecordKeeper
             ComboBox cb = sender as ComboBox;
             m_view_chosen_student= cb.SelectedItem as string;
             m_view_selection_mode = true;
-            ViewShowSlots();
+            ShowView();
         }
 
         private void cbViewSelectTeacher_SelectedIndexChanged(object sender, EventArgs e)
@@ -1026,7 +1037,7 @@ namespace RecordKeeper
             ComboBox cb = sender as ComboBox;
             m_view_chosen_teacher= cb.SelectedItem as string;
             m_view_selection_mode = true;
-            ViewShowSlots();
+            ShowView();
         }
 
         private void cbViewSelectRoom_SelectedIndexChanged(object sender, EventArgs e)
@@ -1034,14 +1045,14 @@ namespace RecordKeeper
             ComboBox cb = sender as ComboBox;
             m_view_chosen_room= cb.SelectedItem as string;
             m_view_selection_mode = true;
-            ViewShowSlots();
+            ShowView();
         }
         private void cbViewSelectProgram_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cb = sender as ComboBox;
             m_view_chosen_program = cb.SelectedItem as string;
             m_view_selection_mode = true;
-            ViewShowSlots();
+            ShowView();
         }
 
         void viewDropSelection()
@@ -1061,18 +1072,26 @@ namespace RecordKeeper
         private void butViewShowAll_Click(object sender, EventArgs e)
         {
             viewDropSelection();
-            ViewShowSlots();
+            ShowView();
         }
 
         private void tabControlViewScales_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch(tabControlViewScales.SelectedIndex)
+            ShowView();
+        }
+
+        private void ShowView()
+        {
+            switch (tabControlViewScales.SelectedIndex)
             {
+                case (int)TabControlScales.Stats:
+                    //ViewShowStats();
+                    break;
                 case (int)TabControlScales.Week:
-                    ShowWeek();
+                    ViewShowWeek();
                     break;
                 case (int)TabControlScales.Day:
-                    ShowDay();
+                    ViewShowDay();
                     break;
                 case (int)TabControlScales.Slots:
                     ViewShowSlots();
@@ -1082,10 +1101,5 @@ namespace RecordKeeper
             }
         }
         #endregion
-
-        private void dgvViewSlots_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }

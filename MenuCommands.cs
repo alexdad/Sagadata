@@ -27,6 +27,7 @@ namespace RecordKeeper
 
         public enum TabControlScales
         {
+            Stats,
             Week,
             Day,
             Slots
@@ -60,7 +61,7 @@ namespace RecordKeeper
         private void viewToolStripMenuItem_Click(object sender, EventArgs e)
         {
             tabControlOps.SelectedIndex = (int)TabControlOps.View;
-            tabControlViewScales.SelectedIndex = (int)TabControlScales.Day;
+            ShowView();
         }
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)

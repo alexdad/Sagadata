@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Drawing;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -49,8 +49,46 @@ namespace RecordKeeper
 
         public override string Description
         {
-            get { return Day + " " + Start; }
+            get
+            {
+                StringBuilder sb = new StringBuilder();
+                if (this.Student1 != null)
+                {
+                    int space = this.Student1.Trim().IndexOf(" ");
+                    if (space > 0)
+                        sb.Append(Student1.Trim().Substring(0, space));
+                    else
+                        sb.Append(Student1.Trim());
+                    sb.Append("/ ");
+                }
+                else
+                {
+                    sb.Append("? / ");
+                }
+                if (this.Teacher1 != null)
+                {
+                    int space = this.Teacher1.Trim().IndexOf(" ");
+                    if (space > 0)
+                        sb.Append(Teacher1.Trim().Substring(0, space));
+                    else
+                        sb.Append(Teacher1.Trim());
+                }
+                else
+                {
+                    sb.Append("?");
+                }
+                return sb.ToString();
+            }
         }
+
+        public void GetLocationInWeek(out int col, out int row1, out int row2)
+        {
+            col = FormGlob.StandardizeDayOfTheWeek(DateTimeStart.DayOfWeek);
+            row1 = DateTimeStart.Hour * 4 + DateTimeStart.Minute / 15 - 7 * 4;
+            row2 = DateTimeEnd.Hour * 4 + DateTimeEnd.Minute / 15 - 7 * 4;
+
+        }
+
         public override string Abbreviation
         {
             get { return ("X"); }

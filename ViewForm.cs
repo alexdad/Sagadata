@@ -106,44 +106,129 @@ namespace RecordKeeper
                 Color.FromArgb(220,220,220)     // outside
         };
 
-        public void ShowWeek()
+        public void ViewShowWeek()
         {
+            string[] days = {"Monday", "Tuesday", "Wednesday",
+                "Thursday", "Friday", "Saturday", "Sunday" };
+            /*
+                        while (panelViewDay.Controls.Count > 0)
+                panelViewDay.Controls[0].Dispose();
+
+            panelViewDay.Controls.Clear();
+
+            List<Lesson> lsn = FindLessonsForView();
+
+            int[,] hits = new int[7, m_enumTimeSlot.Length];
+            for (int i = 0; i < 7; i++)
+                for (int j = 0; j < m_enumTimeSlot.Length; j++)
+                    hits[i,j] = 0;
+
+            int cellWidth = panelViewDay.Width / 7;
+            int cellHight = panelViewDay.Height / m_enumTimeSlot.Length;
+
+            foreach (Lesson l in lsn)
+            {
+                int i, js, je;
+                l.GetLocation(out i, out js, out je);
+                for (int j = js; j < je; j++)
+                    hits[i, j]++;
+            }
+
+
+            foreach (Lesson l in lsn)
+            {
+                int x, ys, ye;
+                l.GetLocation(out x, out ys, out ye);
+                int neighbors = 1;
+                for (int y = ys; y < ye; y++)
+                    if (hits[x, y] > neighbors)
+                        neighbors = hits[x, y];
+
+                Button b = new Button()
+                {
+                    Text = l.Description,
+                    Width = cellWidth / neighbors,
+                    Height = 20,
+                    Location = new Point(cellWidth * x + , y),
+                    Parent = panelViewDay,
+                    Tag = l
+                };
+            }
+            */
 
         }
-        public void ShowDay()
+        public void ViewShowDay()
         {
-
             while (panelViewDay.Controls.Count > 0)
                 panelViewDay.Controls[0].Dispose();
 
             panelViewDay.Controls.Clear();
 
-            // Now we can draw here buttons per lesson in right places 
+            List<Lesson> lsn = FindLessonsForView();
+            if (roomList.Count == 0)
+                return;
 
-            DateTime t = DateTime.Today;
-            DateTime t1 = new DateTime(t.Year, t.Month, t.Day, 0, 0, 0);
-            DateTime t2 = new DateTime(t.Year, t.Month, t.Day, 23, 59, 59);
-            List<Lesson> lessons = LessonsByTime(t1, t2);
-            if (!m_view_selection_mode)
-                FillChoices(lessons);
-            lbViewCount.Text = lessons.Count.ToString();
+            int cellWidth = (panelViewDay.Width - 60) / roomList.Count;
+            int cellHight = (panelViewDay.Height - 20) / m_enumTimeSlot.Length;
 
-            int i = 1;
-            foreach (Lesson l in lessons)
+            int i = 0;
+            foreach (Room r in roomList)
             {
+                Label l = new Label()
+                {
+                    Text = r.Name,
+                    Width = cellWidth,
+                    Height = 20,
+                    Location = new Point(
+                        60 + cellWidth * i + 5,
+                        5),
+                    Parent = panelViewDay,
+                    TextAlign = ContentAlignment.MiddleCenter
+                };
+                i++;
+            }
+
+            int prev = -1000;
+            for (int j=0; j < m_enumTimeSlot.Length; j++)
+            {
+                int y = 40 + cellHight * j + 5;
+                if (y - prev < 100)
+                    continue;
+                prev = y;
+                Label l = new Label()
+                {
+                    Text = m_enumTimeSlot[j],
+                    Width = 60,
+                    Height = 20,
+                    Location = new Point(5, y),
+                    Parent = panelViewDay,
+                    TextAlign = ContentAlignment.MiddleLeft
+                };
+            }
+
+            foreach (Lesson l in lsn)
+            {
+                int x, ys, ye;
+                Color roomColor;
+                GetLocationInRooms(l, out x, out ys, out ye, out roomColor);
+
                 Button b = new Button()
                 {
-                    Text = i.ToString(),
-                    Width = 100,
-                    Height = 30,
-                    Location = new Point(i * 30, i * 30),
+                    Text = l.Description,
+                    Width = cellWidth - 10,
+                    Height = cellHight * (ye - ys + 1) - 10,
+                    Location = new Point(
+                        60 + cellWidth * x + 5, 
+                        40 + cellHight * ys + 5),
                     Parent = panelViewDay,
-                    Tag = i
+                    BackColor = LessonStateColor(l.State), 
+                    ForeColor = Color.FromArgb(255- BackColor.R, 255- BackColor.G, 255- BackColor.B),
+                    Tag = l
                 };
-                // b.MouseHover
-                i++;
-
+                b.ContextMenuStrip = ctxMenuLesson;
+                b.Click += new System.EventHandler(this.butViewShowDayLesson_Click);
             }
+            panelViewDay.Refresh();
         }
         public void ViewShowSlots()
         {
@@ -152,29 +237,7 @@ namespace RecordKeeper
             for (int i = 0; i < m_enumTimeSlot.Length; i++)
                 viewSlotList.Add(new RecordKeeper.ViewSlot(m_enumTimeSlot[i]));
 
-            DateTime dt1 = new DateTime(
-                m_view_chosenDate.Year,
-                m_view_chosenDate.Month,
-                m_view_chosenDate.Day,
-                0, 0, 0);
-
-            DateTime dt2 = new DateTime(
-                m_view_chosenDate.Year,
-                m_view_chosenDate.Month,
-                m_view_chosenDate.Day,
-                23, 59, 59);
-
-            List<Lesson> lsn = FindLessonSlots(
-                m_view_chosen_state,
-                m_view_chosen_student,
-                m_view_chosen_teacher,
-                m_view_chosen_room,
-                m_view_chosen_program,
-                dt1, dt2);
-
-            if (!m_view_selection_mode)
-                FillChoices(lsn);
-            lbViewCount.Text = lsn.Count.ToString();
+            List<Lesson> lsn = FindLessonsForView();
 
             DateTime dts = new DateTime(
                m_view_chosenDate.Year,
@@ -186,7 +249,7 @@ namespace RecordKeeper
                m_view_chosenDate.Year,
                m_view_chosenDate.Month,
                m_view_chosenDate.Day,
-               7, 15, 0);
+               7, 15, 0);   // just to measure 15 min in ticks
 
             TimeSpan ts = dtn - dts;
 
@@ -247,20 +310,50 @@ namespace RecordKeeper
                 }
             }
         }
+
+        private List<Lesson> FindLessonsForView()
+        {
+            DateTime dt1 = new DateTime(
+                m_view_chosenDate.Year,
+                m_view_chosenDate.Month,
+                m_view_chosenDate.Day,
+                0, 0, 0);
+
+            DateTime dt2 = new DateTime(
+                m_view_chosenDate.Year,
+                m_view_chosenDate.Month,
+                m_view_chosenDate.Day,
+                23, 59, 59);
+
+            List<Lesson> lsn = FindLessonSlots(
+                m_view_chosen_state,
+                m_view_chosen_student,
+                m_view_chosen_teacher,
+                m_view_chosen_room,
+                m_view_chosen_program,
+                dt1, dt2);
+
+            if (!m_view_selection_mode)
+                FillChoices(lsn);
+            lbViewCount.Text = lsn.Count.ToString();
+
+            return lsn;
+        }
+
         private Color LessonStateColor(string state)
         {
             switch (state)
             {
                 case "Done":   // light green - confirmed
-                    return m_statusColors[(int)StatusColors.Good];
+                    return StateColors[(int)StatusColors.Good];
                 case "Planned":   // yellow - planned
-                    return m_statusColors[(int)StatusColors.Warning];
+                    return StateColors[(int)StatusColors.Warning];
                 case "Cancelled":   // reddish - cancelled
-                    return m_statusColors[(int)StatusColors.Bad];
+                    return StateColors[(int)StatusColors.Bad];
                 case "Confirmed":   // red-brown - lesson    
-                    return m_statusColors[(int)StatusColors.Attention];
+                    return StateColors[(int)StatusColors.Attention];
                 default:
-                    return m_statusColors[(int)StatusColors.Unknown];
+                    return StateColors[(int)StatusColors.Unknown];
             }
         }
 
@@ -324,18 +417,92 @@ namespace RecordKeeper
             int ind = row * 100 + col;
             if (m_dvgViewTags.ContainsKey(ind))
             {
-                Lesson l = m_dvgViewTags[ind];
-                lbViewGbDate.Text = l.DateTimeStart.ToShortDateString();
-                lbViewGbRoom.Text = l.Room;
-                lbViewGbProg.Text = l.Program;
-                lbViewGbStart.Text = l.DateTimeStart.ToShortTimeString();
-                lbViewGbEnd.Text = l.DateTimeEnd.ToShortTimeString();
-                lbViewGbTeacher.Text = l.Teacher1;
-                lbViewGbStudent1.Text = l.Student1;
-                lbViewGbStudent2.Text = l.Student2;
-                lbViewGbStudent3.Text = l.Student3;
-                lbViewGbStudent4.Text = l.Student4;
+                ShowCurrentLesson(m_dvgViewTags[ind]);
             }
         }
+
+        public void ShowCurrentLesson(Lesson l)
+        {
+            lbViewGbDate.Text = l.DateTimeStart.ToShortDateString();
+            lbViewGbRoom.Text = l.Room;
+            lbViewGbProg.Text = l.Program;
+            lbViewGbStart.Text = l.DateTimeStart.ToShortTimeString();
+            lbViewGbEnd.Text = l.DateTimeEnd.ToShortTimeString();
+            lbViewGbTeacher.Text = l.Teacher1;
+            lbViewGbStudent1.Text = l.Student1;
+            lbViewGbStudent2.Text = l.Student2;
+            lbViewGbStudent3.Text = l.Student3;
+            lbViewGbStudent4.Text = l.Student4;
+        }
+
+        public void GetLocationInRooms(Lesson l, 
+            out int col, out int row1, out int row2, out Color color)
+        {
+            color = Color.Gray;
+            l.GetLocationInWeek(out col, out row1, out row2);
+            int i = 0;
+            col = -1;
+            foreach (Room r in roomList)
+            {
+                if (r.Name == l.Room)
+                {
+                    col = i;
+                    color = r.RoomColor;
+                }
+                i++; 
+            }
+
+            if (col == -1)
+                col = roomList.Count - 1;
+        }
+
+        private void menuItemViewLessonConfirm_Click(object sender, EventArgs e)
+        {
+            Button b2 = (Button)((ContextMenuStrip)((ToolStripItem)sender).Owner).SourceControl;
+            Lesson l = b2.Tag as Lesson;
+            l.State = "Confirmed";
+            ShowView();
+        }
+
+
+        private void menuItemViewLessonCancel_Click(object sender, EventArgs e)
+        {
+            Button b2 = (Button)((ContextMenuStrip)((ToolStripItem)sender).Owner).SourceControl;
+            Lesson l = b2.Tag as Lesson;
+            l.State = "Cancelled";
+            ShowView();
+        }
+
+        private void menuItemViewLessonMove_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuItemViewLessonMove1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuItemViewLessonMove2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuItemViewLessonDone_Click(object sender, EventArgs e)
+        {
+            Button b2 = (Button)((ContextMenuStrip)((ToolStripItem)sender).Owner).SourceControl;
+            Lesson l = b2.Tag as Lesson;
+            l.State = "Done";
+            ShowView();
+        }
+
+        private void menuItemViewLessonPlanned_Click(object sender, EventArgs e)
+        {
+            Button b2 = (Button)((ContextMenuStrip)((ToolStripItem)sender).Owner).SourceControl;
+            Lesson l = b2.Tag as Lesson;
+            l.State = "Planned";
+            ShowView();
+        }
+
     }
 }

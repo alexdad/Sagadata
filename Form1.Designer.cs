@@ -48,6 +48,12 @@
             this.labelGlobLastDownload = new System.Windows.Forms.Label();
             this.labelGlobLastUpload = new System.Windows.Forms.Label();
             this.panelGlobIndicators = new System.Windows.Forms.Panel();
+            this.ctxMenuLesson = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuItemViewLessonConfirm = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewLessonCancel = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewLessonMove = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewLessonMove1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewLessonMove2 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControlOps = new RecordKeeper.HiddenTabControl();
             this.tabEdit = new System.Windows.Forms.TabPage();
             this.splitContainerGlobDataControls = new System.Windows.Forms.SplitContainer();
@@ -408,8 +414,10 @@
             this.panelViewMatrix = new System.Windows.Forms.Panel();
             this.tabControlViewScales = new RecordKeeper.HiddenTabControl();
             this.tabPageStats = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
             this.tabPageViewWeek = new System.Windows.Forms.TabPage();
             this.panelViewWeek = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.tabPageViewDay = new System.Windows.Forms.TabPage();
             this.panelViewDay = new System.Windows.Forms.Panel();
             this.tabPageViewSlots = new System.Windows.Forms.TabPage();
@@ -438,8 +446,11 @@
             this.lbPayExpenseName = new System.Windows.Forms.Label();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.lbFutureOpName = new System.Windows.Forms.Label();
+            this.menuItemViewLessonDone = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewLessonPlanned = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripGlobalOps.SuspendLayout();
             this.panelGlobIndicators.SuspendLayout();
+            this.ctxMenuLesson.SuspendLayout();
             this.tabControlOps.SuspendLayout();
             this.tabEdit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerGlobDataControls)).BeginInit();
@@ -521,7 +532,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pboxViewIcon)).BeginInit();
             this.panelViewMatrix.SuspendLayout();
             this.tabControlViewScales.SuspendLayout();
+            this.tabPageStats.SuspendLayout();
             this.tabPageViewWeek.SuspendLayout();
+            this.panelViewWeek.SuspendLayout();
             this.tabPageViewDay.SuspendLayout();
             this.tabPageViewSlots.SuspendLayout();
             this.panelViewSlots.SuspendLayout();
@@ -682,6 +695,54 @@
             this.panelGlobIndicators.Name = "panelGlobIndicators";
             this.panelGlobIndicators.Size = new System.Drawing.Size(871, 24);
             this.panelGlobIndicators.TabIndex = 27;
+            // 
+            // ctxMenuLesson
+            // 
+            this.ctxMenuLesson.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuItemViewLessonConfirm,
+            this.menuItemViewLessonCancel,
+            this.menuItemViewLessonMove,
+            this.menuItemViewLessonMove1,
+            this.menuItemViewLessonMove2,
+            this.menuItemViewLessonDone,
+            this.menuItemViewLessonPlanned});
+            this.ctxMenuLesson.Name = "ctxMenuLesson";
+            this.ctxMenuLesson.Size = new System.Drawing.Size(174, 180);
+            // 
+            // menuItemViewLessonConfirm
+            // 
+            this.menuItemViewLessonConfirm.Name = "menuItemViewLessonConfirm";
+            this.menuItemViewLessonConfirm.Size = new System.Drawing.Size(173, 22);
+            this.menuItemViewLessonConfirm.Text = "Confirm";
+            this.menuItemViewLessonConfirm.Click += new System.EventHandler(this.menuItemViewLessonConfirm_Click);
+            // 
+            // menuItemViewLessonCancel
+            // 
+            this.menuItemViewLessonCancel.Name = "menuItemViewLessonCancel";
+            this.menuItemViewLessonCancel.Size = new System.Drawing.Size(173, 22);
+            this.menuItemViewLessonCancel.Text = "Cancel";
+            this.menuItemViewLessonCancel.Click += new System.EventHandler(this.menuItemViewLessonCancel_Click);
+            // 
+            // menuItemViewLessonMove
+            // 
+            this.menuItemViewLessonMove.Name = "menuItemViewLessonMove";
+            this.menuItemViewLessonMove.Size = new System.Drawing.Size(173, 22);
+            this.menuItemViewLessonMove.Text = "Move";
+            this.menuItemViewLessonMove.Click += new System.EventHandler(this.menuItemViewLessonMove_Click);
+            // 
+            // menuItemViewLessonMove1
+            // 
+            this.menuItemViewLessonMove1.Name = "menuItemViewLessonMove1";
+            this.menuItemViewLessonMove1.Size = new System.Drawing.Size(173, 22);
+            this.menuItemViewLessonMove1.Text = "Move to next week";
+            this.menuItemViewLessonMove1.Click += new System.EventHandler(this.menuItemViewLessonMove1_Click);
+            // 
+            // menuItemViewLessonMove2
+            // 
+            this.menuItemViewLessonMove2.Name = "menuItemViewLessonMove2";
+            this.menuItemViewLessonMove2.Size = new System.Drawing.Size(173, 22);
+            this.menuItemViewLessonMove2.Text = "Move +2 weels";
+            this.menuItemViewLessonMove2.Click += new System.EventHandler(this.menuItemViewLessonMove2_Click);
             // 
             // tabControlOps
             // 
@@ -4346,13 +4407,14 @@
             this.tabControlViewScales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlViewScales.Location = new System.Drawing.Point(24, 19);
             this.tabControlViewScales.Name = "tabControlViewScales";
-            this.tabControlViewScales.SelectedIndex = 0;
+            this.tabControlViewScales.SelectedIndex = 2;
             this.tabControlViewScales.Size = new System.Drawing.Size(989, 736);
             this.tabControlViewScales.TabIndex = 0;
             this.tabControlViewScales.SelectedIndexChanged += new System.EventHandler(this.tabControlViewScales_SelectedIndexChanged);
             // 
             // tabPageStats
             // 
+            this.tabPageStats.Controls.Add(this.label1);
             this.tabPageStats.Location = new System.Drawing.Point(4, 22);
             this.tabPageStats.Name = "tabPageStats";
             this.tabPageStats.Padding = new System.Windows.Forms.Padding(3);
@@ -4360,6 +4422,15 @@
             this.tabPageStats.TabIndex = 3;
             this.tabPageStats.Text = "Stats";
             this.tabPageStats.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(16, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(28, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "ststs";
             // 
             // tabPageViewWeek
             // 
@@ -4374,11 +4445,21 @@
             // 
             // panelViewWeek
             // 
+            this.panelViewWeek.Controls.Add(this.label2);
             this.panelViewWeek.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelViewWeek.Location = new System.Drawing.Point(3, 3);
             this.panelViewWeek.Name = "panelViewWeek";
             this.panelViewWeek.Size = new System.Drawing.Size(975, 704);
             this.panelViewWeek.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(47, 24);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(33, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "week";
             // 
             // tabPageViewDay
             // 
@@ -4393,7 +4474,9 @@
             // 
             // panelViewDay
             // 
-            this.panelViewDay.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelViewDay.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panelViewDay.Location = new System.Drawing.Point(3, 3);
             this.panelViewDay.Name = "panelViewDay";
             this.panelViewDay.Size = new System.Drawing.Size(975, 704);
@@ -4495,7 +4578,7 @@
             // outsideDataGridViewTextBoxColumn
             // 
             this.outsideDataGridViewTextBoxColumn.DataPropertyName = "Outside";
-            this.outsideDataGridViewTextBoxColumn.HeaderText = "Outside";
+            this.outsideDataGridViewTextBoxColumn.HeaderText = "";
             this.outsideDataGridViewTextBoxColumn.Name = "outsideDataGridViewTextBoxColumn";
             this.outsideDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -4652,6 +4735,20 @@
             this.lbFutureOpName.TabIndex = 0;
             this.lbFutureOpName.Text = "Future Operation";
             // 
+            // menuItemViewLessonDone
+            // 
+            this.menuItemViewLessonDone.Name = "menuItemViewLessonDone";
+            this.menuItemViewLessonDone.Size = new System.Drawing.Size(173, 22);
+            this.menuItemViewLessonDone.Text = "Done";
+            this.menuItemViewLessonDone.Click += new System.EventHandler(this.menuItemViewLessonDone_Click);
+            // 
+            // menuItemViewLessonPlanned
+            // 
+            this.menuItemViewLessonPlanned.Name = "menuItemViewLessonPlanned";
+            this.menuItemViewLessonPlanned.Size = new System.Drawing.Size(173, 22);
+            this.menuItemViewLessonPlanned.Text = "Planned";
+            this.menuItemViewLessonPlanned.Click += new System.EventHandler(this.menuItemViewLessonPlanned_Click);
+            // 
             // FormGlob
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4670,6 +4767,7 @@
             this.menuStripGlobalOps.PerformLayout();
             this.panelGlobIndicators.ResumeLayout(false);
             this.panelGlobIndicators.PerformLayout();
+            this.ctxMenuLesson.ResumeLayout(false);
             this.tabControlOps.ResumeLayout(false);
             this.tabEdit.ResumeLayout(false);
             this.splitContainerGlobDataControls.Panel1.ResumeLayout(false);
@@ -4772,7 +4870,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.pboxViewIcon)).EndInit();
             this.panelViewMatrix.ResumeLayout(false);
             this.tabControlViewScales.ResumeLayout(false);
+            this.tabPageStats.ResumeLayout(false);
+            this.tabPageStats.PerformLayout();
             this.tabPageViewWeek.ResumeLayout(false);
+            this.panelViewWeek.ResumeLayout(false);
+            this.panelViewWeek.PerformLayout();
             this.tabPageViewDay.ResumeLayout(false);
             this.tabPageViewSlots.ResumeLayout(false);
             this.panelViewSlots.ResumeLayout(false);
@@ -5188,13 +5290,6 @@
         private System.Windows.Forms.Label lbViewGbStudent3;
         private System.Windows.Forms.Label lbViewGbStudent1;
         private System.Windows.Forms.DataGridView dgvViewSlots;
-        private System.Windows.Forms.DataGridViewTextBoxColumn mondayDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tuesdayDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn wednesdayDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn thursdayDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fridayDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn saturdayDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sundayDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DateTimePicker dtpViewSlot;
         private System.Windows.Forms.DataGridViewTextBoxColumn slotDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn redDataGridViewTextBoxColumn;
@@ -5209,6 +5304,16 @@
         private System.Windows.Forms.Panel panelViewMatrix;
         private System.Windows.Forms.ComboBox cbViewSelectProgram;
         private System.Windows.Forms.Label lbViewSelectProg;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ContextMenuStrip ctxMenuLesson;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewLessonConfirm;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewLessonCancel;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewLessonMove;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewLessonMove1;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewLessonMove2;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewLessonDone;
+        private System.Windows.Forms.ToolStripMenuItem menuItemViewLessonPlanned;
     }
 }
 

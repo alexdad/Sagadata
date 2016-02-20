@@ -69,7 +69,7 @@ namespace RecordKeeper
             Good, Warning, Bad, Attention, Unknown
         };
 
-        Color[] m_statusColors = new Color[]
+        public Color[] StateColors = new Color[]
         {
                 Color.FromArgb(179, 224, 158),      // light green
                 Color.FromArgb(239, 237, 143),      // yellow
@@ -78,7 +78,7 @@ namespace RecordKeeper
                 Color.FromArgb(192, 192, 192),      // gray
         };
 
-        int StandardizeDayOfTheWeek(DayOfWeek dw)
+        public static int StandardizeDayOfTheWeek(DayOfWeek dw)
         {
             int day= (int)dw;
             if (day == 0)
@@ -133,15 +133,15 @@ namespace RecordKeeper
             switch(c)
             {
                 case '0':   // light green - free
-                    return m_statusColors[(int)StatusColors.Good];
+                    return StateColors[(int)StatusColors.Good];
                 case '1':   // yellow - maybe
-                    return m_statusColors[(int)StatusColors.Warning];
+                    return StateColors[(int)StatusColors.Warning];
                 case '2':   // reddish - unavailable
-                    return m_statusColors[(int)StatusColors.Bad];
+                    return StateColors[(int)StatusColors.Bad];
                 case '4':   // red-brown - lesson    
-                    return m_statusColors[(int)StatusColors.Attention];
+                    return StateColors[(int)StatusColors.Attention];
                 default:
-                    return m_statusColors[(int)StatusColors.Unknown];
+                    return StateColors[(int)StatusColors.Unknown];
             }
         }
 
@@ -165,9 +165,8 @@ namespace RecordKeeper
             foreach (Lesson l in lsn)
             {
                 string stud = l.Student1 as string;
-                int i = StandardizeDayOfTheWeek(l.DateTimeStart.DayOfWeek);
-                int js = l.DateTimeStart.Hour * 4 + l.DateTimeStart.Minute / 15 - 7 * 4;
-                int je = l.DateTimeEnd.Hour * 4 + l.DateTimeEnd.Minute / 15 - 7 * 4;
+                int i, js, je;
+                l.GetLocationInWeek(out i, out js, out je);
                 char c = '4';
                 for (int j = js; j < je; j++)
                 {
