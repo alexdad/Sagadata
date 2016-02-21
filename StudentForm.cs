@@ -113,6 +113,15 @@ namespace RecordKeeper
             return res;
         }
 
+        public string GetStudentLearningLanguage(string desc)
+        {
+            List<Student> lst = SpecificStudent(desc);
+            string res = "";
+            foreach (Student t in lst)
+                res = t.LearningLanguage;
+            return res;
+        }
+
         public bool SetStudentComment(string desc, string comment)
         {
             foreach (var tt in this.studentList.List)

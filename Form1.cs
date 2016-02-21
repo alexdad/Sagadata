@@ -15,6 +15,8 @@ namespace RecordKeeper
 {
     public partial class FormGlob : Form
     {
+        public static long SlotInTicks = 0;
+
         // Local fields
         string[] m_enumLanguage;
         string[] m_enumLevel;
@@ -146,6 +148,10 @@ namespace RecordKeeper
             RecordsToFormConst2();
             cbGlobMode.SelectedIndex = (int)CurrentMode;
             SelectionMode = false;
+
+            DateTime dts = DateTime.Now;
+            DateTime dtn = dts.AddMinutes(15);
+            SlotInTicks = (dtn - dts).Ticks;
         }
 
         private void RecordsToFormConst1()
@@ -957,49 +963,57 @@ namespace RecordKeeper
         {
             DateTimePicker dtp = (DateTimePicker)sender;
             m_plan_chosenDate = dtp.Value.Date;
-            PlanShowDataIfReady();
+            if (m_lessonInMove != null)
+                PlanShowDataIfReady();
         }
         private void cbPlanLanguage_SelectedIndexChanged(object sender, EventArgs e)
         {
             PlanLessonLanguageChosen();
-            PlanShowDataIfReady();
+            if (m_lessonInMove != null)
+                PlanShowDataIfReady();
         }
         private void cbPlanTeacher_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cb = sender as ComboBox;
             PopulateTeacherVacation(cb.SelectedItem as string, lbPlanTeachVacation);
-            PlanShowDataIfReady();
+            if (m_lessonInMove != null)
+                PlanShowDataIfReady();
         }
         private void cbPlanStud1_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cb = sender as ComboBox;
             PopulateStudentPossibleSchedule(cb.SelectedItem as string, lbPlanStudSchedule1);
-            PlanShowDataIfReady();
+            if (m_lessonInMove != null)
+                PlanShowDataIfReady();
         }
 
         private void cbPlanStud2_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cb = sender as ComboBox;
             PopulateStudentPossibleSchedule(cb.SelectedItem as string, lbPlanStudSchedule2);
-            PlanShowDataIfReady();
+            if (m_lessonInMove != null)
+                PlanShowDataIfReady();
         }
 
         private void cbPlanStud3_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cb = sender as ComboBox;
             PopulateStudentPossibleSchedule(cb.SelectedItem as string, lbPlanStudSchedule3);
-            PlanShowDataIfReady();
+            if (m_lessonInMove != null)
+                PlanShowDataIfReady();
         }
 
         private void cbPlanStud4_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cb = sender as ComboBox;
             PopulateStudentPossibleSchedule(cb.SelectedItem as string, lbPlanStudSchedule4);
-            PlanShowDataIfReady();
+            if (m_lessonInMove != null)
+                PlanShowDataIfReady();
         }
         private void butPlanAccept_Click(object sender, EventArgs e)
         {
             AcceptNewLesson();
+            m_lessonInMove = null;
         }
 
         #endregion

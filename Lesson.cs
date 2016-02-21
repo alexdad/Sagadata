@@ -100,6 +100,15 @@ namespace RecordKeeper
             }
         }
 
+        public int SlotsNumber
+        {
+            get
+            {
+                return FormGlob.Slots(DateTimeStart, DateTimeEnd);
+            }
+        }
+
+
         public void GetLocationInWeek(out int col, out int row1, out int row2)
         {
             col = FormGlob.StandardizeDayOfTheWeek(DateTimeStart.DayOfWeek);

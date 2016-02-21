@@ -740,28 +740,28 @@
             // 
             this.menuItemViewLessonCancel.Name = "menuItemViewLessonCancel";
             this.menuItemViewLessonCancel.Size = new System.Drawing.Size(173, 22);
-            this.menuItemViewLessonCancel.Text = "Cancel";
+            this.menuItemViewLessonCancel.Text = "Mark as Cancelled";
             this.menuItemViewLessonCancel.Click += new System.EventHandler(this.menuItemViewLessonCancel_Click);
             // 
             // menuItemViewLessonMove
             // 
             this.menuItemViewLessonMove.Name = "menuItemViewLessonMove";
             this.menuItemViewLessonMove.Size = new System.Drawing.Size(173, 22);
-            this.menuItemViewLessonMove.Text = "Move";
-            this.menuItemViewLessonMove.Click += new System.EventHandler(this.menuItemViewLessonMove_Click);
+            this.menuItemViewLessonMove.Text = "Move (this week)";
+            this.menuItemViewLessonMove.Click += new System.EventHandler(this.menuItemViewLessonMove0_Click);
             // 
             // menuItemViewLessonMove1
             // 
             this.menuItemViewLessonMove1.Name = "menuItemViewLessonMove1";
             this.menuItemViewLessonMove1.Size = new System.Drawing.Size(173, 22);
-            this.menuItemViewLessonMove1.Text = "Move to next week";
+            this.menuItemViewLessonMove1.Text = "Move (next week)";
             this.menuItemViewLessonMove1.Click += new System.EventHandler(this.menuItemViewLessonMove1_Click);
             // 
             // menuItemViewLessonMove2
             // 
             this.menuItemViewLessonMove2.Name = "menuItemViewLessonMove2";
             this.menuItemViewLessonMove2.Size = new System.Drawing.Size(173, 22);
-            this.menuItemViewLessonMove2.Text = "Move +2 weeks";
+            this.menuItemViewLessonMove2.Text = "Move (2 weeks)";
             this.menuItemViewLessonMove2.Click += new System.EventHandler(this.menuItemViewLessonMove2_Click);
             // 
             // tabControlOps

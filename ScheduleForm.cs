@@ -61,6 +61,7 @@ namespace RecordKeeper
         DateTime m_plan_chosenDate = DateTime.Today;
         string m_plan_chosenLanguage = "English";
         bool m_plan_firstTimePlan = true;
+        Lesson m_lessonInMove = null;
         int m_plan_row = -1;
         int m_plan_col = -1;
 
@@ -96,7 +97,10 @@ namespace RecordKeeper
         private void PlanGetTeacherAvailability()
         {
             char[,] charSlots = GetTeacherAvailability(
-                cbPlanTeacher.SelectedItem as string);
+                (m_lessonInMove == null ? 
+                    cbPlanTeacher.SelectedItem as string :
+                    m_lessonInMove.Teacher1));
+
             for (int i = 0; i < 7; i++)
             {
                 for (int j = 0; j < m_enumTimeSlot.Length; j++)
@@ -135,23 +139,34 @@ namespace RecordKeeper
             DateTime de = ds;
             de =  de.AddDays(7);
 
-            string t = cbPlanTeacher.SelectedItem as string;
+            string t = (m_lessonInMove == null ? 
+                            cbPlanTeacher.SelectedItem as string :
+                            m_lessonInMove.Teacher1);
+
             if (t != null)
                 MarkLessons(LessonsByTeacher(t, ds, de) );
 
-            t = cbPlanStud1.SelectedItem as string;
+            t = (m_lessonInMove == null ?
+                    cbPlanStud1.SelectedItem as string :
+                    m_lessonInMove.Student1);
             if (t != null)
                 MarkLessons(LessonsByStudent(t, ds, de));
 
-            t = cbPlanStud2.SelectedItem as string;
+            t = (m_lessonInMove == null ?
+                    cbPlanStud2.SelectedItem as string :
+                    m_lessonInMove.Student2);
             if (t != null)
                 MarkLessons(LessonsByStudent(t, ds, de));
 
-            t = cbPlanStud3.SelectedItem as string;
+            t = (m_lessonInMove == null ?
+                    cbPlanStud3.SelectedItem as string :
+                    m_lessonInMove.Student3);
             if (t != null)
                 MarkLessons(LessonsByStudent(t, ds, de));
 
-            t = cbPlanStud4.SelectedItem as string;
+            t = (m_lessonInMove == null ?
+                    cbPlanStud4.SelectedItem as string :
+                    m_lessonInMove.Student4);
             if (t != null)
                 MarkLessons(LessonsByStudent(t, ds, de));
         }
@@ -221,30 +236,6 @@ namespace RecordKeeper
 
         void InitializePlan(bool force)
         {
-            if (m_plan_firstTimePlan)
-            {
-                Modes was = CurrentMode;
-                if (studentList == null || studentList.Count == 0)
-                {
-                    CurrentMode = Modes.Students;
-                    m_recordTypes[Modes.Students].ReadRecordsFile<Student>();
-                }
-
-                if (teacherList == null || teacherList.Count == 0)
-                {
-                    CurrentMode = Modes.Teachers;
-                    m_recordTypes[Modes.Teachers].ReadRecordsFile<Teacher>();
-                }
-
-                if (lessonList == null || lessonList.Count == 0)
-                {
-                    CurrentMode = Modes.Lessons;
-                    m_recordTypes[Modes.Lessons].ReadRecordsFile<Lesson>();
-                }
-
-                CurrentMode = was;
-            }
-
             if (m_plan_firstTimePlan || force)
             {
                 PopulateTeacherChoices(m_plan_chosenLanguage, cbPlanTeacher);
@@ -287,7 +278,8 @@ namespace RecordKeeper
         void PlanShowDataIfReady()
         {
             if (cbPlanTeacher.SelectedItem as string != null ||
-                cbPlanStud1.SelectedItem as string != null)
+                cbPlanStud1.SelectedItem as string != null ||
+                m_lessonInMove != null)
 
                 PlanShowData();
         }
@@ -340,7 +332,9 @@ namespace RecordKeeper
 
             m_plan_row = row;
             m_plan_col = col;
-            int len = cbPlanDuration.SelectedIndex + 1;
+            int len = (m_lessonInMove == null ?
+                        cbPlanDuration.SelectedIndex + 1 :
+                        m_lessonInMove.SlotsNumber);
 
             for (int r = m_plan_row;
                 r < m_plan_row + len && r < dgvPlan.RowCount;
@@ -358,8 +352,16 @@ namespace RecordKeeper
         {
             Modes was = CurrentMode;
             CurrentMode = Modes.Lessons;
-            buttonAdd_Click(null, null);
-            Lesson l = lessonList.Current as Lesson;
+            Lesson l;
+            if (m_lessonInMove == null)
+            {
+                buttonAdd_Click(null, null);
+                l = lessonList.Current as Lesson;
+            }
+            else
+            {
+                l = m_lessonInMove;
+            }
             CurrentMode = was;
 
             int weekdayPicked = StandardizeDayOfTheWeek(dtpPlan.Value.DayOfWeek);
@@ -370,23 +372,30 @@ namespace RecordKeeper
             dts = dts.AddDays(m_plan_col - 1);
 
             l.Day = dts.ToShortDateString();
+            l.End = m_enumTimeSlot[m_plan_row +
+                (m_lessonInMove == null ?
+                        cbPlanDuration.SelectedIndex :
+                        l.SlotsNumber - 1)];
             l.Start = m_enumTimeSlot[m_plan_row - 1];
-            l.End = m_enumTimeSlot[m_plan_row + cbPlanDuration.SelectedIndex];
-            l.Program = "";
-            l.Room = "";
-            l.State = m_enumState[1]; // Lesson state 1 = Planned
-            l.Student1 = cbPlanStud1.SelectedItem as string;
-            l.Student2 = cbPlanStud2.SelectedItem as string;
-            l.Student3 = cbPlanStud3.SelectedItem as string;
-            l.Student4 = cbPlanStud4.SelectedItem as string;
-            l.Student5 = "";
-            l.Student6 = "";
-            l.Student7 = "";
-            l.Student8 = "";
-            l.Student9 = "";
-            l.Student10 = "";
-            l.Teacher1 = cbPlanTeacher.SelectedItem as string;
-            l.Teacher2 = "";
+
+            if (m_lessonInMove == null)
+            {
+                l.Program = "";
+                l.Room = "";
+                l.State = m_enumState[1]; // Lesson state 1 = Planned
+                l.Student1 = cbPlanStud1.SelectedItem as string;
+                l.Student2 = cbPlanStud2.SelectedItem as string;
+                l.Student3 = cbPlanStud3.SelectedItem as string;
+                l.Student4 = cbPlanStud4.SelectedItem as string;
+                l.Student5 = "";
+                l.Student6 = "";
+                l.Student7 = "";
+                l.Student8 = "";
+                l.Student9 = "";
+                l.Student10 = "";
+                l.Teacher1 = cbPlanTeacher.SelectedItem as string;
+                l.Teacher2 = "";
+            }
             l.Comments = tbPlanComment.Text;
 
             butPlanAccept.Visible = false;

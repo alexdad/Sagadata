@@ -228,16 +228,13 @@ namespace RecordKeeper
                 viewSlotList.Add(new RecordKeeper.ViewSlot(m_enumTimeSlot[i]));
 
             DateTime dts = WorkDayStart(m_view_chosenDate);
-            DateTime dtn = new DateTime(dts.Year, dts.Month, dts.Day, 7, 15, 0);   // just to measure 15 min in ticks
-            TimeSpan ts = dtn - dts;
-
             foreach (Lesson l in FindLessonsForView())
             {
-                int slot1Index = (int)((l.DateTimeStart.Ticks - dts.Ticks) / ts.Ticks);
+                int slot1Index = FormGlob.Slots(dts, l.DateTimeStart);
                 if (slot1Index < 0 || slot1Index >= m_enumTimeSlot.Length)
                     continue;
 
-                int slot2Index = (int)((l.DateTimeEnd.Ticks - dts.Ticks) / ts.Ticks);
+                int slot2Index = FormGlob.Slots(dts, l.DateTimeEnd);
                 if (slot2Index < 0 || slot2Index >= m_enumTimeSlot.Length)
                     continue;
 
@@ -538,7 +535,9 @@ namespace RecordKeeper
             int cellRoomWidth,  int nRooms,
             int cellWidth, int cellHeight)
         {
-            int[,] hits = new int[ (cols+1) * nRooms + 1, rows];
+            int ncols = (cols + 1) * nRooms + 1;
+            int nrows = rows;
+            int[,] hits = new int[ ncols, nrows];
             foreach (Control c in panel.Controls)
             {
                 Label l = c as Label;
@@ -549,8 +548,13 @@ namespace RecordKeeper
 
                 int x1 = (l.Location.X - minX) / cellRoomWidth;
                 int y1 = (l.Location.Y - minY) / cellHeight;
-                int x2 = (l.Location.X + l.Width - minX) / cellRoomWidth + 1;
-                int y2 = (l.Location.Y + l.Height - minY) / cellHeight + 1;
+                int x2 = (l.Location.X + l.Width - minX) / cellRoomWidth;
+                int y2 = (l.Location.Y + l.Height - minY) / cellHeight;
+
+                if (x1 < 0 || x2 < 0 || x1 > ncols || x2 > ncols ||
+                    y1 < 0 || y2 < 0 || y1 > nrows || y2 > nrows)
+                    throw new Exception("BAD LOC");
+
                 for (int x = x1; x < x2; x++)
                     for (int y = y1; y < y2; y++)
                         hits[x, y] = hits[x, y] + 1;
@@ -577,6 +581,9 @@ namespace RecordKeeper
                 {
                     for (int y = y1; y <= y2; y++)
                     {
+                        if (x+1 < 0 || y < 0 || x+1 >= ncols || y >= nrows)
+                            throw new Exception("BAD LOC");
+
                         if (hits[x + 1, y] > 0)
                         {
                             hit = true;
@@ -587,7 +594,12 @@ namespace RecordKeeper
                     {
                         l.Width += cellRoomWidth;
                         for (int y = y1; y < y2; y++)
+                        {
+                            if (x+1 < 0 || y < 0 || x+1 >= ncols || y >= nrows)
+                                throw new Exception("BAD LOC");
+
                             hits[x + 1, y] = 1;
+                        }
                     }
                 }
             }
@@ -600,21 +612,38 @@ namespace RecordKeeper
             ShowView();
         }
 
-        private void menuItemViewLessonMove_Click(object sender, EventArgs e)
+        private void MoveLesson(object sender, int days)
         {
+            InitializePlan(false);
             Lesson l = GetLessonFromSender(sender);
+            m_plan_chosenLanguage = GetStudentLearningLanguage(l.Student1);
+
+            dtpPlan.Value = l.DateTimeStart.AddDays(days);
+            cbPlanDuration.SelectedIndex = l.SlotsNumber;
+            SetComboBoxIndexByValue(cbPlanLanguage, m_plan_chosenLanguage);
+            SetComboBoxIndexByValue(cbPlanTeacher, l.Teacher1);
+            SetComboBoxIndexByValue(cbPlanStud1, l.Student1);
+
+            PopulateTeacherVacation(l.Teacher1, lbPlanTeachVacation);
+            PopulateStudentPossibleSchedule(l.Student1, lbPlanStudSchedule1);
+            m_lessonInMove = l;
+            tabControlOps.SelectedIndex = (int)TabControlOps.Plan;
+            PlanShowDataIfReady();
+        }
+
+        private void menuItemViewLessonMove0_Click(object sender, EventArgs e)
+        {
+            MoveLesson(sender, 1);
         }
 
         private void menuItemViewLessonMove1_Click(object sender, EventArgs e)
         {
-            Lesson l = GetLessonFromSender(sender);
-
+            MoveLesson(sender, 7);
         }
 
         private void menuItemViewLessonMove2_Click(object sender, EventArgs e)
         {
-            Lesson l = GetLessonFromSender(sender);
-
+            MoveLesson(sender, 14);
         }
 
         private void menuItemViewLessonDone_Click(object sender, EventArgs e)

@@ -92,8 +92,8 @@ namespace RecordKeeper
         {
             int day = StandardizeDayOfTheWeek(dt.DayOfWeek);
             DateTime d = dt;
-            d = d.AddDays(-day);
-            return new DateTime(d.Year, d.Month, d.Day+6, 23, 59, 59);
+            d = d.AddDays(-day + 6);
+            return new DateTime(d.Year, d.Month, d.Day, 23, 59, 59);
         }
 
         public static DateTime MonthStart(DateTime dt)
@@ -115,6 +115,35 @@ namespace RecordKeeper
                 "Thursday", "Friday", "Saturday", "Sunday" };
             return days;
         }
+
+        public static int Slots(DateTime dt1, DateTime dt2)
+        {
+            return (int)((dt2.Ticks - dt1.Ticks) / SlotInTicks);
+        }
+
+        public int LanguageIndex(string lang)
+        {
+            for (int i=0; i < m_enumLanguage.Length; i++)
+            {
+                if (lang == m_enumLanguage[i])
+                    return i;
+            }
+            return -1;
+        }
+
+        public bool SetComboBoxIndexByValue(ComboBox cb, string str)
+        {
+            for (int i = 0; i < cb.Items.Count; i++)
+            {
+                if (str == (string)cb.Items[i])
+                {
+                    cb.SelectedIndex = i;
+                    return true;
+                }
+            }
+            return false;
+        }
+
         #endregion
 
         #region "location-related"
