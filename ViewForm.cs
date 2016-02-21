@@ -129,7 +129,7 @@ namespace RecordKeeper
                     Parent = panelViewMonth,
                     BackColor = RoomColor(l.Room),
                     ForeColor = ComplementColor(RoomColor(l.Room)),
-                    BorderStyle = BorderStyle.None,
+                    BorderStyle = BorderStyle.FixedSingle,
                     TextAlign = ContentAlignment.MiddleCenter,
                     Tag = l
                 };
@@ -170,7 +170,7 @@ namespace RecordKeeper
                     Parent = panelViewWeek,
                     BackColor = RoomColor(l.Room),
                     ForeColor = ComplementColor(RoomColor(l.Room)),
-                    BorderStyle = BorderStyle.None,
+                    BorderStyle = BorderStyle.FixedSingle,
                     TextAlign = ContentAlignment.MiddleCenter,
                     Tag = l
                 };
@@ -483,7 +483,7 @@ namespace RecordKeeper
                         60 + cellWidth * i + 5,
                         5),
                     Parent = panel,
-                    TextAlign = ContentAlignment.MiddleCenter
+                    TextAlign = ContentAlignment.TopLeft
                 };
                 i++;
             }

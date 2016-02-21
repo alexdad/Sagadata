@@ -109,7 +109,7 @@ namespace RecordKeeper
         }
         public void GetLocationInMonth(out int col, out int row1, out int row2)
         {
-            col = DateTimeStart.Day;
+            col = DateTimeStart.Day - 1;
             row1 = DateTimeStart.Hour * 4 + DateTimeStart.Minute / 15 - 7 * 4;
             row2 = DateTimeEnd.Hour * 4 + DateTimeEnd.Minute / 15 - 7 * 4;
 
