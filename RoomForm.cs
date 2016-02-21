@@ -20,6 +20,8 @@ namespace RecordKeeper
         string m_RoomSelectionRank;
         string m_RoomSelectionTags;
 
+        delegate bool EvaluateRoom(Room t);
+
         private void DropRoomSelection()
         {
             m_RoomSelectionCapacity = null;
@@ -63,6 +65,22 @@ namespace RecordKeeper
             }
             ShowCurrentCount();
             Modified = true;
+        }
+        List<Room> ActiveRooms()
+        {
+            return FindRooms(t => true);
+        }
+
+        List<Room> FindRooms(EvaluateRoom comp)
+        {
+            List<Room> rooms = new List<Room>();
+            foreach (var tt in this.roomList.List)
+            {
+                Room t = tt as Room;
+                if (comp(t))
+                    rooms.Add(t);
+            }
+            return rooms;
         }
 
     }

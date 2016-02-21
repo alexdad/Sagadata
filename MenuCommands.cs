@@ -27,7 +27,7 @@ namespace RecordKeeper
 
         public enum TabControlScales
         {
-            Stats,
+            Month,
             Week,
             Day,
             Slots

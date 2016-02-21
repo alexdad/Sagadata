@@ -64,62 +64,10 @@ namespace RecordKeeper
         int m_plan_row = -1;
         int m_plan_col = -1;
 
-        enum StatusColors
-        {
-            Good, Warning, Bad, Attention, Unknown
-        };
-
-        public Color[] StateColors = new Color[]
-        {
-                Color.FromArgb(179, 224, 158),      // light green
-                Color.FromArgb(239, 237, 143),      // yellow
-                Color.FromArgb(242, 223, 228),      // reddish
-                Color.FromArgb(128, 0, 0),          // red-brown
-                Color.FromArgb(192, 192, 192),      // gray
-        };
-
-        public static int StandardizeDayOfTheWeek(DayOfWeek dw)
-        {
-            int day= (int)dw;
-            if (day == 0)
-                day = 6;        // Sunday: .Net says Sunday, we want 6
-            else
-                day = day - 1; // We want to count from Monday as zero
-            return day;
-        }
-
-        string[] WeekOf(DateTime dt, string hdr)
-        {
-            int day = StandardizeDayOfTheWeek(dt.DayOfWeek);
-            DateTime d = dt;
-            d = d.AddDays(-day);
-
-            string[] w = new string[8];
-            w[0] = hdr; 
-            for (int i=0; i<7; i++)
-            {
-                w[i+1] = d.ToString("dd MMM");
-                d = d.AddDays(1);
-            }
-            return w;
-        }
-
-        DateTime StartWeekOf(DateTime dt)
-        {
-            int day = StandardizeDayOfTheWeek(dt.DayOfWeek);
-            DateTime d = dt;
-            d = d.AddDays(-day);
-            return new DateTime(d.Year, d.Month, d.Day, 0, 0, 0);
-        }
-
         void PopulateWeekChoices(ComboBox cb)
         {
-            // Find closest Monday backward, and add 8
-            int dayToday = StandardizeDayOfTheWeek(DateTime.Now.DayOfWeek);
-            DateTime bow = DateTime.Now;
-            bow = bow.AddDays(-dayToday);
-            DateTime eow = bow;
-            eow = eow.AddDays(6);
+            DateTime bow = WeekStart(DateTime.Now);
+            DateTime eow = WeekEnd(DateTime.Now);
 
             cb.Items.Clear();
             for (int i=0; i < 9; i++)
@@ -132,14 +80,14 @@ namespace RecordKeeper
         {
             switch(c)
             {
-                case '0':   // light green - free
+                case '0':   // free
                     return StateColors[(int)StatusColors.Good];
-                case '1':   // yellow - maybe
+                case '1':   // maybe
                     return StateColors[(int)StatusColors.Warning];
-                case '2':   // reddish - unavailable
+                case '2':   // unavailable
                     return StateColors[(int)StatusColors.Bad];
-                case '4':   // red-brown - lesson    
-                    return StateColors[(int)StatusColors.Attention];
+                case '4':   // lesson    
+                    return StateColors[(int)StatusColors.Irrelevant];
                 default:
                     return StateColors[(int)StatusColors.Unknown];
             }
@@ -183,7 +131,7 @@ namespace RecordKeeper
 
         private void PlanGetTeacherLessons()
         {
-            DateTime ds = StartWeekOf(m_plan_chosenDate);
+            DateTime ds = WeekStart(m_plan_chosenDate);
             DateTime de = ds;
             de =  de.AddDays(7);
 
@@ -347,7 +295,10 @@ namespace RecordKeeper
         {
             // Form the grid
             planSlotList.Clear();
-            planSlotList.Add(new RecordKeeper.Slot(WeekOf(m_plan_chosenDate, "")));
+            DateTime weekStart, weekEnd;
+            planSlotList.Add(
+                new RecordKeeper.Slot(
+                    WeekOf(m_plan_chosenDate, "", out weekStart, out weekEnd)));
             for(int i=0; i < m_enumTimeSlot.Length; i++)
                 planSlotList.Add(new RecordKeeper.Slot(m_enumTimeSlot[i]));
 

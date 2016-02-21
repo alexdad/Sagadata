@@ -165,6 +165,28 @@ namespace RecordKeeper
             RoomToFormConst2();
             LessonToFormConst2();
         }
+
+        private void AssignListsToComboBoxes()
+        {
+            List<Student> students = ActiveStudents();
+            List<String> studentNames = students.ConvertAll(x => x.Description);
+            cbSearchLessonStudent.Items.AddRange(studentNames.ToArray());
+
+            List<Teacher> teachers = ActiveTeachers();
+            List<String> teacherNames = teachers.ConvertAll(x => x.Description);
+            cbSearchLessonTeacher.Items.AddRange(teacherNames.ToArray());
+
+            List<Program> programs = ActivePrograms();
+            List<String> programNames = programs.ConvertAll(x => x.Description);
+            cbSearchLessonProgram.Items.AddRange(programNames.ToArray());
+            cbLessonProg.Items.AddRange(programNames.ToArray());
+
+            List<Room> rooms = ActiveRooms();
+            List<String> roomNames = rooms.ConvertAll(x => x.Description);
+            cbSearchLessonRoom.Items.AddRange(roomNames.ToArray());
+            cbLessonRoom.Items.AddRange(roomNames.ToArray());
+
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             if (Properties.Settings.Default.InitialDownload.ToLower() != "no")
@@ -180,7 +202,7 @@ namespace RecordKeeper
             this.Size = Properties.Settings.Default.Form1Size;
             splitContainerGlobDataControls.SplitterDistance = Properties.Settings.Default.SplitDC;
             splitContainerGlobMasterDetail.SplitterDistance = Properties.Settings.Default.SplitMD;
-
+            AssignListsToComboBoxes();
             Modified = false;
         }
 
@@ -468,6 +490,14 @@ namespace RecordKeeper
 
             cbProgLanguage.SelectedIndex = 0;
             cbProgLevel.SelectedIndex = 0;
+
+            cbSearchLessonStudent.SelectedIndex = -1;
+            cbSearchLessonTeacher.SelectedIndex = -1;
+            cbSearchLessonProgram.SelectedIndex = -1;
+            cbSearchLessonRoom.SelectedIndex = -1;
+            tbSearchLessonDate.Text = "";
+
+
 
             // Changed
         }
@@ -877,23 +907,37 @@ namespace RecordKeeper
             Modified = true;
         }
 
-        private void tbLEssonComment_TextChanged(object sender, EventArgs e)
+        private void tbLessonComment_TextChanged(object sender, EventArgs e)
         {
             Modified = true;
         }
 
 
-        private void tbSearchLessonStudent_TextChanged(object sender, EventArgs e)
+        private void cbSearchLessonStudent_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TextBox comboBox = (TextBox)sender;
-            m_LessonSelectionStudent = comboBox.Text;
+            ComboBox comboBox = (ComboBox)sender;
+            m_LessonSelectionStudent = (string)comboBox.SelectedItem;
             CurrentType.DoSelection();
         }
 
-        private void tbSearchLessonTeacher_TextChanged(object sender, EventArgs e)
+        private void cbSearchLessonTeacher_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TextBox comboBox = (TextBox)sender;
+            ComboBox comboBox = (ComboBox)sender;
             m_LessonSelectionTeacher = comboBox.Text;
+            CurrentType.DoSelection();
+        }
+
+        private void cbSearchLessonProgram_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            m_LessonSelectionProgram = comboBox.Text;
+            CurrentType.DoSelection();
+        }
+
+        private void cbSearchLessonRoom_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            m_LessonSelectionRoom = comboBox.Text;
             CurrentType.DoSelection();
         }
 
@@ -904,19 +948,6 @@ namespace RecordKeeper
             CurrentType.DoSelection();
         }
 
-        private void cbSearchLessonProgram_TextChanged(object sender, EventArgs e)
-        {
-            ComboBox comboBox = (ComboBox)sender;
-            m_LessonSelectionProgram = comboBox.Text;
-            CurrentType.DoSelection();
-        }
-
-        private void cbSearchLessonRoom_TextChanged(object sender, EventArgs e)
-        {
-            ComboBox comboBox = (ComboBox)sender;
-            m_LessonSelectionRoom = comboBox.Text;
-            CurrentType.DoSelection();
-        }
         #endregion
 
         #region Plan-related UI
@@ -984,9 +1015,7 @@ namespace RecordKeeper
         }
         private void butViewNext_Click(object sender, EventArgs e)
         {
-            int step = 1;
-            if (tabControlViewScales.SelectedIndex < 2) // Week or stats
-                step = 7;
+            int step = StepPerScale();
             dtpViewSlot.Value = dtpViewSlot.Value.Date.AddDays(step);
             m_view_chosenDate = dtpViewSlot.Value;
             ShowView();
@@ -994,19 +1023,23 @@ namespace RecordKeeper
 
         private void butViewPrev_Click(object sender, EventArgs e)
         {
-            int step = 1;
-            if (tabControlViewScales.SelectedIndex < 2) // Week or stats
-                step = 7;
+            int step = StepPerScale();
             dtpViewSlot.Value = dtpViewSlot.Value.Date.AddDays(-step);
             m_view_chosenDate = dtpViewSlot.Value;
             ShowView();
         }
 
-        private void butViewShowDayLesson_Click(object sender, EventArgs e)
+        private void butViewShowLesson_MouseHover(object sender, EventArgs e)
         {
             Button b = sender as Button;
             if (b != null && (b.Tag as Lesson) != null)
                 ShowCurrentLesson(b.Tag as Lesson);
+            else
+            {
+                Label lb = sender as Label;
+                if (lb != null && (lb.Tag as Lesson) != null)
+                    ShowCurrentLesson(lb.Tag as Lesson);
+            }
         }
         
         private void dtpViewSlot_ValueChanged(object sender, EventArgs e)
@@ -1084,8 +1117,8 @@ namespace RecordKeeper
         {
             switch (tabControlViewScales.SelectedIndex)
             {
-                case (int)TabControlScales.Stats:
-                    //ViewShowStats();
+                case (int)TabControlScales.Month:
+                    ViewShowMonth();
                     break;
                 case (int)TabControlScales.Week:
                     ViewShowWeek();
@@ -1101,5 +1134,6 @@ namespace RecordKeeper
             }
         }
         #endregion
+
     }
 }

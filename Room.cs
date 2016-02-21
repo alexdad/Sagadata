@@ -56,10 +56,10 @@ namespace RecordKeeper
                     this.ColorR = int.Parse(value);
                     break;
                 case "ColorG":
-                    this.ColorR = int.Parse(value);
+                    this.ColorG = int.Parse(value);
                     break;
                 case "ColorB":
-                    this.ColorR = int.Parse(value);
+                    this.ColorB = int.Parse(value);
                     break;
                 default:
                     throw new Exception("unknown field " + field);
@@ -94,9 +94,9 @@ namespace RecordKeeper
                 case "ColorR":
                     return ColorR.ToString();
                 case "ColorG":
-                    return ColorR.ToString();
+                    return ColorG.ToString();
                 case "ColorB":
-                    return ColorR.ToString();
+                    return ColorB.ToString();
                 default:
                     throw new Exception("unknown field " + field);
 

@@ -422,10 +422,10 @@ namespace RecordKeeper
         }
         public bool Fit(string what, string where, bool fExact)
         {
-            if (where == null || where == "")
-                return false;
-            else if (what == null || what == "" || what == "?")
+            if (what == null || what == "" || what == "?")
                 return true;
+            else if (where == null || where == "")
+                return false;
             else if (fExact)
                 return (where.ToLower().Trim() == what.ToLower().Trim());
             else

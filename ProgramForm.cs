@@ -18,6 +18,8 @@ namespace RecordKeeper
         string m_ProgramSelectionLanguage;
         string m_ProgramSelectionLevel;
 
+        delegate bool EvaluateProgram(Program t);
+
         private void DropProgramSelection()
         {
             m_ProgramSelectionLanguage = null;
@@ -55,5 +57,23 @@ namespace RecordKeeper
             ShowCurrentCount();
             Modified = true;
         }
+
+        List<Program> ActivePrograms()
+        {
+            return FindPrograms(t => true);
+        }
+
+        List<Program> FindPrograms(EvaluateProgram comp)
+        {
+            List<Program> programs = new List<Program>();
+            foreach (var tt in this.programList.List)
+            {
+                Program t = tt as Program;
+                if (comp(t))
+                    programs.Add(t);
+            }
+            return programs;
+        }
+
     }
 }

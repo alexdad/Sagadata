@@ -81,9 +81,35 @@ namespace RecordKeeper
             }
         }
 
+        public  string ShortDescription
+        {
+            get
+            {
+                StringBuilder sb = new StringBuilder();
+                sb.Append(State.Substring(0, 1));
+                if (this.Student1 != null)
+                {
+                    sb.Append(":");
+                    int space = this.Student1.Trim().IndexOf(" ");
+                    if (space > 0)
+                        sb.Append(Student1.Trim().Substring(0, space));
+                    else
+                        sb.Append(Student1.Trim());
+                }
+                return sb.ToString();
+            }
+        }
+
         public void GetLocationInWeek(out int col, out int row1, out int row2)
         {
             col = FormGlob.StandardizeDayOfTheWeek(DateTimeStart.DayOfWeek);
+            row1 = DateTimeStart.Hour * 4 + DateTimeStart.Minute / 15 - 7 * 4;
+            row2 = DateTimeEnd.Hour * 4 + DateTimeEnd.Minute / 15 - 7 * 4;
+
+        }
+        public void GetLocationInMonth(out int col, out int row1, out int row2)
+        {
+            col = DateTimeStart.Day;
             row1 = DateTimeStart.Hour * 4 + DateTimeStart.Minute / 15 - 7 * 4;
             row2 = DateTimeEnd.Hour * 4 + DateTimeEnd.Minute / 15 - 7 * 4;
 

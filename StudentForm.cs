@@ -98,6 +98,12 @@ namespace RecordKeeper
                     (t.LearningLanguage== lang )));
         }
 
+        List<Student> ActiveStudents()
+        {
+            return FindStudents(t =>
+                    (t.Status == "Active"));
+        }
+
         List<Student> FindStudents(EvaluateStudent comp)
         {
             List<Student> students = new List<Student>();

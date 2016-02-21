@@ -49,7 +49,8 @@
             this.labelGlobLastUpload = new System.Windows.Forms.Label();
             this.panelGlobIndicators = new System.Windows.Forms.Panel();
             this.ctxMenuLesson = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.menuItemViewLessonConfirm = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewLessonPlanned = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuItemViewLessonDone = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewLessonCancel = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewLessonMove = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewLessonMove1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -326,15 +327,14 @@
             this.panelSearchRoom = new System.Windows.Forms.Panel();
             this.tabPageSearchLesson = new System.Windows.Forms.TabPage();
             this.panelSearchLesson = new System.Windows.Forms.Panel();
-            this.tbSearchLessonDate = new System.Windows.Forms.TextBox();
+            this.cbSearchLessonProgram = new System.Windows.Forms.ComboBox();
+            this.cbSearchLessonTeacher = new System.Windows.Forms.ComboBox();
+            this.cbSearchLessonStudent = new System.Windows.Forms.ComboBox();
             this.lbSearchLessonStudent = new System.Windows.Forms.Label();
             this.cbSearchLessonRoom = new System.Windows.Forms.ComboBox();
             this.lbSearchLessonRoom = new System.Windows.Forms.Label();
-            this.cbSearchLessonProgram = new System.Windows.Forms.ComboBox();
             this.lbSearchLessonProgram = new System.Windows.Forms.Label();
-            this.tbSearchLessonTeacher = new System.Windows.Forms.TextBox();
             this.lbSearchTeacher = new System.Windows.Forms.Label();
-            this.tbSearchLessonStudent = new System.Windows.Forms.TextBox();
             this.lbSearchLessonDay = new System.Windows.Forms.Label();
             this.panelSearchLabels = new System.Windows.Forms.Panel();
             this.labelGlobSearch = new System.Windows.Forms.Label();
@@ -398,6 +398,10 @@
             this.butViewShowAll = new System.Windows.Forms.Button();
             this.labelViewSelect = new System.Windows.Forms.Label();
             this.groupBoxViewCurrent = new System.Windows.Forms.GroupBox();
+            this.lbViewGbMinus = new System.Windows.Forms.Label();
+            this.lbViewGbComment = new System.Windows.Forms.Label();
+            this.lbViewGbTeacher2 = new System.Windows.Forms.Label();
+            this.lbViewGbState = new System.Windows.Forms.Label();
             this.lbViewGbProg = new System.Windows.Forms.Label();
             this.lbViewGbStudent4 = new System.Windows.Forms.Label();
             this.lbViewGbStudent2 = new System.Windows.Forms.Label();
@@ -414,7 +418,7 @@
             this.panelViewMatrix = new System.Windows.Forms.Panel();
             this.tabControlViewScales = new RecordKeeper.HiddenTabControl();
             this.tabPageStats = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
+            this.panelViewMonth = new System.Windows.Forms.Panel();
             this.tabPageViewWeek = new System.Windows.Forms.TabPage();
             this.panelViewWeek = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -446,8 +450,7 @@
             this.lbPayExpenseName = new System.Windows.Forms.Label();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.lbFutureOpName = new System.Windows.Forms.Label();
-            this.menuItemViewLessonDone = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemViewLessonPlanned = new System.Windows.Forms.ToolStripMenuItem();
+            this.tbSearchLessonDate = new System.Windows.Forms.TextBox();
             this.menuStripGlobalOps.SuspendLayout();
             this.panelGlobIndicators.SuspendLayout();
             this.ctxMenuLesson.SuspendLayout();
@@ -699,22 +702,28 @@
             // ctxMenuLesson
             // 
             this.ctxMenuLesson.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemViewLessonConfirm,
+            this.menuItemViewLessonPlanned,
+            this.menuItemViewLessonDone,
             this.menuItemViewLessonCancel,
             this.menuItemViewLessonMove,
             this.menuItemViewLessonMove1,
-            this.menuItemViewLessonMove2,
-            this.menuItemViewLessonDone,
-            this.menuItemViewLessonPlanned});
+            this.menuItemViewLessonMove2});
             this.ctxMenuLesson.Name = "ctxMenuLesson";
-            this.ctxMenuLesson.Size = new System.Drawing.Size(174, 180);
+            this.ctxMenuLesson.Size = new System.Drawing.Size(174, 136);
             // 
-            // menuItemViewLessonConfirm
+            // menuItemViewLessonPlanned
             // 
-            this.menuItemViewLessonConfirm.Name = "menuItemViewLessonConfirm";
-            this.menuItemViewLessonConfirm.Size = new System.Drawing.Size(173, 22);
-            this.menuItemViewLessonConfirm.Text = "Confirm";
-            this.menuItemViewLessonConfirm.Click += new System.EventHandler(this.menuItemViewLessonConfirm_Click);
+            this.menuItemViewLessonPlanned.Name = "menuItemViewLessonPlanned";
+            this.menuItemViewLessonPlanned.Size = new System.Drawing.Size(173, 22);
+            this.menuItemViewLessonPlanned.Text = "Mark as Planned";
+            this.menuItemViewLessonPlanned.Click += new System.EventHandler(this.menuItemViewLessonPlanned_Click);
+            // 
+            // menuItemViewLessonDone
+            // 
+            this.menuItemViewLessonDone.Name = "menuItemViewLessonDone";
+            this.menuItemViewLessonDone.Size = new System.Drawing.Size(173, 22);
+            this.menuItemViewLessonDone.Text = "Mark as Done";
+            this.menuItemViewLessonDone.Click += new System.EventHandler(this.menuItemViewLessonDone_Click);
             // 
             // menuItemViewLessonCancel
             // 
@@ -741,7 +750,7 @@
             // 
             this.menuItemViewLessonMove2.Name = "menuItemViewLessonMove2";
             this.menuItemViewLessonMove2.Size = new System.Drawing.Size(173, 22);
-            this.menuItemViewLessonMove2.Text = "Move +2 weels";
+            this.menuItemViewLessonMove2.Text = "Move +2 weeks";
             this.menuItemViewLessonMove2.Click += new System.EventHandler(this.menuItemViewLessonMove2_Click);
             // 
             // tabControlOps
@@ -2820,7 +2829,7 @@
             this.tbLEssonComment.Name = "tbLEssonComment";
             this.tbLEssonComment.Size = new System.Drawing.Size(891, 20);
             this.tbLEssonComment.TabIndex = 26;
-            this.tbLEssonComment.TextChanged += new System.EventHandler(this.tbLEssonComment_TextChanged);
+            this.tbLEssonComment.TextChanged += new System.EventHandler(this.tbLessonComment_TextChanged);
             // 
             // cbLessonStudent2
             // 
@@ -3185,7 +3194,7 @@
             // lbStudSearchStatus
             // 
             this.lbStudSearchStatus.AutoSize = true;
-            this.lbStudSearchStatus.Location = new System.Drawing.Point(14, 7);
+            this.lbStudSearchStatus.Location = new System.Drawing.Point(14, 18);
             this.lbStudSearchStatus.Name = "lbStudSearchStatus";
             this.lbStudSearchStatus.Size = new System.Drawing.Size(40, 13);
             this.lbStudSearchStatus.TabIndex = 0;
@@ -3500,14 +3509,14 @@
             // panelSearchLesson
             // 
             this.panelSearchLesson.Controls.Add(this.tbSearchLessonDate);
+            this.panelSearchLesson.Controls.Add(this.cbSearchLessonProgram);
+            this.panelSearchLesson.Controls.Add(this.cbSearchLessonTeacher);
+            this.panelSearchLesson.Controls.Add(this.cbSearchLessonStudent);
             this.panelSearchLesson.Controls.Add(this.lbSearchLessonStudent);
             this.panelSearchLesson.Controls.Add(this.cbSearchLessonRoom);
             this.panelSearchLesson.Controls.Add(this.lbSearchLessonRoom);
-            this.panelSearchLesson.Controls.Add(this.cbSearchLessonProgram);
             this.panelSearchLesson.Controls.Add(this.lbSearchLessonProgram);
-            this.panelSearchLesson.Controls.Add(this.tbSearchLessonTeacher);
             this.panelSearchLesson.Controls.Add(this.lbSearchTeacher);
-            this.panelSearchLesson.Controls.Add(this.tbSearchLessonStudent);
             this.panelSearchLesson.Controls.Add(this.lbSearchLessonDay);
             this.panelSearchLesson.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelSearchLesson.Location = new System.Drawing.Point(3, 3);
@@ -3515,13 +3524,32 @@
             this.panelSearchLesson.Size = new System.Drawing.Size(205, 265);
             this.panelSearchLesson.TabIndex = 53;
             // 
-            // tbSearchLessonDate
+            // cbSearchLessonProgram
             // 
-            this.tbSearchLessonDate.Location = new System.Drawing.Point(70, 210);
-            this.tbSearchLessonDate.Name = "tbSearchLessonDate";
-            this.tbSearchLessonDate.Size = new System.Drawing.Size(121, 20);
-            this.tbSearchLessonDate.TabIndex = 10;
-            this.tbSearchLessonDate.TextChanged += new System.EventHandler(this.tbSearchLessonDate_TextChanged);
+            this.cbSearchLessonProgram.FormattingEnabled = true;
+            this.cbSearchLessonProgram.Location = new System.Drawing.Point(68, 75);
+            this.cbSearchLessonProgram.Name = "cbSearchLessonProgram";
+            this.cbSearchLessonProgram.Size = new System.Drawing.Size(121, 21);
+            this.cbSearchLessonProgram.TabIndex = 13;
+            this.cbSearchLessonProgram.SelectedIndexChanged += new System.EventHandler(this.cbSearchLessonProgram_SelectedIndexChanged);
+            // 
+            // cbSearchLessonTeacher
+            // 
+            this.cbSearchLessonTeacher.FormattingEnabled = true;
+            this.cbSearchLessonTeacher.Location = new System.Drawing.Point(68, 39);
+            this.cbSearchLessonTeacher.Name = "cbSearchLessonTeacher";
+            this.cbSearchLessonTeacher.Size = new System.Drawing.Size(121, 21);
+            this.cbSearchLessonTeacher.TabIndex = 12;
+            this.cbSearchLessonTeacher.SelectedIndexChanged += new System.EventHandler(this.cbSearchLessonTeacher_SelectedIndexChanged);
+            // 
+            // cbSearchLessonStudent
+            // 
+            this.cbSearchLessonStudent.FormattingEnabled = true;
+            this.cbSearchLessonStudent.Location = new System.Drawing.Point(68, 6);
+            this.cbSearchLessonStudent.Name = "cbSearchLessonStudent";
+            this.cbSearchLessonStudent.Size = new System.Drawing.Size(121, 21);
+            this.cbSearchLessonStudent.TabIndex = 11;
+            this.cbSearchLessonStudent.SelectedIndexChanged += new System.EventHandler(this.cbSearchLessonStudent_SelectedIndexChanged);
             // 
             // lbSearchLessonStudent
             // 
@@ -3535,68 +3563,43 @@
             // cbSearchLessonRoom
             // 
             this.cbSearchLessonRoom.FormattingEnabled = true;
-            this.cbSearchLessonRoom.Location = new System.Drawing.Point(70, 158);
+            this.cbSearchLessonRoom.Location = new System.Drawing.Point(68, 113);
             this.cbSearchLessonRoom.Name = "cbSearchLessonRoom";
             this.cbSearchLessonRoom.Size = new System.Drawing.Size(121, 21);
             this.cbSearchLessonRoom.TabIndex = 8;
-            this.cbSearchLessonRoom.TextChanged += new System.EventHandler(this.cbSearchLessonRoom_TextChanged);
+            this.cbSearchLessonRoom.SelectedIndexChanged += new System.EventHandler(this.cbSearchLessonRoom_SelectedIndexChanged);
             // 
             // lbSearchLessonRoom
             // 
             this.lbSearchLessonRoom.AutoSize = true;
-            this.lbSearchLessonRoom.Location = new System.Drawing.Point(13, 136);
+            this.lbSearchLessonRoom.Location = new System.Drawing.Point(15, 116);
             this.lbSearchLessonRoom.Name = "lbSearchLessonRoom";
             this.lbSearchLessonRoom.Size = new System.Drawing.Size(38, 13);
             this.lbSearchLessonRoom.TabIndex = 6;
             this.lbSearchLessonRoom.Text = "Room:";
             // 
-            // cbSearchLessonProgram
-            // 
-            this.cbSearchLessonProgram.FormattingEnabled = true;
-            this.cbSearchLessonProgram.Location = new System.Drawing.Point(70, 105);
-            this.cbSearchLessonProgram.Name = "cbSearchLessonProgram";
-            this.cbSearchLessonProgram.Size = new System.Drawing.Size(121, 21);
-            this.cbSearchLessonProgram.TabIndex = 5;
-            this.cbSearchLessonProgram.TextChanged += new System.EventHandler(this.cbSearchLessonProgram_TextChanged);
-            // 
             // lbSearchLessonProgram
             // 
             this.lbSearchLessonProgram.AutoSize = true;
-            this.lbSearchLessonProgram.Location = new System.Drawing.Point(13, 94);
+            this.lbSearchLessonProgram.Location = new System.Drawing.Point(15, 78);
             this.lbSearchLessonProgram.Name = "lbSearchLessonProgram";
             this.lbSearchLessonProgram.Size = new System.Drawing.Size(49, 13);
             this.lbSearchLessonProgram.TabIndex = 4;
             this.lbSearchLessonProgram.Text = "Program:";
             // 
-            // tbSearchLessonTeacher
-            // 
-            this.tbSearchLessonTeacher.Location = new System.Drawing.Point(70, 62);
-            this.tbSearchLessonTeacher.Name = "tbSearchLessonTeacher";
-            this.tbSearchLessonTeacher.Size = new System.Drawing.Size(121, 20);
-            this.tbSearchLessonTeacher.TabIndex = 3;
-            this.tbSearchLessonTeacher.TextChanged += new System.EventHandler(this.tbSearchLessonTeacher_TextChanged);
-            // 
             // lbSearchTeacher
             // 
             this.lbSearchTeacher.AutoSize = true;
-            this.lbSearchTeacher.Location = new System.Drawing.Point(13, 47);
+            this.lbSearchTeacher.Location = new System.Drawing.Point(12, 42);
             this.lbSearchTeacher.Name = "lbSearchTeacher";
             this.lbSearchTeacher.Size = new System.Drawing.Size(50, 13);
             this.lbSearchTeacher.TabIndex = 2;
             this.lbSearchTeacher.Text = "Teacher:";
             // 
-            // tbSearchLessonStudent
-            // 
-            this.tbSearchLessonStudent.Location = new System.Drawing.Point(70, 12);
-            this.tbSearchLessonStudent.Name = "tbSearchLessonStudent";
-            this.tbSearchLessonStudent.Size = new System.Drawing.Size(121, 20);
-            this.tbSearchLessonStudent.TabIndex = 1;
-            this.tbSearchLessonStudent.TextChanged += new System.EventHandler(this.tbSearchLessonStudent_TextChanged);
-            // 
             // lbSearchLessonDay
             // 
             this.lbSearchLessonDay.AutoSize = true;
-            this.lbSearchLessonDay.Location = new System.Drawing.Point(15, 189);
+            this.lbSearchLessonDay.Location = new System.Drawing.Point(15, 152);
             this.lbSearchLessonDay.Name = "lbSearchLessonDay";
             this.lbSearchLessonDay.Size = new System.Drawing.Size(33, 13);
             this.lbSearchLessonDay.TabIndex = 0;
@@ -4242,6 +4245,10 @@
             // groupBoxViewCurrent
             // 
             this.groupBoxViewCurrent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxViewCurrent.Controls.Add(this.lbViewGbMinus);
+            this.groupBoxViewCurrent.Controls.Add(this.lbViewGbComment);
+            this.groupBoxViewCurrent.Controls.Add(this.lbViewGbTeacher2);
+            this.groupBoxViewCurrent.Controls.Add(this.lbViewGbState);
             this.groupBoxViewCurrent.Controls.Add(this.lbViewGbProg);
             this.groupBoxViewCurrent.Controls.Add(this.lbViewGbStudent4);
             this.groupBoxViewCurrent.Controls.Add(this.lbViewGbStudent2);
@@ -4254,100 +4261,123 @@
             this.groupBoxViewCurrent.Controls.Add(this.lbViewGbDate);
             this.groupBoxViewCurrent.Location = new System.Drawing.Point(3, 87);
             this.groupBoxViewCurrent.Name = "groupBoxViewCurrent";
-            this.groupBoxViewCurrent.Size = new System.Drawing.Size(205, 171);
+            this.groupBoxViewCurrent.Size = new System.Drawing.Size(205, 117);
             this.groupBoxViewCurrent.TabIndex = 1;
             this.groupBoxViewCurrent.TabStop = false;
             this.groupBoxViewCurrent.Text = "Lesson";
             // 
+            // lbViewGbMinus
+            // 
+            this.lbViewGbMinus.AutoSize = true;
+            this.lbViewGbMinus.Location = new System.Drawing.Point(130, 20);
+            this.lbViewGbMinus.Name = "lbViewGbMinus";
+            this.lbViewGbMinus.Size = new System.Drawing.Size(10, 13);
+            this.lbViewGbMinus.TabIndex = 12;
+            this.lbViewGbMinus.Text = "-";
+            // 
+            // lbViewGbComment
+            // 
+            this.lbViewGbComment.AutoSize = true;
+            this.lbViewGbComment.Location = new System.Drawing.Point(20, 101);
+            this.lbViewGbComment.Name = "lbViewGbComment";
+            this.lbViewGbComment.Size = new System.Drawing.Size(0, 13);
+            this.lbViewGbComment.TabIndex = 11;
+            // 
+            // lbViewGbTeacher2
+            // 
+            this.lbViewGbTeacher2.AutoSize = true;
+            this.lbViewGbTeacher2.Location = new System.Drawing.Point(20, 59);
+            this.lbViewGbTeacher2.Name = "lbViewGbTeacher2";
+            this.lbViewGbTeacher2.Size = new System.Drawing.Size(0, 13);
+            this.lbViewGbTeacher2.TabIndex = 10;
+            // 
+            // lbViewGbState
+            // 
+            this.lbViewGbState.AutoSize = true;
+            this.lbViewGbState.Location = new System.Drawing.Point(20, 33);
+            this.lbViewGbState.Name = "lbViewGbState";
+            this.lbViewGbState.Size = new System.Drawing.Size(0, 13);
+            this.lbViewGbState.TabIndex = 9;
+            // 
             // lbViewGbProg
             // 
             this.lbViewGbProg.AutoSize = true;
-            this.lbViewGbProg.Location = new System.Drawing.Point(20, 100);
+            this.lbViewGbProg.Location = new System.Drawing.Point(20, 72);
             this.lbViewGbProg.Name = "lbViewGbProg";
-            this.lbViewGbProg.Size = new System.Drawing.Size(46, 13);
+            this.lbViewGbProg.Size = new System.Drawing.Size(0, 13);
             this.lbViewGbProg.TabIndex = 8;
-            this.lbViewGbProg.Text = "Program";
             // 
             // lbViewGbStudent4
             // 
             this.lbViewGbStudent4.AutoSize = true;
-            this.lbViewGbStudent4.Location = new System.Drawing.Point(130, 100);
+            this.lbViewGbStudent4.Location = new System.Drawing.Point(110, 85);
             this.lbViewGbStudent4.Name = "lbViewGbStudent4";
-            this.lbViewGbStudent4.Size = new System.Drawing.Size(51, 13);
+            this.lbViewGbStudent4.Size = new System.Drawing.Size(0, 13);
             this.lbViewGbStudent4.TabIndex = 7;
-            this.lbViewGbStudent4.Text = "student 4";
             // 
             // lbViewGbStudent2
             // 
             this.lbViewGbStudent2.AutoSize = true;
-            this.lbViewGbStudent2.Location = new System.Drawing.Point(20, 80);
+            this.lbViewGbStudent2.Location = new System.Drawing.Point(110, 59);
             this.lbViewGbStudent2.Name = "lbViewGbStudent2";
-            this.lbViewGbStudent2.Size = new System.Drawing.Size(51, 13);
+            this.lbViewGbStudent2.Size = new System.Drawing.Size(0, 13);
             this.lbViewGbStudent2.TabIndex = 6;
-            this.lbViewGbStudent2.Text = "student 2";
             // 
             // lbViewGbStudent3
             // 
             this.lbViewGbStudent3.AutoSize = true;
-            this.lbViewGbStudent3.Location = new System.Drawing.Point(130, 80);
+            this.lbViewGbStudent3.Location = new System.Drawing.Point(110, 72);
             this.lbViewGbStudent3.Name = "lbViewGbStudent3";
-            this.lbViewGbStudent3.Size = new System.Drawing.Size(51, 13);
+            this.lbViewGbStudent3.Size = new System.Drawing.Size(0, 13);
             this.lbViewGbStudent3.TabIndex = 5;
-            this.lbViewGbStudent3.Text = "student 3";
             // 
             // lbViewGbStudent1
             // 
             this.lbViewGbStudent1.AutoSize = true;
-            this.lbViewGbStudent1.Location = new System.Drawing.Point(130, 60);
+            this.lbViewGbStudent1.Location = new System.Drawing.Point(110, 46);
             this.lbViewGbStudent1.Name = "lbViewGbStudent1";
-            this.lbViewGbStudent1.Size = new System.Drawing.Size(51, 13);
+            this.lbViewGbStudent1.Size = new System.Drawing.Size(0, 13);
             this.lbViewGbStudent1.TabIndex = 4;
-            this.lbViewGbStudent1.Text = "student 1";
             // 
             // lbViewGbRoom
             // 
             this.lbViewGbRoom.AutoSize = true;
-            this.lbViewGbRoom.Location = new System.Drawing.Point(130, 20);
+            this.lbViewGbRoom.Location = new System.Drawing.Point(110, 33);
             this.lbViewGbRoom.Name = "lbViewGbRoom";
-            this.lbViewGbRoom.Size = new System.Drawing.Size(30, 13);
+            this.lbViewGbRoom.Size = new System.Drawing.Size(0, 13);
             this.lbViewGbRoom.TabIndex = 3;
-            this.lbViewGbRoom.Text = "room";
             // 
             // lbViewGbStart
             // 
             this.lbViewGbStart.AutoSize = true;
-            this.lbViewGbStart.Location = new System.Drawing.Point(20, 40);
+            this.lbViewGbStart.Location = new System.Drawing.Point(89, 20);
             this.lbViewGbStart.Name = "lbViewGbStart";
-            this.lbViewGbStart.Size = new System.Drawing.Size(27, 13);
+            this.lbViewGbStart.Size = new System.Drawing.Size(0, 13);
             this.lbViewGbStart.TabIndex = 2;
-            this.lbViewGbStart.Text = "from";
             // 
             // lbViewGbEnd
             // 
             this.lbViewGbEnd.AutoSize = true;
-            this.lbViewGbEnd.Location = new System.Drawing.Point(130, 40);
+            this.lbViewGbEnd.Location = new System.Drawing.Point(139, 20);
             this.lbViewGbEnd.Name = "lbViewGbEnd";
-            this.lbViewGbEnd.Size = new System.Drawing.Size(16, 13);
+            this.lbViewGbEnd.Size = new System.Drawing.Size(0, 13);
             this.lbViewGbEnd.TabIndex = 1;
-            this.lbViewGbEnd.Text = "to";
             // 
             // lbViewGbTeacher
             // 
             this.lbViewGbTeacher.AutoSize = true;
-            this.lbViewGbTeacher.Location = new System.Drawing.Point(20, 60);
+            this.lbViewGbTeacher.Location = new System.Drawing.Point(20, 46);
             this.lbViewGbTeacher.Name = "lbViewGbTeacher";
-            this.lbViewGbTeacher.Size = new System.Drawing.Size(43, 13);
+            this.lbViewGbTeacher.Size = new System.Drawing.Size(0, 13);
             this.lbViewGbTeacher.TabIndex = 0;
-            this.lbViewGbTeacher.Text = "teacher";
             // 
             // lbViewGbDate
             // 
             this.lbViewGbDate.AutoSize = true;
             this.lbViewGbDate.Location = new System.Drawing.Point(20, 20);
             this.lbViewGbDate.Name = "lbViewGbDate";
-            this.lbViewGbDate.Size = new System.Drawing.Size(30, 13);
+            this.lbViewGbDate.Size = new System.Drawing.Size(0, 13);
             this.lbViewGbDate.TabIndex = 1;
-            this.lbViewGbDate.Text = "Date";
             // 
             // lbViewLogo
             // 
@@ -4414,7 +4444,7 @@
             // 
             // tabPageStats
             // 
-            this.tabPageStats.Controls.Add(this.label1);
+            this.tabPageStats.Controls.Add(this.panelViewMonth);
             this.tabPageStats.Location = new System.Drawing.Point(4, 22);
             this.tabPageStats.Name = "tabPageStats";
             this.tabPageStats.Padding = new System.Windows.Forms.Padding(3);
@@ -4423,14 +4453,13 @@
             this.tabPageStats.Text = "Stats";
             this.tabPageStats.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // panelViewMonth
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 18);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(28, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "ststs";
+            this.panelViewMonth.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelViewMonth.Location = new System.Drawing.Point(3, 3);
+            this.panelViewMonth.Name = "panelViewMonth";
+            this.panelViewMonth.Size = new System.Drawing.Size(975, 704);
+            this.panelViewMonth.TabIndex = 1;
             // 
             // tabPageViewWeek
             // 
@@ -4735,19 +4764,13 @@
             this.lbFutureOpName.TabIndex = 0;
             this.lbFutureOpName.Text = "Future Operation";
             // 
-            // menuItemViewLessonDone
+            // tbSearchLessonDate
             // 
-            this.menuItemViewLessonDone.Name = "menuItemViewLessonDone";
-            this.menuItemViewLessonDone.Size = new System.Drawing.Size(173, 22);
-            this.menuItemViewLessonDone.Text = "Done";
-            this.menuItemViewLessonDone.Click += new System.EventHandler(this.menuItemViewLessonDone_Click);
-            // 
-            // menuItemViewLessonPlanned
-            // 
-            this.menuItemViewLessonPlanned.Name = "menuItemViewLessonPlanned";
-            this.menuItemViewLessonPlanned.Size = new System.Drawing.Size(173, 22);
-            this.menuItemViewLessonPlanned.Text = "Planned";
-            this.menuItemViewLessonPlanned.Click += new System.EventHandler(this.menuItemViewLessonPlanned_Click);
+            this.tbSearchLessonDate.Location = new System.Drawing.Point(68, 149);
+            this.tbSearchLessonDate.Name = "tbSearchLessonDate";
+            this.tbSearchLessonDate.Size = new System.Drawing.Size(121, 20);
+            this.tbSearchLessonDate.TabIndex = 14;
+            this.tbSearchLessonDate.TextChanged += new System.EventHandler(this.tbSearchLessonDate_TextChanged);
             // 
             // FormGlob
             // 
@@ -4871,7 +4894,6 @@
             this.panelViewMatrix.ResumeLayout(false);
             this.tabControlViewScales.ResumeLayout(false);
             this.tabPageStats.ResumeLayout(false);
-            this.tabPageStats.PerformLayout();
             this.tabPageViewWeek.ResumeLayout(false);
             this.panelViewWeek.ResumeLayout(false);
             this.panelViewWeek.PerformLayout();
@@ -5229,15 +5251,11 @@
         private System.Windows.Forms.Panel panelSearchRoom;
         private System.Windows.Forms.TabPage tabPageSearchLesson;
         private System.Windows.Forms.Panel panelSearchLesson;
-        private System.Windows.Forms.TextBox tbSearchLessonDate;
         private System.Windows.Forms.Label lbSearchLessonStudent;
         private System.Windows.Forms.ComboBox cbSearchLessonRoom;
         private System.Windows.Forms.Label lbSearchLessonRoom;
-        private System.Windows.Forms.ComboBox cbSearchLessonProgram;
         private System.Windows.Forms.Label lbSearchLessonProgram;
-        private System.Windows.Forms.TextBox tbSearchLessonTeacher;
         private System.Windows.Forms.Label lbSearchTeacher;
-        private System.Windows.Forms.TextBox tbSearchLessonStudent;
         private System.Windows.Forms.Label lbSearchLessonDay;
         private System.Windows.Forms.Panel panelSearchLabels;
         private System.Windows.Forms.Label labelGlobSearch;
@@ -5304,16 +5322,23 @@
         private System.Windows.Forms.Panel panelViewMatrix;
         private System.Windows.Forms.ComboBox cbViewSelectProgram;
         private System.Windows.Forms.Label lbViewSelectProg;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ContextMenuStrip ctxMenuLesson;
-        private System.Windows.Forms.ToolStripMenuItem menuItemViewLessonConfirm;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewLessonCancel;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewLessonMove;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewLessonMove1;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewLessonMove2;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewLessonDone;
         private System.Windows.Forms.ToolStripMenuItem menuItemViewLessonPlanned;
+        private System.Windows.Forms.Label lbViewGbState;
+        private System.Windows.Forms.Label lbViewGbComment;
+        private System.Windows.Forms.Label lbViewGbTeacher2;
+        private System.Windows.Forms.Label lbViewGbMinus;
+        private System.Windows.Forms.Panel panelViewMonth;
+        private System.Windows.Forms.ComboBox cbSearchLessonStudent;
+        private System.Windows.Forms.ComboBox cbSearchLessonTeacher;
+        private System.Windows.Forms.ComboBox cbSearchLessonProgram;
+        private System.Windows.Forms.TextBox tbSearchLessonDate;
     }
 }
 

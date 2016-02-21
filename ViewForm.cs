@@ -92,9 +92,6 @@ namespace RecordKeeper
         bool m_view_selection_mode = false;
         Dictionary<int, Lesson> m_dvgViewTags = new Dictionary<int, Lesson>();
 
-        int m_viewslots_row = -1;
-        int m_viewslots_col = -1;
-
         Color[] m_viewSlotColors = new Color[7]
         {
                 Color.FromArgb(182,10,70),      //red
@@ -106,107 +103,100 @@ namespace RecordKeeper
                 Color.FromArgb(220,220,220)     // outside
         };
 
-        public void ViewShowWeek()
+        public void ViewShowMonth()
         {
-            string[] days = {"Monday", "Tuesday", "Wednesday",
-                "Thursday", "Friday", "Saturday", "Sunday" };
-            /*
-                        while (panelViewDay.Controls.Count > 0)
-                panelViewDay.Controls[0].Dispose();
+            DisposeChildren(panelViewMonth);
+            int days = s_DaysPerMonth[m_view_chosenDate.Month - 1];
+            int cellWidth = panelViewMonth.Width / days;
+            int cellHight = panelViewMonth.Height / m_enumTimeSlot.Length;
+            int cellRoomWidth = cellWidth / roomList.Count;
 
-            panelViewDay.Controls.Clear();
-
-            List<Lesson> lsn = FindLessonsForView();
-
-            int[,] hits = new int[7, m_enumTimeSlot.Length];
-            for (int i = 0; i < 7; i++)
-                for (int j = 0; j < m_enumTimeSlot.Length; j++)
-                    hits[i,j] = 0;
-
-            int cellWidth = panelViewDay.Width / 7;
-            int cellHight = panelViewDay.Height / m_enumTimeSlot.Length;
-
-            foreach (Lesson l in lsn)
-            {
-                int i, js, je;
-                l.GetLocation(out i, out js, out je);
-                for (int j = js; j < je; j++)
-                    hits[i, j]++;
-            }
-
-
-            foreach (Lesson l in lsn)
+            DrawMonthDaysAsTopRow(m_view_chosenDate, panelViewMonth, cellWidth);
+            DrawTimeSlotsAsLeftColumn(panelViewMonth, cellHight);
+            foreach (Lesson l in FindLessonsForView())
             {
                 int x, ys, ye;
-                l.GetLocation(out x, out ys, out ye);
-                int neighbors = 1;
-                for (int y = ys; y < ye; y++)
-                    if (hits[x, y] > neighbors)
-                        neighbors = hits[x, y];
+                l.GetLocationInMonth(out x, out ys, out ye);
 
-                Button b = new Button()
+                Label lb = new Label()
                 {
-                    Text = l.Description,
-                    Width = cellWidth / neighbors,
-                    Height = 20,
-                    Location = new Point(cellWidth * x + , y),
-                    Parent = panelViewDay,
+                    Text = l.State.Substring(0, 1),
+                    Width = cellRoomWidth,
+                    Height = cellHight * (ye - ys + 1) - 10,
+                    Location = new Point(
+                        60 + cellWidth * x + cellRoomWidth * RoomIndex(l.Room),
+                        40 + cellHight * ys + 5),
+                    Parent = panelViewMonth,
+                    BackColor = RoomColor(l.Room),
+                    ForeColor = ComplementColor(RoomColor(l.Room)),
+                    BorderStyle = BorderStyle.None,
+                    TextAlign = ContentAlignment.MiddleCenter,
                     Tag = l
                 };
+                lb.ContextMenuStrip = ctxMenuLesson;
+                lb.MouseHover += new System.EventHandler(this.butViewShowLesson_MouseHover);
             }
-            */
 
+            ExpandLabels(
+                panelViewMonth, 
+                60, 40, 
+                days, m_enumTimeSlot.Length,
+                cellRoomWidth, roomList.Count,
+                cellWidth, cellHight);
         }
+
+        public void ViewShowWeek()
+        {
+            DisposeChildren(panelViewWeek);
+            int cellWidth = panelViewWeek.Width / WeekdayNames().Length;
+            int cellHight = panelViewWeek.Height / m_enumTimeSlot.Length;
+            int cellRoomWidth = cellWidth / roomList.Count;  // we need it for uniquity
+
+            DrawWeekDaysAsTopRow(m_view_chosenDate, panelViewWeek, cellWidth);
+            DrawTimeSlotsAsLeftColumn(panelViewWeek, cellHight);
+            foreach (Lesson l in FindLessonsForView())
+            {
+                int x, ys, ye;
+                l.GetLocationInWeek(out x, out ys, out ye);
+
+                Label lb = new Label()
+                {
+                    Text = l.ShortDescription,
+                    Width = cellRoomWidth,
+                    Height = cellHight * (ye - ys + 1) - 10,
+                    Location = new Point(
+                        60 + cellWidth * x + cellRoomWidth * RoomIndex(l.Room),
+                        40 + cellHight * ys + 5),
+                    Parent = panelViewWeek,
+                    BackColor = RoomColor(l.Room),
+                    ForeColor = ComplementColor(RoomColor(l.Room)),
+                    BorderStyle = BorderStyle.None,
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    Tag = l
+                };
+                lb.ContextMenuStrip = ctxMenuLesson;
+                lb.MouseHover += new System.EventHandler(this.butViewShowLesson_MouseHover);
+            }
+
+            ExpandLabels(
+                panelViewWeek,
+                60, 40,
+                7, m_enumTimeSlot.Length,
+                cellRoomWidth, roomList.Count,
+                cellWidth, cellHight);
+        }
+
         public void ViewShowDay()
         {
-            while (panelViewDay.Controls.Count > 0)
-                panelViewDay.Controls[0].Dispose();
-
-            panelViewDay.Controls.Clear();
-
-            List<Lesson> lsn = FindLessonsForView();
             if (roomList.Count == 0)
                 return;
-
+            DisposeChildren(panelViewDay);
             int cellWidth = (panelViewDay.Width - 60) / roomList.Count;
             int cellHight = (panelViewDay.Height - 20) / m_enumTimeSlot.Length;
 
-            int i = 0;
-            foreach (Room r in roomList)
-            {
-                Label l = new Label()
-                {
-                    Text = r.Name,
-                    Width = cellWidth,
-                    Height = 20,
-                    Location = new Point(
-                        60 + cellWidth * i + 5,
-                        5),
-                    Parent = panelViewDay,
-                    TextAlign = ContentAlignment.MiddleCenter
-                };
-                i++;
-            }
-
-            int prev = -1000;
-            for (int j=0; j < m_enumTimeSlot.Length; j++)
-            {
-                int y = 40 + cellHight * j + 5;
-                if (y - prev < 100)
-                    continue;
-                prev = y;
-                Label l = new Label()
-                {
-                    Text = m_enumTimeSlot[j],
-                    Width = 60,
-                    Height = 20,
-                    Location = new Point(5, y),
-                    Parent = panelViewDay,
-                    TextAlign = ContentAlignment.MiddleLeft
-                };
-            }
-
-            foreach (Lesson l in lsn)
+            DrawRoomsAsTopRow(panelViewDay, cellWidth);
+            DrawTimeSlotsAsLeftColumn(panelViewDay, cellHight);
+            foreach (Lesson l in FindLessonsForView())
             {
                 int x, ys, ye;
                 Color roomColor;
@@ -222,11 +212,11 @@ namespace RecordKeeper
                         40 + cellHight * ys + 5),
                     Parent = panelViewDay,
                     BackColor = LessonStateColor(l.State), 
-                    ForeColor = Color.FromArgb(255- BackColor.R, 255- BackColor.G, 255- BackColor.B),
+                    ForeColor = ComplementColor(LessonStateColor(l.State)),
                     Tag = l
                 };
                 b.ContextMenuStrip = ctxMenuLesson;
-                b.Click += new System.EventHandler(this.butViewShowDayLesson_Click);
+                b.MouseHover += new System.EventHandler(this.butViewShowLesson_MouseHover);
             }
             panelViewDay.Refresh();
         }
@@ -237,23 +227,11 @@ namespace RecordKeeper
             for (int i = 0; i < m_enumTimeSlot.Length; i++)
                 viewSlotList.Add(new RecordKeeper.ViewSlot(m_enumTimeSlot[i]));
 
-            List<Lesson> lsn = FindLessonsForView();
-
-            DateTime dts = new DateTime(
-               m_view_chosenDate.Year,
-               m_view_chosenDate.Month,
-               m_view_chosenDate.Day,
-               7, 0, 0);  // slots start at 7 am 
-
-            DateTime dtn = new DateTime(
-               m_view_chosenDate.Year,
-               m_view_chosenDate.Month,
-               m_view_chosenDate.Day,
-               7, 15, 0);   // just to measure 15 min in ticks
-
+            DateTime dts = WorkDayStart(m_view_chosenDate);
+            DateTime dtn = new DateTime(dts.Year, dts.Month, dts.Day, 7, 15, 0);   // just to measure 15 min in ticks
             TimeSpan ts = dtn - dts;
 
-            foreach (Lesson l in lsn)
+            foreach (Lesson l in FindLessonsForView())
             {
                 int slot1Index = (int)((l.DateTimeStart.Ticks - dts.Ticks) / ts.Ticks);
                 if (slot1Index < 0 || slot1Index >= m_enumTimeSlot.Length)
@@ -265,43 +243,15 @@ namespace RecordKeeper
 
                 for (int slotIndex = slot1Index; slotIndex <= slot2Index; slotIndex++)
                 {
-                    string text = "";
-                    switch (slotIndex - slot1Index)
-                    {
-                        case 0:
-                            text = l.Student1;
-                            break;
-                        case 1:
-                            text = "w/ " + l.Teacher1;
-                            break;
-                        case 2:
-                            text = "   " + l.Program;
-                            break;
-                        case 3:
-                            text = "   " + l.State;
-                            break;
-                        case 4:
-                            text = "+ " + l.Student2;
-                            break;
-                        case 5:
-                            text = "+ " + l.Student3;
-                            break;
-                        case 6:
-                            text = "+ " + l.Student4;
-                            break;
-                        default:
-                            break;
-                    }
-
+                    string text = GetSlotText(l, slotIndex - slot1Index);
                     ViewSlot slot = new RecordKeeper.ViewSlot(m_enumTimeSlot[slotIndex]);
                     int roomIndex = slot.SetViewSlot(l.Room, text);
                     if (roomIndex < 0 || roomIndex > 7)
                         continue;
 
-
                     viewSlotList.Add(slot);
                     Color c1 = LessonStateColor(l.State);
-                    Color c2 = Color.FromArgb(255 - c1.R, 255 - c1.G, 255 - c1.B);
+                    Color c2 = ComplementColor(LessonStateColor(l.State));
                     dgvViewSlots.Rows[slotIndex].Cells[roomIndex].Style.BackColor = c1;
                     dgvViewSlots.Rows[slotIndex].Cells[roomIndex].Style.ForeColor = c2;
                     dgvViewSlots.Rows[slotIndex].Cells[roomIndex].Value = text;
@@ -313,17 +263,27 @@ namespace RecordKeeper
 
         private List<Lesson> FindLessonsForView()
         {
-            DateTime dt1 = new DateTime(
-                m_view_chosenDate.Year,
-                m_view_chosenDate.Month,
-                m_view_chosenDate.Day,
-                0, 0, 0);
-
-            DateTime dt2 = new DateTime(
-                m_view_chosenDate.Year,
-                m_view_chosenDate.Month,
-                m_view_chosenDate.Day,
-                23, 59, 59);
+            DateTime dt1 = DateTime.Now;
+            DateTime dt2 = DateTime.Now;
+            switch ((TabScales)tabControlViewScales.SelectedIndex)
+            {
+                case TabScales.Month:
+                    dt1 = MonthStart(m_view_chosenDate);
+                    dt2 = MonthEnd(m_view_chosenDate);
+                    break;
+                case TabScales.Week:
+                    dt1 = WeekStart(m_view_chosenDate);
+                    dt2 = WeekEnd(m_view_chosenDate);
+                    break;
+                case TabScales.Day:
+                    dt1 = DayStart(m_view_chosenDate);
+                    dt2 = DayEnd(m_view_chosenDate);
+                    break;
+                case TabScales.Slot:
+                    dt1 = DayStart(m_view_chosenDate);
+                    dt2 = DayEnd(m_view_chosenDate);
+                    break;
+            }
 
             List<Lesson> lsn = FindLessonSlots(
                 m_view_chosen_state,
@@ -344,30 +304,18 @@ namespace RecordKeeper
         {
             switch (state)
             {
-                case "Done":   // light green - confirmed
+                case "Done":   // blue - done
+                    return StateColors[(int)StatusColors.Irrelevant];
+                case "Planned":   // green - planned
                     return StateColors[(int)StatusColors.Good];
-                case "Planned":   // yellow - planned
-                    return StateColors[(int)StatusColors.Warning];
                 case "Cancelled":   // reddish - cancelled
                     return StateColors[(int)StatusColors.Bad];
-                case "Confirmed":   // red-brown - lesson    
-                    return StateColors[(int)StatusColors.Attention];
                 default:
                     return StateColors[(int)StatusColors.Unknown];
             }
         }
 
 
-        private void CountString(string s, SortedDictionary<string, int> dict)
-        {
-            if (s != null && s.Trim().Length > 1)
-            {
-                if (dict.ContainsKey(s))
-                    dict[s] = dict[s] + 1;
-                else
-                    dict[s] = 1;
-            }
-        }
 
         void FillChoices(List<Lesson> lsn)
         {
@@ -379,12 +327,9 @@ namespace RecordKeeper
             foreach (Lesson l in lsn)
             {
                 CountString(l.Room, rooms);
-
                 CountString(l.Program, programs);
-
                 CountString(l.Teacher1, teachers);
                 CountString(l.Teacher2, teachers);
-
                 CountString(l.Student1, students);
                 CountString(l.Student2, students);
                 CountString(l.Student3, students);
@@ -424,17 +369,51 @@ namespace RecordKeeper
         public void ShowCurrentLesson(Lesson l)
         {
             lbViewGbDate.Text = l.DateTimeStart.ToShortDateString();
+            lbViewGbState.Text = l.State;
             lbViewGbRoom.Text = l.Room;
             lbViewGbProg.Text = l.Program;
+            lbViewGbComment.Text = l.Comments;
             lbViewGbStart.Text = l.DateTimeStart.ToShortTimeString();
             lbViewGbEnd.Text = l.DateTimeEnd.ToShortTimeString();
             lbViewGbTeacher.Text = l.Teacher1;
+            lbViewGbTeacher2.Text = l.Teacher2;
             lbViewGbStudent1.Text = l.Student1;
             lbViewGbStudent2.Text = l.Student2;
             lbViewGbStudent3.Text = l.Student3;
             lbViewGbStudent4.Text = l.Student4;
         }
 
+        private string GetSlotText(Lesson l, int slotIndex)
+        {
+            string text = "";
+            switch (slotIndex)
+            {
+                case 0:
+                    text = l.Student1;
+                    break;
+                case 1:
+                    text = "w/ " + l.Teacher1;
+                    break;
+                case 2:
+                    text = "   " + l.Program;
+                    break;
+                case 3:
+                    text = "   " + l.State;
+                    break;
+                case 4:
+                    text = "+ " + l.Student2;
+                    break;
+                case 5:
+                    text = "+ " + l.Student3;
+                    break;
+                case 6:
+                    text = "+ " + l.Student4;
+                    break;
+                default:
+                    break;
+            }
+            return text;
+        }
         public void GetLocationInRooms(Lesson l, 
             out int col, out int row1, out int row2, out Color color)
         {
@@ -456,52 +435,199 @@ namespace RecordKeeper
                 col = roomList.Count - 1;
         }
 
-        private void menuItemViewLessonConfirm_Click(object sender, EventArgs e)
+        private void DrawWeekDaysAsTopRow(DateTime dt, Panel panel, int cellWidth)
         {
-            Button b2 = (Button)((ContextMenuStrip)((ToolStripItem)sender).Owner).SourceControl;
-            Lesson l = b2.Tag as Lesson;
-            l.State = "Confirmed";
-            ShowView();
+            int i = 0;
+            foreach (string d in WeekOf(dt))
+            {
+                Label l = new Label()
+                {
+                    Text = d,
+                    ForeColor = Color.Black,
+                    BackColor = Color.White,
+                    Width = cellWidth,
+                    Height = 20,
+                    Location = new Point(
+                        60 + cellWidth * i + 5,
+                        5),
+                    Parent = panel,
+                    TextAlign = ContentAlignment.MiddleCenter
+                };
+                i++;
+            }
         }
 
+        private void DrawMonthDaysAsTopRow(DateTime dt, Panel panel, int cellWidth)
+        {
+            int i = 0;
+            foreach (string d in MonthOf(dt))
+            {
+                Label l = new Label()
+                {
+                    Text = d,
+                    ForeColor = Color.Black,
+                    BackColor = Color.White,
+                    Width = cellWidth,
+                    Height = 20,
+                    Location = new Point(
+                        60 + cellWidth * i + 5,
+                        5),
+                    Parent = panel,
+                    TextAlign = ContentAlignment.MiddleCenter
+                };
+                i++;
+            }
+        }
+
+        private void DrawRoomsAsTopRow(Panel panel, int cellWidth)
+        {
+            int i = 0;
+            foreach (Room r in roomList)
+            {
+                Label l = new Label()
+                {
+                    Text = r.Name,
+                    Width = cellWidth,
+                    Height = 20,
+                    Location = new Point(
+                        60 + cellWidth * i + 5,
+                        5),
+                    Parent = panel,
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    BackColor = r.RoomColor,
+                    ForeColor = ComplementColor(r.RoomColor)
+                };
+                i++;
+            }
+        }
+
+        private void DrawTimeSlotsAsLeftColumn(Panel panel, int cellHight)
+        {
+            int prev = -1000;
+            for (int j = 0; j < m_enumTimeSlot.Length; j++)
+            {
+                int y = 40 + cellHight * j + 5;
+                if (y - prev < 100)
+                    continue;
+                prev = y;
+                Label l = new Label()
+                {
+                    Text = m_enumTimeSlot[j],
+                    Width = 60,
+                    Height = 20,
+                    Location = new Point(5, y),
+                    Parent = panel,
+                    TextAlign = ContentAlignment.MiddleLeft
+                };
+            }
+        }
+
+        private void ExpandLabels(Panel panel, 
+            int minX, int minY, 
+            int cols, int rows,
+            int cellRoomWidth,  int nRooms,
+            int cellWidth, int cellHeight)
+        {
+            int[,] hits = new int[ (cols+1) * nRooms + 1, rows];
+            foreach (Control c in panel.Controls)
+            {
+                Label l = c as Label;
+                if (l == null)
+                    continue;
+                if (l.Location.Y < minY || l.Location.X < minX)
+                    continue;
+
+                int x1 = (l.Location.X - minX) / cellRoomWidth;
+                int y1 = (l.Location.Y - minY) / cellHeight;
+                int x2 = (l.Location.X + l.Width - minX) / cellRoomWidth + 1;
+                int y2 = (l.Location.Y + l.Height - minY) / cellHeight + 1;
+                for (int x = x1; x < x2; x++)
+                    for (int y = y1; y < y2; y++)
+                        hits[x, y] = hits[x, y] + 1;
+            }
+
+            foreach (Control c in panel.Controls)
+            {
+                Label l = c as Label;
+                if (l == null)
+                    continue;
+                if (l.Location.Y < minY || l.Location.X < minX)
+                    continue;
+
+                int x1 = (l.Location.X - minX) / cellRoomWidth;
+                int y1 = (l.Location.Y - minY) / cellHeight;
+                int x2 = (l.Location.X + l.Width - minX) / cellRoomWidth + 1;
+                int y2 = (l.Location.Y + l.Height - minY) / cellHeight + 1;
+
+                int x2min = (x2 / nRooms) * nRooms;
+                int x2max = x2min + nRooms;
+
+                bool hit = false;
+                for (int x = x2 + 1; x < x2max && !hit; x++)
+                {
+                    for (int y = y1; y <= y2; y++)
+                    {
+                        if (hits[x + 1, y] > 0)
+                        {
+                            hit = true;
+                            break;
+                        }
+                    }
+                    if (!hit)
+                    {
+                        l.Width += cellRoomWidth;
+                        for (int y = y1; y < y2; y++)
+                            hits[x + 1, y] = 1;
+                    }
+                }
+            }
+        }
 
         private void menuItemViewLessonCancel_Click(object sender, EventArgs e)
         {
-            Button b2 = (Button)((ContextMenuStrip)((ToolStripItem)sender).Owner).SourceControl;
-            Lesson l = b2.Tag as Lesson;
+            Lesson l = GetLessonFromSender(sender);
             l.State = "Cancelled";
             ShowView();
         }
 
         private void menuItemViewLessonMove_Click(object sender, EventArgs e)
         {
-
+            Lesson l = GetLessonFromSender(sender);
         }
 
         private void menuItemViewLessonMove1_Click(object sender, EventArgs e)
         {
+            Lesson l = GetLessonFromSender(sender);
 
         }
 
         private void menuItemViewLessonMove2_Click(object sender, EventArgs e)
         {
+            Lesson l = GetLessonFromSender(sender);
 
         }
 
         private void menuItemViewLessonDone_Click(object sender, EventArgs e)
         {
-            Button b2 = (Button)((ContextMenuStrip)((ToolStripItem)sender).Owner).SourceControl;
-            Lesson l = b2.Tag as Lesson;
+            Lesson l = GetLessonFromSender(sender);
             l.State = "Done";
             ShowView();
         }
 
         private void menuItemViewLessonPlanned_Click(object sender, EventArgs e)
         {
-            Button b2 = (Button)((ContextMenuStrip)((ToolStripItem)sender).Owner).SourceControl;
-            Lesson l = b2.Tag as Lesson;
+            Lesson l = GetLessonFromSender(sender);
             l.State = "Planned";
             ShowView();
+        }
+
+        private Lesson GetLessonFromSender(object sender)
+        {
+            Control c = ((ContextMenuStrip)((ToolStripItem)sender).Owner).SourceControl;
+            Label lb = c as Label;
+            Button bt = c as Button;
+            Lesson l = (lb == null ? bt.Tag : lb.Tag) as Lesson;
+            return l;
         }
 
     }

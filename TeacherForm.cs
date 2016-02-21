@@ -311,6 +311,12 @@ namespace RecordKeeper
                     t.Language2 == "Other" && t.LanguageDetail == lang)));
         }
 
+        List<Teacher> ActiveTeachers()
+        {
+            return FindTeachers(t =>
+                    (t.Status == "Active"));
+        }
+
         List<Teacher> SpecificTeacher(string desc)
         {
             return FindTeachers(t => t.Description == desc);
