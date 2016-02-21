@@ -104,6 +104,29 @@ namespace RecordKeeper
                     (t.Status == "Active"));
         }
 
+        public string GetStudentComment(string desc)
+        {
+            List<Student> lst = SpecificStudent(desc);
+            string res = "";
+            foreach (Student t in lst)
+                res = t.Comments;
+            return res;
+        }
+
+        public bool SetStudentComment(string desc, string comment)
+        {
+            foreach (var tt in this.studentList.List)
+            {
+                Student t = tt as Student;
+                if (t.Description == desc)
+                {
+                    t.Comments = comment;
+                    return true;
+                }
+            }
+            return false;
+        }
+
         List<Student> FindStudents(EvaluateStudent comp)
         {
             List<Student> students = new List<Student>();

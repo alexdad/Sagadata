@@ -322,6 +322,29 @@ namespace RecordKeeper
             return FindTeachers(t => t.Description == desc);
         }
 
+        public string GetTeacherComment(string desc)
+        {
+            List<Teacher> lst = SpecificTeacher(desc);
+            string res = "";
+            foreach (Teacher t in lst)
+                res = t.Comments;
+            return res;
+        }
+
+        public bool SetTeacherComment(string desc, string comment)
+        {
+            foreach (var tt in this.teacherList.List)
+            {
+                Teacher t = tt as Teacher;
+                if (t.Description == desc)
+                {
+                    t.Comments = comment;
+                    return true;
+                }
+            }
+            return false;
+        }
+
         List<Teacher> FindTeachers(EvaluateTeacher comp)
         {
             List<Teacher> teachers = new List<Teacher>();

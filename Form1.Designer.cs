@@ -327,6 +327,7 @@
             this.panelSearchRoom = new System.Windows.Forms.Panel();
             this.tabPageSearchLesson = new System.Windows.Forms.TabPage();
             this.panelSearchLesson = new System.Windows.Forms.Panel();
+            this.tbSearchLessonDate = new System.Windows.Forms.TextBox();
             this.cbSearchLessonProgram = new System.Windows.Forms.ComboBox();
             this.cbSearchLessonTeacher = new System.Windows.Forms.ComboBox();
             this.cbSearchLessonStudent = new System.Windows.Forms.ComboBox();
@@ -416,6 +417,14 @@
             this.pboxViewIcon = new System.Windows.Forms.PictureBox();
             this.lbViewCount = new System.Windows.Forms.Label();
             this.panelViewMatrix = new System.Windows.Forms.Panel();
+            this.panelViewDetails = new System.Windows.Forms.Panel();
+            this.cbViewDetailProgram = new System.Windows.Forms.ComboBox();
+            this.butViewDetailSet = new System.Windows.Forms.Button();
+            this.cbViewDetailRoom = new System.Windows.Forms.ComboBox();
+            this.tbViewDetailStudent = new System.Windows.Forms.TextBox();
+            this.tbViewDetailTeacher = new System.Windows.Forms.TextBox();
+            this.lbViewDetailStudent = new System.Windows.Forms.Label();
+            this.lbViewDetailTeacher = new System.Windows.Forms.Label();
             this.tabControlViewScales = new RecordKeeper.HiddenTabControl();
             this.tabPageStats = new System.Windows.Forms.TabPage();
             this.panelViewMonth = new System.Windows.Forms.Panel();
@@ -450,7 +459,8 @@
             this.lbPayExpenseName = new System.Windows.Forms.Label();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.lbFutureOpName = new System.Windows.Forms.Label();
-            this.tbSearchLessonDate = new System.Windows.Forms.TextBox();
+            this.tbViewDetailComment = new System.Windows.Forms.TextBox();
+            this.lbViewDetailComment = new System.Windows.Forms.Label();
             this.menuStripGlobalOps.SuspendLayout();
             this.panelGlobIndicators.SuspendLayout();
             this.ctxMenuLesson.SuspendLayout();
@@ -534,6 +544,7 @@
             this.groupBoxViewCurrent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pboxViewIcon)).BeginInit();
             this.panelViewMatrix.SuspendLayout();
+            this.panelViewDetails.SuspendLayout();
             this.tabControlViewScales.SuspendLayout();
             this.tabPageStats.SuspendLayout();
             this.tabPageViewWeek.SuspendLayout();
@@ -3524,6 +3535,14 @@
             this.panelSearchLesson.Size = new System.Drawing.Size(205, 265);
             this.panelSearchLesson.TabIndex = 53;
             // 
+            // tbSearchLessonDate
+            // 
+            this.tbSearchLessonDate.Location = new System.Drawing.Point(68, 149);
+            this.tbSearchLessonDate.Name = "tbSearchLessonDate";
+            this.tbSearchLessonDate.Size = new System.Drawing.Size(121, 20);
+            this.tbSearchLessonDate.TabIndex = 14;
+            this.tbSearchLessonDate.TextChanged += new System.EventHandler(this.tbSearchLessonDate_TextChanged);
+            // 
             // cbSearchLessonProgram
             // 
             this.cbSearchLessonProgram.FormattingEnabled = true;
@@ -4418,6 +4437,7 @@
             this.panelViewMatrix.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelViewMatrix.Controls.Add(this.panelViewDetails);
             this.panelViewMatrix.Controls.Add(this.tabControlViewScales);
             this.panelViewMatrix.Controls.Add(this.butViewNext);
             this.panelViewMatrix.Controls.Add(this.butViewPrev);
@@ -4427,6 +4447,91 @@
             this.panelViewMatrix.Name = "panelViewMatrix";
             this.panelViewMatrix.Size = new System.Drawing.Size(1036, 778);
             this.panelViewMatrix.TabIndex = 1;
+            // 
+            // panelViewDetails
+            // 
+            this.panelViewDetails.Controls.Add(this.lbViewDetailComment);
+            this.panelViewDetails.Controls.Add(this.tbViewDetailComment);
+            this.panelViewDetails.Controls.Add(this.cbViewDetailProgram);
+            this.panelViewDetails.Controls.Add(this.butViewDetailSet);
+            this.panelViewDetails.Controls.Add(this.cbViewDetailRoom);
+            this.panelViewDetails.Controls.Add(this.tbViewDetailStudent);
+            this.panelViewDetails.Controls.Add(this.tbViewDetailTeacher);
+            this.panelViewDetails.Controls.Add(this.lbViewDetailStudent);
+            this.panelViewDetails.Controls.Add(this.lbViewDetailTeacher);
+            this.panelViewDetails.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelViewDetails.Location = new System.Drawing.Point(24, 655);
+            this.panelViewDetails.Name = "panelViewDetails";
+            this.panelViewDetails.Size = new System.Drawing.Size(989, 100);
+            this.panelViewDetails.TabIndex = 0;
+            // 
+            // cbViewDetailProgram
+            // 
+            this.cbViewDetailProgram.FormattingEnabled = true;
+            this.cbViewDetailProgram.Location = new System.Drawing.Point(759, 64);
+            this.cbViewDetailProgram.Name = "cbViewDetailProgram";
+            this.cbViewDetailProgram.Size = new System.Drawing.Size(102, 21);
+            this.cbViewDetailProgram.TabIndex = 8;
+            this.cbViewDetailProgram.SelectedIndexChanged += new System.EventHandler(this.cbViewDetailProgram_SelectedIndexChanged);
+            // 
+            // butViewDetailSet
+            // 
+            this.butViewDetailSet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(127)))), ((int)(((byte)(39)))));
+            this.butViewDetailSet.Location = new System.Drawing.Point(892, 64);
+            this.butViewDetailSet.Name = "butViewDetailSet";
+            this.butViewDetailSet.Size = new System.Drawing.Size(75, 23);
+            this.butViewDetailSet.TabIndex = 6;
+            this.butViewDetailSet.Text = "Accept";
+            this.butViewDetailSet.UseVisualStyleBackColor = false;
+            this.butViewDetailSet.Visible = false;
+            this.butViewDetailSet.Click += new System.EventHandler(this.butViewDetailSet_Click);
+            // 
+            // cbViewDetailRoom
+            // 
+            this.cbViewDetailRoom.FormattingEnabled = true;
+            this.cbViewDetailRoom.Location = new System.Drawing.Point(636, 64);
+            this.cbViewDetailRoom.Name = "cbViewDetailRoom";
+            this.cbViewDetailRoom.Size = new System.Drawing.Size(104, 21);
+            this.cbViewDetailRoom.TabIndex = 4;
+            this.cbViewDetailRoom.SelectedIndexChanged += new System.EventHandler(this.cbViewDetailRoom_SelectedIndexChanged);
+            // 
+            // tbViewDetailStudent
+            // 
+            this.tbViewDetailStudent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbViewDetailStudent.Location = new System.Drawing.Point(106, 38);
+            this.tbViewDetailStudent.Name = "tbViewDetailStudent";
+            this.tbViewDetailStudent.Size = new System.Drawing.Size(873, 20);
+            this.tbViewDetailStudent.TabIndex = 3;
+            this.tbViewDetailStudent.TextChanged += new System.EventHandler(this.tbViewDetailStudent_TextChanged);
+            // 
+            // tbViewDetailTeacher
+            // 
+            this.tbViewDetailTeacher.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbViewDetailTeacher.Location = new System.Drawing.Point(106, 14);
+            this.tbViewDetailTeacher.Name = "tbViewDetailTeacher";
+            this.tbViewDetailTeacher.Size = new System.Drawing.Size(873, 20);
+            this.tbViewDetailTeacher.TabIndex = 2;
+            this.tbViewDetailTeacher.TextChanged += new System.EventHandler(this.tbViewDetailTeacher_TextChanged);
+            // 
+            // lbViewDetailStudent
+            // 
+            this.lbViewDetailStudent.AutoSize = true;
+            this.lbViewDetailStudent.Location = new System.Drawing.Point(11, 38);
+            this.lbViewDetailStudent.Name = "lbViewDetailStudent";
+            this.lbViewDetailStudent.Size = new System.Drawing.Size(42, 13);
+            this.lbViewDetailStudent.TabIndex = 1;
+            this.lbViewDetailStudent.Text = "student";
+            // 
+            // lbViewDetailTeacher
+            // 
+            this.lbViewDetailTeacher.AutoSize = true;
+            this.lbViewDetailTeacher.Location = new System.Drawing.Point(11, 17);
+            this.lbViewDetailTeacher.Name = "lbViewDetailTeacher";
+            this.lbViewDetailTeacher.Size = new System.Drawing.Size(43, 13);
+            this.lbViewDetailTeacher.TabIndex = 0;
+            this.lbViewDetailTeacher.Text = "teacher";
             // 
             // tabControlViewScales
             // 
@@ -4764,13 +4869,22 @@
             this.lbFutureOpName.TabIndex = 0;
             this.lbFutureOpName.Text = "Future Operation";
             // 
-            // tbSearchLessonDate
+            // tbViewDetailComment
             // 
-            this.tbSearchLessonDate.Location = new System.Drawing.Point(68, 149);
-            this.tbSearchLessonDate.Name = "tbSearchLessonDate";
-            this.tbSearchLessonDate.Size = new System.Drawing.Size(121, 20);
-            this.tbSearchLessonDate.TabIndex = 14;
-            this.tbSearchLessonDate.TextChanged += new System.EventHandler(this.tbSearchLessonDate_TextChanged);
+            this.tbViewDetailComment.Location = new System.Drawing.Point(106, 64);
+            this.tbViewDetailComment.Name = "tbViewDetailComment";
+            this.tbViewDetailComment.Size = new System.Drawing.Size(524, 20);
+            this.tbViewDetailComment.TabIndex = 9;
+            this.tbViewDetailComment.TextChanged += new System.EventHandler(this.tbViewDetailComment_TextChanged);
+            // 
+            // lbViewDetailComment
+            // 
+            this.lbViewDetailComment.AutoSize = true;
+            this.lbViewDetailComment.Location = new System.Drawing.Point(14, 70);
+            this.lbViewDetailComment.Name = "lbViewDetailComment";
+            this.lbViewDetailComment.Size = new System.Drawing.Size(59, 13);
+            this.lbViewDetailComment.TabIndex = 10;
+            this.lbViewDetailComment.Text = "Comments:";
             // 
             // FormGlob
             // 
@@ -4892,6 +5006,8 @@
             this.groupBoxViewCurrent.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pboxViewIcon)).EndInit();
             this.panelViewMatrix.ResumeLayout(false);
+            this.panelViewDetails.ResumeLayout(false);
+            this.panelViewDetails.PerformLayout();
             this.tabControlViewScales.ResumeLayout(false);
             this.tabPageStats.ResumeLayout(false);
             this.tabPageViewWeek.ResumeLayout(false);
@@ -5339,6 +5455,16 @@
         private System.Windows.Forms.ComboBox cbSearchLessonTeacher;
         private System.Windows.Forms.ComboBox cbSearchLessonProgram;
         private System.Windows.Forms.TextBox tbSearchLessonDate;
+        private System.Windows.Forms.Panel panelViewDetails;
+        private System.Windows.Forms.Button butViewDetailSet;
+        private System.Windows.Forms.ComboBox cbViewDetailRoom;
+        private System.Windows.Forms.TextBox tbViewDetailStudent;
+        private System.Windows.Forms.TextBox tbViewDetailTeacher;
+        private System.Windows.Forms.Label lbViewDetailStudent;
+        private System.Windows.Forms.Label lbViewDetailTeacher;
+        private System.Windows.Forms.ComboBox cbViewDetailProgram;
+        private System.Windows.Forms.Label lbViewDetailComment;
+        private System.Windows.Forms.TextBox tbViewDetailComment;
     }
 }
 

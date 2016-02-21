@@ -180,11 +180,13 @@ namespace RecordKeeper
             List<String> programNames = programs.ConvertAll(x => x.Description);
             cbSearchLessonProgram.Items.AddRange(programNames.ToArray());
             cbLessonProg.Items.AddRange(programNames.ToArray());
+            cbViewDetailProgram.Items.AddRange(programNames.ToArray());
 
             List<Room> rooms = ActiveRooms();
             List<String> roomNames = rooms.ConvertAll(x => x.Description);
             cbSearchLessonRoom.Items.AddRange(roomNames.ToArray());
             cbLessonRoom.Items.AddRange(roomNames.ToArray());
+            cbViewDetailRoom.Items.AddRange(roomNames.ToArray());
 
         }
         private void Form1_Load(object sender, EventArgs e)
@@ -1113,6 +1115,64 @@ namespace RecordKeeper
             ShowView();
         }
 
+        private void tbViewDetailTeacher_TextChanged(object sender, EventArgs e)
+        {
+            ViewLessonDetailsChanged();
+        }
+
+        private void tbViewDetailStudent_TextChanged(object sender, EventArgs e)
+        {
+            ViewLessonDetailsChanged();
+        }
+
+        private void cbViewDetailRoom_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ViewLessonDetailsChanged();
+        }
+
+        private void cbViewDetailProgram_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ViewLessonDetailsChanged();
+        }
+
+        private void tbViewDetailComment_TextChanged(object sender, EventArgs e)
+        {
+            ViewLessonDetailsChanged();
+        }
+
+        private void ViewLessonDetailsChanged()
+        {
+            Modified = true;
+            m_lessonDetailsChanged = true;
+            butViewDetailSet.Visible = true;
+
+        }
+        private void ViewLessonDetailsSet(string key)
+        {
+            m_lessonDetailsChanged = false;
+            butViewDetailSet.Visible = false;
+            m_currentLessonKey = key;
+        }
+
+        private void butViewDetailSet_Click(object sender, EventArgs e)
+        {
+            SetTeacherComment(
+                lbViewDetailTeacher.Text, 
+                tbViewDetailTeacher.Text);
+            SetStudentComment(
+                lbViewDetailStudent.Text, 
+                tbViewDetailStudent.Text);
+            SetLessonDetails(
+                m_currentLessonKey,
+                (string)cbViewDetailProgram.SelectedItem,
+                (string)cbViewDetailRoom.SelectedItem,
+                tbViewDetailComment.Text);
+
+            m_lessonDetailsChanged = false;
+            butViewDetailSet.Visible = false;
+            ShowView();
+        }
+
         private void ShowView()
         {
             switch (tabControlViewScales.SelectedIndex)
@@ -1134,6 +1194,5 @@ namespace RecordKeeper
             }
         }
         #endregion
-
     }
 }

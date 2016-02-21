@@ -21,6 +21,9 @@ namespace RecordKeeper
         string m_LessonSelectionProgram;
         string m_LessonSelectionRoom;
 
+        bool m_lessonDetailsChanged;
+        string m_currentLessonKey;
+
         delegate bool EvaluateLesson(Lesson t);
 
         private void DropLessonSelection()
@@ -114,6 +117,22 @@ namespace RecordKeeper
                     l.Student10 == desc) &&
                     l.DateTimeStart <= t2 &&
                     l.DateTimeEnd >= t1);
+        }
+
+        public bool SetLessonDetails(string key, string program, string room, string comment)
+        {
+            foreach (var tt in this.lessonList.List)
+            {
+                Lesson t = tt as Lesson;
+                if (t.Key == key)
+                {
+                    t.Program = program;
+                    t.Room = room;
+                    t.Comments = comment;
+                    return true;
+                }
+            }
+            return false;
         }
 
         List<Lesson> FindLessons(EvaluateLesson comp)

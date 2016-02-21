@@ -381,6 +381,16 @@ namespace RecordKeeper
             lbViewGbStudent2.Text = l.Student2;
             lbViewGbStudent3.Text = l.Student3;
             lbViewGbStudent4.Text = l.Student4;
+
+            lbViewDetailTeacher.Text = l.Teacher1;
+            tbViewDetailTeacher.Text = GetTeacherComment(l.Teacher1);
+            lbViewDetailStudent.Text = l.Student1;
+            tbViewDetailStudent.Text = GetStudentComment(l.Student1);
+            cbViewDetailRoom.Text = l.Room;
+            cbViewDetailProgram.Text = l.Program;
+            tbViewDetailComment.Text = l.Comments;
+
+            ViewLessonDetailsSet(l.Key);
         }
 
         private string GetSlotText(Lesson l, int slotIndex)
