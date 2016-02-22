@@ -577,34 +577,30 @@ namespace RecordKeeper
                     y1 < 0 || y2 < 0 || y1 > nrows || y2 > nrows)
                     continue;
 
-
                 int x2min = (x2 / nRooms) * nRooms;
                 int x2max = x2min + nRooms;
 
                 bool hit = false;
-                for (int x = x2 + 1; x < x2max && !hit; x++)
+                for (int x = x2; x < x2max && !hit; x++)
                 {
                     for (int y = y1; y <= y2; y++)
                     {
                         if (x + 1 < 0 || y < 0 || x + 1 >= ncols || y >= nrows)
                             return;
-
                         if (hits[x + 1, y] > 0)
                         {
                             hit = true;
                             break;
                         }
                     }
-                    if (!hit)
+                    if (hit)
+                        break;
+                    l.Width += cellRoomWidth;
+                    for (int y = y1; y < y2; y++)
                     {
-                        l.Width += cellRoomWidth;
-                        for (int y = y1; y < y2; y++)
-                        {
-                            if (x + 1 < 0 || y < 0 || x + 1 >= ncols || y >= nrows)
-                                return;
-
-                            hits[x + 1, y] = 1;
-                        }
+                        if (x + 1 < 0 || y < 0 || x + 1 >= ncols || y >= nrows)
+                            return;
+                        hits[x + 1, y] = 1;
                     }
                 }
             }
