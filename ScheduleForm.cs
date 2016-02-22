@@ -166,8 +166,7 @@ namespace RecordKeeper
             DateTime de = ds;
             de = de.AddDays(7);
 
-            List<Lesson> lsn = LessonsByTime(ds, de);
-            foreach(Lesson l in lsn)
+            foreach(Lesson l in LessonsByTime(ds, de))
             {
                 if (l.Room == null || l.Room.Length == 0 || l.Room == "N/A")
                     continue;
