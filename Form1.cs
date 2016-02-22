@@ -213,6 +213,10 @@ namespace RecordKeeper
             splitContainerGlobMasterDetail.SplitterDistance = Properties.Settings.Default.SplitMD;
             AssignListsToComboBoxes();
             Modified = false;
+
+            // Start as View day
+            tabControlOps.SelectedIndex = (int)TabControlOps.View;
+            ShowView();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
