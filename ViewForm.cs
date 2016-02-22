@@ -520,7 +520,7 @@ namespace RecordKeeper
                 Label l = new Label()
                 {
                     Text = m_enumTimeSlot[j],
-                    Width = 60,
+                    Width = 50,
                     Height = 20,
                     Location = new Point(5, y),
                     Parent = panel,
@@ -570,8 +570,8 @@ namespace RecordKeeper
 
                 int x1 = (l.Location.X - minX) / cellRoomWidth;
                 int y1 = (l.Location.Y - minY) / cellHeight;
-                int x2 = (l.Location.X + l.Width - minX) / cellRoomWidth + 1;
-                int y2 = (l.Location.Y + l.Height - minY) / cellHeight + 1;
+                int x2 = (l.Location.X + l.Width - minX) / cellRoomWidth;
+                int y2 = (l.Location.Y + l.Height - minY) / cellHeight;
 
                 if (x1 < 0 || x2 < 0 || x1 > ncols || x2 > ncols ||
                     y1 < 0 || y2 < 0 || y1 > nrows || y2 > nrows)

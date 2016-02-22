@@ -176,7 +176,14 @@ namespace RecordKeeper
 
         public static Color ComplementColor(Color c)
         {
-            return Color.FromArgb(255 - c.R, 255 - c.G, 255 - c.B);
+            int maxdiff = Math.Max(Math.Abs(c.R - c.G), Math.Abs(c.R - c.B));
+            maxdiff = Math.Max(Math.Abs(c.B - c.G), maxdiff);
+            if (maxdiff > 60)
+                return Color.FromArgb(255 - c.R, 255 - c.G, 255 - c.B);
+            else if ((c.R + c.G + c.B) / 3 > 128)
+                return Color.Black;
+            else
+                return Color.White;
         }
         enum StatusColors
         {

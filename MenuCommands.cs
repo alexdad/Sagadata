@@ -67,6 +67,7 @@ namespace RecordKeeper
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
             tabControlOps.SelectedIndex = (int)TabControlOps.Edit;
+            ChangeMode(CurrentMode);
         }
         private void planToolStripMenuItem_Click(object sender, EventArgs e)
         {
