@@ -357,7 +357,10 @@
             this.sundayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.planSlotList = new System.Windows.Forms.BindingSource(this.components);
             this.panelPlanParams = new System.Windows.Forms.Panel();
-            this.tbPlanDuration = new System.Windows.Forms.TextBox();
+            this.cbPlanProgram = new System.Windows.Forms.ComboBox();
+            this.lbPlanProgram = new System.Windows.Forms.Label();
+            this.cbPlanRoom = new System.Windows.Forms.ComboBox();
+            this.tbPlanRepeat = new System.Windows.Forms.TextBox();
             this.lbPlanRepeat = new System.Windows.Forms.Label();
             this.tbPlanComment = new System.Windows.Forms.TextBox();
             this.lbPlanComment = new System.Windows.Forms.Label();
@@ -418,6 +421,8 @@
             this.lbViewCount = new System.Windows.Forms.Label();
             this.panelViewMatrix = new System.Windows.Forms.Panel();
             this.panelViewDetails = new System.Windows.Forms.Panel();
+            this.lbViewDetailComment = new System.Windows.Forms.Label();
+            this.tbViewDetailComment = new System.Windows.Forms.TextBox();
             this.cbViewDetailProgram = new System.Windows.Forms.ComboBox();
             this.butViewDetailSet = new System.Windows.Forms.Button();
             this.cbViewDetailRoom = new System.Windows.Forms.ComboBox();
@@ -459,8 +464,6 @@
             this.lbPayExpenseName = new System.Windows.Forms.Label();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.lbFutureOpName = new System.Windows.Forms.Label();
-            this.tbViewDetailComment = new System.Windows.Forms.TextBox();
-            this.lbViewDetailComment = new System.Windows.Forms.Label();
             this.menuStripGlobalOps.SuspendLayout();
             this.panelGlobIndicators.SuspendLayout();
             this.ctxMenuLesson.SuspendLayout();
@@ -720,47 +723,47 @@
             this.menuItemViewLessonMove1,
             this.menuItemViewLessonMove2});
             this.ctxMenuLesson.Name = "ctxMenuLesson";
-            this.ctxMenuLesson.Size = new System.Drawing.Size(174, 136);
+            this.ctxMenuLesson.Size = new System.Drawing.Size(171, 136);
             // 
             // menuItemViewLessonPlanned
             // 
             this.menuItemViewLessonPlanned.Name = "menuItemViewLessonPlanned";
-            this.menuItemViewLessonPlanned.Size = new System.Drawing.Size(173, 22);
+            this.menuItemViewLessonPlanned.Size = new System.Drawing.Size(170, 22);
             this.menuItemViewLessonPlanned.Text = "Mark as Planned";
             this.menuItemViewLessonPlanned.Click += new System.EventHandler(this.menuItemViewLessonPlanned_Click);
             // 
             // menuItemViewLessonDone
             // 
             this.menuItemViewLessonDone.Name = "menuItemViewLessonDone";
-            this.menuItemViewLessonDone.Size = new System.Drawing.Size(173, 22);
+            this.menuItemViewLessonDone.Size = new System.Drawing.Size(170, 22);
             this.menuItemViewLessonDone.Text = "Mark as Done";
             this.menuItemViewLessonDone.Click += new System.EventHandler(this.menuItemViewLessonDone_Click);
             // 
             // menuItemViewLessonCancel
             // 
             this.menuItemViewLessonCancel.Name = "menuItemViewLessonCancel";
-            this.menuItemViewLessonCancel.Size = new System.Drawing.Size(173, 22);
+            this.menuItemViewLessonCancel.Size = new System.Drawing.Size(170, 22);
             this.menuItemViewLessonCancel.Text = "Mark as Cancelled";
             this.menuItemViewLessonCancel.Click += new System.EventHandler(this.menuItemViewLessonCancel_Click);
             // 
             // menuItemViewLessonMove
             // 
             this.menuItemViewLessonMove.Name = "menuItemViewLessonMove";
-            this.menuItemViewLessonMove.Size = new System.Drawing.Size(173, 22);
+            this.menuItemViewLessonMove.Size = new System.Drawing.Size(170, 22);
             this.menuItemViewLessonMove.Text = "Move (this week)";
             this.menuItemViewLessonMove.Click += new System.EventHandler(this.menuItemViewLessonMove0_Click);
             // 
             // menuItemViewLessonMove1
             // 
             this.menuItemViewLessonMove1.Name = "menuItemViewLessonMove1";
-            this.menuItemViewLessonMove1.Size = new System.Drawing.Size(173, 22);
+            this.menuItemViewLessonMove1.Size = new System.Drawing.Size(170, 22);
             this.menuItemViewLessonMove1.Text = "Move (next week)";
             this.menuItemViewLessonMove1.Click += new System.EventHandler(this.menuItemViewLessonMove1_Click);
             // 
             // menuItemViewLessonMove2
             // 
             this.menuItemViewLessonMove2.Name = "menuItemViewLessonMove2";
-            this.menuItemViewLessonMove2.Size = new System.Drawing.Size(173, 22);
+            this.menuItemViewLessonMove2.Size = new System.Drawing.Size(170, 22);
             this.menuItemViewLessonMove2.Text = "Move (2 weeks)";
             this.menuItemViewLessonMove2.Click += new System.EventHandler(this.menuItemViewLessonMove2_Click);
             // 
@@ -3815,7 +3818,10 @@
             // 
             this.panelPlanParams.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelPlanParams.Controls.Add(this.tbPlanDuration);
+            this.panelPlanParams.Controls.Add(this.cbPlanProgram);
+            this.panelPlanParams.Controls.Add(this.lbPlanProgram);
+            this.panelPlanParams.Controls.Add(this.cbPlanRoom);
+            this.panelPlanParams.Controls.Add(this.tbPlanRepeat);
             this.panelPlanParams.Controls.Add(this.lbPlanRepeat);
             this.panelPlanParams.Controls.Add(this.tbPlanComment);
             this.panelPlanParams.Controls.Add(this.lbPlanComment);
@@ -3844,12 +3850,40 @@
             this.panelPlanParams.Size = new System.Drawing.Size(1269, 229);
             this.panelPlanParams.TabIndex = 17;
             // 
-            // tbPlanDuration
+            // cbPlanProgram
             // 
-            this.tbPlanDuration.Location = new System.Drawing.Point(169, 168);
-            this.tbPlanDuration.Name = "tbPlanDuration";
-            this.tbPlanDuration.Size = new System.Drawing.Size(77, 20);
-            this.tbPlanDuration.TabIndex = 31;
+            this.cbPlanProgram.FormattingEnabled = true;
+            this.cbPlanProgram.Location = new System.Drawing.Point(126, 145);
+            this.cbPlanProgram.Name = "cbPlanProgram";
+            this.cbPlanProgram.Size = new System.Drawing.Size(121, 21);
+            this.cbPlanProgram.TabIndex = 4;
+            // 
+            // lbPlanProgram
+            // 
+            this.lbPlanProgram.AutoSize = true;
+            this.lbPlanProgram.Location = new System.Drawing.Point(60, 148);
+            this.lbPlanProgram.Name = "lbPlanProgram";
+            this.lbPlanProgram.Size = new System.Drawing.Size(49, 13);
+            this.lbPlanProgram.TabIndex = 33;
+            this.lbPlanProgram.Text = "Program:";
+            // 
+            // cbPlanRoom
+            // 
+            this.cbPlanRoom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(127)))), ((int)(((byte)(39)))));
+            this.cbPlanRoom.FormattingEnabled = true;
+            this.cbPlanRoom.Location = new System.Drawing.Point(352, 204);
+            this.cbPlanRoom.Name = "cbPlanRoom";
+            this.cbPlanRoom.Size = new System.Drawing.Size(121, 21);
+            this.cbPlanRoom.TabIndex = 32;
+            this.cbPlanRoom.Visible = false;
+            this.cbPlanRoom.SelectedIndexChanged += new System.EventHandler(this.cbPlanRoom_SelectedIndexChanged);
+            // 
+            // tbPlanRepeat
+            // 
+            this.tbPlanRepeat.Location = new System.Drawing.Point(170, 177);
+            this.tbPlanRepeat.Name = "tbPlanRepeat";
+            this.tbPlanRepeat.Size = new System.Drawing.Size(77, 20);
+            this.tbPlanRepeat.TabIndex = 5;
             // 
             // lbPlanRepeat
             // 
@@ -3867,7 +3901,7 @@
             this.tbPlanComment.Location = new System.Drawing.Point(352, 177);
             this.tbPlanComment.Name = "tbPlanComment";
             this.tbPlanComment.Size = new System.Drawing.Size(901, 20);
-            this.tbPlanComment.TabIndex = 29;
+            this.tbPlanComment.TabIndex = 11;
             // 
             // lbPlanComment
             // 
@@ -3932,7 +3966,7 @@
             // 
             this.butPlanAccept.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(127)))), ((int)(((byte)(39)))));
             this.butPlanAccept.Cursor = System.Windows.Forms.Cursors.Default;
-            this.butPlanAccept.Location = new System.Drawing.Point(352, 203);
+            this.butPlanAccept.Location = new System.Drawing.Point(491, 203);
             this.butPlanAccept.Name = "butPlanAccept";
             this.butPlanAccept.Size = new System.Drawing.Size(75, 23);
             this.butPlanAccept.TabIndex = 22;
@@ -3947,7 +3981,7 @@
             this.cbPlanDuration.Location = new System.Drawing.Point(126, 112);
             this.cbPlanDuration.Name = "cbPlanDuration";
             this.cbPlanDuration.Size = new System.Drawing.Size(121, 21);
-            this.cbPlanDuration.TabIndex = 20;
+            this.cbPlanDuration.TabIndex = 3;
             // 
             // lbPlanDuration
             // 
@@ -3973,7 +4007,7 @@
             this.cbPlanTeacher.Location = new System.Drawing.Point(352, 8);
             this.cbPlanTeacher.Name = "cbPlanTeacher";
             this.cbPlanTeacher.Size = new System.Drawing.Size(121, 21);
-            this.cbPlanTeacher.TabIndex = 18;
+            this.cbPlanTeacher.TabIndex = 6;
             this.cbPlanTeacher.SelectedIndexChanged += new System.EventHandler(this.cbPlanTeacher_SelectedIndexChanged);
             // 
             // lbPlanTeacher
@@ -4010,7 +4044,7 @@
             this.cbPlanLanguage.Location = new System.Drawing.Point(126, 76);
             this.cbPlanLanguage.Name = "cbPlanLanguage";
             this.cbPlanLanguage.Size = new System.Drawing.Size(121, 21);
-            this.cbPlanLanguage.TabIndex = 3;
+            this.cbPlanLanguage.TabIndex = 2;
             this.cbPlanLanguage.SelectedIndexChanged += new System.EventHandler(this.cbPlanLanguage_SelectedIndexChanged);
             // 
             // lbPlanLanguage
@@ -4028,7 +4062,7 @@
             this.cbPlanStud4.Location = new System.Drawing.Point(352, 103);
             this.cbPlanStud4.Name = "cbPlanStud4";
             this.cbPlanStud4.Size = new System.Drawing.Size(121, 21);
-            this.cbPlanStud4.TabIndex = 12;
+            this.cbPlanStud4.TabIndex = 10;
             this.cbPlanStud4.SelectedIndexChanged += new System.EventHandler(this.cbPlanStud4_SelectedIndexChanged);
             // 
             // lbPlanStud1
@@ -4046,7 +4080,7 @@
             this.cbPlanStud3.Location = new System.Drawing.Point(352, 82);
             this.cbPlanStud3.Name = "cbPlanStud3";
             this.cbPlanStud3.Size = new System.Drawing.Size(121, 21);
-            this.cbPlanStud3.TabIndex = 11;
+            this.cbPlanStud3.TabIndex = 9;
             this.cbPlanStud3.SelectedIndexChanged += new System.EventHandler(this.cbPlanStud3_SelectedIndexChanged);
             // 
             // cbPlanStud2
@@ -4055,7 +4089,7 @@
             this.cbPlanStud2.Location = new System.Drawing.Point(352, 61);
             this.cbPlanStud2.Name = "cbPlanStud2";
             this.cbPlanStud2.Size = new System.Drawing.Size(121, 21);
-            this.cbPlanStud2.TabIndex = 10;
+            this.cbPlanStud2.TabIndex = 8;
             this.cbPlanStud2.SelectedIndexChanged += new System.EventHandler(this.cbPlanStud2_SelectedIndexChanged);
             // 
             // cbPlanStud1
@@ -4064,7 +4098,7 @@
             this.cbPlanStud1.Location = new System.Drawing.Point(352, 40);
             this.cbPlanStud1.Name = "cbPlanStud1";
             this.cbPlanStud1.Size = new System.Drawing.Size(121, 21);
-            this.cbPlanStud1.TabIndex = 9;
+            this.cbPlanStud1.TabIndex = 7;
             this.cbPlanStud1.SelectedIndexChanged += new System.EventHandler(this.cbPlanStud1_SelectedIndexChanged);
             // 
             // tabView
@@ -4264,6 +4298,7 @@
             // groupBoxViewCurrent
             // 
             this.groupBoxViewCurrent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxViewCurrent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.groupBoxViewCurrent.Controls.Add(this.lbViewGbMinus);
             this.groupBoxViewCurrent.Controls.Add(this.lbViewGbComment);
             this.groupBoxViewCurrent.Controls.Add(this.lbViewGbTeacher2);
@@ -4450,6 +4485,7 @@
             // 
             // panelViewDetails
             // 
+            this.panelViewDetails.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.panelViewDetails.Controls.Add(this.lbViewDetailComment);
             this.panelViewDetails.Controls.Add(this.tbViewDetailComment);
             this.panelViewDetails.Controls.Add(this.cbViewDetailProgram);
@@ -4464,6 +4500,23 @@
             this.panelViewDetails.Name = "panelViewDetails";
             this.panelViewDetails.Size = new System.Drawing.Size(989, 100);
             this.panelViewDetails.TabIndex = 0;
+            // 
+            // lbViewDetailComment
+            // 
+            this.lbViewDetailComment.AutoSize = true;
+            this.lbViewDetailComment.Location = new System.Drawing.Point(14, 70);
+            this.lbViewDetailComment.Name = "lbViewDetailComment";
+            this.lbViewDetailComment.Size = new System.Drawing.Size(59, 13);
+            this.lbViewDetailComment.TabIndex = 10;
+            this.lbViewDetailComment.Text = "Comments:";
+            // 
+            // tbViewDetailComment
+            // 
+            this.tbViewDetailComment.Location = new System.Drawing.Point(106, 64);
+            this.tbViewDetailComment.Name = "tbViewDetailComment";
+            this.tbViewDetailComment.Size = new System.Drawing.Size(524, 20);
+            this.tbViewDetailComment.TabIndex = 9;
+            this.tbViewDetailComment.TextChanged += new System.EventHandler(this.tbViewDetailComment_TextChanged);
             // 
             // cbViewDetailProgram
             // 
@@ -4869,23 +4922,6 @@
             this.lbFutureOpName.TabIndex = 0;
             this.lbFutureOpName.Text = "Future Operation";
             // 
-            // tbViewDetailComment
-            // 
-            this.tbViewDetailComment.Location = new System.Drawing.Point(106, 64);
-            this.tbViewDetailComment.Name = "tbViewDetailComment";
-            this.tbViewDetailComment.Size = new System.Drawing.Size(524, 20);
-            this.tbViewDetailComment.TabIndex = 9;
-            this.tbViewDetailComment.TextChanged += new System.EventHandler(this.tbViewDetailComment_TextChanged);
-            // 
-            // lbViewDetailComment
-            // 
-            this.lbViewDetailComment.AutoSize = true;
-            this.lbViewDetailComment.Location = new System.Drawing.Point(14, 70);
-            this.lbViewDetailComment.Name = "lbViewDetailComment";
-            this.lbViewDetailComment.Size = new System.Drawing.Size(59, 13);
-            this.lbViewDetailComment.TabIndex = 10;
-            this.lbViewDetailComment.Text = "Comments:";
-            // 
             // FormGlob
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5078,7 +5114,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn saturdayDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn sundayDataGridViewTextBoxColumn;
         private System.Windows.Forms.Panel panelPlanParams;
-        private System.Windows.Forms.TextBox tbPlanDuration;
+        private System.Windows.Forms.TextBox tbPlanRepeat;
         private System.Windows.Forms.Label lbPlanRepeat;
         private System.Windows.Forms.TextBox tbPlanComment;
         private System.Windows.Forms.Label lbPlanComment;
@@ -5465,6 +5501,9 @@
         private System.Windows.Forms.ComboBox cbViewDetailProgram;
         private System.Windows.Forms.Label lbViewDetailComment;
         private System.Windows.Forms.TextBox tbViewDetailComment;
+        private System.Windows.Forms.ComboBox cbPlanRoom;
+        private System.Windows.Forms.ComboBox cbPlanProgram;
+        private System.Windows.Forms.Label lbPlanProgram;
     }
 }
 

@@ -186,6 +186,5 @@ namespace RecordKeeper
             }
             return lessons;
         }
-
     }
 }

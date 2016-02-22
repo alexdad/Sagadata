@@ -133,42 +133,55 @@ namespace RecordKeeper
             }
         }
 
-        private void PlanGetTeacherLessons()
+        private void PlanGetRelevantLessons()
         {
             DateTime ds = WeekStart(m_plan_chosenDate);
             DateTime de = ds;
-            de =  de.AddDays(7);
+            de = de.AddDays(7);
 
-            string t = (m_lessonInMove == null ? 
-                            cbPlanTeacher.SelectedItem as string :
-                            m_lessonInMove.Teacher1);
-
+            string t = PlanSelectedTeacher1();
             if (t != null)
-                MarkLessons(LessonsByTeacher(t, ds, de) );
+                MarkLessons(LessonsByTeacher(t, ds, de));
 
-            t = (m_lessonInMove == null ?
-                    cbPlanStud1.SelectedItem as string :
-                    m_lessonInMove.Student1);
+            t = PlanSelectedStudent1();
             if (t != null)
                 MarkLessons(LessonsByStudent(t, ds, de));
 
-            t = (m_lessonInMove == null ?
-                    cbPlanStud2.SelectedItem as string :
-                    m_lessonInMove.Student2);
+            t = PlanSelectedStudent2();
             if (t != null)
                 MarkLessons(LessonsByStudent(t, ds, de));
 
-            t = (m_lessonInMove == null ?
-                    cbPlanStud3.SelectedItem as string :
-                    m_lessonInMove.Student3);
+            t = PlanSelectedStudent3();
             if (t != null)
                 MarkLessons(LessonsByStudent(t, ds, de));
 
-            t = (m_lessonInMove == null ?
-                    cbPlanStud4.SelectedItem as string :
-                    m_lessonInMove.Student4);
+            t = PlanSelectedStudent4();
             if (t != null)
                 MarkLessons(LessonsByStudent(t, ds, de));
+        }
+
+        public void PlanGetRoomAvailability()
+        {
+            DateTime ds = WeekStart(m_plan_chosenDate);
+            DateTime de = ds;
+            de = de.AddDays(7);
+
+            List<Lesson> lsn = LessonsByTime(ds, de);
+            foreach(Lesson l in lsn)
+            {
+                if (l.Room == null || l.Room.Length == 0 || l.Room == "N/A")
+                    continue;
+                string roomLetter = l.Room.Substring(0, 1);
+                int i, js, je;
+                l.GetLocationInWeek(out i, out js, out je);
+                for (int j = js; j < je; j++)
+                {
+                    string val = dgvPlan.Rows[j + 1].Cells[i + 1].Value as string;
+                    if (val == null || val.Trim().Length == 0)
+                        val = "*";
+                    dgvPlan.Rows[j + 1].Cells[i + 1].Value = val + roomLetter;
+                }
+            }
         }
 
         public char[,] GetTeacherAvailability(string description)
@@ -277,7 +290,7 @@ namespace RecordKeeper
 
         void PlanShowDataIfReady()
         {
-            if (cbPlanTeacher.SelectedItem as string != null ||
+            if (cbPlanTeacher.SelectedItem as string != null &&
                 cbPlanStud1.SelectedItem as string != null ||
                 m_lessonInMove != null)
 
@@ -294,15 +307,14 @@ namespace RecordKeeper
             for(int i=0; i < m_enumTimeSlot.Length; i++)
                 planSlotList.Add(new RecordKeeper.Slot(m_enumTimeSlot[i]));
 
+            // Add info about room's availability
+            PlanGetRoomAvailability();
+
             // Assign colors based on teacher availability
             PlanGetTeacherAvailability();
 
             // Add info about teacher's lessons
-            PlanGetTeacherLessons();
-
-            // Add info about student's lessons
-
-            // Add info about room's availability
+            PlanGetRelevantLessons();
 
             // Assign texts: for 
         }
@@ -336,16 +348,33 @@ namespace RecordKeeper
                         cbPlanDuration.SelectedIndex + 1 :
                         m_lessonInMove.SlotsNumber);
 
+            List<string> busyRooms = new List<string>();
             for (int r = m_plan_row;
                 r < m_plan_row + len && r < dgvPlan.RowCount;
                 r++)
             {
-                string v = dgvPlan.Rows[r].Cells[m_plan_col].Value as string;
-                if (v == null)
-                    v = "";
-                dgvPlan.Rows[r].Cells[m_plan_col].Value = "New " + v; 
+                string val = dgvPlan.Rows[r].Cells[m_plan_col].Value as string;
+                if (val != null && val.Length > 0 && val.Substring(0,1) == "*")
+                    busyRooms.Add(val.Substring(1));
+                dgvPlan.Rows[r].Cells[m_plan_col].Value = "New "; 
             }
-            butPlanAccept.Visible = true; 
+
+            StringBuilder sb = new StringBuilder();
+            foreach(string s in busyRooms)
+            {
+                if (s != null && s.Length > 0)
+                    sb.Append(s);
+            }
+            string brms = sb.ToString();
+            cbPlanRoom.Items.Clear();
+            foreach (Room rm in ActiveRooms())
+            {
+                string roomLetter = rm.Name.Substring(0, 1);
+                if (brms.IndexOf(roomLetter) < 0)
+                    cbPlanRoom.Items.Add(rm.Name);
+            }
+            cbPlanRoom.Text = "Choose room:";
+            cbPlanRoom.Visible = true;
         }
 
         void AcceptNewLesson()
@@ -364,6 +393,8 @@ namespace RecordKeeper
             }
             CurrentMode = was;
 
+            l.Room = cbPlanRoom.SelectedItem as string;
+
             int weekdayPicked = StandardizeDayOfTheWeek(dtpPlan.Value.DayOfWeek);
             DateTime mondayPicked = dtpPlan.Value;
             mondayPicked = mondayPicked.AddDays(-weekdayPicked);
@@ -380,8 +411,7 @@ namespace RecordKeeper
 
             if (m_lessonInMove == null)
             {
-                l.Program = "";
-                l.Room = "";
+                l.Program = cbPlanProgram.SelectedItem as string; 
                 l.State = m_enumState[1]; // Lesson state 1 = Planned
                 l.Student1 = cbPlanStud1.SelectedItem as string;
                 l.Student2 = cbPlanStud2.SelectedItem as string;
@@ -398,8 +428,44 @@ namespace RecordKeeper
             }
             l.Comments = tbPlanComment.Text;
 
+            cbPlanRoom.SelectedValue = "";
+            cbPlanRoom.SelectedIndex = -1;
+            cbPlanRoom.Items.Clear();
+            cbPlanRoom.Visible = false;
+
             butPlanAccept.Visible = false;
             PlanShowDataIfReady();
         }
+        public string PlanSelectedTeacher1()
+        {
+            return (m_lessonInMove == null ?
+                            cbPlanTeacher.SelectedItem as string :
+                            m_lessonInMove.Teacher1);
+        }
+        public string PlanSelectedStudent1()
+        {
+            return (m_lessonInMove == null ?
+                        cbPlanStud1.SelectedItem as string :
+                        m_lessonInMove.Student1);
+        }
+        public string PlanSelectedStudent2()
+        {
+            return (m_lessonInMove == null ?
+                        cbPlanStud2.SelectedItem as string :
+                        m_lessonInMove.Student2);
+        }
+        public string PlanSelectedStudent3()
+        {
+            return (m_lessonInMove == null ?
+                        cbPlanStud3.SelectedItem as string :
+                        m_lessonInMove.Student3);
+        }
+        public string PlanSelectedStudent4()
+        {
+            return (m_lessonInMove == null ?
+                        cbPlanStud4.SelectedItem as string :
+                        m_lessonInMove.Student4);
+        }
+
     }
 }

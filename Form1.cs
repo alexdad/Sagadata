@@ -193,6 +193,7 @@ namespace RecordKeeper
             cbSearchLessonRoom.Items.AddRange(roomNames.ToArray());
             cbLessonRoom.Items.AddRange(roomNames.ToArray());
             cbViewDetailRoom.Items.AddRange(roomNames.ToArray());
+            cbPlanProgram.Items.AddRange(programNames.ToArray());
 
         }
         private void Form1_Load(object sender, EventArgs e)
@@ -963,27 +964,27 @@ namespace RecordKeeper
         {
             DateTimePicker dtp = (DateTimePicker)sender;
             m_plan_chosenDate = dtp.Value.Date;
-            if (m_lessonInMove != null)
+            if (m_lessonInMove == null)
                 PlanShowDataIfReady();
         }
         private void cbPlanLanguage_SelectedIndexChanged(object sender, EventArgs e)
         {
             PlanLessonLanguageChosen();
-            if (m_lessonInMove != null)
+            if (m_lessonInMove == null)
                 PlanShowDataIfReady();
         }
         private void cbPlanTeacher_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cb = sender as ComboBox;
             PopulateTeacherVacation(cb.SelectedItem as string, lbPlanTeachVacation);
-            if (m_lessonInMove != null)
+            if (m_lessonInMove == null)
                 PlanShowDataIfReady();
         }
         private void cbPlanStud1_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cb = sender as ComboBox;
             PopulateStudentPossibleSchedule(cb.SelectedItem as string, lbPlanStudSchedule1);
-            if (m_lessonInMove != null)
+            if (m_lessonInMove == null)
                 PlanShowDataIfReady();
         }
 
@@ -991,7 +992,7 @@ namespace RecordKeeper
         {
             ComboBox cb = sender as ComboBox;
             PopulateStudentPossibleSchedule(cb.SelectedItem as string, lbPlanStudSchedule2);
-            if (m_lessonInMove != null)
+            if (m_lessonInMove == null)
                 PlanShowDataIfReady();
         }
 
@@ -999,7 +1000,7 @@ namespace RecordKeeper
         {
             ComboBox cb = sender as ComboBox;
             PopulateStudentPossibleSchedule(cb.SelectedItem as string, lbPlanStudSchedule3);
-            if (m_lessonInMove != null)
+            if (m_lessonInMove == null)
                 PlanShowDataIfReady();
         }
 
@@ -1007,13 +1008,17 @@ namespace RecordKeeper
         {
             ComboBox cb = sender as ComboBox;
             PopulateStudentPossibleSchedule(cb.SelectedItem as string, lbPlanStudSchedule4);
-            if (m_lessonInMove != null)
+            if (m_lessonInMove == null)
                 PlanShowDataIfReady();
         }
         private void butPlanAccept_Click(object sender, EventArgs e)
         {
             AcceptNewLesson();
             m_lessonInMove = null;
+        }
+        private void cbPlanRoom_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            butPlanAccept.Visible = true; 
         }
 
         #endregion

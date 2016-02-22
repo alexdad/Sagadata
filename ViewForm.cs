@@ -537,7 +537,7 @@ namespace RecordKeeper
         {
             int ncols = (cols + 1) * nRooms + 1;
             int nrows = rows;
-            int[,] hits = new int[ ncols, nrows];
+            int[,] hits = new int[ncols, nrows];
             foreach (Control c in panel.Controls)
             {
                 Label l = c as Label;
@@ -553,7 +553,7 @@ namespace RecordKeeper
 
                 if (x1 < 0 || x2 < 0 || x1 > ncols || x2 > ncols ||
                     y1 < 0 || y2 < 0 || y1 > nrows || y2 > nrows)
-                    throw new Exception("BAD LOC");
+                    continue; 
 
                 for (int x = x1; x < x2; x++)
                     for (int y = y1; y < y2; y++)
@@ -573,6 +573,11 @@ namespace RecordKeeper
                 int x2 = (l.Location.X + l.Width - minX) / cellRoomWidth + 1;
                 int y2 = (l.Location.Y + l.Height - minY) / cellHeight + 1;
 
+                if (x1 < 0 || x2 < 0 || x1 > ncols || x2 > ncols ||
+                    y1 < 0 || y2 < 0 || y1 > nrows || y2 > nrows)
+                    continue;
+
+
                 int x2min = (x2 / nRooms) * nRooms;
                 int x2max = x2min + nRooms;
 
@@ -581,8 +586,8 @@ namespace RecordKeeper
                 {
                     for (int y = y1; y <= y2; y++)
                     {
-                        if (x+1 < 0 || y < 0 || x+1 >= ncols || y >= nrows)
-                            throw new Exception("BAD LOC");
+                        if (x + 1 < 0 || y < 0 || x + 1 >= ncols || y >= nrows)
+                            return;
 
                         if (hits[x + 1, y] > 0)
                         {
@@ -595,8 +600,8 @@ namespace RecordKeeper
                         l.Width += cellRoomWidth;
                         for (int y = y1; y < y2; y++)
                         {
-                            if (x+1 < 0 || y < 0 || x+1 >= ncols || y >= nrows)
-                                throw new Exception("BAD LOC");
+                            if (x + 1 < 0 || y < 0 || x + 1 >= ncols || y >= nrows)
+                                return;
 
                             hits[x + 1, y] = 1;
                         }
