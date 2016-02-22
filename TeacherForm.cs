@@ -26,6 +26,12 @@ namespace RecordKeeper
 
         delegate bool EvaluateTeacher(Teacher t);
 
+        private void EditTeacherDetailsChanged()
+        {
+            Modified = true;
+            EditTrap = true;
+        }
+
         private void DropTeacherSelection()
         {
             m_teacherSelectionFirstName = null;
@@ -69,7 +75,6 @@ namespace RecordKeeper
                 DataList.Add(s);
             }
             ShowCurrentCount();
-            Modified = true;
         }
 
         private void ShowAvailabilityForm()
@@ -300,6 +305,7 @@ namespace RecordKeeper
             }
 
             DropFlagUnsavedAvailabilityChanges();
+            EditTeacherDetailsChanged();
         }
 
 

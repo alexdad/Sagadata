@@ -25,6 +25,12 @@ namespace RecordKeeper
 
         delegate bool EvaluateStudent(Student t);
 
+        private void EditStudentDetailsChanged()
+        {
+            Modified = true;
+            EditTrap = true;
+        }
+
         private void DropStudentSelections()
         {
             m_StudentSelectionStatus = null;
@@ -83,7 +89,6 @@ namespace RecordKeeper
                 DataList.Add(s);
             }
             ShowCurrentCount();
-            Modified = true;
         }
 
         List<Student> SpecificStudent(string desc)

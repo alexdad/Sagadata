@@ -22,6 +22,12 @@ namespace RecordKeeper
 
         delegate bool EvaluateRoom(Room t);
 
+        private void EditRoomDetailsChanged()
+        {
+            Modified = true;
+            EditTrap = true;
+        }
+
         private void DropRoomSelection()
         {
             m_RoomSelectionCapacity = null;
@@ -64,7 +70,6 @@ namespace RecordKeeper
                 DataList.Add(s);
             }
             ShowCurrentCount();
-            Modified = true;
         }
         List<Room> ActiveRooms()
         {

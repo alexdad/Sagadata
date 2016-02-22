@@ -20,6 +20,12 @@ namespace RecordKeeper
 
         delegate bool EvaluateProgram(Program t);
 
+        private void EditProgramDetailsChanged()
+        {
+            Modified = true;
+            EditTrap = true;
+        }
+
         private void DropProgramSelection()
         {
             m_ProgramSelectionLanguage = null;
@@ -55,7 +61,6 @@ namespace RecordKeeper
                 DataList.Add(s);
             }
             ShowCurrentCount();
-            Modified = true;
         }
 
         List<Program> ActivePrograms()

@@ -21,12 +21,10 @@ namespace RecordKeeper
         public RecordType(FormGlob glob)
         {
             m_glob = glob;
-            Modified = false;
             m_originalRecords = new Dictionary<string, Record>();
             DeletedKeys = new List<string>();
 
         }
-        public bool Modified { get; set; }
         public bool Loaded { get; set; }
         public SchemaField[] Schema { get; set; }
         public int[] Placements { get; set; }
@@ -320,7 +318,6 @@ namespace RecordKeeper
 
         public void MergeBack<T>(T[] target) where T : Record
         {
-            //bool modified = false;
             Dictionary<string, T> dict = new Dictionary<string, T>();
             foreach (T s in m_glob.DataList)
             {
@@ -336,6 +333,7 @@ namespace RecordKeeper
                         dict.Add(t.Key, t);
                     else if (RecordDiffers(t, dict[t.Key]))
                     {
+                        m_glob.Modified = true;
                         if (dict[t.Key].Changed < t.Changed)
                         {
                             dict[t.Key] = t;        // Target had newer, restoring back
@@ -349,15 +347,11 @@ namespace RecordKeeper
                 }
             }
 
-            //if (!modified)
-            //    modified = CompareToDatalist(dict);
-
             m_glob.DataList.Clear();
             foreach (T s in dict.Values)
                 m_glob.DataList.Add(s);
 
             DeletedKeys.Clear();
-            //Modified = modified;
         }
 
         public void EndSelectionMode()
@@ -408,10 +402,7 @@ namespace RecordKeeper
                     continue;
 
                 if (val1 != val2)
-                {
-                    m_glob.Modified = true;
                     return true;
-                }
             }
             return false;
         }

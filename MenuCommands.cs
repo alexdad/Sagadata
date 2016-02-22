@@ -52,10 +52,7 @@ namespace RecordKeeper
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!CheckSafety())
-                return;
-            CurrentType.EndSelectionMode();
-            SaveChangedFiles();
+            CommandSave();
         }
 
         private void viewToolStripMenuItem_Click(object sender, EventArgs e)
@@ -101,6 +98,13 @@ namespace RecordKeeper
         }
 
         // Support functions
+        private void CommandSave()
+        {
+            if (!CheckSafety())
+                return;
+            CurrentType.EndSelectionMode();
+            SaveAll();
+        }
         private void CommandDownload()
         {
             if (!CheckSafety())
@@ -113,39 +117,33 @@ namespace RecordKeeper
             if (!CheckSafety())
                 return;
             CurrentType.EndSelectionMode();
-            SaveChangedFiles();
-
-            List<Modes> temp = new List<Modes>();
-            for (Modes m = Modes.Students; m < Modes.MaxMode; m++)
-                temp.Add(m);
-            UploadFiles(temp);
-
-            Modified = false;
+            SaveAll();
+            UploadAll();
         }
 
         private void AskAndUploadChangedFiles()
         {
-            if (AnyFileChanged)
+            if (Modified)
             {
                 DialogResult result = MessageBox.Show(
                     "Should I save?", "You have unsaved changes", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
-                    List<Modes> saved = SaveChangedFiles();
+                    SaveAll();
                     result = MessageBox.Show(
                         "Should I upload?", "You have local changes", MessageBoxButtons.YesNo);
                     if (result == DialogResult.Yes)
-                        UploadFiles(saved);
+                        UploadAll();
                 }
             }
         }
 
-        private void UploadFiles(List<Modes> files)
+        private void UploadAll()
         {
             Modes modeWas = CurrentMode;
-            foreach (Modes m in files)
+            for (Modes i = (Modes)0; i < Modes.MaxMode; i++)
             {
-                SetMode(m);
+                SetMode(i);
                 UploadCurrentFile();
             }
             CurrentMode = modeWas;
@@ -181,36 +179,16 @@ namespace RecordKeeper
             return success;
         }
 
-        private List<Modes> AskAndSaveChangedFiles()
+        private void SaveAll()
         {
-            if (AnyFileChanged)
-            {
-                DialogResult result = MessageBox.Show(
-                    "Should I save?", "You have unsaved changes", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
-                    return SaveChangedFiles();
-            }
-            return null;
-        }
-        private List<Modes> SaveChangedFiles()
-        {
-            List<Modes> saved = new List<Modes>();
-            Modes modeWas = CurrentMode;
-            //this.Visible = false;
+            Modes was = CurrentMode;
             for (Modes i = (Modes)0; i < Modes.MaxMode; i++)
             {
                 SetMode(i);
-                if (Modified)
-                {
-                    CurrentType.WriteRecordsFile();
-                    saved.Add(i);
-                    Modified = false;
-                }
+                CurrentType.WriteRecordsFile();
             }
-
-            SetMode(modeWas);
-            //this.Visible = true;
-            return saved;
+            Modified = false;
+            SetMode(was);
         }
     }
 }

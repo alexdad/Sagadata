@@ -16,6 +16,8 @@ namespace RecordKeeper
     public partial class FormGlob : Form
     {
         public static long SlotInTicks = 0;
+        public static Color AttentionColor = Color.FromArgb(255, 127, 39);
+        public static Color RelaxationColor = Color.FromArgb(212, 255, 236);
 
         // Local fields
         string[] m_enumLanguage;
@@ -32,8 +34,22 @@ namespace RecordKeeper
         string m_remoteDir;             // place for remote file copy
         string m_recordKeeperDir;       // place for local file subdirs
 
-        // Public Propertirs 
-        public Modes CurrentMode { get; set;   }
+        bool m_modified;
+
+        public bool Modified
+        {
+            get
+            {
+                return m_modified;
+            }
+            set
+            {
+                m_modified = value;
+                buttonSave.Visible = m_modified;
+            }
+        }
+
+        public Modes CurrentMode { get; set; }
         public RecordType CurrentType
         {
             get { return m_recordTypes[CurrentMode]; }
@@ -41,16 +57,6 @@ namespace RecordKeeper
         public string CurrentModeName
         {
             get { return CurrentMode.ToString(); }
-        }
-        public bool Modified
-        {
-            get { return CurrentType.Modified; }
-            set { CurrentType.Modified = value; }
-        }
-        public bool Loaded
-        {
-            get { return CurrentType.Loaded; }
-            set { CurrentType.Loaded = value; }
         }
         public SchemaField[] Schema
         {
@@ -71,7 +77,8 @@ namespace RecordKeeper
             get { return Path.Combine(DataLocation, CurrentModeName + ".csv"); }
         }
 
-        public string BackupLocation {
+        public string BackupLocation
+        {
             get { return Path.Combine(DataLocation, "Backup").ToString(); }
         }
         public int BackupLimit { get; set; }
@@ -81,22 +88,6 @@ namespace RecordKeeper
         public string CloudLocation
         {
             get { return Path.Combine(m_remoteDir, CurrentModeName + ".csv").ToString(); }
-        }
-        
-        public bool AnyFileChanged
-        {
-            get
-            {
-                foreach (RecordType r in m_recordTypes.Values)
-                {
-                    if (r.Modified)
-                    {
-                        Modes dt = r.Mode;
-                        return true;
-                    }
-                }
-                return false;
-            }
         }
 
         // WinForm form child control-related
@@ -108,7 +99,7 @@ namespace RecordKeeper
             get
             {
                 // Here are links between manually crafted per-record-type UI and modes
-                switch(CurrentMode)
+                switch (CurrentMode)
                 {
                     case Modes.Programs:
                         return programList;
@@ -137,7 +128,7 @@ namespace RecordKeeper
             RecordsToFormConst1();
 
             // Initial mode is the first in the Modes enum
-            CurrentMode = (Modes)0 ;      
+            CurrentMode = (Modes)0;
             Client = Environment.MachineName;
             ReadSettings();
             ReadSchemas();
@@ -277,15 +268,12 @@ namespace RecordKeeper
 
             CurrentType.EndSelectionMode();
 
-            if (AnyFileChanged)
-                SaveChangedFiles();
+            if (Modified)
+                SaveAll();
 
             SelectionMode = false;
             CurrentType.SavedFullListDuringSelection = null;
             SetMode(newMode);
-            if (!Loaded)
-                ReadCurrentFile();
-
             ShowCurrentCount();
             ManageSearchWindow();
 
@@ -311,12 +299,12 @@ namespace RecordKeeper
         void ManageSearchWindow()
         {
             // For now we may only supply few searches
-            this.panelGlobSearch.Visible = 
+            this.panelGlobSearch.Visible =
                 (CurrentMode == Modes.Students ||
                  CurrentMode == Modes.Teachers ||
-                 CurrentMode == Modes.Lessons  ||
+                 CurrentMode == Modes.Lessons ||
                  CurrentMode == Modes.Programs);
-            
+
         }
 
         private void cbGlobType_SelectedIndexChanged(object sender, EventArgs e)
@@ -328,7 +316,7 @@ namespace RecordKeeper
             ChangeMode(newMode);
         }
         #endregion
-        
+
         #region "Data Grid Clicks"
         private void dgvColumnSort<T>(DataGridView dgv, T[] temp, int column) where T : Record
         {
@@ -368,6 +356,11 @@ namespace RecordKeeper
             dgvCellCopy(sender as DataGridView, e.RowIndex, e.ColumnIndex);
         }
 
+        private void dgvStudents_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            EditTrap = false;
+        }
+
         private void dgvTeachers_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             dgvColumnSort<Teacher>(
@@ -388,6 +381,10 @@ namespace RecordKeeper
                 DropFlagUnsavedAvailabilityChanges();
             }
         }
+        private void dgvTeachers_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            EditTrap = false;
+        }
 
         private void dgvPrograms_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -400,6 +397,11 @@ namespace RecordKeeper
                 sender as DataGridView,
                 CurrentType.ForkOut<Program>(0),
                 e.ColumnIndex);
+        }
+
+        private void dgvPrograms_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            EditTrap = false;
         }
 
         private void dgvRooms_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -415,6 +417,11 @@ namespace RecordKeeper
                 e.ColumnIndex);
         }
 
+        private void dgvRooms_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            EditTrap = false;
+        }
+
         private void dgvLesson_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             dgvCellCopy(sender as DataGridView, e.RowIndex, e.ColumnIndex);
@@ -426,6 +433,11 @@ namespace RecordKeeper
                 sender as DataGridView,
                 CurrentType.ForkOut<Lesson>(0),
                 e.ColumnIndex);
+        }
+
+        private void dgvLesson_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            EditTrap = false;
         }
 
         private void dgvPlan_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -441,6 +453,20 @@ namespace RecordKeeper
         #endregion
 
         #region "Global Button Clicks"
+
+        public bool EditTrap
+        {
+            set
+            {
+                butGlobalNext.BackColor = (value ? AttentionColor : RelaxationColor);
+                butGlobalPrev.BackColor = butGlobalNext.BackColor;
+            }
+        }
+
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            CommandSave();
+        }
         private void buttonNext_Click(object sender, EventArgs e)
         {
             if (!CheckSafety())
@@ -466,7 +492,10 @@ namespace RecordKeeper
             st.ChangedBy = Client;
             st.CreatedBy = Client;
             ShowCurrentCount();
+
             Modified = true;
+            EditTrap = true;
+
             //tbStudFirstName.Select();  -- TODO
         }
 
@@ -478,7 +507,9 @@ namespace RecordKeeper
             CurrentType.DeletedKeys.Add(s.Key);
             DataList.RemoveCurrent();
             ShowCurrentCount();
+
             Modified = true;
+            EditTrap = true;
         }
 
         private void buttonShowAll_Click(object sender, EventArgs e)
@@ -572,76 +603,107 @@ namespace RecordKeeper
             m_StudentSelectionLastName = (string)testBox.Text;
             CurrentType.DoSelection();
         }
-        private void tbStudComments_TextChanged(object sender, EventArgs e)
+
+        // Edit Student 
+        private void tbStudFirstName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Modified = true;
+            EditStudentDetailsChanged();
         }
 
-        private void tbStudEmail_TextChanged(object sender, EventArgs e)
+        private void cbStudStatus_Click(object sender, EventArgs e)
         {
-            Modified = true;
+            EditStudentDetailsChanged();
         }
 
-        private void tbStudFirstName_TextChanged(object sender, EventArgs e)
+        private void tbStudLastName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Modified = true;
+            EditStudentDetailsChanged();
         }
 
-        private void tbStudLastName_TextChanged(object sender, EventArgs e)
+        private void tbStudEmail_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Modified = true;
+            EditStudentDetailsChanged();
         }
 
-        private void tbStudCellPhone_TextChanged(object sender, EventArgs e)
+        private void tbStudCellPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Modified = true;
+            EditStudentDetailsChanged();
         }
 
-        private void tbStudHomePhone_TextChanged(object sender, EventArgs e)
+        private void tbStudHomePhone_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Modified = true;
+            EditStudentDetailsChanged();
         }
 
-        private void tbStudAddress_TextChanged(object sender, EventArgs e)
+        private void tbStudAddress1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Modified = true;
+            EditStudentDetailsChanged();
         }
 
-        private void tbStudLanguageDetail_TextChanged(object sender, EventArgs e)
+        private void tbStudLanguageDetail_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Modified = true;
+            EditStudentDetailsChanged();
         }
 
-        private void tbStudBirthday_TextChanged(object sender, EventArgs e)
+        private void tbStudSourceDetail_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Modified = true;
+            EditStudentDetailsChanged();
         }
 
-        private void tbStudxSourceDetail_TextChanged(object sender, EventArgs e)
+        private void tbStudBackground_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Modified = true;
+            EditStudentDetailsChanged();
         }
 
-        private void tbStudSchedule_TextChanged(object sender, EventArgs e)
+        private void tbStudBirthday_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Modified = true;
+            EditStudentDetailsChanged();
         }
 
-        private void tbStudInterests_TextChanged(object sender, EventArgs e)
+        private void tbStudGoals_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Modified = true;
+            EditStudentDetailsChanged();
         }
 
-        private void tbStudGoals_TextChanged(object sender, EventArgs e)
+        private void tbStudInterests_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Modified = true;
+            EditStudentDetailsChanged();
         }
 
-        private void tbStudBackground_TextChanged(object sender, EventArgs e)
+        private void tbStudSchedule_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Modified = true;
+            EditStudentDetailsChanged();
         }
 
+        private void tbStudComments_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            EditStudentDetailsChanged();
+        }
+
+        private void cbStudLearns_Click(object sender, EventArgs e)
+        {
+            EditStudentDetailsChanged();
+        }
+
+        private void cbStudLevel_Click(object sender, EventArgs e)
+        {
+            EditStudentDetailsChanged();
+        }
+
+        private void cbStudSpeaks_Click(object sender, EventArgs e)
+        {
+            EditStudentDetailsChanged();
+        }
+
+        private void cbStudOther_Click(object sender, EventArgs e)
+        {
+            EditStudentDetailsChanged();
+        }
+
+        private void cbStudSource_Click(object sender, EventArgs e)
+        {
+            EditStudentDetailsChanged();
+        }
 
         #endregion
 
@@ -649,7 +711,7 @@ namespace RecordKeeper
         private void dgvTeachers_SelectionChanged(object sender, EventArgs e)
         {
             if (dgvTeachers.CurrentRow == null)
-                return;  
+                return;
             if (dgvTeachers.CurrentRow.Index != m_teacherDgvCurrentRow)
             {
                 m_teacherDgvCurrentRow = dgvTeachers.CurrentRow.Index;
@@ -685,134 +747,138 @@ namespace RecordKeeper
             CurrentType.DoSelection();
         }
 
-        private void tbTeachFirstName_TextChanged(object sender, EventArgs e)
-        {
-            Modified = true;
-        }
-
-        private void tbTeachLastName_TextChanged(object sender, EventArgs e)
-        {
-            Modified = true;
-        }
-
-        private void tbTeachEmail_TextChanged(object sender, EventArgs e)
-        {
-            Modified = true;
-        }
-
-        private void tbTeachLastBirthday_TextChanged(object sender, EventArgs e)
-        {
-            Modified = true;
-        }
-
-        private void tbTeachPhone_TextChanged(object sender, EventArgs e)
-        {
-            Modified = true;
-        }
-
-        private void cbTeachStatus_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Modified = true;
-        }
-
-        private void cbTeachLanguage_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Modified = true;
-        }
-
-        private void cbTeachLanguage2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Modified = true;
-        }
-
-        private void tbTeachLanguageDetail_TextChanged(object sender, EventArgs e)
-        {
-            Modified = true;
-        }
-
-        private void tbTeachAddress_TextChanged(object sender, EventArgs e)
-        {
-            Modified = true;
-        }
-
-        private void tbTeachVacations_TextChanged(object sender, EventArgs e)
-        {
-            Modified = true;
-        }
-
-        private void tbTeachComment_TextChanged(object sender, EventArgs e)
-        {
-            Modified = true;
-        }
         private void availAcceptButton_Click(object sender, EventArgs e)
         {
             AcceptAvailabilityEdits();
+        }
+        private void tbTeachFirstName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            EditTeacherDetailsChanged();
+        }
+
+        private void tbTeachLastName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            EditTeacherDetailsChanged();
+        }
+
+        private void tbTeachEmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            EditTeacherDetailsChanged();
+        }
+
+        private void tbTeachPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            EditTeacherDetailsChanged();
+        }
+
+        private void tbTeachLastBirthday_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            EditTeacherDetailsChanged();
+        }
+
+        private void tbTeachLanguageDetail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            EditTeacherDetailsChanged();
+        }
+
+        private void tbTeachAddress_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            EditTeacherDetailsChanged();
+        }
+
+        private void tbTeachVacations_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            EditTeacherDetailsChanged();
+        }
+
+        private void tbTeachComment_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            EditTeacherDetailsChanged();
+        }
+
+        private void cbTeachStatus_Click(object sender, EventArgs e)
+        {
+            EditTeacherDetailsChanged();
+        }
+
+        private void cbTeachLanguage_Click(object sender, EventArgs e)
+        {
+            EditTeacherDetailsChanged();
+        }
+
+        private void cbTeachLanguage2_Click(object sender, EventArgs e)
+        {
+            EditTeacherDetailsChanged();
         }
 
         #endregion
 
         #region Room-related UI
-        private void tbRoomName_TextChanged(object sender, EventArgs e)
+
+        private void tbRoomName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Modified = true;
+            EditRoomDetailsChanged();
         }
 
-        private void tbRoomCapacity_TextChanged(object sender, EventArgs e)
+        private void tbRoomCapacity_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Modified = true;
+            EditRoomDetailsChanged();
         }
 
-        private void tbRoomPreferrability_TextChanged(object sender, EventArgs e)
+        private void tbRoomPreferrability_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Modified = true;
+            EditRoomDetailsChanged();
         }
 
-        private void tbRoomTags_TextChanged(object sender, EventArgs e)
+        private void tbRoomTags_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Modified = true;
+            EditRoomDetailsChanged();
         }
 
-        private void tbRoomComments_TextChanged(object sender, EventArgs e)
+        private void tbRoomComments_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Modified = true;
+            EditRoomDetailsChanged();
         }
+
         #endregion
 
         #region Program-related UI
-        private void tbProgCode_TextChanged(object sender, EventArgs e)
+
+        private void tbProgCode_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Modified = true;
+            EditProgramDetailsChanged();
         }
 
-        private void tbProgName_TextChanged(object sender, EventArgs e)
+        private void tbProgName_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Modified = true;
+            EditProgramDetailsChanged();
         }
 
-        private void cbProgLanguage_SelectedIndexChanged(object sender, EventArgs e)
+        private void tbProgProce_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Modified = true;
+            EditProgramDetailsChanged();
         }
 
-        private void cbProgLevel_SelectedIndexChanged(object sender, EventArgs e)
+        private void tbProgSummary_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Modified = true;
+            EditProgramDetailsChanged();
         }
 
-        private void tbProgPrice_TextChanged(object sender, EventArgs e)
+        private void tbProgComments_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Modified = true;
+            EditProgramDetailsChanged();
         }
 
-        private void tbProgSummary_TextChanged(object sender, EventArgs e)
+        private void cbProgLanguage_Click(object sender, EventArgs e)
         {
-            Modified = true;
+            EditProgramDetailsChanged();
         }
 
-        private void tbProgComments_TextChanged(object sender, EventArgs e)
+        private void cbProgLevel_Click(object sender, EventArgs e)
         {
-            Modified = true;
+            EditProgramDetailsChanged();
         }
+
 
         private void cbSearchProgLanguage_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -830,101 +896,106 @@ namespace RecordKeeper
         #endregion
 
         #region Lesson-related UI
-        private void cbLessonState_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void tbLEssonComment_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Modified = true;
+            EditLessonDetailsChanged();
         }
 
-        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        private void cbLessonState_Click(object sender, EventArgs e)
         {
-            Modified = true;
+            EditLessonDetailsChanged();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbLessonProg_Click(object sender, EventArgs e)
         {
-            Modified = true;
+            EditLessonDetailsChanged();
         }
 
-        private void cbLessonRoom_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbLessonRoom_Click(object sender, EventArgs e)
         {
-            Modified = true;
+            EditLessonDetailsChanged();
         }
 
-        private void cbLessonStart_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbLessonStart_Click(object sender, EventArgs e)
         {
-            Modified = true;
+            EditLessonDetailsChanged();
         }
 
-        private void cbLessonEnd_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbLessonEnd_Click(object sender, EventArgs e)
         {
-            Modified = true;
+            EditLessonDetailsChanged();
         }
 
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbLessonTeacher1_Click(object sender, EventArgs e)
         {
-            Modified = true;
+            EditLessonDetailsChanged();
         }
 
-        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbLessonTeacher2_Click(object sender, EventArgs e)
         {
-            Modified = true;
+            EditLessonDetailsChanged();
         }
 
-        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbLessonStudent1_Click(object sender, EventArgs e)
         {
-            Modified = true;
+            EditLessonDetailsChanged();
         }
 
-        private void comboBox5_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbLessonStudent2_Click(object sender, EventArgs e)
         {
-            Modified = true;
+            EditLessonDetailsChanged();
         }
 
-        private void cbLessonStudent3_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbLessonStudent3_Click(object sender, EventArgs e)
         {
-            Modified = true;
+            EditLessonDetailsChanged();
         }
 
-        private void cbLessonStudent4_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbLessonStudent5_Click(object sender, EventArgs e)
         {
-            Modified = true;
+            EditLessonDetailsChanged();
         }
 
-        private void cbLessonStudent5_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbLessonStudent7_Click(object sender, EventArgs e)
         {
-            Modified = true;
+            EditLessonDetailsChanged();
         }
 
-        private void cbLessonStudent6_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbLessonStudent9_Click(object sender, EventArgs e)
         {
-            Modified = true;
+            EditLessonDetailsChanged();
         }
 
-        private void cbLessonStudent7_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbLessonStudent4_Click(object sender, EventArgs e)
         {
-            Modified = true;
+            EditLessonDetailsChanged();
         }
 
-        private void cbLessonStudent8_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbLessonStudent6_Click(object sender, EventArgs e)
         {
-            Modified = true;
+            EditLessonDetailsChanged();
         }
 
-        private void cbLessonStudent9_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbLessonStudent8_Click(object sender, EventArgs e)
         {
-            Modified = true;
+            EditLessonDetailsChanged();
         }
 
-        private void cbLessonStudent10_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbLessonStudent10_Click(object sender, EventArgs e)
         {
-            Modified = true;
+            EditLessonDetailsChanged();
         }
 
-        private void tbLessonComment_TextChanged(object sender, EventArgs e)
+        private void monthCalendar1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            Modified = true;
+            EditLessonDetailsChanged();
         }
 
+        private void monthCalendar1_MouseDown(object sender, MouseEventArgs e)
+        {
+            EditLessonDetailsChanged();
+        }
 
         private void cbSearchLessonStudent_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1022,7 +1093,7 @@ namespace RecordKeeper
         }
         private void cbPlanRoom_SelectedIndexChanged(object sender, EventArgs e)
         {
-            butPlanAccept.Visible = true; 
+            butPlanAccept.Visible = true;
         }
 
         #endregion
@@ -1035,7 +1106,7 @@ namespace RecordKeeper
         }
         private void butViewZoomIn_Click(object sender, EventArgs e)
         {
-            if (tabControlViewScales.SelectedIndex < tabControlViewScales.TabCount-1)
+            if (tabControlViewScales.SelectedIndex < tabControlViewScales.TabCount - 1)
                 tabControlViewScales.SelectedIndex++;
         }
         private void butViewNext_Click(object sender, EventArgs e)
@@ -1066,7 +1137,7 @@ namespace RecordKeeper
                     ShowCurrentLesson(lb.Tag as Lesson);
             }
         }
-        
+
         private void dtpViewSlot_ValueChanged(object sender, EventArgs e)
         {
             DateTimePicker dtp = (DateTimePicker)sender;
@@ -1085,7 +1156,7 @@ namespace RecordKeeper
         private void cbViewSelectStudent_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cb = sender as ComboBox;
-            m_view_chosen_student= cb.SelectedItem as string;
+            m_view_chosen_student = cb.SelectedItem as string;
             m_view_selection_mode = true;
             ShowView();
         }
@@ -1093,7 +1164,7 @@ namespace RecordKeeper
         private void cbViewSelectTeacher_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cb = sender as ComboBox;
-            m_view_chosen_teacher= cb.SelectedItem as string;
+            m_view_chosen_teacher = cb.SelectedItem as string;
             m_view_selection_mode = true;
             ShowView();
         }
@@ -1101,7 +1172,7 @@ namespace RecordKeeper
         private void cbViewSelectRoom_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cb = sender as ComboBox;
-            m_view_chosen_room= cb.SelectedItem as string;
+            m_view_chosen_room = cb.SelectedItem as string;
             m_view_selection_mode = true;
             ShowView();
         }
@@ -1180,10 +1251,10 @@ namespace RecordKeeper
         private void butViewDetailSet_Click(object sender, EventArgs e)
         {
             SetTeacherComment(
-                lbViewDetailTeacher.Text, 
+                lbViewDetailTeacher.Text,
                 tbViewDetailTeacher.Text);
             SetStudentComment(
-                lbViewDetailStudent.Text, 
+                lbViewDetailStudent.Text,
                 tbViewDetailStudent.Text);
             SetLessonDetails(
                 m_currentLessonKey,

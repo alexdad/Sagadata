@@ -20,11 +20,15 @@ namespace RecordKeeper
         string m_LessonSelectionDay;
         string m_LessonSelectionProgram;
         string m_LessonSelectionRoom;
-
-        bool m_lessonDetailsChanged;
+        bool   m_lessonDetailsChanged;
         string m_currentLessonKey;
 
         delegate bool EvaluateLesson(Lesson t);
+        private void EditLessonDetailsChanged()
+        {
+            Modified = true;
+            EditTrap = true;
+        }
 
         private void DropLessonSelection()
         {
@@ -79,7 +83,6 @@ namespace RecordKeeper
                 DataList.Add(s);
             }
             ShowCurrentCount();
-            Modified = true;
         }
 
         List<Lesson> LessonsByTime(DateTime t1, DateTime t2)

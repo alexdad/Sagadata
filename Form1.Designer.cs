@@ -48,6 +48,7 @@
             this.labelGlobLastDownload = new System.Windows.Forms.Label();
             this.labelGlobLastUpload = new System.Windows.Forms.Label();
             this.panelGlobIndicators = new System.Windows.Forms.Panel();
+            this.buttonSave = new System.Windows.Forms.Button();
             this.ctxMenuLesson = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuItemViewLessonPlanned = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewLessonDone = new System.Windows.Forms.ToolStripMenuItem();
@@ -697,12 +698,25 @@
             // 
             this.panelGlobIndicators.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelGlobIndicators.Controls.Add(this.buttonSave);
             this.panelGlobIndicators.Controls.Add(this.labelGlobLastUpload);
             this.panelGlobIndicators.Controls.Add(this.labelGlobLastDownload);
             this.panelGlobIndicators.Location = new System.Drawing.Point(713, 0);
             this.panelGlobIndicators.Name = "panelGlobIndicators";
             this.panelGlobIndicators.Size = new System.Drawing.Size(871, 24);
             this.panelGlobIndicators.TabIndex = 27;
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(127)))), ((int)(((byte)(39)))));
+            this.buttonSave.Location = new System.Drawing.Point(3, 1);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(75, 23);
+            this.buttonSave.TabIndex = 24;
+            this.buttonSave.Text = "Save";
+            this.buttonSave.UseVisualStyleBackColor = false;
+            this.buttonSave.Visible = false;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // ctxMenuLesson
             // 
@@ -880,6 +894,7 @@
             this.dgvStudents.TabIndex = 13;
             this.dgvStudents.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudents_CellContentClick);
             this.dgvStudents.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvStudents_ColumnHeaderMouseClick);
+            this.dgvStudents.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudents_RowLeave);
             // 
             // dgvStudColumnStatus
             // 
@@ -1009,6 +1024,7 @@
             this.dgvTeachers.TabIndex = 1;
             this.dgvTeachers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTeachers_CellContentClick);
             this.dgvTeachers.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTeachers_ColumnHeaderMouseClick);
+            this.dgvTeachers.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTeachers_RowLeave);
             this.dgvTeachers.SelectionChanged += new System.EventHandler(this.dgvTeachers_SelectionChanged);
             // 
             // statusDataGridViewTextBoxColumn
@@ -1134,6 +1150,7 @@
             this.dgvPrograms.TabIndex = 0;
             this.dgvPrograms.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPrograms_CellContentClick);
             this.dgvPrograms.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPrograms_ColumnHeaderMouseClick);
+            this.dgvPrograms.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPrograms_RowLeave);
             // 
             // codeDataGridViewTextBoxColumn
             // 
@@ -1215,6 +1232,7 @@
             this.dgvRooms.TabIndex = 0;
             this.dgvRooms.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRooms_CellContentClick);
             this.dgvRooms.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvRooms_ColumnHeaderMouseClick);
+            this.dgvRooms.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRooms_RowLeave);
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -1305,6 +1323,7 @@
             this.dgvLesson.TabIndex = 0;
             this.dgvLesson.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLesson_CellContentClick);
             this.dgvLesson.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLesson_ColumnHeaderMouseClick);
+            this.dgvLesson.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLesson_RowLeave);
             // 
             // State
             // 
@@ -1530,7 +1549,7 @@
             this.tbStudAddress1.Name = "tbStudAddress1";
             this.tbStudAddress1.Size = new System.Drawing.Size(412, 20);
             this.tbStudAddress1.TabIndex = 7;
-            this.tbStudAddress1.TextChanged += new System.EventHandler(this.tbStudAddress_TextChanged);
+            this.tbStudAddress1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStudAddress1_KeyPress);
             // 
             // tbStudLanguageDetail
             // 
@@ -1541,7 +1560,7 @@
             this.tbStudLanguageDetail.Name = "tbStudLanguageDetail";
             this.tbStudLanguageDetail.Size = new System.Drawing.Size(412, 20);
             this.tbStudLanguageDetail.TabIndex = 11;
-            this.tbStudLanguageDetail.TextChanged += new System.EventHandler(this.tbStudLanguageDetail_TextChanged);
+            this.tbStudLanguageDetail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStudLanguageDetail_KeyPress);
             // 
             // tbStudSourceDetail
             // 
@@ -1552,7 +1571,7 @@
             this.tbStudSourceDetail.Name = "tbStudSourceDetail";
             this.tbStudSourceDetail.Size = new System.Drawing.Size(412, 20);
             this.tbStudSourceDetail.TabIndex = 15;
-            this.tbStudSourceDetail.TextChanged += new System.EventHandler(this.tbStudxSourceDetail_TextChanged);
+            this.tbStudSourceDetail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStudSourceDetail_KeyPress);
             // 
             // panelStudPrimaryLeft
             // 
@@ -1595,6 +1614,7 @@
             this.cbStudSpeaks.Name = "cbStudSpeaks";
             this.cbStudSpeaks.Size = new System.Drawing.Size(162, 21);
             this.cbStudSpeaks.TabIndex = 9;
+            this.cbStudSpeaks.Click += new System.EventHandler(this.cbStudSpeaks_Click);
             // 
             // cbStudOther
             // 
@@ -1605,6 +1625,7 @@
             this.cbStudOther.Name = "cbStudOther";
             this.cbStudOther.Size = new System.Drawing.Size(152, 21);
             this.cbStudOther.TabIndex = 10;
+            this.cbStudOther.Click += new System.EventHandler(this.cbStudOther_Click);
             // 
             // labelStudBirthday
             // 
@@ -1622,7 +1643,7 @@
             this.tbStudLastName.Name = "tbStudLastName";
             this.tbStudLastName.Size = new System.Drawing.Size(162, 20);
             this.tbStudLastName.TabIndex = 2;
-            this.tbStudLastName.TextChanged += new System.EventHandler(this.tbStudLastName_TextChanged);
+            this.tbStudLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStudLastName_KeyPress);
             // 
             // labelStudAlso
             // 
@@ -1658,7 +1679,7 @@
             this.tbStudFirstName.Name = "tbStudFirstName";
             this.tbStudFirstName.Size = new System.Drawing.Size(130, 20);
             this.tbStudFirstName.TabIndex = 1;
-            this.tbStudFirstName.TextChanged += new System.EventHandler(this.tbStudFirstName_TextChanged);
+            this.tbStudFirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStudFirstName_KeyPress);
             // 
             // cbStudStatus
             // 
@@ -1669,6 +1690,7 @@
             this.cbStudStatus.Name = "cbStudStatus";
             this.cbStudStatus.Size = new System.Drawing.Size(130, 21);
             this.cbStudStatus.TabIndex = 4;
+            this.cbStudStatus.Click += new System.EventHandler(this.cbStudStatus_Click);
             // 
             // labelStudLastName1
             // 
@@ -1688,6 +1710,7 @@
             this.cbStudLearns.Name = "cbStudLearns";
             this.cbStudLearns.Size = new System.Drawing.Size(130, 21);
             this.cbStudLearns.TabIndex = 8;
+            this.cbStudLearns.Click += new System.EventHandler(this.cbStudLearns_Click);
             // 
             // labelStudEmail1
             // 
@@ -1705,7 +1728,7 @@
             this.tbStudBirthday.Name = "tbStudBirthday";
             this.tbStudBirthday.Size = new System.Drawing.Size(124, 20);
             this.tbStudBirthday.TabIndex = 13;
-            this.tbStudBirthday.TextChanged += new System.EventHandler(this.tbStudBirthday_TextChanged);
+            this.tbStudBirthday.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStudBirthday_KeyPress);
             // 
             // tbStudEmail
             // 
@@ -1714,7 +1737,7 @@
             this.tbStudEmail.Name = "tbStudEmail";
             this.tbStudEmail.Size = new System.Drawing.Size(152, 20);
             this.tbStudEmail.TabIndex = 3;
-            this.tbStudEmail.TextChanged += new System.EventHandler(this.tbStudEmail_TextChanged);
+            this.tbStudEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStudEmail_KeyPress);
             // 
             // labelStudSpeaks1
             // 
@@ -1761,6 +1784,7 @@
             this.cbStudLevel.Name = "cbStudLevel";
             this.cbStudLevel.Size = new System.Drawing.Size(130, 21);
             this.cbStudLevel.TabIndex = 12;
+            this.cbStudLevel.Click += new System.EventHandler(this.cbStudLevel_Click);
             // 
             // tbStudCellPhone
             // 
@@ -1769,7 +1793,7 @@
             this.tbStudCellPhone.Name = "tbStudCellPhone";
             this.tbStudCellPhone.Size = new System.Drawing.Size(130, 20);
             this.tbStudCellPhone.TabIndex = 5;
-            this.tbStudCellPhone.TextChanged += new System.EventHandler(this.tbStudCellPhone_TextChanged);
+            this.tbStudCellPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStudCellPhone_KeyPress);
             // 
             // labelStudSource1
             // 
@@ -1787,7 +1811,7 @@
             this.tbStudHomePhone.Name = "tbStudHomePhone";
             this.tbStudHomePhone.Size = new System.Drawing.Size(155, 20);
             this.tbStudHomePhone.TabIndex = 6;
-            this.tbStudHomePhone.TextChanged += new System.EventHandler(this.tbStudHomePhone_TextChanged);
+            this.tbStudHomePhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStudHomePhone_KeyPress);
             // 
             // labelStudSpeaks2
             // 
@@ -1807,6 +1831,7 @@
             this.cbStudSource.Name = "cbStudSource";
             this.cbStudSource.Size = new System.Drawing.Size(155, 21);
             this.cbStudSource.TabIndex = 14;
+            this.cbStudSource.Click += new System.EventHandler(this.cbStudSource_Click);
             // 
             // panelStudSecondary
             // 
@@ -1844,7 +1869,7 @@
             this.tbStudComments.Name = "tbStudComments";
             this.tbStudComments.Size = new System.Drawing.Size(840, 20);
             this.tbStudComments.TabIndex = 20;
-            this.tbStudComments.TextChanged += new System.EventHandler(this.tbStudComments_TextChanged);
+            this.tbStudComments.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStudComments_KeyPress);
             // 
             // tbStudSchedule
             // 
@@ -1855,7 +1880,7 @@
             this.tbStudSchedule.Name = "tbStudSchedule";
             this.tbStudSchedule.Size = new System.Drawing.Size(840, 20);
             this.tbStudSchedule.TabIndex = 19;
-            this.tbStudSchedule.TextChanged += new System.EventHandler(this.tbStudSchedule_TextChanged);
+            this.tbStudSchedule.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStudSchedule_KeyPress);
             // 
             // tbStudInterests
             // 
@@ -1866,7 +1891,7 @@
             this.tbStudInterests.Name = "tbStudInterests";
             this.tbStudInterests.Size = new System.Drawing.Size(840, 20);
             this.tbStudInterests.TabIndex = 18;
-            this.tbStudInterests.TextChanged += new System.EventHandler(this.tbStudInterests_TextChanged);
+            this.tbStudInterests.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStudInterests_KeyPress);
             // 
             // tbStudGoals
             // 
@@ -1877,7 +1902,7 @@
             this.tbStudGoals.Name = "tbStudGoals";
             this.tbStudGoals.Size = new System.Drawing.Size(840, 20);
             this.tbStudGoals.TabIndex = 17;
-            this.tbStudGoals.TextChanged += new System.EventHandler(this.tbStudGoals_TextChanged);
+            this.tbStudGoals.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStudGoals_KeyPress);
             // 
             // tbStudBackground
             // 
@@ -1888,7 +1913,7 @@
             this.tbStudBackground.Name = "tbStudBackground";
             this.tbStudBackground.Size = new System.Drawing.Size(840, 20);
             this.tbStudBackground.TabIndex = 16;
-            this.tbStudBackground.TextChanged += new System.EventHandler(this.tbStudBackground_TextChanged);
+            this.tbStudBackground.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStudBackground_KeyPress);
             // 
             // panelStudSecondaryLeft
             // 
@@ -2030,7 +2055,7 @@
             this.tbTeachComment.Name = "tbTeachComment";
             this.tbTeachComment.Size = new System.Drawing.Size(437, 20);
             this.tbTeachComment.TabIndex = 12;
-            this.tbTeachComment.TextChanged += new System.EventHandler(this.tbTeachComment_TextChanged);
+            this.tbTeachComment.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTeachComment_KeyPress);
             // 
             // tbTeachVacations
             // 
@@ -2039,7 +2064,7 @@
             this.tbTeachVacations.Name = "tbTeachVacations";
             this.tbTeachVacations.Size = new System.Drawing.Size(437, 20);
             this.tbTeachVacations.TabIndex = 8;
-            this.tbTeachVacations.TextChanged += new System.EventHandler(this.tbTeachVacations_TextChanged);
+            this.tbTeachVacations.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTeachVacations_KeyPress);
             // 
             // tbTeachAddress
             // 
@@ -2048,7 +2073,7 @@
             this.tbTeachAddress.Name = "tbTeachAddress";
             this.tbTeachAddress.Size = new System.Drawing.Size(437, 20);
             this.tbTeachAddress.TabIndex = 4;
-            this.tbTeachAddress.TextChanged += new System.EventHandler(this.tbTeachAddress_TextChanged);
+            this.tbTeachAddress.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTeachAddress_KeyPress);
             // 
             // labelTeachComment
             // 
@@ -2110,7 +2135,7 @@
             this.tbTeachLanguageDetail.Name = "tbTeachLanguageDetail";
             this.tbTeachLanguageDetail.Size = new System.Drawing.Size(163, 20);
             this.tbTeachLanguageDetail.TabIndex = 11;
-            this.tbTeachLanguageDetail.TextChanged += new System.EventHandler(this.tbTeachLanguageDetail_TextChanged);
+            this.tbTeachLanguageDetail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTeachLanguageDetail_KeyPress);
             // 
             // cbTeachLanguage2
             // 
@@ -2120,7 +2145,7 @@
             this.cbTeachLanguage2.Name = "cbTeachLanguage2";
             this.cbTeachLanguage2.Size = new System.Drawing.Size(121, 21);
             this.cbTeachLanguage2.TabIndex = 10;
-            this.cbTeachLanguage2.SelectedIndexChanged += new System.EventHandler(this.cbTeachLanguage2_SelectedIndexChanged);
+            this.cbTeachLanguage2.Click += new System.EventHandler(this.cbTeachLanguage2_Click);
             // 
             // cbTeachLanguage
             // 
@@ -2130,7 +2155,7 @@
             this.cbTeachLanguage.Name = "cbTeachLanguage";
             this.cbTeachLanguage.Size = new System.Drawing.Size(121, 21);
             this.cbTeachLanguage.TabIndex = 9;
-            this.cbTeachLanguage.SelectedIndexChanged += new System.EventHandler(this.cbTeachLanguage_SelectedIndexChanged);
+            this.cbTeachLanguage.Click += new System.EventHandler(this.cbTeachLanguage_Click);
             // 
             // labelTeachLabguageDetail
             // 
@@ -2167,7 +2192,7 @@
             this.cbTeachStatus.Name = "cbTeachStatus";
             this.cbTeachStatus.Size = new System.Drawing.Size(131, 21);
             this.cbTeachStatus.TabIndex = 5;
-            this.cbTeachStatus.SelectedIndexChanged += new System.EventHandler(this.cbTeachStatus_SelectedIndexChanged);
+            this.cbTeachStatus.Click += new System.EventHandler(this.cbTeachStatus_Click);
             // 
             // tbTeachLastBirthday
             // 
@@ -2176,7 +2201,7 @@
             this.tbTeachLastBirthday.Name = "tbTeachLastBirthday";
             this.tbTeachLastBirthday.Size = new System.Drawing.Size(163, 20);
             this.tbTeachLastBirthday.TabIndex = 7;
-            this.tbTeachLastBirthday.TextChanged += new System.EventHandler(this.tbTeachLastBirthday_TextChanged);
+            this.tbTeachLastBirthday.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTeachLastBirthday_KeyPress);
             // 
             // tbTeachPhone
             // 
@@ -2185,7 +2210,7 @@
             this.tbTeachPhone.Name = "tbTeachPhone";
             this.tbTeachPhone.Size = new System.Drawing.Size(151, 20);
             this.tbTeachPhone.TabIndex = 6;
-            this.tbTeachPhone.TextChanged += new System.EventHandler(this.tbTeachPhone_TextChanged);
+            this.tbTeachPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTeachPhone_KeyPress);
             // 
             // labelTeachBirthday
             // 
@@ -2221,7 +2246,7 @@
             this.tbTeachEmail.Name = "tbTeachEmail";
             this.tbTeachEmail.Size = new System.Drawing.Size(163, 20);
             this.tbTeachEmail.TabIndex = 3;
-            this.tbTeachEmail.TextChanged += new System.EventHandler(this.tbTeachEmail_TextChanged);
+            this.tbTeachEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTeachEmail_KeyPress);
             // 
             // tbTeachLastName
             // 
@@ -2230,7 +2255,7 @@
             this.tbTeachLastName.Name = "tbTeachLastName";
             this.tbTeachLastName.Size = new System.Drawing.Size(151, 20);
             this.tbTeachLastName.TabIndex = 2;
-            this.tbTeachLastName.TextChanged += new System.EventHandler(this.tbTeachLastName_TextChanged);
+            this.tbTeachLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTeachLastName_KeyPress);
             // 
             // tbTeachFirstName
             // 
@@ -2239,7 +2264,7 @@
             this.tbTeachFirstName.Name = "tbTeachFirstName";
             this.tbTeachFirstName.Size = new System.Drawing.Size(131, 20);
             this.tbTeachFirstName.TabIndex = 1;
-            this.tbTeachFirstName.TextChanged += new System.EventHandler(this.tbTeachFirstName_TextChanged);
+            this.tbTeachFirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTeachFirstName_KeyPress);
             // 
             // labelTeachEmail
             // 
@@ -2312,7 +2337,7 @@
             this.tbProgComments.Name = "tbProgComments";
             this.tbProgComments.Size = new System.Drawing.Size(581, 20);
             this.tbProgComments.TabIndex = 7;
-            this.tbProgComments.TextChanged += new System.EventHandler(this.tbProgComments_TextChanged);
+            this.tbProgComments.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbProgComments_KeyPress);
             // 
             // tbProgSummary
             // 
@@ -2323,7 +2348,7 @@
             this.tbProgSummary.Name = "tbProgSummary";
             this.tbProgSummary.Size = new System.Drawing.Size(581, 20);
             this.tbProgSummary.TabIndex = 6;
-            this.tbProgSummary.TextChanged += new System.EventHandler(this.tbProgSummary_TextChanged);
+            this.tbProgSummary.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbProgSummary_KeyPress);
             // 
             // labelProgComments
             // 
@@ -2378,7 +2403,7 @@
             this.tbProgProce.Name = "tbProgProce";
             this.tbProgProce.Size = new System.Drawing.Size(146, 20);
             this.tbProgProce.TabIndex = 5;
-            this.tbProgProce.TextChanged += new System.EventHandler(this.tbProgPrice_TextChanged);
+            this.tbProgProce.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbProgProce_KeyPress);
             // 
             // labelProgPrice
             // 
@@ -2397,7 +2422,7 @@
             this.cbProgLevel.Name = "cbProgLevel";
             this.cbProgLevel.Size = new System.Drawing.Size(146, 21);
             this.cbProgLevel.TabIndex = 4;
-            this.cbProgLevel.SelectedIndexChanged += new System.EventHandler(this.cbProgLevel_SelectedIndexChanged);
+            this.cbProgLevel.Click += new System.EventHandler(this.cbProgLevel_Click);
             // 
             // labelProgLevel
             // 
@@ -2416,7 +2441,7 @@
             this.cbProgLanguage.Name = "cbProgLanguage";
             this.cbProgLanguage.Size = new System.Drawing.Size(146, 21);
             this.cbProgLanguage.TabIndex = 3;
-            this.cbProgLanguage.SelectedIndexChanged += new System.EventHandler(this.cbProgLanguage_SelectedIndexChanged);
+            this.cbProgLanguage.Click += new System.EventHandler(this.cbProgLanguage_Click);
             // 
             // labelProgLanguage
             // 
@@ -2434,7 +2459,7 @@
             this.tbProgName.Name = "tbProgName";
             this.tbProgName.Size = new System.Drawing.Size(146, 20);
             this.tbProgName.TabIndex = 2;
-            this.tbProgName.TextChanged += new System.EventHandler(this.tbProgName_TextChanged);
+            this.tbProgName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbProgName_KeyPress);
             // 
             // labelProgName
             // 
@@ -2452,7 +2477,7 @@
             this.tbProgCode.Name = "tbProgCode";
             this.tbProgCode.Size = new System.Drawing.Size(146, 20);
             this.tbProgCode.TabIndex = 1;
-            this.tbProgCode.TextChanged += new System.EventHandler(this.tbProgCode_TextChanged);
+            this.tbProgCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbProgCode_KeyPress);
             // 
             // labelProgCode
             // 
@@ -2533,7 +2558,7 @@
             this.tbRoomPreferrability.Name = "tbRoomPreferrability";
             this.tbRoomPreferrability.Size = new System.Drawing.Size(87, 20);
             this.tbRoomPreferrability.TabIndex = 3;
-            this.tbRoomPreferrability.TextChanged += new System.EventHandler(this.tbRoomPreferrability_TextChanged);
+            this.tbRoomPreferrability.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbRoomPreferrability_KeyPress);
             // 
             // tbRoomCapacity
             // 
@@ -2542,7 +2567,7 @@
             this.tbRoomCapacity.Name = "tbRoomCapacity";
             this.tbRoomCapacity.Size = new System.Drawing.Size(87, 20);
             this.tbRoomCapacity.TabIndex = 2;
-            this.tbRoomCapacity.TextChanged += new System.EventHandler(this.tbRoomCapacity_TextChanged);
+            this.tbRoomCapacity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbRoomCapacity_KeyPress);
             // 
             // tbRoomName
             // 
@@ -2551,7 +2576,7 @@
             this.tbRoomName.Name = "tbRoomName";
             this.tbRoomName.Size = new System.Drawing.Size(87, 20);
             this.tbRoomName.TabIndex = 1;
-            this.tbRoomName.TextChanged += new System.EventHandler(this.tbRoomName_TextChanged);
+            this.tbRoomName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbRoomName_KeyPress);
             // 
             // groupBoxRoom
             // 
@@ -2593,7 +2618,7 @@
             this.tbRoomComments.Name = "tbRoomComments";
             this.tbRoomComments.Size = new System.Drawing.Size(704, 20);
             this.tbRoomComments.TabIndex = 5;
-            this.tbRoomComments.TextChanged += new System.EventHandler(this.tbRoomComments_TextChanged);
+            this.tbRoomComments.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbRoomComments_KeyPress);
             // 
             // tbRoomTags
             // 
@@ -2604,7 +2629,7 @@
             this.tbRoomTags.Name = "tbRoomTags";
             this.tbRoomTags.Size = new System.Drawing.Size(704, 20);
             this.tbRoomTags.TabIndex = 4;
-            this.tbRoomTags.TextChanged += new System.EventHandler(this.tbRoomTags_TextChanged);
+            this.tbRoomTags.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbRoomTags_KeyPress);
             // 
             // tabBottomPageLessons
             // 
@@ -2663,7 +2688,7 @@
             this.cbLessonStudent10.Name = "cbLessonStudent10";
             this.cbLessonStudent10.Size = new System.Drawing.Size(93, 21);
             this.cbLessonStudent10.TabIndex = 18;
-            this.cbLessonStudent10.SelectedIndexChanged += new System.EventHandler(this.cbLessonStudent10_SelectedIndexChanged);
+            this.cbLessonStudent10.Click += new System.EventHandler(this.cbLessonStudent10_Click);
             // 
             // cbLessonStudent9
             // 
@@ -2673,7 +2698,7 @@
             this.cbLessonStudent9.Name = "cbLessonStudent9";
             this.cbLessonStudent9.Size = new System.Drawing.Size(85, 21);
             this.cbLessonStudent9.TabIndex = 17;
-            this.cbLessonStudent9.SelectedIndexChanged += new System.EventHandler(this.cbLessonStudent9_SelectedIndexChanged);
+            this.cbLessonStudent9.Click += new System.EventHandler(this.cbLessonStudent9_Click);
             // 
             // cbLessonStudent8
             // 
@@ -2683,7 +2708,7 @@
             this.cbLessonStudent8.Name = "cbLessonStudent8";
             this.cbLessonStudent8.Size = new System.Drawing.Size(93, 21);
             this.cbLessonStudent8.TabIndex = 16;
-            this.cbLessonStudent8.SelectedIndexChanged += new System.EventHandler(this.cbLessonStudent8_SelectedIndexChanged);
+            this.cbLessonStudent8.Click += new System.EventHandler(this.cbLessonStudent8_Click);
             // 
             // cbLessonStudent7
             // 
@@ -2693,7 +2718,7 @@
             this.cbLessonStudent7.Name = "cbLessonStudent7";
             this.cbLessonStudent7.Size = new System.Drawing.Size(85, 21);
             this.cbLessonStudent7.TabIndex = 15;
-            this.cbLessonStudent7.SelectedIndexChanged += new System.EventHandler(this.cbLessonStudent7_SelectedIndexChanged);
+            this.cbLessonStudent7.Click += new System.EventHandler(this.cbLessonStudent7_Click);
             // 
             // cbLessonStudent6
             // 
@@ -2703,7 +2728,7 @@
             this.cbLessonStudent6.Name = "cbLessonStudent6";
             this.cbLessonStudent6.Size = new System.Drawing.Size(93, 21);
             this.cbLessonStudent6.TabIndex = 14;
-            this.cbLessonStudent6.SelectedIndexChanged += new System.EventHandler(this.cbLessonStudent6_SelectedIndexChanged);
+            this.cbLessonStudent6.Click += new System.EventHandler(this.cbLessonStudent6_Click);
             // 
             // cbLessonStudent5
             // 
@@ -2713,7 +2738,7 @@
             this.cbLessonStudent5.Name = "cbLessonStudent5";
             this.cbLessonStudent5.Size = new System.Drawing.Size(85, 21);
             this.cbLessonStudent5.TabIndex = 13;
-            this.cbLessonStudent5.SelectedIndexChanged += new System.EventHandler(this.cbLessonStudent5_SelectedIndexChanged);
+            this.cbLessonStudent5.Click += new System.EventHandler(this.cbLessonStudent5_Click);
             // 
             // cbLessonStudent4
             // 
@@ -2723,7 +2748,7 @@
             this.cbLessonStudent4.Name = "cbLessonStudent4";
             this.cbLessonStudent4.Size = new System.Drawing.Size(93, 21);
             this.cbLessonStudent4.TabIndex = 12;
-            this.cbLessonStudent4.SelectedIndexChanged += new System.EventHandler(this.cbLessonStudent4_SelectedIndexChanged);
+            this.cbLessonStudent4.Click += new System.EventHandler(this.cbLessonStudent4_Click);
             // 
             // cbLessonStudent3
             // 
@@ -2733,7 +2758,7 @@
             this.cbLessonStudent3.Name = "cbLessonStudent3";
             this.cbLessonStudent3.Size = new System.Drawing.Size(85, 21);
             this.cbLessonStudent3.TabIndex = 11;
-            this.cbLessonStudent3.SelectedIndexChanged += new System.EventHandler(this.cbLessonStudent3_SelectedIndexChanged);
+            this.cbLessonStudent3.Click += new System.EventHandler(this.cbLessonStudent3_Click);
             // 
             // labelLessonStudent3
             // 
@@ -2762,7 +2787,7 @@
             this.tbLEssonComment.Name = "tbLEssonComment";
             this.tbLEssonComment.Size = new System.Drawing.Size(891, 20);
             this.tbLEssonComment.TabIndex = 26;
-            this.tbLEssonComment.TextChanged += new System.EventHandler(this.tbLessonComment_TextChanged);
+            this.tbLEssonComment.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbLEssonComment_KeyPress);
             // 
             // cbLessonStudent2
             // 
@@ -2772,7 +2797,7 @@
             this.cbLessonStudent2.Name = "cbLessonStudent2";
             this.cbLessonStudent2.Size = new System.Drawing.Size(96, 21);
             this.cbLessonStudent2.TabIndex = 10;
-            this.cbLessonStudent2.SelectedIndexChanged += new System.EventHandler(this.comboBox5_SelectedIndexChanged);
+            this.cbLessonStudent2.Click += new System.EventHandler(this.cbLessonStudent2_Click);
             // 
             // cbLessonStudent1
             // 
@@ -2782,7 +2807,7 @@
             this.cbLessonStudent1.Name = "cbLessonStudent1";
             this.cbLessonStudent1.Size = new System.Drawing.Size(96, 21);
             this.cbLessonStudent1.TabIndex = 9;
-            this.cbLessonStudent1.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
+            this.cbLessonStudent1.Click += new System.EventHandler(this.cbLessonStudent1_Click);
             // 
             // cbLessonTeacher2
             // 
@@ -2792,7 +2817,7 @@
             this.cbLessonTeacher2.Name = "cbLessonTeacher2";
             this.cbLessonTeacher2.Size = new System.Drawing.Size(96, 21);
             this.cbLessonTeacher2.TabIndex = 8;
-            this.cbLessonTeacher2.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            this.cbLessonTeacher2.Click += new System.EventHandler(this.cbLessonTeacher2_Click);
             // 
             // cbLessonTeacher1
             // 
@@ -2802,7 +2827,7 @@
             this.cbLessonTeacher1.Name = "cbLessonTeacher1";
             this.cbLessonTeacher1.Size = new System.Drawing.Size(96, 21);
             this.cbLessonTeacher1.TabIndex = 7;
-            this.cbLessonTeacher1.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.cbLessonTeacher1.Click += new System.EventHandler(this.cbLessonTeacher1_Click);
             // 
             // cbLessonProg
             // 
@@ -2812,7 +2837,7 @@
             this.cbLessonProg.Name = "cbLessonProg";
             this.cbLessonProg.Size = new System.Drawing.Size(96, 21);
             this.cbLessonProg.TabIndex = 3;
-            this.cbLessonProg.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.cbLessonProg.Click += new System.EventHandler(this.cbLessonProg_Click);
             // 
             // labelLessonStudent1
             // 
@@ -2849,7 +2874,7 @@
             this.cbLessonState.Name = "cbLessonState";
             this.cbLessonState.Size = new System.Drawing.Size(91, 21);
             this.cbLessonState.TabIndex = 1;
-            this.cbLessonState.SelectedIndexChanged += new System.EventHandler(this.cbLessonState_SelectedIndexChanged);
+            this.cbLessonState.Click += new System.EventHandler(this.cbLessonState_Click);
             // 
             // labelLessonState
             // 
@@ -2868,7 +2893,7 @@
             this.cbLessonEnd.Name = "cbLessonEnd";
             this.cbLessonEnd.Size = new System.Drawing.Size(92, 21);
             this.cbLessonEnd.TabIndex = 6;
-            this.cbLessonEnd.SelectedIndexChanged += new System.EventHandler(this.cbLessonEnd_SelectedIndexChanged);
+            this.cbLessonEnd.Click += new System.EventHandler(this.cbLessonEnd_Click);
             // 
             // cbLessonStart
             // 
@@ -2878,14 +2903,15 @@
             this.cbLessonStart.Name = "cbLessonStart";
             this.cbLessonStart.Size = new System.Drawing.Size(96, 21);
             this.cbLessonStart.TabIndex = 5;
-            this.cbLessonStart.SelectedIndexChanged += new System.EventHandler(this.cbLessonStart_SelectedIndexChanged);
+            this.cbLessonStart.Click += new System.EventHandler(this.cbLessonStart_Click);
             // 
             // monthCalendar1
             // 
             this.monthCalendar1.Location = new System.Drawing.Point(9, 47);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 2;
-            this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
+            this.monthCalendar1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.monthCalendar1_KeyPress);
+            this.monthCalendar1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.monthCalendar1_MouseDown);
             // 
             // cbLessonRoom
             // 
@@ -2895,7 +2921,7 @@
             this.cbLessonRoom.Name = "cbLessonRoom";
             this.cbLessonRoom.Size = new System.Drawing.Size(92, 21);
             this.cbLessonRoom.TabIndex = 4;
-            this.cbLessonRoom.SelectedIndexChanged += new System.EventHandler(this.cbLessonRoom_SelectedIndexChanged);
+            this.cbLessonRoom.Click += new System.EventHandler(this.cbLessonRoom_Click);
             // 
             // labelLessonRoom
             // 
@@ -5396,6 +5422,7 @@
         private System.Windows.Forms.ComboBox cbPlanRoom;
         private System.Windows.Forms.ComboBox cbPlanProgram;
         private System.Windows.Forms.Label lbPlanProgram;
+        private System.Windows.Forms.Button buttonSave;
     }
 }
 
