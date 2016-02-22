@@ -370,7 +370,7 @@ namespace RecordKeeper
             foreach (Room rm in ActiveRooms())
             {
                 string roomLetter = rm.Name.Substring(0, 1);
-                if (brms.IndexOf(roomLetter) < 0)
+                if (brms.IndexOf(roomLetter) < 0 || roomLetter == "N")
                     cbPlanRoom.Items.Add(rm.Name);
             }
             cbPlanRoom.Text = "Choose room:";

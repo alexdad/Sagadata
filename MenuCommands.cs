@@ -112,10 +112,13 @@ namespace RecordKeeper
             if (!CheckSafety())
                 return;
             CurrentType.EndSelectionMode();
-            List<Modes> temp = SaveChangedFiles();
-            if (!temp.Contains(CurrentMode))
-                temp.Add(CurrentMode);
+            SaveChangedFiles();
+
+            List<Modes> temp = new List<Modes>();
+            for (Modes m = Modes.Students; m < Modes.MaxMode; m++)
+                temp.Add(m);
             UploadFiles(temp);
+
             Modified = false;
         }
 

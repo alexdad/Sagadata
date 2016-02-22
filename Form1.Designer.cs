@@ -244,30 +244,21 @@
             this.panelLesson = new System.Windows.Forms.Panel();
             this.cbLessonStudent10 = new System.Windows.Forms.ComboBox();
             this.cbLessonStudent9 = new System.Windows.Forms.ComboBox();
-            this.labelLessonStudent10 = new System.Windows.Forms.Label();
-            this.labelLessonStudent9 = new System.Windows.Forms.Label();
             this.cbLessonStudent8 = new System.Windows.Forms.ComboBox();
             this.cbLessonStudent7 = new System.Windows.Forms.ComboBox();
-            this.labelLessonStudent8 = new System.Windows.Forms.Label();
-            this.labelLessonStudent7 = new System.Windows.Forms.Label();
             this.cbLessonStudent6 = new System.Windows.Forms.ComboBox();
             this.cbLessonStudent5 = new System.Windows.Forms.ComboBox();
-            this.labelLessonStudent6 = new System.Windows.Forms.Label();
-            this.labelLessonStudent5 = new System.Windows.Forms.Label();
             this.cbLessonStudent4 = new System.Windows.Forms.ComboBox();
-            this.labelLessonStudent4 = new System.Windows.Forms.Label();
             this.cbLessonStudent3 = new System.Windows.Forms.ComboBox();
             this.labelLessonStudent3 = new System.Windows.Forms.Label();
             this.labelLessonComment = new System.Windows.Forms.Label();
             this.tbLEssonComment = new System.Windows.Forms.TextBox();
             this.cbLessonStudent2 = new System.Windows.Forms.ComboBox();
-            this.labelLessonStudent2 = new System.Windows.Forms.Label();
             this.cbLessonStudent1 = new System.Windows.Forms.ComboBox();
             this.cbLessonTeacher2 = new System.Windows.Forms.ComboBox();
             this.cbLessonTeacher1 = new System.Windows.Forms.ComboBox();
             this.cbLessonProg = new System.Windows.Forms.ComboBox();
             this.labelLessonStudent1 = new System.Windows.Forms.Label();
-            this.labelLessonTeacher2 = new System.Windows.Forms.Label();
             this.labelLessonTeacher1 = new System.Windows.Forms.Label();
             this.labelLessonProgram = new System.Windows.Forms.Label();
             this.cbLessonState = new System.Windows.Forms.ComboBox();
@@ -2631,30 +2622,21 @@
             this.panelLesson.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
             this.panelLesson.Controls.Add(this.cbLessonStudent10);
             this.panelLesson.Controls.Add(this.cbLessonStudent9);
-            this.panelLesson.Controls.Add(this.labelLessonStudent10);
-            this.panelLesson.Controls.Add(this.labelLessonStudent9);
             this.panelLesson.Controls.Add(this.cbLessonStudent8);
             this.panelLesson.Controls.Add(this.cbLessonStudent7);
-            this.panelLesson.Controls.Add(this.labelLessonStudent8);
-            this.panelLesson.Controls.Add(this.labelLessonStudent7);
             this.panelLesson.Controls.Add(this.cbLessonStudent6);
             this.panelLesson.Controls.Add(this.cbLessonStudent5);
-            this.panelLesson.Controls.Add(this.labelLessonStudent6);
-            this.panelLesson.Controls.Add(this.labelLessonStudent5);
             this.panelLesson.Controls.Add(this.cbLessonStudent4);
-            this.panelLesson.Controls.Add(this.labelLessonStudent4);
             this.panelLesson.Controls.Add(this.cbLessonStudent3);
             this.panelLesson.Controls.Add(this.labelLessonStudent3);
             this.panelLesson.Controls.Add(this.labelLessonComment);
             this.panelLesson.Controls.Add(this.tbLEssonComment);
             this.panelLesson.Controls.Add(this.cbLessonStudent2);
-            this.panelLesson.Controls.Add(this.labelLessonStudent2);
             this.panelLesson.Controls.Add(this.cbLessonStudent1);
             this.panelLesson.Controls.Add(this.cbLessonTeacher2);
             this.panelLesson.Controls.Add(this.cbLessonTeacher1);
             this.panelLesson.Controls.Add(this.cbLessonProg);
             this.panelLesson.Controls.Add(this.labelLessonStudent1);
-            this.panelLesson.Controls.Add(this.labelLessonTeacher2);
             this.panelLesson.Controls.Add(this.labelLessonTeacher1);
             this.panelLesson.Controls.Add(this.labelLessonProgram);
             this.panelLesson.Controls.Add(this.cbLessonState);
@@ -2677,7 +2659,7 @@
             // 
             this.cbLessonStudent10.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "Student10", true));
             this.cbLessonStudent10.FormattingEnabled = true;
-            this.cbLessonStudent10.Location = new System.Drawing.Point(688, 150);
+            this.cbLessonStudent10.Location = new System.Drawing.Point(688, 87);
             this.cbLessonStudent10.Name = "cbLessonStudent10";
             this.cbLessonStudent10.Size = new System.Drawing.Size(93, 21);
             this.cbLessonStudent10.TabIndex = 18;
@@ -2687,35 +2669,17 @@
             // 
             this.cbLessonStudent9.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "Student9", true));
             this.cbLessonStudent9.FormattingEnabled = true;
-            this.cbLessonStudent9.Location = new System.Drawing.Point(582, 150);
+            this.cbLessonStudent9.Location = new System.Drawing.Point(579, 87);
             this.cbLessonStudent9.Name = "cbLessonStudent9";
-            this.cbLessonStudent9.Size = new System.Drawing.Size(82, 21);
+            this.cbLessonStudent9.Size = new System.Drawing.Size(85, 21);
             this.cbLessonStudent9.TabIndex = 17;
             this.cbLessonStudent9.SelectedIndexChanged += new System.EventHandler(this.cbLessonStudent9_SelectedIndexChanged);
-            // 
-            // labelLessonStudent10
-            // 
-            this.labelLessonStudent10.AutoSize = true;
-            this.labelLessonStudent10.Location = new System.Drawing.Point(685, 129);
-            this.labelLessonStudent10.Name = "labelLessonStudent10";
-            this.labelLessonStudent10.Size = new System.Drawing.Size(62, 13);
-            this.labelLessonStudent10.TabIndex = 41;
-            this.labelLessonStudent10.Text = "Student 10:";
-            // 
-            // labelLessonStudent9
-            // 
-            this.labelLessonStudent9.AutoSize = true;
-            this.labelLessonStudent9.Location = new System.Drawing.Point(579, 133);
-            this.labelLessonStudent9.Name = "labelLessonStudent9";
-            this.labelLessonStudent9.Size = new System.Drawing.Size(59, 13);
-            this.labelLessonStudent9.TabIndex = 40;
-            this.labelLessonStudent9.Text = "Student  9:";
             // 
             // cbLessonStudent8
             // 
             this.cbLessonStudent8.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "Student8", true));
             this.cbLessonStudent8.FormattingEnabled = true;
-            this.cbLessonStudent8.Location = new System.Drawing.Point(688, 105);
+            this.cbLessonStudent8.Location = new System.Drawing.Point(688, 66);
             this.cbLessonStudent8.Name = "cbLessonStudent8";
             this.cbLessonStudent8.Size = new System.Drawing.Size(93, 21);
             this.cbLessonStudent8.TabIndex = 16;
@@ -2725,35 +2689,17 @@
             // 
             this.cbLessonStudent7.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "Student7", true));
             this.cbLessonStudent7.FormattingEnabled = true;
-            this.cbLessonStudent7.Location = new System.Drawing.Point(579, 105);
+            this.cbLessonStudent7.Location = new System.Drawing.Point(579, 66);
             this.cbLessonStudent7.Name = "cbLessonStudent7";
             this.cbLessonStudent7.Size = new System.Drawing.Size(85, 21);
             this.cbLessonStudent7.TabIndex = 15;
             this.cbLessonStudent7.SelectedIndexChanged += new System.EventHandler(this.cbLessonStudent7_SelectedIndexChanged);
             // 
-            // labelLessonStudent8
-            // 
-            this.labelLessonStudent8.AutoSize = true;
-            this.labelLessonStudent8.Location = new System.Drawing.Point(685, 90);
-            this.labelLessonStudent8.Name = "labelLessonStudent8";
-            this.labelLessonStudent8.Size = new System.Drawing.Size(59, 13);
-            this.labelLessonStudent8.TabIndex = 37;
-            this.labelLessonStudent8.Text = "Student  8:";
-            // 
-            // labelLessonStudent7
-            // 
-            this.labelLessonStudent7.AutoSize = true;
-            this.labelLessonStudent7.Location = new System.Drawing.Point(576, 90);
-            this.labelLessonStudent7.Name = "labelLessonStudent7";
-            this.labelLessonStudent7.Size = new System.Drawing.Size(56, 13);
-            this.labelLessonStudent7.TabIndex = 36;
-            this.labelLessonStudent7.Text = "Student 7:";
-            // 
             // cbLessonStudent6
             // 
             this.cbLessonStudent6.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "Student6", true));
             this.cbLessonStudent6.FormattingEnabled = true;
-            this.cbLessonStudent6.Location = new System.Drawing.Point(688, 63);
+            this.cbLessonStudent6.Location = new System.Drawing.Point(688, 45);
             this.cbLessonStudent6.Name = "cbLessonStudent6";
             this.cbLessonStudent6.Size = new System.Drawing.Size(93, 21);
             this.cbLessonStudent6.TabIndex = 14;
@@ -2763,29 +2709,11 @@
             // 
             this.cbLessonStudent5.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "Student5", true));
             this.cbLessonStudent5.FormattingEnabled = true;
-            this.cbLessonStudent5.Location = new System.Drawing.Point(579, 63);
+            this.cbLessonStudent5.Location = new System.Drawing.Point(579, 45);
             this.cbLessonStudent5.Name = "cbLessonStudent5";
             this.cbLessonStudent5.Size = new System.Drawing.Size(85, 21);
             this.cbLessonStudent5.TabIndex = 13;
             this.cbLessonStudent5.SelectedIndexChanged += new System.EventHandler(this.cbLessonStudent5_SelectedIndexChanged);
-            // 
-            // labelLessonStudent6
-            // 
-            this.labelLessonStudent6.AutoSize = true;
-            this.labelLessonStudent6.Location = new System.Drawing.Point(685, 49);
-            this.labelLessonStudent6.Name = "labelLessonStudent6";
-            this.labelLessonStudent6.Size = new System.Drawing.Size(59, 13);
-            this.labelLessonStudent6.TabIndex = 33;
-            this.labelLessonStudent6.Text = "Student  6:";
-            // 
-            // labelLessonStudent5
-            // 
-            this.labelLessonStudent5.AutoSize = true;
-            this.labelLessonStudent5.Location = new System.Drawing.Point(576, 49);
-            this.labelLessonStudent5.Name = "labelLessonStudent5";
-            this.labelLessonStudent5.Size = new System.Drawing.Size(56, 13);
-            this.labelLessonStudent5.TabIndex = 32;
-            this.labelLessonStudent5.Text = "Student 5:";
             // 
             // cbLessonStudent4
             // 
@@ -2796,15 +2724,6 @@
             this.cbLessonStudent4.Size = new System.Drawing.Size(93, 21);
             this.cbLessonStudent4.TabIndex = 12;
             this.cbLessonStudent4.SelectedIndexChanged += new System.EventHandler(this.cbLessonStudent4_SelectedIndexChanged);
-            // 
-            // labelLessonStudent4
-            // 
-            this.labelLessonStudent4.AutoSize = true;
-            this.labelLessonStudent4.Location = new System.Drawing.Point(685, 6);
-            this.labelLessonStudent4.Name = "labelLessonStudent4";
-            this.labelLessonStudent4.Size = new System.Drawing.Size(56, 13);
-            this.labelLessonStudent4.TabIndex = 30;
-            this.labelLessonStudent4.Text = "Student 4:";
             // 
             // cbLessonStudent3
             // 
@@ -2821,9 +2740,9 @@
             this.labelLessonStudent3.AutoSize = true;
             this.labelLessonStudent3.Location = new System.Drawing.Point(576, 6);
             this.labelLessonStudent3.Name = "labelLessonStudent3";
-            this.labelLessonStudent3.Size = new System.Drawing.Size(56, 13);
+            this.labelLessonStudent3.Size = new System.Drawing.Size(77, 13);
             this.labelLessonStudent3.TabIndex = 28;
-            this.labelLessonStudent3.Text = "Student 3:";
+            this.labelLessonStudent3.Text = "More students:";
             // 
             // labelLessonComment
             // 
@@ -2849,20 +2768,11 @@
             // 
             this.cbLessonStudent2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "Student2", true));
             this.cbLessonStudent2.FormattingEnabled = true;
-            this.cbLessonStudent2.Location = new System.Drawing.Point(377, 150);
+            this.cbLessonStudent2.Location = new System.Drawing.Point(373, 126);
             this.cbLessonStudent2.Name = "cbLessonStudent2";
-            this.cbLessonStudent2.Size = new System.Drawing.Size(92, 21);
+            this.cbLessonStudent2.Size = new System.Drawing.Size(96, 21);
             this.cbLessonStudent2.TabIndex = 10;
             this.cbLessonStudent2.SelectedIndexChanged += new System.EventHandler(this.comboBox5_SelectedIndexChanged);
-            // 
-            // labelLessonStudent2
-            // 
-            this.labelLessonStudent2.AutoSize = true;
-            this.labelLessonStudent2.Location = new System.Drawing.Point(303, 150);
-            this.labelLessonStudent2.Name = "labelLessonStudent2";
-            this.labelLessonStudent2.Size = new System.Drawing.Size(56, 13);
-            this.labelLessonStudent2.TabIndex = 24;
-            this.labelLessonStudent2.Text = "Student 2:";
             // 
             // cbLessonStudent1
             // 
@@ -2878,9 +2788,9 @@
             // 
             this.cbLessonTeacher2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "Teacher2", true));
             this.cbLessonTeacher2.FormattingEnabled = true;
-            this.cbLessonTeacher2.Location = new System.Drawing.Point(582, 188);
+            this.cbLessonTeacher2.Location = new System.Drawing.Point(263, 126);
             this.cbLessonTeacher2.Name = "cbLessonTeacher2";
-            this.cbLessonTeacher2.Size = new System.Drawing.Size(92, 21);
+            this.cbLessonTeacher2.Size = new System.Drawing.Size(96, 21);
             this.cbLessonTeacher2.TabIndex = 8;
             this.cbLessonTeacher2.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
             // 
@@ -2909,18 +2819,9 @@
             this.labelLessonStudent1.AutoSize = true;
             this.labelLessonStudent1.Location = new System.Drawing.Point(377, 89);
             this.labelLessonStudent1.Name = "labelLessonStudent1";
-            this.labelLessonStudent1.Size = new System.Drawing.Size(56, 13);
+            this.labelLessonStudent1.Size = new System.Drawing.Size(52, 13);
             this.labelLessonStudent1.TabIndex = 19;
-            this.labelLessonStudent1.Text = "Student 1:";
-            // 
-            // labelLessonTeacher2
-            // 
-            this.labelLessonTeacher2.AutoSize = true;
-            this.labelLessonTeacher2.Location = new System.Drawing.Point(579, 174);
-            this.labelLessonTeacher2.Name = "labelLessonTeacher2";
-            this.labelLessonTeacher2.Size = new System.Drawing.Size(59, 13);
-            this.labelLessonTeacher2.TabIndex = 17;
-            this.labelLessonTeacher2.Text = "Teacher 2:";
+            this.labelLessonStudent1.Text = "Students:";
             // 
             // labelLessonTeacher1
             // 
@@ -3010,18 +2911,18 @@
             this.labelLessonEnd.AutoSize = true;
             this.labelLessonEnd.Location = new System.Drawing.Point(383, 49);
             this.labelLessonEnd.Name = "labelLessonEnd";
-            this.labelLessonEnd.Size = new System.Drawing.Size(29, 13);
+            this.labelLessonEnd.Size = new System.Drawing.Size(23, 13);
             this.labelLessonEnd.TabIndex = 4;
-            this.labelLessonEnd.Text = "End:";
+            this.labelLessonEnd.Text = "To:";
             // 
             // labelLessonStart
             // 
             this.labelLessonStart.AutoSize = true;
             this.labelLessonStart.Location = new System.Drawing.Point(260, 47);
             this.labelLessonStart.Name = "labelLessonStart";
-            this.labelLessonStart.Size = new System.Drawing.Size(32, 13);
+            this.labelLessonStart.Size = new System.Drawing.Size(33, 13);
             this.labelLessonStart.TabIndex = 2;
-            this.labelLessonStart.Text = "Start:";
+            this.labelLessonStart.Text = "From:";
             // 
             // labelLessonDate
             // 
@@ -5320,30 +5221,21 @@
         private System.Windows.Forms.Panel panelLesson;
         private System.Windows.Forms.ComboBox cbLessonStudent10;
         private System.Windows.Forms.ComboBox cbLessonStudent9;
-        private System.Windows.Forms.Label labelLessonStudent10;
-        private System.Windows.Forms.Label labelLessonStudent9;
         private System.Windows.Forms.ComboBox cbLessonStudent8;
         private System.Windows.Forms.ComboBox cbLessonStudent7;
-        private System.Windows.Forms.Label labelLessonStudent8;
-        private System.Windows.Forms.Label labelLessonStudent7;
         private System.Windows.Forms.ComboBox cbLessonStudent6;
         private System.Windows.Forms.ComboBox cbLessonStudent5;
-        private System.Windows.Forms.Label labelLessonStudent6;
-        private System.Windows.Forms.Label labelLessonStudent5;
         private System.Windows.Forms.ComboBox cbLessonStudent4;
-        private System.Windows.Forms.Label labelLessonStudent4;
         private System.Windows.Forms.ComboBox cbLessonStudent3;
         private System.Windows.Forms.Label labelLessonStudent3;
         private System.Windows.Forms.Label labelLessonComment;
         private System.Windows.Forms.TextBox tbLEssonComment;
         private System.Windows.Forms.ComboBox cbLessonStudent2;
-        private System.Windows.Forms.Label labelLessonStudent2;
         private System.Windows.Forms.ComboBox cbLessonStudent1;
         private System.Windows.Forms.ComboBox cbLessonTeacher2;
         private System.Windows.Forms.ComboBox cbLessonTeacher1;
         private System.Windows.Forms.ComboBox cbLessonProg;
         private System.Windows.Forms.Label labelLessonStudent1;
-        private System.Windows.Forms.Label labelLessonTeacher2;
         private System.Windows.Forms.Label labelLessonTeacher1;
         private System.Windows.Forms.Label labelLessonProgram;
         private System.Windows.Forms.ComboBox cbLessonState;

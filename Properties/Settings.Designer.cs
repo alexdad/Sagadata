@@ -52,7 +52,7 @@ namespace RecordKeeper.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("No")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Yes")]
         public string InitialDownload {
             get {
                 return ((string)(this["InitialDownload"]));
