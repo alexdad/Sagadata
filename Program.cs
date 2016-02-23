@@ -57,10 +57,10 @@ namespace RecordKeeper
 
         public Program()
         {
-            Code = "?";
+            Code = "";
             Name = "";
-            Language = "?";
-            Level = "?";
+            Language = "";
+            Level = "";
             Price = "50";
             Summary = "";
         }

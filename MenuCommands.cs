@@ -210,6 +210,7 @@ namespace RecordKeeper
 
         private void SaveAll()
         {
+            this.SuspendLayout();
             Modes was = CurrentMode;
             for (Modes i = (Modes)0; i < Modes.MaxMode; i++)
             {
@@ -218,6 +219,7 @@ namespace RecordKeeper
             }
             Modified = false;
             SetMode(was);
+            this.ResumeLayout();
         }
     }
 }

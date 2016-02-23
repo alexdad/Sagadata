@@ -205,6 +205,7 @@ namespace RecordKeeper
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            ReadAllFiles();
             if (Properties.Settings.Default.InitialDownload.ToLower() != "no")
             {
                 if (!DownloadAll())

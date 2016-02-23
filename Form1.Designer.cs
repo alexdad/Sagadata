@@ -4267,7 +4267,7 @@
             // groupBoxViewCurrent
             // 
             this.groupBoxViewCurrent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBoxViewCurrent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.groupBoxViewCurrent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
             this.groupBoxViewCurrent.Controls.Add(this.lbViewGbMinus);
             this.groupBoxViewCurrent.Controls.Add(this.lbViewGbComment);
             this.groupBoxViewCurrent.Controls.Add(this.lbViewGbTeacher2);
@@ -4454,7 +4454,7 @@
             // 
             // panelViewDetails
             // 
-            this.panelViewDetails.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.panelViewDetails.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
             this.panelViewDetails.Controls.Add(this.lbViewDetailComment);
             this.panelViewDetails.Controls.Add(this.tbViewDetailComment);
             this.panelViewDetails.Controls.Add(this.cbViewDetailProgram);

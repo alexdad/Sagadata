@@ -133,7 +133,7 @@ namespace RecordKeeper
                 {
                     m_AvailabilityCells[i, j] = new Button()
                     {
-                        Text = "?",
+                        Text = "",
                         Width = bW,
                         Height = bH,
                         Location = new Point((j + 1) * bW + marginx,

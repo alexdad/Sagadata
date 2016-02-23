@@ -63,7 +63,7 @@ namespace RecordKeeper
                 }
                 else
                 {
-                    sb.Append("? / ");
+                    sb.Append(" / ");
                 }
                 if (this.Teacher1 != null)
                 {
@@ -75,7 +75,7 @@ namespace RecordKeeper
                 }
                 else
                 {
-                    sb.Append("?");
+                    sb.Append("");
                 }
                 return sb.ToString();
             }

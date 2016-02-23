@@ -127,8 +127,8 @@ namespace RecordKeeper
                         60 + cellWidth * x + cellRoomWidth * RoomIndex(l.Room),
                         40 + cellHight * ys + 5),
                     Parent = panelViewMonth,
-                    BackColor = RoomColor(l.Room),
-                    ForeColor = ComplementColor(RoomColor(l.Room)),
+                    BackColor = LessonStateColor(l.State),
+                    ForeColor = ComplementColor(LessonStateColor(l.State)),
                     BorderStyle = BorderStyle.FixedSingle,
                     TextAlign = ContentAlignment.MiddleCenter,
                     Tag = l
@@ -168,8 +168,8 @@ namespace RecordKeeper
                         60 + cellWidth * x + cellRoomWidth * RoomIndex(l.Room),
                         40 + cellHight * ys + 5),
                     Parent = panelViewWeek,
-                    BackColor = RoomColor(l.Room),
-                    ForeColor = ComplementColor(RoomColor(l.Room)),
+                    BackColor = LessonStateColor(l.State),
+                    ForeColor = ComplementColor(LessonStateColor(l.State)),
                     BorderStyle = BorderStyle.FixedSingle,
                     TextAlign = ContentAlignment.MiddleCenter,
                     Tag = l
@@ -372,6 +372,8 @@ namespace RecordKeeper
             lbViewGbDate.Text = l.DateTimeStart.ToShortDateString();
             lbViewGbState.Text = l.State;
             lbViewGbRoom.Text = l.Room;
+            lbViewGbRoom.BackColor = RoomColor(l.Room);
+            lbViewGbRoom.ForeColor = ComplementColor(RoomColor(l.Room));
             lbViewGbProg.Text = l.Program;
             lbViewGbComment.Text = l.Comments;
             lbViewGbStart.Text = l.DateTimeStart.ToShortTimeString();
@@ -437,7 +439,7 @@ namespace RecordKeeper
                 if (r.Name == l.Room)
                 {
                     col = i;
-                    color = r.RoomColor;
+                    color = LessonStateColor(l.State);
                 }
                 i++; 
             }

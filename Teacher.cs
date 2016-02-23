@@ -113,12 +113,12 @@ namespace RecordKeeper
             Email = "";
             FirstName = "";
             LastName = "";
-            Language = "?";
-            Language2 = "?";
+            Language = "";
+            Language2 = "";
             LanguageDetail = "";
             MailingAddress = "";
             Phone = "";
-            Status = "?";
+            Status = "";
             Vacations = "";
             Monday="";
             Tuesday="";

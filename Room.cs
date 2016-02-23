@@ -70,7 +70,7 @@ namespace RecordKeeper
         public Room()
         {
             Capacity = -1;
-            Name = "?";
+            Name = "";
             Rank = -1;
             Tags = "";
         }

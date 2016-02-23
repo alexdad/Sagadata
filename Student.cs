@@ -54,16 +54,16 @@ namespace RecordKeeper
             HomePhone = "";
             Interests = "";
             LastName = "";
-            LearningLanguage = "?";
+            LearningLanguage = "";
             LanguageDetail = "";
-            Level = "?";
+            Level = "";
             MailingAddress = "";
-            NativeLanguage = "?";
-            OtherLanguage = "?";
+            NativeLanguage = "";
+            OtherLanguage = "";
             PossibleSchedule = "";
-            Source = "?";
+            Source = "";
             SourceDetail = "";
-            Status = "?";
+            Status = "";
         }
 
         public override bool Set(string field, string fieldValue)
