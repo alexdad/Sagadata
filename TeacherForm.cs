@@ -147,6 +147,50 @@ namespace RecordKeeper
                     m_AvailabilityCells[i, j].TextChanged +=
                          new System.EventHandler(this.availabilityButton_TextChanged);
                 }
+
+                System.Windows.Forms.ComboBox cbSetAll =
+                    new System.Windows.Forms.ComboBox()
+                    {
+                        Name = "DefaultAvailability",
+                        TabIndex = 1,
+                        FormattingEnabled = true,
+                        Width = bW,
+                        Height = bH,
+                        DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList,
+                        Location = new Point( marginx, marginy),
+                        Parent = this.panelTeachMatrix
+                    };
+
+                cbSetAll.Items.Add("Can");
+                cbSetAll.Items.Add("Maybe");
+                cbSetAll.Items.Add("Cannot");
+                cbSetAll.SelectedIndexChanged += new System.EventHandler(this.cbSetAll_SelectedIndexChanged);
+
+            }
+        }
+
+        private void SetTeacherAvailabilityDefault(string state)
+        {
+            for (int j = 0; j < 7; j++)
+            {
+                for (int i = 0; i < m_enumTimeSlot.Length; i++)
+                {
+                    switch(state)
+                    {
+                        case "Can":
+                            m_AvailabilityCells[i, j].Text = "0";
+                            break;
+                        case "Maybe":
+                            m_AvailabilityCells[i, j].Text = "1";
+                            break;
+                        case "Cannot":
+                            m_AvailabilityCells[i, j].Text = "2";
+                            break;
+                        default:
+                            m_AvailabilityCells[i, j].Text = "0";
+                            break;
+                    }
+                }
             }
         }
 

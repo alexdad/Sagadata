@@ -799,6 +799,12 @@ namespace RecordKeeper
             CurrentType.DoSelection();
         }
 
+        private void cbSetAll_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox cb = sender as ComboBox;
+            if (cb != null)
+                SetTeacherAvailabilityDefault((string)cb.SelectedItem);
+        }
         private void availAcceptButton_Click(object sender, EventArgs e)
         {
             AcceptAvailabilityEdits();
