@@ -129,6 +129,8 @@ namespace RecordKeeper
             else
                 index = 0;
 
+            index = index % maxBackup;
+
             return prefix + index.ToString() + ".csv";
         }
 
