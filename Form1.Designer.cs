@@ -31,6 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGlob));
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.slotsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.weekToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.monthToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.planToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.studentsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -564,10 +568,42 @@
             // 
             // viewToolStripMenuItem
             // 
+            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.slotsToolStripMenuItem,
+            this.dayToolStripMenuItem,
+            this.weekToolStripMenuItem,
+            this.monthToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
             this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.viewToolStripMenuItem.Text = "View";
-            this.viewToolStripMenuItem.Click += new System.EventHandler(this.viewToolStripMenuItem_Click);
+            // 
+            // slotsToolStripMenuItem
+            // 
+            this.slotsToolStripMenuItem.Name = "slotsToolStripMenuItem";
+            this.slotsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.slotsToolStripMenuItem.Text = "Slots";
+            this.slotsToolStripMenuItem.Click += new System.EventHandler(this.slotsToolStripMenuItem_Click);
+            // 
+            // dayToolStripMenuItem
+            // 
+            this.dayToolStripMenuItem.Name = "dayToolStripMenuItem";
+            this.dayToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.dayToolStripMenuItem.Text = "Day";
+            this.dayToolStripMenuItem.Click += new System.EventHandler(this.dayToolStripMenuItem_Click);
+            // 
+            // weekToolStripMenuItem
+            // 
+            this.weekToolStripMenuItem.Name = "weekToolStripMenuItem";
+            this.weekToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.weekToolStripMenuItem.Text = "Week";
+            this.weekToolStripMenuItem.Click += new System.EventHandler(this.weekToolStripMenuItem_Click);
+            // 
+            // monthToolStripMenuItem
+            // 
+            this.monthToolStripMenuItem.Name = "monthToolStripMenuItem";
+            this.monthToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.monthToolStripMenuItem.Text = "Month";
+            this.monthToolStripMenuItem.Click += new System.EventHandler(this.monthToolStripMenuItem_Click);
             // 
             // planToolStripMenuItem
             // 
@@ -695,8 +731,8 @@
             // menuStripGlobalOps
             // 
             this.menuStripGlobalOps.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.viewToolStripMenuItem,
             this.planToolStripMenuItem,
+            this.viewToolStripMenuItem,
             this.editToolStripMenuItem,
             this.payToolStripMenuItem,
             this.advancedToolStripMenuItem,
@@ -5481,6 +5517,10 @@
         private System.Windows.Forms.ToolStripMenuItem roomsToolStripMenuItem;
         private System.Windows.Forms.Button buttonSync;
         private System.Windows.Forms.Panel panelSearchBorder;
+        private System.Windows.Forms.ToolStripMenuItem slotsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem dayToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem weekToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem monthToolStripMenuItem;
     }
 }
 

@@ -50,8 +50,30 @@ namespace RecordKeeper
             ReadAllFiles();
         }
 
-        private void viewToolStripMenuItem_Click(object sender, EventArgs e)
+        private void slotsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            tabControlViewScales.SelectedIndex = (int)TabControlScales.Slots;
+            tabControlOps.SelectedIndex = (int)TabControlOps.View;
+            ShowView();
+        }
+
+        private void dayToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabControlViewScales.SelectedIndex = (int)TabControlScales.Day;
+            tabControlOps.SelectedIndex = (int)TabControlOps.View;
+            ShowView();
+        }
+
+        private void weekToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabControlViewScales.SelectedIndex = (int)TabControlScales.Week;
+            tabControlOps.SelectedIndex = (int)TabControlOps.View;
+            ShowView();
+        }
+
+        private void monthToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tabControlViewScales.SelectedIndex = (int)TabControlScales.Month;
             tabControlOps.SelectedIndex = (int)TabControlOps.View;
             ShowView();
         }
