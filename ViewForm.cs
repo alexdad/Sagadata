@@ -339,15 +339,19 @@ namespace RecordKeeper
                 CountString(l.Student10, students);
             }
             cbViewSelectProgram.Items.Clear();
+            cbViewSelectProgram.Items.Add("");
             cbViewSelectProgram.Items.AddRange(programs.Keys.ToArray());
 
             cbViewSelectRoom.Items.Clear();
+            cbViewSelectRoom.Items.Add("");
             cbViewSelectRoom.Items.AddRange(rooms.Keys.ToArray());
 
             cbViewSelectStudent.Items.Clear();
+            cbViewSelectStudent.Items.Add("");
             cbViewSelectStudent.Items.AddRange(students.Keys.ToArray());
 
             cbViewSelectTeacher.Items.Clear();
+            cbViewSelectTeacher.Items.Add("");
             cbViewSelectTeacher.Items.AddRange(teachers.Keys.ToArray());
         }
 
