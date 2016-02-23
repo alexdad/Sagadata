@@ -35,7 +35,11 @@
             this.dayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.weekToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.monthToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.scheduleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.planToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.publishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.studentsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.teachersToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -580,37 +584,69 @@
             // slotsToolStripMenuItem
             // 
             this.slotsToolStripMenuItem.Name = "slotsToolStripMenuItem";
-            this.slotsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.slotsToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.slotsToolStripMenuItem.Text = "Slots";
             this.slotsToolStripMenuItem.Click += new System.EventHandler(this.slotsToolStripMenuItem_Click);
             // 
             // dayToolStripMenuItem
             // 
             this.dayToolStripMenuItem.Name = "dayToolStripMenuItem";
-            this.dayToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.dayToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.dayToolStripMenuItem.Text = "Day";
             this.dayToolStripMenuItem.Click += new System.EventHandler(this.dayToolStripMenuItem_Click);
             // 
             // weekToolStripMenuItem
             // 
             this.weekToolStripMenuItem.Name = "weekToolStripMenuItem";
-            this.weekToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.weekToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.weekToolStripMenuItem.Text = "Week";
             this.weekToolStripMenuItem.Click += new System.EventHandler(this.weekToolStripMenuItem_Click);
             // 
             // monthToolStripMenuItem
             // 
             this.monthToolStripMenuItem.Name = "monthToolStripMenuItem";
-            this.monthToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.monthToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
             this.monthToolStripMenuItem.Text = "Month";
             this.monthToolStripMenuItem.Click += new System.EventHandler(this.monthToolStripMenuItem_Click);
+            // 
+            // scheduleToolStripMenuItem
+            // 
+            this.scheduleToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.planToolStripMenuItem,
+            this.showToolStripMenuItem,
+            this.checkToolStripMenuItem,
+            this.publishToolStripMenuItem});
+            this.scheduleToolStripMenuItem.Name = "scheduleToolStripMenuItem";
+            this.scheduleToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.scheduleToolStripMenuItem.Text = "Schedule";
             // 
             // planToolStripMenuItem
             // 
             this.planToolStripMenuItem.Name = "planToolStripMenuItem";
-            this.planToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
+            this.planToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
             this.planToolStripMenuItem.Text = "Plan";
             this.planToolStripMenuItem.Click += new System.EventHandler(this.planToolStripMenuItem_Click);
+            // 
+            // showToolStripMenuItem
+            // 
+            this.showToolStripMenuItem.Name = "showToolStripMenuItem";
+            this.showToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.showToolStripMenuItem.Text = "Show";
+            this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
+            // 
+            // checkToolStripMenuItem
+            // 
+            this.checkToolStripMenuItem.Name = "checkToolStripMenuItem";
+            this.checkToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.checkToolStripMenuItem.Text = "Check";
+            this.checkToolStripMenuItem.Click += new System.EventHandler(this.checkToolStripMenuItem_Click);
+            // 
+            // publishToolStripMenuItem
+            // 
+            this.publishToolStripMenuItem.Name = "publishToolStripMenuItem";
+            this.publishToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.publishToolStripMenuItem.Text = "Publish";
+            this.publishToolStripMenuItem.Click += new System.EventHandler(this.publishToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -627,35 +663,35 @@
             // studentsToolStripMenuItem1
             // 
             this.studentsToolStripMenuItem1.Name = "studentsToolStripMenuItem1";
-            this.studentsToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
+            this.studentsToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.studentsToolStripMenuItem1.Text = "Students";
             this.studentsToolStripMenuItem1.Click += new System.EventHandler(this.studentsToolStripMenuItem1_Click);
             // 
             // teachersToolStripMenuItem1
             // 
             this.teachersToolStripMenuItem1.Name = "teachersToolStripMenuItem1";
-            this.teachersToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
+            this.teachersToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.teachersToolStripMenuItem1.Text = "Teachers";
             this.teachersToolStripMenuItem1.Click += new System.EventHandler(this.teachersToolStripMenuItem1_Click);
             // 
             // lessonsToolStripMenuItem
             // 
             this.lessonsToolStripMenuItem.Name = "lessonsToolStripMenuItem";
-            this.lessonsToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.lessonsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.lessonsToolStripMenuItem.Text = "Lessons";
             this.lessonsToolStripMenuItem.Click += new System.EventHandler(this.lessonsToolStripMenuItem_Click);
             // 
             // programsToolStripMenuItem
             // 
             this.programsToolStripMenuItem.Name = "programsToolStripMenuItem";
-            this.programsToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.programsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.programsToolStripMenuItem.Text = "Programs";
             this.programsToolStripMenuItem.Click += new System.EventHandler(this.programsToolStripMenuItem_Click);
             // 
             // roomsToolStripMenuItem
             // 
             this.roomsToolStripMenuItem.Name = "roomsToolStripMenuItem";
-            this.roomsToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.roomsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.roomsToolStripMenuItem.Text = "Rooms";
             this.roomsToolStripMenuItem.Click += new System.EventHandler(this.roomsToolStripMenuItem_Click);
             // 
@@ -731,7 +767,7 @@
             // menuStripGlobalOps
             // 
             this.menuStripGlobalOps.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.planToolStripMenuItem,
+            this.scheduleToolStripMenuItem,
             this.viewToolStripMenuItem,
             this.editToolStripMenuItem,
             this.payToolStripMenuItem,
@@ -2220,6 +2256,7 @@
             // cbTeachLanguage2
             // 
             this.cbTeachLanguage2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.teacherList, "Language2", true));
+            this.cbTeachLanguage2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTeachLanguage2.FormattingEnabled = true;
             this.cbTeachLanguage2.Location = new System.Drawing.Point(144, 92);
             this.cbTeachLanguage2.Name = "cbTeachLanguage2";
@@ -2230,6 +2267,7 @@
             // cbTeachLanguage
             // 
             this.cbTeachLanguage.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.teacherList, "Language", true));
+            this.cbTeachLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTeachLanguage.FormattingEnabled = true;
             this.cbTeachLanguage.Location = new System.Drawing.Point(7, 91);
             this.cbTeachLanguage.Name = "cbTeachLanguage";
@@ -2267,6 +2305,7 @@
             // cbTeachStatus
             // 
             this.cbTeachStatus.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.teacherList, "Status", true));
+            this.cbTeachStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTeachStatus.FormattingEnabled = true;
             this.cbTeachStatus.Location = new System.Drawing.Point(7, 52);
             this.cbTeachStatus.Name = "cbTeachStatus";
@@ -2497,6 +2536,7 @@
             // cbProgLevel
             // 
             this.cbProgLevel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programList, "Level", true));
+            this.cbProgLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbProgLevel.FormattingEnabled = true;
             this.cbProgLevel.Location = new System.Drawing.Point(74, 130);
             this.cbProgLevel.Name = "cbProgLevel";
@@ -2763,6 +2803,7 @@
             // cbLessonStudent10
             // 
             this.cbLessonStudent10.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "Student10", true));
+            this.cbLessonStudent10.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLessonStudent10.FormattingEnabled = true;
             this.cbLessonStudent10.Location = new System.Drawing.Point(688, 87);
             this.cbLessonStudent10.Name = "cbLessonStudent10";
@@ -2773,6 +2814,7 @@
             // cbLessonStudent9
             // 
             this.cbLessonStudent9.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "Student9", true));
+            this.cbLessonStudent9.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLessonStudent9.FormattingEnabled = true;
             this.cbLessonStudent9.Location = new System.Drawing.Point(579, 87);
             this.cbLessonStudent9.Name = "cbLessonStudent9";
@@ -2783,6 +2825,7 @@
             // cbLessonStudent8
             // 
             this.cbLessonStudent8.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "Student8", true));
+            this.cbLessonStudent8.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLessonStudent8.FormattingEnabled = true;
             this.cbLessonStudent8.Location = new System.Drawing.Point(688, 66);
             this.cbLessonStudent8.Name = "cbLessonStudent8";
@@ -2793,6 +2836,7 @@
             // cbLessonStudent7
             // 
             this.cbLessonStudent7.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "Student7", true));
+            this.cbLessonStudent7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLessonStudent7.FormattingEnabled = true;
             this.cbLessonStudent7.Location = new System.Drawing.Point(579, 66);
             this.cbLessonStudent7.Name = "cbLessonStudent7";
@@ -2803,6 +2847,7 @@
             // cbLessonStudent6
             // 
             this.cbLessonStudent6.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "Student6", true));
+            this.cbLessonStudent6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLessonStudent6.FormattingEnabled = true;
             this.cbLessonStudent6.Location = new System.Drawing.Point(688, 45);
             this.cbLessonStudent6.Name = "cbLessonStudent6";
@@ -2813,6 +2858,7 @@
             // cbLessonStudent5
             // 
             this.cbLessonStudent5.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "Student5", true));
+            this.cbLessonStudent5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLessonStudent5.FormattingEnabled = true;
             this.cbLessonStudent5.Location = new System.Drawing.Point(579, 45);
             this.cbLessonStudent5.Name = "cbLessonStudent5";
@@ -2823,6 +2869,7 @@
             // cbLessonStudent4
             // 
             this.cbLessonStudent4.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "Student4", true));
+            this.cbLessonStudent4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLessonStudent4.FormattingEnabled = true;
             this.cbLessonStudent4.Location = new System.Drawing.Point(688, 24);
             this.cbLessonStudent4.Name = "cbLessonStudent4";
@@ -2833,6 +2880,7 @@
             // cbLessonStudent3
             // 
             this.cbLessonStudent3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "Student3", true));
+            this.cbLessonStudent3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLessonStudent3.FormattingEnabled = true;
             this.cbLessonStudent3.Location = new System.Drawing.Point(579, 24);
             this.cbLessonStudent3.Name = "cbLessonStudent3";
@@ -2872,6 +2920,7 @@
             // cbLessonStudent2
             // 
             this.cbLessonStudent2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "Student2", true));
+            this.cbLessonStudent2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLessonStudent2.FormattingEnabled = true;
             this.cbLessonStudent2.Location = new System.Drawing.Point(373, 126);
             this.cbLessonStudent2.Name = "cbLessonStudent2";
@@ -2882,6 +2931,7 @@
             // cbLessonStudent1
             // 
             this.cbLessonStudent1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "Student1", true));
+            this.cbLessonStudent1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLessonStudent1.FormattingEnabled = true;
             this.cbLessonStudent1.Location = new System.Drawing.Point(373, 107);
             this.cbLessonStudent1.Name = "cbLessonStudent1";
@@ -2892,6 +2942,7 @@
             // cbLessonTeacher2
             // 
             this.cbLessonTeacher2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "Teacher2", true));
+            this.cbLessonTeacher2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLessonTeacher2.FormattingEnabled = true;
             this.cbLessonTeacher2.Location = new System.Drawing.Point(263, 126);
             this.cbLessonTeacher2.Name = "cbLessonTeacher2";
@@ -2902,6 +2953,7 @@
             // cbLessonTeacher1
             // 
             this.cbLessonTeacher1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "Teacher1", true));
+            this.cbLessonTeacher1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLessonTeacher1.FormattingEnabled = true;
             this.cbLessonTeacher1.Location = new System.Drawing.Point(263, 107);
             this.cbLessonTeacher1.Name = "cbLessonTeacher1";
@@ -2912,6 +2964,7 @@
             // cbLessonProg
             // 
             this.cbLessonProg.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "Program", true));
+            this.cbLessonProg.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLessonProg.FormattingEnabled = true;
             this.cbLessonProg.Location = new System.Drawing.Point(263, 23);
             this.cbLessonProg.Name = "cbLessonProg";
@@ -2949,6 +3002,7 @@
             // cbLessonState
             // 
             this.cbLessonState.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "State", true));
+            this.cbLessonState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLessonState.FormattingEnabled = true;
             this.cbLessonState.Location = new System.Drawing.Point(145, 22);
             this.cbLessonState.Name = "cbLessonState";
@@ -2968,6 +3022,7 @@
             // cbLessonEnd
             // 
             this.cbLessonEnd.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "End", true));
+            this.cbLessonEnd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLessonEnd.FormattingEnabled = true;
             this.cbLessonEnd.Location = new System.Drawing.Point(377, 65);
             this.cbLessonEnd.Name = "cbLessonEnd";
@@ -2978,6 +3033,7 @@
             // cbLessonStart
             // 
             this.cbLessonStart.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "Start", true));
+            this.cbLessonStart.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLessonStart.FormattingEnabled = true;
             this.cbLessonStart.Location = new System.Drawing.Point(263, 63);
             this.cbLessonStart.Name = "cbLessonStart";
@@ -2996,6 +3052,7 @@
             // cbLessonRoom
             // 
             this.cbLessonRoom.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "Room", true));
+            this.cbLessonRoom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLessonRoom.FormattingEnabled = true;
             this.cbLessonRoom.Location = new System.Drawing.Point(377, 24);
             this.cbLessonRoom.Name = "cbLessonRoom";
@@ -3377,6 +3434,7 @@
             // 
             // cbSearchTeachLang1
             // 
+            this.cbSearchTeachLang1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSearchTeachLang1.FormattingEnabled = true;
             this.cbSearchTeachLang1.Location = new System.Drawing.Point(30, 64);
             this.cbSearchTeachLang1.Name = "cbSearchTeachLang1";
@@ -3386,6 +3444,7 @@
             // 
             // cbSearchTeachStatus
             // 
+            this.cbSearchTeachStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSearchTeachStatus.FormattingEnabled = true;
             this.cbSearchTeachStatus.Location = new System.Drawing.Point(30, 24);
             this.cbSearchTeachStatus.Name = "cbSearchTeachStatus";
@@ -3454,6 +3513,7 @@
             // 
             // cbSearchProgLevel
             // 
+            this.cbSearchProgLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSearchProgLevel.FormattingEnabled = true;
             this.cbSearchProgLevel.Location = new System.Drawing.Point(54, 63);
             this.cbSearchProgLevel.Name = "cbSearchProgLevel";
@@ -3463,6 +3523,7 @@
             // 
             // cbSearchProgLanguage
             // 
+            this.cbSearchProgLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSearchProgLanguage.FormattingEnabled = true;
             this.cbSearchProgLanguage.Location = new System.Drawing.Point(54, 23);
             this.cbSearchProgLanguage.Name = "cbSearchProgLanguage";
@@ -3546,6 +3607,7 @@
             // 
             // cbSearchLessonProgram
             // 
+            this.cbSearchLessonProgram.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSearchLessonProgram.FormattingEnabled = true;
             this.cbSearchLessonProgram.Location = new System.Drawing.Point(68, 75);
             this.cbSearchLessonProgram.Name = "cbSearchLessonProgram";
@@ -3555,6 +3617,7 @@
             // 
             // cbSearchLessonTeacher
             // 
+            this.cbSearchLessonTeacher.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSearchLessonTeacher.FormattingEnabled = true;
             this.cbSearchLessonTeacher.Location = new System.Drawing.Point(68, 39);
             this.cbSearchLessonTeacher.Name = "cbSearchLessonTeacher";
@@ -3564,6 +3627,7 @@
             // 
             // cbSearchLessonStudent
             // 
+            this.cbSearchLessonStudent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSearchLessonStudent.FormattingEnabled = true;
             this.cbSearchLessonStudent.Location = new System.Drawing.Point(68, 6);
             this.cbSearchLessonStudent.Name = "cbSearchLessonStudent";
@@ -3582,6 +3646,7 @@
             // 
             // cbSearchLessonRoom
             // 
+            this.cbSearchLessonRoom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbSearchLessonRoom.FormattingEnabled = true;
             this.cbSearchLessonRoom.Location = new System.Drawing.Point(68, 113);
             this.cbSearchLessonRoom.Name = "cbSearchLessonRoom";
@@ -3867,6 +3932,7 @@
             // 
             // cbPlanProgram
             // 
+            this.cbPlanProgram.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPlanProgram.FormattingEnabled = true;
             this.cbPlanProgram.Location = new System.Drawing.Point(126, 145);
             this.cbPlanProgram.Name = "cbPlanProgram";
@@ -3885,6 +3951,7 @@
             // cbPlanRoom
             // 
             this.cbPlanRoom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(127)))), ((int)(((byte)(39)))));
+            this.cbPlanRoom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPlanRoom.FormattingEnabled = true;
             this.cbPlanRoom.Location = new System.Drawing.Point(352, 204);
             this.cbPlanRoom.Name = "cbPlanRoom";
@@ -3992,6 +4059,7 @@
             // 
             // cbPlanDuration
             // 
+            this.cbPlanDuration.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPlanDuration.FormattingEnabled = true;
             this.cbPlanDuration.Location = new System.Drawing.Point(126, 112);
             this.cbPlanDuration.Name = "cbPlanDuration";
@@ -4018,6 +4086,7 @@
             // 
             // cbPlanTeacher
             // 
+            this.cbPlanTeacher.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPlanTeacher.FormattingEnabled = true;
             this.cbPlanTeacher.Location = new System.Drawing.Point(352, 8);
             this.cbPlanTeacher.Name = "cbPlanTeacher";
@@ -4064,6 +4133,7 @@
             // 
             // cbPlanLanguage
             // 
+            this.cbPlanLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPlanLanguage.FormattingEnabled = true;
             this.cbPlanLanguage.Location = new System.Drawing.Point(126, 76);
             this.cbPlanLanguage.Name = "cbPlanLanguage";
@@ -4073,6 +4143,7 @@
             // 
             // cbPlanStud4
             // 
+            this.cbPlanStud4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPlanStud4.FormattingEnabled = true;
             this.cbPlanStud4.Location = new System.Drawing.Point(352, 103);
             this.cbPlanStud4.Name = "cbPlanStud4";
@@ -4091,6 +4162,7 @@
             // 
             // cbPlanStud3
             // 
+            this.cbPlanStud3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPlanStud3.FormattingEnabled = true;
             this.cbPlanStud3.Location = new System.Drawing.Point(352, 82);
             this.cbPlanStud3.Name = "cbPlanStud3";
@@ -4100,6 +4172,7 @@
             // 
             // cbPlanStud2
             // 
+            this.cbPlanStud2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPlanStud2.FormattingEnabled = true;
             this.cbPlanStud2.Location = new System.Drawing.Point(352, 61);
             this.cbPlanStud2.Name = "cbPlanStud2";
@@ -4109,6 +4182,7 @@
             // 
             // cbPlanStud1
             // 
+            this.cbPlanStud1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPlanStud1.FormattingEnabled = true;
             this.cbPlanStud1.Location = new System.Drawing.Point(352, 40);
             this.cbPlanStud1.Name = "cbPlanStud1";
@@ -4186,6 +4260,7 @@
             // cbViewSelectProgram
             // 
             this.cbViewSelectProgram.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbViewSelectProgram.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbViewSelectProgram.FormattingEnabled = true;
             this.cbViewSelectProgram.Location = new System.Drawing.Point(111, 142);
             this.cbViewSelectProgram.Name = "cbViewSelectProgram";
@@ -4206,6 +4281,7 @@
             // cbViewSelectState
             // 
             this.cbViewSelectState.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbViewSelectState.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbViewSelectState.FormattingEnabled = true;
             this.cbViewSelectState.Location = new System.Drawing.Point(111, 40);
             this.cbViewSelectState.Name = "cbViewSelectState";
@@ -4227,6 +4303,7 @@
             // cbViewSelectRoom
             // 
             this.cbViewSelectRoom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbViewSelectRoom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbViewSelectRoom.FormattingEnabled = true;
             this.cbViewSelectRoom.Location = new System.Drawing.Point(111, 115);
             this.cbViewSelectRoom.Name = "cbViewSelectRoom";
@@ -4237,6 +4314,7 @@
             // cbViewSelectTeacher
             // 
             this.cbViewSelectTeacher.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbViewSelectTeacher.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbViewSelectTeacher.FormattingEnabled = true;
             this.cbViewSelectTeacher.Location = new System.Drawing.Point(111, 90);
             this.cbViewSelectTeacher.Name = "cbViewSelectTeacher";
@@ -4247,6 +4325,7 @@
             // cbViewSelectStudent
             // 
             this.cbViewSelectStudent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbViewSelectStudent.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbViewSelectStudent.FormattingEnabled = true;
             this.cbViewSelectStudent.Location = new System.Drawing.Point(111, 65);
             this.cbViewSelectStudent.Name = "cbViewSelectStudent";
@@ -4535,6 +4614,7 @@
             // 
             // cbViewDetailProgram
             // 
+            this.cbViewDetailProgram.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbViewDetailProgram.FormattingEnabled = true;
             this.cbViewDetailProgram.Location = new System.Drawing.Point(759, 64);
             this.cbViewDetailProgram.Name = "cbViewDetailProgram";
@@ -4556,6 +4636,7 @@
             // 
             // cbViewDetailRoom
             // 
+            this.cbViewDetailRoom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbViewDetailRoom.FormattingEnabled = true;
             this.cbViewDetailRoom.Location = new System.Drawing.Point(636, 64);
             this.cbViewDetailRoom.Name = "cbViewDetailRoom";
@@ -5425,7 +5506,7 @@
         private System.Windows.Forms.Label labelGlobCount;
         private HiddenTabControl tabControlOps;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem planToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem scheduleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem payToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem studentsToolStripMenuItem;
@@ -5521,6 +5602,10 @@
         private System.Windows.Forms.ToolStripMenuItem dayToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem weekToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem monthToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem planToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem checkToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem publishToolStripMenuItem;
     }
 }
 

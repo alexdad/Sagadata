@@ -117,6 +117,21 @@ namespace RecordKeeper
             InitializePlan(false);
             tabControlOps.SelectedIndex = (int)TabControlOps.Plan;
         }
+        private void showToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            dayToolStripMenuItem_Click(sender, e);
+        }
+
+        private void checkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // TODO - future - check the schedule for errors
+        }
+
+        private void publishToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // TODO- future - publish schedule to the web
+        }
+
         private void studentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             tabControlOps.SelectedIndex = (int)TabControlOps.PayStud;

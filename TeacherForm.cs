@@ -206,23 +206,21 @@ namespace RecordKeeper
         private void availLeftButton_Click(object sender, EventArgs e)
         {
             Button b = sender as Button;
-            for (int i = 0; i < 7; i++)
-            {
-                availabilityButton_Click(
-                    (object)m_AvailabilityCells[(int)b.Tag, i],
-                    null);
-            }
+            int slot = (int)b.Tag;
+            availabilityButton_Click((object)m_AvailabilityCells[slot, 0], null);
+            for (int i = 1; i < 7; i++)
+                m_AvailabilityCells[slot, i].Text = 
+                    m_AvailabilityCells[slot, 0].Text;
         }
 
         private void availTopButton_Click(object sender, EventArgs e)
         {
             Button b = sender as Button;
+            int day = (int)b.Tag;
+            availabilityButton_Click((object)m_AvailabilityCells[0, day], null);
             for (int j = 0; j < m_enumTimeSlot.Length; j++)
-            {
-                availabilityButton_Click(
-                    (object)m_AvailabilityCells[j, (int)b.Tag],
-                    null);
-            }
+                m_AvailabilityCells[j, day].Text =
+                    m_AvailabilityCells[0, day].Text;
         }
 
         void FillAvailabilityMatrix()
