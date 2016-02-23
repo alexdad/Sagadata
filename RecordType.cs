@@ -323,6 +323,8 @@ namespace RecordKeeper
             {
                 if (!IsRecordDeleted(s))
                     dict.Add(s.Key, s);
+                else
+                    m_glob.Modified = true;
             }
 
             foreach (T t in target)
@@ -344,6 +346,10 @@ namespace RecordKeeper
                                                t.Changed));
                         }
                     }
+                }
+                else
+                {
+                    m_glob.Modified = true;
                 }
             }
 

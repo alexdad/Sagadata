@@ -30,10 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormGlob));
-            this.syncToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.planToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.studentsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.teachersToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.lessonsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.programsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.roomsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.payToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.studentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.teachersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,12 +46,12 @@
             this.downloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reopenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uploadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemGlobSave = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemGlobExit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripGlobalOps = new System.Windows.Forms.MenuStrip();
             this.labelGlobLastDownload = new System.Windows.Forms.Label();
             this.labelGlobLastUpload = new System.Windows.Forms.Label();
             this.panelGlobIndicators = new System.Windows.Forms.Panel();
+            this.buttonSync = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.ctxMenuLesson = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuItemViewLessonPlanned = new System.Windows.Forms.ToolStripMenuItem();
@@ -556,13 +560,6 @@
             this.tabPage8.SuspendLayout();
             this.SuspendLayout();
             // 
-            // syncToolStripMenuItem
-            // 
-            this.syncToolStripMenuItem.Name = "syncToolStripMenuItem";
-            this.syncToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.syncToolStripMenuItem.Text = "Sync";
-            this.syncToolStripMenuItem.Click += new System.EventHandler(this.syncToolStripMenuItem_Click);
-            // 
             // viewToolStripMenuItem
             // 
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
@@ -579,10 +576,50 @@
             // 
             // editToolStripMenuItem
             // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.studentsToolStripMenuItem1,
+            this.teachersToolStripMenuItem1,
+            this.lessonsToolStripMenuItem,
+            this.programsToolStripMenuItem,
+            this.roomsToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.editToolStripMenuItem.Text = "Edit";
-            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // studentsToolStripMenuItem1
+            // 
+            this.studentsToolStripMenuItem1.Name = "studentsToolStripMenuItem1";
+            this.studentsToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
+            this.studentsToolStripMenuItem1.Text = "Students";
+            this.studentsToolStripMenuItem1.Click += new System.EventHandler(this.studentsToolStripMenuItem1_Click);
+            // 
+            // teachersToolStripMenuItem1
+            // 
+            this.teachersToolStripMenuItem1.Name = "teachersToolStripMenuItem1";
+            this.teachersToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
+            this.teachersToolStripMenuItem1.Text = "Teachers";
+            this.teachersToolStripMenuItem1.Click += new System.EventHandler(this.teachersToolStripMenuItem1_Click);
+            // 
+            // lessonsToolStripMenuItem
+            // 
+            this.lessonsToolStripMenuItem.Name = "lessonsToolStripMenuItem";
+            this.lessonsToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.lessonsToolStripMenuItem.Text = "Lessons";
+            this.lessonsToolStripMenuItem.Click += new System.EventHandler(this.lessonsToolStripMenuItem_Click);
+            // 
+            // programsToolStripMenuItem
+            // 
+            this.programsToolStripMenuItem.Name = "programsToolStripMenuItem";
+            this.programsToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.programsToolStripMenuItem.Text = "Programs";
+            this.programsToolStripMenuItem.Click += new System.EventHandler(this.programsToolStripMenuItem_Click);
+            // 
+            // roomsToolStripMenuItem
+            // 
+            this.roomsToolStripMenuItem.Name = "roomsToolStripMenuItem";
+            this.roomsToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.roomsToolStripMenuItem.Text = "Rooms";
+            this.roomsToolStripMenuItem.Click += new System.EventHandler(this.roomsToolStripMenuItem_Click);
             // 
             // payToolStripMenuItem
             // 
@@ -628,29 +665,23 @@
             // downloadToolStripMenuItem
             // 
             this.downloadToolStripMenuItem.Name = "downloadToolStripMenuItem";
-            this.downloadToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.downloadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.downloadToolStripMenuItem.Text = "Download";
             this.downloadToolStripMenuItem.Click += new System.EventHandler(this.downloadToolStripMenuItem_Click);
             // 
             // reopenToolStripMenuItem
             // 
             this.reopenToolStripMenuItem.Name = "reopenToolStripMenuItem";
-            this.reopenToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.reopenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.reopenToolStripMenuItem.Text = "Reopen";
+            this.reopenToolStripMenuItem.Click += new System.EventHandler(this.reopenToolStripMenuItem_Click);
             // 
             // uploadToolStripMenuItem
             // 
             this.uploadToolStripMenuItem.Name = "uploadToolStripMenuItem";
-            this.uploadToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.uploadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.uploadToolStripMenuItem.Text = "Upload";
             this.uploadToolStripMenuItem.Click += new System.EventHandler(this.uploadToolStripMenuItem_Click);
-            // 
-            // menuItemGlobSave
-            // 
-            this.menuItemGlobSave.Name = "menuItemGlobSave";
-            this.menuItemGlobSave.Size = new System.Drawing.Size(43, 20);
-            this.menuItemGlobSave.Text = "Save";
-            this.menuItemGlobSave.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // menuItemGlobExit
             // 
@@ -662,13 +693,11 @@
             // menuStripGlobalOps
             // 
             this.menuStripGlobalOps.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.syncToolStripMenuItem,
             this.viewToolStripMenuItem,
             this.planToolStripMenuItem,
             this.editToolStripMenuItem,
             this.payToolStripMenuItem,
             this.advancedToolStripMenuItem,
-            this.menuItemGlobSave,
             this.menuItemGlobExit});
             this.menuStripGlobalOps.Location = new System.Drawing.Point(0, 0);
             this.menuStripGlobalOps.Name = "menuStripGlobalOps";
@@ -698,6 +727,7 @@
             // 
             this.panelGlobIndicators.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelGlobIndicators.Controls.Add(this.buttonSync);
             this.panelGlobIndicators.Controls.Add(this.buttonSave);
             this.panelGlobIndicators.Controls.Add(this.labelGlobLastUpload);
             this.panelGlobIndicators.Controls.Add(this.labelGlobLastDownload);
@@ -706,12 +736,24 @@
             this.panelGlobIndicators.Size = new System.Drawing.Size(871, 24);
             this.panelGlobIndicators.TabIndex = 27;
             // 
+            // buttonSync
+            // 
+            this.buttonSync.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(127)))), ((int)(((byte)(39)))));
+            this.buttonSync.Location = new System.Drawing.Point(79, 1);
+            this.buttonSync.Name = "buttonSync";
+            this.buttonSync.Size = new System.Drawing.Size(55, 23);
+            this.buttonSync.TabIndex = 25;
+            this.buttonSync.Text = "Sync";
+            this.buttonSync.UseVisualStyleBackColor = false;
+            this.buttonSync.Visible = false;
+            this.buttonSync.Click += new System.EventHandler(this.buttonSync_Click);
+            // 
             // buttonSave
             // 
             this.buttonSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(127)))), ((int)(((byte)(39)))));
             this.buttonSave.Location = new System.Drawing.Point(3, 1);
             this.buttonSave.Name = "buttonSave";
-            this.buttonSave.Size = new System.Drawing.Size(75, 23);
+            this.buttonSave.Size = new System.Drawing.Size(63, 23);
             this.buttonSave.TabIndex = 24;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = false;
@@ -5335,7 +5377,6 @@
         private System.Windows.Forms.Label labelGlobSagalingua;
         private System.Windows.Forms.Label labelGlobCount;
         private HiddenTabControl tabControlOps;
-        private System.Windows.Forms.ToolStripMenuItem syncToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem planToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
@@ -5347,7 +5388,6 @@
         private System.Windows.Forms.ToolStripMenuItem downloadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reopenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem uploadToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem menuItemGlobSave;
         private System.Windows.Forms.ToolStripMenuItem menuItemGlobExit;
         private System.Windows.Forms.MenuStrip menuStripGlobalOps;
         private System.Windows.Forms.Label labelGlobLastDownload;
@@ -5423,6 +5463,12 @@
         private System.Windows.Forms.ComboBox cbPlanProgram;
         private System.Windows.Forms.Label lbPlanProgram;
         private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.ToolStripMenuItem studentsToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem teachersToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem lessonsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem programsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem roomsToolStripMenuItem;
+        private System.Windows.Forms.Button buttonSync;
     }
 }
 

@@ -35,6 +35,7 @@ namespace RecordKeeper
         string m_recordKeeperDir;       // place for local file subdirs
 
         bool m_modified;
+        bool m_synced;
 
         public bool Modified
         {
@@ -46,6 +47,21 @@ namespace RecordKeeper
             {
                 m_modified = value;
                 buttonSave.Visible = m_modified;
+                if (value)
+                    Synced = false;
+            }
+        }
+
+        public bool Synced
+        {
+            get
+            {
+                return m_synced;
+            }
+            set
+            {
+                m_synced = value;
+                buttonSync.Visible = !m_synced;
             }
         }
 
@@ -191,8 +207,11 @@ namespace RecordKeeper
         {
             if (Properties.Settings.Default.InitialDownload.ToLower() != "no")
             {
-                if (!DownloadAllFiles())
+                if (!DownloadAll())
+                {
                     ReadAllFiles();
+                    Synced = false;
+                }
             }
             else
                 ReadAllFiles();
@@ -467,6 +486,12 @@ namespace RecordKeeper
         {
             CommandSave();
         }
+
+        private void buttonSync_Click(object sender, EventArgs e)
+        {
+            CommandSync();
+        }
+
         private void buttonNext_Click(object sender, EventArgs e)
         {
             if (!CheckSafety())
@@ -1288,5 +1313,6 @@ namespace RecordKeeper
             }
         }
         #endregion
+
     }
 }
