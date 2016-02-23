@@ -373,8 +373,8 @@
             this.lbPlanTeacher = new System.Windows.Forms.Label();
             this.lbSchedPlanName = new System.Windows.Forms.Label();
             this.lbPlanWeek = new System.Windows.Forms.Label();
-            this.cbPlanLanguage = new System.Windows.Forms.ComboBox();
             this.lbPlanLanguage = new System.Windows.Forms.Label();
+            this.cbPlanLanguage = new System.Windows.Forms.ComboBox();
             this.cbPlanStud4 = new System.Windows.Forms.ComboBox();
             this.lbPlanStud1 = new System.Windows.Forms.Label();
             this.cbPlanStud3 = new System.Windows.Forms.ComboBox();
@@ -665,21 +665,21 @@
             // downloadToolStripMenuItem
             // 
             this.downloadToolStripMenuItem.Name = "downloadToolStripMenuItem";
-            this.downloadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.downloadToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.downloadToolStripMenuItem.Text = "Download";
             this.downloadToolStripMenuItem.Click += new System.EventHandler(this.downloadToolStripMenuItem_Click);
             // 
             // reopenToolStripMenuItem
             // 
             this.reopenToolStripMenuItem.Name = "reopenToolStripMenuItem";
-            this.reopenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.reopenToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.reopenToolStripMenuItem.Text = "Reopen";
             this.reopenToolStripMenuItem.Click += new System.EventHandler(this.reopenToolStripMenuItem_Click);
             // 
             // uploadToolStripMenuItem
             // 
             this.uploadToolStripMenuItem.Name = "uploadToolStripMenuItem";
-            this.uploadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.uploadToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.uploadToolStripMenuItem.Text = "Upload";
             this.uploadToolStripMenuItem.Click += new System.EventHandler(this.uploadToolStripMenuItem_Click);
             // 
@@ -731,7 +731,7 @@
             this.panelGlobIndicators.Controls.Add(this.buttonSave);
             this.panelGlobIndicators.Controls.Add(this.labelGlobLastUpload);
             this.panelGlobIndicators.Controls.Add(this.labelGlobLastDownload);
-            this.panelGlobIndicators.Location = new System.Drawing.Point(713, 0);
+            this.panelGlobIndicators.Location = new System.Drawing.Point(322, 0);
             this.panelGlobIndicators.Name = "panelGlobIndicators";
             this.panelGlobIndicators.Size = new System.Drawing.Size(871, 24);
             this.panelGlobIndicators.TabIndex = 27;
@@ -1899,7 +1899,7 @@
             this.groupBoxStudSecondaryRight.Location = new System.Drawing.Point(80, 0);
             this.groupBoxStudSecondaryRight.Name = "groupBoxStudSecondaryRight";
             this.groupBoxStudSecondaryRight.Size = new System.Drawing.Size(854, 328);
-            this.groupBoxStudSecondaryRight.TabIndex = 36;
+            this.groupBoxStudSecondaryRight.TabIndex = 3;
             this.groupBoxStudSecondaryRight.TabStop = false;
             // 
             // tbStudComments
@@ -2073,7 +2073,7 @@
             this.panelTeacherPrimary.Location = new System.Drawing.Point(3, 3);
             this.panelTeacherPrimary.Name = "panelTeacherPrimary";
             this.panelTeacherPrimary.Size = new System.Drawing.Size(916, 131);
-            this.panelTeacherPrimary.TabIndex = 0;
+            this.panelTeacherPrimary.TabIndex = 1;
             // 
             // groupBoxTeacherPrimaryRight
             // 
@@ -3020,7 +3020,7 @@
             this.butGlobalDelete.Location = new System.Drawing.Point(4, 181);
             this.butGlobalDelete.Name = "butGlobalDelete";
             this.butGlobalDelete.Size = new System.Drawing.Size(40, 102);
-            this.butGlobalDelete.TabIndex = 32;
+            this.butGlobalDelete.TabIndex = 6;
             this.butGlobalDelete.Text = "X";
             this.butGlobalDelete.UseVisualStyleBackColor = false;
             this.butGlobalDelete.Click += new System.EventHandler(this.buttonDelete_Click);
@@ -3058,7 +3058,7 @@
             this.butGlobalAdd.Location = new System.Drawing.Point(3, 181);
             this.butGlobalAdd.Name = "butGlobalAdd";
             this.butGlobalAdd.Size = new System.Drawing.Size(40, 102);
-            this.butGlobalAdd.TabIndex = 33;
+            this.butGlobalAdd.TabIndex = 7;
             this.butGlobalAdd.Text = "+";
             this.butGlobalAdd.UseVisualStyleBackColor = false;
             this.butGlobalAdd.Click += new System.EventHandler(this.buttonAdd_Click);
@@ -3072,7 +3072,7 @@
             this.butGlobalNext.Location = new System.Drawing.Point(5, 1);
             this.butGlobalNext.Name = "butGlobalNext";
             this.butGlobalNext.Size = new System.Drawing.Size(40, 158);
-            this.butGlobalNext.TabIndex = 31;
+            this.butGlobalNext.TabIndex = 5;
             this.butGlobalNext.Text = ">>";
             this.butGlobalNext.UseVisualStyleBackColor = false;
             this.butGlobalNext.Click += new System.EventHandler(this.buttonNext_Click);
@@ -3807,8 +3807,8 @@
             this.panelPlanParams.Controls.Add(this.lbPlanTeacher);
             this.panelPlanParams.Controls.Add(this.lbSchedPlanName);
             this.panelPlanParams.Controls.Add(this.lbPlanWeek);
-            this.panelPlanParams.Controls.Add(this.cbPlanLanguage);
             this.panelPlanParams.Controls.Add(this.lbPlanLanguage);
+            this.panelPlanParams.Controls.Add(this.cbPlanLanguage);
             this.panelPlanParams.Controls.Add(this.cbPlanStud4);
             this.panelPlanParams.Controls.Add(this.lbPlanStud1);
             this.panelPlanParams.Controls.Add(this.cbPlanStud3);
@@ -4007,15 +4007,6 @@
             this.lbPlanWeek.TabIndex = 1;
             this.lbPlanWeek.Text = "Week:";
             // 
-            // cbPlanLanguage
-            // 
-            this.cbPlanLanguage.FormattingEnabled = true;
-            this.cbPlanLanguage.Location = new System.Drawing.Point(126, 76);
-            this.cbPlanLanguage.Name = "cbPlanLanguage";
-            this.cbPlanLanguage.Size = new System.Drawing.Size(121, 21);
-            this.cbPlanLanguage.TabIndex = 2;
-            this.cbPlanLanguage.SelectedIndexChanged += new System.EventHandler(this.cbPlanLanguage_SelectedIndexChanged);
-            // 
             // lbPlanLanguage
             // 
             this.lbPlanLanguage.AutoSize = true;
@@ -4024,6 +4015,15 @@
             this.lbPlanLanguage.Size = new System.Drawing.Size(58, 13);
             this.lbPlanLanguage.TabIndex = 4;
             this.lbPlanLanguage.Text = "Language:";
+            // 
+            // cbPlanLanguage
+            // 
+            this.cbPlanLanguage.FormattingEnabled = true;
+            this.cbPlanLanguage.Location = new System.Drawing.Point(126, 76);
+            this.cbPlanLanguage.Name = "cbPlanLanguage";
+            this.cbPlanLanguage.Size = new System.Drawing.Size(121, 21);
+            this.cbPlanLanguage.TabIndex = 2;
+            this.cbPlanLanguage.SelectedIndexChanged += new System.EventHandler(this.cbPlanLanguage_SelectedIndexChanged);
             // 
             // cbPlanStud4
             // 

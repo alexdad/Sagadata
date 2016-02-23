@@ -498,6 +498,7 @@ namespace RecordKeeper
                 return;
             if (DataList.CurrencyManager.Position < DataList.Count - 1)
                 DataList.CurrencyManager.Position++;
+            SetEditFocus();
         }
 
         private void buttonPrev_Click(object sender, EventArgs e)
@@ -506,6 +507,7 @@ namespace RecordKeeper
                 return;
             if (DataList.CurrencyManager.Position > 0)
                 DataList.CurrencyManager.Position--;
+            SetEditFocus();
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -521,7 +523,7 @@ namespace RecordKeeper
             Modified = true;
             EditTrap = true;
 
-            //tbStudFirstName.Select();  -- TODO
+            SetEditFocus();
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
@@ -535,6 +537,8 @@ namespace RecordKeeper
 
             Modified = true;
             EditTrap = true;
+
+            SetEditFocus();
         }
 
         private void buttonShowAll_Click(object sender, EventArgs e)
@@ -568,7 +572,6 @@ namespace RecordKeeper
 
 
 
-            // Changed
         }
 
         private void buttonToExcel_Click(object sender, EventArgs e)
@@ -577,6 +580,29 @@ namespace RecordKeeper
             System.Diagnostics.Process.Start(tempCsv);
         }
 
+        void SetEditFocus()
+        {
+            switch (CurrentMode)
+            {
+                case Modes.Students:
+                    tbStudFirstName.Focus();
+                    break;
+                case Modes.Teachers:
+                    tbTeachFirstName.Focus();
+                    break;
+                case Modes.Programs:
+                    tbProgCode.Focus();
+                    break;
+                case Modes.Rooms:
+                    tbRoomName.Focus();
+                    break;
+                case Modes.Lessons:
+                    cbLessonState.Focus();
+                    break;
+                default:
+                    break;
+            }
+        }
 
         #endregion
 
