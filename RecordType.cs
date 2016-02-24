@@ -415,6 +415,20 @@ namespace RecordKeeper
             return false;
         }
 
+        public static bool FitDate(DateTime st, string recordDate)
+        {
+            DateTime rd;
+            if (DateTime.TryParse(recordDate, out rd))
+            {
+                return (st.Year == rd.Year   &&
+                        st.Month == rd.Month &&
+                        st.Day == rd.Day);
+            }
+            else
+                return false;
+        }
+
+
         public static bool Empty(string s)
         {
             return (s == null || s.Trim().Length == 0 || s == "?");

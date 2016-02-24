@@ -340,19 +340,19 @@ namespace RecordKeeper
             }
             cbViewSelectProgram.Items.Clear();
             cbViewSelectProgram.Items.Add("");
-            cbViewSelectProgram.Items.AddRange(programs.Keys.ToArray());
+            cbViewSelectProgram.Items.AddRange(programs.Keys.OrderBy(q => q).ToArray());
 
             cbViewSelectRoom.Items.Clear();
             cbViewSelectRoom.Items.Add("");
-            cbViewSelectRoom.Items.AddRange(rooms.Keys.ToArray());
+            cbViewSelectRoom.Items.AddRange(rooms.Keys.OrderBy(q => q).ToArray());
 
             cbViewSelectStudent.Items.Clear();
             cbViewSelectStudent.Items.Add("");
-            cbViewSelectStudent.Items.AddRange(students.Keys.ToArray());
+            cbViewSelectStudent.Items.AddRange(students.Keys.OrderBy(q => q).ToArray());
 
             cbViewSelectTeacher.Items.Clear();
             cbViewSelectTeacher.Items.Add("");
-            cbViewSelectTeacher.Items.AddRange(teachers.Keys.ToArray());
+            cbViewSelectTeacher.Items.AddRange(teachers.Keys.OrderBy(q => q).ToArray());
         }
 
         void ViewSelectLesson(DataGridView dgv, int row, int col)

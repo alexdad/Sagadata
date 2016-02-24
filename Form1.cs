@@ -184,24 +184,24 @@ namespace RecordKeeper
         {
             List<Student> students = ActiveStudents();
             List<String> studentNames = students.ConvertAll(x => x.Description);
-            cbSearchLessonStudent.Items.AddRange(studentNames.ToArray());
+            cbSearchLessonStudent.Items.AddRange(studentNames.OrderBy(q => q).ToArray());
 
             List<Teacher> teachers = ActiveTeachers();
             List<String> teacherNames = teachers.ConvertAll(x => x.Description);
-            cbSearchLessonTeacher.Items.AddRange(teacherNames.ToArray());
+            cbSearchLessonTeacher.Items.AddRange(teacherNames.OrderBy(q=> q).ToArray());
 
             List<Program> programs = ActivePrograms();
             List<String> programNames = programs.ConvertAll(x => x.Description);
-            cbSearchLessonProgram.Items.AddRange(programNames.ToArray());
-            cbLessonProg.Items.AddRange(programNames.ToArray());
-            cbViewDetailProgram.Items.AddRange(programNames.ToArray());
+            cbSearchLessonProgram.Items.AddRange(programNames.OrderBy(q => q).ToArray());
+            cbLessonProg.Items.AddRange(programNames.OrderBy(q => q).ToArray());
+            cbViewDetailProgram.Items.AddRange(programNames.OrderBy(q => q).ToArray());
 
             List<Room> rooms = ActiveRooms();
             List<String> roomNames = rooms.ConvertAll(x => x.Description);
-            cbSearchLessonRoom.Items.AddRange(roomNames.ToArray());
-            cbLessonRoom.Items.AddRange(roomNames.ToArray());
-            cbViewDetailRoom.Items.AddRange(roomNames.ToArray());
-            cbPlanProgram.Items.AddRange(programNames.ToArray());
+            cbSearchLessonRoom.Items.AddRange(roomNames.OrderBy(q => q).ToArray());
+            cbLessonRoom.Items.AddRange(roomNames.OrderBy(q => q).ToArray());
+            cbViewDetailRoom.Items.AddRange(roomNames.OrderBy(q => q).ToArray());
+            cbPlanProgram.Items.AddRange(programNames.OrderBy(q => q).ToArray());
 
         }
         private void Form1_Load(object sender, EventArgs e)
@@ -569,8 +569,8 @@ namespace RecordKeeper
             cbSearchLessonTeacher.SelectedIndex = -1;
             cbSearchLessonProgram.SelectedIndex = -1;
             cbSearchLessonRoom.SelectedIndex = -1;
-            tbSearchLessonDate.Text = "";
-
+            chkBoxSearchLessonDate.Checked = false;
+            dtpSearchLessonDate.Value = DateTime.Now;
 
 
         }
@@ -1070,10 +1070,11 @@ namespace RecordKeeper
             CurrentType.DoSelection();
         }
 
-        private void tbSearchLessonDate_TextChanged(object sender, EventArgs e)
+        private void chkBoxSearchLessonDate_CheckedChanged(object sender, EventArgs e)
         {
-            TextBox comboBox = (TextBox)sender;
-            m_LessonSelectionDay = comboBox.Text;
+            CheckBox cb = sender as CheckBox;
+            m_LessonSelectionDay = dtpSearchLessonDate.Value;
+            m_use_LessonSelectionDay = cb.Checked;
             CurrentType.DoSelection();
         }
 

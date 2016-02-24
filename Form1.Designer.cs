@@ -105,6 +105,11 @@
             this.teacherList = new System.Windows.Forms.BindingSource(this.components);
             this.tabTopPagePrograms = new System.Windows.Forms.TabPage();
             this.dgvPrograms = new System.Windows.Forms.DataGridView();
+            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Summary = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.programList = new System.Windows.Forms.BindingSource(this.components);
             this.tabTopPageRooms = new System.Windows.Forms.TabPage();
             this.dgvRooms = new System.Windows.Forms.DataGridView();
@@ -117,21 +122,6 @@
             this.roomList = new System.Windows.Forms.BindingSource(this.components);
             this.tabTopPageLessons = new System.Windows.Forms.TabPage();
             this.dgvLesson = new System.Windows.Forms.DataGridView();
-            this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Start = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.End = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.programDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.roomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.student1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.student2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.student3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.student10DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Student4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.teacher1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.teacher2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.commentsDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lessonList = new System.Windows.Forms.BindingSource(this.components);
             this.panelGlobEdit = new System.Windows.Forms.Panel();
             this.tabControlModesBottom = new RecordKeeper.HiddenTabControl();
@@ -318,7 +308,8 @@
             this.panelSearchRoom = new System.Windows.Forms.Panel();
             this.tabPageSearchLesson = new System.Windows.Forms.TabPage();
             this.panelSearchLesson = new System.Windows.Forms.Panel();
-            this.tbSearchLessonDate = new System.Windows.Forms.TextBox();
+            this.chkBoxSearchLessonDate = new System.Windows.Forms.CheckBox();
+            this.dtpSearchLessonDate = new System.Windows.Forms.DateTimePicker();
             this.cbSearchLessonProgram = new System.Windows.Forms.ComboBox();
             this.cbSearchLessonTeacher = new System.Windows.Forms.ComboBox();
             this.cbSearchLessonStudent = new System.Windows.Forms.ComboBox();
@@ -456,11 +447,20 @@
             this.lbPayExpenseName = new System.Windows.Forms.Label();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.lbFutureOpName = new System.Windows.Forms.Label();
-            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Summary = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Start = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.End = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.programDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.roomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.teacher1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.student1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.student2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.student3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Student4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.teacher2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.commentsDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStripGlobalOps.SuspendLayout();
             this.panelGlobIndicators.SuspendLayout();
             this.ctxMenuLesson.SuspendLayout();
@@ -1258,6 +1258,41 @@
             this.dgvPrograms.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPrograms_ColumnHeaderMouseClick);
             this.dgvPrograms.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPrograms_RowLeave);
             // 
+            // codeDataGridViewTextBoxColumn
+            // 
+            this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
+            this.codeDataGridViewTextBoxColumn.HeaderText = "Code";
+            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
+            this.codeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nameDataGridViewTextBoxColumn1
+            // 
+            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn1.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
+            this.nameDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // Type
+            // 
+            this.Type.DataPropertyName = "Type";
+            this.Type.HeaderText = "Type";
+            this.Type.Name = "Type";
+            this.Type.ReadOnly = true;
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Summary
+            // 
+            this.Summary.DataPropertyName = "Summary";
+            this.Summary.HeaderText = "Summary";
+            this.Summary.Name = "Summary";
+            this.Summary.ReadOnly = true;
+            // 
             // programList
             // 
             this.programList.DataSource = typeof(RecordKeeper.Program);
@@ -1370,12 +1405,11 @@
             this.programDataGridViewTextBoxColumn,
             this.roomDataGridViewTextBoxColumn,
             this.stateDataGridViewTextBoxColumn,
+            this.teacher1DataGridViewTextBoxColumn,
             this.student1DataGridViewTextBoxColumn,
             this.student2DataGridViewTextBoxColumn,
             this.student3DataGridViewTextBoxColumn,
-            this.student10DataGridViewTextBoxColumn,
             this.Student4,
-            this.teacher1DataGridViewTextBoxColumn,
             this.teacher2DataGridViewTextBoxColumn,
             this.commentsDataGridViewTextBoxColumn2});
             this.dgvLesson.DataSource = this.lessonList;
@@ -1388,111 +1422,6 @@
             this.dgvLesson.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLesson_CellContentClick);
             this.dgvLesson.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLesson_ColumnHeaderMouseClick);
             this.dgvLesson.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLesson_RowLeave);
-            // 
-            // State
-            // 
-            this.State.DataPropertyName = "State";
-            this.State.HeaderText = "State";
-            this.State.Name = "State";
-            this.State.ReadOnly = true;
-            // 
-            // dayDataGridViewTextBoxColumn
-            // 
-            this.dayDataGridViewTextBoxColumn.DataPropertyName = "Day";
-            this.dayDataGridViewTextBoxColumn.HeaderText = "Day";
-            this.dayDataGridViewTextBoxColumn.Name = "dayDataGridViewTextBoxColumn";
-            this.dayDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // Start
-            // 
-            this.Start.DataPropertyName = "Start";
-            this.Start.HeaderText = "Start";
-            this.Start.Name = "Start";
-            this.Start.ReadOnly = true;
-            // 
-            // End
-            // 
-            this.End.DataPropertyName = "End";
-            this.End.HeaderText = "End";
-            this.End.Name = "End";
-            this.End.ReadOnly = true;
-            // 
-            // programDataGridViewTextBoxColumn
-            // 
-            this.programDataGridViewTextBoxColumn.DataPropertyName = "Program";
-            this.programDataGridViewTextBoxColumn.HeaderText = "Program";
-            this.programDataGridViewTextBoxColumn.Name = "programDataGridViewTextBoxColumn";
-            this.programDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // roomDataGridViewTextBoxColumn
-            // 
-            this.roomDataGridViewTextBoxColumn.DataPropertyName = "Room";
-            this.roomDataGridViewTextBoxColumn.HeaderText = "Room";
-            this.roomDataGridViewTextBoxColumn.Name = "roomDataGridViewTextBoxColumn";
-            this.roomDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // stateDataGridViewTextBoxColumn
-            // 
-            this.stateDataGridViewTextBoxColumn.DataPropertyName = "State";
-            this.stateDataGridViewTextBoxColumn.HeaderText = "State";
-            this.stateDataGridViewTextBoxColumn.Name = "stateDataGridViewTextBoxColumn";
-            this.stateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // student1DataGridViewTextBoxColumn
-            // 
-            this.student1DataGridViewTextBoxColumn.DataPropertyName = "Student1";
-            this.student1DataGridViewTextBoxColumn.HeaderText = "Student1";
-            this.student1DataGridViewTextBoxColumn.Name = "student1DataGridViewTextBoxColumn";
-            this.student1DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // student2DataGridViewTextBoxColumn
-            // 
-            this.student2DataGridViewTextBoxColumn.DataPropertyName = "Student2";
-            this.student2DataGridViewTextBoxColumn.HeaderText = "Student2";
-            this.student2DataGridViewTextBoxColumn.Name = "student2DataGridViewTextBoxColumn";
-            this.student2DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // student3DataGridViewTextBoxColumn
-            // 
-            this.student3DataGridViewTextBoxColumn.DataPropertyName = "Student3";
-            this.student3DataGridViewTextBoxColumn.HeaderText = "Student3";
-            this.student3DataGridViewTextBoxColumn.Name = "student3DataGridViewTextBoxColumn";
-            this.student3DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // student10DataGridViewTextBoxColumn
-            // 
-            this.student10DataGridViewTextBoxColumn.DataPropertyName = "Student10";
-            this.student10DataGridViewTextBoxColumn.HeaderText = "Student10";
-            this.student10DataGridViewTextBoxColumn.Name = "student10DataGridViewTextBoxColumn";
-            this.student10DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // Student4
-            // 
-            this.Student4.DataPropertyName = "Student4";
-            this.Student4.HeaderText = "Student4";
-            this.Student4.Name = "Student4";
-            this.Student4.ReadOnly = true;
-            // 
-            // teacher1DataGridViewTextBoxColumn
-            // 
-            this.teacher1DataGridViewTextBoxColumn.DataPropertyName = "Teacher1";
-            this.teacher1DataGridViewTextBoxColumn.HeaderText = "Teacher1";
-            this.teacher1DataGridViewTextBoxColumn.Name = "teacher1DataGridViewTextBoxColumn";
-            this.teacher1DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // teacher2DataGridViewTextBoxColumn
-            // 
-            this.teacher2DataGridViewTextBoxColumn.DataPropertyName = "Teacher2";
-            this.teacher2DataGridViewTextBoxColumn.HeaderText = "Teacher2";
-            this.teacher2DataGridViewTextBoxColumn.Name = "teacher2DataGridViewTextBoxColumn";
-            this.teacher2DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // commentsDataGridViewTextBoxColumn2
-            // 
-            this.commentsDataGridViewTextBoxColumn2.DataPropertyName = "Comments";
-            this.commentsDataGridViewTextBoxColumn2.HeaderText = "Comments";
-            this.commentsDataGridViewTextBoxColumn2.Name = "commentsDataGridViewTextBoxColumn2";
-            this.commentsDataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // lessonList
             // 
@@ -3456,7 +3385,8 @@
             // 
             // panelSearchLesson
             // 
-            this.panelSearchLesson.Controls.Add(this.tbSearchLessonDate);
+            this.panelSearchLesson.Controls.Add(this.chkBoxSearchLessonDate);
+            this.panelSearchLesson.Controls.Add(this.dtpSearchLessonDate);
             this.panelSearchLesson.Controls.Add(this.cbSearchLessonProgram);
             this.panelSearchLesson.Controls.Add(this.cbSearchLessonTeacher);
             this.panelSearchLesson.Controls.Add(this.cbSearchLessonStudent);
@@ -3472,13 +3402,23 @@
             this.panelSearchLesson.Size = new System.Drawing.Size(205, 265);
             this.panelSearchLesson.TabIndex = 53;
             // 
-            // tbSearchLessonDate
+            // chkBoxSearchLessonDate
             // 
-            this.tbSearchLessonDate.Location = new System.Drawing.Point(68, 149);
-            this.tbSearchLessonDate.Name = "tbSearchLessonDate";
-            this.tbSearchLessonDate.Size = new System.Drawing.Size(121, 20);
-            this.tbSearchLessonDate.TabIndex = 14;
-            this.tbSearchLessonDate.TextChanged += new System.EventHandler(this.tbSearchLessonDate_TextChanged);
+            this.chkBoxSearchLessonDate.AutoSize = true;
+            this.chkBoxSearchLessonDate.Location = new System.Drawing.Point(174, 153);
+            this.chkBoxSearchLessonDate.Name = "chkBoxSearchLessonDate";
+            this.chkBoxSearchLessonDate.Size = new System.Drawing.Size(15, 14);
+            this.chkBoxSearchLessonDate.TabIndex = 16;
+            this.chkBoxSearchLessonDate.UseVisualStyleBackColor = true;
+            this.chkBoxSearchLessonDate.CheckedChanged += new System.EventHandler(this.chkBoxSearchLessonDate_CheckedChanged);
+            // 
+            // dtpSearchLessonDate
+            // 
+            this.dtpSearchLessonDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpSearchLessonDate.Location = new System.Drawing.Point(68, 152);
+            this.dtpSearchLessonDate.Name = "dtpSearchLessonDate";
+            this.dtpSearchLessonDate.Size = new System.Drawing.Size(85, 20);
+            this.dtpSearchLessonDate.TabIndex = 15;
             // 
             // cbSearchLessonProgram
             // 
@@ -4893,40 +4833,103 @@
             this.lbFutureOpName.TabIndex = 0;
             this.lbFutureOpName.Text = "Future Operation";
             // 
-            // codeDataGridViewTextBoxColumn
+            // State
             // 
-            this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
-            this.codeDataGridViewTextBoxColumn.HeaderText = "Code";
-            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
-            this.codeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.State.DataPropertyName = "State";
+            this.State.HeaderText = "State";
+            this.State.Name = "State";
+            this.State.ReadOnly = true;
             // 
-            // nameDataGridViewTextBoxColumn1
+            // dayDataGridViewTextBoxColumn
             // 
-            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn1.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
-            this.nameDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dayDataGridViewTextBoxColumn.DataPropertyName = "Day";
+            this.dayDataGridViewTextBoxColumn.HeaderText = "Day";
+            this.dayDataGridViewTextBoxColumn.Name = "dayDataGridViewTextBoxColumn";
+            this.dayDataGridViewTextBoxColumn.ReadOnly = true;
             // 
-            // Type
+            // Start
             // 
-            this.Type.DataPropertyName = "Type";
-            this.Type.HeaderText = "Type";
-            this.Type.Name = "Type";
-            this.Type.ReadOnly = true;
+            this.Start.DataPropertyName = "Start";
+            this.Start.HeaderText = "Start";
+            this.Start.Name = "Start";
+            this.Start.ReadOnly = true;
             // 
-            // priceDataGridViewTextBoxColumn
+            // End
             // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
+            this.End.DataPropertyName = "End";
+            this.End.HeaderText = "End";
+            this.End.Name = "End";
+            this.End.ReadOnly = true;
             // 
-            // Summary
+            // programDataGridViewTextBoxColumn
             // 
-            this.Summary.DataPropertyName = "Summary";
-            this.Summary.HeaderText = "Summary";
-            this.Summary.Name = "Summary";
-            this.Summary.ReadOnly = true;
+            this.programDataGridViewTextBoxColumn.DataPropertyName = "Program";
+            this.programDataGridViewTextBoxColumn.HeaderText = "Program";
+            this.programDataGridViewTextBoxColumn.Name = "programDataGridViewTextBoxColumn";
+            this.programDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // roomDataGridViewTextBoxColumn
+            // 
+            this.roomDataGridViewTextBoxColumn.DataPropertyName = "Room";
+            this.roomDataGridViewTextBoxColumn.HeaderText = "Room";
+            this.roomDataGridViewTextBoxColumn.Name = "roomDataGridViewTextBoxColumn";
+            this.roomDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // stateDataGridViewTextBoxColumn
+            // 
+            this.stateDataGridViewTextBoxColumn.DataPropertyName = "State";
+            this.stateDataGridViewTextBoxColumn.HeaderText = "State";
+            this.stateDataGridViewTextBoxColumn.Name = "stateDataGridViewTextBoxColumn";
+            this.stateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // teacher1DataGridViewTextBoxColumn
+            // 
+            this.teacher1DataGridViewTextBoxColumn.DataPropertyName = "Teacher1";
+            this.teacher1DataGridViewTextBoxColumn.HeaderText = "Teacher1";
+            this.teacher1DataGridViewTextBoxColumn.Name = "teacher1DataGridViewTextBoxColumn";
+            this.teacher1DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // student1DataGridViewTextBoxColumn
+            // 
+            this.student1DataGridViewTextBoxColumn.DataPropertyName = "Student1";
+            this.student1DataGridViewTextBoxColumn.HeaderText = "Student1";
+            this.student1DataGridViewTextBoxColumn.Name = "student1DataGridViewTextBoxColumn";
+            this.student1DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // student2DataGridViewTextBoxColumn
+            // 
+            this.student2DataGridViewTextBoxColumn.DataPropertyName = "Student2";
+            this.student2DataGridViewTextBoxColumn.HeaderText = "Student2";
+            this.student2DataGridViewTextBoxColumn.Name = "student2DataGridViewTextBoxColumn";
+            this.student2DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // student3DataGridViewTextBoxColumn
+            // 
+            this.student3DataGridViewTextBoxColumn.DataPropertyName = "Student3";
+            this.student3DataGridViewTextBoxColumn.HeaderText = "Student3";
+            this.student3DataGridViewTextBoxColumn.Name = "student3DataGridViewTextBoxColumn";
+            this.student3DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Student4
+            // 
+            this.Student4.DataPropertyName = "Student4";
+            this.Student4.HeaderText = "Student4";
+            this.Student4.Name = "Student4";
+            this.Student4.ReadOnly = true;
+            // 
+            // teacher2DataGridViewTextBoxColumn
+            // 
+            this.teacher2DataGridViewTextBoxColumn.DataPropertyName = "Teacher2";
+            this.teacher2DataGridViewTextBoxColumn.HeaderText = "Teacher2";
+            this.teacher2DataGridViewTextBoxColumn.Name = "teacher2DataGridViewTextBoxColumn";
+            this.teacher2DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // commentsDataGridViewTextBoxColumn2
+            // 
+            this.commentsDataGridViewTextBoxColumn2.DataPropertyName = "Comments";
+            this.commentsDataGridViewTextBoxColumn2.HeaderText = "Comments";
+            this.commentsDataGridViewTextBoxColumn2.Name = "commentsDataGridViewTextBoxColumn2";
+            this.commentsDataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // FormGlob
             // 
@@ -5187,21 +5190,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn commentsDataGridViewTextBoxColumn;
         private System.Windows.Forms.TabPage tabTopPageLessons;
         private System.Windows.Forms.DataGridView dgvLesson;
-        private System.Windows.Forms.DataGridViewTextBoxColumn State;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dayDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Start;
-        private System.Windows.Forms.DataGridViewTextBoxColumn End;
-        private System.Windows.Forms.DataGridViewTextBoxColumn programDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn roomDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn student1DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn student2DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn student3DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn student10DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Student4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn teacher1DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn teacher2DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn commentsDataGridViewTextBoxColumn2;
         private System.Windows.Forms.Panel panelGlobEdit;
         private HiddenTabControl tabControlModesBottom;
         private System.Windows.Forms.TabPage tabBottomPageStudents;
@@ -5472,7 +5460,6 @@
         private System.Windows.Forms.ComboBox cbSearchLessonStudent;
         private System.Windows.Forms.ComboBox cbSearchLessonTeacher;
         private System.Windows.Forms.ComboBox cbSearchLessonProgram;
-        private System.Windows.Forms.TextBox tbSearchLessonDate;
         private System.Windows.Forms.Panel panelViewDetails;
         private System.Windows.Forms.Button butViewDetailSet;
         private System.Windows.Forms.ComboBox cbViewDetailRoom;
@@ -5507,6 +5494,22 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Type;
         private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Summary;
+        private System.Windows.Forms.CheckBox chkBoxSearchLessonDate;
+        private System.Windows.Forms.DateTimePicker dtpSearchLessonDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn State;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Start;
+        private System.Windows.Forms.DataGridViewTextBoxColumn End;
+        private System.Windows.Forms.DataGridViewTextBoxColumn programDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn roomDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn teacher1DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn student1DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn student2DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn student3DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Student4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn teacher2DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn commentsDataGridViewTextBoxColumn2;
     }
 }
 

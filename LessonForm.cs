@@ -17,7 +17,8 @@ namespace RecordKeeper
     {
         string m_LessonSelectionTeacher;
         string m_LessonSelectionStudent;
-        string m_LessonSelectionDay;
+        DateTime m_LessonSelectionDay;
+        bool m_use_LessonSelectionDay;
         string m_LessonSelectionProgram;
         string m_LessonSelectionRoom;
         string m_currentLessonKey;
@@ -33,7 +34,7 @@ namespace RecordKeeper
         {
             m_LessonSelectionTeacher = null;
             m_LessonSelectionStudent = null;
-            m_LessonSelectionDay = null;
+            m_use_LessonSelectionDay = false;
             m_LessonSelectionProgram = null;
             m_LessonSelectionRoom = null;
         }
@@ -72,7 +73,8 @@ namespace RecordKeeper
                     !CurrentType.Fit(m_LessonSelectionStudent, s.Student9, false) &&
                     !CurrentType.Fit(m_LessonSelectionStudent, s.Student10, false)                    )
                     continue;
-                if (!CurrentType.Fit(m_LessonSelectionDay, s.Day, true))
+                if (m_use_LessonSelectionDay &&
+                    !RecordType.FitDate(m_LessonSelectionDay, s.Day))
                     continue;
                 if (!CurrentType.Fit(m_LessonSelectionProgram, s.Program, false))
                     continue;
