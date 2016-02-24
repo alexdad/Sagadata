@@ -54,6 +54,7 @@ namespace RecordKeeper
         {
             tabControlViewScales.SelectedIndex = (int)TabControlScales.Slots;
             tabControlOps.SelectedIndex = (int)TabControlOps.View;
+            FollowFocusedDay();
             ShowView();
         }
 
@@ -61,6 +62,7 @@ namespace RecordKeeper
         {
             tabControlViewScales.SelectedIndex = (int)TabControlScales.Day;
             tabControlOps.SelectedIndex = (int)TabControlOps.View;
+            FollowFocusedDay();
             ShowView();
         }
 
@@ -68,6 +70,7 @@ namespace RecordKeeper
         {
             tabControlViewScales.SelectedIndex = (int)TabControlScales.Week;
             tabControlOps.SelectedIndex = (int)TabControlOps.View;
+            FollowFocusedDay();
             ShowView();
         }
 

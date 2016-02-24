@@ -218,14 +218,20 @@ namespace RecordKeeper
         void PopulateTeacherChoices(string lang, ComboBox cb)
         {
             cb.Items.Clear();
+            List<string> ts = new List<string>();
             foreach (Teacher t in ActiveTeachersByLanguage(lang))
-                cb.Items.Add(t.Description);
+                ts.Add(t.Description);
+            ts.Sort();
+            cb.Items.AddRange(ts.ToArray()); 
         }
         void PopulateStudentChoices(string lang, ComboBox cb)
         {
             cb.Items.Clear();
+            List<string> ts = new List<string>();
             foreach (Student t in ActiveStudentsByLanguage(lang))
-               cb.Items.Add(t.Description);
+                ts.Add(t.Description);
+            ts.Sort();
+            cb.Items.AddRange(ts.ToArray());
         }
 
         void PopulateStudentPossibleSchedule(string description, Label tb)

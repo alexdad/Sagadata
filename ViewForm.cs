@@ -312,7 +312,15 @@ namespace RecordKeeper
             }
         }
 
-
+        private void FollowFocusedDay()
+        {
+            DateTime dt;
+            if (lbViewGbDate.Text != null && lbViewGbDate.Text.Length > 0 &&
+                DateTime.TryParse(lbViewGbDate.Text, out dt))
+            {
+                dtpViewSlot.Value = dt;
+            }
+        }
 
         void FillChoices(List<Lesson> lsn)
         {

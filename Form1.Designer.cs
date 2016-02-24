@@ -3884,15 +3884,15 @@
             // 
             // tbPlanRepeat
             // 
-            this.tbPlanRepeat.Location = new System.Drawing.Point(170, 177);
+            this.tbPlanRepeat.Location = new System.Drawing.Point(372, 142);
             this.tbPlanRepeat.Name = "tbPlanRepeat";
-            this.tbPlanRepeat.Size = new System.Drawing.Size(77, 20);
+            this.tbPlanRepeat.Size = new System.Drawing.Size(47, 20);
             this.tbPlanRepeat.TabIndex = 5;
             // 
             // lbPlanRepeat
             // 
             this.lbPlanRepeat.AutoSize = true;
-            this.lbPlanRepeat.Location = new System.Drawing.Point(60, 176);
+            this.lbPlanRepeat.Location = new System.Drawing.Point(276, 145);
             this.lbPlanRepeat.Name = "lbPlanRepeat";
             this.lbPlanRepeat.Size = new System.Drawing.Size(85, 13);
             this.lbPlanRepeat.TabIndex = 30;
@@ -4076,7 +4076,7 @@
             // lbPlanStud1
             // 
             this.lbPlanStud1.AutoSize = true;
-            this.lbPlanStud1.Location = new System.Drawing.Point(283, 40);
+            this.lbPlanStud1.Location = new System.Drawing.Point(276, 40);
             this.lbPlanStud1.Name = "lbPlanStud1";
             this.lbPlanStud1.Size = new System.Drawing.Size(52, 13);
             this.lbPlanStud1.TabIndex = 5;

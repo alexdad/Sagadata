@@ -1154,6 +1154,7 @@ namespace RecordKeeper
         {
             if (tabControlViewScales.SelectedIndex < tabControlViewScales.TabCount - 1)
                 tabControlViewScales.SelectedIndex++;
+            FollowFocusedDay();
         }
         private void butViewNext_Click(object sender, EventArgs e)
         {
