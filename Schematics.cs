@@ -41,6 +41,7 @@ namespace RecordKeeper
         Status,
         Language,
         Level,
+        PricingType,
         Source
     }
 
@@ -77,6 +78,9 @@ namespace RecordKeeper
                     break;
                 case "Level":
                     Validation = Validations.Level;
+                    break;
+                case "PricingType":
+                    Validation = Validations.PricingType;
                     break;
                 case "Source":
                     Validation = Validations.Source;
@@ -127,11 +131,7 @@ namespace RecordKeeper
             cbSearchTeachLang1.Items.AddRange(m_enumLanguage);
             cbSearchTeachStatus.Items.AddRange(m_enumStatus);
 
-            cbProgLanguage.Items.AddRange(m_enumLanguage);
-            cbProgLevel.Items.AddRange(m_enumLevel);
-
-            cbSearchProgLanguage.Items.AddRange(m_enumLanguage);
-            cbSearchProgLevel.Items.AddRange(m_enumLevel);
+            cbPricingType.Items.AddRange(m_enumPricingType);
 
             cbLessonState.Items.AddRange(m_enumState);
             cbLessonStart.Items.AddRange(m_enumTimeSlot);
@@ -265,6 +265,7 @@ namespace RecordKeeper
             m_enumSource = File.ReadAllLines(Path.Combine(binLocation, "EnumSource.csv").ToString());
             m_enumStatus = File.ReadAllLines(Path.Combine(binLocation, "EnumStatus.csv").ToString());
             m_enumState = File.ReadAllLines(Path.Combine(binLocation, "EnumState.csv").ToString());
+            m_enumPricingType = File.ReadAllLines(Path.Combine(binLocation, "EnumPricingType.csv").ToString());
 
             PopulateEnumTimeslots();
             PopulateEnumDurations();

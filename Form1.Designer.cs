@@ -105,12 +105,6 @@
             this.teacherList = new System.Windows.Forms.BindingSource(this.components);
             this.tabTopPagePrograms = new System.Windows.Forms.TabPage();
             this.dgvPrograms = new System.Windows.Forms.DataGridView();
-            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.languageDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.levelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Summary = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.programList = new System.Windows.Forms.BindingSource(this.components);
             this.tabTopPageRooms = new System.Windows.Forms.TabPage();
             this.dgvRooms = new System.Windows.Forms.DataGridView();
@@ -228,13 +222,10 @@
             this.labelProgComments = new System.Windows.Forms.Label();
             this.labelProgSummary = new System.Windows.Forms.Label();
             this.panelProgramPrimaryLeft = new System.Windows.Forms.Panel();
-            this.labelProgExplanation = new System.Windows.Forms.Label();
             this.tbProgProce = new System.Windows.Forms.TextBox();
             this.labelProgPrice = new System.Windows.Forms.Label();
-            this.cbProgLevel = new System.Windows.Forms.ComboBox();
-            this.labelProgLevel = new System.Windows.Forms.Label();
-            this.cbProgLanguage = new System.Windows.Forms.ComboBox();
-            this.labelProgLanguage = new System.Windows.Forms.Label();
+            this.cbPricingType = new System.Windows.Forms.ComboBox();
+            this.labelPricingType = new System.Windows.Forms.Label();
             this.tbProgName = new System.Windows.Forms.TextBox();
             this.labelProgName = new System.Windows.Forms.Label();
             this.tbProgCode = new System.Windows.Forms.TextBox();
@@ -323,10 +314,6 @@
             this.lbSerchTeachStatus = new System.Windows.Forms.Label();
             this.tabPageSearchProgram = new System.Windows.Forms.TabPage();
             this.panelSearchProgram = new System.Windows.Forms.Panel();
-            this.cbSearchProgLevel = new System.Windows.Forms.ComboBox();
-            this.cbSearchProgLanguage = new System.Windows.Forms.ComboBox();
-            this.lbSearchProgLevel = new System.Windows.Forms.Label();
-            this.lbSearchProgLanguage = new System.Windows.Forms.Label();
             this.tabPageSearchRoom = new System.Windows.Forms.TabPage();
             this.panelSearchRoom = new System.Windows.Forms.Panel();
             this.tabPageSearchLesson = new System.Windows.Forms.TabPage();
@@ -469,6 +456,11 @@
             this.lbPayExpenseName = new System.Windows.Forms.Label();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.lbFutureOpName = new System.Windows.Forms.Label();
+            this.codeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nameDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.priceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Summary = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStripGlobalOps.SuspendLayout();
             this.panelGlobIndicators.SuspendLayout();
             this.ctxMenuLesson.SuspendLayout();
@@ -534,7 +526,6 @@
             this.tabPageSearchTeacher.SuspendLayout();
             this.panelSearchTeacher.SuspendLayout();
             this.tabPageSearchProgram.SuspendLayout();
-            this.panelSearchProgram.SuspendLayout();
             this.tabPageSearchRoom.SuspendLayout();
             this.tabPageSearchLesson.SuspendLayout();
             this.panelSearchLesson.SuspendLayout();
@@ -663,35 +654,35 @@
             // studentsToolStripMenuItem1
             // 
             this.studentsToolStripMenuItem1.Name = "studentsToolStripMenuItem1";
-            this.studentsToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.studentsToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
             this.studentsToolStripMenuItem1.Text = "Students";
             this.studentsToolStripMenuItem1.Click += new System.EventHandler(this.studentsToolStripMenuItem1_Click);
             // 
             // teachersToolStripMenuItem1
             // 
             this.teachersToolStripMenuItem1.Name = "teachersToolStripMenuItem1";
-            this.teachersToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.teachersToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
             this.teachersToolStripMenuItem1.Text = "Teachers";
             this.teachersToolStripMenuItem1.Click += new System.EventHandler(this.teachersToolStripMenuItem1_Click);
             // 
             // lessonsToolStripMenuItem
             // 
             this.lessonsToolStripMenuItem.Name = "lessonsToolStripMenuItem";
-            this.lessonsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.lessonsToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.lessonsToolStripMenuItem.Text = "Lessons";
             this.lessonsToolStripMenuItem.Click += new System.EventHandler(this.lessonsToolStripMenuItem_Click);
             // 
             // programsToolStripMenuItem
             // 
             this.programsToolStripMenuItem.Name = "programsToolStripMenuItem";
-            this.programsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.programsToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.programsToolStripMenuItem.Text = "Programs";
             this.programsToolStripMenuItem.Click += new System.EventHandler(this.programsToolStripMenuItem_Click);
             // 
             // roomsToolStripMenuItem
             // 
             this.roomsToolStripMenuItem.Name = "roomsToolStripMenuItem";
-            this.roomsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.roomsToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.roomsToolStripMenuItem.Text = "Rooms";
             this.roomsToolStripMenuItem.Click += new System.EventHandler(this.roomsToolStripMenuItem_Click);
             // 
@@ -1252,9 +1243,8 @@
             this.dgvPrograms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPrograms.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codeDataGridViewTextBoxColumn,
-            this.languageDataGridViewTextBoxColumn1,
-            this.levelDataGridViewTextBoxColumn,
             this.nameDataGridViewTextBoxColumn1,
+            this.Type,
             this.priceDataGridViewTextBoxColumn,
             this.Summary});
             this.dgvPrograms.DataSource = this.programList;
@@ -1267,48 +1257,6 @@
             this.dgvPrograms.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPrograms_CellContentClick);
             this.dgvPrograms.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPrograms_ColumnHeaderMouseClick);
             this.dgvPrograms.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPrograms_RowLeave);
-            // 
-            // codeDataGridViewTextBoxColumn
-            // 
-            this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
-            this.codeDataGridViewTextBoxColumn.HeaderText = "Code";
-            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
-            this.codeDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // languageDataGridViewTextBoxColumn1
-            // 
-            this.languageDataGridViewTextBoxColumn1.DataPropertyName = "Language";
-            this.languageDataGridViewTextBoxColumn1.HeaderText = "Language";
-            this.languageDataGridViewTextBoxColumn1.Name = "languageDataGridViewTextBoxColumn1";
-            this.languageDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // levelDataGridViewTextBoxColumn
-            // 
-            this.levelDataGridViewTextBoxColumn.DataPropertyName = "Level";
-            this.levelDataGridViewTextBoxColumn.HeaderText = "Level";
-            this.levelDataGridViewTextBoxColumn.Name = "levelDataGridViewTextBoxColumn";
-            this.levelDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nameDataGridViewTextBoxColumn1
-            // 
-            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
-            this.nameDataGridViewTextBoxColumn1.HeaderText = "Name";
-            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
-            this.nameDataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // Summary
-            // 
-            this.Summary.DataPropertyName = "Summary";
-            this.Summary.HeaderText = "Summary";
-            this.Summary.Name = "Summary";
-            this.Summary.ReadOnly = true;
             // 
             // programList
             // 
@@ -2489,13 +2437,10 @@
             // 
             // panelProgramPrimaryLeft
             // 
-            this.panelProgramPrimaryLeft.Controls.Add(this.labelProgExplanation);
             this.panelProgramPrimaryLeft.Controls.Add(this.tbProgProce);
             this.panelProgramPrimaryLeft.Controls.Add(this.labelProgPrice);
-            this.panelProgramPrimaryLeft.Controls.Add(this.cbProgLevel);
-            this.panelProgramPrimaryLeft.Controls.Add(this.labelProgLevel);
-            this.panelProgramPrimaryLeft.Controls.Add(this.cbProgLanguage);
-            this.panelProgramPrimaryLeft.Controls.Add(this.labelProgLanguage);
+            this.panelProgramPrimaryLeft.Controls.Add(this.cbPricingType);
+            this.panelProgramPrimaryLeft.Controls.Add(this.labelPricingType);
             this.panelProgramPrimaryLeft.Controls.Add(this.tbProgName);
             this.panelProgramPrimaryLeft.Controls.Add(this.labelProgName);
             this.panelProgramPrimaryLeft.Controls.Add(this.tbProgCode);
@@ -2506,19 +2451,10 @@
             this.panelProgramPrimaryLeft.Size = new System.Drawing.Size(241, 350);
             this.panelProgramPrimaryLeft.TabIndex = 0;
             // 
-            // labelProgExplanation
-            // 
-            this.labelProgExplanation.AutoSize = true;
-            this.labelProgExplanation.Location = new System.Drawing.Point(117, 190);
-            this.labelProgExplanation.Name = "labelProgExplanation";
-            this.labelProgExplanation.Size = new System.Drawing.Size(103, 13);
-            this.labelProgExplanation.TabIndex = 4;
-            this.labelProgExplanation.Text = "Per hour, per person";
-            // 
             // tbProgProce
             // 
             this.tbProgProce.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programList, "Price", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C0"));
-            this.tbProgProce.Location = new System.Drawing.Point(74, 167);
+            this.tbProgProce.Location = new System.Drawing.Point(74, 141);
             this.tbProgProce.Name = "tbProgProce";
             this.tbProgProce.Size = new System.Drawing.Size(146, 20);
             this.tbProgProce.TabIndex = 5;
@@ -2527,50 +2463,31 @@
             // labelProgPrice
             // 
             this.labelProgPrice.AutoSize = true;
-            this.labelProgPrice.Location = new System.Drawing.Point(10, 170);
+            this.labelProgPrice.Location = new System.Drawing.Point(15, 144);
             this.labelProgPrice.Name = "labelProgPrice";
             this.labelProgPrice.Size = new System.Drawing.Size(31, 13);
             this.labelProgPrice.TabIndex = 8;
             this.labelProgPrice.Text = "Price";
             // 
-            // cbProgLevel
+            // cbPricingType
             // 
-            this.cbProgLevel.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programList, "Level", true));
-            this.cbProgLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbProgLevel.FormattingEnabled = true;
-            this.cbProgLevel.Location = new System.Drawing.Point(74, 130);
-            this.cbProgLevel.Name = "cbProgLevel";
-            this.cbProgLevel.Size = new System.Drawing.Size(146, 21);
-            this.cbProgLevel.TabIndex = 4;
-            this.cbProgLevel.Click += new System.EventHandler(this.cbProgLevel_Click);
+            this.cbPricingType.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programList, "Type", true));
+            this.cbPricingType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPricingType.FormattingEnabled = true;
+            this.cbPricingType.Location = new System.Drawing.Point(74, 91);
+            this.cbPricingType.Name = "cbPricingType";
+            this.cbPricingType.Size = new System.Drawing.Size(146, 21);
+            this.cbPricingType.TabIndex = 4;
+            this.cbPricingType.Click += new System.EventHandler(this.cbPricingType_Click);
             // 
-            // labelProgLevel
+            // labelPricingType
             // 
-            this.labelProgLevel.AutoSize = true;
-            this.labelProgLevel.Location = new System.Drawing.Point(10, 130);
-            this.labelProgLevel.Name = "labelProgLevel";
-            this.labelProgLevel.Size = new System.Drawing.Size(36, 13);
-            this.labelProgLevel.TabIndex = 6;
-            this.labelProgLevel.Text = "Level:";
-            // 
-            // cbProgLanguage
-            // 
-            this.cbProgLanguage.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programList, "Language", true));
-            this.cbProgLanguage.FormattingEnabled = true;
-            this.cbProgLanguage.Location = new System.Drawing.Point(74, 91);
-            this.cbProgLanguage.Name = "cbProgLanguage";
-            this.cbProgLanguage.Size = new System.Drawing.Size(146, 21);
-            this.cbProgLanguage.TabIndex = 3;
-            this.cbProgLanguage.Click += new System.EventHandler(this.cbProgLanguage_Click);
-            // 
-            // labelProgLanguage
-            // 
-            this.labelProgLanguage.AutoSize = true;
-            this.labelProgLanguage.Location = new System.Drawing.Point(10, 94);
-            this.labelProgLanguage.Name = "labelProgLanguage";
-            this.labelProgLanguage.Size = new System.Drawing.Size(58, 13);
-            this.labelProgLanguage.TabIndex = 4;
-            this.labelProgLanguage.Text = "Language:";
+            this.labelPricingType.AutoSize = true;
+            this.labelPricingType.Location = new System.Drawing.Point(10, 95);
+            this.labelPricingType.Name = "labelPricingType";
+            this.labelPricingType.Size = new System.Drawing.Size(34, 13);
+            this.labelPricingType.TabIndex = 6;
+            this.labelPricingType.Text = "Type:";
             // 
             // tbProgName
             // 
@@ -3501,53 +3418,11 @@
             // 
             // panelSearchProgram
             // 
-            this.panelSearchProgram.Controls.Add(this.cbSearchProgLevel);
-            this.panelSearchProgram.Controls.Add(this.cbSearchProgLanguage);
-            this.panelSearchProgram.Controls.Add(this.lbSearchProgLevel);
-            this.panelSearchProgram.Controls.Add(this.lbSearchProgLanguage);
             this.panelSearchProgram.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelSearchProgram.Location = new System.Drawing.Point(3, 3);
             this.panelSearchProgram.Name = "panelSearchProgram";
             this.panelSearchProgram.Size = new System.Drawing.Size(205, 265);
             this.panelSearchProgram.TabIndex = 53;
-            // 
-            // cbSearchProgLevel
-            // 
-            this.cbSearchProgLevel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbSearchProgLevel.FormattingEnabled = true;
-            this.cbSearchProgLevel.Location = new System.Drawing.Point(54, 63);
-            this.cbSearchProgLevel.Name = "cbSearchProgLevel";
-            this.cbSearchProgLevel.Size = new System.Drawing.Size(121, 21);
-            this.cbSearchProgLevel.TabIndex = 3;
-            this.cbSearchProgLevel.SelectedIndexChanged += new System.EventHandler(this.cbSearchProgLevel_SelectedIndexChanged);
-            // 
-            // cbSearchProgLanguage
-            // 
-            this.cbSearchProgLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbSearchProgLanguage.FormattingEnabled = true;
-            this.cbSearchProgLanguage.Location = new System.Drawing.Point(54, 23);
-            this.cbSearchProgLanguage.Name = "cbSearchProgLanguage";
-            this.cbSearchProgLanguage.Size = new System.Drawing.Size(121, 21);
-            this.cbSearchProgLanguage.TabIndex = 2;
-            this.cbSearchProgLanguage.SelectedIndexChanged += new System.EventHandler(this.cbSearchProgLanguage_SelectedIndexChanged);
-            // 
-            // lbSearchProgLevel
-            // 
-            this.lbSearchProgLevel.AutoSize = true;
-            this.lbSearchProgLevel.Location = new System.Drawing.Point(13, 50);
-            this.lbSearchProgLevel.Name = "lbSearchProgLevel";
-            this.lbSearchProgLevel.Size = new System.Drawing.Size(36, 13);
-            this.lbSearchProgLevel.TabIndex = 1;
-            this.lbSearchProgLevel.Text = "Level:";
-            // 
-            // lbSearchProgLanguage
-            // 
-            this.lbSearchProgLanguage.AutoSize = true;
-            this.lbSearchProgLanguage.Location = new System.Drawing.Point(13, 8);
-            this.lbSearchProgLanguage.Name = "lbSearchProgLanguage";
-            this.lbSearchProgLanguage.Size = new System.Drawing.Size(58, 13);
-            this.lbSearchProgLanguage.TabIndex = 0;
-            this.lbSearchProgLanguage.Text = "Language:";
             // 
             // tabPageSearchRoom
             // 
@@ -5018,6 +4893,41 @@
             this.lbFutureOpName.TabIndex = 0;
             this.lbFutureOpName.Text = "Future Operation";
             // 
+            // codeDataGridViewTextBoxColumn
+            // 
+            this.codeDataGridViewTextBoxColumn.DataPropertyName = "Code";
+            this.codeDataGridViewTextBoxColumn.HeaderText = "Code";
+            this.codeDataGridViewTextBoxColumn.Name = "codeDataGridViewTextBoxColumn";
+            this.codeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nameDataGridViewTextBoxColumn1
+            // 
+            this.nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
+            this.nameDataGridViewTextBoxColumn1.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
+            this.nameDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // Type
+            // 
+            this.Type.DataPropertyName = "Type";
+            this.Type.HeaderText = "Type";
+            this.Type.Name = "Type";
+            this.Type.ReadOnly = true;
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            this.priceDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Summary
+            // 
+            this.Summary.DataPropertyName = "Summary";
+            this.Summary.HeaderText = "Summary";
+            this.Summary.Name = "Summary";
+            this.Summary.ReadOnly = true;
+            // 
             // FormGlob
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5113,8 +5023,6 @@
             this.panelSearchTeacher.ResumeLayout(false);
             this.panelSearchTeacher.PerformLayout();
             this.tabPageSearchProgram.ResumeLayout(false);
-            this.panelSearchProgram.ResumeLayout(false);
-            this.panelSearchProgram.PerformLayout();
             this.tabPageSearchRoom.ResumeLayout(false);
             this.tabPageSearchLesson.ResumeLayout(false);
             this.panelSearchLesson.ResumeLayout(false);
@@ -5268,12 +5176,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn birthdayDataGridViewTextBoxColumn;
         private System.Windows.Forms.TabPage tabTopPagePrograms;
         private System.Windows.Forms.DataGridView dgvPrograms;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn languageDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn levelDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Summary;
         private System.Windows.Forms.TabPage tabTopPageRooms;
         private System.Windows.Forms.DataGridView dgvRooms;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
@@ -5388,13 +5291,10 @@
         private System.Windows.Forms.Label labelProgComments;
         private System.Windows.Forms.Label labelProgSummary;
         private System.Windows.Forms.Panel panelProgramPrimaryLeft;
-        private System.Windows.Forms.Label labelProgExplanation;
         private System.Windows.Forms.TextBox tbProgProce;
         private System.Windows.Forms.Label labelProgPrice;
-        private System.Windows.Forms.ComboBox cbProgLevel;
-        private System.Windows.Forms.Label labelProgLevel;
-        private System.Windows.Forms.ComboBox cbProgLanguage;
-        private System.Windows.Forms.Label labelProgLanguage;
+        private System.Windows.Forms.ComboBox cbPricingType;
+        private System.Windows.Forms.Label labelPricingType;
         private System.Windows.Forms.TextBox tbProgName;
         private System.Windows.Forms.Label labelProgName;
         private System.Windows.Forms.TextBox tbProgCode;
@@ -5483,10 +5383,6 @@
         private System.Windows.Forms.Label lbSerchTeachStatus;
         private System.Windows.Forms.TabPage tabPageSearchProgram;
         private System.Windows.Forms.Panel panelSearchProgram;
-        private System.Windows.Forms.ComboBox cbSearchProgLevel;
-        private System.Windows.Forms.ComboBox cbSearchProgLanguage;
-        private System.Windows.Forms.Label lbSearchProgLevel;
-        private System.Windows.Forms.Label lbSearchProgLanguage;
         private System.Windows.Forms.TabPage tabPageSearchRoom;
         private System.Windows.Forms.Panel panelSearchRoom;
         private System.Windows.Forms.TabPage tabPageSearchLesson;
@@ -5606,6 +5502,11 @@
         private System.Windows.Forms.ToolStripMenuItem showToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem checkToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem publishToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Summary;
     }
 }
 

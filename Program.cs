@@ -10,7 +10,7 @@ namespace RecordKeeper
     {
         public string Code { get; set; }
         public string Language { get; set; }
-        public string Level { get; set; }
+        public string Type { get; set; }
         public string Name { get; set; }
         public string Price { get; set; }
         public string Summary { get; set; }
@@ -34,11 +34,8 @@ namespace RecordKeeper
                 case "Code":
                     this.Code = value;
                     break;
-                case "Language":
-                    this.Language = value;
-                    break;
-                case "Level":
-                    this.Level = value;
+                case "Type":
+                    this.Type = value;
                     break;
                 case "Name":
                     this.Name = value;
@@ -59,9 +56,8 @@ namespace RecordKeeper
         {
             Code = "";
             Name = "";
-            Language = "";
-            Level = "";
-            Price = "50";
+            Type = "";
+            Price = "0";
             Summary = "";
         }
 
@@ -75,10 +71,8 @@ namespace RecordKeeper
             {
                 case "Code":
                     return Code;
-                case "Language":
-                    return Language;
-                case "Level":
-                    return Level;
+                case "Type":
+                    return Type;
                 case "Name":
                     return Name;
                 case "Price":
@@ -99,25 +93,19 @@ namespace RecordKeeper
                 return y.Code.CompareTo(x.Code);
             }
         }
-        public class ComparerByLanguage : IComparer<Program>
-        {
-            public int Compare(Program y, Program x)
-            {
-                return y.Language.CompareTo(x.Language);
-            }
-        }
-        public class ComparerByLevel : IComparer<Program>
-        {
-            public int Compare(Program y, Program x)
-            {
-                return y.Level.CompareTo(x.Level);
-            }
-        }
         public class ComparerByName : IComparer<Program>
         {
             public int Compare(Program y, Program x)
             {
                 return y.Name.CompareTo(x.Name);
+            }
+        }
+        
+        public class ComparerByType : IComparer<Program>
+        {
+            public int Compare(Program y, Program x)
+            {
+                return y.Type.CompareTo(x.Type);
             }
         }
         public class ComparerByPrice : IComparer<Program>

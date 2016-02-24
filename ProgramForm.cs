@@ -15,8 +15,7 @@ namespace RecordKeeper
 {
     public partial class FormGlob : Form
     {
-        string m_ProgramSelectionLanguage;
-        string m_ProgramSelectionLevel;
+        string m_ProgramSelectionType;
 
         delegate bool EvaluateProgram(Program t);
 
@@ -28,8 +27,7 @@ namespace RecordKeeper
 
         private void DropProgramSelection()
         {
-            m_ProgramSelectionLanguage = null;
-            m_ProgramSelectionLevel = null;
+            m_ProgramSelectionType = null;
         }
 
         private void ProgramToFormConst1()
@@ -53,11 +51,6 @@ namespace RecordKeeper
             DataList.Clear();
             foreach (Program s in m_recordTypes[Modes.Programs].SavedFullListDuringSelection)
             {
-                if (!CurrentType.Fit(m_ProgramSelectionLanguage, s.Language, true))
-                    continue;
-                if (!CurrentType.Fit(m_ProgramSelectionLevel, s.Level, true))
-                    continue;
-
                 DataList.Add(s);
             }
             ShowCurrentCount();

@@ -25,6 +25,7 @@ namespace RecordKeeper
         string[] m_enumSource;
         string[] m_enumStatus;
         string[] m_enumState;
+        string[] m_enumPricingType;
         string[] m_enumTimeSlot;
         string[] m_enumDurations;
 
@@ -562,8 +563,7 @@ namespace RecordKeeper
             tbSearchTeachFirstName.Text = "";
             tbSearchTeachLastName.Text = "";
 
-            cbProgLanguage.SelectedIndex = 0;
-            cbProgLevel.SelectedIndex = 0;
+            cbPricingType.SelectedIndex = 0;
 
             cbSearchLessonStudent.SelectedIndex = -1;
             cbSearchLessonTeacher.SelectedIndex = -1;
@@ -927,28 +927,15 @@ namespace RecordKeeper
             EditProgramDetailsChanged();
         }
 
-        private void cbProgLanguage_Click(object sender, EventArgs e)
+        private void cbPricingType_Click(object sender, EventArgs e)
         {
             EditProgramDetailsChanged();
         }
 
-        private void cbProgLevel_Click(object sender, EventArgs e)
-        {
-            EditProgramDetailsChanged();
-        }
-
-
-        private void cbSearchProgLanguage_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbSearchPricingType_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
-            m_ProgramSelectionLanguage = (string)comboBox.SelectedItem;
-            CurrentType.DoSelection();
-        }
-
-        private void cbSearchProgLevel_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ComboBox comboBox = (ComboBox)sender;
-            m_ProgramSelectionLevel = (string)comboBox.SelectedItem;
+            m_ProgramSelectionType = (string)comboBox.SelectedItem;
             CurrentType.DoSelection();
         }
         #endregion
@@ -1295,13 +1282,11 @@ namespace RecordKeeper
         private void ViewLessonDetailsChanged()
         {
             Modified = true;
-            m_lessonDetailsChanged = true;
             butViewDetailSet.Visible = true;
 
         }
         private void ViewLessonDetailsSet(string key)
         {
-            m_lessonDetailsChanged = false;
             butViewDetailSet.Visible = false;
             m_currentLessonKey = key;
         }
@@ -1320,7 +1305,6 @@ namespace RecordKeeper
                 (string)cbViewDetailRoom.SelectedItem,
                 tbViewDetailComment.Text);
 
-            m_lessonDetailsChanged = false;
             butViewDetailSet.Visible = false;
             ShowView();
         }

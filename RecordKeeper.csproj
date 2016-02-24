@@ -200,6 +200,9 @@
     <None Include="EnumLevel.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="EnumPricingType.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="EnumSource.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

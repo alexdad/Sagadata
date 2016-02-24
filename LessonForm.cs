@@ -20,7 +20,6 @@ namespace RecordKeeper
         string m_LessonSelectionDay;
         string m_LessonSelectionProgram;
         string m_LessonSelectionRoom;
-        bool   m_lessonDetailsChanged;
         string m_currentLessonKey;
 
         delegate bool EvaluateLesson(Lesson t);
