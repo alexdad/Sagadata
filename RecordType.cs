@@ -62,7 +62,7 @@ namespace RecordKeeper
             bool success = false;
             try
             {
-                string[] sts = File.ReadAllLines(FilePath);
+                string[] sts = SafeguardStrings(File.ReadAllLines(FilePath));
 
                 ParseHeaders(sts[0].Split(','));
 
@@ -185,7 +185,7 @@ namespace RecordKeeper
                     sb.Append(safeValue);
                     sb.Append("\",");
                 }
-                sw.WriteLine(sb.ToString());
+                sw.WriteLine(SafeguardString(sb.ToString()));
             }
         }
         public void ParseHeaders(string[] hdrs)
@@ -213,7 +213,7 @@ namespace RecordKeeper
                 sb.Append(Schema[i].Header);
                 sb.Append(",");
             }
-            sw.WriteLine(sb.ToString());
+            sw.WriteLine(SafeguardString(sb.ToString()));
         }
 
         private string SafeGuard(string s)
@@ -239,7 +239,7 @@ namespace RecordKeeper
             if (!File.Exists(cloudFile))
                 throw new Exception("Cannot find cloud file");
 
-            string[] sts = File.ReadAllLines(cloudFile);
+            string[] sts = SafeguardStrings(File.ReadAllLines(cloudFile));
             T[] recs = new T[sts.Length - 1];
 
             ParseHeaders(sts[0].Split(','));
@@ -443,6 +443,22 @@ namespace RecordKeeper
                 return (where.ToLower().Trim() == what.ToLower().Trim());
             else
                 return (where.ToLower().Contains(what.ToLower()));
+        }
+
+        public string[] SafeguardStrings(string[] sts)
+        {
+            string[] res = new string[sts.Length];
+            for (int i=0; i < sts.Length; i++)
+            {
+                string str = sts[i].Replace('’', ' ');
+                res[i] = Encoding.ASCII.GetString(Encoding.ASCII.GetBytes(str));
+            }
+            return res;
+        }
+        public string SafeguardString(string sts)
+        {
+            string str = sts.Replace('’', ' ');
+            return Encoding.ASCII.GetString(Encoding.ASCII.GetBytes(str));
         }
 
     }

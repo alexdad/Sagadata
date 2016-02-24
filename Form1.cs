@@ -1255,31 +1255,6 @@ namespace RecordKeeper
             ShowView();
         }
 
-        private void tbViewDetailTeacher_TextChanged(object sender, EventArgs e)
-        {
-            ViewLessonDetailsChanged();
-        }
-
-        private void tbViewDetailStudent_TextChanged(object sender, EventArgs e)
-        {
-            ViewLessonDetailsChanged();
-        }
-
-        private void cbViewDetailRoom_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ViewLessonDetailsChanged();
-        }
-
-        private void cbViewDetailProgram_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ViewLessonDetailsChanged();
-        }
-
-        private void tbViewDetailComment_TextChanged(object sender, EventArgs e)
-        {
-            ViewLessonDetailsChanged();
-        }
-
         private void ViewLessonDetailsChanged()
         {
             Modified = true;
@@ -1306,6 +1281,7 @@ namespace RecordKeeper
                 (string)cbViewDetailRoom.SelectedItem,
                 tbViewDetailComment.Text);
 
+            ViewLessonDetailsChanged();
             butViewDetailSet.Visible = false;
             ShowView();
         }
