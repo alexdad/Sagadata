@@ -141,6 +141,32 @@ namespace RecordKeeper
             return false;
         }
 
+        public bool SetStudentProgPrice(string firstname, string lastname, 
+                                        int progIndex, string price)
+        {
+            foreach (var tt in this.studentList.List)
+            {
+                Student t = tt as Student;
+                if (t.LastName == lastname && t.FirstName == firstname)
+                {
+                    switch(progIndex)
+                    {
+                        case 1:
+                            t.Price1 = price;
+                            break;
+                        case 2:
+                            t.Price2 = price;
+                            break;
+                        case 3:
+                            t.Price3 = price;
+                            break;
+                    }
+                    return true;
+                }
+            }
+            return false;
+        }
+
         List<Student> FindStudents(EvaluateStudent comp)
         {
             List<Student> students = new List<Student>();

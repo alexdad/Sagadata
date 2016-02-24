@@ -195,6 +195,12 @@ namespace RecordKeeper
             cbSearchLessonProgram.Items.AddRange(programNames.OrderBy(q => q).ToArray());
             cbLessonProg.Items.AddRange(programNames.OrderBy(q => q).ToArray());
             cbViewDetailProgram.Items.AddRange(programNames.OrderBy(q => q).ToArray());
+            cbStudProg1.Items.Add("");
+            cbStudProg1.Items.AddRange(programNames.OrderBy(q => q).ToArray());
+            cbStudProg2.Items.Add("");
+            cbStudProg2.Items.AddRange(programNames.OrderBy(q => q).ToArray());
+            cbStudProg3.Items.Add("");
+            cbStudProg3.Items.AddRange(programNames.OrderBy(q => q).ToArray());
 
             List<Room> rooms = ActiveRooms();
             List<String> roomNames = rooms.ConvertAll(x => x.Description);
@@ -301,6 +307,22 @@ namespace RecordKeeper
             this.splitContainerGlobDataControls.Panel1.Visible = true;
         }
 
+        public bool HideWorkout
+        {
+            set
+            {
+                if (value)
+                {
+                    tabControlOps.Visible = false;
+                    labelWorking.Visible = true;
+                }
+                else
+                {
+                    tabControlOps.Visible = true;
+                    labelWorking.Visible = false;
+                }
+            }
+        }
         public bool CheckSafety()
         {
             if (m_unsavedAvailabilityChanges)
@@ -380,6 +402,9 @@ namespace RecordKeeper
         private void dgvStudents_RowLeave(object sender, DataGridViewCellEventArgs e)
         {
             EditTrap = false;
+            lbStudStdProgPrice1.Text = "";
+            lbStudStdProgPrice2.Text = "";
+            lbStudStdProgPrice3.Text = "";
         }
 
         private void dgvTeachers_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -757,6 +782,99 @@ namespace RecordKeeper
             EditStudentDetailsChanged();
         }
 
+        private void cbStudProg1_Click(object sender, EventArgs e)
+        {
+            EditStudentDetailsChanged();
+        }
+        private void cbStudProg1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetStudProgPrice(sender, 1);
+        }
+
+        private void cbStudProg2_Click(object sender, EventArgs e)
+        {
+            EditStudentDetailsChanged();
+        }
+
+        private void cbStudProg2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetStudProgPrice(sender, 2);
+        }
+
+        private void cbStudProg3_Click(object sender, EventArgs e)
+        {
+            EditStudentDetailsChanged();
+        }
+
+        private void cbStudProg3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetStudProgPrice(sender, 3);
+        }
+
+        void SetStudProgPrice(object sender, int progIndex)
+        {
+            ComboBox cb = sender as ComboBox;
+            string prog = cb.SelectedItem as string;
+            if (IsStringEmpty(prog))
+                return;
+
+            string price = GetProgramPrice(prog);
+            if (IsStringEmpty(price))
+                return;
+
+            SetStdStdPriceLabel(progIndex, price);
+        }
+
+        void SetStdStdPriceLabel(int index, string price)
+        {
+            switch(index)
+            {
+                case 1:
+                    lbStudStdProgPrice1.Text = price;
+                    break;
+                case 2:
+                    lbStudStdProgPrice2.Text = price;
+                    break;
+                case 3:
+                    lbStudStdProgPrice3.Text = price;
+                    break;
+            }
+        }
+
+        private void tbStudPrice1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            EditStudentDetailsChanged();
+        }
+
+        private void tbStudPrice2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            EditStudentDetailsChanged();
+        }
+
+        private void tbStudPrice3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            EditStudentDetailsChanged();
+        }
+
+        private void buttonStudGrabStdPrices_Click(object sender, EventArgs e)
+        {
+            if (!IsStringEmpty(lbStudStdProgPrice1.Text))
+            {
+                tbStudPrice1.Text = lbStudStdProgPrice1.Text;
+                tbStudPrice1_KeyPress(null, null);
+            }
+            if (!IsStringEmpty(lbStudStdProgPrice2.Text))
+            {
+                tbStudPrice2.Text = lbStudStdProgPrice2.Text;
+                tbStudPrice2_KeyPress(null, null);
+            }
+            if (!IsStringEmpty(lbStudStdProgPrice3.Text))
+            {
+                tbStudPrice3.Text = lbStudStdProgPrice3.Text;
+                tbStudPrice3_KeyPress(null, null);
+            }
+        }
+
         #endregion
 
         #region Teacher-related UI
@@ -912,7 +1030,7 @@ namespace RecordKeeper
             EditProgramDetailsChanged();
         }
 
-        private void tbProgProce_KeyPress(object sender, KeyPressEventArgs e)
+        private void tbProgPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
             EditProgramDetailsChanged();
         }

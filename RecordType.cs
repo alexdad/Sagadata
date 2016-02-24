@@ -337,9 +337,10 @@ namespace RecordKeeper
                         dict.Add(t.Key, t);
                     else if (RecordDiffers(t, dict[t.Key]))
                     {
-                        m_glob.Modified = true;
                         if (dict[t.Key].Changed < t.Changed)
                         {
+                            m_glob.Modified = true;
+
                             dict[t.Key] = t;        // Target had newer, restoring back
                             MessageBox.Show(String.Format(
                                 "Merge conflict: {0} edited {1} at {2}; not taking yours!",

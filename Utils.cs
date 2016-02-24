@@ -253,6 +253,11 @@ namespace RecordKeeper
                 c.Controls[0].Dispose();
             c.Controls.Clear();
         }
+
+        public static bool IsStringEmpty(string s)
+        {
+            return (s == null || s.Trim().Length == 0);
+        }
         #endregion
     }
 }

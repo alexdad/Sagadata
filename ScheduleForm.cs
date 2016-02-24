@@ -176,7 +176,7 @@ namespace RecordKeeper
                 for (int j = js; j < je; j++)
                 {
                     string val = dgvPlan.Rows[j + 1].Cells[i + 1].Value as string;
-                    if (val == null || val.Trim().Length == 0)
+                    if (IsStringEmpty(val))
                         val = "*";
                     dgvPlan.Rows[j + 1].Cells[i + 1].Value = val + roomLetter;
                 }

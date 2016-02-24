@@ -86,7 +86,12 @@
             this.dgvStudColumnOtherLanguage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvStudColumnBirthday = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvStudColumnSource = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvStudColumnAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prog1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prog2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Prog3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Comments = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.studentList = new System.Windows.Forms.BindingSource(this.components);
             this.tabTopPageTeachers = new System.Windows.Forms.TabPage();
@@ -144,6 +149,16 @@
             this.panelStudent = new System.Windows.Forms.Panel();
             this.panelStudPrimary = new System.Windows.Forms.Panel();
             this.groupBoxStudPrinaryRight = new System.Windows.Forms.GroupBox();
+            this.buttonStudGrabStdPrices = new System.Windows.Forms.Button();
+            this.lbStudStdProgPrice3 = new System.Windows.Forms.Label();
+            this.lbStudStdProgPrice2 = new System.Windows.Forms.Label();
+            this.lbStudStdProgPrice1 = new System.Windows.Forms.Label();
+            this.tbStudPrice1 = new System.Windows.Forms.TextBox();
+            this.tbStudPrice2 = new System.Windows.Forms.TextBox();
+            this.tbStudPrice3 = new System.Windows.Forms.TextBox();
+            this.cbStudProg3 = new System.Windows.Forms.ComboBox();
+            this.cbStudProg2 = new System.Windows.Forms.ComboBox();
+            this.cbStudProg1 = new System.Windows.Forms.ComboBox();
             this.labelStudDetailsSource = new System.Windows.Forms.Label();
             this.labelStudDetailsLanguage = new System.Windows.Forms.Label();
             this.labelStudAddress1 = new System.Windows.Forms.Label();
@@ -227,7 +242,7 @@
             this.labelProgComments = new System.Windows.Forms.Label();
             this.labelProgSummary = new System.Windows.Forms.Label();
             this.panelProgramPrimaryLeft = new System.Windows.Forms.Panel();
-            this.tbProgProce = new System.Windows.Forms.TextBox();
+            this.tbProgPrice = new System.Windows.Forms.TextBox();
             this.labelProgPrice = new System.Windows.Forms.Label();
             this.cbPricingType = new System.Windows.Forms.ComboBox();
             this.labelPricingType = new System.Windows.Forms.Label();
@@ -462,6 +477,7 @@
             this.lbPayExpenseName = new System.Windows.Forms.Label();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.lbFutureOpName = new System.Windows.Forms.Label();
+            this.labelWorking = new System.Windows.Forms.Label();
             this.menuStripGlobalOps.SuspendLayout();
             this.panelGlobIndicators.SuspendLayout();
             this.ctxMenuLesson.SuspendLayout();
@@ -896,6 +912,7 @@
             this.tabControlOps.SelectedIndex = 0;
             this.tabControlOps.Size = new System.Drawing.Size(1291, 807);
             this.tabControlOps.TabIndex = 14;
+
             // 
             // tabEdit
             // 
@@ -991,7 +1008,12 @@
             this.dgvStudColumnOtherLanguage,
             this.dgvStudColumnBirthday,
             this.dgvStudColumnSource,
-            this.dgvStudColumnAddress,
+            this.Prog1,
+            this.Price1,
+            this.Prog2,
+            this.Price2,
+            this.Prog3,
+            this.Price3,
             this.Comments});
             this.dgvStudents.DataSource = this.studentList;
             this.dgvStudents.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1082,12 +1104,47 @@
             this.dgvStudColumnSource.Name = "dgvStudColumnSource";
             this.dgvStudColumnSource.ReadOnly = true;
             // 
-            // dgvStudColumnAddress
+            // Prog1
             // 
-            this.dgvStudColumnAddress.DataPropertyName = "MailingAddress";
-            this.dgvStudColumnAddress.HeaderText = "Address";
-            this.dgvStudColumnAddress.Name = "dgvStudColumnAddress";
-            this.dgvStudColumnAddress.ReadOnly = true;
+            this.Prog1.DataPropertyName = "Prog1";
+            this.Prog1.HeaderText = "Prog1";
+            this.Prog1.Name = "Prog1";
+            this.Prog1.ReadOnly = true;
+            // 
+            // Price1
+            // 
+            this.Price1.DataPropertyName = "Price1";
+            this.Price1.HeaderText = "Price1";
+            this.Price1.Name = "Price1";
+            this.Price1.ReadOnly = true;
+            // 
+            // Prog2
+            // 
+            this.Prog2.DataPropertyName = "Prog2";
+            this.Prog2.HeaderText = "Prog2";
+            this.Prog2.Name = "Prog2";
+            this.Prog2.ReadOnly = true;
+            // 
+            // Price2
+            // 
+            this.Price2.DataPropertyName = "Price2";
+            this.Price2.HeaderText = "Price2";
+            this.Price2.Name = "Price2";
+            this.Price2.ReadOnly = true;
+            // 
+            // Prog3
+            // 
+            this.Prog3.DataPropertyName = "Prog3";
+            this.Prog3.HeaderText = "Prog3";
+            this.Prog3.Name = "Prog3";
+            this.Prog3.ReadOnly = true;
+            // 
+            // Price3
+            // 
+            this.Price3.DataPropertyName = "Price3";
+            this.Price3.HeaderText = "Price3";
+            this.Price3.Name = "Price3";
+            this.Price3.ReadOnly = true;
             // 
             // Comments
             // 
@@ -1596,6 +1653,16 @@
             // 
             // groupBoxStudPrinaryRight
             // 
+            this.groupBoxStudPrinaryRight.Controls.Add(this.buttonStudGrabStdPrices);
+            this.groupBoxStudPrinaryRight.Controls.Add(this.lbStudStdProgPrice3);
+            this.groupBoxStudPrinaryRight.Controls.Add(this.lbStudStdProgPrice2);
+            this.groupBoxStudPrinaryRight.Controls.Add(this.lbStudStdProgPrice1);
+            this.groupBoxStudPrinaryRight.Controls.Add(this.tbStudPrice1);
+            this.groupBoxStudPrinaryRight.Controls.Add(this.tbStudPrice2);
+            this.groupBoxStudPrinaryRight.Controls.Add(this.tbStudPrice3);
+            this.groupBoxStudPrinaryRight.Controls.Add(this.cbStudProg3);
+            this.groupBoxStudPrinaryRight.Controls.Add(this.cbStudProg2);
+            this.groupBoxStudPrinaryRight.Controls.Add(this.cbStudProg1);
             this.groupBoxStudPrinaryRight.Controls.Add(this.labelStudDetailsSource);
             this.groupBoxStudPrinaryRight.Controls.Add(this.labelStudDetailsLanguage);
             this.groupBoxStudPrinaryRight.Controls.Add(this.labelStudAddress1);
@@ -1609,6 +1676,107 @@
             this.groupBoxStudPrinaryRight.Size = new System.Drawing.Size(437, 158);
             this.groupBoxStudPrinaryRight.TabIndex = 2;
             this.groupBoxStudPrinaryRight.TabStop = false;
+            // 
+            // buttonStudGrabStdPrices
+            // 
+            this.buttonStudGrabStdPrices.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.buttonStudGrabStdPrices.Location = new System.Drawing.Point(49, 12);
+            this.buttonStudGrabStdPrices.Name = "buttonStudGrabStdPrices";
+            this.buttonStudGrabStdPrices.Size = new System.Drawing.Size(69, 27);
+            this.buttonStudGrabStdPrices.TabIndex = 27;
+            this.buttonStudGrabStdPrices.Text = "Programs:";
+            this.buttonStudGrabStdPrices.UseVisualStyleBackColor = true;
+            this.buttonStudGrabStdPrices.Click += new System.EventHandler(this.buttonStudGrabStdPrices_Click);
+            // 
+            // lbStudStdProgPrice3
+            // 
+            this.lbStudStdProgPrice3.AutoSize = true;
+            this.lbStudStdProgPrice3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lbStudStdProgPrice3.Location = new System.Drawing.Point(400, 40);
+            this.lbStudStdProgPrice3.Name = "lbStudStdProgPrice3";
+            this.lbStudStdProgPrice3.Size = new System.Drawing.Size(0, 13);
+            this.lbStudStdProgPrice3.TabIndex = 26;
+            // 
+            // lbStudStdProgPrice2
+            // 
+            this.lbStudStdProgPrice2.AutoSize = true;
+            this.lbStudStdProgPrice2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lbStudStdProgPrice2.Location = new System.Drawing.Point(301, 40);
+            this.lbStudStdProgPrice2.Name = "lbStudStdProgPrice2";
+            this.lbStudStdProgPrice2.Size = new System.Drawing.Size(0, 13);
+            this.lbStudStdProgPrice2.TabIndex = 25;
+            // 
+            // lbStudStdProgPrice1
+            // 
+            this.lbStudStdProgPrice1.AutoSize = true;
+            this.lbStudStdProgPrice1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lbStudStdProgPrice1.Location = new System.Drawing.Point(185, 40);
+            this.lbStudStdProgPrice1.Name = "lbStudStdProgPrice1";
+            this.lbStudStdProgPrice1.Size = new System.Drawing.Size(0, 13);
+            this.lbStudStdProgPrice1.TabIndex = 24;
+            // 
+            // tbStudPrice1
+            // 
+            this.tbStudPrice1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "Price1", true));
+            this.tbStudPrice1.Location = new System.Drawing.Point(188, 17);
+            this.tbStudPrice1.Name = "tbStudPrice1";
+            this.tbStudPrice1.Size = new System.Drawing.Size(31, 20);
+            this.tbStudPrice1.TabIndex = 22;
+            this.tbStudPrice1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStudPrice1_KeyPress);
+            // 
+            // tbStudPrice2
+            // 
+            this.tbStudPrice2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "Price2", true));
+            this.tbStudPrice2.Location = new System.Drawing.Point(295, 17);
+            this.tbStudPrice2.Name = "tbStudPrice2";
+            this.tbStudPrice2.Size = new System.Drawing.Size(31, 20);
+            this.tbStudPrice2.TabIndex = 21;
+            this.tbStudPrice2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStudPrice2_KeyPress);
+            // 
+            // tbStudPrice3
+            // 
+            this.tbStudPrice3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "Price3", true));
+            this.tbStudPrice3.Location = new System.Drawing.Point(400, 18);
+            this.tbStudPrice3.Name = "tbStudPrice3";
+            this.tbStudPrice3.Size = new System.Drawing.Size(31, 20);
+            this.tbStudPrice3.TabIndex = 20;
+            this.tbStudPrice3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStudPrice3_KeyPress);
+            // 
+            // cbStudProg3
+            // 
+            this.cbStudProg3.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "Prog3", true));
+            this.cbStudProg3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStudProg3.FormattingEnabled = true;
+            this.cbStudProg3.Location = new System.Drawing.Point(345, 16);
+            this.cbStudProg3.Name = "cbStudProg3";
+            this.cbStudProg3.Size = new System.Drawing.Size(49, 21);
+            this.cbStudProg3.TabIndex = 19;
+            this.cbStudProg3.SelectedIndexChanged += new System.EventHandler(this.cbStudProg3_SelectedIndexChanged);
+            this.cbStudProg3.Click += new System.EventHandler(this.cbStudProg3_Click);
+            // 
+            // cbStudProg2
+            // 
+            this.cbStudProg2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "Prog2", true));
+            this.cbStudProg2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStudProg2.FormattingEnabled = true;
+            this.cbStudProg2.Location = new System.Drawing.Point(240, 16);
+            this.cbStudProg2.Name = "cbStudProg2";
+            this.cbStudProg2.Size = new System.Drawing.Size(49, 21);
+            this.cbStudProg2.TabIndex = 18;
+            this.cbStudProg2.SelectedIndexChanged += new System.EventHandler(this.cbStudProg2_SelectedIndexChanged);
+            this.cbStudProg2.Click += new System.EventHandler(this.cbStudProg2_Click);
+            // 
+            // cbStudProg1
+            // 
+            this.cbStudProg1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.studentList, "Prog1", true));
+            this.cbStudProg1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbStudProg1.FormattingEnabled = true;
+            this.cbStudProg1.Location = new System.Drawing.Point(133, 16);
+            this.cbStudProg1.Name = "cbStudProg1";
+            this.cbStudProg1.Size = new System.Drawing.Size(49, 21);
+            this.cbStudProg1.TabIndex = 17;
+            this.cbStudProg1.SelectedIndexChanged += new System.EventHandler(this.cbStudProg1_SelectedIndexChanged);
+            this.cbStudProg1.Click += new System.EventHandler(this.cbStudProg1_Click);
             // 
             // labelStudDetailsSource
             // 
@@ -2473,7 +2641,7 @@
             // 
             // panelProgramPrimaryLeft
             // 
-            this.panelProgramPrimaryLeft.Controls.Add(this.tbProgProce);
+            this.panelProgramPrimaryLeft.Controls.Add(this.tbProgPrice);
             this.panelProgramPrimaryLeft.Controls.Add(this.labelProgPrice);
             this.panelProgramPrimaryLeft.Controls.Add(this.cbPricingType);
             this.panelProgramPrimaryLeft.Controls.Add(this.labelPricingType);
@@ -2487,14 +2655,14 @@
             this.panelProgramPrimaryLeft.Size = new System.Drawing.Size(241, 350);
             this.panelProgramPrimaryLeft.TabIndex = 0;
             // 
-            // tbProgProce
+            // tbProgPrice
             // 
-            this.tbProgProce.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programList, "Price", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C0"));
-            this.tbProgProce.Location = new System.Drawing.Point(74, 141);
-            this.tbProgProce.Name = "tbProgProce";
-            this.tbProgProce.Size = new System.Drawing.Size(146, 20);
-            this.tbProgProce.TabIndex = 5;
-            this.tbProgProce.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbProgProce_KeyPress);
+            this.tbProgPrice.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.programList, "Price", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C0"));
+            this.tbProgPrice.Location = new System.Drawing.Point(74, 141);
+            this.tbProgPrice.Name = "tbProgPrice";
+            this.tbProgPrice.Size = new System.Drawing.Size(146, 20);
+            this.tbProgPrice.TabIndex = 5;
+            this.tbProgPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbProgPrice_KeyPress);
             // 
             // labelProgPrice
             // 
@@ -4935,11 +5103,22 @@
             this.lbFutureOpName.TabIndex = 0;
             this.lbFutureOpName.Text = "Future Operation";
             // 
+            // labelWorking
+            // 
+            this.labelWorking.AutoSize = true;
+            this.labelWorking.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWorking.Location = new System.Drawing.Point(301, 154);
+            this.labelWorking.Name = "labelWorking";
+            this.labelWorking.Size = new System.Drawing.Size(533, 42);
+            this.labelWorking.TabIndex = 14;
+            this.labelWorking.Text = "Working...  it takes some time...";
+            // 
             // FormGlob
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1291, 831);
+            this.Controls.Add(this.labelWorking);
             this.Controls.Add(this.tabControlOps);
             this.Controls.Add(this.panelGlobIndicators);
             this.Controls.Add(this.menuStripGlobalOps);
@@ -5271,7 +5450,7 @@
         private System.Windows.Forms.Label labelProgComments;
         private System.Windows.Forms.Label labelProgSummary;
         private System.Windows.Forms.Panel panelProgramPrimaryLeft;
-        private System.Windows.Forms.TextBox tbProgProce;
+        private System.Windows.Forms.TextBox tbProgPrice;
         private System.Windows.Forms.Label labelProgPrice;
         private System.Windows.Forms.ComboBox cbPricingType;
         private System.Windows.Forms.Label labelPricingType;
@@ -5496,6 +5675,21 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Student4;
         private System.Windows.Forms.DataGridViewTextBoxColumn teacher2DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn commentsDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Type;
+        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Summary;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.TextBox tbStudPrice1;
+        private System.Windows.Forms.TextBox tbStudPrice2;
+        private System.Windows.Forms.TextBox tbStudPrice3;
+        private System.Windows.Forms.ComboBox cbStudProg3;
+        private System.Windows.Forms.ComboBox cbStudProg2;
+        private System.Windows.Forms.ComboBox cbStudProg1;
+        private System.Windows.Forms.Label lbStudStdProgPrice3;
+        private System.Windows.Forms.Label lbStudStdProgPrice2;
+        private System.Windows.Forms.Label lbStudStdProgPrice1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvStudColumnStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvStudColumnFirstName;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvStudColumnLastName;
@@ -5507,14 +5701,15 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvStudColumnOtherLanguage;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvStudColumnBirthday;
         private System.Windows.Forms.DataGridViewTextBoxColumn dgvStudColumnSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dgvStudColumnAddress;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Prog1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Prog2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Prog3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Comments;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Type;
-        private System.Windows.Forms.DataGridViewTextBoxColumn priceDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Summary;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.Button buttonStudGrabStdPrices;
+        private System.Windows.Forms.Label labelWorking;
     }
 }
 

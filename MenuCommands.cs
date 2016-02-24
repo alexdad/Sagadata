@@ -177,7 +177,13 @@ namespace RecordKeeper
         }
         private void CommandSync()
         {
+            HideWorkout = true;
+
+            Modes modeWas = CurrentMode;
             CommandUpload();
+            SetMode(modeWas);
+
+            HideWorkout = false;
         }
         private void CommandUpload()
         {
@@ -207,6 +213,8 @@ namespace RecordKeeper
 
         private void UploadAll()
         {
+            HideWorkout = true;
+
             Modes modeWas = CurrentMode;
             for (Modes i = (Modes)0; i < Modes.MaxMode; i++)
             {
@@ -215,10 +223,14 @@ namespace RecordKeeper
             }
             CurrentMode = modeWas;
             Synced = !Modified;
+
+            HideWorkout = false;
         }
 
         private bool DownloadAll()
         {
+            HideWorkout = true;
+
             bool success = true;
             Modes modeWas = CurrentMode;
 
@@ -230,11 +242,15 @@ namespace RecordKeeper
             }
             CurrentMode = modeWas;
             Synced = !Modified;
+
+            HideWorkout = false;
             return success;  
         }
 
         private bool ReadAllFiles()
         {
+            HideWorkout = true;
+
             bool success = true;
             Modes modeWas = CurrentMode;
 
@@ -245,12 +261,15 @@ namespace RecordKeeper
                     success = false;
             }
             SetMode(modeWas);
+
+            HideWorkout = false;
             return success;
         }
 
         private void SaveAll()
         {
-            this.SuspendLayout();
+            HideWorkout = true;
+
             Modes was = CurrentMode;
             for (Modes i = (Modes)0; i < Modes.MaxMode; i++)
             {
@@ -259,7 +278,8 @@ namespace RecordKeeper
             }
             Modified = false;
             SetMode(was);
-            this.ResumeLayout();
+
+            HideWorkout = false;
         }
     }
 }

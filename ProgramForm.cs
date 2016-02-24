@@ -61,6 +61,11 @@ namespace RecordKeeper
             return FindPrograms(t => true);
         }
 
+        List<Program> SpecificProgram(string desc)
+        {
+            return FindPrograms(t => t.Description == desc);
+        }
+
         List<Program> FindPrograms(EvaluateProgram comp)
         {
             List<Program> programs = new List<Program>();
@@ -73,5 +78,14 @@ namespace RecordKeeper
             return programs;
         }
 
+        string GetProgramPrice(string desc)
+        {
+            List<Program> lst = SpecificProgram(desc);
+            string res = "";
+            foreach (Program t in lst)
+                res = t.Price;
+
+            return res;
+        }
     }
 }

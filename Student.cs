@@ -17,6 +17,7 @@ namespace RecordKeeper
         public string HomePhone { get; set; }
         public string Interests { get; set; }
         public string LastName { get; set; }
+        public string LastTeacher { get; set; }
         public String LearningLanguage { get; set; }
         public String LanguageDetail { get; set; }
         public String Level { get; set; }
@@ -24,6 +25,12 @@ namespace RecordKeeper
         public String NativeLanguage { get; set; }
         public String OtherLanguage { get; set; }
         public string PossibleSchedule { get; set; }
+        public string Price1 { get; set; }
+        public string Price2 { get; set; }
+        public string Price3 { get; set; }
+        public string Prog1 { get; set; }
+        public string Prog2 { get; set; }
+        public string Prog3 { get; set; }
         public string Source { get; set; }
         public string SourceDetail { get; set; }
         public string Status { get; set; }
@@ -64,6 +71,13 @@ namespace RecordKeeper
             Source = "";
             SourceDetail = "";
             Status = "";
+            LastTeacher = "";
+            Prog1 = "";
+            Price1 = "";
+            Prog2 = "";
+            Price2 = "";
+            Prog3 = "";
+            Price3 = "";
         }
 
         public override bool Set(string field, string fieldValue)
@@ -104,6 +118,9 @@ namespace RecordKeeper
                 case "LastName":
                     this.LastName = value;
                     break;
+                case "LastTeacher":
+                    this.LastTeacher = value;
+                    break;
                 case "LearningLanguage":
                     this.LearningLanguage = value;
                     break;
@@ -121,6 +138,24 @@ namespace RecordKeeper
                     break;
                 case "PossibleSchedule":
                     this.PossibleSchedule = value;
+                    break;
+                case "Price1":
+                    this.Price1 = value;
+                    break;
+                case "Price2":
+                    this.Price2 = value;
+                    break;
+                case "Price3":
+                    this.Price3 = value;
+                    break;
+                case "Prog1":
+                    this.Prog1 = value;
+                    break;
+                case "Prog2":
+                    this.Prog2 = value;
+                    break;
+                case "Prog3":
+                    this.Prog3 = value;
                     break;
                 case "Source":
                     this.Source = value;
@@ -163,6 +198,8 @@ namespace RecordKeeper
                     return Interests;
                 case "LastName":
                     return LastName;
+                case "LastTeacher":
+                    return LastTeacher;
                 case "LearningLanguage":
                     return LearningLanguage;
                 case "LanguageDetail":
@@ -177,6 +214,18 @@ namespace RecordKeeper
                     return OtherLanguage;
                 case "PossibleSchedule":
                     return PossibleSchedule;
+                case "Price1":
+                    return Price1;
+                case "Price2":
+                    return Price2;
+                case "Price3":
+                    return Price3;
+                case "Prog1":
+                    return Prog1;
+                case "Prog2":
+                    return Prog2;
+                case "Prog3":
+                    return Prog3;
                 case "Source":
                     return Source;
                 case "SourceDetail":
