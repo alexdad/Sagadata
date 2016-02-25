@@ -192,10 +192,10 @@ namespace RecordKeeper
 
         public Color[] StateColors = new Color[]
         {
-                Color.FromArgb(0, 255, 0),      // Good = green
+                Color.FromArgb(0, 132, 0),          // Good = green
                 Color.FromArgb(255, 255, 128),      // Warning = yellow
-                Color.FromArgb(255, 0, 0),      // Bad = red
-                Color.FromArgb(0, 0, 255),          // Irrelevant = blue
+                Color.FromArgb(196, 0, 0),          // Bad = red
+                Color.FromArgb(0, 0, 196),          // Irrelevant = blue
                 Color.FromArgb(220, 220, 220),      // Unknown = gray
 /*
                 Color.FromArgb(179, 224, 158),      // Good = green
@@ -300,6 +300,19 @@ namespace RecordKeeper
                             lb.Location.X - highlightSize / 2,
                             lb.Location.Y - highlightSize / 2);
         }
+
+        /*
+        Color[] m_viewSlotColors = new Color[7]
+        {
+                        Color.FromArgb(182,10,70),      //red
+                        Color.FromArgb(67,124,121),     //teal
+                        Color.FromArgb(251,209,85),     // yellow
+                        Color.FromArgb(158,231,105),    // green
+                        Color.FromArgb(255,255,255),    // white
+                        Color.FromArgb(255,213,234),    // pink
+                        Color.FromArgb(220,220,220)     // outside
+        };
+        */
         #endregion
     }
 }

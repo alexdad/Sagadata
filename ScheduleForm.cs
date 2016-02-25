@@ -380,6 +380,7 @@ namespace RecordKeeper
             }
             cbPlanRoom.Text = "Choose room:";
             cbPlanRoom.Visible = true;
+            lbPlanChooseRoom.Visible = true;
         }
 
         void AcceptNewLesson()
@@ -438,6 +439,7 @@ namespace RecordKeeper
             cbPlanRoom.SelectedIndex = -1;
             cbPlanRoom.Items.Clear();
             cbPlanRoom.Visible = false;
+            lbPlanChooseRoom.Visible = false;
 
             butPlanAccept.Visible = false;
             PlanShowDataIfReady();

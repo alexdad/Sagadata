@@ -478,6 +478,7 @@
             this.lbPayExpenseName = new System.Windows.Forms.Label();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.lbFutureOpName = new System.Windows.Forms.Label();
+            this.lbPlanChooseRoom = new System.Windows.Forms.Label();
             this.menuStripGlobalOps.SuspendLayout();
             this.panelGlobIndicators.SuspendLayout();
             this.ctxMenuLesson.SuspendLayout();
@@ -3997,6 +3998,7 @@
             // 
             this.panelPlanParams.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelPlanParams.Controls.Add(this.lbPlanChooseRoom);
             this.panelPlanParams.Controls.Add(this.cbPlanProgram);
             this.panelPlanParams.Controls.Add(this.lbPlanProgram);
             this.panelPlanParams.Controls.Add(this.cbPlanRoom);
@@ -4049,7 +4051,7 @@
             // 
             // cbPlanRoom
             // 
-            this.cbPlanRoom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(127)))), ((int)(((byte)(39)))));
+            this.cbPlanRoom.BackColor = System.Drawing.SystemColors.Control;
             this.cbPlanRoom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPlanRoom.FormattingEnabled = true;
             this.cbPlanRoom.Location = new System.Drawing.Point(352, 204);
@@ -4907,6 +4909,7 @@
             this.dgvViewSlots.Size = new System.Drawing.Size(975, 704);
             this.dgvViewSlots.TabIndex = 0;
             this.dgvViewSlots.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvViewSlots_CellClick);
+            this.dgvViewSlots.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvViewSlots_MouseDown);
             // 
             // slotDataGridViewTextBoxColumn
             // 
@@ -5116,6 +5119,17 @@
             this.lbFutureOpName.Size = this.lbSchedPlanName.Size;
             this.lbFutureOpName.TabIndex = 0;
             this.lbFutureOpName.Text = "Future Operation";
+            // 
+            // lbPlanChooseRoom
+            // 
+            this.lbPlanChooseRoom.AutoSize = true;
+            this.lbPlanChooseRoom.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(127)))), ((int)(((byte)(39)))));
+            this.lbPlanChooseRoom.Location = new System.Drawing.Point(256, 208);
+            this.lbPlanChooseRoom.Name = "lbPlanChooseRoom";
+            this.lbPlanChooseRoom.Size = new System.Drawing.Size(90, 13);
+            this.lbPlanChooseRoom.TabIndex = 34;
+            this.lbPlanChooseRoom.Text = "Choose the room:";
+            this.lbPlanChooseRoom.Visible = false;
             // 
             // FormGlob
             // 
@@ -5714,6 +5728,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Comments;
         private System.Windows.Forms.Button buttonStudGrabStdPrices;
         private System.Windows.Forms.Label labelWorking;
+        private System.Windows.Forms.Label lbPlanChooseRoom;
     }
 }
 

@@ -91,17 +91,7 @@ namespace RecordKeeper
 
         bool m_view_selection_mode = false;
         Dictionary<int, Lesson> m_dvgViewTags = new Dictionary<int, Lesson>();
-
-        Color[] m_viewSlotColors = new Color[7]
-        {
-                Color.FromArgb(182,10,70),      //red
-                Color.FromArgb(67,124,121),     //teal
-                Color.FromArgb(251,209,85),     // yellow
-                Color.FromArgb(158,231,105),    // green
-                Color.FromArgb(255,255,255),    // white
-                Color.FromArgb(255,213,234),    // pink
-                Color.FromArgb(220,220,220)     // outside
-        };
+        Lesson m_slotLessonFromRightClick = null;
 
         public void ViewShowMonth()
         {
@@ -127,8 +117,8 @@ namespace RecordKeeper
                         60 + cellWidth * x + cellRoomWidth * RoomIndex(l.Room),
                         40 + cellHight * ys + 5),
                     Parent = panelViewMonth,
-                    BackColor = LessonStateColor(l.State),
-                    ForeColor = ComplementColor(LessonStateColor(l.State)),
+                    BackColor = LessonStateBackColor(l.State),
+                    ForeColor = LessonStateForeColor(l.State),
                     BorderStyle = BorderStyle.FixedSingle,
                     TextAlign = ContentAlignment.MiddleCenter,
                     Tag = l
@@ -168,8 +158,8 @@ namespace RecordKeeper
                         60 + cellWidth * x + cellRoomWidth * RoomIndex(l.Room),
                         40 + cellHight * ys + 5),
                     Parent = panelViewWeek,
-                    BackColor = LessonStateColor(l.State),
-                    ForeColor = ComplementColor(LessonStateColor(l.State)),
+                    BackColor = LessonStateBackColor(l.State),
+                    ForeColor = LessonStateForeColor(l.State),
                     BorderStyle = BorderStyle.FixedSingle,
                     TextAlign = ContentAlignment.MiddleCenter,
                     Tag = l
@@ -211,8 +201,8 @@ namespace RecordKeeper
                         60 + cellWidth * x + 5, 
                         40 + cellHight * ys + 5),
                     Parent = panelViewDay,
-                    BackColor = LessonStateColor(l.State), 
-                    ForeColor = ComplementColor(LessonStateColor(l.State)),
+                    BackColor = LessonStateBackColor(l.State),
+                    ForeColor = LessonStateForeColor(l.State),
                     BorderStyle = BorderStyle.FixedSingle,
                     Tag = l
                 };
@@ -248,8 +238,9 @@ namespace RecordKeeper
                         continue;
 
                     viewSlotList.Add(slot);
-                    Color c1 = LessonStateColor(l.State);
-                    Color c2 = ComplementColor(LessonStateColor(l.State));
+                    Color c1 = LessonStateBackColor(l.State);
+                    Color c2 = LessonStateForeColor(l.State);
+
                     dgvViewSlots.Rows[slotIndex].Cells[roomIndex].Style.BackColor = c1;
                     dgvViewSlots.Rows[slotIndex].Cells[roomIndex].Style.ForeColor = c2;
                     dgvViewSlots.Rows[slotIndex].Cells[roomIndex].Value = text;
@@ -298,7 +289,7 @@ namespace RecordKeeper
             return lsn;
         }
 
-        private Color LessonStateColor(string state)
+        private Color LessonStateBackColor(string state)
         {
             switch (state)
             {
@@ -311,6 +302,12 @@ namespace RecordKeeper
                 default:
                     return StateColors[(int)StatusColors.Unknown];
             }
+        }
+
+        private Color LessonStateForeColor(string state)
+        {
+            return Color.Yellow;
+            //  ComplementColor(LessonStateColor(state)),
         }
 
         private void FollowFocusedDay()
@@ -448,7 +445,7 @@ namespace RecordKeeper
                 if (r.Name == l.Room)
                 {
                     col = i;
-                    color = LessonStateColor(l.State);
+                    color = LessonStateBackColor(l.State);
                 }
                 i++; 
             }
@@ -689,6 +686,10 @@ namespace RecordKeeper
             Button bt = c as Button;
             if (bt != null)
                 return bt.Tag as Lesson;
+
+            DataGridView dgv = c as DataGridView;
+            if (dgv != null)
+                return m_slotLessonFromRightClick;
 
             return null;
         }

@@ -37,6 +37,7 @@ namespace RecordKeeper
 
         bool m_modified;
         bool m_synced;
+        bool m_editSavingTrap;
 
         public bool Modified
         {
@@ -62,7 +63,6 @@ namespace RecordKeeper
             set
             {
                 m_synced = value;
-                buttonSync.Visible = !m_synced;
             }
         }
 
@@ -496,6 +496,27 @@ namespace RecordKeeper
             ViewSelectLesson(sender as DataGridView, e.RowIndex, e.ColumnIndex);
         }
 
+        private void dgvViewSlots_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                DataGridView dgv = sender as DataGridView;
+                if (dgv != null)
+                {
+                    DataGridView.HitTestInfo hit = dgv.HitTest(e.X, e.Y);
+                    if (hit.Type == DataGridViewHitTestType.Cell)
+                    {
+                        ViewSelectLesson(sender as DataGridView, hit.RowIndex, hit.ColumnIndex);
+                        m_slotLessonFromRightClick =
+                            m_dvgViewTags[hit.RowIndex * 100 + hit.ColumnIndex];
+
+                        dgv.CurrentCell = dgv[hit.ColumnIndex, hit.RowIndex];
+                        ctxMenuLesson.Show(dgv, e.X, e.Y);
+                    }
+                }
+            }
+        }
+
         #endregion
 
         #region "Global Button Clicks"
@@ -504,6 +525,7 @@ namespace RecordKeeper
         {
             set
             {
+                m_editSavingTrap = value;
                 butGlobalNext.BackColor = (value ? AttentionColor : RelaxationColor);
                 butGlobalPrev.BackColor = butGlobalNext.BackColor;
             }
@@ -511,12 +533,19 @@ namespace RecordKeeper
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
+            if (m_editSavingTrap)
+            {
+                MessageBox.Show("Please click orange next/prev to push your edits, then save again");
+                return;
+            }
             CommandSave();
+            buttonSync.Visible = !m_synced;
         }
 
         private void buttonSync_Click(object sender, EventArgs e)
         {
             CommandSync();
+            buttonSync.Visible = !m_synced;
         }
 
         private void buttonNext_Click(object sender, EventArgs e)
