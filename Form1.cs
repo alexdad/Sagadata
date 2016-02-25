@@ -1294,12 +1294,18 @@ namespace RecordKeeper
         {
             Button b = sender as Button;
             if (b != null && (b.Tag as Lesson) != null)
+            {
                 ShowCurrentLesson(b.Tag as Lesson);
+            }
             else
             {
                 Label lb = sender as Label;
                 if (lb != null && (lb.Tag as Lesson) != null)
+                {
+                    DropHighlight();
                     ShowCurrentLesson(lb.Tag as Lesson);
+                    SetHighlight(lb);
+                }
             }
         }
 
@@ -1374,12 +1380,6 @@ namespace RecordKeeper
             ShowView();
         }
 
-        private void ViewLessonDetailsChanged()
-        {
-            Modified = true;
-            butViewDetailSet.Visible = true;
-
-        }
         private void ViewLessonDetailsSet(string key)
         {
             butViewDetailSet.Visible = false;
@@ -1400,9 +1400,34 @@ namespace RecordKeeper
                 (string)cbViewDetailRoom.SelectedItem,
                 tbViewDetailComment.Text);
 
-            ViewLessonDetailsChanged();
+            Modified = true;
             butViewDetailSet.Visible = false;
             ShowView();
+        }
+
+        private void tbViewDetailTeacher_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            butViewDetailSet.Visible = true;
+        }
+
+        private void tbViewDetailStudent_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            butViewDetailSet.Visible = true;
+        }
+
+        private void tbViewDetailComment_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            butViewDetailSet.Visible = true;
+        }
+
+        private void cbViewDetailRoom_Click(object sender, EventArgs e)
+        {
+            butViewDetailSet.Visible = true;
+        }
+
+        private void cbViewDetailProgram_Click(object sender, EventArgs e)
+        {
+            butViewDetailSet.Visible = true;
         }
 
         private void ShowView()

@@ -397,6 +397,7 @@ namespace RecordKeeper
                 l = m_lessonInMove;
             }
             CurrentMode = was;
+            Modified = true;
 
             l.Room = cbPlanRoom.SelectedItem as string;
 

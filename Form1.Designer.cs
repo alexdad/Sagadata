@@ -68,6 +68,7 @@
             this.menuItemViewLessonMove = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewLessonMove1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemViewLessonMove2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.labelWorking = new System.Windows.Forms.Label();
             this.tabControlOps = new RecordKeeper.HiddenTabControl();
             this.tabEdit = new System.Windows.Forms.TabPage();
             this.splitContainerGlobDataControls = new System.Windows.Forms.SplitContainer();
@@ -477,7 +478,6 @@
             this.lbPayExpenseName = new System.Windows.Forms.Label();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.lbFutureOpName = new System.Windows.Forms.Label();
-            this.labelWorking = new System.Windows.Forms.Label();
             this.menuStripGlobalOps.SuspendLayout();
             this.panelGlobIndicators.SuspendLayout();
             this.ctxMenuLesson.SuspendLayout();
@@ -896,6 +896,16 @@
             this.menuItemViewLessonMove2.Text = "Move (2 weeks)";
             this.menuItemViewLessonMove2.Click += new System.EventHandler(this.menuItemViewLessonMove2_Click);
             // 
+            // labelWorking
+            // 
+            this.labelWorking.AutoSize = true;
+            this.labelWorking.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelWorking.Location = new System.Drawing.Point(301, 154);
+            this.labelWorking.Name = "labelWorking";
+            this.labelWorking.Size = new System.Drawing.Size(533, 42);
+            this.labelWorking.TabIndex = 14;
+            this.labelWorking.Text = "Working...  it takes some time...";
+            // 
             // tabControlOps
             // 
             this.tabControlOps.Controls.Add(this.tabEdit);
@@ -912,7 +922,6 @@
             this.tabControlOps.SelectedIndex = 0;
             this.tabControlOps.Size = new System.Drawing.Size(1291, 807);
             this.tabControlOps.TabIndex = 14;
-
             // 
             // tabEdit
             // 
@@ -4700,6 +4709,7 @@
             this.tbViewDetailComment.Name = "tbViewDetailComment";
             this.tbViewDetailComment.Size = new System.Drawing.Size(524, 20);
             this.tbViewDetailComment.TabIndex = 9;
+            this.tbViewDetailComment.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbViewDetailComment_KeyPress);
             // 
             // cbViewDetailProgram
             // 
@@ -4709,6 +4719,7 @@
             this.cbViewDetailProgram.Name = "cbViewDetailProgram";
             this.cbViewDetailProgram.Size = new System.Drawing.Size(102, 21);
             this.cbViewDetailProgram.TabIndex = 8;
+            this.cbViewDetailProgram.Click += new System.EventHandler(this.cbViewDetailProgram_Click);
             // 
             // butViewDetailSet
             // 
@@ -4730,6 +4741,7 @@
             this.cbViewDetailRoom.Name = "cbViewDetailRoom";
             this.cbViewDetailRoom.Size = new System.Drawing.Size(104, 21);
             this.cbViewDetailRoom.TabIndex = 4;
+            this.cbViewDetailRoom.Click += new System.EventHandler(this.cbViewDetailRoom_Click);
             // 
             // tbViewDetailStudent
             // 
@@ -4739,6 +4751,7 @@
             this.tbViewDetailStudent.Name = "tbViewDetailStudent";
             this.tbViewDetailStudent.Size = new System.Drawing.Size(873, 20);
             this.tbViewDetailStudent.TabIndex = 3;
+            this.tbViewDetailStudent.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbViewDetailStudent_KeyPress);
             // 
             // tbViewDetailTeacher
             // 
@@ -4748,6 +4761,7 @@
             this.tbViewDetailTeacher.Name = "tbViewDetailTeacher";
             this.tbViewDetailTeacher.Size = new System.Drawing.Size(873, 20);
             this.tbViewDetailTeacher.TabIndex = 2;
+            this.tbViewDetailTeacher.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbViewDetailTeacher_KeyPress);
             // 
             // lbViewDetailStudent
             // 
@@ -5102,16 +5116,6 @@
             this.lbFutureOpName.Size = this.lbSchedPlanName.Size;
             this.lbFutureOpName.TabIndex = 0;
             this.lbFutureOpName.Text = "Future Operation";
-            // 
-            // labelWorking
-            // 
-            this.labelWorking.AutoSize = true;
-            this.labelWorking.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelWorking.Location = new System.Drawing.Point(301, 154);
-            this.labelWorking.Name = "labelWorking";
-            this.labelWorking.Size = new System.Drawing.Size(533, 42);
-            this.labelWorking.TabIndex = 14;
-            this.labelWorking.Text = "Working...  it takes some time...";
             // 
             // FormGlob
             // 

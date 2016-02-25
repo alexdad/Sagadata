@@ -202,7 +202,7 @@ namespace RecordKeeper
                 Color roomColor;
                 GetLocationInRooms(l, out x, out ys, out ye, out roomColor);
 
-                Button b = new Button()
+                Label lb = new Label()
                 {
                     Text = l.Description,
                     Width = cellWidth - 10,
@@ -213,10 +213,11 @@ namespace RecordKeeper
                     Parent = panelViewDay,
                     BackColor = LessonStateColor(l.State), 
                     ForeColor = ComplementColor(LessonStateColor(l.State)),
+                    BorderStyle = BorderStyle.FixedSingle,
                     Tag = l
                 };
-                b.ContextMenuStrip = ctxMenuLesson;
-                b.MouseHover += new System.EventHandler(this.butViewShowLesson_MouseHover);
+                lb.ContextMenuStrip = ctxMenuLesson;
+                lb.MouseHover += new System.EventHandler(this.butViewShowLesson_MouseHover);
             }
             panelViewDay.Refresh();
         }
@@ -624,6 +625,7 @@ namespace RecordKeeper
         {
             Lesson l = GetLessonFromSender(sender);
             l.State = "Cancelled";
+            Modified = true;
             ShowView();
         }
 
@@ -665,6 +667,7 @@ namespace RecordKeeper
         {
             Lesson l = GetLessonFromSender(sender);
             l.State = "Done";
+            Modified = true;
             ShowView();
         }
 
@@ -672,6 +675,7 @@ namespace RecordKeeper
         {
             Lesson l = GetLessonFromSender(sender);
             l.State = "Planned";
+            Modified = true;
             ShowView();
         }
 
@@ -679,9 +683,14 @@ namespace RecordKeeper
         {
             Control c = ((ContextMenuStrip)((ToolStripItem)sender).Owner).SourceControl;
             Label lb = c as Label;
+            if (lb != null)
+                return lb.Tag as Lesson;
+
             Button bt = c as Button;
-            Lesson l = (lb == null ? bt.Tag : lb.Tag) as Lesson;
-            return l;
+            if (bt != null)
+                return bt.Tag as Lesson;
+
+            return null;
         }
 
     }

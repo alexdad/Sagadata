@@ -249,6 +249,7 @@ namespace RecordKeeper
         }
         public void DisposeChildren(Control c)
         {
+            s_lastHoveredLabelOrButton = null;
             while (c.Controls.Count > 0)
                 c.Controls[0].Dispose();
             c.Controls.Clear();
@@ -257,6 +258,47 @@ namespace RecordKeeper
         public static bool IsStringEmpty(string s)
         {
             return (s == null || s.Trim().Length == 0);
+        }
+
+        const int highlightSize = 2;
+        static Control s_lastHoveredLabelOrButton = null;
+
+        public static void SetHighlight(Label lb)
+        {
+            if (lb == null)
+                return;
+
+            lb.BorderStyle = BorderStyle.None; 
+            s_lastHoveredLabelOrButton = lb;
+
+            if (lb.Width <= highlightSize * 4 || lb.Height <= highlightSize * 4)
+                return;
+
+            lb.Width -= highlightSize;
+            lb.Height -= highlightSize;
+            lb.Location = new Point(
+                lb.Location.X + highlightSize / 2, 
+                lb.Location.Y + highlightSize / 2);
+        }
+        public static void DropHighlight()
+        {
+            if (s_lastHoveredLabelOrButton == null)
+                return;
+            Label lb = s_lastHoveredLabelOrButton as Label;
+            s_lastHoveredLabelOrButton = null;
+            if (lb == null)
+                return;
+
+            lb.BorderStyle = BorderStyle.FixedSingle;
+
+            if (lb.Width <= highlightSize * 4 || lb.Height <= highlightSize * 4)
+                return;
+
+            lb.Width += highlightSize;
+            lb.Height += highlightSize;
+            lb.Location = new Point(
+                            lb.Location.X - highlightSize / 2,
+                            lb.Location.Y - highlightSize / 2);
         }
         #endregion
     }
