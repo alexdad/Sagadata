@@ -293,17 +293,10 @@ namespace RecordKeeper
             if (lb == null)
                 return;
 
-            lb.BorderStyle = BorderStyle.None; 
+            lb.BorderStyle = BorderStyle.Fixed3D;
+            lb.FlatStyle = FlatStyle.Popup;
+            lb.Font = new Font(lb.Font, FontStyle.Bold);
             s_lastHoveredLabelOrButton = lb;
-
-            if (lb.Width <= highlightSize * 4 || lb.Height <= highlightSize * 4)
-                return;
-
-            lb.Width -= highlightSize;
-            lb.Height -= highlightSize;
-            lb.Location = new Point(
-                lb.Location.X + highlightSize / 2, 
-                lb.Location.Y + highlightSize / 2);
         }
         public static void DropHighlight()
         {
@@ -315,29 +308,9 @@ namespace RecordKeeper
                 return;
 
             lb.BorderStyle = BorderStyle.FixedSingle;
-
-            if (lb.Width <= highlightSize * 4 || lb.Height <= highlightSize * 4)
-                return;
-
-            lb.Width += highlightSize;
-            lb.Height += highlightSize;
-            lb.Location = new Point(
-                            lb.Location.X - highlightSize / 2,
-                            lb.Location.Y - highlightSize / 2);
+            lb.FlatStyle = FlatStyle.Standard;
+            lb.Font = new Font(lb.Font, FontStyle.Regular);
         }
-
-        /*
-        Color[] m_viewSlotColors = new Color[7]
-        {
-                        Color.FromArgb(182,10,70),      //red
-                        Color.FromArgb(67,124,121),     //teal
-                        Color.FromArgb(251,209,85),     // yellow
-                        Color.FromArgb(158,231,105),    // green
-                        Color.FromArgb(255,255,255),    // white
-                        Color.FromArgb(255,213,234),    // pink
-                        Color.FromArgb(220,220,220)     // outside
-        };
-        */
         #endregion
     }
 }

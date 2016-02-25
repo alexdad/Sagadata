@@ -92,6 +92,7 @@ namespace RecordKeeper
         bool m_view_selection_mode = false;
         Dictionary<int, Lesson> m_dvgViewTags = new Dictionary<int, Lesson>();
         Lesson m_slotLessonFromRightClick = null;
+        const int lessonLabelVertMargin = 20;
 
         public void ViewShowMonth()
         {
@@ -112,10 +113,10 @@ namespace RecordKeeper
                 {
                     Text = l.State.Substring(0, 1),
                     Width = cellRoomWidth,
-                    Height = cellHight * (ye - ys + 1) - 10,
+                    Height = cellHight * (ye - ys + 1) - lessonLabelVertMargin,
                     Location = new Point(
                         60 + cellWidth * x + cellRoomWidth * RoomIndex(l.Room),
-                        40 + cellHight * ys + 5),
+                        40 + cellHight * ys + lessonLabelVertMargin/2),
                     Parent = panelViewMonth,
                     BackColor = LessonStateBackColor(l.State),
                     ForeColor = LessonStateForeColor(l.State),
@@ -153,10 +154,10 @@ namespace RecordKeeper
                 {
                     Text = l.ShortDescription,
                     Width = cellRoomWidth,
-                    Height = cellHight * (ye - ys + 1) - 10,
+                    Height = cellHight * (ye - ys + 1) - lessonLabelVertMargin,
                     Location = new Point(
                         60 + cellWidth * x + cellRoomWidth * RoomIndex(l.Room),
-                        40 + cellHight * ys + 5),
+                        40 + cellHight * ys + lessonLabelVertMargin/2),
                     Parent = panelViewWeek,
                     BackColor = LessonStateBackColor(l.State),
                     ForeColor = LessonStateForeColor(l.State),
@@ -196,10 +197,10 @@ namespace RecordKeeper
                 {
                     Text = l.Description,
                     Width = cellWidth - 10,
-                    Height = cellHight * (ye - ys + 1) - 10,
+                    Height = cellHight * (ye - ys + 1) - lessonLabelVertMargin,
                     Location = new Point(
                         60 + cellWidth * x + 5, 
-                        40 + cellHight * ys + 5),
+                        40 + cellHight * ys + lessonLabelVertMargin/2),
                     Parent = panelViewDay,
                     BackColor = LessonStateBackColor(l.State),
                     ForeColor = LessonStateForeColor(l.State),
@@ -558,6 +559,8 @@ namespace RecordKeeper
         {
             int ncols = (cols + 1) * nRooms + 1;
             int nrows = rows;
+
+            // Count hits per grid cell
             int[,] hits = new int[ncols, nrows];
             foreach (Control c in panel.Controls)
             {
@@ -581,6 +584,7 @@ namespace RecordKeeper
                         hits[x, y] = hits[x, y] + 1;
             }
 
+            // Expand right
             foreach (Control c in panel.Controls)
             {
                 Label l = c as Label;
@@ -598,7 +602,7 @@ namespace RecordKeeper
                     y1 < 0 || y2 < 0 || y1 > nrows || y2 > nrows)
                     continue;
 
-                int x2min = (x2 / nRooms) * nRooms;
+                int x2min = ( (x2-1) / nRooms) * nRooms;
                 int x2max = x2min + nRooms;
 
                 bool hit = false;
@@ -625,6 +629,54 @@ namespace RecordKeeper
                     }
                 }
             }
+
+            // Expand left
+            foreach (Control c in panel.Controls)
+            {
+                Label l = c as Label;
+                if (l == null)
+                    continue;
+                if (l.Location.Y < minY || l.Location.X < minX)
+                    continue;
+
+                int x1 = (l.Location.X - minX) / cellRoomWidth;
+                int y1 = (l.Location.Y - minY) / cellHeight;
+                int x2 = (l.Location.X + l.Width - minX) / cellRoomWidth;
+                int y2 = (l.Location.Y + l.Height - minY) / cellHeight;
+
+                if (x1 < 0 || x2 < 0 || x1 > ncols || x2 > ncols ||
+                    y1 < 0 || y2 < 0 || y1 > nrows || y2 > nrows)
+                    continue;
+
+                int x1min = ((x1 - 1) / nRooms) * nRooms;
+                int x1max = x1min + nRooms;
+
+                bool hit = false;
+                for (int x = x1; x > x1min && !hit; x--)
+                {
+                    for (int y = y1; y <= y2; y++)
+                    {
+                        if (x - 1 < 0 || y < 0 || x - 1 >= ncols || y >= nrows)
+                            return;
+                        if (hits[x - 1, y] > 0)
+                        {
+                            hit = true;
+                            break;
+                        }
+                    }
+                    if (hit)
+                        break;
+                    l.Width += cellRoomWidth;
+                    l.Location = new Point(l.Location.X - cellRoomWidth, l.Location.Y);
+                    for (int y = y1; y < y2; y++)
+                    {
+                        if (x - 1 < 0 || y < 0 || x - 1 >= ncols || y >= nrows)
+                            return;
+                        hits[x - 1, y] = 1;
+                    }
+                }
+            }
+
         }
 
         private void menuItemViewLessonCancel_Click(object sender, EventArgs e)
@@ -642,13 +694,23 @@ namespace RecordKeeper
             m_plan_chosenLanguage = GetStudentLearningLanguage(l.Student1);
 
             dtpPlan.Value = l.DateTimeStart.AddDays(days);
-            cbPlanDuration.SelectedIndex = l.SlotsNumber;
+            //cbPlanDuration.SelectedIndex = l.SlotsNumber;
+            tbPlanComment.Text = l.Comments;
             SetComboBoxIndexByValue(cbPlanLanguage, m_plan_chosenLanguage);
+            SetComboBoxIndexByValue(cbPlanProgram, l.Program);
+            SetComboBoxIndexByValue(cbPlanDuration, l.DurationString);
             SetComboBoxIndexByValue(cbPlanTeacher, l.Teacher1);
             SetComboBoxIndexByValue(cbPlanStud1, l.Student1);
 
             PopulateTeacherVacation(l.Teacher1, lbPlanTeachVacation);
             PopulateStudentPossibleSchedule(l.Student1, lbPlanStudSchedule1);
+            if (!IsStringEmpty(l.Student2))
+                PopulateStudentPossibleSchedule(l.Student2, lbPlanStudSchedule2);
+            if (!IsStringEmpty(l.Student3))
+                PopulateStudentPossibleSchedule(l.Student3, lbPlanStudSchedule3);
+            if (!IsStringEmpty(l.Student4))
+                PopulateStudentPossibleSchedule(l.Student4, lbPlanStudSchedule4);
+
             m_lessonInMove = l;
             tabControlOps.SelectedIndex = (int)TabControlOps.Plan;
             PlanShowDataIfReady();

@@ -284,6 +284,16 @@ namespace RecordKeeper
                 cbPlanTeacher.SelectedIndex = -1;
                 cbPlanTeacher.Text = "";
 
+                cbPlanProgram.SelectedIndex = -1;
+                cbPlanProgram.Text = "";
+                cbPlanDuration.SelectedIndex = -1;
+                cbPlanDuration.Text = "";
+                tbPlanComment.Text = "";
+                lbPlanStudSchedule1.Text = "";
+                lbPlanStudSchedule2.Text = "";
+                lbPlanStudSchedule3.Text = "";
+                lbPlanStudSchedule4.Text = "";
+
                 PopulateStudentChoices(m_plan_chosenLanguage, cbPlanStud1);
                 cbPlanStud1.SelectedIndex = -1;
                 cbPlanStud1.Text = "";

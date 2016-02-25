@@ -4107,7 +4107,7 @@
             this.lbPlanTeachVacation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbPlanTeachVacation.AutoSize = true;
-            this.lbPlanTeachVacation.Location = new System.Drawing.Point(498, 11);
+            this.lbPlanTeachVacation.Location = new System.Drawing.Point(534, 145);
             this.lbPlanTeachVacation.Name = "lbPlanTeachVacation";
             this.lbPlanTeachVacation.Size = new System.Drawing.Size(0, 13);
             this.lbPlanTeachVacation.TabIndex = 27;
@@ -4119,9 +4119,8 @@
             this.lbPlanStudSchedule4.AutoSize = true;
             this.lbPlanStudSchedule4.Location = new System.Drawing.Point(534, 99);
             this.lbPlanStudSchedule4.Name = "lbPlanStudSchedule4";
-            this.lbPlanStudSchedule4.Size = new System.Drawing.Size(17, 13);
+            this.lbPlanStudSchedule4.Size = new System.Drawing.Size(0, 13);
             this.lbPlanStudSchedule4.TabIndex = 26;
-            this.lbPlanStudSchedule4.Text = "xx";
             // 
             // lbPlanStudSchedule3
             // 
@@ -4130,9 +4129,8 @@
             this.lbPlanStudSchedule3.AutoSize = true;
             this.lbPlanStudSchedule3.Location = new System.Drawing.Point(534, 73);
             this.lbPlanStudSchedule3.Name = "lbPlanStudSchedule3";
-            this.lbPlanStudSchedule3.Size = new System.Drawing.Size(17, 13);
+            this.lbPlanStudSchedule3.Size = new System.Drawing.Size(0, 13);
             this.lbPlanStudSchedule3.TabIndex = 25;
-            this.lbPlanStudSchedule3.Text = "xx";
             // 
             // lbPlanStudSchedule2
             // 
@@ -4141,9 +4139,8 @@
             this.lbPlanStudSchedule2.AutoSize = true;
             this.lbPlanStudSchedule2.Location = new System.Drawing.Point(534, 52);
             this.lbPlanStudSchedule2.Name = "lbPlanStudSchedule2";
-            this.lbPlanStudSchedule2.Size = new System.Drawing.Size(17, 13);
+            this.lbPlanStudSchedule2.Size = new System.Drawing.Size(0, 13);
             this.lbPlanStudSchedule2.TabIndex = 24;
-            this.lbPlanStudSchedule2.Text = "xx";
             // 
             // lbPlanStudSchedule1
             // 
@@ -4152,9 +4149,8 @@
             this.lbPlanStudSchedule1.AutoSize = true;
             this.lbPlanStudSchedule1.Location = new System.Drawing.Point(534, 20);
             this.lbPlanStudSchedule1.Name = "lbPlanStudSchedule1";
-            this.lbPlanStudSchedule1.Size = new System.Drawing.Size(17, 13);
+            this.lbPlanStudSchedule1.Size = new System.Drawing.Size(0, 13);
             this.lbPlanStudSchedule1.TabIndex = 23;
-            this.lbPlanStudSchedule1.Text = "xx";
             // 
             // butPlanAccept
             // 
@@ -4200,7 +4196,7 @@
             // 
             this.cbPlanTeacher.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPlanTeacher.FormattingEnabled = true;
-            this.cbPlanTeacher.Location = new System.Drawing.Point(76, 64);
+            this.cbPlanTeacher.Location = new System.Drawing.Point(394, 142);
             this.cbPlanTeacher.Name = "cbPlanTeacher";
             this.cbPlanTeacher.Size = new System.Drawing.Size(121, 21);
             this.cbPlanTeacher.TabIndex = 6;
@@ -4209,7 +4205,7 @@
             // lbPlanTeacher
             // 
             this.lbPlanTeacher.AutoSize = true;
-            this.lbPlanTeacher.Location = new System.Drawing.Point(10, 67);
+            this.lbPlanTeacher.Location = new System.Drawing.Point(331, 145);
             this.lbPlanTeacher.Name = "lbPlanTeacher";
             this.lbPlanTeacher.Size = new System.Drawing.Size(50, 13);
             this.lbPlanTeacher.TabIndex = 17;
