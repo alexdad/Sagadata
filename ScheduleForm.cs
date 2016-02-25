@@ -240,6 +240,30 @@ namespace RecordKeeper
                tb.Text = t.PossibleSchedule;
         }
 
+        void PopulatePlanFieldsFromLastLesson(string studDesc)
+        {
+            string language = null;
+            foreach (Student t in SpecificStudent(studDesc))
+                language = t.LearningLanguage;
+            if (language == null)
+                return;
+
+            DateTime before = DateTime.Now;
+            before = before.AddMonths(-2);
+            Lesson latest = null;
+            foreach(Lesson l in LessonsByStudent(studDesc, before, DateTime.Now))
+            {
+                if (latest == null || latest != null && l.DateTimeStart > latest.DateTimeStart)
+                    latest = l;
+            }
+            if (latest == null)
+                return;
+            SetComboBoxIndexByValue(cbPlanProgram, latest.Program);
+            SetComboBoxIndexByValue(cbPlanDuration, latest.DurationString);
+            SetComboBoxIndexByValue(cbPlanLanguage, language);
+            SetComboBoxIndexByValue(cbPlanTeacher, latest.Teacher1);
+        }
+
         void PopulateTeacherVacation(string description, Label lb)
         {
             foreach (Teacher t in SpecificTeacher(description))

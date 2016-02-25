@@ -16,8 +16,6 @@ namespace RecordKeeper
     public partial class FormGlob : Form
     {
         public static long SlotInTicks = 0;
-        public static Color AttentionColor = Color.FromArgb(255, 127, 39);
-        public static Color RelaxationColor = Color.FromArgb(212, 255, 236);
 
         // Local fields
         string[] m_enumLanguage;
@@ -212,6 +210,7 @@ namespace RecordKeeper
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            CreateLabelWorking();
             ReadAllFiles();
             if (Properties.Settings.Default.InitialDownload.ToLower() != "no")
             {
@@ -314,12 +313,12 @@ namespace RecordKeeper
                 if (value)
                 {
                     tabControlOps.Visible = false;
-                    labelWorking.Visible = true;
+                    m_labelWorking.Visible = true;
                 }
                 else
                 {
                     tabControlOps.Visible = true;
-                    labelWorking.Visible = false;
+                    m_labelWorking.Visible = false;
                 }
             }
         }
@@ -533,10 +532,13 @@ namespace RecordKeeper
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            if (m_editSavingTrap)
+            if (tabControlOps.SelectedIndex == (int)TabControlOps.Edit)
             {
-                MessageBox.Show("Please click orange next/prev to push your edits, then save again");
-                return;
+                if (m_editSavingTrap)
+                {
+                    MessageBox.Show("Please click orange next/prev to push your edits, then save again");
+                    return;
+                }
             }
             CommandSave();
             buttonSync.Visible = !m_synced;
@@ -1251,7 +1253,11 @@ namespace RecordKeeper
         private void cbPlanStud1_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox cb = sender as ComboBox;
-            PopulateStudentPossibleSchedule(cb.SelectedItem as string, lbPlanStudSchedule1);
+            string studDesc = cb.SelectedItem as string;
+            PopulateStudentPossibleSchedule(studDesc, lbPlanStudSchedule1);
+
+            PopulatePlanFieldsFromLastLesson(studDesc);
+
             if (m_lessonInMove == null)
                 PlanShowDataIfReady();
         }

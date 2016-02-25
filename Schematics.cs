@@ -256,6 +256,13 @@ namespace RecordKeeper
                         h.ToString() + ":" + m.ToString();
                 }
         }
+
+        public static string GetDurationString(DateTime start, DateTime end)
+        {
+            TimeSpan ts = end - start;
+            long slot = ts.Ticks / FormGlob.SlotInTicks;
+            return (slot / 4).ToString() + ":" + (15 * (slot % 4)).ToString();
+        }
         
         void ReadSchemas()
         {

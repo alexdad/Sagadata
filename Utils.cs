@@ -13,6 +13,11 @@ namespace RecordKeeper
 {
     public partial class FormGlob : Form
     {
+        public static Color AttentionColor = Color.FromArgb(255, 127, 39);
+        public static Color RelaxationColor = Color.FromArgb(212, 255, 236);
+
+        private Label m_labelWorking;
+
         #region "Time-related"
         public static DateTime DayStart(DateTime d)
         {
@@ -197,13 +202,15 @@ namespace RecordKeeper
                 Color.FromArgb(196, 0, 0),          // Bad = red
                 Color.FromArgb(0, 0, 196),          // Irrelevant = blue
                 Color.FromArgb(220, 220, 220),      // Unknown = gray
-/*
-                Color.FromArgb(179, 224, 158),      // Good = green
-                Color.FromArgb(239, 237, 143),      // Warning = yellow
-                Color.FromArgb(242, 223, 228),      // Bad = red
-                Color.FromArgb(0, 0, 255),          // Irrelevant = blue
-                Color.FromArgb(100, 100, 100),      // Unknown = gray
-*/
+        };
+
+        public Color[] StateForeColors = new Color[]
+        {
+                Color.Yellow,           // Good = yellow on green
+                Color.Black,            // Warning = black on yellow
+                Color.Yellow,           // Bad = yellow on red
+                Color.Yellow,           // Irrelevant = yellow on blue
+                Color.Yellow,           // Unknown = yellow on gray
         };
         #endregion
 
@@ -233,6 +240,24 @@ namespace RecordKeeper
             }
 
             return -1;
+        }
+        #endregion
+
+        #region "UI-related"
+        private void CreateLabelWorking()
+        {
+            m_labelWorking = new System.Windows.Forms.Label();
+
+            m_labelWorking.AutoSize = true;
+            m_labelWorking.BackColor = System.Drawing.Color.Transparent;
+            m_labelWorking.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            m_labelWorking.Location = new System.Drawing.Point(298, 263);
+            m_labelWorking.Name = "labelWorking";
+            m_labelWorking.Size = new System.Drawing.Size(533, 42);
+            m_labelWorking.TabIndex = 14;
+            m_labelWorking.Text = "Working...  it takes some time...";
+            m_labelWorking.Parent = this;
+            m_labelWorking.Visible = false;
         }
         #endregion
 

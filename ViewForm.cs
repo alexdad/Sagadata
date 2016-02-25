@@ -293,11 +293,11 @@ namespace RecordKeeper
         {
             switch (state)
             {
-                case "Done":   // blue - done
+                case "Done":   
                     return StateColors[(int)StatusColors.Irrelevant];
-                case "Planned":   // green - planned
+                case "Planned":   
                     return StateColors[(int)StatusColors.Good];
-                case "Cancelled":   // reddish - cancelled
+                case "Cancelled":   
                     return StateColors[(int)StatusColors.Bad];
                 default:
                     return StateColors[(int)StatusColors.Unknown];
@@ -306,8 +306,17 @@ namespace RecordKeeper
 
         private Color LessonStateForeColor(string state)
         {
-            return Color.Yellow;
-            //  ComplementColor(LessonStateColor(state)),
+            switch (state)
+            {
+                case "Done":   
+                    return StateForeColors[(int)StatusColors.Irrelevant];
+                case "Planned":  
+                    return StateForeColors[(int)StatusColors.Good];
+                case "Cancelled":
+                    return StateForeColors[(int)StatusColors.Bad];
+                default:
+                    return StateForeColors[(int)StatusColors.Unknown];
+            }
         }
 
         private void FollowFocusedDay()

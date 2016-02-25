@@ -47,6 +47,14 @@ namespace RecordKeeper
             }
         }
 
+        public string DurationString
+        {
+            get
+            {
+                return FormGlob.GetDurationString(DateTimeStart, DateTimeEnd);
+            }
+        }
+
         public override string Description
         {
             get
