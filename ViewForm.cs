@@ -579,8 +579,8 @@ namespace RecordKeeper
                     y1 < 0 || y2 < 0 || y1 > nrows || y2 > nrows)
                     continue; 
 
-                for (int x = x1; x < x2; x++)
-                    for (int y = y1; y < y2; y++)
+                for (int x = x1; x <= x2; x++)
+                    for (int y = y1; y <= y2; y++)
                         hits[x, y] = hits[x, y] + 1;
             }
 
@@ -602,7 +602,7 @@ namespace RecordKeeper
                     y1 < 0 || y2 < 0 || y1 > nrows || y2 > nrows)
                     continue;
 
-                int x2min = ( (x2-1) / nRooms) * nRooms;
+                int x2min = x2 - (x2 % nRooms);    //( (x2-1) / nRooms) * nRooms;
                 int x2max = x2min + nRooms;
 
                 bool hit = false;
@@ -648,7 +648,7 @@ namespace RecordKeeper
                     y1 < 0 || y2 < 0 || y1 > nrows || y2 > nrows)
                     continue;
 
-                int x1min = ((x1 - 1) / nRooms) * nRooms;
+                int x1min = x1 - (x1 % nRooms);  // ((x1 - 1) / nRooms) * nRooms;
                 int x1max = x1min + nRooms;
 
                 bool hit = false;
