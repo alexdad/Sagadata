@@ -498,7 +498,7 @@ namespace RecordKeeper
                 if (slot2Index < 0 || slot2Index >= m_enumTimeSlot.Length)
                     continue;
 
-                for (int slotIndex = slot1Index; slotIndex <= slot2Index; slotIndex++)
+                for (int slotIndex = slot1Index; slotIndex < slot2Index; slotIndex++)
                 {
                     string text = GetSlotText(l, slotIndex - slot1Index);
                     ViewSlot slot = new RecordKeeper.ViewSlot(m_enumTimeSlot[slotIndex]);
