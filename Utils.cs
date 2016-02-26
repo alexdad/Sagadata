@@ -284,6 +284,12 @@ namespace RecordKeeper
         {
             return (s == null || s.Trim().Length == 0);
         }
+        public static bool IsDateTimeReasonable(DateTime dt)
+        {
+            return (dt.Year >= 2014 && dt.Year < 2020 &&
+                    dt.Month >= 0 && dt.Month <= 12 &&
+                    dt.Day >= 0 && dt.Day <= 31);
+        }
 
         const int highlightSize = 2;
         static Control s_lastHoveredLabelOrButton = null;

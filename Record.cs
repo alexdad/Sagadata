@@ -26,11 +26,39 @@ namespace RecordKeeper
         public string ChangedBy { get; set; }
         public string Comments { get; set; }
         public string Key { get { return CreatedBy + Id.ToString(); } }
+        public bool ValidateBase
+        {
+            get
+            {
+                try
+                {
+                    if (FormGlob.IsStringEmpty(Key))
+                        return false;
+                    if (FormGlob.IsStringEmpty(Description))
+                        return false;
+                    if (!FormGlob.IsDateTimeReasonable(Created))
+                        return false;
+                    if (FormGlob.IsStringEmpty(CreatedBy))
+                        return false;
+                    if (!FormGlob.IsDateTimeReasonable(Changed))
+                        return false;
+                    if (FormGlob.IsStringEmpty(ChangedBy))
+                        return false;
+
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
+        }
 
         public abstract string Description { get; }
         public abstract string Abbreviation { get; }
         public abstract bool Set(string field, string value);
         public abstract string Get(string field);
+        public abstract bool Validate();
 
         public Record()
         {

@@ -275,6 +275,30 @@ namespace RecordKeeper
             }
         }
 
+        public override bool Validate()
+        {
+            try
+            {
+                if (!ValidateBase)
+                    return false;
+                if (FormGlob.IsStringEmpty(Student1))
+                    return false;
+                if (FormGlob.IsStringEmpty(Teacher1))
+                    return false;
+                if (!FormGlob.IsDateTimeReasonable(DateTimeStart))
+                    return false;
+                if (!FormGlob.IsDateTimeReasonable(DateTimeEnd))
+                    return false;
+
+                return true;
+            }
+            catch(Exception)
+            {
+                return false;
+            }
+        }
+
+
         #region "Comparers"
         public class ComparerByDay : IComparer<Lesson>
         {

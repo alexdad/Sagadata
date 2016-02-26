@@ -177,6 +177,25 @@ namespace RecordKeeper
                     throw new Exception("unknown field " + field);
             }
         }
+        public override bool Validate()
+        {
+            try
+            {
+                if (!ValidateBase)
+                    return false;
+
+                if (FormGlob.IsStringEmpty(FirstName))
+                    return false;
+                if (FormGlob.IsStringEmpty(Language))
+                    return false;
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
 
         #region "Comparers"
         public class ComparerByBirthday : IComparer<Teacher>

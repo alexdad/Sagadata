@@ -69,14 +69,31 @@ namespace RecordKeeper
                 for (int s = 1; s < sts.Length; s++)
                 {
                     string safeStr = SafeGuard(sts[s]);
-                    T st = ParseValues<T>(s, safeStr.Split(','));
-                    m_glob.DataList.Add(st);
-                    m_originalRecords.Add(st.Key, st);
-                    FormGlob.AccumulateID(st.Id);
-                }
+                    T st;
+                    try
+                    {
+                        st = ParseValues<T>(s, safeStr.Split(','));
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Failed to parse cloud row: " + s);
+                        continue;
+                    }
+                    if (st.Validate())
+                    {
+                        m_glob.DataList.Add(st);
+                        m_originalRecords.Add(st.Key, st);
+                        FormGlob.AccumulateID(st.Id);
+                    }
+                };
                 success = true;
             }
-            catch(Exception) {}
+            catch (Exception e)
+            {
+                MessageBox.Show("Failed to ead local file: " + e.Message);
+                success = false;
+            }
+
             return success;
         }
 
@@ -240,16 +257,28 @@ namespace RecordKeeper
                 throw new Exception("Cannot find cloud file");
 
             string[] sts = SafeguardStrings(File.ReadAllLines(cloudFile));
-            T[] recs = new T[sts.Length - 1];
+            List<T> recs = new List<T>();
 
             ParseHeaders(sts[0].Split(','));
 
             for (int s = 1; s < sts.Length; s++)
             {
                 string safeStr = SafeGuard(sts[s]);
-                recs[s - 1] = ParseValues<T> (s, safeStr.Split(','));
+                try
+                {
+                    T r = ParseValues<T>(s, safeStr.Split(','));
+                    if (r.Validate())
+                    {
+                        recs.Add(r);
+                    }
+                }
+                catch(Exception )
+                {
+                    MessageBox.Show("Failed to parse cloud row: " + s);
+                }
             }
-            return recs;
+
+            return recs.ToArray();
          }
 
         public bool Download<T>() where T : Record

@@ -608,7 +608,7 @@ namespace RecordKeeper
                 bool hit = false;
                 for (int x = x2; x < x2max && !hit; x++)
                 {
-                    for (int y = y1; y <= y2; y++)
+                    for (int y = y1; y < y2; y++)
                     {
                         if (x + 1 < 0 || y < 0 || x + 1 >= ncols || y >= nrows)
                             return;
@@ -654,7 +654,7 @@ namespace RecordKeeper
                 bool hit = false;
                 for (int x = x1; x > x1min && !hit; x--)
                 {
-                    for (int y = y1; y <= y2; y++)
+                    for (int y = y1; y < y2; y++)
                     {
                         if (x - 1 < 0 || y < 0 || x - 1 >= ncols || y >= nrows)
                             return;
