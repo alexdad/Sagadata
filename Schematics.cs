@@ -137,8 +137,6 @@ namespace RecordKeeper
             cbLessonStart.Items.AddRange(m_enumTimeSlot);
             cbLessonEnd.Items.AddRange(m_enumTimeSlot);
 
-            cbPlanLanguage.Items.AddRange(m_enumLanguage);
-            //cbPlanLanguage.SelectedIndex = 1;   // Starting from English
             cbPlanDuration.Items.AddRange(m_enumDurations);
             //cbPlanDuration.SelectedIndex = 5;   // Starting from 1:30
 

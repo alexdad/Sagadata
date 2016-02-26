@@ -370,6 +370,7 @@
             this.sundayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.planSlotList = new System.Windows.Forms.BindingSource(this.components);
             this.panelPlanParams = new System.Windows.Forms.Panel();
+            this.lbPlanMoreStudents = new System.Windows.Forms.Label();
             this.lbPlanStudent = new System.Windows.Forms.Label();
             this.lbPlanChooseRoom = new System.Windows.Forms.Label();
             this.cbPlanProgram = new System.Windows.Forms.ComboBox();
@@ -391,8 +392,6 @@
             this.cbPlanTeacher = new System.Windows.Forms.ComboBox();
             this.lbPlanTeacher = new System.Windows.Forms.Label();
             this.lbSchedPlanName = new System.Windows.Forms.Label();
-            this.lbPlanLanguage = new System.Windows.Forms.Label();
-            this.cbPlanLanguage = new System.Windows.Forms.ComboBox();
             this.cbPlanStud4 = new System.Windows.Forms.ComboBox();
             this.cbPlanStud3 = new System.Windows.Forms.ComboBox();
             this.cbPlanStud2 = new System.Windows.Forms.ComboBox();
@@ -591,28 +590,31 @@
             // slotsToolStripMenuItem
             // 
             this.slotsToolStripMenuItem.Name = "slotsToolStripMenuItem";
-            this.slotsToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.slotsToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.slotsToolStripMenuItem.Text = "Slots";
             this.slotsToolStripMenuItem.Click += new System.EventHandler(this.slotsToolStripMenuItem_Click);
             // 
             // dayToolStripMenuItem
             // 
             this.dayToolStripMenuItem.Name = "dayToolStripMenuItem";
-            this.dayToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.dayToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this.dayToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.dayToolStripMenuItem.Text = "Day";
             this.dayToolStripMenuItem.Click += new System.EventHandler(this.dayToolStripMenuItem_Click);
             // 
             // weekToolStripMenuItem
             // 
             this.weekToolStripMenuItem.Name = "weekToolStripMenuItem";
-            this.weekToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.weekToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W)));
+            this.weekToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.weekToolStripMenuItem.Text = "Week";
             this.weekToolStripMenuItem.Click += new System.EventHandler(this.weekToolStripMenuItem_Click);
             // 
             // monthToolStripMenuItem
             // 
             this.monthToolStripMenuItem.Name = "monthToolStripMenuItem";
-            this.monthToolStripMenuItem.Size = new System.Drawing.Size(110, 22);
+            this.monthToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.M)));
+            this.monthToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.monthToolStripMenuItem.Text = "Month";
             this.monthToolStripMenuItem.Click += new System.EventHandler(this.monthToolStripMenuItem_Click);
             // 
@@ -630,28 +632,30 @@
             // planToolStripMenuItem
             // 
             this.planToolStripMenuItem.Name = "planToolStripMenuItem";
-            this.planToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.planToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
+            this.planToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.planToolStripMenuItem.Text = "Plan";
             this.planToolStripMenuItem.Click += new System.EventHandler(this.planToolStripMenuItem_Click);
             // 
             // showToolStripMenuItem
             // 
             this.showToolStripMenuItem.Name = "showToolStripMenuItem";
-            this.showToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.showToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.showToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.showToolStripMenuItem.Text = "Show";
             this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
             // 
             // checkToolStripMenuItem
             // 
             this.checkToolStripMenuItem.Name = "checkToolStripMenuItem";
-            this.checkToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.checkToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.checkToolStripMenuItem.Text = "Check";
             this.checkToolStripMenuItem.Click += new System.EventHandler(this.checkToolStripMenuItem_Click);
             // 
             // publishToolStripMenuItem
             // 
             this.publishToolStripMenuItem.Name = "publishToolStripMenuItem";
-            this.publishToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.publishToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.publishToolStripMenuItem.Text = "Publish";
             this.publishToolStripMenuItem.Click += new System.EventHandler(this.publishToolStripMenuItem_Click);
             // 
@@ -3986,6 +3990,7 @@
             // 
             this.panelPlanParams.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelPlanParams.Controls.Add(this.lbPlanMoreStudents);
             this.panelPlanParams.Controls.Add(this.lbPlanStudent);
             this.panelPlanParams.Controls.Add(this.lbPlanChooseRoom);
             this.panelPlanParams.Controls.Add(this.cbPlanProgram);
@@ -4007,8 +4012,6 @@
             this.panelPlanParams.Controls.Add(this.cbPlanTeacher);
             this.panelPlanParams.Controls.Add(this.lbPlanTeacher);
             this.panelPlanParams.Controls.Add(this.lbSchedPlanName);
-            this.panelPlanParams.Controls.Add(this.lbPlanLanguage);
-            this.panelPlanParams.Controls.Add(this.cbPlanLanguage);
             this.panelPlanParams.Controls.Add(this.cbPlanStud4);
             this.panelPlanParams.Controls.Add(this.cbPlanStud3);
             this.panelPlanParams.Controls.Add(this.cbPlanStud2);
@@ -4017,6 +4020,15 @@
             this.panelPlanParams.Name = "panelPlanParams";
             this.panelPlanParams.Size = new System.Drawing.Size(1269, 229);
             this.panelPlanParams.TabIndex = 17;
+            // 
+            // lbPlanMoreStudents
+            // 
+            this.lbPlanMoreStudents.AutoSize = true;
+            this.lbPlanMoreStudents.Location = new System.Drawing.Point(304, 104);
+            this.lbPlanMoreStudents.Name = "lbPlanMoreStudents";
+            this.lbPlanMoreStudents.Size = new System.Drawing.Size(77, 13);
+            this.lbPlanMoreStudents.TabIndex = 36;
+            this.lbPlanMoreStudents.Text = "More students:";
             // 
             // lbPlanStudent
             // 
@@ -4042,7 +4054,7 @@
             // 
             this.cbPlanProgram.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPlanProgram.FormattingEnabled = true;
-            this.cbPlanProgram.Location = new System.Drawing.Point(76, 120);
+            this.cbPlanProgram.Location = new System.Drawing.Point(76, 75);
             this.cbPlanProgram.Name = "cbPlanProgram";
             this.cbPlanProgram.Size = new System.Drawing.Size(121, 21);
             this.cbPlanProgram.TabIndex = 4;
@@ -4050,7 +4062,7 @@
             // lbPlanProgram
             // 
             this.lbPlanProgram.AutoSize = true;
-            this.lbPlanProgram.Location = new System.Drawing.Point(10, 123);
+            this.lbPlanProgram.Location = new System.Drawing.Point(11, 78);
             this.lbPlanProgram.Name = "lbPlanProgram";
             this.lbPlanProgram.Size = new System.Drawing.Size(49, 13);
             this.lbPlanProgram.TabIndex = 33;
@@ -4070,7 +4082,7 @@
             // 
             // tbPlanRepeat
             // 
-            this.tbPlanRepeat.Location = new System.Drawing.Point(250, 37);
+            this.tbPlanRepeat.Location = new System.Drawing.Point(150, 135);
             this.tbPlanRepeat.Name = "tbPlanRepeat";
             this.tbPlanRepeat.Size = new System.Drawing.Size(47, 20);
             this.tbPlanRepeat.TabIndex = 5;
@@ -4078,7 +4090,7 @@
             // lbPlanRepeat
             // 
             this.lbPlanRepeat.AutoSize = true;
-            this.lbPlanRepeat.Location = new System.Drawing.Point(159, 40);
+            this.lbPlanRepeat.Location = new System.Drawing.Point(14, 138);
             this.lbPlanRepeat.Name = "lbPlanRepeat";
             this.lbPlanRepeat.Size = new System.Drawing.Size(85, 13);
             this.lbPlanRepeat.TabIndex = 30;
@@ -4107,7 +4119,7 @@
             this.lbPlanTeachVacation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbPlanTeachVacation.AutoSize = true;
-            this.lbPlanTeachVacation.Location = new System.Drawing.Point(534, 145);
+            this.lbPlanTeachVacation.Location = new System.Drawing.Point(534, 60);
             this.lbPlanTeachVacation.Name = "lbPlanTeachVacation";
             this.lbPlanTeachVacation.Size = new System.Drawing.Size(0, 13);
             this.lbPlanTeachVacation.TabIndex = 27;
@@ -4117,7 +4129,7 @@
             this.lbPlanStudSchedule4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbPlanStudSchedule4.AutoSize = true;
-            this.lbPlanStudSchedule4.Location = new System.Drawing.Point(534, 99);
+            this.lbPlanStudSchedule4.Location = new System.Drawing.Point(534, 147);
             this.lbPlanStudSchedule4.Name = "lbPlanStudSchedule4";
             this.lbPlanStudSchedule4.Size = new System.Drawing.Size(0, 13);
             this.lbPlanStudSchedule4.TabIndex = 26;
@@ -4127,7 +4139,7 @@
             this.lbPlanStudSchedule3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbPlanStudSchedule3.AutoSize = true;
-            this.lbPlanStudSchedule3.Location = new System.Drawing.Point(534, 73);
+            this.lbPlanStudSchedule3.Location = new System.Drawing.Point(534, 123);
             this.lbPlanStudSchedule3.Name = "lbPlanStudSchedule3";
             this.lbPlanStudSchedule3.Size = new System.Drawing.Size(0, 13);
             this.lbPlanStudSchedule3.TabIndex = 25;
@@ -4137,7 +4149,7 @@
             this.lbPlanStudSchedule2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbPlanStudSchedule2.AutoSize = true;
-            this.lbPlanStudSchedule2.Location = new System.Drawing.Point(534, 52);
+            this.lbPlanStudSchedule2.Location = new System.Drawing.Point(534, 99);
             this.lbPlanStudSchedule2.Name = "lbPlanStudSchedule2";
             this.lbPlanStudSchedule2.Size = new System.Drawing.Size(0, 13);
             this.lbPlanStudSchedule2.TabIndex = 24;
@@ -4169,7 +4181,7 @@
             // 
             this.cbPlanDuration.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPlanDuration.FormattingEnabled = true;
-            this.cbPlanDuration.Location = new System.Drawing.Point(76, 147);
+            this.cbPlanDuration.Location = new System.Drawing.Point(76, 104);
             this.cbPlanDuration.Name = "cbPlanDuration";
             this.cbPlanDuration.Size = new System.Drawing.Size(121, 21);
             this.cbPlanDuration.TabIndex = 3;
@@ -4177,7 +4189,7 @@
             // lbPlanDuration
             // 
             this.lbPlanDuration.AutoSize = true;
-            this.lbPlanDuration.Location = new System.Drawing.Point(10, 150);
+            this.lbPlanDuration.Location = new System.Drawing.Point(14, 107);
             this.lbPlanDuration.Name = "lbPlanDuration";
             this.lbPlanDuration.Size = new System.Drawing.Size(50, 13);
             this.lbPlanDuration.TabIndex = 19;
@@ -4196,7 +4208,7 @@
             // 
             this.cbPlanTeacher.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPlanTeacher.FormattingEnabled = true;
-            this.cbPlanTeacher.Location = new System.Drawing.Point(394, 142);
+            this.cbPlanTeacher.Location = new System.Drawing.Point(390, 52);
             this.cbPlanTeacher.Name = "cbPlanTeacher";
             this.cbPlanTeacher.Size = new System.Drawing.Size(121, 21);
             this.cbPlanTeacher.TabIndex = 6;
@@ -4205,7 +4217,7 @@
             // lbPlanTeacher
             // 
             this.lbPlanTeacher.AutoSize = true;
-            this.lbPlanTeacher.Location = new System.Drawing.Point(331, 145);
+            this.lbPlanTeacher.Location = new System.Drawing.Point(334, 52);
             this.lbPlanTeacher.Name = "lbPlanTeacher";
             this.lbPlanTeacher.Size = new System.Drawing.Size(50, 13);
             this.lbPlanTeacher.TabIndex = 17;
@@ -4221,30 +4233,11 @@
             this.lbSchedPlanName.TabIndex = 0;
             this.lbSchedPlanName.Text = "New Lesson";
             // 
-            // lbPlanLanguage
-            // 
-            this.lbPlanLanguage.AutoSize = true;
-            this.lbPlanLanguage.Location = new System.Drawing.Point(10, 94);
-            this.lbPlanLanguage.Name = "lbPlanLanguage";
-            this.lbPlanLanguage.Size = new System.Drawing.Size(58, 13);
-            this.lbPlanLanguage.TabIndex = 4;
-            this.lbPlanLanguage.Text = "Language:";
-            // 
-            // cbPlanLanguage
-            // 
-            this.cbPlanLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbPlanLanguage.FormattingEnabled = true;
-            this.cbPlanLanguage.Location = new System.Drawing.Point(76, 91);
-            this.cbPlanLanguage.Name = "cbPlanLanguage";
-            this.cbPlanLanguage.Size = new System.Drawing.Size(121, 21);
-            this.cbPlanLanguage.TabIndex = 2;
-            this.cbPlanLanguage.SelectedIndexChanged += new System.EventHandler(this.cbPlanLanguage_SelectedIndexChanged);
-            // 
             // cbPlanStud4
             // 
             this.cbPlanStud4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPlanStud4.FormattingEnabled = true;
-            this.cbPlanStud4.Location = new System.Drawing.Point(394, 91);
+            this.cbPlanStud4.Location = new System.Drawing.Point(390, 138);
             this.cbPlanStud4.Name = "cbPlanStud4";
             this.cbPlanStud4.Size = new System.Drawing.Size(121, 21);
             this.cbPlanStud4.TabIndex = 10;
@@ -4254,7 +4247,7 @@
             // 
             this.cbPlanStud3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPlanStud3.FormattingEnabled = true;
-            this.cbPlanStud3.Location = new System.Drawing.Point(394, 70);
+            this.cbPlanStud3.Location = new System.Drawing.Point(390, 117);
             this.cbPlanStud3.Name = "cbPlanStud3";
             this.cbPlanStud3.Size = new System.Drawing.Size(121, 21);
             this.cbPlanStud3.TabIndex = 9;
@@ -4264,7 +4257,7 @@
             // 
             this.cbPlanStud2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPlanStud2.FormattingEnabled = true;
-            this.cbPlanStud2.Location = new System.Drawing.Point(394, 49);
+            this.cbPlanStud2.Location = new System.Drawing.Point(390, 96);
             this.cbPlanStud2.Name = "cbPlanStud2";
             this.cbPlanStud2.Size = new System.Drawing.Size(121, 21);
             this.cbPlanStud2.TabIndex = 8;
@@ -5315,8 +5308,6 @@
         private System.Windows.Forms.DateTimePicker dtpPlan;
         private System.Windows.Forms.ComboBox cbPlanTeacher;
         private System.Windows.Forms.Label lbPlanTeacher;
-        private System.Windows.Forms.ComboBox cbPlanLanguage;
-        private System.Windows.Forms.Label lbPlanLanguage;
         private System.Windows.Forms.ComboBox cbPlanStud4;
         private System.Windows.Forms.ComboBox cbPlanStud3;
         private System.Windows.Forms.ComboBox cbPlanStud2;
@@ -5703,6 +5694,7 @@
         private System.Windows.Forms.Button buttonStudGrabStdPrices;
         private System.Windows.Forms.Label lbPlanChooseRoom;
         private System.Windows.Forms.Label lbPlanStudent;
+        private System.Windows.Forms.Label lbPlanMoreStudents;
     }
 }
 

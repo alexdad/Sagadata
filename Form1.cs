@@ -1233,13 +1233,7 @@ namespace RecordKeeper
         private void dtpPlan_ValueChanged(object sender, EventArgs e)
         {
             DateTimePicker dtp = (DateTimePicker)sender;
-            m_plan_chosenDate = dtp.Value.Date;
-            if (m_lessonInMove == null)
-                PlanShowDataIfReady();
-        }
-        private void cbPlanLanguage_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            PlanLessonLanguageChosen();
+            m_chosenDate = dtp.Value.Date;
             if (m_lessonInMove == null)
                 PlanShowDataIfReady();
         }
@@ -1255,8 +1249,8 @@ namespace RecordKeeper
             ComboBox cb = sender as ComboBox;
             string studDesc = cb.SelectedItem as string;
             PopulateStudentPossibleSchedule(studDesc, lbPlanStudSchedule1);
-
             PopulatePlanFieldsFromLastLesson(studDesc);
+            InitializeStudentPlan(true);
 
             if (m_lessonInMove == null)
                 PlanShowDataIfReady();
@@ -1313,7 +1307,7 @@ namespace RecordKeeper
         {
             int step = StepPerScale();
             dtpViewSlot.Value = dtpViewSlot.Value.Date.AddDays(step);
-            m_view_chosenDate = dtpViewSlot.Value;
+            m_chosenDate = dtpViewSlot.Value;
             ShowView();
         }
 
@@ -1321,7 +1315,7 @@ namespace RecordKeeper
         {
             int step = StepPerScale();
             dtpViewSlot.Value = dtpViewSlot.Value.Date.AddDays(-step);
-            m_view_chosenDate = dtpViewSlot.Value;
+            m_chosenDate = dtpViewSlot.Value;
             ShowView();
         }
 
@@ -1347,7 +1341,7 @@ namespace RecordKeeper
         private void dtpViewSlot_ValueChanged(object sender, EventArgs e)
         {
             DateTimePicker dtp = (DateTimePicker)sender;
-            m_view_chosenDate = dtp.Value.Date;
+            m_chosenDate = dtp.Value.Date;
             ShowView();
         }
 

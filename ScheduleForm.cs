@@ -58,8 +58,6 @@ namespace RecordKeeper
 
     public partial class FormGlob : Form
     {
-        DateTime m_plan_chosenDate = DateTime.Today;
-        string m_plan_chosenLanguage = "English";
         bool m_plan_firstTimePlan = true;
         Lesson m_lessonInMove = null;
         int m_plan_row = -1;
@@ -135,7 +133,7 @@ namespace RecordKeeper
 
         private void PlanGetRelevantLessons()
         {
-            DateTime ds = WeekStart(m_plan_chosenDate);
+            DateTime ds = WeekStart(m_chosenDate);
             DateTime de = ds;
             de = de.AddDays(7);
 
@@ -162,7 +160,7 @@ namespace RecordKeeper
 
         public void PlanGetRoomAvailability()
         {
-            DateTime ds = WeekStart(m_plan_chosenDate);
+            DateTime ds = WeekStart(m_chosenDate);
             DateTime de = ds;
             de = de.AddDays(7);
 
@@ -215,20 +213,38 @@ namespace RecordKeeper
             return res;
         }
 
-        void PopulateTeacherChoices(string lang, ComboBox cb)
+        void PopulateTeacherChoices(ComboBox cb)
+        {
+            cb.Items.Clear();
+            List<string> ts = new List<string>();
+            foreach (Teacher t in ActiveTeachers())
+                ts.Add(t.Description);
+            ts.Sort();
+            cb.Items.AddRange(ts.ToArray()); 
+        }
+        void PopulateTeacherChoicesByLanguage(string lang, ComboBox cb)
         {
             cb.Items.Clear();
             List<string> ts = new List<string>();
             foreach (Teacher t in ActiveTeachersByLanguage(lang))
                 ts.Add(t.Description);
             ts.Sort();
-            cb.Items.AddRange(ts.ToArray()); 
+            cb.Items.AddRange(ts.ToArray());
         }
         void PopulateStudentChoices(string lang, ComboBox cb)
         {
             cb.Items.Clear();
             List<string> ts = new List<string>();
             foreach (Student t in ActiveStudentsByLanguage(lang))
+                ts.Add(t.Description);
+            ts.Sort();
+            cb.Items.AddRange(ts.ToArray());
+        }
+        void PopulateStudentChoices(ComboBox cb)
+        {
+            cb.Items.Clear();
+            List<string> ts = new List<string>();
+            foreach (Student t in ActiveStudents())
                 ts.Add(t.Description);
             ts.Sort();
             cb.Items.AddRange(ts.ToArray());
@@ -260,7 +276,6 @@ namespace RecordKeeper
                 return;
             SetComboBoxIndexByValue(cbPlanProgram, latest.Program);
             SetComboBoxIndexByValue(cbPlanDuration, latest.DurationString);
-            SetComboBoxIndexByValue(cbPlanLanguage, language);
             SetComboBoxIndexByValue(cbPlanTeacher, latest.Teacher1);
         }
 
@@ -276,37 +291,51 @@ namespace RecordKeeper
             //cbPlanDuration
         }
 
-        void InitializePlan(bool force)
+        void InitializeStudentPlan(bool force)
+        {
+            InitializePlan(false, true);
+        }
+
+        void InitializeMove()
+        {
+            InitializePlan(false, true);
+        }
+
+        void InitializePlan(bool force, bool studentSet)
         {
             if (m_plan_firstTimePlan || force)
             {
-                PopulateTeacherChoices(m_plan_chosenLanguage, cbPlanTeacher);
+                PopulateTeacherChoices(cbPlanTeacher);
                 cbPlanTeacher.SelectedIndex = -1;
                 cbPlanTeacher.Text = "";
+                dtpPlan.Value = m_chosenDate;
 
                 cbPlanProgram.SelectedIndex = -1;
                 cbPlanProgram.Text = "";
                 cbPlanDuration.SelectedIndex = -1;
                 cbPlanDuration.Text = "";
                 tbPlanComment.Text = "";
-                lbPlanStudSchedule1.Text = "";
                 lbPlanStudSchedule2.Text = "";
                 lbPlanStudSchedule3.Text = "";
                 lbPlanStudSchedule4.Text = "";
 
-                PopulateStudentChoices(m_plan_chosenLanguage, cbPlanStud1);
-                cbPlanStud1.SelectedIndex = -1;
-                cbPlanStud1.Text = "";
+                if (!studentSet)
+                {
+                    lbPlanStudSchedule1.Text = "";
+                    PopulateStudentChoices(cbPlanStud1);
+                    cbPlanStud1.SelectedIndex = -1;
+                    cbPlanStud1.Text = "";
+                }
 
-                PopulateStudentChoices(m_plan_chosenLanguage, cbPlanStud2);
+                PopulateStudentChoices(cbPlanStud2);
                 cbPlanStud2.SelectedIndex = -1;
                 cbPlanStud2.Text = "";
 
-                PopulateStudentChoices(m_plan_chosenLanguage, cbPlanStud3);
+                PopulateStudentChoices(cbPlanStud3);
                 cbPlanStud3.SelectedIndex = -1;
                 cbPlanStud3.Text = "";
 
-                PopulateStudentChoices(m_plan_chosenLanguage, cbPlanStud4);
+                PopulateStudentChoices(cbPlanStud4);
                 cbPlanStud4.SelectedIndex = -1;
                 cbPlanStud4.Text = "";
             }
@@ -314,17 +343,10 @@ namespace RecordKeeper
             if (m_plan_firstTimePlan)
             {
                 m_plan_firstTimePlan = false;
-                cbPlanLanguage.SelectedIndex = 1;   // Starting from English
                 cbPlanDuration.SelectedIndex = 5;   // Starting from 1:30
             }
 
             butPlanAccept.Visible = false;
-        }
-        void PlanLessonLanguageChosen()
-        {
-            string lang = (string)cbPlanLanguage.SelectedItem;
-            m_plan_chosenLanguage = lang;
-            InitializePlan(true);
         }
 
         void PlanShowDataIfReady()
@@ -342,7 +364,7 @@ namespace RecordKeeper
             DateTime weekStart, weekEnd;
             planSlotList.Add(
                 new RecordKeeper.Slot(
-                    WeekOf(m_plan_chosenDate, "", out weekStart, out weekEnd)));
+                    WeekOf(m_chosenDate, "", out weekStart, out weekEnd)));
             for(int i=0; i < m_enumTimeSlot.Length; i++)
                 planSlotList.Add(new RecordKeeper.Slot(m_enumTimeSlot[i]));
 

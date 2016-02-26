@@ -38,7 +38,6 @@ namespace RecordKeeper
             Outside = "";
             Slot = hdr;
         }
-
         public string Slot { get; set; }
         public string Red { get; set; }
         public string Teal { get; set; }
@@ -79,10 +78,262 @@ namespace RecordKeeper
         }
     }
 
+    public struct ViewContext
+    {
+        public int days;
+        public int cellWidth;
+        public int cellHight;
+        public int cellRoomWidth;
+        public int minX;
+        public int minY;
+
+        public ViewContext(
+            int days, 
+            int cellWidth, 
+            int cellHight, 
+            int cellRoomWidth,
+            int minX,
+            int minY)
+        {
+            this.days = days;
+            this.cellWidth = cellWidth;
+            this.cellHight = cellHight;
+            this.cellRoomWidth = cellWidth;
+            this.minX = minX;
+            this.minY = minY;
+        }
+    }
+
+    public class LabelsExpander
+    {
+        private Panel panel;
+        ViewContext vc;
+        private int cols;
+        private int rows;
+        private int cellRoomWidth;
+        private int nRooms;
+        private int cellWidth;
+        private int cellHeight;
+
+        private int ncols;
+        private int nrows;
+        private int[,] hits;
+
+        private int x1;
+        private int y1;
+        private int x2;
+        private int y2;
+        private int x1min;
+        private int x1max;
+        private int x2min;
+        private int x2max;
+
+        public LabelsExpander(
+            Panel panel,
+            ViewContext vc,
+            int cols,
+            int rows,
+            int cellRoomWidth,
+            int nRooms,
+            int cellWidth,
+            int cellHeight)
+        {
+            this.panel = panel;
+            this.vc = vc;
+            this.cols = cols;
+            this.rows = rows;
+            this.cellRoomWidth = cellRoomWidth;
+            this.nRooms = nRooms;
+            this.cellWidth = cellWidth;
+            this.cellHeight = cellHeight;
+
+            ncols = (cols + 1) * nRooms + 1;
+            nrows = rows;
+            hits = new int[ncols, nrows];
+        }
+
+        public static void Expand(
+            Panel panel,
+            ViewContext vc,
+            int cols,
+            int rows,
+            int cellRoomWidth,
+            int nRooms,
+            int cellWidth,
+            int cellHeight)
+        {
+            LabelsExpander exp = new LabelsExpander
+                (panel, vc, cols, rows, 
+                 cellRoomWidth,  nRooms, cellWidth, cellHeight);
+
+            //exp.CountHits();
+            //exp.ExpandRight();
+            //exp.ExpandLeft();
+            exp.EqualizeWidths(vc);
+        }
+
+        private Label GetLabel(Control c)
+        {
+            Label l = c as Label;
+            if (l == null)
+                return null;
+            if (l.Location.Y < vc.minY || l.Location.X < vc.minX)
+                return null;
+
+            x1 = (l.Location.X - vc.minX) / cellRoomWidth;
+            y1 = (l.Location.Y - vc.minY) / cellHeight;
+            x2 = (l.Location.X + l.Width - vc.minX) / cellRoomWidth - 1;
+            y2 = (l.Location.Y + l.Height - vc.minY) / cellHeight - 1;
+
+            if (x1 < 0 || x2 < 0 || x1 > ncols || x2 > ncols ||
+                y1 < 0 || y2 < 0 || y1 > nrows || y2 > nrows)
+                return null;
+
+            x1min = x1 - (x1 % nRooms);  
+            x1max = x1min + nRooms;
+
+            x2min = x2 - (x2 % nRooms);  
+            x2max = x2min + nRooms;
+
+
+            return l;
+        }
+
+        private void CountHits()
+        {
+            foreach (Control c in panel.Controls)
+            {
+                Label l = GetLabel(c);
+                if (l == null)
+                    continue;
+
+                for (int x = x1; x <= x2; x++)
+                    for (int y = y1; y <= y2; y++)
+                        hits[x, y] = hits[x, y] + 1;
+            }
+        }
+        private void ExpandRight()
+        {
+            foreach (Control c in panel.Controls)
+            {
+                Label l = GetLabel(c);
+                if (l == null)
+                    continue;
+
+                bool hit = false;
+                for (int x = x2; x < x2max && !hit; x++)
+                {
+                    for (int y = y1; y < y2; y++)
+                    {
+                        if (x + 1 < 0 || y < 0 || x + 1 >= ncols || y >= nrows)
+                            return;
+                        if (hits[x + 1, y] > 0)
+                        {
+                            hit = true;
+                            break;
+                        }
+                    }
+                    if (hit)
+                        break;
+                    l.Width += cellRoomWidth;
+                    for (int y = y1; y < y2; y++)
+                    {
+                        if (x + 1 < 0 || y < 0 || x + 1 >= ncols || y >= nrows)
+                            return;
+                        hits[x + 1, y] = 1;
+                    }
+                }
+            }
+        }
+        private void ExpandLeft()
+        {
+            foreach (Control c in panel.Controls)
+            {
+                Label l = GetLabel(c);
+                if (l == null)
+                    continue;
+
+                bool hit = false;
+                for (int x = x1; x > x1min && !hit; x--)
+                {
+                    for (int y = y1; y < y2; y++)
+                    {
+                        if (x - 1 < 0 || y < 0 || x - 1 >= ncols || y >= nrows)
+                            return;
+                        if (hits[x - 1, y] > 0)
+                        {
+                            hit = true;
+                            break;
+                        }
+                    }
+                    if (hit)
+                        break;
+                    l.Width += cellRoomWidth;
+                    l.Location = new Point(l.Location.X - cellRoomWidth, l.Location.Y);
+                    for (int y = y1; y < y2; y++)
+                    {
+                        if (x - 1 < 0 || y < 0 || x - 1 >= ncols || y >= nrows)
+                            return;
+                        hits[x - 1, y] = 1;
+                    }
+                }
+            }
+        }
+
+        private void EqualizeWidths(ViewContext vc)
+        {
+            int[] labelsPerRow = new int[rows];
+
+            // Eah column (day) is totally separate
+            for (int col = 0; col < cols; col++)
+            {
+                for (int row = 0; row < rows; row++)
+                {
+                    int nLabels = 0;
+                    foreach (Control c in panel.Controls)
+                    {
+                        Label l = GetLabel(c);
+                        if (l == null)
+                            continue;
+
+                        if (x1 / nRooms > col || x2 / nRooms < col || y1 > row || y2 < row)
+                            continue;
+
+                        nLabels++;
+                    }
+                    labelsPerRow[row] = nLabels;
+                }
+
+                int maxInColumn = labelsPerRow.Max();
+                if (maxInColumn == 0)
+                    continue;
+                int newWidth = cellWidth / maxInColumn;
+
+                int[] used = new int[nrows];
+                foreach (Control c in panel.Controls)
+                {
+                    Label l = GetLabel(c);
+                    if (l == null)
+                        continue;
+                    if (x1 / nRooms > col || x2 / nRooms < col)
+                        continue;
+
+                    int newX = used[y1]++;
+                    l.Width = newWidth;
+                    l.Location = new Point(
+                        vc.minX + cellWidth * col + newX * newWidth, 
+                        l.Location.Y);
+                }
+            }
+        }
+    }
+
+
 
     public partial class FormGlob : Form
     {
-        DateTime m_view_chosenDate = DateTime.Today;
+        DateTime m_chosenDate = DateTime.Today;
+
         string m_view_chosen_state = "";
         string m_view_chosen_student = "";
         string m_view_chosen_teacher = "";
@@ -97,13 +348,16 @@ namespace RecordKeeper
         public void ViewShowMonth()
         {
             DisposeChildren(panelViewMonth);
-            int days = s_DaysPerMonth[m_view_chosenDate.Month - 1];
-            int cellWidth = panelViewMonth.Width / days;
-            int cellHight = panelViewMonth.Height / m_enumTimeSlot.Length;
-            int cellRoomWidth = cellWidth / roomList.Count;
+            int days = s_DaysPerMonth[m_chosenDate.Month - 1];
+            ViewContext vc = new ViewContext(
+                days,
+                panelViewMonth.Width / days,
+                panelViewMonth.Height / m_enumTimeSlot.Length,
+                panelViewMonth.Width / days / roomList.Count,
+                60, 40);
 
-            DrawMonthDaysAsTopRow(m_view_chosenDate, panelViewMonth, cellWidth);
-            DrawTimeSlotsAsLeftColumn(panelViewMonth, cellHight);
+            DrawMonthDaysAsTopRow(m_chosenDate, panelViewMonth, vc);
+            DrawTimeSlotsAsLeftColumn(panelViewMonth, vc);
             foreach (Lesson l in FindLessonsForView())
             {
                 int x, ys, ye;
@@ -112,11 +366,11 @@ namespace RecordKeeper
                 Label lb = new Label()
                 {
                     Text = l.State.Substring(0, 1),
-                    Width = cellRoomWidth,
-                    Height = cellHight * (ye - ys + 1) - lessonLabelVertMargin,
+                    Width = vc.cellRoomWidth,
+                    Height = vc.cellHight * (ye - ys + 1) - lessonLabelVertMargin,
                     Location = new Point(
-                        60 + cellWidth * x + cellRoomWidth * RoomIndex(l.Room),
-                        40 + cellHight * ys + lessonLabelVertMargin/2),
+                        vc.minX + vc.cellWidth * x + vc.cellRoomWidth * RoomIndex(l.Room),
+                        vc.minY + vc.cellHight * ys + lessonLabelVertMargin/2),
                     Parent = panelViewMonth,
                     BackColor = LessonStateBackColor(l.State),
                     ForeColor = LessonStateForeColor(l.State),
@@ -128,23 +382,29 @@ namespace RecordKeeper
                 lb.MouseHover += new System.EventHandler(this.butViewShowLesson_MouseHover);
             }
 
-            ExpandLabels(
+            LabelsExpander.Expand(
                 panelViewMonth, 
-                60, 40, 
-                days, m_enumTimeSlot.Length,
-                cellRoomWidth, roomList.Count,
-                cellWidth, cellHight);
+                vc,
+                days, 
+                m_enumTimeSlot.Length,
+                vc.cellRoomWidth, 
+                roomList.Count,
+                vc.cellWidth,
+                vc.cellHight);
         }
 
         public void ViewShowWeek()
         {
             DisposeChildren(panelViewWeek);
-            int cellWidth = panelViewWeek.Width / WeekdayNames().Length;
-            int cellHight = panelViewWeek.Height / m_enumTimeSlot.Length;
-            int cellRoomWidth = cellWidth / roomList.Count;  // we need it for uniquity
+            ViewContext vc = new ViewContext(
+                WeekdayNames().Length,
+                panelViewWeek.Width / WeekdayNames().Length,
+                panelViewWeek.Height / m_enumTimeSlot.Length,
+                panelViewWeek.Width / WeekdayNames().Length / roomList.Count,
+                60, 40);
 
-            DrawWeekDaysAsTopRow(m_view_chosenDate, panelViewWeek, cellWidth);
-            DrawTimeSlotsAsLeftColumn(panelViewWeek, cellHight);
+            DrawWeekDaysAsTopRow(m_chosenDate, panelViewWeek, vc);
+            DrawTimeSlotsAsLeftColumn(panelViewWeek, vc);
             foreach (Lesson l in FindLessonsForView())
             {
                 int x, ys, ye;
@@ -153,11 +413,11 @@ namespace RecordKeeper
                 Label lb = new Label()
                 {
                     Text = l.ShortDescription,
-                    Width = cellRoomWidth,
-                    Height = cellHight * (ye - ys + 1) - lessonLabelVertMargin,
+                    Width = vc.cellRoomWidth,
+                    Height = vc.cellHight * (ye - ys + 1) - lessonLabelVertMargin,
                     Location = new Point(
-                        60 + cellWidth * x + cellRoomWidth * RoomIndex(l.Room),
-                        40 + cellHight * ys + lessonLabelVertMargin/2),
+                        vc.minX + vc.cellWidth * x + vc.cellRoomWidth * RoomIndex(l.Room),
+                        vc.minY + vc.cellHight * ys + lessonLabelVertMargin/2),
                     Parent = panelViewWeek,
                     BackColor = LessonStateBackColor(l.State),
                     ForeColor = LessonStateForeColor(l.State),
@@ -169,12 +429,15 @@ namespace RecordKeeper
                 lb.MouseHover += new System.EventHandler(this.butViewShowLesson_MouseHover);
             }
 
-            ExpandLabels(
+            LabelsExpander.Expand(
                 panelViewWeek,
-                60, 40,
-                7, m_enumTimeSlot.Length,
-                cellRoomWidth, roomList.Count,
-                cellWidth, cellHight);
+                vc,
+                7, 
+                m_enumTimeSlot.Length,
+                vc.cellRoomWidth, 
+                roomList.Count,
+                vc.cellWidth, 
+                vc.cellHight);
         }
 
         public void ViewShowDay()
@@ -182,11 +445,16 @@ namespace RecordKeeper
             if (roomList.Count == 0)
                 return;
             DisposeChildren(panelViewDay);
-            int cellWidth = (panelViewDay.Width - 60) / roomList.Count;
-            int cellHight = (panelViewDay.Height - 20) / m_enumTimeSlot.Length;
+            ViewContext vc = new ViewContext(
+                1,
+                panelViewWeek.Width,
+                (panelViewDay.Height - 20) / m_enumTimeSlot.Length,
+                (panelViewDay.Width - 60) / roomList.Count,
+                60, 40);
 
-            DrawRoomsAsTopRow(panelViewDay, cellWidth);
-            DrawTimeSlotsAsLeftColumn(panelViewDay, cellHight);
+
+            DrawRoomsAsTopRow(panelViewDay, vc);
+            DrawTimeSlotsAsLeftColumn(panelViewDay, vc);
             foreach (Lesson l in FindLessonsForView())
             {
                 int x, ys, ye;
@@ -196,11 +464,11 @@ namespace RecordKeeper
                 Label lb = new Label()
                 {
                     Text = l.Description,
-                    Width = cellWidth - 10,
-                    Height = cellHight * (ye - ys + 1) - lessonLabelVertMargin,
+                    Width = vc.cellRoomWidth - 10,
+                    Height = vc.cellHight * (ye - ys + 1) - lessonLabelVertMargin,
                     Location = new Point(
-                        60 + cellWidth * x + 5, 
-                        40 + cellHight * ys + lessonLabelVertMargin/2),
+                        vc.minX + vc.cellRoomWidth * x + 5, 
+                        vc.minY + vc.cellHight * ys + lessonLabelVertMargin/2),
                     Parent = panelViewDay,
                     BackColor = LessonStateBackColor(l.State),
                     ForeColor = LessonStateForeColor(l.State),
@@ -219,7 +487,7 @@ namespace RecordKeeper
             for (int i = 0; i < m_enumTimeSlot.Length; i++)
                 viewSlotList.Add(new RecordKeeper.ViewSlot(m_enumTimeSlot[i]));
 
-            DateTime dts = WorkDayStart(m_view_chosenDate);
+            DateTime dts = WorkDayStart(m_chosenDate);
             foreach (Lesson l in FindLessonsForView())
             {
                 int slot1Index = FormGlob.Slots(dts, l.DateTimeStart);
@@ -258,20 +526,20 @@ namespace RecordKeeper
             switch ((TabScales)tabControlViewScales.SelectedIndex)
             {
                 case TabScales.Month:
-                    dt1 = MonthStart(m_view_chosenDate);
-                    dt2 = MonthEnd(m_view_chosenDate);
+                    dt1 = MonthStart(m_chosenDate);
+                    dt2 = MonthEnd(m_chosenDate);
                     break;
                 case TabScales.Week:
-                    dt1 = WeekStart(m_view_chosenDate);
-                    dt2 = WeekEnd(m_view_chosenDate);
+                    dt1 = WeekStart(m_chosenDate);
+                    dt2 = WeekEnd(m_chosenDate);
                     break;
                 case TabScales.Day:
-                    dt1 = DayStart(m_view_chosenDate);
-                    dt2 = DayEnd(m_view_chosenDate);
+                    dt1 = DayStart(m_chosenDate);
+                    dt2 = DayEnd(m_chosenDate);
                     break;
                 case TabScales.Slot:
-                    dt1 = DayStart(m_view_chosenDate);
-                    dt2 = DayEnd(m_view_chosenDate);
+                    dt1 = DayStart(m_chosenDate);
+                    dt2 = DayEnd(m_chosenDate);
                     break;
             }
 
@@ -464,7 +732,7 @@ namespace RecordKeeper
                 col = roomList.Count - 1;
         }
 
-        private void DrawWeekDaysAsTopRow(DateTime dt, Panel panel, int cellWidth)
+        private void DrawWeekDaysAsTopRow(DateTime dt, Panel panel, ViewContext vc)
         {
             int i = 0;
             foreach (string d in WeekOf(dt))
@@ -474,10 +742,10 @@ namespace RecordKeeper
                     Text = d,
                     ForeColor = Color.Black,
                     BackColor = Color.White,
-                    Width = cellWidth,
+                    Width = vc.cellWidth,
                     Height = 20,
                     Location = new Point(
-                        60 + cellWidth * i + 5,
+                        vc.minX + vc.cellWidth * i + 5,
                         5),
                     Parent = panel,
                     TextAlign = ContentAlignment.MiddleCenter
@@ -486,7 +754,7 @@ namespace RecordKeeper
             }
         }
 
-        private void DrawMonthDaysAsTopRow(DateTime dt, Panel panel, int cellWidth)
+        private void DrawMonthDaysAsTopRow(DateTime dt, Panel panel, ViewContext vc)
         {
             int i = 0;
             foreach (string d in MonthOf(dt))
@@ -496,10 +764,10 @@ namespace RecordKeeper
                     Text = d,
                     ForeColor = Color.Black,
                     BackColor = Color.White,
-                    Width = cellWidth,
+                    Width = vc.cellWidth,
                     Height = 20,
                     Location = new Point(
-                        60 + cellWidth * i + 5,
+                        vc.minX + vc.cellWidth * i + 5,
                         5),
                     Parent = panel,
                     TextAlign = ContentAlignment.TopLeft
@@ -508,7 +776,7 @@ namespace RecordKeeper
             }
         }
 
-        private void DrawRoomsAsTopRow(Panel panel, int cellWidth)
+        private void DrawRoomsAsTopRow(Panel panel, ViewContext vc)
         {
             int i = 0;
             foreach (Room r in roomList)
@@ -516,10 +784,10 @@ namespace RecordKeeper
                 Label l = new Label()
                 {
                     Text = r.Name,
-                    Width = cellWidth,
+                    Width = vc.cellWidth,
                     Height = 20,
                     Location = new Point(
-                        60 + cellWidth * i + 5,
+                        vc.minX + vc.cellWidth * i + 5,
                         5),
                     Parent = panel,
                     TextAlign = ContentAlignment.MiddleCenter,
@@ -530,12 +798,12 @@ namespace RecordKeeper
             }
         }
 
-        private void DrawTimeSlotsAsLeftColumn(Panel panel, int cellHight)
+        private void DrawTimeSlotsAsLeftColumn(Panel panel, ViewContext vc)
         {
             int prev = -1000;
             for (int j = 0; j < m_enumTimeSlot.Length; j++)
             {
-                int y = 40 + cellHight * j + 5;
+                int y = vc.minY + vc.cellHight * j + 5;
                 if (y - prev < 100)
                     continue;
                 prev = y;
@@ -551,134 +819,6 @@ namespace RecordKeeper
             }
         }
 
-        private void ExpandLabels(Panel panel, 
-            int minX, int minY, 
-            int cols, int rows,
-            int cellRoomWidth,  int nRooms,
-            int cellWidth, int cellHeight)
-        {
-            int ncols = (cols + 1) * nRooms + 1;
-            int nrows = rows;
-
-            // Count hits per grid cell
-            int[,] hits = new int[ncols, nrows];
-            foreach (Control c in panel.Controls)
-            {
-                Label l = c as Label;
-                if (l == null)
-                    continue;
-                if (l.Location.Y < minY || l.Location.X < minX)
-                    continue;
-
-                int x1 = (l.Location.X - minX) / cellRoomWidth;
-                int y1 = (l.Location.Y - minY) / cellHeight;
-                int x2 = (l.Location.X + l.Width - minX) / cellRoomWidth;
-                int y2 = (l.Location.Y + l.Height - minY) / cellHeight;
-
-                if (x1 < 0 || x2 < 0 || x1 > ncols || x2 > ncols ||
-                    y1 < 0 || y2 < 0 || y1 > nrows || y2 > nrows)
-                    continue; 
-
-                for (int x = x1; x <= x2; x++)
-                    for (int y = y1; y <= y2; y++)
-                        hits[x, y] = hits[x, y] + 1;
-            }
-
-            // Expand right
-            foreach (Control c in panel.Controls)
-            {
-                Label l = c as Label;
-                if (l == null)
-                    continue;
-                if (l.Location.Y < minY || l.Location.X < minX)
-                    continue;
-
-                int x1 = (l.Location.X - minX) / cellRoomWidth;
-                int y1 = (l.Location.Y - minY) / cellHeight;
-                int x2 = (l.Location.X + l.Width - minX) / cellRoomWidth;
-                int y2 = (l.Location.Y + l.Height - minY) / cellHeight;
-
-                if (x1 < 0 || x2 < 0 || x1 > ncols || x2 > ncols ||
-                    y1 < 0 || y2 < 0 || y1 > nrows || y2 > nrows)
-                    continue;
-
-                int x2min = x2 - (x2 % nRooms);    //( (x2-1) / nRooms) * nRooms;
-                int x2max = x2min + nRooms;
-
-                bool hit = false;
-                for (int x = x2; x < x2max && !hit; x++)
-                {
-                    for (int y = y1; y < y2; y++)
-                    {
-                        if (x + 1 < 0 || y < 0 || x + 1 >= ncols || y >= nrows)
-                            return;
-                        if (hits[x + 1, y] > 0)
-                        {
-                            hit = true;
-                            break;
-                        }
-                    }
-                    if (hit)
-                        break;
-                    l.Width += cellRoomWidth;
-                    for (int y = y1; y < y2; y++)
-                    {
-                        if (x + 1 < 0 || y < 0 || x + 1 >= ncols || y >= nrows)
-                            return;
-                        hits[x + 1, y] = 1;
-                    }
-                }
-            }
-
-            // Expand left
-            foreach (Control c in panel.Controls)
-            {
-                Label l = c as Label;
-                if (l == null)
-                    continue;
-                if (l.Location.Y < minY || l.Location.X < minX)
-                    continue;
-
-                int x1 = (l.Location.X - minX) / cellRoomWidth;
-                int y1 = (l.Location.Y - minY) / cellHeight;
-                int x2 = (l.Location.X + l.Width - minX) / cellRoomWidth;
-                int y2 = (l.Location.Y + l.Height - minY) / cellHeight;
-
-                if (x1 < 0 || x2 < 0 || x1 > ncols || x2 > ncols ||
-                    y1 < 0 || y2 < 0 || y1 > nrows || y2 > nrows)
-                    continue;
-
-                int x1min = x1 - (x1 % nRooms);  // ((x1 - 1) / nRooms) * nRooms;
-                int x1max = x1min + nRooms;
-
-                bool hit = false;
-                for (int x = x1; x > x1min && !hit; x--)
-                {
-                    for (int y = y1; y < y2; y++)
-                    {
-                        if (x - 1 < 0 || y < 0 || x - 1 >= ncols || y >= nrows)
-                            return;
-                        if (hits[x - 1, y] > 0)
-                        {
-                            hit = true;
-                            break;
-                        }
-                    }
-                    if (hit)
-                        break;
-                    l.Width += cellRoomWidth;
-                    l.Location = new Point(l.Location.X - cellRoomWidth, l.Location.Y);
-                    for (int y = y1; y < y2; y++)
-                    {
-                        if (x - 1 < 0 || y < 0 || x - 1 >= ncols || y >= nrows)
-                            return;
-                        hits[x - 1, y] = 1;
-                    }
-                }
-            }
-
-        }
-
         private void menuItemViewLessonCancel_Click(object sender, EventArgs e)
         {
             Lesson l = GetLessonFromSender(sender);
@@ -689,14 +829,12 @@ namespace RecordKeeper
 
         private void MoveLesson(object sender, int days)
         {
-            InitializePlan(false);
+            InitializeMove();
             Lesson l = GetLessonFromSender(sender);
-            m_plan_chosenLanguage = GetStudentLearningLanguage(l.Student1);
 
             dtpPlan.Value = l.DateTimeStart.AddDays(days);
             //cbPlanDuration.SelectedIndex = l.SlotsNumber;
             tbPlanComment.Text = l.Comments;
-            SetComboBoxIndexByValue(cbPlanLanguage, m_plan_chosenLanguage);
             SetComboBoxIndexByValue(cbPlanProgram, l.Program);
             SetComboBoxIndexByValue(cbPlanDuration, l.DurationString);
             SetComboBoxIndexByValue(cbPlanTeacher, l.Teacher1);

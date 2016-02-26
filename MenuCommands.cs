@@ -117,7 +117,7 @@ namespace RecordKeeper
 
         private void planToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            InitializePlan(true);
+            InitializePlan(true, false);
             tabControlOps.SelectedIndex = (int)TabControlOps.Plan;
         }
         private void showToolStripMenuItem_Click(object sender, EventArgs e)

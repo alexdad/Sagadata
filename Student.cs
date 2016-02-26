@@ -70,7 +70,7 @@ namespace RecordKeeper
             PossibleSchedule = "";
             Source = "";
             SourceDetail = "";
-            Status = "";
+            Status = "Active";
             LastTeacher = "";
             Prog1 = "";
             Price1 = "";
