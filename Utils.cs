@@ -114,13 +114,6 @@ namespace RecordKeeper
             return new DateTime(dt.Year, dt.Month, s_DaysPerMonth[dt.Month - 1], 23, 59, 59);
         }
 
-        public static string[] WeekdayNames()
-        {
-            string[] days = {"Monday", "Tuesday", "Wednesday",
-                "Thursday", "Friday", "Saturday", "Sunday" };
-            return days;
-        }
-
         public static int Slots(DateTime dt1, DateTime dt2)
         {
             return (int)((dt2.Ticks - dt1.Ticks) / SlotInTicks);

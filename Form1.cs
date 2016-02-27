@@ -26,6 +26,7 @@ namespace RecordKeeper
         string[] m_enumPricingType;
         string[] m_enumTimeSlot;
         string[] m_enumDurations;
+        string[] m_enumWeekdayNames;
 
         Dictionary<Modes, RecordType> m_recordTypes;
         Dictionary<Modes, Type> m_dataTypes;
@@ -1250,6 +1251,7 @@ namespace RecordKeeper
             string studDesc = cb.SelectedItem as string;
             PopulateStudentPossibleSchedule(studDesc, lbPlanStudSchedule1);
             PopulatePlanFieldsFromLastLesson(studDesc);
+            PopulateLessonPrice(studDesc, cbPlanProgram.Text);
             InitializeStudentPlan(true);
 
             if (m_lessonInMove == null)

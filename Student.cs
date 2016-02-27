@@ -17,7 +17,6 @@ namespace RecordKeeper
         public string HomePhone { get; set; }
         public string Interests { get; set; }
         public string LastName { get; set; }
-        public string LastTeacher { get; set; }
         public String LearningLanguage { get; set; }
         public String LanguageDetail { get; set; }
         public String Level { get; set; }
@@ -71,7 +70,6 @@ namespace RecordKeeper
             Source = "";
             SourceDetail = "";
             Status = "Active";
-            LastTeacher = "";
             Prog1 = "";
             Price1 = "";
             Prog2 = "";
@@ -117,9 +115,6 @@ namespace RecordKeeper
                     break;
                 case "LastName":
                     this.LastName = value;
-                    break;
-                case "LastTeacher":
-                    this.LastTeacher = value;
                     break;
                 case "LearningLanguage":
                     this.LearningLanguage = value;
@@ -198,8 +193,6 @@ namespace RecordKeeper
                     return Interests;
                 case "LastName":
                     return LastName;
-                case "LastTeacher":
-                    return LastTeacher;
                 case "LearningLanguage":
                     return LearningLanguage;
                 case "LanguageDetail":

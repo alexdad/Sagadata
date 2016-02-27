@@ -86,6 +86,7 @@ namespace RecordKeeper
         public int cellRoomWidth;
         public int minX;
         public int minY;
+        public int labelHeight;
 
         public ViewContext(
             int days, 
@@ -93,14 +94,16 @@ namespace RecordKeeper
             int cellHight, 
             int cellRoomWidth,
             int minX,
-            int minY)
+            int minY,
+            int labelHeight)
         {
             this.days = days;
             this.cellWidth = cellWidth;
             this.cellHight = cellHight;
-            this.cellRoomWidth = cellWidth;
+            this.cellRoomWidth = cellRoomWidth;
             this.minX = minX;
             this.minY = minY;
+            this.labelHeight = labelHeight;
         }
     }
 
@@ -354,7 +357,7 @@ namespace RecordKeeper
                 panelViewMonth.Width / days,
                 panelViewMonth.Height / m_enumTimeSlot.Length,
                 panelViewMonth.Width / days / roomList.Count,
-                60, 40);
+                60, 40, 20);
 
             DrawMonthDaysAsTopRow(m_chosenDate, panelViewMonth, vc);
             DrawTimeSlotsAsLeftColumn(panelViewMonth, vc);
@@ -397,11 +400,11 @@ namespace RecordKeeper
         {
             DisposeChildren(panelViewWeek);
             ViewContext vc = new ViewContext(
-                WeekdayNames().Length,
-                panelViewWeek.Width / WeekdayNames().Length,
+                m_enumWeekdayNames.Length,
+                panelViewWeek.Width / m_enumWeekdayNames.Length,
                 panelViewWeek.Height / m_enumTimeSlot.Length,
-                panelViewWeek.Width / WeekdayNames().Length / roomList.Count,
-                60, 40);
+                panelViewWeek.Width / m_enumWeekdayNames.Length / roomList.Count,
+                60, 40, 20);
 
             DrawWeekDaysAsTopRow(m_chosenDate, panelViewWeek, vc);
             DrawTimeSlotsAsLeftColumn(panelViewWeek, vc);
@@ -450,7 +453,7 @@ namespace RecordKeeper
                 panelViewWeek.Width,
                 (panelViewDay.Height - 20) / m_enumTimeSlot.Length,
                 (panelViewDay.Width - 60) / roomList.Count,
-                60, 40);
+                60, 40, 20);
 
 
             DrawRoomsAsTopRow(panelViewDay, vc);
@@ -743,7 +746,7 @@ namespace RecordKeeper
                     ForeColor = Color.Black,
                     BackColor = Color.White,
                     Width = vc.cellWidth,
-                    Height = 20,
+                    Height = vc.labelHeight,
                     Location = new Point(
                         vc.minX + vc.cellWidth * i + 5,
                         5),
@@ -765,7 +768,7 @@ namespace RecordKeeper
                     ForeColor = Color.Black,
                     BackColor = Color.White,
                     Width = vc.cellWidth,
-                    Height = 20,
+                    Height = vc.labelHeight,
                     Location = new Point(
                         vc.minX + vc.cellWidth * i + 5,
                         5),
@@ -784,10 +787,10 @@ namespace RecordKeeper
                 Label l = new Label()
                 {
                     Text = r.Name,
-                    Width = vc.cellWidth,
-                    Height = 20,
+                    Width = vc.cellRoomWidth,
+                    Height = vc.labelHeight,
                     Location = new Point(
-                        vc.minX + vc.cellWidth * i + 5,
+                        vc.minX + vc.cellRoomWidth * i + 5,
                         5),
                     Parent = panel,
                     TextAlign = ContentAlignment.MiddleCenter,
@@ -811,7 +814,7 @@ namespace RecordKeeper
                 {
                     Text = m_enumTimeSlot[j],
                     Width = 50,
-                    Height = 20,
+                    Height = vc.labelHeight,
                     Location = new Point(5, y),
                     Parent = panel,
                     TextAlign = ContentAlignment.MiddleLeft
@@ -823,6 +826,7 @@ namespace RecordKeeper
         {
             Lesson l = GetLessonFromSender(sender);
             l.State = "Cancelled";
+            l.CancellationTime = DateTime.Now.ToString();
             Modified = true;
             ShowView();
         }

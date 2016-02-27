@@ -26,6 +26,8 @@ namespace RecordKeeper
         public string End { get; set; }
         public string Teacher1 { get; set; }
         public string Teacher2 { get; set; }
+        public string CancellationTime { get; set; }
+        public string Price { get; set; }
 
         public DateTime DateTimeStart
         {
@@ -198,6 +200,12 @@ namespace RecordKeeper
                 case "Teacher2":
                     this.Teacher2 = value;
                     break;
+                case "CancellationTime":
+                    this.CancellationTime = value;
+                    break;
+                case "Price":
+                    this.Price = value;
+                    break;
                 default:
                     throw new Exception("unknown field " + field);
             }
@@ -224,6 +232,8 @@ namespace RecordKeeper
              Start = "";
              Teacher1 = "";
              Teacher2 = "";
+             CancellationTime = "";
+             Price = "";
     }
 
     public override string Get(string field)
@@ -270,6 +280,11 @@ namespace RecordKeeper
                     return this.Teacher1;
                 case "Teacher2":
                     return this.Teacher2;
+                case "CancellationTime":
+                    return this.CancellationTime;
+                case "Price":
+                    return this.Price;
+
                 default:
                     throw new Exception("unknown field " + field);
             }

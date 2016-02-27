@@ -60,6 +60,7 @@ namespace RecordKeeper
     {
         bool m_plan_firstTimePlan = true;
         Lesson m_lessonInMove = null;
+        string m_plannedLessonPrice = null;
         int m_plan_row = -1;
         int m_plan_col = -1;
 
@@ -279,6 +280,23 @@ namespace RecordKeeper
             SetComboBoxIndexByValue(cbPlanTeacher, latest.Teacher1);
         }
 
+        void PopulateLessonPrice(string studDesc, string progName)
+        {
+            m_plannedLessonPrice = "";
+            foreach (Student stud in SpecificStudent(studDesc))
+            {
+                if (stud.Prog1 == progName)
+                    m_plannedLessonPrice = stud.Price1;
+                else if (stud.Prog2 == progName)
+                    m_plannedLessonPrice = stud.Price2;
+                else if (stud.Prog3 == progName)
+                    m_plannedLessonPrice = stud.Price3;
+            }
+
+            if (IsStringEmpty(m_plannedLessonPrice))
+                m_plannedLessonPrice = GetProgramPrice(progName);
+        }
+
         void PopulateTeacherVacation(string description, Label lb)
         {
             foreach (Teacher t in SpecificTeacher(description))
@@ -488,6 +506,8 @@ namespace RecordKeeper
                 l.Student10 = "";
                 l.Teacher1 = cbPlanTeacher.SelectedItem as string;
                 l.Teacher2 = "";
+                l.Price = m_plannedLessonPrice;
+
             }
             l.Comments = tbPlanComment.Text;
 

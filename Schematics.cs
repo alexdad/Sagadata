@@ -241,6 +241,12 @@ namespace RecordKeeper
                     m_enumTimeSlot[i++] = h.ToString() + ":" + m.ToString() + " pm";
         }
 
+        void PopulateEnumWeekdays()
+        {
+            m_enumWeekdayNames = new string[7] {"Monday", "Tuesday", "Wednesday",
+                "Thursday", "Friday", "Saturday", "Sunday" };
+        }
+
         void PopulateEnumDurations()
         {
             m_enumDurations = new string[4 * 4 - 1];
@@ -273,6 +279,7 @@ namespace RecordKeeper
             m_enumPricingType = File.ReadAllLines(Path.Combine(binLocation, "EnumPricingType.csv").ToString());
 
             PopulateEnumTimeslots();
+            PopulateEnumWeekdays();
             PopulateEnumDurations();
 
             SchemaField[] schemaRecord = ReadSchema("Record", null);  // common fields
