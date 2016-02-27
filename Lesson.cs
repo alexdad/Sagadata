@@ -62,31 +62,9 @@ namespace RecordKeeper
             get
             {
                 StringBuilder sb = new StringBuilder();
-                if (this.Student1 != null)
-                {
-                    int space = this.Student1.Trim().IndexOf(" ");
-                    if (space > 0)
-                        sb.Append(Student1.Trim().Substring(0, space));
-                    else
-                        sb.Append(Student1.Trim());
-                    sb.Append("/ ");
-                }
-                else
-                {
-                    sb.Append(" / ");
-                }
-                if (this.Teacher1 != null)
-                {
-                    int space = this.Teacher1.Trim().IndexOf(" ");
-                    if (space > 0)
-                        sb.Append(Teacher1.Trim().Substring(0, space));
-                    else
-                        sb.Append(Teacher1.Trim());
-                }
-                else
-                {
-                    sb.Append("");
-                }
+                sb.Append(FormGlob.ExtractFirstWord(this.Student1));
+                sb.Append(" / ");
+                sb.Append(FormGlob.ExtractFirstWord(this.Teacher1));
                 return sb.ToString();
             }
         }
@@ -97,14 +75,11 @@ namespace RecordKeeper
             {
                 StringBuilder sb = new StringBuilder();
                 sb.Append(State.Substring(0, 1));
+                
                 if (this.Student1 != null)
                 {
                     sb.Append(":");
-                    int space = this.Student1.Trim().IndexOf(" ");
-                    if (space > 0)
-                        sb.Append(Student1.Trim().Substring(0, space));
-                    else
-                        sb.Append(Student1.Trim());
+                    sb.Append(FormGlob.ExtractFirstWord(this.Student1));
                 }
                 return sb.ToString();
             }

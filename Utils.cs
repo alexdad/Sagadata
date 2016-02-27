@@ -45,7 +45,10 @@ namespace RecordKeeper
             DateTime d = weekStart;
             for (int i = 0; i < 7; i++)
             {
-                w[i + 1] = d.ToString("dd MMM");
+                string dtstr = d.ToString("dd MMM");
+                if (d.Year == dt.Year && d.Month == dt.Month && d.Day == dt.Day)
+                    dtstr = dtstr + "  ***";
+                w[i + 1] = dtstr;
                 d = d.AddDays(1);
             }
 
@@ -277,6 +280,19 @@ namespace RecordKeeper
         {
             return (s == null || s.Trim().Length == 0);
         }
+
+        public static string ExtractFirstWord(string s)
+        {
+            if (s == null)
+                return "";
+
+            int space = s.Trim().IndexOf(" ");
+            if (space > 0)
+                return s.Trim().Substring(0, space);
+            else
+                return s.Trim();
+        }
+
         public static bool IsDateTimeReasonable(DateTime dt)
         {
             return (dt.Year >= 2014 && dt.Year < 2020 &&

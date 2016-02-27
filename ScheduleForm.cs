@@ -335,8 +335,8 @@ namespace RecordKeeper
 
                 cbPlanProgram.SelectedIndex = -1;
                 cbPlanProgram.Text = "";
-                cbPlanDuration.SelectedIndex = -1;
-                cbPlanDuration.Text = "";
+                cbPlanDuration.SelectedIndex = 6;
+                cbPlanDuration.Text = "1:30";
                 tbPlanComment.Text = "";
                 lbPlanStudSchedule2.Text = "";
                 lbPlanStudSchedule3.Text = "";

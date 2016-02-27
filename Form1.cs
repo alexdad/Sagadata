@@ -183,6 +183,7 @@ namespace RecordKeeper
         {
             List<Student> students = ActiveStudents();
             List<String> studentNames = students.ConvertAll(x => x.Description);
+            studentNames.Add("");
             string[] orderedStudentNames = studentNames.OrderBy(q => q).ToArray();
             cbSearchLessonStudent.Items.Clear();
             cbSearchLessonStudent.Items.AddRange(orderedStudentNames);
@@ -199,6 +200,7 @@ namespace RecordKeeper
 
             List<Teacher> teachers = ActiveTeachers();
             List<String> teacherNames = teachers.ConvertAll(x => x.Description);
+            teacherNames.Add("");
             string[] orderedTeacherNames = teacherNames.OrderBy(q => q).ToArray();
             cbSearchLessonTeacher.Items.Clear();
             cbSearchLessonTeacher.Items.AddRange(orderedTeacherNames);
@@ -207,6 +209,7 @@ namespace RecordKeeper
 
             List<Program> programs = ActivePrograms();
             List<String> programNames = programs.ConvertAll(x => x.Description);
+            programNames.Add("");
             string[] orderedProgramNames = programNames.OrderBy(q => q).ToArray();
             cbSearchLessonProgram.Items.Clear();
             cbSearchLessonProgram.Items.AddRange(orderedProgramNames);
@@ -222,12 +225,14 @@ namespace RecordKeeper
 
             List<Room> rooms = ActiveRooms();
             List<String> roomNames = rooms.ConvertAll(x => x.Description);
+            roomNames.Add("");
             string[] orderedRoomNames = roomNames.OrderBy(q => q).ToArray();
             cbSearchLessonRoom.Items.Clear();
             cbSearchLessonRoom.Items.AddRange(orderedRoomNames);
             cbLessonRoom.Items.AddRange(orderedRoomNames);
             cbViewDetailRoom.Items.AddRange(orderedRoomNames);
 
+            m_assignedListsChanged = false;
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -317,6 +322,9 @@ namespace RecordKeeper
 
             if (Modified)
                 SaveAll();
+
+            if (m_assignedListsChanged)
+                AssignListsToComboBoxes();
 
             SelectionMode = false;
             CurrentType.SavedFullListDuringSelection = null;
@@ -548,6 +556,7 @@ namespace RecordKeeper
                 m_editSavingTrap = value;
                 if (value)
                 {
+                    m_assignedListsChanged = true;
                     buttonGlobEditAccept.Visible = true;
                 }
                 else
@@ -1519,10 +1528,7 @@ namespace RecordKeeper
         private void ShowView()
         {
             if (m_assignedListsChanged)
-            {
                 AssignListsToComboBoxes();
-                m_assignedListsChanged = false;
-            }
 
             switch (tabControlViewScales.SelectedIndex)
             {
