@@ -32,6 +32,13 @@ namespace RecordKeeper
                 return (Name.Length > 0 ? Name.Substring(0, 1) : "X");
             }
         }
+        public override bool Actual
+        {
+            get
+            {
+                return true;
+            }
+        }
 
         public override bool Set(string field, string fieldValue)
         {

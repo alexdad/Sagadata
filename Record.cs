@@ -58,6 +58,7 @@ namespace RecordKeeper
         public abstract string Abbreviation { get; }
         public abstract bool Set(string field, string value);
         public abstract string Get(string field);
+        public abstract bool Actual { get; }
         public abstract bool Validate();
 
         public Record()

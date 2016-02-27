@@ -139,24 +139,24 @@ namespace RecordKeeper
             de = de.AddDays(7);
 
             string t = PlanSelectedTeacher1();
-            if (t != null)
-                MarkLessons(LessonsByTeacher(t, ds, de));
+            if (!IsStringEmpty(t))
+                MarkLessons(LessonsByTeacher(t, ds, de, true));
 
             t = PlanSelectedStudent1();
-            if (t != null)
-                MarkLessons(LessonsByStudent(t, ds, de));
+            if (!IsStringEmpty(t))
+                MarkLessons(LessonsByStudent(t, ds, de, true));
 
             t = PlanSelectedStudent2();
-            if (t != null)
-                MarkLessons(LessonsByStudent(t, ds, de));
+            if (!IsStringEmpty(t))
+                MarkLessons(LessonsByStudent(t, ds, de, true));
 
             t = PlanSelectedStudent3();
-            if (t != null)
-                MarkLessons(LessonsByStudent(t, ds, de));
+            if (!IsStringEmpty(t))
+                MarkLessons(LessonsByStudent(t, ds, de, true));
 
             t = PlanSelectedStudent4();
-            if (t != null)
-                MarkLessons(LessonsByStudent(t, ds, de));
+            if (!IsStringEmpty(t))
+                MarkLessons(LessonsByStudent(t, ds, de, true));
         }
 
         public void PlanGetRoomAvailability()
@@ -165,9 +165,9 @@ namespace RecordKeeper
             DateTime de = ds;
             de = de.AddDays(7);
 
-            foreach(Lesson l in LessonsByTime(ds, de))
+            foreach(Lesson l in LessonsByTime(ds, de, true))
             {
-                if (l.Room == null || l.Room.Length == 0 || l.Room == "N/A")
+                if (l.Room == null || l.Room.Length == 0)
                     continue;
                 string roomLetter = l.Room.Substring(0, 1);
                 int i, js, je;
@@ -273,7 +273,7 @@ namespace RecordKeeper
             DateTime before = DateTime.Now;
             before = before.AddMonths(-2);
             Lesson latest = null;
-            foreach(Lesson l in LessonsByStudent(studDesc, before, DateTime.Now))
+            foreach(Lesson l in LessonsByStudent(studDesc, before, DateTime.Now, true))
             {
                 if (latest == null || latest != null && l.DateTimeStart > latest.DateTimeStart)
                     latest = l;
@@ -370,6 +370,7 @@ namespace RecordKeeper
             }
 
             butPlanAccept.Visible = false;
+            PlanShowData(false);
         }
 
         void PlanShowDataIfReady()
@@ -378,9 +379,9 @@ namespace RecordKeeper
                 cbPlanStud1.SelectedItem as string != null ||
                 m_lessonInMove != null)
 
-                PlanShowData();
+                PlanShowData(true);
         }
-        void PlanShowData()
+        void PlanShowData(bool showData)
         {
             // Form the grid
             planSlotList.Clear();
@@ -394,13 +395,14 @@ namespace RecordKeeper
             // Add info about room's availability
             PlanGetRoomAvailability();
 
-            // Assign colors based on teacher availability
-            PlanGetTeacherAvailability();
+            if (showData)
+            {
+                // Assign colors based on teacher availability
+                PlanGetTeacherAvailability();
 
-            // Add info about teacher's lessons
-            PlanGetRelevantLessons();
-
-            // Assign texts: for 
+                // Add info about teacher's lessons
+                PlanGetRelevantLessons();
+            }
         }
 
         void ProposeNewLesson(DataGridView dgv, int row, int col)
@@ -523,6 +525,7 @@ namespace RecordKeeper
             lbPlanChooseRoom.Visible = false;
 
             butPlanAccept.Visible = false;
+            m_chosenDate = l.DateTimeStart;
             PlanShowDataIfReady();
         }
         public string PlanSelectedTeacher1()

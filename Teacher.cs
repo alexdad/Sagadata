@@ -39,6 +39,23 @@ namespace RecordKeeper
                         (LastName.Length  > 0 ? LastName.Substring(0, 1)  : "Y"));
             }
         }
+        public override bool Actual
+        {
+            get
+            {
+                switch (Status)
+                {
+                    case "Active":
+                        return true;
+                    case "Prospect":
+                        return false;
+                    case "Inactive":
+                        return false;
+                    default:
+                        return false;
+                }
+            }
+        }
 
         public override bool Set(string field, string fieldValue)
         {

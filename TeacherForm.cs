@@ -354,7 +354,7 @@ namespace RecordKeeper
         List<Teacher> ActiveTeachersByLanguage(string lang)
         {
             return FindTeachers(t =>
-                    (t.Status == "Active" &&
+                    (t.Actual &&
                     (t.Language == lang || t.Language2 == lang ||
                     t.Language2 == "Other" && t.LanguageDetail == lang)));
         }
@@ -362,7 +362,7 @@ namespace RecordKeeper
         List<Teacher> ActiveTeachers()
         {
             return FindTeachers(t =>
-                    (t.Status == "Active"));
+                    (t.Actual));
         }
 
         List<Teacher> SpecificTeacher(string desc)

@@ -73,7 +73,7 @@ namespace RecordKeeper
         }
         List<Room> ActiveRooms()
         {
-            return FindRooms(t => true);
+            return FindRooms(t => t.Actual);
         }
 
         List<Room> FindRooms(EvaluateRoom comp)

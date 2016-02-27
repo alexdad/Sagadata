@@ -85,35 +85,53 @@ namespace RecordKeeper
             ShowCurrentCount();
         }
 
-        List<Lesson> LessonsByTime(DateTime t1, DateTime t2)
+        List<Lesson> LessonsByTime(DateTime t1, DateTime t2, bool onlyActual)
         {
             return FindLessons(l =>
+                    (!onlyActual || l.Actual) &&
                     DateTime.Parse(l.Start) <= t2 && 
                     DateTime.Parse(l.End) >= t1);
         }
-        List<Lesson> LessonsByTeacher(string desc)
+        List<Lesson> LessonsByTeacher(string desc, bool onlyActual)
         {
-            return FindLessons(l => l.Teacher1 == desc || l.Teacher2 == desc);
-        }
-        List<Lesson> LessonsByStudent(string desc)
-        {
+            if (IsStringEmpty(desc))
+                return new List<Lesson>();
+
             return FindLessons(l => 
-                l.Student1 == desc || l.Student2 == desc || l.Student3 == desc ||
+                (!onlyActual || l.Actual) &&
+                (l.Teacher1 == desc || l.Teacher2 == desc));
+        }
+        List<Lesson> LessonsByStudent(string desc, bool onlyActual)
+        {
+            if (IsStringEmpty(desc))
+                return new List<Lesson>();
+
+            return FindLessons(l =>
+                (!onlyActual || l.Actual) &&
+                (l.Student1 == desc || l.Student2 == desc || l.Student3 == desc ||
                 l.Student4 == desc || l.Student5 == desc || l.Student6 == desc ||
                 l.Student7 == desc || l.Student8 == desc || l.Student9 == desc ||
-                l.Student10 == desc);
+                l.Student10 == desc));
         }
 
-        List<Lesson> LessonsByTeacher(string desc, DateTime t1, DateTime t2)
+        List<Lesson> LessonsByTeacher(string desc, DateTime t1, DateTime t2, bool onlyActual)
         {
+            if (IsStringEmpty(desc))
+                return new List<Lesson>();
+
             return FindLessons(l =>
+                    (!onlyActual || l.Actual) &&
                     (l.Teacher1 == desc || l.Teacher2 == desc) &&
                     l.DateTimeStart <= t2 && l.DateTimeEnd >= t1);
         }
 
-        List<Lesson> LessonsByStudent(string desc, DateTime t1, DateTime t2)
+        List<Lesson> LessonsByStudent(string desc, DateTime t1, DateTime t2, bool onlyActual)
         {
+            if (IsStringEmpty(desc))
+                return new List<Lesson>();
+
             return FindLessons(l =>
+                   (!onlyActual || l.Actual) &&
                    (l.Student1 == desc || l.Student2 == desc || l.Student3 == desc ||
                     l.Student4 == desc || l.Student5 == desc || l.Student6 == desc ||
                     l.Student7 == desc || l.Student8 == desc || l.Student9 == desc ||

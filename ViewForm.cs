@@ -299,7 +299,7 @@ namespace RecordKeeper
                         if (l == null)
                             continue;
 
-                        if (x1 / nRooms > col || x2 / nRooms < col || y1 > row || y2 < row)
+                        if ((x1-1) / nRooms > col || (x2-1) / nRooms < col || y1 > row || y2 < row)
                             continue;
 
                         nLabels++;
@@ -318,7 +318,7 @@ namespace RecordKeeper
                     Label l = GetLabel(c);
                     if (l == null)
                         continue;
-                    if (x1 / nRooms > col || x2 / nRooms < col)
+                    if ( (x1-1) / nRooms > col || (x2-1) / nRooms < col)
                         continue;
 
                     int newX = 0;

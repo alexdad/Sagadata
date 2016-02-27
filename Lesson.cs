@@ -114,6 +114,24 @@ namespace RecordKeeper
             get { return ("X"); }
         }
 
+        public override bool Actual
+        {
+            get
+            {
+                switch (State)
+                {
+                    case "Planned":
+                        return true;
+                    case "Cancelled":
+                        return false;
+                    case "Done":
+                        return false;
+                    default:
+                        return false;
+                }
+            }
+        }
+
         public override bool Set(string field, string fieldValue)
         {
             string value = SetRecordFields(field, fieldValue);

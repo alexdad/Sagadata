@@ -159,6 +159,7 @@ namespace RecordKeeper
             DateTime dts = DateTime.Now;
             DateTime dtn = dts.AddMinutes(15);
             SlotInTicks = (dtn - dts).Ticks;
+            m_chosenDate = DateTime.Now;
         }
 
         private void RecordsToFormConst1()
@@ -202,34 +203,57 @@ namespace RecordKeeper
             List<String> teacherNames = teachers.ConvertAll(x => x.Description);
             teacherNames.Add("");
             string[] orderedTeacherNames = teacherNames.OrderBy(q => q).ToArray();
+
             cbSearchLessonTeacher.Items.Clear();
             cbSearchLessonTeacher.Items.AddRange(orderedTeacherNames);
+
+            cbLessonTeacher1.Items.Clear();
             cbLessonTeacher1.Items.AddRange(orderedTeacherNames);
+
+            cbLessonTeacher2.Items.Clear();
             cbLessonTeacher2.Items.AddRange(orderedTeacherNames);
 
             List<Program> programs = ActivePrograms();
             List<String> programNames = programs.ConvertAll(x => x.Description);
             programNames.Add("");
             string[] orderedProgramNames = programNames.OrderBy(q => q).ToArray();
+
             cbSearchLessonProgram.Items.Clear();
             cbSearchLessonProgram.Items.AddRange(orderedProgramNames);
+
+            cbLessonProg.Items.Clear();
             cbLessonProg.Items.AddRange(orderedProgramNames);
+
+            cbViewDetailProgram.Items.Clear();
             cbViewDetailProgram.Items.AddRange(orderedProgramNames);
+
+            cbStudProg1.Items.Clear();
             cbStudProg1.Items.Add("");
             cbStudProg1.Items.AddRange(orderedProgramNames);
+
+            cbStudProg2.Items.Clear();
             cbStudProg2.Items.Add("");
             cbStudProg2.Items.AddRange(orderedProgramNames);
+
+            cbStudProg3.Items.Clear();
             cbStudProg3.Items.Add("");
             cbStudProg3.Items.AddRange(orderedProgramNames);
+
+            cbPlanProgram.Items.Clear();
             cbPlanProgram.Items.AddRange(orderedProgramNames);
 
             List<Room> rooms = ActiveRooms();
             List<String> roomNames = rooms.ConvertAll(x => x.Description);
             roomNames.Add("");
             string[] orderedRoomNames = roomNames.OrderBy(q => q).ToArray();
+
             cbSearchLessonRoom.Items.Clear();
             cbSearchLessonRoom.Items.AddRange(orderedRoomNames);
+
+            cbLessonRoom.Items.Clear();
             cbLessonRoom.Items.AddRange(orderedRoomNames);
+
+            cbViewDetailRoom.Items.Clear();
             cbViewDetailRoom.Items.AddRange(orderedRoomNames);
 
             m_assignedListsChanged = false;

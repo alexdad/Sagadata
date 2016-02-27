@@ -99,14 +99,13 @@ namespace RecordKeeper
         List<Student> ActiveStudentsByLanguage(string lang)
         {
             return FindStudents(t =>
-                    (t.Status == "Active" &&
+                    (t.Actual &&
                     (t.LearningLanguage== lang )));
         }
 
         List<Student> ActiveStudents()
         {
-            return FindStudents(t =>
-                    (t.Status == "Active"));
+            return FindStudents(t => (t.Actual));
         }
 
         public string GetStudentComment(string desc)

@@ -59,7 +59,7 @@ namespace RecordKeeper
 
         List<Program> ActivePrograms()
         {
-            return FindPrograms(t => true);
+            return FindPrograms(t => t.Actual);
         }
 
         List<Program> SpecificProgram(string desc)

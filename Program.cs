@@ -24,6 +24,13 @@ namespace RecordKeeper
             get { return Code; }
         }
 
+        public override bool Actual
+        {
+            get
+            {
+                return true;
+            }
+        }
         public override bool Set(string field, string fieldValue)
         {
             string value = SetRecordFields(field, fieldValue);
