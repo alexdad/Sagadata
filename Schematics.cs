@@ -19,7 +19,8 @@ namespace RecordKeeper
         Programs = 2,
         Rooms = 3,
         Lessons = 4,
-        MaxMode = 5
+        Clients = 5,
+        MaxMode = 6
     }
     public enum Clouds
     {
@@ -98,7 +99,8 @@ namespace RecordKeeper
 
     public partial class FormGlob : Form
     {
-        public static string Client;
+        public static string ClientName;
+        public static string ClientCode;
         public static int MaxID { get; set; }
         public static int AllocateID()
         {

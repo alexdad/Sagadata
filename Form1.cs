@@ -127,6 +127,8 @@ namespace RecordKeeper
                         return teacherList;
                     case Modes.Lessons:
                         return lessonList;
+                    case Modes.Clients:
+                        return clientList;
 
                     default:
                         return null;
@@ -145,7 +147,7 @@ namespace RecordKeeper
 
             // Initial mode is the first in the Modes enum
             CurrentMode = (Modes)0;
-            Client = Environment.MachineName;
+            ClientName = Environment.MachineName;
             ReadSettings();
             ReadSchemas();
             PrepareDataDirectories();
@@ -169,7 +171,7 @@ namespace RecordKeeper
             ProgramToFormConst1();
             RoomToFormConst1();
             LessonToFormConst1();
-
+            ClientToFormConst1();
         }
         private void RecordsToFormConst2()
         {
@@ -178,6 +180,7 @@ namespace RecordKeeper
             ProgramToFormConst2();
             RoomToFormConst2();
             LessonToFormConst2();
+            ClientToFormConst2();
         }
 
         private void AssignListsToComboBoxes()
@@ -258,8 +261,37 @@ namespace RecordKeeper
 
             m_assignedListsChanged = false;
         }
+
+        private string GetClientCode()
+        {
+            StringBuilder sb = new StringBuilder("?");
+            foreach (Client client in AllClients())
+            {
+                sb.Append(client.Code);
+                if (client.MachineName.ToLower() == ClientName.ToLower())
+                    return client.Code;
+            }
+
+            string usedCodes = sb.ToString();
+            Client st = (Client)clientList.AddNew();
+            st.MachineName = ClientName;
+            st.LastTouch = DateTime.Now.ToString();
+            for (char c = 'A'; c <= 'Z'; c++)
+            {
+                if (usedCodes.IndexOf(c) < 0)
+                {
+                    Modified = true;
+                    st.Code = new string(c, 1);
+                    return st.Code;
+                }
+            }
+            MessageBox.Show("Exhausted all available client codes");
+            Application.Exit();
+            return "?";
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
+            ClientCode = "?";
             CreateLabelWorking();
             ReadAllFiles();
             if (Properties.Settings.Default.InitialDownload.ToLower() != "no")
@@ -274,6 +306,8 @@ namespace RecordKeeper
                 ReadAllFiles();
 
             ShowCurrentCount();
+
+            ClientCode = GetClientCode();
 
             this.Size = Properties.Settings.Default.Form1Size;
             splitContainerGlobDataControls.SplitterDistance = Properties.Settings.Default.SplitDC;
@@ -648,8 +682,8 @@ namespace RecordKeeper
                 return;
             Record st = (Record)DataList.AddNew();
             st.Id = FormGlob.AllocateID();
-            st.ChangedBy = Client;
-            st.CreatedBy = Client;
+            st.ChangedBy = ClientCode;
+            st.CreatedBy = ClientCode;
             ShowCurrentCount();
 
             Modified = true;
@@ -729,6 +763,9 @@ namespace RecordKeeper
                     break;
                 case Modes.Lessons:
                     cbLessonState.Focus();
+                    break;
+                case Modes.Clients:
+                    //
                     break;
                 default:
                     break;

@@ -186,7 +186,7 @@ namespace RecordKeeper
                     if (RecordDiffers(st, oldSt))
                     {
                         st.Changed = DateTime.Now;
-                        st.ChangedBy = FormGlob.Client;
+                        st.ChangedBy = FormGlob.ClientCode;
                     }
                 }
 

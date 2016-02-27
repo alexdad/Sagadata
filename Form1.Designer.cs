@@ -483,6 +483,7 @@
             this.lbPayExpenseName = new System.Windows.Forms.Label();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.lbFutureOpName = new System.Windows.Forms.Label();
+            this.clientList = new System.Windows.Forms.BindingSource(this.components);
             this.menuStripGlobalOps.SuspendLayout();
             this.panelGlobIndicators.SuspendLayout();
             this.ctxMenuLesson.SuspendLayout();
@@ -581,6 +582,7 @@
             this.tabPayTeach.SuspendLayout();
             this.tabPayExpense.SuspendLayout();
             this.tabPage8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.clientList)).BeginInit();
             this.SuspendLayout();
             // 
             // viewToolStripMenuItem
@@ -5183,6 +5185,10 @@
             this.lbFutureOpName.TabIndex = 0;
             this.lbFutureOpName.Text = "Future Operation";
             // 
+            // clientList
+            // 
+            this.clientList.DataSource = typeof(RecordKeeper.Client);
+            // 
             // FormGlob
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5324,6 +5330,7 @@
             this.tabPayExpense.PerformLayout();
             this.tabPage8.ResumeLayout(false);
             this.tabPage8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.clientList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -5783,6 +5790,7 @@
         private System.Windows.Forms.Label labelLessonPrice;
         private System.Windows.Forms.Label lbLessonCancellation;
         private System.Windows.Forms.Button buttonGlobEditAccept;
+        private System.Windows.Forms.BindingSource clientList;
     }
 }
 

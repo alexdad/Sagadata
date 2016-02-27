@@ -64,9 +64,9 @@ namespace RecordKeeper
         public Record()
         {
             Changed = DateTime.Now;
-            ChangedBy = FormGlob.Client;
+            ChangedBy = FormGlob.ClientCode;
             Created = DateTime.Now;
-            CreatedBy = FormGlob.Client;
+            CreatedBy = FormGlob.ClientCode;
             Comments = "";
             Id = FormGlob.AllocateID();
         }
