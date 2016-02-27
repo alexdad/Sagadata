@@ -293,6 +293,34 @@ namespace RecordKeeper
                 return s.Trim();
         }
 
+        public static string ExtractLastWord(string s)
+        {
+            if (s == null)
+                return "";
+
+            int space = s.Trim().LastIndexOf(" ");
+            if (space > 0)
+                return s.Trim().Substring(space);
+            else
+                return s.Trim();
+        }
+
+        public static string ExtractFirstNameAndInitial(string s)
+        {
+            if (s == null)
+                return "";
+
+            int space = s.Trim().IndexOf(" ");
+            if (space < 0)
+                return s.Trim();
+
+            string res = s.Trim().Substring(0, space) + "_"; 
+
+            space = s.Trim().LastIndexOf(" ");
+            res += s.Trim().Substring(space+1, 1);
+            return res;
+        }
+
         public static bool IsDateTimeReasonable(DateTime dt)
         {
             return (dt.Year >= 2014 && dt.Year < 2020 &&

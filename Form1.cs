@@ -422,6 +422,19 @@ namespace RecordKeeper
                 else
                     DropFlagUnsavedAvailabilityChanges();
             }
+
+            if (m_editSavingTrap)
+            {
+                if (MessageBox.Show(
+                    "Want to lose them?",
+                    "You did not Accept editing changes",
+                    MessageBoxButtons.YesNo)
+                                            != DialogResult.Yes)
+                    return false;
+                else
+                    m_editSavingTrap = false; 
+            }
+
             return true;
         }
 
@@ -644,7 +657,7 @@ namespace RecordKeeper
             {
                 if (m_editSavingTrap)
                 {
-                    MessageBox.Show("Please click orange next/prev to push your edits, then save again");
+                    MessageBox.Show("Please click orange Accept to push your edits, then save again");
                     return;
                 }
             }

@@ -62,9 +62,9 @@ namespace RecordKeeper
             get
             {
                 StringBuilder sb = new StringBuilder();
-                sb.Append(FormGlob.ExtractFirstWord(this.Student1));
+                sb.Append(FormGlob.ExtractFirstNameAndInitial(this.Student1));
                 sb.Append(" / ");
-                sb.Append(FormGlob.ExtractFirstWord(this.Teacher1));
+                sb.Append(FormGlob.ExtractFirstNameAndInitial(this.Teacher1));
                 return sb.ToString();
             }
         }
@@ -79,7 +79,7 @@ namespace RecordKeeper
                 if (this.Student1 != null)
                 {
                     sb.Append(":");
-                    sb.Append(FormGlob.ExtractFirstWord(this.Student1));
+                    sb.Append(FormGlob.ExtractFirstNameAndInitial(this.Student1));
                 }
                 return sb.ToString();
             }
