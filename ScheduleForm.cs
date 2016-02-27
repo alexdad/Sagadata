@@ -261,7 +261,12 @@ namespace RecordKeeper
         {
             string language = null;
             foreach (Student t in SpecificStudent(studDesc))
+            {
                 language = t.LearningLanguage;
+                SetComboBoxIndexByValue(cbPlanProgram, t.Prog1);
+                if (!IsStringEmpty(t.Prog1))
+                    PopulateLessonPrice(studDesc, t.Prog1);
+            }
             if (language == null)
                 return;
 

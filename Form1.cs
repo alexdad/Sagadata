@@ -183,30 +183,46 @@ namespace RecordKeeper
         {
             List<Student> students = ActiveStudents();
             List<String> studentNames = students.ConvertAll(x => x.Description);
-            cbSearchLessonStudent.Items.AddRange(studentNames.OrderBy(q => q).ToArray());
+            string[] orderedStudentNames = studentNames.OrderBy(q => q).ToArray();
+            cbSearchLessonStudent.Items.AddRange(orderedStudentNames);
+            cbLessonStudent1.Items.AddRange(orderedStudentNames);
+            cbLessonStudent2.Items.AddRange(orderedStudentNames);
+            cbLessonStudent3.Items.AddRange(orderedStudentNames);
+            cbLessonStudent4.Items.AddRange(orderedStudentNames);
+            cbLessonStudent5.Items.AddRange(orderedStudentNames);
+            cbLessonStudent6.Items.AddRange(orderedStudentNames);
+            cbLessonStudent7.Items.AddRange(orderedStudentNames);
+            cbLessonStudent8.Items.AddRange(orderedStudentNames);
+            cbLessonStudent9.Items.AddRange(orderedStudentNames);
+            cbLessonStudent10.Items.AddRange(orderedStudentNames);
 
             List<Teacher> teachers = ActiveTeachers();
             List<String> teacherNames = teachers.ConvertAll(x => x.Description);
-            cbSearchLessonTeacher.Items.AddRange(teacherNames.OrderBy(q=> q).ToArray());
+            string[] orderedTeacherNames = teacherNames.OrderBy(q => q).ToArray();
+            cbSearchLessonTeacher.Items.AddRange(orderedTeacherNames);
+            cbLessonTeacher1.Items.AddRange(orderedTeacherNames);
+            cbLessonTeacher2.Items.AddRange(orderedTeacherNames);
 
             List<Program> programs = ActivePrograms();
             List<String> programNames = programs.ConvertAll(x => x.Description);
-            cbSearchLessonProgram.Items.AddRange(programNames.OrderBy(q => q).ToArray());
-            cbLessonProg.Items.AddRange(programNames.OrderBy(q => q).ToArray());
-            cbViewDetailProgram.Items.AddRange(programNames.OrderBy(q => q).ToArray());
+            string[] orderedProgramNames = programNames.OrderBy(q => q).ToArray();
+            cbSearchLessonProgram.Items.AddRange(orderedProgramNames);
+            cbLessonProg.Items.AddRange(orderedProgramNames);
+            cbViewDetailProgram.Items.AddRange(orderedProgramNames);
             cbStudProg1.Items.Add("");
-            cbStudProg1.Items.AddRange(programNames.OrderBy(q => q).ToArray());
+            cbStudProg1.Items.AddRange(orderedProgramNames);
             cbStudProg2.Items.Add("");
-            cbStudProg2.Items.AddRange(programNames.OrderBy(q => q).ToArray());
+            cbStudProg2.Items.AddRange(orderedProgramNames);
             cbStudProg3.Items.Add("");
-            cbStudProg3.Items.AddRange(programNames.OrderBy(q => q).ToArray());
+            cbStudProg3.Items.AddRange(orderedProgramNames);
 
             List<Room> rooms = ActiveRooms();
             List<String> roomNames = rooms.ConvertAll(x => x.Description);
-            cbSearchLessonRoom.Items.AddRange(roomNames.OrderBy(q => q).ToArray());
-            cbLessonRoom.Items.AddRange(roomNames.OrderBy(q => q).ToArray());
-            cbViewDetailRoom.Items.AddRange(roomNames.OrderBy(q => q).ToArray());
-            cbPlanProgram.Items.AddRange(programNames.OrderBy(q => q).ToArray());
+            string[] orderedRoomNames = roomNames.OrderBy(q => q).ToArray();
+            cbSearchLessonRoom.Items.AddRange(orderedRoomNames);
+            cbLessonRoom.Items.AddRange(orderedRoomNames);
+            cbViewDetailRoom.Items.AddRange(orderedRoomNames);
+            cbPlanProgram.Items.AddRange(orderedRoomNames);
 
         }
         private void Form1_Load(object sender, EventArgs e)
@@ -1182,12 +1198,27 @@ namespace RecordKeeper
             EditLessonDetailsChanged();
         }
 
+        private void tbLessonPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            EditLessonDetailsChanged();
+        }
+
         private void monthCalendar1_KeyPress(object sender, KeyPressEventArgs e)
         {
             EditLessonDetailsChanged();
         }
 
         private void monthCalendar1_MouseDown(object sender, MouseEventArgs e)
+        {
+            EditLessonDetailsChanged();
+        }
+
+        private void dtpLessonCancellationTime_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            EditLessonDetailsChanged();
+        }
+
+        private void dtpLessonCancellationTime_MouseDown(object sender, MouseEventArgs e)
         {
             EditLessonDetailsChanged();
         }
@@ -1463,6 +1494,12 @@ namespace RecordKeeper
 
         private void ShowView()
         {
+            if (m_assignedListsChanged)
+            {
+                AssignListsToComboBoxes();
+                m_assignedListsChanged = false;
+            }
+
             switch (tabControlViewScales.SelectedIndex)
             {
                 case (int)TabControlScales.Month:

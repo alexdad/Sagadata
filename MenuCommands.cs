@@ -277,6 +277,7 @@ namespace RecordKeeper
                 CurrentType.WriteRecordsFile();
             }
             Modified = false;
+            m_assignedListsChanged = false;
             SetMode(was);
 
             HideWorkout = false;

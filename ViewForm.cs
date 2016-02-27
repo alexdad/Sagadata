@@ -321,10 +321,19 @@ namespace RecordKeeper
                     if (x1 / nRooms > col || x2 / nRooms < col)
                         continue;
 
-                    int newX = used[y1]++;
+                    int newX = 0;
+                    for (int yy = y1; yy < y2; yy++)
+                    {
+                        if (used[yy] > newX)
+                            newX = used[yy];
+                    }
+                    newX++;
+                    for (int yy = y1; yy < y2; yy++)
+                        used[yy] = newX;
+
                     l.Width = newWidth;
                     l.Location = new Point(
-                        vc.minX + cellWidth * col + newX * newWidth, 
+                        vc.minX + cellWidth * col + (newX-1) * newWidth, 
                         l.Location.Y);
                 }
             }

@@ -141,6 +141,8 @@
             this.student3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Student4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.teacher2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CancellationTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.commentsDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lessonList = new System.Windows.Forms.BindingSource(this.components);
             this.panelGlobEdit = new System.Windows.Forms.Panel();
@@ -266,6 +268,10 @@
             this.tbRoomTags = new System.Windows.Forms.TextBox();
             this.tabBottomPageLessons = new System.Windows.Forms.TabPage();
             this.panelLesson = new System.Windows.Forms.Panel();
+            this.lbLessonCancellation = new System.Windows.Forms.Label();
+            this.tbLessonPrice = new System.Windows.Forms.TextBox();
+            this.labelLessonCancellation = new System.Windows.Forms.Label();
+            this.labelLessonPrice = new System.Windows.Forms.Label();
             this.cbLessonStudent10 = new System.Windows.Forms.ComboBox();
             this.cbLessonStudent9 = new System.Windows.Forms.ComboBox();
             this.cbLessonStudent8 = new System.Windows.Forms.ComboBox();
@@ -633,29 +639,28 @@
             // 
             this.planToolStripMenuItem.Name = "planToolStripMenuItem";
             this.planToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.planToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.planToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.planToolStripMenuItem.Text = "Plan";
             this.planToolStripMenuItem.Click += new System.EventHandler(this.planToolStripMenuItem_Click);
             // 
             // showToolStripMenuItem
             // 
             this.showToolStripMenuItem.Name = "showToolStripMenuItem";
-            this.showToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.showToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.showToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.showToolStripMenuItem.Text = "Show";
             this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
             // 
             // checkToolStripMenuItem
             // 
             this.checkToolStripMenuItem.Name = "checkToolStripMenuItem";
-            this.checkToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.checkToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.checkToolStripMenuItem.Text = "Check";
             this.checkToolStripMenuItem.Click += new System.EventHandler(this.checkToolStripMenuItem_Click);
             // 
             // publishToolStripMenuItem
             // 
             this.publishToolStripMenuItem.Name = "publishToolStripMenuItem";
-            this.publishToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.publishToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.publishToolStripMenuItem.Text = "Publish";
             this.publishToolStripMenuItem.Click += new System.EventHandler(this.publishToolStripMenuItem_Click);
             // 
@@ -674,35 +679,40 @@
             // studentsToolStripMenuItem1
             // 
             this.studentsToolStripMenuItem1.Name = "studentsToolStripMenuItem1";
-            this.studentsToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
+            this.studentsToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.studentsToolStripMenuItem1.Size = new System.Drawing.Size(166, 22);
             this.studentsToolStripMenuItem1.Text = "Students";
             this.studentsToolStripMenuItem1.Click += new System.EventHandler(this.studentsToolStripMenuItem1_Click);
             // 
             // teachersToolStripMenuItem1
             // 
             this.teachersToolStripMenuItem1.Name = "teachersToolStripMenuItem1";
-            this.teachersToolStripMenuItem1.Size = new System.Drawing.Size(125, 22);
+            this.teachersToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
+            this.teachersToolStripMenuItem1.Size = new System.Drawing.Size(166, 22);
             this.teachersToolStripMenuItem1.Text = "Teachers";
             this.teachersToolStripMenuItem1.Click += new System.EventHandler(this.teachersToolStripMenuItem1_Click);
             // 
             // lessonsToolStripMenuItem
             // 
             this.lessonsToolStripMenuItem.Name = "lessonsToolStripMenuItem";
-            this.lessonsToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.lessonsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
+            this.lessonsToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.lessonsToolStripMenuItem.Text = "Lessons";
             this.lessonsToolStripMenuItem.Click += new System.EventHandler(this.lessonsToolStripMenuItem_Click);
             // 
             // programsToolStripMenuItem
             // 
             this.programsToolStripMenuItem.Name = "programsToolStripMenuItem";
-            this.programsToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.programsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
+            this.programsToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.programsToolStripMenuItem.Text = "Programs";
             this.programsToolStripMenuItem.Click += new System.EventHandler(this.programsToolStripMenuItem_Click);
             // 
             // roomsToolStripMenuItem
             // 
             this.roomsToolStripMenuItem.Name = "roomsToolStripMenuItem";
-            this.roomsToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.roomsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
+            this.roomsToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.roomsToolStripMenuItem.Text = "Rooms";
             this.roomsToolStripMenuItem.Click += new System.EventHandler(this.roomsToolStripMenuItem_Click);
             // 
@@ -1486,6 +1496,8 @@
             this.student3DataGridViewTextBoxColumn,
             this.Student4,
             this.teacher2DataGridViewTextBoxColumn,
+            this.Price,
+            this.CancellationTime,
             this.commentsDataGridViewTextBoxColumn2});
             this.dgvLesson.DataSource = this.lessonList;
             this.dgvLesson.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1581,6 +1593,20 @@
             this.teacher2DataGridViewTextBoxColumn.HeaderText = "Teacher2";
             this.teacher2DataGridViewTextBoxColumn.Name = "teacher2DataGridViewTextBoxColumn";
             this.teacher2DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Price
+            // 
+            this.Price.DataPropertyName = "Price";
+            this.Price.HeaderText = "Price";
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
+            // 
+            // CancellationTime
+            // 
+            this.CancellationTime.DataPropertyName = "CancellationTime";
+            this.CancellationTime.HeaderText = "CancellationTime";
+            this.CancellationTime.Name = "CancellationTime";
+            this.CancellationTime.ReadOnly = true;
             // 
             // commentsDataGridViewTextBoxColumn2
             // 
@@ -2888,6 +2914,10 @@
             // panelLesson
             // 
             this.panelLesson.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
+            this.panelLesson.Controls.Add(this.lbLessonCancellation);
+            this.panelLesson.Controls.Add(this.tbLessonPrice);
+            this.panelLesson.Controls.Add(this.labelLessonCancellation);
+            this.panelLesson.Controls.Add(this.labelLessonPrice);
             this.panelLesson.Controls.Add(this.cbLessonStudent10);
             this.panelLesson.Controls.Add(this.cbLessonStudent9);
             this.panelLesson.Controls.Add(this.cbLessonStudent8);
@@ -2922,6 +2952,42 @@
             this.panelLesson.Name = "panelLesson";
             this.panelLesson.Size = new System.Drawing.Size(929, 350);
             this.panelLesson.TabIndex = 0;
+            // 
+            // lbLessonCancellation
+            // 
+            this.lbLessonCancellation.AutoSize = true;
+            this.lbLessonCancellation.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "CancellationTime", true));
+            this.lbLessonCancellation.Location = new System.Drawing.Point(688, 141);
+            this.lbLessonCancellation.Name = "lbLessonCancellation";
+            this.lbLessonCancellation.Size = new System.Drawing.Size(0, 13);
+            this.lbLessonCancellation.TabIndex = 32;
+            // 
+            // tbLessonPrice
+            // 
+            this.tbLessonPrice.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "Price", true));
+            this.tbLessonPrice.Location = new System.Drawing.Point(578, 135);
+            this.tbLessonPrice.Name = "tbLessonPrice";
+            this.tbLessonPrice.Size = new System.Drawing.Size(31, 20);
+            this.tbLessonPrice.TabIndex = 31;
+            this.tbLessonPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbLessonPrice_KeyPress);
+            // 
+            // labelLessonCancellation
+            // 
+            this.labelLessonCancellation.AutoSize = true;
+            this.labelLessonCancellation.Location = new System.Drawing.Point(688, 119);
+            this.labelLessonCancellation.Name = "labelLessonCancellation";
+            this.labelLessonCancellation.Size = new System.Drawing.Size(90, 13);
+            this.labelLessonCancellation.TabIndex = 30;
+            this.labelLessonCancellation.Text = "Cancellation time:";
+            // 
+            // labelLessonPrice
+            // 
+            this.labelLessonPrice.AutoSize = true;
+            this.labelLessonPrice.Location = new System.Drawing.Point(576, 119);
+            this.labelLessonPrice.Name = "labelLessonPrice";
+            this.labelLessonPrice.Size = new System.Drawing.Size(34, 13);
+            this.labelLessonPrice.TabIndex = 29;
+            this.labelLessonPrice.Text = "Price:";
             // 
             // cbLessonStudent10
             // 
@@ -5645,19 +5711,6 @@
         private System.Windows.Forms.ToolStripMenuItem publishToolStripMenuItem;
         private System.Windows.Forms.CheckBox chkBoxSearchLessonDate;
         private System.Windows.Forms.DateTimePicker dtpSearchLessonDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn State;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dayDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Start;
-        private System.Windows.Forms.DataGridViewTextBoxColumn End;
-        private System.Windows.Forms.DataGridViewTextBoxColumn student1DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn teacher1DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn roomDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn programDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn student2DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn student3DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Student4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn teacher2DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn commentsDataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn codeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Type;
@@ -5695,6 +5748,25 @@
         private System.Windows.Forms.Label lbPlanChooseRoom;
         private System.Windows.Forms.Label lbPlanStudent;
         private System.Windows.Forms.Label lbPlanMoreStudents;
+        private System.Windows.Forms.DataGridViewTextBoxColumn State;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Start;
+        private System.Windows.Forms.DataGridViewTextBoxColumn End;
+        private System.Windows.Forms.DataGridViewTextBoxColumn student1DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn teacher1DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn roomDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn programDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn student2DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn student3DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Student4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn teacher2DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CancellationTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn commentsDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.TextBox tbLessonPrice;
+        private System.Windows.Forms.Label labelLessonCancellation;
+        private System.Windows.Forms.Label labelLessonPrice;
+        private System.Windows.Forms.Label lbLessonCancellation;
     }
 }
 

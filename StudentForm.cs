@@ -29,6 +29,7 @@ namespace RecordKeeper
         {
             Modified = true;
             EditTrap = true;
+            m_assignedListsChanged = true;
         }
 
         private void DropStudentSelections()
