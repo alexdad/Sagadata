@@ -249,9 +249,9 @@ namespace RecordKeeper
 
         void PopulateEnumDurations()
         {
-            m_enumDurations = new string[4 * 4 - 1];
+            m_enumDurations = new string[8 * 4 - 1];
             int i = 0;
-            for (int h = 0; h < 4; h++)
+            for (int h = 0; h < 8; h++)
                 for (int m = 0; m < 60; m += 15)
                 {
                     if (h == 0 && m == 0)

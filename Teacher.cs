@@ -118,7 +118,7 @@ namespace RecordKeeper
             LanguageDetail = "";
             MailingAddress = "";
             Phone = "";
-            Status = "";
+            Status = "Active";
             Vacations = "";
             Monday="";
             Tuesday="";
