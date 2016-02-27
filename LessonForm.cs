@@ -26,7 +26,6 @@ namespace RecordKeeper
         delegate bool EvaluateLesson(Lesson t);
         private void EditLessonDetailsChanged()
         {
-            Modified = true;
             EditTrap = true;
         }
 

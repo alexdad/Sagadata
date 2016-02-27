@@ -24,7 +24,6 @@ namespace RecordKeeper
 
         private void EditRoomDetailsChanged()
         {
-            Modified = true;
             EditTrap = true;
             m_assignedListsChanged = true;
         }

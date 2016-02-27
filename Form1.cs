@@ -548,17 +548,26 @@ namespace RecordKeeper
                 m_editSavingTrap = value;
                 if (value)
                 {
-                    if (DataList.Position != 0)
-                        butGlobalPrev.BackColor = AttentionColor;
-
-                    if (DataList.Position != DataList.Count - 1)
-                        butGlobalNext.BackColor = AttentionColor;
+                    buttonGlobEditAccept.Visible = true;
                 }
                 else
                 {
-                    butGlobalNext.BackColor = RelaxationColor;
-                    butGlobalPrev.BackColor = butGlobalNext.BackColor;
+                    buttonGlobEditAccept.Visible = false;
                 }
+            }
+        }
+        private void buttonGlobEditAccept_Click(object sender, EventArgs e)
+        {
+            Modified = true;
+            if (DataList.Position != DataList.Count - 1)
+            {
+                DataList.Position++;
+                DataList.Position--;
+            }
+            if (DataList.Position != 0)
+            {
+                DataList.Position--;
+                DataList.Position++;
             }
         }
 

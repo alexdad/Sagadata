@@ -28,7 +28,6 @@ namespace RecordKeeper
 
         private void EditTeacherDetailsChanged()
         {
-            Modified = true;
             EditTrap = true;
             m_assignedListsChanged = true;
         }

@@ -22,7 +22,6 @@ namespace RecordKeeper
 
         private void EditProgramDetailsChanged()
         {
-            Modified = true;
             EditTrap = true;
             m_assignedListsChanged = true;
         }

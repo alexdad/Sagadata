@@ -146,6 +146,7 @@
             this.commentsDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lessonList = new System.Windows.Forms.BindingSource(this.components);
             this.panelGlobEdit = new System.Windows.Forms.Panel();
+            this.buttonGlobEditAccept = new System.Windows.Forms.Button();
             this.tabControlModesBottom = new RecordKeeper.HiddenTabControl();
             this.tabBottomPageStudents = new System.Windows.Forms.TabPage();
             this.panelStudent = new System.Windows.Forms.Panel();
@@ -639,28 +640,28 @@
             // 
             this.planToolStripMenuItem.Name = "planToolStripMenuItem";
             this.planToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.planToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.planToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.planToolStripMenuItem.Text = "Plan";
             this.planToolStripMenuItem.Click += new System.EventHandler(this.planToolStripMenuItem_Click);
             // 
             // showToolStripMenuItem
             // 
             this.showToolStripMenuItem.Name = "showToolStripMenuItem";
-            this.showToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.showToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.showToolStripMenuItem.Text = "Show";
             this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
             // 
             // checkToolStripMenuItem
             // 
             this.checkToolStripMenuItem.Name = "checkToolStripMenuItem";
-            this.checkToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.checkToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.checkToolStripMenuItem.Text = "Check";
             this.checkToolStripMenuItem.Click += new System.EventHandler(this.checkToolStripMenuItem_Click);
             // 
             // publishToolStripMenuItem
             // 
             this.publishToolStripMenuItem.Name = "publishToolStripMenuItem";
-            this.publishToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.publishToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.publishToolStripMenuItem.Text = "Publish";
             this.publishToolStripMenuItem.Click += new System.EventHandler(this.publishToolStripMenuItem_Click);
             // 
@@ -1621,6 +1622,7 @@
             // 
             // panelGlobEdit
             // 
+            this.panelGlobEdit.Controls.Add(this.buttonGlobEditAccept);
             this.panelGlobEdit.Controls.Add(this.tabControlModesBottom);
             this.panelGlobEdit.Controls.Add(this.panelGlobPrevDelete);
             this.panelGlobEdit.Controls.Add(this.panelGlobNextNew);
@@ -1629,6 +1631,19 @@
             this.panelGlobEdit.Name = "panelGlobEdit";
             this.panelGlobEdit.Size = new System.Drawing.Size(1038, 385);
             this.panelGlobEdit.TabIndex = 23;
+            // 
+            // buttonGlobEditAccept
+            // 
+            this.buttonGlobEditAccept.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(127)))), ((int)(((byte)(39)))));
+            this.buttonGlobEditAccept.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonGlobEditAccept.Location = new System.Drawing.Point(200, 0);
+            this.buttonGlobEditAccept.Name = "buttonGlobEditAccept";
+            this.buttonGlobEditAccept.Size = new System.Drawing.Size(75, 23);
+            this.buttonGlobEditAccept.TabIndex = 28;
+            this.buttonGlobEditAccept.Text = "Accept";
+            this.buttonGlobEditAccept.UseVisualStyleBackColor = false;
+            this.buttonGlobEditAccept.Visible = false;
+            this.buttonGlobEditAccept.Click += new System.EventHandler(this.buttonGlobEditAccept_Click);
             // 
             // tabControlModesBottom
             // 
@@ -1640,7 +1655,7 @@
             this.tabControlModesBottom.Controls.Add(this.tabBottomPagePrograms);
             this.tabControlModesBottom.Controls.Add(this.tabBottomPageRooms);
             this.tabControlModesBottom.Controls.Add(this.tabBottomPageLessons);
-            this.tabControlModesBottom.Location = new System.Drawing.Point(46, 3);
+            this.tabControlModesBottom.Location = new System.Drawing.Point(46, 25);
             this.tabControlModesBottom.Name = "tabControlModesBottom";
             this.tabControlModesBottom.SelectedIndex = 0;
             this.tabControlModesBottom.Size = new System.Drawing.Size(943, 382);
@@ -5767,6 +5782,7 @@
         private System.Windows.Forms.Label labelLessonCancellation;
         private System.Windows.Forms.Label labelLessonPrice;
         private System.Windows.Forms.Label lbLessonCancellation;
+        private System.Windows.Forms.Button buttonGlobEditAccept;
     }
 }
 
