@@ -207,5 +207,24 @@ namespace RecordKeeper
             }
             return lessons;
         }
+
+        List<GCal.CalEvent> GetEventsForPublishing(DateTime dtMin, DateTime dtMax)
+        {
+            List<GCal.CalEvent> evts = new List<GCal.CalEvent>();
+            foreach (Lesson l in LessonsByTime(dtMin, dtMax, true))
+            {
+                evts.Add(new GCal.CalEvent(
+                                    l.DateTimeStart,
+                                    l.DateTimeEnd,
+                                    l.Room,
+                                    l.Details,
+                                    l.Description));
+            }
+
+            return evts;
+        }
+
+
+
     }
 }

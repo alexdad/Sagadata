@@ -85,6 +85,73 @@ namespace RecordKeeper
             }
         }
 
+        public string Details
+        {
+            get
+            {
+                StringBuilder sb = new StringBuilder();
+
+                sb.Append(Program);
+                sb.Append("  /  ");
+                sb.Append(Comments);
+
+                if (!FormGlob.IsStringEmpty(Teacher2))
+                {
+                    sb.Append(" / Also with ");
+                    sb.Append(Teacher2);
+                }
+
+                sb.Append(";  Students: ");
+                sb.Append(Student1);
+                if (!FormGlob.IsStringEmpty(Student2))
+                {
+                    sb.Append(" + ");
+                    sb.Append(Student2);
+                }
+                if (!FormGlob.IsStringEmpty(Student3))
+                {
+                    sb.Append(" + ");
+                    sb.Append(Student3);
+                }
+                if (!FormGlob.IsStringEmpty(Student4))
+                {
+                    sb.Append(" + ");
+                    sb.Append(Student4);
+                }
+                if (!FormGlob.IsStringEmpty(Student5))
+                {
+                    sb.Append(" + ");
+                    sb.Append(Student5);
+                }
+                if (!FormGlob.IsStringEmpty(Student6))
+                {
+                    sb.Append(" + ");
+                    sb.Append(Student6);
+                }
+                if (!FormGlob.IsStringEmpty(Student7))
+                {
+                    sb.Append(" + ");
+                    sb.Append(Student7);
+                }
+                if (!FormGlob.IsStringEmpty(Student8))
+                {
+                    sb.Append(" + ");
+                    sb.Append(Student8);
+                }
+                if (!FormGlob.IsStringEmpty(Student9))
+                {
+                    sb.Append(" + ");
+                    sb.Append(Student9);
+                }
+                if (!FormGlob.IsStringEmpty(Student10))
+                {
+                    sb.Append(" + ");
+                    sb.Append(Student10);
+                }
+
+                return sb.ToString();
+            }
+        }
         public int SlotsNumber
         {
             get

@@ -135,11 +135,9 @@ namespace RecordKeeper
             DateTime dtMin = WeekStart(DateTime.Now);
             DateTime dtMax = WeekEnd(DateTime.Now);
 
-            List<GCal.CalEvent> evts = GCal.Ops.ReadEvents(dtMin, dtMax);
-            MessageBox.Show(evts.Count.ToString());
-
-            List<string> delres = GCal.Ops.DeleteAllEvents(dtMin, dtMax);
-            MessageBox.Show(delres.Count.ToString());
+            bool res = GCal.Ops.DeleteAllEvents(dtMin, dtMax);
+            List<GCal.CalEvent> evts = GetEventsForPublishing(dtMin, dtMax);
+            res = GCal.Ops.WriteCalendarEvents(evts);
         }
 
         private void studentsToolStripMenuItem_Click(object sender, EventArgs e)
