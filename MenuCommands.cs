@@ -132,7 +132,14 @@ namespace RecordKeeper
 
         private void publishToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // TODO- future - publish schedule to the web
+            DateTime dtMin = WeekStart(DateTime.Now);
+            DateTime dtMax = WeekEnd(DateTime.Now);
+
+            List<GCal.CalEvent> evts = GCal.Ops.ReadEvents(dtMin, dtMax);
+            MessageBox.Show(evts.Count.ToString());
+
+            List<string> delres = GCal.Ops.DeleteAllEvents(dtMin, dtMax);
+            MessageBox.Show(delres.Count.ToString());
         }
 
         private void studentsToolStripMenuItem_Click(object sender, EventArgs e)
