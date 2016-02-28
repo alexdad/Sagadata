@@ -132,12 +132,24 @@ namespace RecordKeeper
 
         private void publishToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DateTime dtMin = WeekStart(DateTime.Now);
-            DateTime dtMax = WeekEnd(DateTime.Now);
+            DateTime dtMin = WeekStart(m_chosenDate);
+            DateTime dtMax = WeekEnd(m_chosenDate);
 
-            bool res = GCal.Ops.DeleteAllEvents(dtMin, dtMax);
-            List<GCal.CalEvent> evts = GetEventsForPublishing(dtMin, dtMax);
-            res = GCal.Ops.WriteCalendarEvents(evts);
+            string msg = String.Format("You are publishing week of {0} - {1}", 
+                dtMin.ToShortDateString(), dtMax.ToShortDateString());
+            DialogResult result = MessageBox.Show("Continue?", msg, MessageBoxButtons.YesNo);
+
+            if (result == DialogResult.Yes)
+            {
+                bool res = GCal.Ops.DeleteAllEvents(dtMin, dtMax);
+                if (res)
+                {
+                    res = GCal.Ops.WriteCalendarEvents(
+                                    GetEventsForPublishing(dtMin, dtMax));
+                }
+                if (!res)
+                    MessageBox.Show("Failed to publish, sorry");
+            }
         }
 
         private void studentsToolStripMenuItem_Click(object sender, EventArgs e)
