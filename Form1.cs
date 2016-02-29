@@ -1416,6 +1416,8 @@ namespace RecordKeeper
             Lesson l = lessonList.Current as Lesson;
             if (l == null)
                 return;
+            FillLessonFromCalendar(l);
+            /*
             l.Day = lbReconcileDate.Text;
             l.Start = lbReconcileFrom.Text;
             l.End = lbReconcileTo.Text;
@@ -1424,7 +1426,7 @@ namespace RecordKeeper
             l.Room = GetComboBoxIndexByInitial(cbLessonRoom, lbReconcileLocation.Text);
             // TODO: add state, teacher1, student1
             // TODO: find why start is wrong in cb 
-
+            */
             buttonGlobEditAccept_Click(null, null);
             EditLessonDetailsChanged();
         }

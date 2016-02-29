@@ -263,7 +263,7 @@ namespace RecordKeeper
             foreach (Student t in SpecificStudent(studDesc))
             {
                 language = t.LearningLanguage;
-                SetComboBoxIndexByValue(cbPlanProgram, t.Prog1);
+                SetComboByValue(cbPlanProgram, t.Prog1);
                 if (!IsStringEmpty(t.Prog1))
                     PopulateLessonPrice(studDesc, t.Prog1);
             }
@@ -280,9 +280,9 @@ namespace RecordKeeper
             }
             if (latest == null)
                 return;
-            SetComboBoxIndexByValue(cbPlanProgram, latest.Program);
-            SetComboBoxIndexByValue(cbPlanDuration, latest.DurationString);
-            SetComboBoxIndexByValue(cbPlanTeacher, latest.Teacher1);
+            SetComboByValue(cbPlanProgram, latest.Program);
+            SetComboByValue(cbPlanDuration, latest.DurationString);
+            SetComboByValue(cbPlanTeacher, latest.Teacher1);
         }
 
         void PopulateLessonPrice(string studDesc, string progName)

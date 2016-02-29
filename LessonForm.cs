@@ -447,5 +447,31 @@ namespace RecordKeeper
             }
             return false;
         }
+
+        public void FillLessonFromCalendar(Lesson l)
+        {
+            SetComboByValue(cbLessonStart, lbReconcileFrom.Text);
+            l.Start = lbReconcileFrom.Text;
+
+            SetComboByValue(cbLessonEnd, lbReconcileTo.Text);
+            l.End = lbReconcileTo.Text;
+
+            DateTime dt = DateTime.Now;
+            DateTime.TryParse(lbReconcileDate.Text, out dt);
+            monthCalLessonDate.SetDate(dt);
+            l.Day = dt.ToShortDateString();
+
+            tbLEssonComment.Text = lbReconcileDescription.Text;
+            l.Comments = lbReconcileDescription.Text;
+
+            SetComboByInitial(cbLessonRoom, lbReconcileLocation.Text);
+            l.Room = GetComboBoxIndexByInitial(cbLessonRoom, lbReconcileLocation.Text);
+
+            l.GoogleId = lbReconcileGoogleCalId.Text;
+
+            //labelLessonLinked
+            //l.GoogleId = lbReconcileGoogleCalId.Text;
+            // TODO: add state, teacher1, student1
+        }
     }
 }

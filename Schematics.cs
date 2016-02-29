@@ -235,12 +235,12 @@ namespace RecordKeeper
             int i = 0;
             for (int h = 7; h < 12; h++)
                 for (int m = 0; m < 60; m += 15)
-                    m_enumTimeSlot[i++] = h.ToString() + ":" + m.ToString() + " am";
+                    m_enumTimeSlot[i++] = h.ToString() + ":" + m.ToString("00") + " AM";
             for (int m = 0; m < 60; m += 15)
-                m_enumTimeSlot[i++] = "12:" + m.ToString() + " pm";
+                m_enumTimeSlot[i++] = "12:" + m.ToString("00") + " PM";
             for (int h = 1; h < 11; h++)
                 for (int m = 0; m < 60; m += 15)
-                    m_enumTimeSlot[i++] = h.ToString() + ":" + m.ToString() + " pm";
+                    m_enumTimeSlot[i++] = h.ToString() + ":" + m.ToString("00") + " PM";
         }
 
         void PopulateEnumWeekdays()

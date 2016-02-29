@@ -132,11 +132,18 @@ namespace RecordKeeper
             return -1;
         }
 
-        public bool SetComboBoxIndexByValue(ComboBox cb, string str)
+        public bool SetComboByValue(ComboBox cb, string str)
         {
+            if (IsStringEmpty(str))
+                return false;
+            string needed = str.Trim().ToLower();
             for (int i = 0; i < cb.Items.Count; i++)
             {
-                if (str == (string)cb.Items[i])
+                string si = ((string)cb.Items[i]).Trim().ToLower();
+                if (IsStringEmpty(si))
+                    continue;
+
+                if (needed == si)
                 {
                     cb.SelectedIndex = i;
                     return true;
@@ -145,6 +152,25 @@ namespace RecordKeeper
             return false;
         }
 
+        public bool SetComboByInitial(ComboBox cb, string str)
+        {
+            if (IsStringEmpty(str))
+                return false;
+            string initial = str.Trim().Substring(0, 1).ToLower();
+            for (int i = 0; i < cb.Items.Count; i++)
+            {
+                string si = ((string)cb.Items[i]);
+                if (IsStringEmpty(si))
+                    continue;
+
+                if (initial == si.ToLower().Substring(0, 1))
+                {
+                    cb.SelectedIndex = i;
+                    return true;
+                }
+            }
+            return false; 
+        }
         public string GetComboBoxIndexByInitial(ComboBox cb, string str)
         {
             if (IsStringEmpty(str))

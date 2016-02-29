@@ -848,10 +848,10 @@ namespace RecordKeeper
             dtpPlan.Value = l.DateTimeStart.AddDays(days);
             //cbPlanDuration.SelectedIndex = l.SlotsNumber;
             tbPlanComment.Text = l.Comments;
-            SetComboBoxIndexByValue(cbPlanProgram, l.Program);
-            SetComboBoxIndexByValue(cbPlanDuration, l.DurationString);
-            SetComboBoxIndexByValue(cbPlanTeacher, l.Teacher1);
-            SetComboBoxIndexByValue(cbPlanStud1, l.Student1);
+            SetComboByValue(cbPlanProgram, l.Program);
+            SetComboByValue(cbPlanDuration, l.DurationString);
+            SetComboByValue(cbPlanTeacher, l.Teacher1);
+            SetComboByValue(cbPlanStud1, l.Student1);
 
             PopulateTeacherVacation(l.Teacher1, lbPlanTeachVacation);
             PopulateStudentPossibleSchedule(l.Student1, lbPlanStudSchedule1);
