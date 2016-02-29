@@ -38,6 +38,7 @@ namespace RecordKeeper
         bool m_synced;
         bool m_editSavingTrap;
 
+        #region "Main controls"
         public bool Modified
         {
             get
@@ -135,7 +136,7 @@ namespace RecordKeeper
                 }
             }
         }
-
+        #endregion
 
         #region "Form"
         public FormGlob()
@@ -1366,6 +1367,63 @@ namespace RecordKeeper
             CurrentType.DoSelection();
         }
 
+
+        private void buttonReconcileStart_Click(object sender, EventArgs e)
+        {
+            m_OperationalEvents = GCal.Ops.GetOperationalEvents(
+                DayStart(this.dtpReconcileFrom.Value), 
+                DayEnd(this.dtpReconcileTo.Value)).ToArray();
+
+            m_curOperationalevent = 0;
+            if (SetCurrentOperationalevent())
+                buttonReconcileNext_Click(null, null);
+        }
+        private void buttonReconcileLink_Click(object sender, EventArgs e)
+        {
+            Lesson l = lessonList.Current as Lesson;
+            if (l == null)
+                return;
+            l.GoogleId = lbReconcileGoogleCalId.Text;
+            buttonGlobEditAccept_Click(null, null);
+            buttonReconcileNext_Click(null, null);
+        }
+        private void buttonReconcileNext_Click(object sender, EventArgs e)
+        {
+            if (m_OperationalEvents == null)
+                return;
+            while (m_curOperationalevent < m_OperationalEvents.Length - 1)
+            {
+                m_curOperationalevent++;
+                if (!SetCurrentOperationalevent())
+                    break;
+            }
+        }
+
+        private void buttonReconcilePrev_Click(object sender, EventArgs e)
+        {
+            if (m_OperationalEvents == null)
+                return;
+            if (m_curOperationalevent >= 1)
+            {
+                m_curOperationalevent--;
+                SetCurrentOperationalevent();
+            }
+        }
+
+        private void buttonReconcileCreate_Click(object sender, EventArgs e)
+        {
+        }
+        private void lbReconcileDescription_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(lbReconcileDescription.Text);
+        }
+
+        private void dtpReconcileFrom_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            foreach (Control c in panelReconcile.Controls)
+                c.Visible = true;
+        }
+
         #endregion
 
         #region Plan-related UI
@@ -1623,5 +1681,6 @@ namespace RecordKeeper
             }
         }
         #endregion
+
     }
 }

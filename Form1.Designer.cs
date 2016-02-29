@@ -269,6 +269,24 @@
             this.tbRoomTags = new System.Windows.Forms.TextBox();
             this.tabBottomPageLessons = new System.Windows.Forms.TabPage();
             this.panelLesson = new System.Windows.Forms.Panel();
+            this.panelReconcile = new System.Windows.Forms.Panel();
+            this.buttonReconcileLink = new System.Windows.Forms.Button();
+            this.buttonReconcilePrev = new System.Windows.Forms.Button();
+            this.lbReconcileGoogleCalId = new System.Windows.Forms.Label();
+            this.lbReconcileCreated = new System.Windows.Forms.Label();
+            this.lbReconcileCreatedTitle = new System.Windows.Forms.Label();
+            this.lbReconcileStatus = new System.Windows.Forms.Label();
+            this.lbReconcilePeriod = new System.Windows.Forms.Label();
+            this.dtpReconcileFrom = new System.Windows.Forms.DateTimePicker();
+            this.dtpReconcileTo = new System.Windows.Forms.DateTimePicker();
+            this.lbReconcileLocation = new System.Windows.Forms.Label();
+            this.lbReconcileTo = new System.Windows.Forms.Label();
+            this.lbReconcileFrom = new System.Windows.Forms.Label();
+            this.lbReconcileDescription = new System.Windows.Forms.Label();
+            this.lbReconcileDate = new System.Windows.Forms.Label();
+            this.buttonReconcileCreate = new System.Windows.Forms.Button();
+            this.buttonReconcileStart = new System.Windows.Forms.Button();
+            this.buttonReconcileNext = new System.Windows.Forms.Button();
             this.lbLessonCancellation = new System.Windows.Forms.Label();
             this.tbLessonPrice = new System.Windows.Forms.TextBox();
             this.labelLessonCancellation = new System.Windows.Forms.Label();
@@ -296,7 +314,7 @@
             this.labelLessonState = new System.Windows.Forms.Label();
             this.cbLessonEnd = new System.Windows.Forms.ComboBox();
             this.cbLessonStart = new System.Windows.Forms.ComboBox();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.monthCalLessonDate = new System.Windows.Forms.MonthCalendar();
             this.cbLessonRoom = new System.Windows.Forms.ComboBox();
             this.labelLessonRoom = new System.Windows.Forms.Label();
             this.labelLessonEnd = new System.Windows.Forms.Label();
@@ -538,6 +556,7 @@
             this.groupBoxRoom.SuspendLayout();
             this.tabBottomPageLessons.SuspendLayout();
             this.panelLesson.SuspendLayout();
+            this.panelReconcile.SuspendLayout();
             this.panelGlobPrevDelete.SuspendLayout();
             this.panelGlobNextNew.SuspendLayout();
             this.panelGlobSearch.SuspendLayout();
@@ -683,7 +702,7 @@
             // 
             this.studentsToolStripMenuItem1.Name = "studentsToolStripMenuItem1";
             this.studentsToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.studentsToolStripMenuItem1.Size = new System.Drawing.Size(166, 22);
+            this.studentsToolStripMenuItem1.Size = new System.Drawing.Size(167, 22);
             this.studentsToolStripMenuItem1.Text = "Students";
             this.studentsToolStripMenuItem1.Click += new System.EventHandler(this.studentsToolStripMenuItem1_Click);
             // 
@@ -691,7 +710,7 @@
             // 
             this.teachersToolStripMenuItem1.Name = "teachersToolStripMenuItem1";
             this.teachersToolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
-            this.teachersToolStripMenuItem1.Size = new System.Drawing.Size(166, 22);
+            this.teachersToolStripMenuItem1.Size = new System.Drawing.Size(167, 22);
             this.teachersToolStripMenuItem1.Text = "Teachers";
             this.teachersToolStripMenuItem1.Click += new System.EventHandler(this.teachersToolStripMenuItem1_Click);
             // 
@@ -699,15 +718,15 @@
             // 
             this.lessonsToolStripMenuItem.Name = "lessonsToolStripMenuItem";
             this.lessonsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.L)));
-            this.lessonsToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.lessonsToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.lessonsToolStripMenuItem.Text = "Lessons";
             this.lessonsToolStripMenuItem.Click += new System.EventHandler(this.lessonsToolStripMenuItem_Click);
             // 
             // programsToolStripMenuItem
             // 
             this.programsToolStripMenuItem.Name = "programsToolStripMenuItem";
-            this.programsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.programsToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.programsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
+            this.programsToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.programsToolStripMenuItem.Text = "Programs";
             this.programsToolStripMenuItem.Click += new System.EventHandler(this.programsToolStripMenuItem_Click);
             // 
@@ -715,7 +734,7 @@
             // 
             this.roomsToolStripMenuItem.Name = "roomsToolStripMenuItem";
             this.roomsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.roomsToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.roomsToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.roomsToolStripMenuItem.Text = "Rooms";
             this.roomsToolStripMenuItem.Click += new System.EventHandler(this.roomsToolStripMenuItem_Click);
             // 
@@ -2931,6 +2950,7 @@
             // panelLesson
             // 
             this.panelLesson.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
+            this.panelLesson.Controls.Add(this.panelReconcile);
             this.panelLesson.Controls.Add(this.lbLessonCancellation);
             this.panelLesson.Controls.Add(this.tbLessonPrice);
             this.panelLesson.Controls.Add(this.labelLessonCancellation);
@@ -2958,7 +2978,7 @@
             this.panelLesson.Controls.Add(this.labelLessonState);
             this.panelLesson.Controls.Add(this.cbLessonEnd);
             this.panelLesson.Controls.Add(this.cbLessonStart);
-            this.panelLesson.Controls.Add(this.monthCalendar1);
+            this.panelLesson.Controls.Add(this.monthCalLessonDate);
             this.panelLesson.Controls.Add(this.cbLessonRoom);
             this.panelLesson.Controls.Add(this.labelLessonRoom);
             this.panelLesson.Controls.Add(this.labelLessonEnd);
@@ -2969,6 +2989,217 @@
             this.panelLesson.Name = "panelLesson";
             this.panelLesson.Size = new System.Drawing.Size(929, 350);
             this.panelLesson.TabIndex = 0;
+            // 
+            // panelReconcile
+            // 
+            this.panelReconcile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panelReconcile.Controls.Add(this.buttonReconcileLink);
+            this.panelReconcile.Controls.Add(this.buttonReconcilePrev);
+            this.panelReconcile.Controls.Add(this.lbReconcileGoogleCalId);
+            this.panelReconcile.Controls.Add(this.lbReconcileCreated);
+            this.panelReconcile.Controls.Add(this.lbReconcileCreatedTitle);
+            this.panelReconcile.Controls.Add(this.lbReconcileStatus);
+            this.panelReconcile.Controls.Add(this.lbReconcilePeriod);
+            this.panelReconcile.Controls.Add(this.dtpReconcileFrom);
+            this.panelReconcile.Controls.Add(this.dtpReconcileTo);
+            this.panelReconcile.Controls.Add(this.lbReconcileLocation);
+            this.panelReconcile.Controls.Add(this.lbReconcileTo);
+            this.panelReconcile.Controls.Add(this.lbReconcileFrom);
+            this.panelReconcile.Controls.Add(this.lbReconcileDescription);
+            this.panelReconcile.Controls.Add(this.lbReconcileDate);
+            this.panelReconcile.Controls.Add(this.buttonReconcileCreate);
+            this.panelReconcile.Controls.Add(this.buttonReconcileStart);
+            this.panelReconcile.Controls.Add(this.buttonReconcileNext);
+            this.panelReconcile.Location = new System.Drawing.Point(9, 250);
+            this.panelReconcile.Name = "panelReconcile";
+            this.panelReconcile.Size = new System.Drawing.Size(904, 80);
+            this.panelReconcile.TabIndex = 33;
+            // 
+            // buttonReconcileLink
+            // 
+            this.buttonReconcileLink.Location = new System.Drawing.Point(826, 3);
+            this.buttonReconcileLink.Name = "buttonReconcileLink";
+            this.buttonReconcileLink.Size = new System.Drawing.Size(75, 23);
+            this.buttonReconcileLink.TabIndex = 16;
+            this.buttonReconcileLink.Text = "&Link";
+            this.buttonReconcileLink.UseVisualStyleBackColor = true;
+            this.buttonReconcileLink.Visible = false;
+            this.buttonReconcileLink.Click += new System.EventHandler(this.buttonReconcileLink_Click);
+            // 
+            // buttonReconcilePrev
+            // 
+            this.buttonReconcilePrev.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonReconcilePrev.Location = new System.Drawing.Point(745, 27);
+            this.buttonReconcilePrev.Name = "buttonReconcilePrev";
+            this.buttonReconcilePrev.Size = new System.Drawing.Size(75, 23);
+            this.buttonReconcilePrev.TabIndex = 15;
+            this.buttonReconcilePrev.Text = "Previous";
+            this.buttonReconcilePrev.UseVisualStyleBackColor = true;
+            this.buttonReconcilePrev.Visible = false;
+            this.buttonReconcilePrev.Click += new System.EventHandler(this.buttonReconcilePrev_Click);
+            // 
+            // lbReconcileGoogleCalId
+            // 
+            this.lbReconcileGoogleCalId.AutoSize = true;
+            this.lbReconcileGoogleCalId.Location = new System.Drawing.Point(36, 61);
+            this.lbReconcileGoogleCalId.Name = "lbReconcileGoogleCalId";
+            this.lbReconcileGoogleCalId.Size = new System.Drawing.Size(48, 13);
+            this.lbReconcileGoogleCalId.TabIndex = 14;
+            this.lbReconcileGoogleCalId.Text = "googleId";
+            this.lbReconcileGoogleCalId.Visible = false;
+            // 
+            // lbReconcileCreated
+            // 
+            this.lbReconcileCreated.AutoSize = true;
+            this.lbReconcileCreated.BackColor = System.Drawing.Color.White;
+            this.lbReconcileCreated.Location = new System.Drawing.Point(610, 7);
+            this.lbReconcileCreated.Name = "lbReconcileCreated";
+            this.lbReconcileCreated.Size = new System.Drawing.Size(41, 13);
+            this.lbReconcileCreated.TabIndex = 13;
+            this.lbReconcileCreated.Text = "Creator";
+            this.lbReconcileCreated.Visible = false;
+            // 
+            // lbReconcileCreatedTitle
+            // 
+            this.lbReconcileCreatedTitle.AutoSize = true;
+            this.lbReconcileCreatedTitle.Location = new System.Drawing.Point(586, 7);
+            this.lbReconcileCreatedTitle.Name = "lbReconcileCreatedTitle";
+            this.lbReconcileCreatedTitle.Size = new System.Drawing.Size(18, 13);
+            this.lbReconcileCreatedTitle.TabIndex = 12;
+            this.lbReconcileCreatedTitle.Text = "by";
+            this.lbReconcileCreatedTitle.Visible = false;
+            // 
+            // lbReconcileStatus
+            // 
+            this.lbReconcileStatus.AutoSize = true;
+            this.lbReconcileStatus.BackColor = System.Drawing.Color.White;
+            this.lbReconcileStatus.Location = new System.Drawing.Point(135, 7);
+            this.lbReconcileStatus.Name = "lbReconcileStatus";
+            this.lbReconcileStatus.Size = new System.Drawing.Size(37, 13);
+            this.lbReconcileStatus.TabIndex = 11;
+            this.lbReconcileStatus.Text = "Status";
+            this.lbReconcileStatus.Visible = false;
+            // 
+            // lbReconcilePeriod
+            // 
+            this.lbReconcilePeriod.AutoSize = true;
+            this.lbReconcilePeriod.Location = new System.Drawing.Point(495, 62);
+            this.lbReconcilePeriod.Name = "lbReconcilePeriod";
+            this.lbReconcilePeriod.Size = new System.Drawing.Size(109, 13);
+            this.lbReconcilePeriod.TabIndex = 10;
+            this.lbReconcilePeriod.Text = "Reconciliation period:";
+            this.lbReconcilePeriod.Visible = false;
+            // 
+            // dtpReconcileFrom
+            // 
+            this.dtpReconcileFrom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpReconcileFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpReconcileFrom.Location = new System.Drawing.Point(606, 57);
+            this.dtpReconcileFrom.Name = "dtpReconcileFrom";
+            this.dtpReconcileFrom.Size = new System.Drawing.Size(105, 20);
+            this.dtpReconcileFrom.TabIndex = 9;
+            this.dtpReconcileFrom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dtpReconcileFrom_KeyPress);
+            // 
+            // dtpReconcileTo
+            // 
+            this.dtpReconcileTo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpReconcileTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpReconcileTo.Location = new System.Drawing.Point(717, 57);
+            this.dtpReconcileTo.Name = "dtpReconcileTo";
+            this.dtpReconcileTo.Size = new System.Drawing.Size(103, 20);
+            this.dtpReconcileTo.TabIndex = 8;
+            // 
+            // lbReconcileLocation
+            // 
+            this.lbReconcileLocation.AutoSize = true;
+            this.lbReconcileLocation.BackColor = System.Drawing.Color.White;
+            this.lbReconcileLocation.Location = new System.Drawing.Point(466, 7);
+            this.lbReconcileLocation.Name = "lbReconcileLocation";
+            this.lbReconcileLocation.Size = new System.Drawing.Size(39, 13);
+            this.lbReconcileLocation.TabIndex = 7;
+            this.lbReconcileLocation.Text = "Where";
+            this.lbReconcileLocation.Visible = false;
+            // 
+            // lbReconcileTo
+            // 
+            this.lbReconcileTo.AutoSize = true;
+            this.lbReconcileTo.BackColor = System.Drawing.Color.White;
+            this.lbReconcileTo.Location = new System.Drawing.Point(365, 7);
+            this.lbReconcileTo.Name = "lbReconcileTo";
+            this.lbReconcileTo.Size = new System.Drawing.Size(20, 13);
+            this.lbReconcileTo.TabIndex = 6;
+            this.lbReconcileTo.Text = "To";
+            this.lbReconcileTo.Visible = false;
+            // 
+            // lbReconcileFrom
+            // 
+            this.lbReconcileFrom.AutoSize = true;
+            this.lbReconcileFrom.BackColor = System.Drawing.Color.White;
+            this.lbReconcileFrom.Location = new System.Drawing.Point(251, 7);
+            this.lbReconcileFrom.Name = "lbReconcileFrom";
+            this.lbReconcileFrom.Size = new System.Drawing.Size(30, 13);
+            this.lbReconcileFrom.TabIndex = 5;
+            this.lbReconcileFrom.Text = "From";
+            this.lbReconcileFrom.Visible = false;
+            // 
+            // lbReconcileDescription
+            // 
+            this.lbReconcileDescription.AutoSize = true;
+            this.lbReconcileDescription.BackColor = System.Drawing.Color.White;
+            this.lbReconcileDescription.Location = new System.Drawing.Point(3, 32);
+            this.lbReconcileDescription.Name = "lbReconcileDescription";
+            this.lbReconcileDescription.Size = new System.Drawing.Size(60, 13);
+            this.lbReconcileDescription.TabIndex = 4;
+            this.lbReconcileDescription.Text = "Description";
+            this.lbReconcileDescription.Visible = false;
+            this.lbReconcileDescription.Click += new System.EventHandler(this.lbReconcileDescription_Click);
+            // 
+            // lbReconcileDate
+            // 
+            this.lbReconcileDate.AutoSize = true;
+            this.lbReconcileDate.BackColor = System.Drawing.Color.White;
+            this.lbReconcileDate.Location = new System.Drawing.Point(33, 7);
+            this.lbReconcileDate.Name = "lbReconcileDate";
+            this.lbReconcileDate.Size = new System.Drawing.Size(30, 13);
+            this.lbReconcileDate.TabIndex = 3;
+            this.lbReconcileDate.Text = "Date";
+            this.lbReconcileDate.Visible = false;
+            // 
+            // buttonReconcileCreate
+            // 
+            this.buttonReconcileCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonReconcileCreate.Location = new System.Drawing.Point(826, 27);
+            this.buttonReconcileCreate.Name = "buttonReconcileCreate";
+            this.buttonReconcileCreate.Size = new System.Drawing.Size(75, 23);
+            this.buttonReconcileCreate.TabIndex = 2;
+            this.buttonReconcileCreate.Text = "Create";
+            this.buttonReconcileCreate.UseVisualStyleBackColor = true;
+            this.buttonReconcileCreate.Visible = false;
+            this.buttonReconcileCreate.Click += new System.EventHandler(this.buttonReconcileCreate_Click);
+            // 
+            // buttonReconcileStart
+            // 
+            this.buttonReconcileStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonReconcileStart.Location = new System.Drawing.Point(826, 54);
+            this.buttonReconcileStart.Name = "buttonReconcileStart";
+            this.buttonReconcileStart.Size = new System.Drawing.Size(75, 23);
+            this.buttonReconcileStart.TabIndex = 1;
+            this.buttonReconcileStart.Text = "Start";
+            this.buttonReconcileStart.UseVisualStyleBackColor = true;
+            this.buttonReconcileStart.Visible = false;
+            this.buttonReconcileStart.Click += new System.EventHandler(this.buttonReconcileStart_Click);
+            // 
+            // buttonReconcileNext
+            // 
+            this.buttonReconcileNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonReconcileNext.Location = new System.Drawing.Point(745, 3);
+            this.buttonReconcileNext.Name = "buttonReconcileNext";
+            this.buttonReconcileNext.Size = new System.Drawing.Size(75, 23);
+            this.buttonReconcileNext.TabIndex = 0;
+            this.buttonReconcileNext.Text = "Next";
+            this.buttonReconcileNext.UseVisualStyleBackColor = true;
+            this.buttonReconcileNext.Visible = false;
+            this.buttonReconcileNext.Click += new System.EventHandler(this.buttonReconcileNext_Click);
             // 
             // lbLessonCancellation
             // 
@@ -3247,13 +3478,14 @@
             this.cbLessonStart.TabIndex = 5;
             this.cbLessonStart.Click += new System.EventHandler(this.cbLessonStart_Click);
             // 
-            // monthCalendar1
+            // monthCalLessonDate
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(9, 47);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 2;
-            this.monthCalendar1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.monthCalendar1_KeyPress);
-            this.monthCalendar1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.monthCalendar1_MouseDown);
+            this.monthCalLessonDate.DataBindings.Add(new System.Windows.Forms.Binding("SelectionRange", this.lessonList, "DateTimeStart", true));
+            this.monthCalLessonDate.Location = new System.Drawing.Point(9, 47);
+            this.monthCalLessonDate.Name = "monthCalLessonDate";
+            this.monthCalLessonDate.TabIndex = 2;
+            this.monthCalLessonDate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.monthCalendar1_KeyPress);
+            this.monthCalLessonDate.MouseDown += new System.Windows.Forms.MouseEventHandler(this.monthCalendar1_MouseDown);
             // 
             // cbLessonRoom
             // 
@@ -5270,6 +5502,8 @@
             this.tabBottomPageLessons.ResumeLayout(false);
             this.panelLesson.ResumeLayout(false);
             this.panelLesson.PerformLayout();
+            this.panelReconcile.ResumeLayout(false);
+            this.panelReconcile.PerformLayout();
             this.panelGlobPrevDelete.ResumeLayout(false);
             this.panelGlobNextNew.ResumeLayout(false);
             this.panelGlobSearch.ResumeLayout(false);
@@ -5568,7 +5802,7 @@
         private System.Windows.Forms.Label labelLessonState;
         private System.Windows.Forms.ComboBox cbLessonEnd;
         private System.Windows.Forms.ComboBox cbLessonStart;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.MonthCalendar monthCalLessonDate;
         private System.Windows.Forms.ComboBox cbLessonRoom;
         private System.Windows.Forms.Label labelLessonRoom;
         private System.Windows.Forms.Label labelLessonEnd;
@@ -5791,6 +6025,24 @@
         private System.Windows.Forms.Label lbLessonCancellation;
         private System.Windows.Forms.Button buttonGlobEditAccept;
         private System.Windows.Forms.BindingSource clientList;
+        private System.Windows.Forms.Panel panelReconcile;
+        private System.Windows.Forms.Label lbReconcileLocation;
+        private System.Windows.Forms.Label lbReconcileTo;
+        private System.Windows.Forms.Label lbReconcileFrom;
+        private System.Windows.Forms.Label lbReconcileDescription;
+        private System.Windows.Forms.Label lbReconcileDate;
+        private System.Windows.Forms.Button buttonReconcileCreate;
+        private System.Windows.Forms.Button buttonReconcileStart;
+        private System.Windows.Forms.Button buttonReconcileNext;
+        private System.Windows.Forms.Label lbReconcilePeriod;
+        private System.Windows.Forms.DateTimePicker dtpReconcileFrom;
+        private System.Windows.Forms.DateTimePicker dtpReconcileTo;
+        private System.Windows.Forms.Label lbReconcileCreated;
+        private System.Windows.Forms.Label lbReconcileCreatedTitle;
+        private System.Windows.Forms.Label lbReconcileStatus;
+        private System.Windows.Forms.Label lbReconcileGoogleCalId;
+        private System.Windows.Forms.Button buttonReconcilePrev;
+        private System.Windows.Forms.Button buttonReconcileLink;
     }
 }
 

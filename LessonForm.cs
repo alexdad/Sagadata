@@ -13,6 +13,165 @@ using System.Windows.Forms;
 
 namespace RecordKeeper
 {
+    public class OperEvent
+    {
+        public OperEvent(Lesson l, GCal.CalEvent ge)
+        {
+            SuspectedLesson = l;
+            GoogleEvent = ge;
+            Linked = false; 
+            SimilarityPlace = -1;
+            SimilarityStart = -1;
+            SimilarityDuration = -1;
+            SimilarityTeacher = -1;
+            SimilarityStudent = -1;
+            SimilarityStatus = -1;
+        }
+        public Lesson SuspectedLesson;
+        public GCal.CalEvent GoogleEvent;
+        public bool Linked;
+        public double SimilarityPlace;
+        public double SimilarityStart;
+        public double SimilarityDuration;
+        public double SimilarityTeacher;
+        public double SimilarityStudent;
+        public double SimilarityStatus;
+
+        public double OverallSimularity;
+
+        public void CalculateSimilarities()
+        {
+            Linked = !FormGlob.IsStringEmpty(SuspectedLesson.GoogleId);
+
+            SimilarityDuration = SimilarityDurations(
+                SuspectedLesson.DateTimeStart, 
+                SuspectedLesson.DateTimeStart,
+                GoogleEvent.Start, 
+                GoogleEvent.End);
+            SimilarityPlace = SimilarytyPlaces(
+                SuspectedLesson.Room,
+                GoogleEvent.Location);
+            SimilarityStart = SimilatityTimes(
+                SuspectedLesson.DateTimeStart,
+                SuspectedLesson.DateTimeEnd,
+                GoogleEvent.Start,
+                GoogleEvent.End);
+            SimilarityStatus = SimilarityStates(
+                SuspectedLesson.State,
+                GoogleEvent.Status);
+            SimilarityStudent = SimilarityStudents(
+                SuspectedLesson.Student1, 
+                GoogleEvent.Summary);
+            SimilarityTeacher = SimilarityTeachers(
+                SuspectedLesson.Teacher1,
+                GoogleEvent.Summary);
+
+            OverallSimularity = CalculateOverallSimularity();
+        }
+
+        private double CalculateOverallSimularity()
+        {
+            if (Linked && SuspectedLesson.GoogleId == GoogleEvent.Id)
+                return 1.0;
+
+            if (SimilarityStart > 0.5 &&
+                SimilarityTeacher > 0.5 &&
+                SimilarityStudent > 0.5)
+                return 1.0;
+
+            if (SimilarityStart > 0.5 &&
+                SimilarityPlace > 0.5)
+                return 0.9;
+
+            int count = 0;
+            if (SimilarityPlace > 0.5)
+                count++;
+            if (SimilarityStart > 0.5)
+                count++;
+            if (SimilarityDuration > 0.5)
+                count++;
+            if (SimilarityTeacher > 0.5)
+                count++;
+            if (SimilarityStudent > 0.5)
+                count++;
+            if (SimilarityStatus > 0.5)
+                count++;
+
+            return (double)count / 6.0; 
+        }
+
+        private double SimilarytyPlaces(string lRoom, string gLocation)
+        {
+            if (FormGlob.IsStringEmpty(lRoom) || FormGlob.IsStringEmpty(gLocation))
+                return -1;
+            if (gLocation.Substring(0, 1).ToLower() == lRoom.Substring(0, 1).ToLower())
+                return 1;
+            return 0;
+        }
+        private double SimilatityTimes(
+            DateTime lStart, DateTime lEnd, 
+            DateTime gStart, DateTime gEnd)
+        {
+            if (lStart == gStart)
+                return 1.0;
+
+            DateTime cs = (lStart > gStart ? lStart : gStart);
+            DateTime ce = (lEnd < gEnd ? lEnd : gEnd);
+            DateTime us = (lStart < gStart ? lStart : gStart);
+            DateTime ue = (lEnd > gEnd ? lEnd : gEnd);
+
+            if (cs < ce)
+                return (ce - cs).Ticks / (ue - us).Ticks;
+            else
+                return 0.0; ;
+        }
+
+        private double SimilarityDurations(DateTime lStart, DateTime lEnd, DateTime gStart, DateTime gEnd)
+        {
+            TimeSpan ls = lEnd - lStart;
+            TimeSpan gs = gEnd - gStart;
+            if (ls == gs)
+                return 1;
+            else
+                return 0;
+        }
+        private double SimilarityStates(string lState, string gStatus)
+        {
+            // todo
+            return -1;
+        }
+        private double SimilarityStudents(string lStudent, string gSummary)
+        {
+            if (FormGlob.IsStringEmpty(lStudent) || FormGlob.IsStringEmpty(gSummary))
+                return -1;
+            string gFirst= FormGlob.ExtractFirstWord(gSummary).ToLower();
+            string lFirst = FormGlob.ExtractFirstWord(lStudent).ToLower();
+
+            if (FormGlob.IsStringEmpty(gFirst) || FormGlob.IsStringEmpty(lFirst))
+                return -1;
+
+            return 1.0 - (double)FormGlob.LevensteinDistance(gFirst, lFirst) /
+                         (double)Math.Max(gFirst.Length, lFirst.Length);
+        }
+
+        private double SimilarityTeachers(string lTeacher, string gSummary)
+        {
+            if (FormGlob.IsStringEmpty(lTeacher) || FormGlob.IsStringEmpty(gSummary))
+                return -1;
+
+            int slash = gSummary.IndexOf("/");
+            if (slash < 0)
+                slash = gSummary.IndexOf("-");
+            if (slash < 0)
+                return -1;
+            string gTeacher = FormGlob.ExtractFirstWord(gSummary.Substring(slash+1)).ToLower();
+            string lFirst = FormGlob.ExtractFirstWord(lTeacher).ToLower();
+
+            return 1.0 - (double)FormGlob.LevensteinDistance(gTeacher, lFirst) /
+                         (double)Math.Max(gTeacher.Length, lFirst.Length);
+        }
+    }
+
     public partial class FormGlob : Form
     {
         string m_LessonSelectionTeacher;
@@ -22,6 +181,9 @@ namespace RecordKeeper
         string m_LessonSelectionProgram;
         string m_LessonSelectionRoom;
         string m_currentLessonKey;
+
+        GCal.CalEvent[] m_OperationalEvents;
+        int m_curOperationalevent;
 
         delegate bool EvaluateLesson(Lesson t);
         private void EditLessonDetailsChanged()
@@ -224,7 +386,65 @@ namespace RecordKeeper
             return evts;
         }
 
+        public bool SetCurrentOperationalevent()
+        {
+            if (m_OperationalEvents == null ||
+                m_curOperationalevent < 0 ||
+                m_curOperationalevent >= m_OperationalEvents.Length)
+                return false;
 
+            GCal.CalEvent ce = m_OperationalEvents[m_curOperationalevent];
 
+            lbReconcileDate.Text = ce.Start.ToShortDateString();
+            lbReconcileFrom.Text = ce.Start.ToShortTimeString();
+            lbReconcileTo.Text = ce.End.ToShortTimeString();
+            lbReconcileLocation.Text = (ce.Location == null ? "" : ce.Location);
+            lbReconcileDescription.Text = (ce.Summary == null ? "" : ce.Summary);
+            lbReconcileCreated.Text = (ce.Creator == null ? "" : ce.Creator);
+            lbReconcileGoogleCalId.Text = (ce.Id == null ? "" : ce.Id);
+
+            return FindClosestLesson();
+        }
+
+        public bool FindClosestLesson()
+        {
+            if (m_OperationalEvents == null ||
+                m_curOperationalevent < 0 ||
+                m_curOperationalevent >= m_OperationalEvents.Length)
+                return false;
+
+            GCal.CalEvent ge = m_OperationalEvents[m_curOperationalevent];
+            List<OperEvent> candidates = new List<OperEvent>();
+
+            foreach (Lesson l in lessonList)
+            {
+                OperEvent oe = new OperEvent(l, ge);
+                oe.CalculateSimilarities();
+                if (oe.OverallSimularity > 0.3)
+                    candidates.Add(oe);
+            }
+
+            if (candidates.Count == 0)
+                return false;
+
+            OperEvent best = candidates.First();
+            foreach (OperEvent oe in candidates)
+            {
+                if (oe.OverallSimularity > best.OverallSimularity)
+                    best = oe;
+            }
+
+            int i = 0 ;
+            foreach(Lesson l in lessonList)
+            {
+                if (l == best.SuspectedLesson)
+                {
+                    lessonList.Position = i;
+                    return best.Linked;
+                }
+                i++;
+            }
+            return false;
+        }
     }
 }

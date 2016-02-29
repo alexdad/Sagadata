@@ -23,7 +23,9 @@ namespace GCal
             string Location,
             string Description,
             string Summary,
-            string Status)
+            string Status,
+            string Id,
+            string Creator)
         {
             this.Start = Start;
             this.End = End;
@@ -33,6 +35,8 @@ namespace GCal
             this.Description = Description;
             this.Summary = Summary;
             this.Status = Status;
+            this.Id = Id;
+            this.Creator = Creator;
         }
         public CalEvent(
             DateTime Start,
@@ -49,6 +53,8 @@ namespace GCal
             this.Created = null;
             this.Updated = null;
             this.Status = null;
+            this.Creator = null;
+            this.Id = null;
         }
 
         public DateTime Start;
@@ -59,14 +65,18 @@ namespace GCal
         public string Description;
         public string Summary;
         public string Status;
+        public string Id;
+        public string Creator;
     };
 
     public class Ops
     {
-        static string[] Scopes = { CalendarService.Scope.Calendar };
+        static string[] RWScopes = { CalendarService.Scope.Calendar };
+        static string[] ROScopes = { CalendarService.Scope.CalendarReadonly };
         const string ApplicationName = "Sagalingua1";
         const string User = "Galia Dadiomova";
-        const string CalendarID = "6tgvdlnrp7i7h7uhjtnt9cjh8o@group.calendar.google.com";
+        const string SystemCalendarID = "6tgvdlnrp7i7h7uhjtnt9cjh8o@group.calendar.google.com";
+        const string OperationalCalendarID = "tptpj1po5oebik762sdpsvpum8@group.calendar.google.com";
 
         private static CalendarService GetCalendarService()
         {
@@ -81,14 +91,13 @@ namespace GCal
 
                 credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
                     GoogleClientSecrets.Load(stream).Secrets,
-                    Scopes,
+                    RWScopes,
                     User,  // "user",  
                     CancellationToken.None,
                     new FileDataStore(credPath, true)).Result;
 
             }
 
-            // Create Google Calendar API service.
             return new CalendarService(new BaseClientService.Initializer()
             {
                 HttpClientInitializer = credential,
@@ -96,20 +105,21 @@ namespace GCal
             });
         }
 
-        public static List<CalEvent> ReadEvents(DateTime dtMin, DateTime dtMax)
+        public static List<CalEvent> ReadEvents(
+            DateTime dtMin, 
+            DateTime dtMax,
+            string calendarId)
         {
             CalendarService service = GetCalendarService();
 
-            // Define parameters of request.
-            EventsResource.ListRequest request = service.Events.List(CalendarID);
+            EventsResource.ListRequest request = service.Events.List(calendarId);
             request.TimeMin = dtMin;
             request.TimeMax = dtMax;
             request.ShowDeleted = false;
             request.SingleEvents = true;
-            request.MaxResults = 10;
+            request.MaxResults = 10000;
             request.OrderBy = EventsResource.ListRequest.OrderByEnum.StartTime;
 
-            // List events.
             List<CalEvent> calEvents = new List<CalEvent>();
             Events events = request.Execute();
             if (events.Items != null && events.Items.Count > 0)
@@ -129,7 +139,9 @@ namespace GCal
                             eventItem.Location,
                             eventItem.Description,
                             eventItem.Summary,
-                            eventItem.Status));
+                            eventItem.Status,
+                            eventItem.Id,
+                            eventItem.Creator.DisplayName));
                 }
             }
             return calEvents;
@@ -139,29 +151,29 @@ namespace GCal
         {
             CalendarService service = GetCalendarService();
 
-            // Define parameters of request.
-            EventsResource.ListRequest request = service.Events.List(CalendarID);
+            EventsResource.ListRequest request = service.Events.List(SystemCalendarID);
             request.TimeMin = dtMin;
             request.TimeMax = dtMax;
             request.ShowDeleted = false;
             request.SingleEvents = true;
-            request.MaxResults = 1000;
+            request.MaxResults = 10000;
             request.OrderBy = EventsResource.ListRequest.OrderByEnum.StartTime;
 
             Events events = request.Execute();
-            List<string> results = new List<string>();
+            bool success = true;
             if (events.Items != null && events.Items.Count > 0)
             {
                 foreach (var eventItem in events.Items)
                 {
                     EventsResource.DeleteRequest del = service.Events.Delete(
-                        CalendarID, eventItem.Id);
+                        SystemCalendarID, eventItem.Id);
 
                     string res = del.Execute();
-                    results.Add(res);
+                    if (res != null && res.Trim().Length != 0)
+                        success = false;
                 }
             }
-            return true;
+            return success;
         }
         public static bool WriteCalendarEvents(List<CalEvent> events)
         {
@@ -186,36 +198,44 @@ namespace GCal
                     }
                 };
 
-                EventsResource.InsertRequest req = service.Events.Insert(evt, CalendarID);
+                EventsResource.InsertRequest req = service.Events.Insert(evt, SystemCalendarID);
                 Event result = req.Execute();
             }
 
-            /*
-
-            Event evt = new Event
-            {
-                Summary = "Appointment",
-                Location = "Somewhere",
-                Start = new EventDateTime()
-                {
-                    DateTime = new DateTime(2016, 2, 28, 10, 0, 0),
-                    TimeZone = "America/Los_Angeles"
-                },
-                End = new EventDateTime()
-                {
-                    DateTime = new DateTime(2016, 2, 28, 12, 30, 0),
-                    TimeZone = "America/Los_Angeles"
-                }
-                //,
-                //Recurrence = new String[] { "RRULE:FREQ=WEEKLY;BYDAY=MO"   },
-                //Attendees = new List<EventAttendee>()
-                //{ new EventAttendee() { Email = "johndoe@gmail.com" } }
-            };
-
-            EventsResource.InsertRequest req = service.Events.Insert(evt, CalendarID);
-            Event result = req.Execute();
-            */
             return true;
         }
+
+        public static List<GCal.CalEvent> GetOperationalEvents(DateTime dtMin, DateTime dtMax)
+        {
+            return ReadEvents(dtMin, dtMax, OperationalCalendarID);
+        }
+
     }
 }
+
+
+/*
+
+Event evt = new Event
+{
+    Summary = "Appointment",
+    Location = "Somewhere",
+    Start = new EventDateTime()
+    {
+        DateTime = new DateTime(2016, 2, 28, 10, 0, 0),
+        TimeZone = "America/Los_Angeles"
+    },
+    End = new EventDateTime()
+    {
+        DateTime = new DateTime(2016, 2, 28, 12, 30, 0),
+        TimeZone = "America/Los_Angeles"
+    }
+    //,
+    //Recurrence = new String[] { "RRULE:FREQ=WEEKLY;BYDAY=MO"   },
+    //Attendees = new List<EventAttendee>()
+    //{ new EventAttendee() { Email = "johndoe@gmail.com" } }
+};
+
+EventsResource.InsertRequest req = service.Events.Insert(evt, CalendarID);
+Event result = req.Execute();
+*/

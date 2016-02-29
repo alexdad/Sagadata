@@ -514,6 +514,7 @@ namespace RecordKeeper
                 l.Teacher1 = cbPlanTeacher.SelectedItem as string;
                 l.Teacher2 = "";
                 l.Price = m_plannedLessonPrice;
+                l.GoogleId = "";
 
             }
             l.Comments = tbPlanComment.Text;
