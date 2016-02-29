@@ -402,6 +402,7 @@ namespace RecordKeeper
             lbReconcileDescription.Text = (ce.Summary == null ? "" : ce.Summary);
             lbReconcileCreated.Text = (ce.Creator == null ? "" : ce.Creator);
             lbReconcileGoogleCalId.Text = (ce.Id == null ? "" : ce.Id);
+            lbReconcileTouched.Text = ce.LastTouched;
 
             return FindClosestLesson();
         }

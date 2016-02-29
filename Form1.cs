@@ -1421,11 +1421,11 @@ namespace RecordKeeper
             l.End = lbReconcileTo.Text;
             l.Comments = lbReconcileDescription.Text;
             l.GoogleId = lbReconcileGoogleCalId.Text;
+            l.Room = GetComboBoxIndexByInitial(cbLessonRoom, lbReconcileLocation.Text);
+            // TODO: add state, teacher1, student1
+            // TODO: find why start is wrong in cb 
 
-            SetComboBoxIndexByValue(cbLessonStart, l.Start);
-            SetComboBoxIndexByValue(cbLessonEnd, l.End);
             buttonGlobEditAccept_Click(null, null);
-
             EditLessonDetailsChanged();
         }
         private void lbReconcileDescription_Click(object sender, EventArgs e)
@@ -1434,6 +1434,21 @@ namespace RecordKeeper
         }
 
         private void dtpReconcileFrom_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            MakeReconcileVisible();
+        }
+
+        private void dtpReconcileTo_ValueChanged(object sender, EventArgs e)
+        {
+            MakeReconcileVisible();
+        }
+
+        private void dtpReconcileFrom_ValueChanged(object sender, EventArgs e)
+        {
+            MakeReconcileVisible();
+        }
+
+        private void MakeReconcileVisible()
         {
             foreach (Control c in panelReconcile.Controls)
                 c.Visible = true;

@@ -67,6 +67,23 @@ namespace GCal
         public string Status;
         public string Id;
         public string Creator;
+
+        public string LastTouched
+        {
+            get
+            {
+                DateTime last = DateTime.MinValue;
+                if (Created.HasValue && Created > last)
+                    last = Created.Value;
+                if (Updated.HasValue && Updated > last)
+                    last = Updated.Value;
+                if (last == DateTime.MinValue)
+                    return "";
+                else
+                    return last.ToString();
+
+            }
+        }
     };
 
     public class Ops

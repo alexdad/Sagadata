@@ -269,7 +269,9 @@
             this.tbRoomTags = new System.Windows.Forms.TextBox();
             this.tabBottomPageLessons = new System.Windows.Forms.TabPage();
             this.panelLesson = new System.Windows.Forms.Panel();
+            this.labelLessonLinked = new System.Windows.Forms.Label();
             this.panelReconcile = new System.Windows.Forms.Panel();
+            this.lbReconcileTouched = new System.Windows.Forms.Label();
             this.buttonReconcileLink = new System.Windows.Forms.Button();
             this.buttonReconcilePrev = new System.Windows.Forms.Button();
             this.lbReconcileGoogleCalId = new System.Windows.Forms.Label();
@@ -502,7 +504,6 @@
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.lbFutureOpName = new System.Windows.Forms.Label();
             this.clientList = new System.Windows.Forms.BindingSource(this.components);
-            this.labelLessonLinked = new System.Windows.Forms.Label();
             this.menuStripGlobalOps.SuspendLayout();
             this.panelGlobIndicators.SuspendLayout();
             this.ctxMenuLesson.SuspendLayout();
@@ -2992,9 +2993,20 @@
             this.panelLesson.Size = new System.Drawing.Size(929, 350);
             this.panelLesson.TabIndex = 0;
             // 
+            // labelLessonLinked
+            // 
+            this.labelLessonLinked.AutoSize = true;
+            this.labelLessonLinked.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "LinkedState", true));
+            this.labelLessonLinked.Location = new System.Drawing.Point(688, 142);
+            this.labelLessonLinked.Name = "labelLessonLinked";
+            this.labelLessonLinked.Size = new System.Drawing.Size(35, 13);
+            this.labelLessonLinked.TabIndex = 34;
+            this.labelLessonLinked.Text = "linked";
+            // 
             // panelReconcile
             // 
             this.panelReconcile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panelReconcile.Controls.Add(this.lbReconcileTouched);
             this.panelReconcile.Controls.Add(this.buttonReconcileLink);
             this.panelReconcile.Controls.Add(this.buttonReconcilePrev);
             this.panelReconcile.Controls.Add(this.lbReconcileGoogleCalId);
@@ -3016,6 +3028,16 @@
             this.panelReconcile.Name = "panelReconcile";
             this.panelReconcile.Size = new System.Drawing.Size(904, 80);
             this.panelReconcile.TabIndex = 33;
+            // 
+            // lbReconcileTouched
+            // 
+            this.lbReconcileTouched.AutoSize = true;
+            this.lbReconcileTouched.Location = new System.Drawing.Point(586, 27);
+            this.lbReconcileTouched.Name = "lbReconcileTouched";
+            this.lbReconcileTouched.Size = new System.Drawing.Size(33, 13);
+            this.lbReconcileTouched.TabIndex = 17;
+            this.lbReconcileTouched.Text = "when";
+            this.lbReconcileTouched.Visible = false;
             // 
             // buttonReconcileLink
             // 
@@ -3100,6 +3122,7 @@
             this.dtpReconcileFrom.Name = "dtpReconcileFrom";
             this.dtpReconcileFrom.Size = new System.Drawing.Size(105, 20);
             this.dtpReconcileFrom.TabIndex = 9;
+            this.dtpReconcileFrom.ValueChanged += new System.EventHandler(this.dtpReconcileFrom_ValueChanged);
             this.dtpReconcileFrom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dtpReconcileFrom_KeyPress);
             // 
             // dtpReconcileTo
@@ -3110,6 +3133,7 @@
             this.dtpReconcileTo.Name = "dtpReconcileTo";
             this.dtpReconcileTo.Size = new System.Drawing.Size(103, 20);
             this.dtpReconcileTo.TabIndex = 8;
+            this.dtpReconcileTo.ValueChanged += new System.EventHandler(this.dtpReconcileTo_ValueChanged);
             // 
             // lbReconcileLocation
             // 
@@ -5424,15 +5448,6 @@
             // 
             this.clientList.DataSource = typeof(RecordKeeper.Client);
             // 
-            // labelLessonLinked
-            // 
-            this.labelLessonLinked.AutoSize = true;
-            this.labelLessonLinked.Location = new System.Drawing.Point(688, 142);
-            this.labelLessonLinked.Name = "labelLessonLinked";
-            this.labelLessonLinked.Size = new System.Drawing.Size(35, 13);
-            this.labelLessonLinked.TabIndex = 34;
-            this.labelLessonLinked.Text = "linked";
-            // 
             // FormGlob
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -6056,6 +6071,7 @@
         private System.Windows.Forms.Button buttonReconcilePrev;
         private System.Windows.Forms.Button buttonReconcileLink;
         private System.Windows.Forms.Label labelLessonLinked;
+        private System.Windows.Forms.Label lbReconcileTouched;
     }
 }
 

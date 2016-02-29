@@ -145,6 +145,25 @@ namespace RecordKeeper
             return false;
         }
 
+        public string GetComboBoxIndexByInitial(ComboBox cb, string str)
+        {
+            if (IsStringEmpty(str))
+                return null;
+            string initial = str.Trim().Substring(0, 1).ToLower();
+            for (int i = 0; i < cb.Items.Count; i++)
+            {
+                string si = ((string)cb.Items[i]);
+                if (IsStringEmpty(si))
+                    continue;
+
+                if (initial == si.ToLower().Substring(0,1))
+                {
+                    return si;
+                }
+            }
+            return null;
+        }
+
         #endregion
 
         #region "location-related"

@@ -83,7 +83,8 @@ namespace RecordKeeper
             get
             {
                 StringBuilder sb = new StringBuilder();
-                sb.Append(State.Substring(0, 1));
+                if (!FormGlob.IsStringEmpty(State))
+                    sb.Append(State.Substring(0, 1));
                 
                 if (this.Student1 != null)
                 {
@@ -169,6 +170,13 @@ namespace RecordKeeper
             }
         }
 
+        public string LinkedState
+        {
+            get
+            {
+                return (FormGlob.IsStringEmpty(GoogleId) ? "Not linked" : "Linked");
+            }
+        }
 
         public void GetLocationInWeek(out int col, out int row1, out int row2)
         {
