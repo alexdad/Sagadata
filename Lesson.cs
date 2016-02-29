@@ -34,6 +34,10 @@ namespace RecordKeeper
         {
             get
             {
+                if (FormGlob.IsStringEmpty(Day) ||
+                    FormGlob.IsStringEmpty(Start))
+                    return DateTime.MinValue;
+
                 DateTime dtd = DateTime.Parse(Day);
                 DateTime dts = DateTime.Parse(Start);
                 return new DateTime(dtd.Year, dtd.Month, dtd.Day, dts.Hour, dts.Minute, 0);
@@ -44,6 +48,10 @@ namespace RecordKeeper
         {
             get
             {
+                if (FormGlob.IsStringEmpty(Day) ||
+                    FormGlob.IsStringEmpty(End))
+                    return DateTime.MinValue;
+
                 DateTime dtd = DateTime.Parse(Day);
                 DateTime dte = DateTime.Parse(End);
                 return new DateTime(dtd.Year, dtd.Month, dtd.Day, dte.Hour, dte.Minute, 0);
@@ -362,10 +370,6 @@ namespace RecordKeeper
             try
             {
                 if (!ValidateBase)
-                    return false;
-                if (FormGlob.IsStringEmpty(Student1))
-                    return false;
-                if (FormGlob.IsStringEmpty(Teacher1))
                     return false;
                 if (!FormGlob.IsDateTimeReasonable(DateTimeStart))
                     return false;

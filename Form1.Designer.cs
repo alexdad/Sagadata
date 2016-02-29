@@ -502,6 +502,7 @@
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.lbFutureOpName = new System.Windows.Forms.Label();
             this.clientList = new System.Windows.Forms.BindingSource(this.components);
+            this.labelLessonLinked = new System.Windows.Forms.Label();
             this.menuStripGlobalOps.SuspendLayout();
             this.panelGlobIndicators.SuspendLayout();
             this.ctxMenuLesson.SuspendLayout();
@@ -2950,6 +2951,7 @@
             // panelLesson
             // 
             this.panelLesson.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
+            this.panelLesson.Controls.Add(this.labelLessonLinked);
             this.panelLesson.Controls.Add(this.panelReconcile);
             this.panelLesson.Controls.Add(this.lbLessonCancellation);
             this.panelLesson.Controls.Add(this.tbLessonPrice);
@@ -3227,6 +3229,7 @@
             this.labelLessonCancellation.Size = new System.Drawing.Size(90, 13);
             this.labelLessonCancellation.TabIndex = 30;
             this.labelLessonCancellation.Text = "Cancellation time:";
+            this.labelLessonCancellation.Visible = false;
             // 
             // labelLessonPrice
             // 
@@ -5421,6 +5424,15 @@
             // 
             this.clientList.DataSource = typeof(RecordKeeper.Client);
             // 
+            // labelLessonLinked
+            // 
+            this.labelLessonLinked.AutoSize = true;
+            this.labelLessonLinked.Location = new System.Drawing.Point(688, 142);
+            this.labelLessonLinked.Name = "labelLessonLinked";
+            this.labelLessonLinked.Size = new System.Drawing.Size(35, 13);
+            this.labelLessonLinked.TabIndex = 34;
+            this.labelLessonLinked.Text = "linked";
+            // 
             // FormGlob
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -6043,6 +6055,7 @@
         private System.Windows.Forms.Label lbReconcileGoogleCalId;
         private System.Windows.Forms.Button buttonReconcilePrev;
         private System.Windows.Forms.Button buttonReconcileLink;
+        private System.Windows.Forms.Label labelLessonLinked;
     }
 }
 

@@ -1412,6 +1412,21 @@ namespace RecordKeeper
 
         private void buttonReconcileCreate_Click(object sender, EventArgs e)
         {
+            buttonAdd_Click(null, null);
+            Lesson l = lessonList.Current as Lesson;
+            if (l == null)
+                return;
+            l.Day = lbReconcileDate.Text;
+            l.Start = lbReconcileFrom.Text;
+            l.End = lbReconcileTo.Text;
+            l.Comments = lbReconcileDescription.Text;
+            l.GoogleId = lbReconcileGoogleCalId.Text;
+
+            SetComboBoxIndexByValue(cbLessonStart, l.Start);
+            SetComboBoxIndexByValue(cbLessonEnd, l.End);
+            buttonGlobEditAccept_Click(null, null);
+
+            EditLessonDetailsChanged();
         }
         private void lbReconcileDescription_Click(object sender, EventArgs e)
         {
