@@ -29,6 +29,13 @@ namespace RecordKeeper
         Google,
         Azure
     }
+    public enum LessonStates
+    {
+        Unknown,
+        Planned,
+        Cancelled,
+        Done
+    }
     public enum Validations
     {
         Ignore,

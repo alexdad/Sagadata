@@ -121,7 +121,9 @@ namespace RecordKeeper
         {
             return (int)((dt2.Ticks - dt1.Ticks) / SlotInTicks);
         }
+        #endregion
 
+        #region "Schematics-related"
         public int LanguageIndex(string lang)
         {
             for (int i=0; i < m_enumLanguage.Length; i++)
@@ -132,62 +134,45 @@ namespace RecordKeeper
             return -1;
         }
 
-        public bool SetComboByValue(ComboBox cb, string str)
+        public string SetComboByValue(ComboBox cb, string str)
         {
             if (IsStringEmpty(str))
-                return false;
+                return null;
             string needed = str.Trim().ToLower();
             for (int i = 0; i < cb.Items.Count; i++)
             {
-                string si = ((string)cb.Items[i]).Trim().ToLower();
-                if (IsStringEmpty(si))
+                string sv = (string)cb.Items[i];
+                string svl = sv.Trim().ToLower();
+                if (IsStringEmpty(svl))
                     continue;
 
-                if (needed == si)
+                if (needed == svl)
                 {
                     cb.SelectedIndex = i;
-                    return true;
+                    return sv;
                 }
             }
-            return false;
+            return null;
         }
 
-        public bool SetComboByInitial(ComboBox cb, string str)
-        {
-            if (IsStringEmpty(str))
-                return false;
-            string initial = str.Trim().Substring(0, 1).ToLower();
-            for (int i = 0; i < cb.Items.Count; i++)
-            {
-                string si = ((string)cb.Items[i]);
-                if (IsStringEmpty(si))
-                    continue;
-
-                if (initial == si.ToLower().Substring(0, 1))
-                {
-                    cb.SelectedIndex = i;
-                    return true;
-                }
-            }
-            return false; 
-        }
-        public string GetComboBoxIndexByInitial(ComboBox cb, string str)
+        public string SetComboByInitial(ComboBox cb, string str)
         {
             if (IsStringEmpty(str))
                 return null;
             string initial = str.Trim().Substring(0, 1).ToLower();
             for (int i = 0; i < cb.Items.Count; i++)
             {
-                string si = ((string)cb.Items[i]);
-                if (IsStringEmpty(si))
+                string sv = ((string)cb.Items[i]);
+                if (IsStringEmpty(sv))
                     continue;
 
-                if (initial == si.ToLower().Substring(0,1))
+                if (initial == sv.ToLower().Substring(0, 1))
                 {
-                    return si;
+                    cb.SelectedIndex = i;
+                    return sv;
                 }
             }
-            return null;
+            return null; 
         }
 
         #endregion
@@ -299,6 +284,62 @@ namespace RecordKeeper
             m_labelWorking.Text = "Working...  takes some time...";
             m_labelWorking.Parent = this;
             m_labelWorking.Visible = false;
+        }
+        #endregion
+
+        #region "Detection-releated"
+        // We assume following Google calendar event description syntax:
+        // [title :] student,* / teacher,* [; comment]
+        //    or
+        // [title :] student,* - teacher,* [; comment]
+        //      That is:
+        //      If there is ";", anything after is a comment. Before that:
+        //      If there is ":", anything before is a title. After that:
+        //      If there is "/", anything before is a comma-separated list of students
+        //                       anything after is a comma-separated list of teachers
+        // 
+
+        private void ParseEventDescription(
+            string desc, 
+            out string title,
+            out string[] students, 
+            out string[] teachers,
+            out string comment)
+        {
+            title = ""; comment = "";
+            if (desc == null)
+                desc = "";
+
+            // Comments after last ";"
+            int semicolon = desc.LastIndexOf(";");
+            if (semicolon >= 0 && semicolon < desc.Length - 1)
+            {
+                comment = desc.Substring(semicolon + 1);
+                desc = desc.Substring(0, semicolon);
+            }
+
+            // Title before first ":"
+            int colon = desc.IndexOf(":");
+            if (colon >= 0)
+            {
+                title = desc.Substring(0, colon);
+                desc = (colon + 1 < desc.Length - 1 ? desc.Substring(colon + 1) : "");
+            }
+
+            // Teachers after "/"
+            int slash = desc.IndexOf("/");
+            if (slash < 0)
+                slash = desc.IndexOf("-");
+            if (slash >= 0 && slash < desc.Length - 1)
+            {
+                string ts = desc.Substring(slash + 1);
+                teachers = ts.Split(',');
+                desc = (slash == 0 ? "" : desc.Substring(0, slash));
+            }
+            else
+                teachers = new string[0];
+
+            students = desc.Split(',');
         }
         #endregion
 

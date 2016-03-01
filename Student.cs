@@ -268,6 +268,23 @@ namespace RecordKeeper
             }
         }
 
+        public string Program(int i)
+        {
+            string[] progs = new string[] { this.Prog1, this.Prog2, this.Prog3 };
+            if (i < 1 || i > 3)
+                throw new Exception("Bad params");
+            else
+                return progs[i-1];
+        }
+        public string Price(int i)
+        {
+            string[] prices = new string[] { this.Price1, this.Price2, this.Price3 };
+            if (i < 1 || i > 3)
+                throw new Exception("Bad params");
+            else
+                return prices[i-1];
+        }
+
         #region "Comparers"
         public class ComparerByBirthday : IComparer<Student>
         {

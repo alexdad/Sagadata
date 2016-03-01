@@ -271,6 +271,7 @@
             this.panelLesson = new System.Windows.Forms.Panel();
             this.labelLessonLinked = new System.Windows.Forms.Label();
             this.panelReconcile = new System.Windows.Forms.Panel();
+            this.buttonReconcileUnlink = new System.Windows.Forms.Button();
             this.lbReconcileTouched = new System.Windows.Forms.Label();
             this.buttonReconcileLink = new System.Windows.Forms.Button();
             this.buttonReconcilePrev = new System.Windows.Forms.Button();
@@ -303,7 +304,7 @@
             this.cbLessonStudent3 = new System.Windows.Forms.ComboBox();
             this.labelLessonStudent3 = new System.Windows.Forms.Label();
             this.labelLessonComment = new System.Windows.Forms.Label();
-            this.tbLEssonComment = new System.Windows.Forms.TextBox();
+            this.tbLessonComment = new System.Windows.Forms.TextBox();
             this.cbLessonStudent2 = new System.Windows.Forms.ComboBox();
             this.cbLessonStudent1 = new System.Windows.Forms.ComboBox();
             this.cbLessonTeacher2 = new System.Windows.Forms.ComboBox();
@@ -2968,7 +2969,7 @@
             this.panelLesson.Controls.Add(this.cbLessonStudent3);
             this.panelLesson.Controls.Add(this.labelLessonStudent3);
             this.panelLesson.Controls.Add(this.labelLessonComment);
-            this.panelLesson.Controls.Add(this.tbLEssonComment);
+            this.panelLesson.Controls.Add(this.tbLessonComment);
             this.panelLesson.Controls.Add(this.cbLessonStudent2);
             this.panelLesson.Controls.Add(this.cbLessonStudent1);
             this.panelLesson.Controls.Add(this.cbLessonTeacher2);
@@ -3006,6 +3007,7 @@
             // panelReconcile
             // 
             this.panelReconcile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panelReconcile.Controls.Add(this.buttonReconcileUnlink);
             this.panelReconcile.Controls.Add(this.lbReconcileTouched);
             this.panelReconcile.Controls.Add(this.buttonReconcileLink);
             this.panelReconcile.Controls.Add(this.buttonReconcilePrev);
@@ -3029,10 +3031,21 @@
             this.panelReconcile.Size = new System.Drawing.Size(904, 80);
             this.panelReconcile.TabIndex = 33;
             // 
+            // buttonReconcileUnlink
+            // 
+            this.buttonReconcileUnlink.Location = new System.Drawing.Point(776, 3);
+            this.buttonReconcileUnlink.Name = "buttonReconcileUnlink";
+            this.buttonReconcileUnlink.Size = new System.Drawing.Size(58, 23);
+            this.buttonReconcileUnlink.TabIndex = 18;
+            this.buttonReconcileUnlink.Text = "Unlink";
+            this.buttonReconcileUnlink.UseVisualStyleBackColor = true;
+            this.buttonReconcileUnlink.Visible = false;
+            this.buttonReconcileUnlink.Click += new System.EventHandler(this.buttonReconcileUnlink_Click);
+            // 
             // lbReconcileTouched
             // 
             this.lbReconcileTouched.AutoSize = true;
-            this.lbReconcileTouched.Location = new System.Drawing.Point(586, 27);
+            this.lbReconcileTouched.Location = new System.Drawing.Point(551, 27);
             this.lbReconcileTouched.Name = "lbReconcileTouched";
             this.lbReconcileTouched.Size = new System.Drawing.Size(33, 13);
             this.lbReconcileTouched.TabIndex = 17;
@@ -3041,9 +3054,9 @@
             // 
             // buttonReconcileLink
             // 
-            this.buttonReconcileLink.Location = new System.Drawing.Point(826, 3);
+            this.buttonReconcileLink.Location = new System.Drawing.Point(840, 3);
             this.buttonReconcileLink.Name = "buttonReconcileLink";
-            this.buttonReconcileLink.Size = new System.Drawing.Size(75, 23);
+            this.buttonReconcileLink.Size = new System.Drawing.Size(61, 23);
             this.buttonReconcileLink.TabIndex = 16;
             this.buttonReconcileLink.Text = "&Link";
             this.buttonReconcileLink.UseVisualStyleBackColor = true;
@@ -3053,9 +3066,9 @@
             // buttonReconcilePrev
             // 
             this.buttonReconcilePrev.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonReconcilePrev.Location = new System.Drawing.Point(745, 27);
+            this.buttonReconcilePrev.Location = new System.Drawing.Point(776, 27);
             this.buttonReconcilePrev.Name = "buttonReconcilePrev";
-            this.buttonReconcilePrev.Size = new System.Drawing.Size(75, 23);
+            this.buttonReconcilePrev.Size = new System.Drawing.Size(58, 23);
             this.buttonReconcilePrev.TabIndex = 15;
             this.buttonReconcilePrev.Text = "Previous";
             this.buttonReconcilePrev.UseVisualStyleBackColor = true;
@@ -3076,7 +3089,7 @@
             // 
             this.lbReconcileCreated.AutoSize = true;
             this.lbReconcileCreated.BackColor = System.Drawing.Color.White;
-            this.lbReconcileCreated.Location = new System.Drawing.Point(610, 7);
+            this.lbReconcileCreated.Location = new System.Drawing.Point(590, 8);
             this.lbReconcileCreated.Name = "lbReconcileCreated";
             this.lbReconcileCreated.Size = new System.Drawing.Size(41, 13);
             this.lbReconcileCreated.TabIndex = 13;
@@ -3086,7 +3099,7 @@
             // lbReconcileCreatedTitle
             // 
             this.lbReconcileCreatedTitle.AutoSize = true;
-            this.lbReconcileCreatedTitle.Location = new System.Drawing.Point(586, 7);
+            this.lbReconcileCreatedTitle.Location = new System.Drawing.Point(566, 7);
             this.lbReconcileCreatedTitle.Name = "lbReconcileCreatedTitle";
             this.lbReconcileCreatedTitle.Size = new System.Drawing.Size(18, 13);
             this.lbReconcileCreatedTitle.TabIndex = 12;
@@ -3194,9 +3207,9 @@
             // buttonReconcileCreate
             // 
             this.buttonReconcileCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonReconcileCreate.Location = new System.Drawing.Point(826, 27);
+            this.buttonReconcileCreate.Location = new System.Drawing.Point(840, 27);
             this.buttonReconcileCreate.Name = "buttonReconcileCreate";
-            this.buttonReconcileCreate.Size = new System.Drawing.Size(75, 23);
+            this.buttonReconcileCreate.Size = new System.Drawing.Size(61, 23);
             this.buttonReconcileCreate.TabIndex = 2;
             this.buttonReconcileCreate.Text = "Create";
             this.buttonReconcileCreate.UseVisualStyleBackColor = true;
@@ -3206,9 +3219,9 @@
             // buttonReconcileStart
             // 
             this.buttonReconcileStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonReconcileStart.Location = new System.Drawing.Point(826, 54);
+            this.buttonReconcileStart.Location = new System.Drawing.Point(840, 54);
             this.buttonReconcileStart.Name = "buttonReconcileStart";
-            this.buttonReconcileStart.Size = new System.Drawing.Size(75, 23);
+            this.buttonReconcileStart.Size = new System.Drawing.Size(61, 23);
             this.buttonReconcileStart.TabIndex = 1;
             this.buttonReconcileStart.Text = "Start";
             this.buttonReconcileStart.UseVisualStyleBackColor = true;
@@ -3218,9 +3231,9 @@
             // buttonReconcileNext
             // 
             this.buttonReconcileNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonReconcileNext.Location = new System.Drawing.Point(745, 3);
+            this.buttonReconcileNext.Location = new System.Drawing.Point(706, 27);
             this.buttonReconcileNext.Name = "buttonReconcileNext";
-            this.buttonReconcileNext.Size = new System.Drawing.Size(75, 23);
+            this.buttonReconcileNext.Size = new System.Drawing.Size(63, 23);
             this.buttonReconcileNext.TabIndex = 0;
             this.buttonReconcileNext.Text = "Next";
             this.buttonReconcileNext.UseVisualStyleBackColor = true;
@@ -3370,16 +3383,16 @@
             this.labelLessonComment.TabIndex = 27;
             this.labelLessonComment.Text = "Comments:";
             // 
-            // tbLEssonComment
+            // tbLessonComment
             // 
-            this.tbLEssonComment.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tbLessonComment.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbLEssonComment.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "Comments", true));
-            this.tbLEssonComment.Location = new System.Drawing.Point(9, 217);
-            this.tbLEssonComment.Name = "tbLEssonComment";
-            this.tbLEssonComment.Size = new System.Drawing.Size(904, 20);
-            this.tbLEssonComment.TabIndex = 26;
-            this.tbLEssonComment.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbLEssonComment_KeyPress);
+            this.tbLessonComment.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "Comments", true));
+            this.tbLessonComment.Location = new System.Drawing.Point(9, 217);
+            this.tbLessonComment.Name = "tbLessonComment";
+            this.tbLessonComment.Size = new System.Drawing.Size(904, 20);
+            this.tbLessonComment.TabIndex = 26;
+            this.tbLessonComment.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbLEssonComment_KeyPress);
             // 
             // cbLessonStudent2
             // 
@@ -5816,7 +5829,7 @@
         private System.Windows.Forms.ComboBox cbLessonStudent3;
         private System.Windows.Forms.Label labelLessonStudent3;
         private System.Windows.Forms.Label labelLessonComment;
-        private System.Windows.Forms.TextBox tbLEssonComment;
+        private System.Windows.Forms.TextBox tbLessonComment;
         private System.Windows.Forms.ComboBox cbLessonStudent2;
         private System.Windows.Forms.ComboBox cbLessonStudent1;
         private System.Windows.Forms.ComboBox cbLessonTeacher2;
@@ -6072,6 +6085,7 @@
         private System.Windows.Forms.Button buttonReconcileLink;
         private System.Windows.Forms.Label labelLessonLinked;
         private System.Windows.Forms.Label lbReconcileTouched;
+        private System.Windows.Forms.Button buttonReconcileUnlink;
     }
 }
 

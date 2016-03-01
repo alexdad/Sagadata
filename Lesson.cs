@@ -392,6 +392,59 @@ namespace RecordKeeper
             }
         }
 
+        public void SetStudent(string stud, int index)
+        {
+            switch(index)
+            {
+                case 1:
+                    this.Student1 = stud;
+                    return;
+                case 2:
+                    this.Student2 = stud;
+                    return;
+                case 3:
+                    this.Student3 = stud;
+                    return;
+                case 4:
+                    this.Student4 = stud;
+                    return;
+                case 5:
+                    this.Student5 = stud;
+                    return;
+                case 6:
+                    this.Student6 = stud;
+                    return;
+                case 7:
+                    this.Student7 = stud;
+                    return;
+                case 8:
+                    this.Student8 = stud;
+                    return;
+                case 9:
+                    this.Student9 = stud;
+                    return;
+                case 10:
+                    this.Student10 = stud;
+                    return;
+                default:
+                    throw new Exception("Bad param");
+            }
+        }
+
+        public void SetTeacher(string stud, int index)
+        {
+            switch (index)
+            {
+                case 1:
+                    this.Teacher1 = stud;
+                    return;
+                case 2:
+                    this.Teacher2 = stud;
+                    return;
+                default:
+                    throw new Exception("Bad param");
+            }
+        }
 
         #region "Comparers"
         public class ComparerByDay : IComparer<Lesson>

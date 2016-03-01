@@ -1375,7 +1375,7 @@ namespace RecordKeeper
                 DayEnd(this.dtpReconcileTo.Value)).ToArray();
 
             m_curOperationalevent = 0;
-            if (SetCurrentOperationalevent())
+            if (SetCurrentOperationalEvent())
                 buttonReconcileNext_Click(null, null);
         }
         private void buttonReconcileLink_Click(object sender, EventArgs e)
@@ -1387,6 +1387,16 @@ namespace RecordKeeper
             buttonGlobEditAccept_Click(null, null);
             buttonReconcileNext_Click(null, null);
         }
+
+        private void buttonReconcileUnlink_Click(object sender, EventArgs e)
+        {
+            Lesson l = lessonList.Current as Lesson;
+            if (l == null)
+                return;
+            l.GoogleId = "";
+            buttonGlobEditAccept_Click(null, null);
+        }
+
         private void buttonReconcileNext_Click(object sender, EventArgs e)
         {
             if (m_OperationalEvents == null)
@@ -1394,7 +1404,7 @@ namespace RecordKeeper
             while (m_curOperationalevent < m_OperationalEvents.Length - 1)
             {
                 m_curOperationalevent++;
-                if (!SetCurrentOperationalevent())
+                if (!SetCurrentOperationalEvent())
                     break;
             }
         }
@@ -1406,7 +1416,7 @@ namespace RecordKeeper
             if (m_curOperationalevent >= 1)
             {
                 m_curOperationalevent--;
-                SetCurrentOperationalevent();
+                SetCurrentOperationalEvent();
             }
         }
 

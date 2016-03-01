@@ -386,7 +386,7 @@ namespace RecordKeeper
             return evts;
         }
 
-        public bool SetCurrentOperationalevent()
+        public bool SetCurrentOperationalEvent()
         {
             if (m_OperationalEvents == null ||
                 m_curOperationalevent < 0 ||
@@ -448,6 +448,25 @@ namespace RecordKeeper
             return false;
         }
 
+        public ComboBox LessonTeacherComboBox(int i)
+        {
+            ComboBox[] boxes = new ComboBox[] { cbLessonTeacher1, cbLessonTeacher2 };
+            if (i < 1 || i > 2)
+                throw new Exception("Bad params");
+            return boxes[i - 1];
+        }
+        public ComboBox LessonStudentComboBox(int i)
+        {
+            ComboBox[] boxes = new ComboBox[]
+            { cbLessonStudent1, cbLessonStudent2, cbLessonStudent3,
+              cbLessonStudent4, cbLessonStudent5, cbLessonStudent6,
+              cbLessonStudent7, cbLessonStudent8, cbLessonStudent9, cbLessonStudent10 };
+
+            if (i < 1 || i > 10) 
+                throw new Exception("Bad params");
+            return boxes[i - 1];
+        }
+
         public void FillLessonFromCalendar(Lesson l)
         {
             SetComboByValue(cbLessonStart, lbReconcileFrom.Text);
@@ -461,17 +480,151 @@ namespace RecordKeeper
             monthCalLessonDate.SetDate(dt);
             l.Day = dt.ToShortDateString();
 
-            tbLEssonComment.Text = lbReconcileDescription.Text;
+            tbLessonComment.Text = lbReconcileDescription.Text;
             l.Comments = lbReconcileDescription.Text;
 
-            SetComboByInitial(cbLessonRoom, lbReconcileLocation.Text);
-            l.Room = GetComboBoxIndexByInitial(cbLessonRoom, lbReconcileLocation.Text);
+            l.Room = SetComboByInitial(cbLessonRoom, lbReconcileLocation.Text);
 
             l.GoogleId = lbReconcileGoogleCalId.Text;
 
-            //labelLessonLinked
-            //l.GoogleId = lbReconcileGoogleCalId.Text;
-            // TODO: add state, teacher1, student1
+            l.State = SetComboByValue(cbLessonState, 
+                                      m_enumState[(int)LessonStates.Planned]);
+
+
+            string geTitle, geComment;
+            string[] geStudents, geTeachers;
+
+            ParseEventDescription( lbReconcileDescription.Text,
+                out geTitle, out geStudents, out geTeachers, out geComment);
+
+            for (int i = 0; i < 2 && i < geTeachers.Length; i++)
+            {
+                string str = ExtractTeacher(geTeachers[i], i+1);
+                if (!IsStringEmpty(str))
+                    l.SetTeacher(SetComboByValue(LessonTeacherComboBox(i+1), str), i+1);
+            }
+
+            for (int i = 0; i < 10 && i < geStudents.Length; i++)
+            {
+                string str = ExtractStudent(geStudents[i], i+1);
+                if (!IsStringEmpty(str))
+                    l.SetStudent(SetComboByValue(LessonStudentComboBox(i+1), str), i+1);
+            }
+
+            if (!IsStringEmpty(l.Student1))
+                PopulateLessonProgPrice(l);
         }
+
+        void PopulateLessonProgPrice(Lesson l)
+        {
+            foreach (Student stud in SpecificStudent(l.Student1))
+            {
+                for (int i = 1; i <= 3; i++)
+                {
+                    if (!IsStringEmpty(stud.Program(i)))
+                    {
+                        l.Program = SetComboByValue(cbLessonProg, stud.Program(i));
+                        tbLessonPrice.Text = stud.Price(i);
+                        l.Price = stud.Price(i);
+                        return;
+                    }
+                }
+            }
+        }
+
+
+        private void TakeDistance(int d, string str, ref int mindist, ref string bestval)
+        {
+            if (d >= 0 && d < mindist)
+            {
+                mindist = d;
+                bestval = str;
+            }
+        }
+        public string ExtractPerson(ComboBox cb, string desc)
+        {
+            if (IsStringEmpty(desc))
+                return null;
+            string first, last, initial;
+            int space = desc.IndexOf(" ");
+            if (space >= 0)
+            {
+                first = (space == 0 ? "" : desc.Substring(0, space));
+                last = (space < desc.Length - 1 ? desc.Substring(space + 1) : "");
+                initial = (last.Length > 0 ? last.Substring(0, 1) : "");
+            }
+            else
+            {
+                first = desc;
+                last = "";
+                initial = "";
+            }
+
+            // Find for the best edit distance across 3 choices: 
+            //    "first", "first last", "first initial"
+            int mindist = int.MaxValue;
+            string bestval = null;
+            foreach(string str in cb.Items)
+            {
+                if (IsStringEmpty(str))
+                    continue;
+                string[] strx = str.Split(' ');
+                string str1 = strx[0];
+                string str2 = (strx.Length > 1 ? strx[strx.Length - 1] : "");
+                string stri = (str2.Length > 0 ? str2.Substring(0,1) : "");
+
+                if (!IsStringEmpty(first))
+                {
+                    int d = LevensteinDistance(
+                        str1.Trim().ToLower(), 
+                        first.Trim().ToLower());
+
+                    TakeDistance(d, str, ref mindist, ref bestval);
+
+                    if (!IsStringEmpty(last))
+                    {
+                        d = LevensteinDistance(
+                            (str1.Trim()  + " " + str2.Trim()).ToLower(), 
+                            (first.Trim() + " " + last.Trim()).ToLower());
+
+                        TakeDistance(d, str, ref mindist, ref bestval);
+
+                        d = LevensteinDistance(
+                            (str1.Trim()  + " " + stri).ToLower(),
+                            (first.Trim() + " " + initial).ToLower());
+
+                        TakeDistance(d, str, ref mindist, ref bestval);
+                    }
+
+                }
+                else if (!IsStringEmpty(last))
+                {
+                    int d = LevensteinDistance(
+                            str2.Trim().ToLower(),
+                            last.Trim().ToLower());
+
+                    TakeDistance(d, str, ref mindist, ref bestval);
+                }
+            }
+
+            // we allow up to 2 typos 
+            if (mindist < 0 || mindist > 2)
+                return null;
+            else
+                return bestval;
+
+        }
+        
+
+        public string ExtractStudent(string desc, int ind)
+        {
+            return ExtractPerson( LessonStudentComboBox(ind), desc );
+        }
+        public string ExtractTeacher(string desc, int ind)
+        {
+            return ExtractPerson(LessonTeacherComboBox(ind), desc);
+        }
+
+
     }
 }
