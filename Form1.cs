@@ -1404,7 +1404,7 @@ namespace RecordKeeper
             while (m_curOperationalevent < m_OperationalEvents.Length - 1)
             {
                 m_curOperationalevent++;
-                if (!SetCurrentOperationalEvent())
+                if (SetCurrentOperationalEvent() != MatchingState.Linked)
                     break;
             }
         }
@@ -1427,7 +1427,7 @@ namespace RecordKeeper
             while (m_curOperationalevent >= 1)
             {
                 m_curOperationalevent--;
-                if (!SetCurrentOperationalEvent())
+                if (SetCurrentOperationalEvent() != MatchingState.Linked)
                     break;
             }
         }

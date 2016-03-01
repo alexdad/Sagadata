@@ -389,12 +389,12 @@ namespace RecordKeeper
             return evts;
         }
 
-        public bool SetCurrentOperationalEvent()
+        public MatchingState SetCurrentOperationalEvent()
         {
             if (m_OperationalEvents == null ||
                 m_curOperationalevent < 0 ||
                 m_curOperationalevent >= m_OperationalEvents.Length)
-                return false;
+                return MatchingState.NoMatch;
 
             GCal.CalEvent ce = m_OperationalEvents[m_curOperationalevent];
 
@@ -444,9 +444,11 @@ namespace RecordKeeper
                     ms = MatchingState.NoMatch;
                 else if (similarity > 0.9)
                     ms = MatchingState.Match;
+                else
+                    ms = MatchingState.Similar;
             }
             ShowMatching(ms, similarity);
-            return found;
+            return ms;
         }
 
         public void ShowMatching(MatchingState ms, double similarity)
@@ -471,7 +473,7 @@ namespace RecordKeeper
                 case MatchingState.Similar:
                     lbReconcileResult.Text = "Similar";
                     lbReconcileResult.BackColor = Color.FromArgb(0, (int)(128 * (2.0 - similarity)), 0);
-                    lbReconcileResult.ForeColor = ComplementColor(lbReconcileResult.BackColor);
+                    lbReconcileResult.ForeColor = Color.Yellow;
                     break;
                 default:
                     throw new Exception("Bad params");
