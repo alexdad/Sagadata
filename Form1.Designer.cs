@@ -271,6 +271,17 @@
             this.panelLesson = new System.Windows.Forms.Panel();
             this.labelLessonLinked = new System.Windows.Forms.Label();
             this.panelReconcile = new System.Windows.Forms.Panel();
+            this.lbReconcileResult = new System.Windows.Forms.Label();
+            this.buttonReconcilePrev2 = new System.Windows.Forms.Button();
+            this.buttonReconcileNext2 = new System.Windows.Forms.Button();
+            this.labellbReconcileY = new System.Windows.Forms.Label();
+            this.labellbReconcileX = new System.Windows.Forms.Label();
+            this.lbReconcileToDiff = new System.Windows.Forms.Label();
+            this.lbReconcileFromDiff = new System.Windows.Forms.Label();
+            this.lbReconcileLocationDiff = new System.Windows.Forms.Label();
+            this.lbReconcileDateDiff = new System.Windows.Forms.Label();
+            this.lbReconcileDescDiff = new System.Windows.Forms.Label();
+            this.labellbReconcileOf = new System.Windows.Forms.Label();
             this.buttonReconcileUnlink = new System.Windows.Forms.Button();
             this.lbReconcileTouched = new System.Windows.Forms.Label();
             this.buttonReconcileLink = new System.Windows.Forms.Button();
@@ -278,7 +289,6 @@
             this.lbReconcileGoogleCalId = new System.Windows.Forms.Label();
             this.lbReconcileCreated = new System.Windows.Forms.Label();
             this.lbReconcileCreatedTitle = new System.Windows.Forms.Label();
-            this.lbReconcileStatus = new System.Windows.Forms.Label();
             this.lbReconcilePeriod = new System.Windows.Forms.Label();
             this.dtpReconcileFrom = new System.Windows.Forms.DateTimePicker();
             this.dtpReconcileTo = new System.Windows.Forms.DateTimePicker();
@@ -3007,6 +3017,17 @@
             // panelReconcile
             // 
             this.panelReconcile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panelReconcile.Controls.Add(this.lbReconcileResult);
+            this.panelReconcile.Controls.Add(this.buttonReconcilePrev2);
+            this.panelReconcile.Controls.Add(this.buttonReconcileNext2);
+            this.panelReconcile.Controls.Add(this.labellbReconcileY);
+            this.panelReconcile.Controls.Add(this.labellbReconcileX);
+            this.panelReconcile.Controls.Add(this.lbReconcileToDiff);
+            this.panelReconcile.Controls.Add(this.lbReconcileFromDiff);
+            this.panelReconcile.Controls.Add(this.lbReconcileLocationDiff);
+            this.panelReconcile.Controls.Add(this.lbReconcileDateDiff);
+            this.panelReconcile.Controls.Add(this.lbReconcileDescDiff);
+            this.panelReconcile.Controls.Add(this.labellbReconcileOf);
             this.panelReconcile.Controls.Add(this.buttonReconcileUnlink);
             this.panelReconcile.Controls.Add(this.lbReconcileTouched);
             this.panelReconcile.Controls.Add(this.buttonReconcileLink);
@@ -3014,7 +3035,6 @@
             this.panelReconcile.Controls.Add(this.lbReconcileGoogleCalId);
             this.panelReconcile.Controls.Add(this.lbReconcileCreated);
             this.panelReconcile.Controls.Add(this.lbReconcileCreatedTitle);
-            this.panelReconcile.Controls.Add(this.lbReconcileStatus);
             this.panelReconcile.Controls.Add(this.lbReconcilePeriod);
             this.panelReconcile.Controls.Add(this.dtpReconcileFrom);
             this.panelReconcile.Controls.Add(this.dtpReconcileTo);
@@ -3031,6 +3051,139 @@
             this.panelReconcile.Size = new System.Drawing.Size(904, 80);
             this.panelReconcile.TabIndex = 33;
             // 
+            // lbReconcileResult
+            // 
+            this.lbReconcileResult.AutoSize = true;
+            this.lbReconcileResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbReconcileResult.Location = new System.Drawing.Point(670, 7);
+            this.lbReconcileResult.Name = "lbReconcileResult";
+            this.lbReconcileResult.Size = new System.Drawing.Size(56, 18);
+            this.lbReconcileResult.TabIndex = 29;
+            this.lbReconcileResult.Text = "Result";
+            this.lbReconcileResult.Visible = false;
+            // 
+            // buttonReconcilePrev2
+            // 
+            this.buttonReconcilePrev2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonReconcilePrev2.Location = new System.Drawing.Point(586, 32);
+            this.buttonReconcilePrev2.Name = "buttonReconcilePrev2";
+            this.buttonReconcilePrev2.Size = new System.Drawing.Size(32, 23);
+            this.buttonReconcilePrev2.TabIndex = 28;
+            this.buttonReconcilePrev2.Text = "<<";
+            this.buttonReconcilePrev2.UseVisualStyleBackColor = true;
+            this.buttonReconcilePrev2.Visible = false;
+            this.buttonReconcilePrev2.Click += new System.EventHandler(this.buttonReconcilePrev2_Click);
+            // 
+            // buttonReconcileNext2
+            // 
+            this.buttonReconcileNext2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonReconcileNext2.Location = new System.Drawing.Point(787, 31);
+            this.buttonReconcileNext2.Name = "buttonReconcileNext2";
+            this.buttonReconcileNext2.Size = new System.Drawing.Size(33, 23);
+            this.buttonReconcileNext2.TabIndex = 27;
+            this.buttonReconcileNext2.Text = ">>";
+            this.buttonReconcileNext2.UseVisualStyleBackColor = true;
+            this.buttonReconcileNext2.Visible = false;
+            this.buttonReconcileNext2.Click += new System.EventHandler(this.buttonReconcileNext2_Click);
+            // 
+            // labellbReconcileY
+            // 
+            this.labellbReconcileY.AutoSize = true;
+            this.labellbReconcileY.Location = new System.Drawing.Point(714, 37);
+            this.labellbReconcileY.Name = "labellbReconcileY";
+            this.labellbReconcileY.Size = new System.Drawing.Size(14, 13);
+            this.labellbReconcileY.TabIndex = 26;
+            this.labellbReconcileY.Text = "Y";
+            this.labellbReconcileY.Visible = false;
+            // 
+            // labellbReconcileX
+            // 
+            this.labellbReconcileX.AutoSize = true;
+            this.labellbReconcileX.Location = new System.Drawing.Point(670, 37);
+            this.labellbReconcileX.Name = "labellbReconcileX";
+            this.labellbReconcileX.Size = new System.Drawing.Size(14, 13);
+            this.labellbReconcileX.TabIndex = 25;
+            this.labellbReconcileX.Text = "X";
+            this.labellbReconcileX.Visible = false;
+            // 
+            // lbReconcileToDiff
+            // 
+            this.lbReconcileToDiff.AutoSize = true;
+            this.lbReconcileToDiff.BackColor = System.Drawing.Color.Transparent;
+            this.lbReconcileToDiff.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbReconcileToDiff.ForeColor = System.Drawing.Color.DarkRed;
+            this.lbReconcileToDiff.Location = new System.Drawing.Point(365, 21);
+            this.lbReconcileToDiff.Margin = new System.Windows.Forms.Padding(0);
+            this.lbReconcileToDiff.Name = "lbReconcileToDiff";
+            this.lbReconcileToDiff.Size = new System.Drawing.Size(12, 13);
+            this.lbReconcileToDiff.TabIndex = 24;
+            this.lbReconcileToDiff.Text = "*";
+            this.lbReconcileToDiff.Visible = false;
+            // 
+            // lbReconcileFromDiff
+            // 
+            this.lbReconcileFromDiff.AutoSize = true;
+            this.lbReconcileFromDiff.BackColor = System.Drawing.Color.Transparent;
+            this.lbReconcileFromDiff.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbReconcileFromDiff.ForeColor = System.Drawing.Color.DarkRed;
+            this.lbReconcileFromDiff.Location = new System.Drawing.Point(250, 21);
+            this.lbReconcileFromDiff.Margin = new System.Windows.Forms.Padding(0);
+            this.lbReconcileFromDiff.Name = "lbReconcileFromDiff";
+            this.lbReconcileFromDiff.Size = new System.Drawing.Size(12, 13);
+            this.lbReconcileFromDiff.TabIndex = 23;
+            this.lbReconcileFromDiff.Text = "*";
+            this.lbReconcileFromDiff.Visible = false;
+            // 
+            // lbReconcileLocationDiff
+            // 
+            this.lbReconcileLocationDiff.AutoSize = true;
+            this.lbReconcileLocationDiff.BackColor = System.Drawing.Color.Transparent;
+            this.lbReconcileLocationDiff.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbReconcileLocationDiff.ForeColor = System.Drawing.Color.DarkRed;
+            this.lbReconcileLocationDiff.Location = new System.Drawing.Point(154, 21);
+            this.lbReconcileLocationDiff.Margin = new System.Windows.Forms.Padding(0);
+            this.lbReconcileLocationDiff.Name = "lbReconcileLocationDiff";
+            this.lbReconcileLocationDiff.Size = new System.Drawing.Size(12, 13);
+            this.lbReconcileLocationDiff.TabIndex = 22;
+            this.lbReconcileLocationDiff.Text = "*";
+            this.lbReconcileLocationDiff.Visible = false;
+            // 
+            // lbReconcileDateDiff
+            // 
+            this.lbReconcileDateDiff.AutoSize = true;
+            this.lbReconcileDateDiff.BackColor = System.Drawing.Color.Transparent;
+            this.lbReconcileDateDiff.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbReconcileDateDiff.ForeColor = System.Drawing.Color.DarkRed;
+            this.lbReconcileDateDiff.Location = new System.Drawing.Point(36, 20);
+            this.lbReconcileDateDiff.Margin = new System.Windows.Forms.Padding(0);
+            this.lbReconcileDateDiff.Name = "lbReconcileDateDiff";
+            this.lbReconcileDateDiff.Size = new System.Drawing.Size(12, 13);
+            this.lbReconcileDateDiff.TabIndex = 21;
+            this.lbReconcileDateDiff.Text = "*";
+            this.lbReconcileDateDiff.Visible = false;
+            // 
+            // lbReconcileDescDiff
+            // 
+            this.lbReconcileDescDiff.AutoSize = true;
+            this.lbReconcileDescDiff.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbReconcileDescDiff.ForeColor = System.Drawing.Color.DarkRed;
+            this.lbReconcileDescDiff.Location = new System.Drawing.Point(3, 49);
+            this.lbReconcileDescDiff.Name = "lbReconcileDescDiff";
+            this.lbReconcileDescDiff.Size = new System.Drawing.Size(15, 18);
+            this.lbReconcileDescDiff.TabIndex = 20;
+            this.lbReconcileDescDiff.Text = "*";
+            this.lbReconcileDescDiff.Visible = false;
+            // 
+            // labellbReconcileOf
+            // 
+            this.labellbReconcileOf.AutoSize = true;
+            this.labellbReconcileOf.Location = new System.Drawing.Point(692, 37);
+            this.labellbReconcileOf.Name = "labellbReconcileOf";
+            this.labellbReconcileOf.Size = new System.Drawing.Size(22, 13);
+            this.labellbReconcileOf.TabIndex = 19;
+            this.labellbReconcileOf.Text = " of ";
+            this.labellbReconcileOf.Visible = false;
+            // 
             // buttonReconcileUnlink
             // 
             this.buttonReconcileUnlink.Location = new System.Drawing.Point(776, 3);
@@ -3045,7 +3198,7 @@
             // lbReconcileTouched
             // 
             this.lbReconcileTouched.AutoSize = true;
-            this.lbReconcileTouched.Location = new System.Drawing.Point(551, 27);
+            this.lbReconcileTouched.Location = new System.Drawing.Point(180, 62);
             this.lbReconcileTouched.Name = "lbReconcileTouched";
             this.lbReconcileTouched.Size = new System.Drawing.Size(33, 13);
             this.lbReconcileTouched.TabIndex = 17;
@@ -3058,7 +3211,7 @@
             this.buttonReconcileLink.Name = "buttonReconcileLink";
             this.buttonReconcileLink.Size = new System.Drawing.Size(61, 23);
             this.buttonReconcileLink.TabIndex = 16;
-            this.buttonReconcileLink.Text = "&Link";
+            this.buttonReconcileLink.Text = "&Link >";
             this.buttonReconcileLink.UseVisualStyleBackColor = true;
             this.buttonReconcileLink.Visible = false;
             this.buttonReconcileLink.Click += new System.EventHandler(this.buttonReconcileLink_Click);
@@ -3066,21 +3219,20 @@
             // buttonReconcilePrev
             // 
             this.buttonReconcilePrev.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonReconcilePrev.Location = new System.Drawing.Point(776, 27);
+            this.buttonReconcilePrev.Location = new System.Drawing.Point(624, 32);
             this.buttonReconcilePrev.Name = "buttonReconcilePrev";
-            this.buttonReconcilePrev.Size = new System.Drawing.Size(58, 23);
+            this.buttonReconcilePrev.Size = new System.Drawing.Size(40, 23);
             this.buttonReconcilePrev.TabIndex = 15;
-            this.buttonReconcilePrev.Text = "Previous";
+            this.buttonReconcilePrev.Text = "<";
             this.buttonReconcilePrev.UseVisualStyleBackColor = true;
             this.buttonReconcilePrev.Visible = false;
             this.buttonReconcilePrev.Click += new System.EventHandler(this.buttonReconcilePrev_Click);
             // 
             // lbReconcileGoogleCalId
             // 
-            this.lbReconcileGoogleCalId.AutoSize = true;
-            this.lbReconcileGoogleCalId.Location = new System.Drawing.Point(36, 61);
+            this.lbReconcileGoogleCalId.Location = new System.Drawing.Point(343, 61);
             this.lbReconcileGoogleCalId.Name = "lbReconcileGoogleCalId";
-            this.lbReconcileGoogleCalId.Size = new System.Drawing.Size(48, 13);
+            this.lbReconcileGoogleCalId.Size = new System.Drawing.Size(150, 13);
             this.lbReconcileGoogleCalId.TabIndex = 14;
             this.lbReconcileGoogleCalId.Text = "googleId";
             this.lbReconcileGoogleCalId.Visible = false;
@@ -3088,8 +3240,8 @@
             // lbReconcileCreated
             // 
             this.lbReconcileCreated.AutoSize = true;
-            this.lbReconcileCreated.BackColor = System.Drawing.Color.White;
-            this.lbReconcileCreated.Location = new System.Drawing.Point(590, 8);
+            this.lbReconcileCreated.BackColor = System.Drawing.Color.Transparent;
+            this.lbReconcileCreated.Location = new System.Drawing.Point(22, 64);
             this.lbReconcileCreated.Name = "lbReconcileCreated";
             this.lbReconcileCreated.Size = new System.Drawing.Size(41, 13);
             this.lbReconcileCreated.TabIndex = 13;
@@ -3099,44 +3251,31 @@
             // lbReconcileCreatedTitle
             // 
             this.lbReconcileCreatedTitle.AutoSize = true;
-            this.lbReconcileCreatedTitle.Location = new System.Drawing.Point(566, 7);
+            this.lbReconcileCreatedTitle.Location = new System.Drawing.Point(3, 64);
             this.lbReconcileCreatedTitle.Name = "lbReconcileCreatedTitle";
             this.lbReconcileCreatedTitle.Size = new System.Drawing.Size(18, 13);
             this.lbReconcileCreatedTitle.TabIndex = 12;
             this.lbReconcileCreatedTitle.Text = "by";
             this.lbReconcileCreatedTitle.Visible = false;
             // 
-            // lbReconcileStatus
-            // 
-            this.lbReconcileStatus.AutoSize = true;
-            this.lbReconcileStatus.BackColor = System.Drawing.Color.White;
-            this.lbReconcileStatus.Location = new System.Drawing.Point(135, 7);
-            this.lbReconcileStatus.Name = "lbReconcileStatus";
-            this.lbReconcileStatus.Size = new System.Drawing.Size(37, 13);
-            this.lbReconcileStatus.TabIndex = 11;
-            this.lbReconcileStatus.Text = "Status";
-            this.lbReconcileStatus.Visible = false;
-            // 
             // lbReconcilePeriod
             // 
             this.lbReconcilePeriod.AutoSize = true;
-            this.lbReconcilePeriod.Location = new System.Drawing.Point(495, 62);
+            this.lbReconcilePeriod.Location = new System.Drawing.Point(699, 61);
             this.lbReconcilePeriod.Name = "lbReconcilePeriod";
-            this.lbReconcilePeriod.Size = new System.Drawing.Size(109, 13);
+            this.lbReconcilePeriod.Size = new System.Drawing.Size(10, 13);
             this.lbReconcilePeriod.TabIndex = 10;
-            this.lbReconcilePeriod.Text = "Reconciliation period:";
+            this.lbReconcilePeriod.Text = "-";
             this.lbReconcilePeriod.Visible = false;
             // 
             // dtpReconcileFrom
             // 
             this.dtpReconcileFrom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpReconcileFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpReconcileFrom.Location = new System.Drawing.Point(606, 57);
+            this.dtpReconcileFrom.Location = new System.Drawing.Point(586, 57);
             this.dtpReconcileFrom.Name = "dtpReconcileFrom";
             this.dtpReconcileFrom.Size = new System.Drawing.Size(105, 20);
             this.dtpReconcileFrom.TabIndex = 9;
-            this.dtpReconcileFrom.ValueChanged += new System.EventHandler(this.dtpReconcileFrom_ValueChanged);
-            this.dtpReconcileFrom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dtpReconcileFrom_KeyPress);
             // 
             // dtpReconcileTo
             // 
@@ -3146,13 +3285,12 @@
             this.dtpReconcileTo.Name = "dtpReconcileTo";
             this.dtpReconcileTo.Size = new System.Drawing.Size(103, 20);
             this.dtpReconcileTo.TabIndex = 8;
-            this.dtpReconcileTo.ValueChanged += new System.EventHandler(this.dtpReconcileTo_ValueChanged);
             // 
             // lbReconcileLocation
             // 
             this.lbReconcileLocation.AutoSize = true;
             this.lbReconcileLocation.BackColor = System.Drawing.Color.White;
-            this.lbReconcileLocation.Location = new System.Drawing.Point(466, 7);
+            this.lbReconcileLocation.Location = new System.Drawing.Point(154, 7);
             this.lbReconcileLocation.Name = "lbReconcileLocation";
             this.lbReconcileLocation.Size = new System.Drawing.Size(39, 13);
             this.lbReconcileLocation.TabIndex = 7;
@@ -3185,7 +3323,7 @@
             // 
             this.lbReconcileDescription.AutoSize = true;
             this.lbReconcileDescription.BackColor = System.Drawing.Color.White;
-            this.lbReconcileDescription.Location = new System.Drawing.Point(3, 32);
+            this.lbReconcileDescription.Location = new System.Drawing.Point(3, 36);
             this.lbReconcileDescription.Name = "lbReconcileDescription";
             this.lbReconcileDescription.Size = new System.Drawing.Size(60, 13);
             this.lbReconcileDescription.TabIndex = 4;
@@ -3223,19 +3361,18 @@
             this.buttonReconcileStart.Name = "buttonReconcileStart";
             this.buttonReconcileStart.Size = new System.Drawing.Size(61, 23);
             this.buttonReconcileStart.TabIndex = 1;
-            this.buttonReconcileStart.Text = "Start";
+            this.buttonReconcileStart.Text = "Import";
             this.buttonReconcileStart.UseVisualStyleBackColor = true;
-            this.buttonReconcileStart.Visible = false;
             this.buttonReconcileStart.Click += new System.EventHandler(this.buttonReconcileStart_Click);
             // 
             // buttonReconcileNext
             // 
             this.buttonReconcileNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonReconcileNext.Location = new System.Drawing.Point(706, 27);
+            this.buttonReconcileNext.Location = new System.Drawing.Point(744, 32);
             this.buttonReconcileNext.Name = "buttonReconcileNext";
-            this.buttonReconcileNext.Size = new System.Drawing.Size(63, 23);
+            this.buttonReconcileNext.Size = new System.Drawing.Size(37, 23);
             this.buttonReconcileNext.TabIndex = 0;
-            this.buttonReconcileNext.Text = "Next";
+            this.buttonReconcileNext.Text = ">";
             this.buttonReconcileNext.UseVisualStyleBackColor = true;
             this.buttonReconcileNext.Visible = false;
             this.buttonReconcileNext.Click += new System.EventHandler(this.buttonReconcileNext_Click);
@@ -6079,13 +6216,23 @@
         private System.Windows.Forms.DateTimePicker dtpReconcileTo;
         private System.Windows.Forms.Label lbReconcileCreated;
         private System.Windows.Forms.Label lbReconcileCreatedTitle;
-        private System.Windows.Forms.Label lbReconcileStatus;
         private System.Windows.Forms.Label lbReconcileGoogleCalId;
         private System.Windows.Forms.Button buttonReconcilePrev;
         private System.Windows.Forms.Button buttonReconcileLink;
         private System.Windows.Forms.Label labelLessonLinked;
         private System.Windows.Forms.Label lbReconcileTouched;
         private System.Windows.Forms.Button buttonReconcileUnlink;
+        private System.Windows.Forms.Label lbReconcileToDiff;
+        private System.Windows.Forms.Label lbReconcileFromDiff;
+        private System.Windows.Forms.Label lbReconcileLocationDiff;
+        private System.Windows.Forms.Label lbReconcileDateDiff;
+        private System.Windows.Forms.Label lbReconcileDescDiff;
+        private System.Windows.Forms.Label labellbReconcileOf;
+        private System.Windows.Forms.Label labellbReconcileY;
+        private System.Windows.Forms.Label labellbReconcileX;
+        private System.Windows.Forms.Button buttonReconcilePrev2;
+        private System.Windows.Forms.Button buttonReconcileNext2;
+        private System.Windows.Forms.Label lbReconcileResult;
     }
 }
 

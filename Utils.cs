@@ -298,6 +298,9 @@ namespace RecordKeeper
         //      If there is "/", anything before is a comma-separated list of students
         //                       anything after is a comma-separated list of teachers
         // 
+        // Variations:
+        //     we allow using "-" intead of "-;
+        //     we allow using second "/" or "-" (but the same) instead of ";"
 
         private void ParseEventDescription(
             string desc, 
@@ -326,10 +329,34 @@ namespace RecordKeeper
                 desc = (colon + 1 < desc.Length - 1 ? desc.Substring(colon + 1) : "");
             }
 
-            // Teachers after "/"
+            // Teachers after "/" or "-"
             int slash = desc.IndexOf("/");
             if (slash < 0)
-                slash = desc.IndexOf("-");
+            {
+                int minus = desc.IndexOf("-");
+                if (minus >= 0 && minus < desc.Length - 1 && semicolon < 0)
+                {
+                    // If we have one more minus, assume comment after 2nd
+                    int minus2 = desc.IndexOf("-", minus+1);
+                    if (minus2 >= 0)
+                    {
+                        comment = desc.Substring(minus2 + 1);
+                        desc = desc.Substring(minus+1, minus2);
+                    }
+
+                    slash = minus;
+                }
+            }
+            else
+            {
+                // If we have one more slash, assume comment after 2nd
+                int slash2 = desc.IndexOf("-", slash + 1);
+                if (slash2 >= 0)
+                {
+                    comment = desc.Substring(slash2 + 1);
+                    desc = desc.Substring(slash + 1, slash2);
+                }
+            }
             if (slash >= 0 && slash < desc.Length - 1)
             {
                 string ts = desc.Substring(slash + 1);
@@ -340,6 +367,26 @@ namespace RecordKeeper
                 teachers = new string[0];
 
             students = desc.Split(',');
+        }
+
+        bool AreRoomsEquivalent(string gRoom, string lRoom)
+        {
+            if (IsStringEmpty(gRoom))
+                return IsStringEmpty(lRoom);
+            else if (IsStringEmpty(lRoom))
+                return false;
+
+            return gRoom.Substring(0, 1).ToLower() == lRoom.Substring(0, 1).ToLower();
+        }
+
+        bool AreStringsEquivalent(string gs, string ls)
+        {
+            if (IsStringEmpty(gs))
+                return IsStringEmpty(ls);
+            else if (IsStringEmpty(ls))
+                return false;
+
+            return gs.ToLower() == ls.ToLower();
         }
         #endregion
 

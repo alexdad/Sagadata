@@ -433,7 +433,7 @@ namespace RecordKeeper
                                             != DialogResult.Yes)
                     return false;
                 else
-                    m_editSavingTrap = false; 
+                    m_editSavingTrap = false;
             }
 
             return true;
@@ -983,7 +983,7 @@ namespace RecordKeeper
 
         void SetStdStdPriceLabel(int index, string price)
         {
-            switch(index)
+            switch (index)
             {
                 case 1:
                     lbStudStdProgPrice1.Text = price;
@@ -1371,12 +1371,12 @@ namespace RecordKeeper
         private void buttonReconcileStart_Click(object sender, EventArgs e)
         {
             m_OperationalEvents = GCal.Ops.GetOperationalEvents(
-                DayStart(this.dtpReconcileFrom.Value), 
+                DayStart(this.dtpReconcileFrom.Value),
                 DayEnd(this.dtpReconcileTo.Value)).ToArray();
 
             m_curOperationalevent = 0;
-            if (SetCurrentOperationalEvent())
-                buttonReconcileNext_Click(null, null);
+            SetCurrentOperationalEvent();
+            MakeReconcileVisible();
         }
         private void buttonReconcileLink_Click(object sender, EventArgs e)
         {
@@ -1397,13 +1397,36 @@ namespace RecordKeeper
             buttonGlobEditAccept_Click(null, null);
         }
 
-        private void buttonReconcileNext_Click(object sender, EventArgs e)
+        private void buttonReconcileNext2_Click(object sender, EventArgs e)
         {
             if (m_OperationalEvents == null)
                 return;
             while (m_curOperationalevent < m_OperationalEvents.Length - 1)
             {
                 m_curOperationalevent++;
+                if (!SetCurrentOperationalEvent())
+                    break;
+            }
+        }
+
+        private void buttonReconcileNext_Click(object sender, EventArgs e)
+        {
+            if (m_OperationalEvents == null)
+                return;
+            if (m_curOperationalevent < m_OperationalEvents.Length - 1)
+            {
+                m_curOperationalevent++;
+                SetCurrentOperationalEvent();
+            }
+        }
+
+        private void buttonReconcilePrev2_Click(object sender, EventArgs e)
+        {
+            if (m_OperationalEvents == null)
+                return;
+            while (m_curOperationalevent >= 1)
+            {
+                m_curOperationalevent--;
                 if (!SetCurrentOperationalEvent())
                     break;
             }
@@ -1426,17 +1449,8 @@ namespace RecordKeeper
             Lesson l = lessonList.Current as Lesson;
             if (l == null)
                 return;
+
             FillLessonFromCalendar(l);
-            /*
-            l.Day = lbReconcileDate.Text;
-            l.Start = lbReconcileFrom.Text;
-            l.End = lbReconcileTo.Text;
-            l.Comments = lbReconcileDescription.Text;
-            l.GoogleId = lbReconcileGoogleCalId.Text;
-            l.Room = GetComboBoxIndexByInitial(cbLessonRoom, lbReconcileLocation.Text);
-            // TODO: add state, teacher1, student1
-            // TODO: find why start is wrong in cb 
-            */
             buttonGlobEditAccept_Click(null, null);
             EditLessonDetailsChanged();
         }
@@ -1445,25 +1459,18 @@ namespace RecordKeeper
             Clipboard.SetText(lbReconcileDescription.Text);
         }
 
-        private void dtpReconcileFrom_KeyPress(object sender, KeyPressEventArgs e)
+        private bool IsLabelDiff(Control c)
         {
-            MakeReconcileVisible();
+            Label l = c as Label;
+            return ((l != null) && l.Text == "*");
         }
-
-        private void dtpReconcileTo_ValueChanged(object sender, EventArgs e)
-        {
-            MakeReconcileVisible();
-        }
-
-        private void dtpReconcileFrom_ValueChanged(object sender, EventArgs e)
-        {
-            MakeReconcileVisible();
-        }
-
         private void MakeReconcileVisible()
         {
             foreach (Control c in panelReconcile.Controls)
-                c.Visible = true;
+            {
+                if (!IsLabelDiff(c))
+                    c.Visible = true;
+            }
         }
 
         #endregion

@@ -36,6 +36,13 @@ namespace RecordKeeper
         Cancelled,
         Done
     }
+    public enum MatchingState
+    {
+        Linked,
+        Match,
+        Similar,
+        NoMatch
+    }
     public enum Validations
     {
         Ignore,

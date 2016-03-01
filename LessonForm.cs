@@ -71,8 +71,13 @@ namespace RecordKeeper
 
         private double CalculateOverallSimularity()
         {
-            if (Linked && SuspectedLesson.GoogleId == GoogleEvent.Id)
-                return 1.0;
+            if (Linked)
+            {
+                if (SuspectedLesson.GoogleId == GoogleEvent.Id)
+                    return 1.0;
+                else
+                    return 0.0;
+            }
 
             if (SimilarityStart > 0.5 &&
                 SimilarityTeacher > 0.5 &&
@@ -94,10 +99,8 @@ namespace RecordKeeper
                 count++;
             if (SimilarityStudent > 0.5)
                 count++;
-            if (SimilarityStatus > 0.5)
-                count++;
 
-            return (double)count / 6.0; 
+            return (double)count / 5.0; 
         }
 
         private double SimilarytyPlaces(string lRoom, string gLocation)
@@ -395,6 +398,9 @@ namespace RecordKeeper
 
             GCal.CalEvent ce = m_OperationalEvents[m_curOperationalevent];
 
+            labellbReconcileX.Text = (m_curOperationalevent+1).ToString();
+            labellbReconcileY.Text = m_OperationalEvents.Length.ToString();
+
             lbReconcileDate.Text = ce.Start.ToShortDateString();
             lbReconcileFrom.Text = ce.Start.ToShortTimeString();
             lbReconcileTo.Text = ce.End.ToShortTimeString();
@@ -404,11 +410,78 @@ namespace RecordKeeper
             lbReconcileGoogleCalId.Text = (ce.Id == null ? "" : ce.Id);
             lbReconcileTouched.Text = ce.LastTouched;
 
-            return FindClosestLesson();
+            double similarity = -1.0;
+            bool found = FindClosestLesson(out similarity);
+            Lesson l = lessonList.Current as Lesson;
+            if (found && l != null)
+            {
+                lbReconcileLocationDiff.Visible = !AreRoomsEquivalent(
+                                                    lbReconcileLocation.Text, l.Room);
+                lbReconcileDateDiff.Visible = !AreStringsEquivalent(
+                                                    lbReconcileDate.Text, l.Day);
+                lbReconcileFromDiff.Visible = !AreStringsEquivalent(
+                                                    lbReconcileFrom.Text, l.Start);
+                lbReconcileToDiff.Visible = !AreStringsEquivalent(
+                                                    lbReconcileTo.Text, l.End);
+                lbReconcileDescDiff.Visible = !AreStringsEquivalent(
+                                                    lbReconcileDescription.Text, l.Comments); ;
+            }
+            else
+            {
+                lbReconcileLocationDiff.Visible = false;
+                lbReconcileDateDiff.Visible = false;
+                lbReconcileFromDiff.Visible = false;
+                lbReconcileToDiff.Visible = false;
+                lbReconcileDescDiff.Visible = false;
+            };
+
+            MatchingState ms = MatchingState.NoMatch;
+            if (found)
+            {
+                if (l.GoogleId == ce.Id)
+                    ms = MatchingState.Linked;
+                else if (similarity == -1.0)
+                    ms = MatchingState.NoMatch;
+                else if (similarity > 0.9)
+                    ms = MatchingState.Match;
+            }
+            ShowMatching(ms, similarity);
+            return found;
         }
 
-        public bool FindClosestLesson()
+        public void ShowMatching(MatchingState ms, double similarity)
         {
+            switch(ms)
+            {
+                case MatchingState.Linked:
+                    lbReconcileResult.Text = "Linked";
+                    lbReconcileResult.BackColor = Color.Blue;
+                    lbReconcileResult.ForeColor = Color.Yellow;
+                    break;
+                case MatchingState.Match:
+                    lbReconcileResult.Text = "Match";
+                    lbReconcileResult.BackColor = Color.DarkGreen;
+                    lbReconcileResult.ForeColor = Color.Yellow;
+                    break;
+                case MatchingState.NoMatch:
+                    lbReconcileResult.Text = "No match";
+                    lbReconcileResult.BackColor = Color.Red;
+                    lbReconcileResult.ForeColor = Color.Yellow;
+                    break;
+                case MatchingState.Similar:
+                    lbReconcileResult.Text = "Similar";
+                    lbReconcileResult.BackColor = Color.FromArgb(0, (int)(128 * (2.0 - similarity)), 0);
+                    lbReconcileResult.ForeColor = ComplementColor(lbReconcileResult.BackColor);
+                    break;
+                default:
+                    throw new Exception("Bad params");
+            }
+
+        }
+        public bool FindClosestLesson(out double similarity)
+        {
+            similarity = -1.0;
+
             if (m_OperationalEvents == null ||
                 m_curOperationalevent < 0 ||
                 m_curOperationalevent >= m_OperationalEvents.Length)
@@ -435,13 +508,14 @@ namespace RecordKeeper
                     best = oe;
             }
 
-            int i = 0 ;
+            int i = 0;
             foreach(Lesson l in lessonList)
             {
                 if (l == best.SuspectedLesson)
                 {
                     lessonList.Position = i;
-                    return best.Linked;
+                    similarity = best.OverallSimularity;
+                    return true;
                 }
                 i++;
             }
