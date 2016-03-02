@@ -302,7 +302,7 @@ namespace RecordKeeper
         //     we allow using "-" intead of "-;
         //     we allow using second "/" or "-" (but the same) instead of ";"
 
-        private void ParseEventDescription(
+        public static void ParseEventDescription(
             string desc, 
             out string title,
             out string[] students, 
@@ -332,31 +332,22 @@ namespace RecordKeeper
             // Teachers after "/" or "-"
             int slash = desc.IndexOf("/");
             if (slash < 0)
-            {
-                int minus = desc.IndexOf("-");
-                if (minus >= 0 && minus < desc.Length - 1 && semicolon < 0)
-                {
-                    // If we have one more minus, assume comment after 2nd
-                    int minus2 = desc.IndexOf("-", minus+1);
-                    if (minus2 >= 0)
-                    {
-                        comment = desc.Substring(minus2 + 1);
-                        desc = desc.Substring(minus+1, minus2);
-                    }
+                slash = desc.IndexOf("-");
 
-                    slash = minus;
-                }
-            }
-            else
+            // If we have one more slash or minus, assume comment after 2nd
+            int slash2 = desc.IndexOf("/", slash + 1);
+            int slash2m = desc.IndexOf("-", slash + 1);
+            if (slash2 < 0)
+                slash2 = slash2m;
+            else if (slash2m >= 0 && slash2m < slash2)
+                slash2 = slash2m;
+
+            if (slash2 >= 0)
             {
-                // If we have one more slash, assume comment after 2nd
-                int slash2 = desc.IndexOf("-", slash + 1);
-                if (slash2 >= 0)
-                {
-                    comment = desc.Substring(slash2 + 1);
-                    desc = desc.Substring(slash + 1, slash2);
-                }
+                comment = desc.Substring(slash2 + 1);
+                desc = desc.Substring(0, slash2);
             }
+
             if (slash >= 0 && slash < desc.Length - 1)
             {
                 string ts = desc.Substring(slash + 1);

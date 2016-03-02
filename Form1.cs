@@ -1368,7 +1368,7 @@ namespace RecordKeeper
         }
 
 
-        private void buttonReconcileStart_Click(object sender, EventArgs e)
+        private void buttonReconcileImport_Click(object sender, EventArgs e)
         {
             m_OperationalEvents = GCal.Ops.GetOperationalEvents(
                 DayStart(this.dtpReconcileFrom.Value),
@@ -1394,6 +1394,7 @@ namespace RecordKeeper
             if (l == null)
                 return;
             l.GoogleId = "";
+            ShowMatching(MatchingState.Unknown, 0.0);
             buttonGlobEditAccept_Click(null, null);
         }
 
@@ -1731,5 +1732,9 @@ namespace RecordKeeper
         }
         #endregion
 
+        private void buttonReconcileStart_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -38,6 +38,7 @@ namespace RecordKeeper
     }
     public enum MatchingState
     {
+        Unknown,
         Linked,
         Match,
         Similar,

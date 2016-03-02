@@ -298,7 +298,7 @@
             this.lbReconcileDescription = new System.Windows.Forms.Label();
             this.lbReconcileDate = new System.Windows.Forms.Label();
             this.buttonReconcileCreate = new System.Windows.Forms.Button();
-            this.buttonReconcileStart = new System.Windows.Forms.Button();
+            this.buttonReconcileImport = new System.Windows.Forms.Button();
             this.buttonReconcileNext = new System.Windows.Forms.Button();
             this.lbLessonCancellation = new System.Windows.Forms.Label();
             this.tbLessonPrice = new System.Windows.Forms.TextBox();
@@ -515,6 +515,7 @@
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.lbFutureOpName = new System.Windows.Forms.Label();
             this.clientList = new System.Windows.Forms.BindingSource(this.components);
+            this.lbReconcileSimilarity = new System.Windows.Forms.Label();
             this.menuStripGlobalOps.SuspendLayout();
             this.panelGlobIndicators.SuspendLayout();
             this.ctxMenuLesson.SuspendLayout();
@@ -3017,6 +3018,7 @@
             // panelReconcile
             // 
             this.panelReconcile.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.panelReconcile.Controls.Add(this.lbReconcileSimilarity);
             this.panelReconcile.Controls.Add(this.lbReconcileResult);
             this.panelReconcile.Controls.Add(this.buttonReconcilePrev2);
             this.panelReconcile.Controls.Add(this.buttonReconcileNext2);
@@ -3044,7 +3046,7 @@
             this.panelReconcile.Controls.Add(this.lbReconcileDescription);
             this.panelReconcile.Controls.Add(this.lbReconcileDate);
             this.panelReconcile.Controls.Add(this.buttonReconcileCreate);
-            this.panelReconcile.Controls.Add(this.buttonReconcileStart);
+            this.panelReconcile.Controls.Add(this.buttonReconcileImport);
             this.panelReconcile.Controls.Add(this.buttonReconcileNext);
             this.panelReconcile.Location = new System.Drawing.Point(9, 250);
             this.panelReconcile.Name = "panelReconcile";
@@ -3354,16 +3356,16 @@
             this.buttonReconcileCreate.Visible = false;
             this.buttonReconcileCreate.Click += new System.EventHandler(this.buttonReconcileCreate_Click);
             // 
-            // buttonReconcileStart
+            // buttonReconcileImport
             // 
-            this.buttonReconcileStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonReconcileStart.Location = new System.Drawing.Point(840, 54);
-            this.buttonReconcileStart.Name = "buttonReconcileStart";
-            this.buttonReconcileStart.Size = new System.Drawing.Size(61, 23);
-            this.buttonReconcileStart.TabIndex = 1;
-            this.buttonReconcileStart.Text = "Import";
-            this.buttonReconcileStart.UseVisualStyleBackColor = true;
-            this.buttonReconcileStart.Click += new System.EventHandler(this.buttonReconcileStart_Click);
+            this.buttonReconcileImport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonReconcileImport.Location = new System.Drawing.Point(840, 54);
+            this.buttonReconcileImport.Name = "buttonReconcileImport";
+            this.buttonReconcileImport.Size = new System.Drawing.Size(61, 23);
+            this.buttonReconcileImport.TabIndex = 1;
+            this.buttonReconcileImport.Text = "Import";
+            this.buttonReconcileImport.UseVisualStyleBackColor = true;
+            this.buttonReconcileImport.Click += new System.EventHandler(this.buttonReconcileImport_Click);
             // 
             // buttonReconcileNext
             // 
@@ -5598,6 +5600,16 @@
             // 
             this.clientList.DataSource = typeof(RecordKeeper.Client);
             // 
+            // lbReconcileSimilarity
+            // 
+            this.lbReconcileSimilarity.AutoSize = true;
+            this.lbReconcileSimilarity.Location = new System.Drawing.Point(531, 61);
+            this.lbReconcileSimilarity.Name = "lbReconcileSimilarity";
+            this.lbReconcileSimilarity.Size = new System.Drawing.Size(24, 13);
+            this.lbReconcileSimilarity.TabIndex = 30;
+            this.lbReconcileSimilarity.Text = "Sim";
+            this.lbReconcileSimilarity.Visible = false;
+            // 
             // FormGlob
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -6209,7 +6221,7 @@
         private System.Windows.Forms.Label lbReconcileDescription;
         private System.Windows.Forms.Label lbReconcileDate;
         private System.Windows.Forms.Button buttonReconcileCreate;
-        private System.Windows.Forms.Button buttonReconcileStart;
+        private System.Windows.Forms.Button buttonReconcileImport;
         private System.Windows.Forms.Button buttonReconcileNext;
         private System.Windows.Forms.Label lbReconcilePeriod;
         private System.Windows.Forms.DateTimePicker dtpReconcileFrom;
@@ -6233,6 +6245,7 @@
         private System.Windows.Forms.Button buttonReconcilePrev2;
         private System.Windows.Forms.Button buttonReconcileNext2;
         private System.Windows.Forms.Label lbReconcileResult;
+        private System.Windows.Forms.Label lbReconcileSimilarity;
     }
 }
 
