@@ -461,7 +461,7 @@ namespace RecordKeeper
             if (space < 0)
                 return s.Trim();
 
-            string res = s.Trim().Substring(0, space) + "_"; 
+            string res = s.Trim().Substring(0, space) + " "; 
 
             space = s.Trim().LastIndexOf(" ");
             res += s.Trim().Substring(space+1, 1);
