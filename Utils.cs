@@ -15,8 +15,12 @@ namespace RecordKeeper
     {
         public static Color AttentionColor = Color.FromArgb(255, 127, 39);
         public static Color RelaxationColor = Color.FromArgb(212, 255, 236);
+        private static string[] m_jokes = {
+            "coffee?", "tea?", "lemonade?", "movie?", "sorry...", "patience",
+            "it takes time...", "open a bug", "alas...", "cheer", "hang tight"};
 
         private Label m_labelWorking;
+        private Random m_rnd;
 
         #region "Time-related"
         public static DateTime DayStart(DateTime d)
@@ -183,7 +187,8 @@ namespace RecordKeeper
             int i = 0;
             foreach(Room r in roomList)
             {
-                if (r.Name.Trim().ToLower() == room.Trim().ToLower())
+                if (!IsStringEmpty(room) &&
+                    r.Name.Trim().ToLower() == room.Trim().ToLower())
                     return i;
                 else
                     i++;
@@ -281,7 +286,7 @@ namespace RecordKeeper
             m_labelWorking.Name = "labelWorking";
             m_labelWorking.Size = new System.Drawing.Size(533, 42);
             m_labelWorking.TabIndex = 14;
-            m_labelWorking.Text = "Working... coffee?";
+            m_labelWorking.Text = m_jokes[ (int) ((m_jokes.Length-1) * m_rnd.NextDouble())];
             m_labelWorking.Parent = this;
             m_labelWorking.Visible = false;
         }

@@ -92,7 +92,8 @@ namespace RecordKeeper
 
         public void CalculateSimilarities()
         {
-            Linked = !FormGlob.IsStringEmpty(SuspectedLesson.GoogleId);
+            Linked = !FormGlob.IsStringEmpty(SuspectedLesson.GoogleId) &&
+                      (SuspectedLesson.GoogleId == GoogleEvent.Id);
 
             SimilarityDuration = SimilarityDurations(
                 SuspectedLesson.DateTimeStart, 
@@ -127,13 +128,13 @@ namespace RecordKeeper
 
         private double CalculateOverallSimularity()
         {
-            if (Linked)
-            {
-                if (SuspectedLesson.GoogleId == GoogleEvent.Id)
-                    return 1.0;
-                else
-                    return 0.0;
-            }
+            if (!FormGlob.IsStringEmpty(SuspectedLesson.GoogleId) &&
+                SuspectedLesson.GoogleId != GoogleEvent.Id)
+                return 0.0;
+
+            if (SuspectedLesson.DateTimeStart.Date !=
+                GoogleEvent.Start.Date)
+                return 0.0;
 
             if (SimilarityStart > 0.5 &&
                 SimilarityTeacher > 0.5 &&
@@ -162,7 +163,7 @@ namespace RecordKeeper
         private double SimilarytyPlaces(string lRoom, string gLocation)
         {
             if (FormGlob.IsStringEmpty(lRoom) || FormGlob.IsStringEmpty(gLocation))
-                return -1;
+                return 0;
             if (gLocation.Substring(0, 1).ToLower() == lRoom.Substring(0, 1).ToLower())
                 return 1;
             return 0;
@@ -498,6 +499,8 @@ namespace RecordKeeper
             {
                 if (l.GoogleId == ce.Id)
                     ms = MatchingState.Linked;
+                else if (!IsStringEmpty(l.GoogleId) && l.GoogleId != ce.Id)
+                    ms = MatchingState.LinkedToOther;
                 else if (similarity == -1.0)
                     ms = MatchingState.NoMatch;
                 else if (similarity > 0.9)
@@ -533,6 +536,11 @@ namespace RecordKeeper
                     lbReconcileResult.BackColor = Color.Red;
                     lbReconcileResult.ForeColor = Color.Yellow;
                     break;
+                case MatchingState.LinkedToOther:
+                    lbReconcileResult.Text = "OtherLinked";
+                    lbReconcileResult.BackColor = Color.Red;
+                    lbReconcileResult.ForeColor = Color.Yellow;
+                    break;
                 case MatchingState.Similar:
                     lbReconcileResult.Text = "Similar";
                     lbReconcileResult.BackColor = Color.FromArgb(0, (int)(127 * (2.0 - similarity)), 0);
@@ -560,8 +568,9 @@ namespace RecordKeeper
             foreach (Lesson l in lessonList)
             {
                 OperEvent oev = oe.SetLesson(l);
+
                 oev.CalculateSimilarities();
-                if (oev.OverallSimularity > 0.3)
+                if (oev.Linked || oev.OverallSimularity > 0.3)
                     candidates.Add(oev);
             }
 
@@ -571,7 +580,7 @@ namespace RecordKeeper
             OperEvent best = candidates.First();
             foreach (OperEvent oev in candidates)
             {
-                if (oev.OverallSimularity > best.OverallSimularity)
+                if (oev.Linked || oev.OverallSimularity > best.OverallSimularity)
                     best = oev;
             }
 

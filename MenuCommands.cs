@@ -294,6 +294,8 @@ namespace RecordKeeper
                 CurrentType.WriteRecordsFile();
             }
             Modified = false;
+            if (m_assignedListsChanged)
+                AssignListsToComboBoxes();
             m_assignedListsChanged = false;
             SetMode(was);
 

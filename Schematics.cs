@@ -42,7 +42,8 @@ namespace RecordKeeper
         Linked,
         Match,
         Similar,
-        NoMatch
+        NoMatch,
+        LinkedToOther
     }
     public enum Validations
     {

@@ -163,6 +163,7 @@ namespace RecordKeeper
             DateTime dtn = dts.AddMinutes(15);
             SlotInTicks = (dtn - dts).Ticks;
             m_chosenDate = DateTime.Now;
+            m_rnd = new Random(DateTime.Now.Second);
         }
 
         private void RecordsToFormConst1()
@@ -1459,8 +1460,8 @@ namespace RecordKeeper
                 return;
 
             FillLessonFromCalendar(l);
+            ShowMatching(MatchingState.Linked, 0.0);
             buttonGlobEditAccept_Click(null, null);
-            EditLessonDetailsChanged();
         }
         private void lbReconcileDescription_Click(object sender, EventArgs e)
         {
