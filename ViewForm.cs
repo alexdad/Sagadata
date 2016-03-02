@@ -834,15 +834,6 @@ namespace RecordKeeper
             }
         }
 
-        private void menuItemViewLessonCancel_Click(object sender, EventArgs e)
-        {
-            Lesson l = GetLessonFromSender(sender);
-            l.State = "Cancelled";
-            l.CancellationTime = DateTime.Now.ToString();
-            Modified = true;
-            ShowView();
-        }
-
         private void MoveLesson(object sender, int days)
         {
             InitializeMove();
@@ -870,36 +861,31 @@ namespace RecordKeeper
             PlanShowDataIfReady();
         }
 
-        private void menuItemViewLessonMove0_Click(object sender, EventArgs e)
+        private void MoveLesson(Lesson l, int days)
         {
-            MoveLesson(sender, 1);
+            InitializeMove();
+            dtpPlan.Value = l.DateTimeStart.AddDays(days);
+            //cbPlanDuration.SelectedIndex = l.SlotsNumber;
+            tbPlanComment.Text = l.Comments;
+            SetComboByValue(cbPlanProgram, l.Program);
+            SetComboByValue(cbPlanDuration, l.DurationString);
+            SetComboByValue(cbPlanTeacher, l.Teacher1);
+            SetComboByValue(cbPlanStud1, l.Student1);
+
+            PopulateTeacherVacation(l.Teacher1, lbPlanTeachVacation);
+            PopulateStudentPossibleSchedule(l.Student1, lbPlanStudSchedule1);
+            if (!IsStringEmpty(l.Student2))
+                PopulateStudentPossibleSchedule(l.Student2, lbPlanStudSchedule2);
+            if (!IsStringEmpty(l.Student3))
+                PopulateStudentPossibleSchedule(l.Student3, lbPlanStudSchedule3);
+            if (!IsStringEmpty(l.Student4))
+                PopulateStudentPossibleSchedule(l.Student4, lbPlanStudSchedule4);
+
+            m_lessonInMove = l;
+            tabControlOps.SelectedIndex = (int)TabControlOps.Plan;
+            PlanShowDataIfReady();
         }
 
-        private void menuItemViewLessonMove1_Click(object sender, EventArgs e)
-        {
-            MoveLesson(sender, 7);
-        }
-
-        private void menuItemViewLessonMove2_Click(object sender, EventArgs e)
-        {
-            MoveLesson(sender, 14);
-        }
-
-        private void menuItemViewLessonDone_Click(object sender, EventArgs e)
-        {
-            Lesson l = GetLessonFromSender(sender);
-            l.State = "Done";
-            Modified = true;
-            ShowView();
-        }
-
-        private void menuItemViewLessonPlanned_Click(object sender, EventArgs e)
-        {
-            Lesson l = GetLessonFromSender(sender);
-            l.State = "Planned";
-            Modified = true;
-            ShowView();
-        }
         private void redToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Lesson l = GetLessonFromSender2(sender);
@@ -953,7 +939,64 @@ namespace RecordKeeper
             Modified = true;
             ShowView();
         }
-        
+
+        private void sameWeekToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lesson l = GetLessonFromSender2(sender);
+            MoveLesson(l, 0);
+        }
+
+        private void weekForwardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lesson l = GetLessonFromSender2(sender);
+            MoveLesson(l, 7);
+        }
+
+        private void twoWeeksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lesson l = GetLessonFromSender2(sender);
+            MoveLesson(l, 14);
+        }
+
+        private void weekBackToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lesson l = GetLessonFromSender2(sender);
+            MoveLesson(l, -7);
+        }
+
+        private void twoWeeksBackToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lesson l = GetLessonFromSender2(sender);
+            MoveLesson(l, -14);
+        }
+
+
+        private void plannedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lesson l = GetLessonFromSender2(sender);
+            l.State = "Planned";
+            Modified = true;
+            ShowView();
+        }
+
+        private void doneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lesson l = GetLessonFromSender2(sender);
+            l.State = "Done";
+            Modified = true;
+            ShowView();
+        }
+
+        private void cancelledToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lesson l = GetLessonFromSender2(sender);
+            l.State = "Cancelled";
+            l.CancellationTime = DateTime.Now.ToString();
+            Modified = true;
+            ShowView();
+        }
+
+
         private Lesson GetLessonFromSender(object sender)
         {
             Control c = ((ContextMenuStrip)((ToolStripItem)sender).Owner).SourceControl;
