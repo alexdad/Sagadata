@@ -298,7 +298,7 @@ namespace RecordKeeper
                 AssignListsToComboBoxes();
             m_assignedListsChanged = false;
             SetMode(was);
-
+            m_editSavingTrap = false;
             HideWorkout = false;
         }
     }
