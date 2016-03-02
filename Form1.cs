@@ -1393,7 +1393,7 @@ namespace RecordKeeper
                 return;
             l.GoogleId = lbReconcileGoogleCalId.Text;
             buttonGlobEditAccept_Click(null, null);
-            buttonReconcileNext_Click(null, null);
+            //buttonReconcileNext_Click(null, null);
         }
 
         private void buttonReconcileUnlink_Click(object sender, EventArgs e)
@@ -1410,6 +1410,7 @@ namespace RecordKeeper
         {
             if (m_OperationalEvents == null)
                 return;
+            buttonGlobEditAccept_Click(null, null);
             while (m_curOperationalevent < m_OperationalEvents.Length - 1)
             {
                 m_curOperationalevent++;
@@ -1422,6 +1423,7 @@ namespace RecordKeeper
         {
             if (m_OperationalEvents == null)
                 return;
+            buttonGlobEditAccept_Click(null, null);
             if (m_curOperationalevent < m_OperationalEvents.Length - 1)
             {
                 m_curOperationalevent++;
@@ -1433,6 +1435,7 @@ namespace RecordKeeper
         {
             if (m_OperationalEvents == null)
                 return;
+            buttonGlobEditAccept_Click(null, null);
             while (m_curOperationalevent >= 1)
             {
                 m_curOperationalevent--;
@@ -1445,6 +1448,7 @@ namespace RecordKeeper
         {
             if (m_OperationalEvents == null)
                 return;
+            buttonGlobEditAccept_Click(null, null);
             if (m_curOperationalevent >= 1)
             {
                 m_curOperationalevent--;
@@ -1739,6 +1743,5 @@ namespace RecordKeeper
             }
         }
         #endregion
-
     }
 }

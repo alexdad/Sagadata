@@ -187,16 +187,14 @@ namespace RecordKeeper
         public void GetLocationInWeek(out int col, out int row1, out int row2)
         {
             col = FormGlob.StandardizeDayOfTheWeek(DateTimeStart.DayOfWeek);
-            row1 = DateTimeStart.Hour * 4 + DateTimeStart.Minute / 15 - 7 * 4;
-            row2 = DateTimeEnd.Hour * 4 + DateTimeEnd.Minute / 15 - 7 * 4;
-
+            row1 = FormGlob.CalcSlot(DateTimeStart);
+            row2 = FormGlob.CalcSlot(DateTimeEnd);
         }
         public void GetLocationInMonth(out int col, out int row1, out int row2)
         {
             col = DateTimeStart.Day - 1;
-            row1 = DateTimeStart.Hour * 4 + DateTimeStart.Minute / 15 - 7 * 4;
-            row2 = DateTimeEnd.Hour * 4 + DateTimeEnd.Minute / 15 - 7 * 4;
-
+            row1 = FormGlob.CalcSlot(DateTimeStart);
+            row2 = FormGlob.CalcSlot(DateTimeEnd);
         }
 
         public override string Abbreviation

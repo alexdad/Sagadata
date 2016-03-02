@@ -3234,7 +3234,7 @@
             this.buttonReconcileLink.Name = "buttonReconcileLink";
             this.buttonReconcileLink.Size = new System.Drawing.Size(61, 23);
             this.buttonReconcileLink.TabIndex = 16;
-            this.buttonReconcileLink.Text = "&Link >";
+            this.buttonReconcileLink.Text = "&Link";
             this.buttonReconcileLink.UseVisualStyleBackColor = true;
             this.buttonReconcileLink.Visible = false;
             this.buttonReconcileLink.Click += new System.EventHandler(this.buttonReconcileLink_Click);

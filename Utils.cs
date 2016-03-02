@@ -125,6 +125,23 @@ namespace RecordKeeper
         {
             return (int)((dt2.Ticks - dt1.Ticks) / SlotInTicks);
         }
+
+        public static int CalcSlot(DateTime dt)
+        {
+            return CalcSlot(dt, false);
+        }
+        public static int CalcSlot(DateTime dt, bool roundUp)
+        {
+            return dt.Hour * 4 + (dt.Minute + (roundUp ? 14 : 0)) / 15 - 7 * 4;
+        }
+        public static int SlotFromStringTime(string tm, bool roundUp)
+        {
+            DateTime dtm = DateTime.Now;
+            if (!DateTime.TryParse(tm, out dtm))
+                return 0;
+            else
+                return CalcSlot(dtm, roundUp);
+        }
         #endregion
 
         #region "Schematics-related"
@@ -201,7 +218,8 @@ namespace RecordKeeper
             foreach (Room r in roomList)
             {
                 color = r.RoomColor;
-                if (r.Name.Trim().ToLower() == room.Trim().ToLower())
+                if (!IsStringEmpty(room) && 
+                    r.Name.Trim().ToLower() == room.Trim().ToLower())
                     return color;
             }
             return color;

@@ -619,27 +619,32 @@ namespace RecordKeeper
 
         public void FillLessonFromCalendar(Lesson l)
         {
-            SetComboByValue(cbLessonStart, lbReconcileFrom.Text);
-            l.Start = lbReconcileFrom.Text;
+            int slot = SlotFromStringTime(lbReconcileFrom.Text, false);
+            cbLessonStart.SelectedIndex = slot;
+            l.Start = m_enumTimeSlot[slot];
 
-            SetComboByValue(cbLessonEnd, lbReconcileTo.Text);
-            l.End = lbReconcileTo.Text;
+            slot = SlotFromStringTime(lbReconcileTo.Text, true);
+            cbLessonEnd.SelectedIndex = slot;
+            l.End = m_enumTimeSlot[slot];
 
             DateTime dt = DateTime.Now;
             DateTime.TryParse(lbReconcileDate.Text, out dt);
             monthCalLessonDate.SetDate(dt);
             l.Day = dt.ToShortDateString();
 
-            tbLessonComment.Text = lbReconcileDescription.Text;
-            l.Comments = lbReconcileDescription.Text;
+            string s = lbReconcileDescription.Text;
+            tbLessonComment.Text = s;
+            l.Comments = s;
+            bool cancelled = !IsStringEmpty(s) &&
+                             (s.ToLower().IndexOf("cancel") >= 0);
 
             l.Room = SetComboByInitial(cbLessonRoom, lbReconcileLocation.Text);
 
             l.GoogleId = lbReconcileGoogleCalId.Text;
 
             l.State = SetComboByValue(cbLessonState, 
-                                      m_enumState[(int)LessonStates.Planned]);
-
+                            (cancelled ? m_enumState[(int)LessonStates.Cancelled] :
+                                         m_enumState[(int)LessonStates.Planned]) );
 
             string geTitle, geComment;
             string[] geStudents, geTeachers;
@@ -674,8 +679,13 @@ namespace RecordKeeper
                     if (!IsStringEmpty(stud.Program(i)))
                     {
                         l.Program = SetComboByValue(cbLessonProg, stud.Program(i));
-                        tbLessonPrice.Text = stud.Price(i);
-                        l.Price = stud.Price(i);
+
+                        string spr = stud.Price(i);
+                        if (IsStringEmpty(spr))
+                            spr = GetProgramPrice(l.Program);
+
+                        tbLessonPrice.Text = spr;
+                        l.Price = spr;
                         return;
                     }
                 }
@@ -695,6 +705,7 @@ namespace RecordKeeper
         {
             if (IsStringEmpty(desc))
                 return null;
+            desc = desc.Trim();
             string first, last, initial;
             int space = desc.IndexOf(" ");
             if (space >= 0)
