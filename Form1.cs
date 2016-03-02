@@ -1331,6 +1331,13 @@ namespace RecordKeeper
             EditLessonDetailsChanged();
         }
 
+        private void chkLessonLink_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox cb = sender as CheckBox;
+            if (!cb.Checked)
+                EditLessonDetailsChanged();
+        }
+
         private void cbSearchLessonStudent_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
@@ -1732,9 +1739,5 @@ namespace RecordKeeper
         }
         #endregion
 
-        private void buttonReconcileStart_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

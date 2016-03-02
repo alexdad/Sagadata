@@ -281,7 +281,7 @@ namespace RecordKeeper
             m_labelWorking.Name = "labelWorking";
             m_labelWorking.Size = new System.Drawing.Size(533, 42);
             m_labelWorking.TabIndex = 14;
-            m_labelWorking.Text = "Working...  takes some time...";
+            m_labelWorking.Text = "Working... coffee?";
             m_labelWorking.Parent = this;
             m_labelWorking.Visible = false;
         }

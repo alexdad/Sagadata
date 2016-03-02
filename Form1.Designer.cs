@@ -137,11 +137,12 @@
             this.teacher1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.roomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.programDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Linked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.student2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.student3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Student4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.teacher2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CancellationTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.commentsDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lessonList = new System.Windows.Forms.BindingSource(this.components);
@@ -269,8 +270,9 @@
             this.tbRoomTags = new System.Windows.Forms.TextBox();
             this.tabBottomPageLessons = new System.Windows.Forms.TabPage();
             this.panelLesson = new System.Windows.Forms.Panel();
-            this.labelLessonLinked = new System.Windows.Forms.Label();
+            this.chkLessonLink = new System.Windows.Forms.CheckBox();
             this.panelReconcile = new System.Windows.Forms.Panel();
+            this.lbReconcileSimilarity = new System.Windows.Forms.Label();
             this.lbReconcileResult = new System.Windows.Forms.Label();
             this.buttonReconcilePrev2 = new System.Windows.Forms.Button();
             this.buttonReconcileNext2 = new System.Windows.Forms.Button();
@@ -515,7 +517,6 @@
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.lbFutureOpName = new System.Windows.Forms.Label();
             this.clientList = new System.Windows.Forms.BindingSource(this.components);
-            this.lbReconcileSimilarity = new System.Windows.Forms.Label();
             this.menuStripGlobalOps.SuspendLayout();
             this.panelGlobIndicators.SuspendLayout();
             this.ctxMenuLesson.SuspendLayout();
@@ -1528,11 +1529,12 @@
             this.teacher1DataGridViewTextBoxColumn,
             this.roomDataGridViewTextBoxColumn,
             this.programDataGridViewTextBoxColumn,
+            this.Linked,
+            this.Price,
             this.student2DataGridViewTextBoxColumn,
             this.student3DataGridViewTextBoxColumn,
             this.Student4,
             this.teacher2DataGridViewTextBoxColumn,
-            this.Price,
             this.CancellationTime,
             this.commentsDataGridViewTextBoxColumn2});
             this.dgvLesson.DataSource = this.lessonList;
@@ -1602,6 +1604,20 @@
             this.programDataGridViewTextBoxColumn.Name = "programDataGridViewTextBoxColumn";
             this.programDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // Linked
+            // 
+            this.Linked.DataPropertyName = "Linked";
+            this.Linked.HeaderText = "Linked";
+            this.Linked.Name = "Linked";
+            this.Linked.ReadOnly = true;
+            // 
+            // Price
+            // 
+            this.Price.DataPropertyName = "Price";
+            this.Price.HeaderText = "Price";
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
+            // 
             // student2DataGridViewTextBoxColumn
             // 
             this.student2DataGridViewTextBoxColumn.DataPropertyName = "Student2";
@@ -1629,13 +1645,6 @@
             this.teacher2DataGridViewTextBoxColumn.HeaderText = "Teacher2";
             this.teacher2DataGridViewTextBoxColumn.Name = "teacher2DataGridViewTextBoxColumn";
             this.teacher2DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // Price
-            // 
-            this.Price.DataPropertyName = "Price";
-            this.Price.HeaderText = "Price";
-            this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
             // 
             // CancellationTime
             // 
@@ -2964,7 +2973,7 @@
             // panelLesson
             // 
             this.panelLesson.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
-            this.panelLesson.Controls.Add(this.labelLessonLinked);
+            this.panelLesson.Controls.Add(this.chkLessonLink);
             this.panelLesson.Controls.Add(this.panelReconcile);
             this.panelLesson.Controls.Add(this.lbLessonCancellation);
             this.panelLesson.Controls.Add(this.tbLessonPrice);
@@ -3005,15 +3014,17 @@
             this.panelLesson.Size = new System.Drawing.Size(929, 350);
             this.panelLesson.TabIndex = 0;
             // 
-            // labelLessonLinked
+            // chkLessonLink
             // 
-            this.labelLessonLinked.AutoSize = true;
-            this.labelLessonLinked.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "LinkedState", true));
-            this.labelLessonLinked.Location = new System.Drawing.Point(688, 142);
-            this.labelLessonLinked.Name = "labelLessonLinked";
-            this.labelLessonLinked.Size = new System.Drawing.Size(35, 13);
-            this.labelLessonLinked.TabIndex = 34;
-            this.labelLessonLinked.Text = "linked";
+            this.chkLessonLink.AutoSize = true;
+            this.chkLessonLink.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.lessonList, "Linked", true));
+            this.chkLessonLink.Location = new System.Drawing.Point(493, 27);
+            this.chkLessonLink.Name = "chkLessonLink";
+            this.chkLessonLink.Size = new System.Drawing.Size(46, 17);
+            this.chkLessonLink.TabIndex = 34;
+            this.chkLessonLink.Text = "Link";
+            this.chkLessonLink.UseVisualStyleBackColor = true;
+            this.chkLessonLink.CheckedChanged += new System.EventHandler(this.chkLessonLink_CheckedChanged);
             // 
             // panelReconcile
             // 
@@ -3052,6 +3063,16 @@
             this.panelReconcile.Name = "panelReconcile";
             this.panelReconcile.Size = new System.Drawing.Size(904, 80);
             this.panelReconcile.TabIndex = 33;
+            // 
+            // lbReconcileSimilarity
+            // 
+            this.lbReconcileSimilarity.AutoSize = true;
+            this.lbReconcileSimilarity.Location = new System.Drawing.Point(531, 61);
+            this.lbReconcileSimilarity.Name = "lbReconcileSimilarity";
+            this.lbReconcileSimilarity.Size = new System.Drawing.Size(24, 13);
+            this.lbReconcileSimilarity.TabIndex = 30;
+            this.lbReconcileSimilarity.Text = "Sim";
+            this.lbReconcileSimilarity.Visible = false;
             // 
             // lbReconcileResult
             // 
@@ -5600,16 +5621,6 @@
             // 
             this.clientList.DataSource = typeof(RecordKeeper.Client);
             // 
-            // lbReconcileSimilarity
-            // 
-            this.lbReconcileSimilarity.AutoSize = true;
-            this.lbReconcileSimilarity.Location = new System.Drawing.Point(531, 61);
-            this.lbReconcileSimilarity.Name = "lbReconcileSimilarity";
-            this.lbReconcileSimilarity.Size = new System.Drawing.Size(24, 13);
-            this.lbReconcileSimilarity.TabIndex = 30;
-            this.lbReconcileSimilarity.Text = "Sim";
-            this.lbReconcileSimilarity.Visible = false;
-            // 
             // FormGlob
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -6193,21 +6204,6 @@
         private System.Windows.Forms.Label lbPlanChooseRoom;
         private System.Windows.Forms.Label lbPlanStudent;
         private System.Windows.Forms.Label lbPlanMoreStudents;
-        private System.Windows.Forms.DataGridViewTextBoxColumn State;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dayDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Start;
-        private System.Windows.Forms.DataGridViewTextBoxColumn End;
-        private System.Windows.Forms.DataGridViewTextBoxColumn student1DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn teacher1DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn roomDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn programDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn student2DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn student3DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Student4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn teacher2DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CancellationTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn commentsDataGridViewTextBoxColumn2;
         private System.Windows.Forms.TextBox tbLessonPrice;
         private System.Windows.Forms.Label labelLessonCancellation;
         private System.Windows.Forms.Label labelLessonPrice;
@@ -6231,7 +6227,6 @@
         private System.Windows.Forms.Label lbReconcileGoogleCalId;
         private System.Windows.Forms.Button buttonReconcilePrev;
         private System.Windows.Forms.Button buttonReconcileLink;
-        private System.Windows.Forms.Label labelLessonLinked;
         private System.Windows.Forms.Label lbReconcileTouched;
         private System.Windows.Forms.Button buttonReconcileUnlink;
         private System.Windows.Forms.Label lbReconcileToDiff;
@@ -6246,6 +6241,23 @@
         private System.Windows.Forms.Button buttonReconcileNext2;
         private System.Windows.Forms.Label lbReconcileResult;
         private System.Windows.Forms.Label lbReconcileSimilarity;
+        private System.Windows.Forms.CheckBox chkLessonLink;
+        private System.Windows.Forms.DataGridViewTextBoxColumn State;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Start;
+        private System.Windows.Forms.DataGridViewTextBoxColumn End;
+        private System.Windows.Forms.DataGridViewTextBoxColumn student1DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn teacher1DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn roomDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn programDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Linked;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn student2DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn student3DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Student4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn teacher2DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CancellationTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn commentsDataGridViewTextBoxColumn2;
     }
 }
 

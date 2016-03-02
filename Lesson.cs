@@ -170,11 +170,17 @@ namespace RecordKeeper
             }
         }
 
-        public string LinkedState
+        public bool Linked
         {
             get
             {
-                return (FormGlob.IsStringEmpty(GoogleId) ? "Not linked" : "Linked");
+                return (!FormGlob.IsStringEmpty(GoogleId));
+            }
+            set
+            {
+                if (value == false)
+                    GoogleId = "";
+                // Cannot set it from bool! 
             }
         }
 
