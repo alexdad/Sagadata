@@ -517,6 +517,14 @@
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.lbFutureOpName = new System.Windows.Forms.Label();
             this.clientList = new System.Windows.Forms.BindingSource(this.components);
+            this.roomToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.redToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.greenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tealToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.whiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.yellowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pinkToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.nAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripGlobalOps.SuspendLayout();
             this.panelGlobIndicators.SuspendLayout();
             this.ctxMenuLesson.SuspendLayout();
@@ -900,9 +908,10 @@
             this.menuItemViewLessonCancel,
             this.menuItemViewLessonMove,
             this.menuItemViewLessonMove1,
-            this.menuItemViewLessonMove2});
+            this.menuItemViewLessonMove2,
+            this.roomToolStripMenuItem});
             this.ctxMenuLesson.Name = "ctxMenuLesson";
-            this.ctxMenuLesson.Size = new System.Drawing.Size(174, 136);
+            this.ctxMenuLesson.Size = new System.Drawing.Size(174, 180);
             // 
             // menuItemViewLessonPlanned
             // 
@@ -5621,6 +5630,68 @@
             // 
             this.clientList.DataSource = typeof(RecordKeeper.Client);
             // 
+            // roomToolStripMenuItem
+            // 
+            this.roomToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.redToolStripMenuItem,
+            this.greenToolStripMenuItem,
+            this.tealToolStripMenuItem,
+            this.yellowToolStripMenuItem,
+            this.whiteToolStripMenuItem,
+            this.pinkToolStripMenuItem1,
+            this.nAToolStripMenuItem});
+            this.roomToolStripMenuItem.Name = "roomToolStripMenuItem";
+            this.roomToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.roomToolStripMenuItem.Text = "Room";
+            // 
+            // redToolStripMenuItem
+            // 
+            this.redToolStripMenuItem.Name = "redToolStripMenuItem";
+            this.redToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.redToolStripMenuItem.Text = "Red";
+            this.redToolStripMenuItem.Click += new System.EventHandler(this.redToolStripMenuItem_Click);
+            // 
+            // greenToolStripMenuItem
+            // 
+            this.greenToolStripMenuItem.Name = "greenToolStripMenuItem";
+            this.greenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.greenToolStripMenuItem.Text = "Green";
+            this.greenToolStripMenuItem.Click += new System.EventHandler(this.greenToolStripMenuItem_Click);
+            // 
+            // tealToolStripMenuItem
+            // 
+            this.tealToolStripMenuItem.Name = "tealToolStripMenuItem";
+            this.tealToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tealToolStripMenuItem.Text = "Teal";
+            this.tealToolStripMenuItem.Click += new System.EventHandler(this.tealToolStripMenuItem_Click);
+            // 
+            // yellowToolStripMenuItem
+            // 
+            this.yellowToolStripMenuItem.Name = "yellowToolStripMenuItem";
+            this.yellowToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.yellowToolStripMenuItem.Text = "Yellow";
+            this.yellowToolStripMenuItem.Click += new System.EventHandler(this.yellowToolStripMenuItem_Click);
+            // 
+            // whiteToolStripMenuItem
+            // 
+            this.whiteToolStripMenuItem.Name = "whiteToolStripMenuItem";
+            this.whiteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.whiteToolStripMenuItem.Text = "White";
+            this.whiteToolStripMenuItem.Click += new System.EventHandler(this.whiteToolStripMenuItem_Click);
+            // 
+            // pinkToolStripMenuItem1
+            // 
+            this.pinkToolStripMenuItem1.Name = "pinkToolStripMenuItem1";
+            this.pinkToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.pinkToolStripMenuItem1.Text = "Pink";
+            // 
+            // nAToolStripMenuItem
+            // 
+            this.nAToolStripMenuItem.Name = "nAToolStripMenuItem";
+            this.nAToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.nAToolStripMenuItem.Text = "N/A";
+            this.nAToolStripMenuItem.Click += new System.EventHandler(this.nAToolStripMenuItem_Click);
+            // 
             // FormGlob
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -6258,6 +6329,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn teacher2DataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn CancellationTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn commentsDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.ToolStripMenuItem roomToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem redToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem greenToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tealToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem yellowToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem whiteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pinkToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem nAToolStripMenuItem;
     }
 }
 

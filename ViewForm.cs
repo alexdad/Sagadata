@@ -392,6 +392,7 @@ namespace RecordKeeper
                 };
                 lb.ContextMenuStrip = ctxMenuLesson;
                 lb.MouseHover += new System.EventHandler(this.butViewShowLesson_MouseHover);
+                lb.MouseDown += new System.Windows.Forms.MouseEventHandler(this.butViewShowLesson_MouseDown);
             }
 
             LabelsExpander.Expand(
@@ -439,6 +440,7 @@ namespace RecordKeeper
                 };
                 lb.ContextMenuStrip = ctxMenuLesson;
                 lb.MouseHover += new System.EventHandler(this.butViewShowLesson_MouseHover);
+                lb.MouseDown += new System.Windows.Forms.MouseEventHandler(this.butViewShowLesson_MouseDown);
             }
 
             LabelsExpander.Expand(
@@ -489,6 +491,7 @@ namespace RecordKeeper
                 };
                 lb.ContextMenuStrip = ctxMenuLesson;
                 lb.MouseHover += new System.EventHandler(this.butViewShowLesson_MouseHover);
+                lb.MouseDown += new System.Windows.Forms.MouseEventHandler(this.butViewShowLesson_MouseDown);
             }
             panelViewDay.Refresh();
         }
@@ -897,10 +900,82 @@ namespace RecordKeeper
             Modified = true;
             ShowView();
         }
+        private void redToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lesson l = GetLessonFromSender2(sender);
+            l.Room = "Red";
+            Modified = true;
+            ShowView();
+        }
 
+        private void greenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lesson l = GetLessonFromSender2(sender);
+            l.Room = "Green";
+            Modified = true;
+            ShowView();
+        }
+
+        private void tealToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lesson l = GetLessonFromSender2(sender);
+            l.Room = "Teal";
+            Modified = true;
+            ShowView();
+        }
+
+        private void yellowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lesson l = GetLessonFromSender2(sender);
+            l.Room = "Yellow";
+            Modified = true;
+            ShowView();
+        }
+        private void whiteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lesson l = GetLessonFromSender2(sender);
+            l.Room = "White";
+            Modified = true;
+            ShowView();
+        }
+        private void pinkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lesson l = GetLessonFromSender2(sender);
+            l.Room = "Pink";
+            Modified = true;
+            ShowView();
+        }
+
+        private void nAToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lesson l = GetLessonFromSender2(sender);
+            l.Room = "N/A";
+            Modified = true;
+            ShowView();
+        }
+        
         private Lesson GetLessonFromSender(object sender)
         {
             Control c = ((ContextMenuStrip)((ToolStripItem)sender).Owner).SourceControl;
+            Label lb = c as Label;
+            if (lb != null)
+                return lb.Tag as Lesson;
+
+            Button bt = c as Button;
+            if (bt != null)
+                return bt.Tag as Lesson;
+
+            DataGridView dgv = c as DataGridView;
+            if (dgv != null)
+                return m_slotLessonFromRightClick;
+
+            return null;
+        }
+
+        private Lesson GetLessonFromSender2(object sender)
+        {
+            Control c = m_rightClickedControl;
+
             Label lb = c as Label;
             if (lb != null)
                 return lb.Tag as Lesson;

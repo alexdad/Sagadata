@@ -38,6 +38,8 @@ namespace RecordKeeper
         bool m_synced;
         bool m_editSavingTrap;
 
+        private Control m_rightClickedControl;
+
         #region "Main controls"
         public bool Modified
         {
@@ -612,6 +614,8 @@ namespace RecordKeeper
                             m_dvgViewTags[hit.RowIndex * 100 + hit.ColumnIndex];
 
                         dgv.CurrentCell = dgv[hit.ColumnIndex, hit.RowIndex];
+
+                        m_rightClickedControl = dgv;
                         ctxMenuLesson.Show(dgv, e.X, e.Y);
                     }
                 }
@@ -1596,6 +1600,12 @@ namespace RecordKeeper
                     SetHighlight(lb);
                 }
             }
+        }
+
+        private void butViewShowLesson_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+                m_rightClickedControl = sender as Control;
         }
 
         private void dtpViewSlot_ValueChanged(object sender, EventArgs e)
