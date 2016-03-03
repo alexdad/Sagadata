@@ -288,7 +288,7 @@ namespace RecordKeeper
             int[] labelsPerRow = new int[rows];
 
             // Eah column (day) is totally separate
-            for (int col = 0; col < cols; col++)
+            for (int col = cols-1; col >= 0; col--)
             {
                 for (int row = 0; row < rows; row++)
                 {
