@@ -495,7 +495,7 @@
             this.lbViewDetailStudent = new System.Windows.Forms.Label();
             this.lbViewDetailTeacher = new System.Windows.Forms.Label();
             this.tabControlViewScales = new RecordKeeper.HiddenTabControl();
-            this.tabPageStats = new System.Windows.Forms.TabPage();
+            this.tabPageMonth = new System.Windows.Forms.TabPage();
             this.panelViewMonth = new System.Windows.Forms.Panel();
             this.tabPageViewWeek = new System.Windows.Forms.TabPage();
             this.panelViewWeek = new System.Windows.Forms.Panel();
@@ -615,7 +615,7 @@
             this.panelViewMatrix.SuspendLayout();
             this.panelViewDetails.SuspendLayout();
             this.tabControlViewScales.SuspendLayout();
-            this.tabPageStats.SuspendLayout();
+            this.tabPageMonth.SuspendLayout();
             this.tabPageViewWeek.SuspendLayout();
             this.panelViewWeek.SuspendLayout();
             this.tabPageViewDay.SuspendLayout();
@@ -967,6 +967,7 @@
             this.pinkToolStripMenuItem1.Name = "pinkToolStripMenuItem1";
             this.pinkToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.pinkToolStripMenuItem1.Text = "Pink";
+            this.pinkToolStripMenuItem1.Click += new System.EventHandler(this.pinkToolStripMenuItem_Click);
             // 
             // nAToolStripMenuItem
             // 
@@ -1035,21 +1036,21 @@
             // plannedToolStripMenuItem
             // 
             this.plannedToolStripMenuItem.Name = "plannedToolStripMenuItem";
-            this.plannedToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.plannedToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.plannedToolStripMenuItem.Text = "Planned";
             this.plannedToolStripMenuItem.Click += new System.EventHandler(this.plannedToolStripMenuItem_Click);
             // 
             // doneToolStripMenuItem
             // 
             this.doneToolStripMenuItem.Name = "doneToolStripMenuItem";
-            this.doneToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.doneToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.doneToolStripMenuItem.Text = "Done";
             this.doneToolStripMenuItem.Click += new System.EventHandler(this.doneToolStripMenuItem_Click);
             // 
             // cancelledToolStripMenuItem
             // 
             this.cancelledToolStripMenuItem.Name = "cancelledToolStripMenuItem";
-            this.cancelledToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cancelledToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.cancelledToolStripMenuItem.Text = "Cancelled";
             this.cancelledToolStripMenuItem.Click += new System.EventHandler(this.cancelledToolStripMenuItem_Click);
             // 
@@ -5389,7 +5390,7 @@
             // 
             // tabControlViewScales
             // 
-            this.tabControlViewScales.Controls.Add(this.tabPageStats);
+            this.tabControlViewScales.Controls.Add(this.tabPageMonth);
             this.tabControlViewScales.Controls.Add(this.tabPageViewWeek);
             this.tabControlViewScales.Controls.Add(this.tabPageViewDay);
             this.tabControlViewScales.Controls.Add(this.tabPageViewSlots);
@@ -5401,16 +5402,16 @@
             this.tabControlViewScales.TabIndex = 0;
             this.tabControlViewScales.SelectedIndexChanged += new System.EventHandler(this.tabControlViewScales_SelectedIndexChanged);
             // 
-            // tabPageStats
+            // tabPageMonth
             // 
-            this.tabPageStats.Controls.Add(this.panelViewMonth);
-            this.tabPageStats.Location = new System.Drawing.Point(4, 22);
-            this.tabPageStats.Name = "tabPageStats";
-            this.tabPageStats.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageStats.Size = new System.Drawing.Size(981, 710);
-            this.tabPageStats.TabIndex = 3;
-            this.tabPageStats.Text = "Stats";
-            this.tabPageStats.UseVisualStyleBackColor = true;
+            this.tabPageMonth.Controls.Add(this.panelViewMonth);
+            this.tabPageMonth.Location = new System.Drawing.Point(4, 22);
+            this.tabPageMonth.Name = "tabPageMonth";
+            this.tabPageMonth.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageMonth.Size = new System.Drawing.Size(981, 710);
+            this.tabPageMonth.TabIndex = 3;
+            this.tabPageMonth.Text = "Month";
+            this.tabPageMonth.UseVisualStyleBackColor = true;
             // 
             // panelViewMonth
             // 
@@ -5852,7 +5853,7 @@
             this.panelViewDetails.ResumeLayout(false);
             this.panelViewDetails.PerformLayout();
             this.tabControlViewScales.ResumeLayout(false);
-            this.tabPageStats.ResumeLayout(false);
+            this.tabPageMonth.ResumeLayout(false);
             this.tabPageViewWeek.ResumeLayout(false);
             this.panelViewWeek.ResumeLayout(false);
             this.panelViewWeek.PerformLayout();
@@ -6222,7 +6223,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn whiteDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn pinkDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn outsideDataGridViewTextBoxColumn;
-        private System.Windows.Forms.TabPage tabPageStats;
+        private System.Windows.Forms.TabPage tabPageMonth;
         private System.Windows.Forms.Panel panelView;
         private System.Windows.Forms.Panel panelViewMatrix;
         private System.Windows.Forms.ComboBox cbViewSelectProgram;

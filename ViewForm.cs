@@ -286,6 +286,7 @@ namespace RecordKeeper
         private void EqualizeWidths(ViewContext vc)
         {
             int[] labelsPerRow = new int[rows];
+            HashSet<Control> moved = new HashSet<Control>();
 
             // Eah column (day) is totally separate
             for (int col = cols-1; col >= 0; col--)
@@ -318,8 +319,11 @@ namespace RecordKeeper
                     Label l = GetLabel(c);
                     if (l == null)
                         continue;
-                    if ( (x1-1) / nRooms > col || (x2-1) / nRooms < col)
+                    if ( x1 / nRooms > col || x2 / nRooms < col)
                         continue;
+                    if (moved.Contains(c))
+                        continue;
+                    moved.Add(c);
 
                     int newX = 0;
                     for (int yy = y1; yy < y2; yy++)
@@ -360,12 +364,17 @@ namespace RecordKeeper
         public void ViewShowMonth()
         {
             DisposeChildren(panelViewMonth);
-            int days = s_DaysPerMonth[m_chosenDate.Month - 1];
+            int days = DaysInMonth(m_chosenDate);
+            int fullWidth = panelViewMonth.Width - 
+                butViewNext.Width - butViewPrev.Width - 10;
+            int fullheight = panelViewMonth.Height -
+                butViewZoomIn.Height - butViewZoomOut.Height - 10;
+
             ViewContext vc = new ViewContext(
                 days,
-                panelViewMonth.Width / days,
-                panelViewMonth.Height / m_enumTimeSlot.Length,
-                panelViewMonth.Width / days / roomList.Count,
+                fullWidth / days,
+                fullheight / m_enumTimeSlot.Length,
+                fullWidth / days / roomList.Count,
                 60, 40, 20);
 
             DrawMonthDaysAsTopRow(m_chosenDate, panelViewMonth, vc);
@@ -409,11 +418,16 @@ namespace RecordKeeper
         public void ViewShowWeek()
         {
             DisposeChildren(panelViewWeek);
+            int fullWidth = panelViewWeek.Width -
+               butViewNext.Width - butViewPrev.Width - 10;
+            int fullheight = panelViewWeek.Height -
+                butViewZoomIn.Height- butViewZoomOut.Height - 10;
+
             ViewContext vc = new ViewContext(
                 m_enumWeekdayNames.Length,
-                panelViewWeek.Width / m_enumWeekdayNames.Length,
-                panelViewWeek.Height / m_enumTimeSlot.Length,
-                panelViewWeek.Width / m_enumWeekdayNames.Length / roomList.Count,
+                fullWidth / m_enumWeekdayNames.Length,
+                fullheight / m_enumTimeSlot.Length,
+                fullWidth / m_enumWeekdayNames.Length / roomList.Count,
                 60, 40, 20);
 
             DrawWeekDaysAsTopRow(m_chosenDate, panelViewWeek, vc);
@@ -459,11 +473,17 @@ namespace RecordKeeper
             if (roomList.Count == 0)
                 return;
             DisposeChildren(panelViewDay);
+
+            int fullWidth = panelViewDay.Width -
+                   butViewNext.Width - butViewPrev.Width - 10;
+            int fullheight = panelViewDay.Height -
+                    butViewZoomIn.Height - butViewZoomOut.Height - 10;
+
             ViewContext vc = new ViewContext(
                 1,
-                panelViewWeek.Width,
-                (panelViewDay.Height - 20) / m_enumTimeSlot.Length,
-                (panelViewDay.Width - 60) / roomList.Count,
+                fullWidth,
+                (fullheight - 20) / m_enumTimeSlot.Length,
+                (fullWidth - 60) / roomList.Count,
                 60, 40, 20);
 
 

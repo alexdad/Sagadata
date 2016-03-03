@@ -74,9 +74,17 @@ namespace RecordKeeper
             return w;
         }
 
-        public static string[] MonthOf(DateTime dt)
+        public static int DaysInMonth(DateTime dt)
         {
             int days = s_DaysPerMonth[dt.Month - 1];
+            if (dt.Month == 2 && dt.Year % 4 == 0)
+                days++;
+            return days;
+        }
+
+        public static string[] MonthOf(DateTime dt)
+        {
+            int days = DaysInMonth(dt);
             string[] w = new string[days];
             for (int i = 0; i < days; i++)
                 w[i] = (i+1).ToString();
@@ -108,17 +116,16 @@ namespace RecordKeeper
             return new DateTime(d.Year, d.Month, d.Day, 23, 59, 59);
         }
 
+        static int[] s_DaysPerMonth = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
         public static DateTime MonthStart(DateTime dt)
         {
             return new DateTime(dt.Year, dt.Month, 1, 0, 0, 0);
         }
 
-        static int[] s_DaysPerMonth = { 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-
         public static DateTime MonthEnd(DateTime dt)
         {
-            int day = s_DaysPerMonth[dt.Month - 1];
-            return new DateTime(dt.Year, dt.Month, s_DaysPerMonth[dt.Month - 1], 23, 59, 59);
+            return new DateTime(dt.Year, dt.Month, DaysInMonth(dt), 23, 59, 59);
         }
 
         public static int Slots(DateTime dt1, DateTime dt2)
