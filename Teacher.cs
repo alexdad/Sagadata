@@ -214,6 +214,35 @@ namespace RecordKeeper
             }
         }
 
+        public override string ConcatenateAll()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(FirstName);
+            sb.Append(LastName);
+            sb.Append(Status);
+            sb.Append(Email);
+            sb.Append(Phone);
+            sb.Append(Birthday);
+            sb.Append(Language);
+            sb.Append(Language2);
+            sb.Append(LanguageDetail);
+            sb.Append(MailingAddress);
+            sb.Append(LanguageDetail);
+            sb.Append(MailingAddress);
+            sb.Append(Vacations);
+            sb.Append(Monday);
+            sb.Append(Tuesday);
+            sb.Append(Wednesday);
+            sb.Append(Thursday);
+            sb.Append(Friday);
+            sb.Append(Saturday);
+            sb.Append(Sunday);
+            sb.Append(Key);
+            sb.Append(Comments);
+
+            return sb.ToString();
+        }
+
         #region "Comparers"
         public class ComparerByBirthday : IComparer<Teacher>
         {

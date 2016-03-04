@@ -100,6 +100,19 @@ namespace RecordKeeper
             }
         }
 
+        public override string ConcatenateAll()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(Code);
+            sb.Append(MachineName);
+            sb.Append(LastTouch);
+            sb.Append(Key);
+            sb.Append(Comments);
+
+            return sb.ToString();
+        }
+
+
         #region "Comparers"
         public class ComparerByCode : IComparer<Client>
         {

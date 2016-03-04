@@ -108,6 +108,7 @@ namespace RecordKeeper
             DateTime dtn = dts.AddMinutes(15);
             SlotInTicks = (dtn - dts).Ticks;
             m_chosenDate = DateTime.Now;
+            m_readDataHash = "";
             m_rnd = new Random(DateTime.Now.Second);
         }
 

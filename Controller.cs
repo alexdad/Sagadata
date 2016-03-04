@@ -45,6 +45,9 @@ namespace RecordKeeper
     public partial class FormGlob : Form
     {
         #region "Datalist"
+
+        string m_readDataHash;
+
         public System.Windows.Forms.BindingSource DataList
         {
             get
@@ -98,9 +101,8 @@ namespace RecordKeeper
             if (DataList.Count == 0)
                 return;
 
-            // TODO: here we need to caclulate where there were any real changes
-            // Maybe checksum. For now, do it always
-            Modified = true;
+            // TODO - here we really need it to compare changes. Hashes below will replace it.
+            Modified = true;  
             if (CurrentMode != Modes.Lessons)
                 StaleComboLists = true;
 
@@ -114,7 +116,112 @@ namespace RecordKeeper
                 DataList.CurrencyManager.Position--;
                 DataList.CurrencyManager.Position++;
             }
+            //Modified = HashAll(); 
+        }
 
+        public string Datalist_GetHash()
+        {
+            StringBuilder sb = new StringBuilder();
+            int poswas = DataList.CurrencyManager.Position;
+            for (int i=0; i < DataList.Count; i++)
+            {
+                DataList.CurrencyManager.Position = i;
+                Record r = (Record)DataList.Current;
+                sb.Append(r.GetHash());
+            }
+            DataList.CurrencyManager.Position = poswas;
+            return FormGlob.CalculateMD5(sb.ToString());
+        }
+
+        public bool HashAll()
+        {
+            string oldHash = m_readDataHash;
+
+            StringBuilder sb = new StringBuilder();
+            Modes modeWas = CurrentMode;
+            for (Modes i = (Modes)0; i < Modes.MaxMode; i++)
+            {
+                SetEditMode(i);
+                sb.Append(Datalist_GetHash());
+            }
+            SetEditMode(modeWas);
+
+            m_readDataHash = CalculateMD5(sb.ToString());
+            return (oldHash != m_readDataHash);
+        }
+
+        private void UploadAll()
+        {
+            HideWorkout = true;
+
+            Modes modeWas = CurrentMode;
+            for (Modes i = (Modes)0; i < Modes.MaxMode; i++)
+            {
+                SetEditMode(i);
+                UploadCurrentFile();
+            }
+            CurrentMode = modeWas;
+            Synced = !Modified;
+
+            HideWorkout = false;
+        }
+
+        private bool DownloadAll()
+        {
+            HideWorkout = true;
+
+            bool success = true;
+            Modes modeWas = CurrentMode;
+
+            for (Modes i = (Modes)0; i < Modes.MaxMode; i++)
+            {
+                SetEditMode(i);
+                if (!DownloadCurrentFile())
+                    success = false;
+            }
+            CurrentMode = modeWas;
+            Synced = !Modified;
+
+            HideWorkout = false;
+            return success;
+        }
+
+        private bool ReadAllFiles()
+        {
+            HideWorkout = true;
+
+            bool success = true;
+            Modes modeWas = CurrentMode;
+
+            for (Modes i = (Modes)0; i < Modes.MaxMode; i++)
+            {
+                SetEditMode(i);
+                if (!ReadCurrentFile())
+                    success = false;
+            }
+            SetEditMode(modeWas);
+
+            //HashAll();
+            HideWorkout = false;
+            return success;
+        }
+
+        private void SaveAll()
+        {
+            HideWorkout = true;
+
+            Modes was = CurrentMode;
+            for (Modes i = (Modes)0; i < Modes.MaxMode; i++)
+            {
+                SetEditMode(i);
+                CurrentType.WriteRecordsFile();
+            }
+            Modified = false;
+            //HashAll();
+            UpdateComboLists();
+            SetEditMode(was);
+            m_editSavingTrap = false;
+            HideWorkout = false;
         }
 
         #endregion

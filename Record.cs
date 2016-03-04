@@ -60,6 +60,7 @@ namespace RecordKeeper
         public abstract string Get(string field);
         public abstract bool Actual { get; }
         public abstract bool Validate();
+        public abstract string ConcatenateAll();
 
         public Record()
         {
@@ -123,6 +124,11 @@ namespace RecordKeeper
                 default:
                     return null;
             }
+        }
+
+        public string GetHash()
+        {
+            return FormGlob.CalculateMD5( ConcatenateAll() );
         }
     }
 }

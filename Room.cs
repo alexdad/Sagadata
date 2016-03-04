@@ -127,6 +127,22 @@ namespace RecordKeeper
             }
         }
 
+        public override string ConcatenateAll()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(Capacity.ToString());
+            sb.Append(Name);
+            sb.Append(Rank.ToString());
+            sb.Append(Tags);
+            sb.Append(ColorR.ToString());
+            sb.Append(ColorG.ToString());
+            sb.Append(ColorB.ToString());
+            sb.Append(Key);
+            sb.Append(Comments);
+
+            return sb.ToString();
+        }
+
         #region "Comparers"
         public class ComparerByName : IComparer<Room>
         {

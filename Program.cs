@@ -10,10 +10,10 @@ namespace RecordKeeper
     {
         public string Code { get; set; }
         public string Language { get; set; }
-        public string Type { get; set; }
         public string Name { get; set; }
         public string Price { get; set; }
         public string Summary { get; set; }
+        public string Type { get; set; }
 
         public override string Description
         {
@@ -41,8 +41,8 @@ namespace RecordKeeper
                 case "Code":
                     this.Code = value;
                     break;
-                case "Type":
-                    this.Type = value;
+                case "Language":
+                    this.Language = value;
                     break;
                 case "Name":
                     this.Name = value;
@@ -53,6 +53,9 @@ namespace RecordKeeper
                 case "Summary":
                     this.Summary = value;
                     break;
+                case "Type":
+                    this.Type = value;
+                    break;
                 default:
                     throw new Exception("unknown field " + field);
             }
@@ -62,10 +65,11 @@ namespace RecordKeeper
         public Program()
         {
             Code = "";
+            Language = "";
             Name = "";
-            Type = "";
             Price = "0";
             Summary = "";
+            Type = "";
         }
 
         public override string Get(string field)
@@ -78,14 +82,16 @@ namespace RecordKeeper
             {
                 case "Code":
                     return Code;
-                case "Type":
-                    return Type;
+                case "Language":
+                    return Language;
                 case "Name":
                     return Name;
                 case "Price":
                     return Price;
                 case "Summary":
                     return Summary;
+                case "Type":
+                    return Type;
                 default:
                     throw new Exception("unknown field " + field);
 
@@ -110,6 +116,21 @@ namespace RecordKeeper
             {
                 return false;
             }
+        }
+
+        public override string ConcatenateAll()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(Code);
+            sb.Append(Language);
+            sb.Append(Name);
+            sb.Append(Price);
+            sb.Append(Summary);
+            sb.Append(Type);
+            sb.Append(Key);
+            sb.Append(Comments);
+
+            return sb.ToString();
         }
 
         #region "Comparers"

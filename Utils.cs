@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,7 +18,10 @@ namespace RecordKeeper
         public static Color RelaxationColor = Color.FromArgb(212, 255, 236);
         private static string[] m_jokes = {
             "coffee?", "tea?", "lemonade?", "movie?", "sorry...", "patience",
-            "it takes time...", "open a bug", "alas...", "cheer", "hang tight"};
+            "it takes time...", "open a bug", "alas...", "cheer", "hang tight",
+            "is it rainy today?", "ask Siri what is the meaning of life",
+            "boring", "arghhh", "F*", "disgusting...", "devil..."
+        };
 
         private Label m_labelWorking;
         private Random m_rnd;
@@ -331,7 +335,7 @@ namespace RecordKeeper
             m_labelWorking.Name = "labelWorking";
             m_labelWorking.Size = new System.Drawing.Size(533, 42);
             m_labelWorking.TabIndex = 14;
-            m_labelWorking.Text = m_jokes[ (int) ((m_jokes.Length-1) * m_rnd.NextDouble())];
+            m_labelWorking.Text = "Working... " + m_jokes[ (int) ((m_jokes.Length-1) * m_rnd.NextDouble())];
             m_labelWorking.Parent = this;
             m_labelWorking.Visible = false;
         }
@@ -585,6 +589,19 @@ namespace RecordKeeper
             lb.BorderStyle = BorderStyle.FixedSingle;
             lb.FlatStyle = FlatStyle.Standard;
             lb.Font = new Font(lb.Font, FontStyle.Regular);
+        }
+
+        public static string CalculateMD5(string data)
+        {
+            MD5 md5 = System.Security.Cryptography.MD5.Create();
+            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(data);
+            byte[] hash = md5.ComputeHash(inputBytes);
+
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < hash.Length; i++)
+                sb.Append(hash[i].ToString("X2"));
+
+            return sb.ToString();
         }
         #endregion
     }

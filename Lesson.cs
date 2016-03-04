@@ -439,6 +439,37 @@ namespace RecordKeeper
             }
         }
 
+        public override string ConcatenateAll()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(Day);
+            sb.Append(Program);
+            sb.Append(Room);
+            sb.Append(State);
+            sb.Append(Student1);
+            sb.Append(Student2);
+            sb.Append(Student3);
+            sb.Append(Student4);
+            sb.Append(Student5);
+            sb.Append(Student6);
+            sb.Append(Student7);
+            sb.Append(Student8);
+            sb.Append(Student9);
+            sb.Append(Student10);
+            sb.Append(Teacher1);
+            sb.Append(Teacher2);
+            sb.Append(Start);
+            sb.Append(End);
+            sb.Append(CancellationTime);
+            sb.Append(Price);
+            sb.Append(GoogleId);
+            sb.Append(RepeaterKey);
+            sb.Append(Key);
+            sb.Append(Comments);
+
+            return sb.ToString();
+        }
+
         public void SetStudent(string stud, int index)
         {
             switch(index)

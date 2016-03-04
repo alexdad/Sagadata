@@ -268,6 +268,40 @@ namespace RecordKeeper
             }
         }
 
+        public override string ConcatenateAll()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(Background);
+            sb.Append(Birthday);
+            sb.Append(CellPhone);
+            sb.Append(Email);
+            sb.Append(FirstName);
+            sb.Append(Goals);
+            sb.Append(HomePhone);
+            sb.Append(Interests);
+            sb.Append(LastName);
+            sb.Append(LearningLanguage);
+            sb.Append(LanguageDetail);
+            sb.Append(Level);
+            sb.Append(MailingAddress);
+            sb.Append(NativeLanguage);
+            sb.Append(OtherLanguage);
+            sb.Append(PossibleSchedule);
+            sb.Append(Price1);
+            sb.Append(Price2);
+            sb.Append(Price3);
+            sb.Append(Prog1);
+            sb.Append(Prog2);
+            sb.Append(Prog3);
+            sb.Append(Source);
+            sb.Append(SourceDetail);
+            sb.Append(Status);
+            sb.Append(Key);
+            sb.Append(Comments);
+
+            return sb.ToString();
+        }
+
         public string Program(int i)
         {
             string[] progs = new string[] { this.Prog1, this.Prog2, this.Prog3 };
