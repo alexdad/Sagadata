@@ -70,7 +70,7 @@ namespace RecordKeeper
             DateTime eow = WeekEnd(DateTime.Now);
 
             cb.Items.Clear();
-            for (int i=0; i < 9; i++)
+            for (int i = 0; i < 9; i++)
             {
                 cb.Items.Add(bow.ToShortDateString() + " - " + eow.ToShortDateString());
             }
@@ -78,7 +78,7 @@ namespace RecordKeeper
 
         private Color TeacherAvailabilityColor(char c)
         {
-            switch(c)
+            switch (c)
             {
                 case '0':   // free
                     return StateColors[(int)StatusColors.Good];
@@ -96,7 +96,7 @@ namespace RecordKeeper
         private void PlanGetTeacherAvailability()
         {
             char[,] charSlots = GetTeacherAvailability(
-                (m_lessonInMove == null ? 
+                (m_lessonInMove == null ?
                     cbPlanTeacher.SelectedItem as string :
                     m_lessonInMove.Teacher1));
 
@@ -165,7 +165,7 @@ namespace RecordKeeper
             DateTime de = ds;
             de = de.AddDays(7);
 
-            foreach(Lesson l in LessonsByTime(ds, de, true))
+            foreach (Lesson l in LessonsByTime(ds, de, true))
             {
                 if (l.Room == null || l.Room.Length == 0)
                     continue;
@@ -189,12 +189,12 @@ namespace RecordKeeper
                 for (int j = 0; j < m_enumTimeSlot.Length; j++)
                     res[i, j] = '9';
 
-            foreach(var tt in teacherList)
+            foreach (var tt in teacherList)
             {
                 Teacher t = tt as Teacher;
                 if (t.Description == description)
                 {
-                    for (int j=0; j < t.Monday.Length; j++)
+                    for (int j = 0; j < t.Monday.Length; j++)
                         res[0, j] = t.Monday[j];
                     for (int j = 0; j < t.Tuesday.Length; j++)
                         res[1, j] = t.Tuesday[j];
@@ -221,7 +221,7 @@ namespace RecordKeeper
             foreach (Teacher t in ActiveTeachers())
                 ts.Add(t.Description);
             ts.Sort();
-            cb.Items.AddRange(ts.ToArray()); 
+            cb.Items.AddRange(ts.ToArray());
         }
         void PopulateTeacherChoicesByLanguage(string lang, ComboBox cb)
         {
@@ -254,7 +254,7 @@ namespace RecordKeeper
         void PopulateStudentPossibleSchedule(string description, Label tb)
         {
             foreach (Student t in SpecificStudent(description))
-               tb.Text = t.PossibleSchedule;
+                tb.Text = t.PossibleSchedule;
         }
 
         void PopulatePlanFieldsFromLastLesson(string studDesc)
@@ -273,7 +273,7 @@ namespace RecordKeeper
             DateTime before = DateTime.Now;
             before = before.AddMonths(-2);
             Lesson latest = null;
-            foreach(Lesson l in LessonsByStudent(studDesc, before, DateTime.Now, true))
+            foreach (Lesson l in LessonsByStudent(studDesc, before, DateTime.Now, true))
             {
                 if (latest == null || latest != null && l.DateTimeStart > latest.DateTimeStart)
                     latest = l;
@@ -307,7 +307,7 @@ namespace RecordKeeper
             foreach (Teacher t in SpecificTeacher(description))
                 lb.Text = t.Vacations;
         }
-        
+
 
         void PlanLesson()
         {
@@ -389,7 +389,7 @@ namespace RecordKeeper
             planSlotList.Add(
                 new RecordKeeper.Slot(
                     WeekOf(m_chosenDate, "", out weekStart, out weekEnd)));
-            for(int i=0; i < m_enumTimeSlot.Length; i++)
+            for (int i = 0; i < m_enumTimeSlot.Length; i++)
                 planSlotList.Add(new RecordKeeper.Slot(m_enumTimeSlot[i]));
 
             // Add info about room's availability
@@ -411,11 +411,11 @@ namespace RecordKeeper
                 col < 0 || col > dgvPlan.ColumnCount)
                 return;
 
-            if (m_plan_row >= 0 && m_plan_col >= 0 && 
+            if (m_plan_row >= 0 && m_plan_col >= 0 &&
                 m_plan_col < dgvPlan.ColumnCount)
             {
-                for (int r = m_plan_row; 
-                    r < m_plan_row + 32 && r < dgvPlan.RowCount; 
+                for (int r = m_plan_row;
+                    r < m_plan_row + 32 && r < dgvPlan.RowCount;
                     r++)
                 {
                     string v = dgvPlan.Rows[r].Cells[m_plan_col].Value as string;
@@ -440,13 +440,13 @@ namespace RecordKeeper
                 r++)
             {
                 string val = dgvPlan.Rows[r].Cells[m_plan_col].Value as string;
-                if (val != null && val.Length > 0 && val.Substring(0,1) == "*")
+                if (val != null && val.Length > 0 && val.Substring(0, 1) == "*")
                     busyRooms.Add(val.Substring(1));
-                dgvPlan.Rows[r].Cells[m_plan_col].Value = "New "; 
+                dgvPlan.Rows[r].Cells[m_plan_col].Value = "New ";
             }
 
             StringBuilder sb = new StringBuilder();
-            foreach(string s in busyRooms)
+            foreach (string s in busyRooms)
             {
                 if (s != null && s.Length > 0)
                     sb.Append(s);
@@ -499,7 +499,7 @@ namespace RecordKeeper
 
             if (m_lessonInMove == null)
             {
-                l.Program = cbPlanProgram.SelectedItem as string; 
+                l.Program = cbPlanProgram.SelectedItem as string;
                 l.State = m_enumState[1]; // Lesson state 1 = Planned
                 l.Student1 = cbPlanStud1.SelectedItem as string;
                 l.Student2 = cbPlanStud2.SelectedItem as string;
@@ -515,6 +515,7 @@ namespace RecordKeeper
                 l.Teacher2 = "";
                 l.Price = m_plannedLessonPrice;
                 l.GoogleId = "";
+                l.RepeaterKey = "";
 
             }
             l.Comments = tbPlanComment.Text;
@@ -560,5 +561,86 @@ namespace RecordKeeper
                         m_lessonInMove.Student4);
         }
 
+        private void RepeatLesson(Lesson l, RepeatMode rm, bool eoy, int nrepeats)
+        {
+            List<DateTime> dates = new List<DateTime>();
+
+            DateTime dt = DateTime.Now;
+            bool hitEnd = false;
+            while(!hitEnd)
+            {
+                // Get next date
+                switch (rm)
+                {
+                    case RepeatMode.None:
+                        hitEnd = true;
+                        break;
+                    case RepeatMode.Weekly:
+                        dt = dt.AddDays(7);
+                        break;
+                    case RepeatMode.Biweekly:
+                        dt = dt.AddDays(14);
+                        break;
+                    case RepeatMode.Monthly:
+                        dt = ProjectToNextMonth(dt);
+                        break;
+                    default:
+                        throw new Exception("Bad params");
+                }
+                if (eoy && dt.Year != DateTime.Now.Year)
+                    hitEnd = true;
+                else if (!eoy && nrepeats-- <= 0)
+                    hitEnd = true;
+
+                if (!hitEnd)
+                    dates.Add(dt);
+            }
+
+            CloneLessons(l, dates);
+        }
+
+        private void CloneLessons(Lesson lbase, List<DateTime> dates)
+        {
+            StartBulkEditOperation(Modes.Lessons);
+
+            foreach (DateTime dt in dates)
+            {
+                Lesson l;
+                buttonAdd_Click(null, null);
+                l = lessonList.Current as Lesson;
+                lbase.CloneValuesTo(l);
+                l.Day = dt.ToShortDateString();
+            }
+
+            CompleteBulkEditOperation();
+        }
+
+        private void DeleteFutures(Lesson l)
+        {
+            StartBulkEditOperation(Modes.Lessons);
+
+            for (int i = lessonList.Count - 1; i >= 0; i--)
+            {
+                Lesson lsn = (Lesson)lessonList[i];
+                if (lsn.RepeaterKey == l.RepeaterSequenceKey &&
+                    lsn.DateTimeStart > l.DateTimeEnd)
+                {
+                    DataList.CurrencyManager.Position = i;
+                    buttonDelete_Click(null, null);
+                }
+            }
+
+            for (int i = lessonList.Count - 1; i >= 0; i--)
+            {
+                Lesson lsn = (Lesson)lessonList[i];
+                if (lsn.Key == l.Key)
+                {
+                    DataList.CurrencyManager.Position = i;
+                    break;
+                }
+            }
+
+            CompleteBulkEditOperation();
+        }
     }
 }

@@ -1016,6 +1016,77 @@ namespace RecordKeeper
             ShowView();
         }
 
+        private void weeklyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!CheckSafety())
+                return;
+
+            using (RepeatForm rf = new RepeatForm())
+            {
+                if (rf.ShowDialog(this) == DialogResult.OK)
+                {
+                    Lesson l = GetLessonFromSender2(sender);
+                    RepeatLesson(l, 
+                        RepeatMode.Weekly, 
+                        rf.UpToTheEOY, 
+                        rf.Repeats);
+                    Modified = true;
+                    ShowView();
+                }
+            }
+        }
+
+        private void biweeklyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!CheckSafety())
+                return;
+
+            using (RepeatForm rf = new RepeatForm())
+            {
+                if (rf.ShowDialog(this) == DialogResult.OK)
+                {
+                    Lesson l = GetLessonFromSender2(sender);
+                    RepeatLesson(l,
+                            RepeatMode.Biweekly,
+                            rf.UpToTheEOY,
+                            rf.Repeats);
+                    Modified = true;
+                    ShowView();
+                }
+            }
+        }
+
+        private void monthlyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!CheckSafety())
+                return;
+
+            using (RepeatForm rf = new RepeatForm())
+            {
+                if (rf.ShowDialog(this) == DialogResult.OK)
+                {
+                    Lesson l = GetLessonFromSender2(sender);
+                    RepeatLesson(l,
+                            RepeatMode.Monthly,
+                            rf.UpToTheEOY,
+                            rf.Repeats);
+
+                    Modified = true;
+                    ShowView();
+                }
+            }
+        }
+
+        private void deleteFuturesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!CheckSafety())
+                return;
+
+            Lesson l = GetLessonFromSender2(sender);
+            DeleteFutures(l);
+            Modified = true;
+            ShowView();
+        }
 
         private Lesson GetLessonFromSender(object sender)
         {

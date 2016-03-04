@@ -45,6 +45,14 @@ namespace RecordKeeper
         NoMatch,
         LinkedToOther
     }
+    public enum RepeatMode
+    {
+        None,
+        Weekly,
+        Biweekly,
+        Monthly
+    }
+
     public enum Validations
     {
         Ignore,

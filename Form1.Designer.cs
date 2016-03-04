@@ -80,6 +80,11 @@
             this.plannedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.doneToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cancelledToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.repeatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.weeklyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.biweeklyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.monthlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteFuturesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControlOps = new RecordKeeper.HiddenTabControl();
             this.tabEdit = new System.Windows.Forms.TabPage();
             this.splitContainerGlobDataControls = new System.Windows.Forms.SplitContainer();
@@ -909,9 +914,10 @@
             this.ctxMenuLesson.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.roomToolStripMenuItem,
             this.timeToolStripMenuItem,
-            this.statusToolStripMenuItem});
+            this.statusToolStripMenuItem,
+            this.repeatToolStripMenuItem});
             this.ctxMenuLesson.Name = "ctxMenuLesson";
-            this.ctxMenuLesson.Size = new System.Drawing.Size(107, 70);
+            this.ctxMenuLesson.Size = new System.Drawing.Size(120, 92);
             // 
             // roomToolStripMenuItem
             // 
@@ -924,55 +930,55 @@
             this.pinkToolStripMenuItem1,
             this.nAToolStripMenuItem});
             this.roomToolStripMenuItem.Name = "roomToolStripMenuItem";
-            this.roomToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
-            this.roomToolStripMenuItem.Text = "Room";
+            this.roomToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.roomToolStripMenuItem.Text = "Relocate";
             // 
             // redToolStripMenuItem
             // 
             this.redToolStripMenuItem.Name = "redToolStripMenuItem";
-            this.redToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.redToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.redToolStripMenuItem.Text = "Red";
             this.redToolStripMenuItem.Click += new System.EventHandler(this.redToolStripMenuItem_Click);
             // 
             // greenToolStripMenuItem
             // 
             this.greenToolStripMenuItem.Name = "greenToolStripMenuItem";
-            this.greenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.greenToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.greenToolStripMenuItem.Text = "Green";
             this.greenToolStripMenuItem.Click += new System.EventHandler(this.greenToolStripMenuItem_Click);
             // 
             // tealToolStripMenuItem
             // 
             this.tealToolStripMenuItem.Name = "tealToolStripMenuItem";
-            this.tealToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.tealToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.tealToolStripMenuItem.Text = "Teal";
             this.tealToolStripMenuItem.Click += new System.EventHandler(this.tealToolStripMenuItem_Click);
             // 
             // yellowToolStripMenuItem
             // 
             this.yellowToolStripMenuItem.Name = "yellowToolStripMenuItem";
-            this.yellowToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.yellowToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.yellowToolStripMenuItem.Text = "Yellow";
             this.yellowToolStripMenuItem.Click += new System.EventHandler(this.yellowToolStripMenuItem_Click);
             // 
             // whiteToolStripMenuItem
             // 
             this.whiteToolStripMenuItem.Name = "whiteToolStripMenuItem";
-            this.whiteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.whiteToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.whiteToolStripMenuItem.Text = "White";
             this.whiteToolStripMenuItem.Click += new System.EventHandler(this.whiteToolStripMenuItem_Click);
             // 
             // pinkToolStripMenuItem1
             // 
             this.pinkToolStripMenuItem1.Name = "pinkToolStripMenuItem1";
-            this.pinkToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.pinkToolStripMenuItem1.Size = new System.Drawing.Size(108, 22);
             this.pinkToolStripMenuItem1.Text = "Pink";
             this.pinkToolStripMenuItem1.Click += new System.EventHandler(this.pinkToolStripMenuItem_Click);
             // 
             // nAToolStripMenuItem
             // 
             this.nAToolStripMenuItem.Name = "nAToolStripMenuItem";
-            this.nAToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.nAToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
             this.nAToolStripMenuItem.Text = "N/A";
             this.nAToolStripMenuItem.Click += new System.EventHandler(this.nAToolStripMenuItem_Click);
             // 
@@ -985,8 +991,8 @@
             this.weekBackToolStripMenuItem,
             this.twoWeeksBackToolStripMenuItem});
             this.timeToolStripMenuItem.Name = "timeToolStripMenuItem";
-            this.timeToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
-            this.timeToolStripMenuItem.Text = "Time";
+            this.timeToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.timeToolStripMenuItem.Text = "Move";
             // 
             // sameWeekToolStripMenuItem
             // 
@@ -1030,8 +1036,8 @@
             this.doneToolStripMenuItem,
             this.cancelledToolStripMenuItem});
             this.statusToolStripMenuItem.Name = "statusToolStripMenuItem";
-            this.statusToolStripMenuItem.Size = new System.Drawing.Size(106, 22);
-            this.statusToolStripMenuItem.Text = "Status";
+            this.statusToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.statusToolStripMenuItem.Text = "Mark";
             // 
             // plannedToolStripMenuItem
             // 
@@ -1053,6 +1059,45 @@
             this.cancelledToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.cancelledToolStripMenuItem.Text = "Cancelled";
             this.cancelledToolStripMenuItem.Click += new System.EventHandler(this.cancelledToolStripMenuItem_Click);
+            // 
+            // repeatToolStripMenuItem
+            // 
+            this.repeatToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.weeklyToolStripMenuItem,
+            this.biweeklyToolStripMenuItem,
+            this.monthlyToolStripMenuItem,
+            this.deleteFuturesToolStripMenuItem1});
+            this.repeatToolStripMenuItem.Name = "repeatToolStripMenuItem";
+            this.repeatToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.repeatToolStripMenuItem.Text = "Repeat";
+            // 
+            // weeklyToolStripMenuItem
+            // 
+            this.weeklyToolStripMenuItem.Name = "weeklyToolStripMenuItem";
+            this.weeklyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.weeklyToolStripMenuItem.Text = "Weekly";
+            this.weeklyToolStripMenuItem.Click += new System.EventHandler(this.weeklyToolStripMenuItem_Click);
+            // 
+            // biweeklyToolStripMenuItem
+            // 
+            this.biweeklyToolStripMenuItem.Name = "biweeklyToolStripMenuItem";
+            this.biweeklyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.biweeklyToolStripMenuItem.Text = "Bi-weekly";
+            this.biweeklyToolStripMenuItem.Click += new System.EventHandler(this.biweeklyToolStripMenuItem_Click);
+            // 
+            // monthlyToolStripMenuItem
+            // 
+            this.monthlyToolStripMenuItem.Name = "monthlyToolStripMenuItem";
+            this.monthlyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.monthlyToolStripMenuItem.Text = "Monthly";
+            this.monthlyToolStripMenuItem.Click += new System.EventHandler(this.monthlyToolStripMenuItem_Click);
+            // 
+            // deleteFuturesToolStripMenuItem1
+            // 
+            this.deleteFuturesToolStripMenuItem1.Name = "deleteFuturesToolStripMenuItem1";
+            this.deleteFuturesToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.deleteFuturesToolStripMenuItem1.Text = "Delete futures";
+            this.deleteFuturesToolStripMenuItem1.Click += new System.EventHandler(this.deleteFuturesToolStripMenuItem_Click);
             // 
             // tabControlOps
             // 
@@ -6378,6 +6423,11 @@
         private System.Windows.Forms.ToolStripMenuItem cancelledToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem weekBackToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem twoWeeksBackToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem repeatToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem weeklyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem biweeklyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem monthlyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteFuturesToolStripMenuItem1;
     }
 }
 

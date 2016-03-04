@@ -29,7 +29,7 @@ namespace RecordKeeper
         public string CancellationTime { get; set; }
         public string Price { get; set; }
         public string GoogleId { get; set; }
-
+        public string RepeaterKey { get; set; }
         public DateTime DateTimeStart
         {
             get
@@ -184,6 +184,17 @@ namespace RecordKeeper
             }
         }
 
+        public string RepeaterSequenceKey
+        {
+            get
+            {
+                if (FormGlob.IsStringEmpty(RepeaterKey))
+                    return Key;
+                else
+                    return RepeaterKey;
+            }
+        } 
+
         public void GetLocationInWeek(out int col, out int row1, out int row2)
         {
             col = FormGlob.StandardizeDayOfTheWeek(DateTimeStart.DayOfWeek);
@@ -290,6 +301,9 @@ namespace RecordKeeper
                 case "GoogleId":
                     this.GoogleId = value;
                     break;
+                case "RepeaterKey":
+                    this.RepeaterKey = value;
+                    break;
                 default:
                     throw new Exception("unknown field " + field);
             }
@@ -319,6 +333,7 @@ namespace RecordKeeper
              CancellationTime = "";
              Price = "";
              GoogleId = "";
+             RepeaterKey = "";
         }
 
         public override string Get(string field)
@@ -371,10 +386,38 @@ namespace RecordKeeper
                     return this.Price;
                 case "GoogleId":
                     return this.GoogleId;
+                case "RepeaterKey":
+                    return this.RepeaterKey;
 
                 default:
                     throw new Exception("unknown field " + field);
             }
+        }
+
+        public void CloneValuesTo(Lesson l)
+        {
+            l.Day = this.Day;
+            l.End = this.End;
+            l.Program = this.Program;
+            l.Room = this.Room;
+            l.State = this.State;
+            l.Student1 = this.Student1;
+            l.Student2 = this.Student2;
+            l.Student3 = this.Student3;
+            l.Student4 = this.Student4;
+            l.Student5 = this.Student5;
+            l.Student6 = this.Student6;
+            l.Student7 = this.Student7;
+            l.Student8 = this.Student8;
+            l.Student9 = this.Student9;
+            l.Student10 = this.Student10;
+            l.Start = this.Start;
+            l.Teacher1 = this.Teacher1;
+            l.Teacher2 = this.Teacher2;
+            l.Price = this.Price;
+            l.CancellationTime = "";
+            l.GoogleId = "";
+            l.RepeaterKey = this.RepeaterSequenceKey;
         }
 
         public override bool Validate()

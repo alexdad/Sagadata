@@ -38,6 +38,9 @@ namespace RecordKeeper
         bool m_synced;
         bool m_editSavingTrap;
 
+        bool m_bulkOperationInPlay;
+        Modes m_modePreBulkOperation;
+
         private Control m_rightClickedControl;
 
         #region "Main controls"
@@ -415,6 +418,9 @@ namespace RecordKeeper
         }
         public bool CheckSafety()
         {
+            if (m_bulkOperationInPlay)
+                return true;
+
             if (m_unsavedAvailabilityChanges)
             {
                 if (MessageBox.Show(
@@ -642,18 +648,48 @@ namespace RecordKeeper
                 }
             }
         }
+
+        public bool BulkOperation
+        {
+            set
+            {
+                if (value)
+                {
+                    m_bulkOperationInPlay = true;
+                    m_modePreBulkOperation = CurrentMode;
+                }
+                else
+                {
+                    m_bulkOperationInPlay = false;
+                    CurrentMode = m_modePreBulkOperation;
+                }
+            }
+        }
+
+        public void StartBulkEditOperation(Modes mode)
+        {
+            BulkOperation = true;
+            CurrentMode = mode;
+        }
+        public void CompleteBulkEditOperation()
+        {
+            buttonGlobEditAccept_Click(null, null);
+            BulkOperation = false;
+            Modified = true;
+        }
         private void buttonGlobEditAccept_Click(object sender, EventArgs e)
         {
             Modified = true;
-            if (DataList.Position != DataList.Count - 1)
+
+            if (DataList.CurrencyManager.Position < DataList.Count - 1)
             {
-                DataList.Position++;
-                DataList.Position--;
+                DataList.CurrencyManager.Position++;
+                DataList.CurrencyManager.Position--;
             }
-            if (DataList.Position != 0)
+            if (DataList.CurrencyManager.Position > 0)
             {
-                DataList.Position--;
-                DataList.Position++;
+                DataList.CurrencyManager.Position--;
+                DataList.CurrencyManager.Position++;
             }
         }
 

@@ -128,6 +128,26 @@ namespace RecordKeeper
             return new DateTime(dt.Year, dt.Month, DaysInMonth(dt), 23, 59, 59);
         }
 
+        public static DateTime ProjectToNextMonth(DateTime dt)
+        {
+            int weekNumber = -1;
+            DateTime dtp = dt;
+            while (dtp.Month == dt.Month)
+            {
+                dtp = dtp.AddDays(-7);
+                weekNumber++;
+            }
+            
+            DateTime dtn = dt;
+            while(dtn.Month == dt.Month)
+                dtn = dtn.AddDays(7);
+
+            for (int i=0; i < weekNumber; i++)
+                dtn = dtn.AddDays(7);
+
+            return dtn;
+        }
+
         public static int Slots(DateTime dt1, DateTime dt2)
         {
             return (int)((dt2.Ticks - dt1.Ticks) / SlotInTicks);
