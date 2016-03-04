@@ -13,112 +13,93 @@ namespace RecordKeeper
 {
     public partial class FormGlob : Form
     {
-        public enum TabControlOps
+        #region "Top menu strip"
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Edit,
-            Plan,
-            View,
-            SchedCancel,
-            PayStud,
-            PayTeach,
-            PayExpense,
-            page8
-        };
-
-        public enum TabControlScales
-        {
-            Month,
-            Week,
-            Day,
-            Slots
-        };
-
-        //----------------------------------------------------
-        // Menu strip
-        //----------------------------------------------------
-        private void downloadToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CommandDownload();
+            if (!CheckSafety())
+                return;
+            AskAndUploadChangedFiles();
+            Application.Exit();
         }
 
-        private void uploadToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CommandUpload();
-        }
-        private void reopenToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ReadAllFiles();
-        }
+        #endregion
 
+        #region "View submenu strip"
         private void slotsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tabControlViewScales.SelectedIndex = (int)TabControlScales.Slots;
-            tabControlOps.SelectedIndex = (int)TabControlOps.View;
+            tabControlViewScales.SelectedIndex = (int)Scales.Slots;
+            ChangeOperMode(Ops.View);
             FollowFocusedDay();
             ShowView();
         }
 
         private void dayToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tabControlViewScales.SelectedIndex = (int)TabControlScales.Day;
-            tabControlOps.SelectedIndex = (int)TabControlOps.View;
+            tabControlViewScales.SelectedIndex = (int)Scales.Day;
+            ChangeOperMode(Ops.View);
             FollowFocusedDay();
             ShowView();
         }
 
         private void weekToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tabControlViewScales.SelectedIndex = (int)TabControlScales.Week;
-            tabControlOps.SelectedIndex = (int)TabControlOps.View;
+            tabControlViewScales.SelectedIndex = (int)Scales.Week;
+            ChangeOperMode(Ops.View);
             FollowFocusedDay();
             ShowView();
         }
 
         private void monthToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tabControlViewScales.SelectedIndex = (int)TabControlScales.Month;
-            tabControlOps.SelectedIndex = (int)TabControlOps.View;
+            tabControlViewScales.SelectedIndex = (int)Scales.Month;
+            ChangeOperMode(Ops.View);
             ShowView();
         }
 
+        #endregion
+
+        #region "Edit submenu strip"
         private void studentsToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            tabControlOps.SelectedIndex = (int)TabControlOps.Edit;
+            ChangeOperMode(Ops.Edit);
             cbGlobMode.Text = "Students";
-            ChangeMode(Modes.Students);
+            ChangeEditMode(Modes.Students);
         }
 
         private void teachersToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            tabControlOps.SelectedIndex = (int)TabControlOps.Edit;
+            ChangeOperMode(Ops.Edit);
             cbGlobMode.Text = "Teachers";
-            ChangeMode(Modes.Teachers);
+            ChangeEditMode(Modes.Teachers);
         }
 
         private void lessonsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tabControlOps.SelectedIndex = (int)TabControlOps.Edit;
+            ChangeOperMode(Ops.Edit);
             cbGlobMode.Text = "Lessons";
-            ChangeMode(Modes.Lessons);
+            ChangeEditMode(Modes.Lessons);
         }
 
         private void programsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tabControlOps.SelectedIndex = (int)TabControlOps.Edit;
+            ChangeOperMode(Ops.Edit);
             cbGlobMode.Text = "Programs";
-            ChangeMode(Modes.Programs);
+            ChangeEditMode(Modes.Programs);
         }
         private void roomsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tabControlOps.SelectedIndex = (int)TabControlOps.Edit;
+            ChangeOperMode(Ops.Edit);
             cbGlobMode.Text = "Rooms";
-            ChangeMode(Modes.Rooms);
+            ChangeEditMode(Modes.Rooms);
         }
+        #endregion
+
+        #region "Schedule submenu strip"
 
         private void planToolStripMenuItem_Click(object sender, EventArgs e)
         {
             InitializePlan(true, false);
-            tabControlOps.SelectedIndex = (int)TabControlOps.Plan;
+            ChangeOperMode(Ops.Plan);
         }
         private void showToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -151,32 +132,234 @@ namespace RecordKeeper
                     MessageBox.Show("Failed to publish, sorry");
             }
         }
+        #endregion
+
+        #region "Pay submenu strip"
 
         private void studentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tabControlOps.SelectedIndex = (int)TabControlOps.PayStud;
-
+            ChangeOperMode(Ops.PayStud);
         }
 
         private void teachersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tabControlOps.SelectedIndex = (int)TabControlOps.PayTeach;
-
+            ChangeOperMode(Ops.PayTeach);
         }
 
         private void reportExpenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            tabControlOps.SelectedIndex = (int)TabControlOps.PayExpense;
+            ChangeOperMode(Ops.PayExpense);
+        }
+        #endregion
 
+        #region "Advanced menu strip"
+        private void downloadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CommandDownload();
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void uploadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CommandUpload();
+        }
+        private void reopenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ReadAllFiles();
+        }
+        #endregion
+
+        #region "Relocate submenu of Lesson ctx menu"
+        private void redToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lesson l = GetLessonFromSender2(sender);
+            l.Room = "Red";
+            Modified = true;
+            ShowView();
+        }
+
+        private void greenToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lesson l = GetLessonFromSender2(sender);
+            l.Room = "Green";
+            Modified = true;
+            ShowView();
+        }
+
+        private void tealToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lesson l = GetLessonFromSender2(sender);
+            l.Room = "Teal";
+            Modified = true;
+            ShowView();
+        }
+
+        private void yellowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lesson l = GetLessonFromSender2(sender);
+            l.Room = "Yellow";
+            Modified = true;
+            ShowView();
+        }
+        private void whiteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lesson l = GetLessonFromSender2(sender);
+            l.Room = "White";
+            Modified = true;
+            ShowView();
+        }
+        private void pinkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lesson l = GetLessonFromSender2(sender);
+            l.Room = "Pink";
+            Modified = true;
+            ShowView();
+        }
+
+        private void nAToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lesson l = GetLessonFromSender2(sender);
+            l.Room = "N/A";
+            Modified = true;
+            ShowView();
+        }
+        #endregion
+
+        #region "Move submenu of Lesson ctx menu"
+        private void sameWeekToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lesson l = GetLessonFromSender2(sender);
+            MoveLesson(l, 0);
+        }
+
+        private void weekForwardToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lesson l = GetLessonFromSender2(sender);
+            MoveLesson(l, 7);
+        }
+
+        private void twoWeeksToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lesson l = GetLessonFromSender2(sender);
+            MoveLesson(l, 14);
+        }
+
+        private void weekBackToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lesson l = GetLessonFromSender2(sender);
+            MoveLesson(l, -7);
+        }
+
+        private void twoWeeksBackToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lesson l = GetLessonFromSender2(sender);
+            MoveLesson(l, -14);
+        }
+
+        #endregion
+
+        #region "Mark submenu of Lesson ctx menu"
+        private void plannedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lesson l = GetLessonFromSender2(sender);
+            l.State = "Planned";
+            Modified = true;
+            ShowView();
+        }
+
+        private void doneToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lesson l = GetLessonFromSender2(sender);
+            l.State = "Done";
+            Modified = true;
+            ShowView();
+        }
+
+        private void cancelledToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Lesson l = GetLessonFromSender2(sender);
+            l.State = "Cancelled";
+            l.CancellationTime = DateTime.Now.ToString();
+            Modified = true;
+            ShowView();
+        }
+        #endregion
+
+        #region "Repeat submenu of Lesson ctx menu"
+        private void weeklyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!CheckSafety())
                 return;
-            AskAndUploadChangedFiles();
-            Application.Exit();
+
+            using (RepeatForm rf = new RepeatForm())
+            {
+                if (rf.ShowDialog(this) == DialogResult.OK)
+                {
+                    Lesson l = GetLessonFromSender2(sender);
+                    RepeatLesson(l,
+                        RepeatMode.Weekly,
+                        rf.UpToTheEOY,
+                        rf.Repeats);
+                    Modified = true;
+                    ShowView();
+                }
+            }
         }
+
+        private void biweeklyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!CheckSafety())
+                return;
+
+            using (RepeatForm rf = new RepeatForm())
+            {
+                if (rf.ShowDialog(this) == DialogResult.OK)
+                {
+                    Lesson l = GetLessonFromSender2(sender);
+                    RepeatLesson(l,
+                            RepeatMode.Biweekly,
+                            rf.UpToTheEOY,
+                            rf.Repeats);
+                    Modified = true;
+                    ShowView();
+                }
+            }
+        }
+
+        private void monthlyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!CheckSafety())
+                return;
+
+            using (RepeatForm rf = new RepeatForm())
+            {
+                if (rf.ShowDialog(this) == DialogResult.OK)
+                {
+                    Lesson l = GetLessonFromSender2(sender);
+                    RepeatLesson(l,
+                            RepeatMode.Monthly,
+                            rf.UpToTheEOY,
+                            rf.Repeats);
+
+                    Modified = true;
+                    ShowView();
+                }
+            }
+        }
+
+        private void deleteFuturesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!CheckSafety())
+                return;
+
+            Lesson l = GetLessonFromSender2(sender);
+            DeleteFutures(l);
+            Modified = true;
+            ShowView();
+        }
+
+        #endregion
+
+        #region "Commands"
 
         // Support functions
         private void CommandSave()
@@ -198,7 +381,7 @@ namespace RecordKeeper
 
             Modes modeWas = CurrentMode;
             CommandUpload();
-            SetMode(modeWas);
+            SetEditMode(modeWas);
 
             HideWorkout = false;
         }
@@ -235,7 +418,7 @@ namespace RecordKeeper
             Modes modeWas = CurrentMode;
             for (Modes i = (Modes)0; i < Modes.MaxMode; i++)
             {
-                SetMode(i);
+                SetEditMode(i);
                 UploadCurrentFile();
             }
             CurrentMode = modeWas;
@@ -253,7 +436,7 @@ namespace RecordKeeper
 
             for (Modes i = (Modes)0; i < Modes.MaxMode; i++)
             {
-                SetMode(i);
+                SetEditMode(i);
                 if (!DownloadCurrentFile())
                     success = false;
             }
@@ -273,11 +456,11 @@ namespace RecordKeeper
 
             for (Modes i = (Modes)0; i < Modes.MaxMode; i++)
             {
-                SetMode(i);
+                SetEditMode(i);
                 if (!ReadCurrentFile())
                     success = false;
             }
-            SetMode(modeWas);
+            SetEditMode(modeWas);
 
             HideWorkout = false;
             return success;
@@ -290,16 +473,17 @@ namespace RecordKeeper
             Modes was = CurrentMode;
             for (Modes i = (Modes)0; i < Modes.MaxMode; i++)
             {
-                SetMode(i);
+                SetEditMode(i);
                 CurrentType.WriteRecordsFile();
             }
             Modified = false;
             if (m_assignedListsChanged)
                 AssignListsToComboBoxes();
             m_assignedListsChanged = false;
-            SetMode(was);
+            SetEditMode(was);
             m_editSavingTrap = false;
             HideWorkout = false;
         }
+        #endregion
     }
 }

@@ -34,44 +34,9 @@ namespace RecordKeeper
         string m_remoteDir;             // place for remote file copy
         string m_recordKeeperDir;       // place for local file subdirs
 
-        bool m_modified;
-        bool m_synced;
-        bool m_editSavingTrap;
-
-        bool m_bulkOperationInPlay;
-        Modes m_modePreBulkOperation;
-
         private Control m_rightClickedControl;
 
         #region "Main controls"
-        public bool Modified
-        {
-            get
-            {
-                return m_modified;
-            }
-            set
-            {
-                m_modified = value;
-                buttonSave.Visible = m_modified;
-                if (value)
-                    Synced = false;
-            }
-        }
-
-        public bool Synced
-        {
-            get
-            {
-                return m_synced;
-            }
-            set
-            {
-                m_synced = value;
-            }
-        }
-
-        public Modes CurrentMode { get; set; }
         public RecordType CurrentType
         {
             get { return m_recordTypes[CurrentMode]; }
@@ -159,7 +124,7 @@ namespace RecordKeeper
             PrepareDataDirectories();
             InitializeComponent();
             AssignEnums();
-            SetMode(CurrentMode);
+            SetEditMode(CurrentMode);
             RecordsToFormConst2();
             cbGlobMode.SelectedIndex = (int)CurrentMode;
             SelectionMode = false;
@@ -323,7 +288,7 @@ namespace RecordKeeper
             Modified = false;
 
             // Start as View day
-            tabControlOps.SelectedIndex = (int)TabControlOps.View;
+            ChangeOperMode(Ops.View);
             ShowView();
         }
 
@@ -363,42 +328,6 @@ namespace RecordKeeper
             DropLessonSelection();
         }
 
-        private void SetMode(int mode)
-        {
-            SetMode((Modes)mode);
-        }
-        private void SetMode(Modes mode)
-        {
-            CurrentMode = mode;
-            tabControlModesBottom.SelectedIndex = (int)CurrentMode;
-            tabControlModesTop.SelectedIndex = (int)CurrentMode;
-            tabControlSearch.SelectedIndex = (int)CurrentMode;
-
-        }
-
-        private void ChangeMode(Modes newMode)
-        {
-            if (!CheckSafety())
-                return;
-
-            this.splitContainerGlobDataControls.Panel1.Visible = false;
-
-            CurrentType.EndSelectionMode();
-
-            if (Modified)
-                SaveAll();
-
-            if (m_assignedListsChanged)
-                AssignListsToComboBoxes();
-
-            SelectionMode = false;
-            CurrentType.SavedFullListDuringSelection = null;
-            SetMode(newMode);
-            ShowCurrentCount();
-            ManageSearchWindow();
-
-            this.splitContainerGlobDataControls.Panel1.Visible = true;
-        }
 
         public bool HideWorkout
         {
@@ -416,37 +345,6 @@ namespace RecordKeeper
                 }
             }
         }
-        public bool CheckSafety()
-        {
-            if (m_bulkOperationInPlay)
-                return true;
-
-            if (m_unsavedAvailabilityChanges)
-            {
-                if (MessageBox.Show(
-                    "Want to lose them?",
-                    "You did not grab changes in availability form",
-                    MessageBoxButtons.YesNo)
-                                            != DialogResult.Yes)
-                    return false;
-                else
-                    DropFlagUnsavedAvailabilityChanges();
-            }
-
-            if (m_editSavingTrap)
-            {
-                if (MessageBox.Show(
-                    "Want to lose them?",
-                    "You did not Accept editing changes",
-                    MessageBoxButtons.YesNo)
-                                            != DialogResult.Yes)
-                    return false;
-                else
-                    m_editSavingTrap = false;
-            }
-
-            return true;
-        }
 
         void ManageSearchWindow()
         {
@@ -459,14 +357,6 @@ namespace RecordKeeper
 
         }
 
-        private void cbGlobType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            ComboBox comboBox = (ComboBox)sender;
-            Modes newMode = (Modes)comboBox.SelectedIndex;
-            if (newMode == CurrentMode)
-                return;
-            ChangeMode(newMode);
-        }
         #endregion
 
         #region "Data Grid Clicks"
@@ -632,51 +522,7 @@ namespace RecordKeeper
 
         #region "Global Button Clicks"
 
-        public bool EditTrap
-        {
-            set
-            {
-                m_editSavingTrap = value;
-                if (value)
-                {
-                    m_assignedListsChanged = true;
-                    buttonGlobEditAccept.Visible = true;
-                }
-                else
-                {
-                    buttonGlobEditAccept.Visible = false;
-                }
-            }
-        }
 
-        public bool BulkOperation
-        {
-            set
-            {
-                if (value)
-                {
-                    m_bulkOperationInPlay = true;
-                    m_modePreBulkOperation = CurrentMode;
-                }
-                else
-                {
-                    m_bulkOperationInPlay = false;
-                    CurrentMode = m_modePreBulkOperation;
-                }
-            }
-        }
-
-        public void StartBulkEditOperation(Modes mode)
-        {
-            BulkOperation = true;
-            CurrentMode = mode;
-        }
-        public void CompleteBulkEditOperation()
-        {
-            buttonGlobEditAccept_Click(null, null);
-            BulkOperation = false;
-            Modified = true;
-        }
         private void buttonGlobEditAccept_Click(object sender, EventArgs e)
         {
             Modified = true;
@@ -695,7 +541,7 @@ namespace RecordKeeper
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            if (tabControlOps.SelectedIndex == (int)TabControlOps.Edit)
+            if (OperMode() == Ops.Edit)
             {
                 if (m_editSavingTrap)
                 {
@@ -1772,16 +1618,16 @@ namespace RecordKeeper
 
             switch (tabControlViewScales.SelectedIndex)
             {
-                case (int)TabControlScales.Month:
+                case (int)Scales.Month:
                     ViewShowMonth();
                     break;
-                case (int)TabControlScales.Week:
+                case (int)Scales.Week:
                     ViewShowWeek();
                     break;
-                case (int)TabControlScales.Day:
+                case (int)Scales.Day:
                     ViewShowDay();
                     break;
-                case (int)TabControlScales.Slots:
+                case (int)Scales.Slots:
                     ViewShowSlots();
                     break;
                 default:

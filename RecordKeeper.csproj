@@ -129,6 +129,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ClientType.cs" />
+    <Compile Include="Controller.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

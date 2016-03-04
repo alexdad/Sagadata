@@ -12,16 +12,6 @@ using System.Windows.Forms;
 
 namespace RecordKeeper
 {
-    public enum Modes
-    {
-        Students = 0,
-        Teachers = 1,
-        Programs = 2,
-        Rooms = 3,
-        Lessons = 4,
-        Clients = 5,
-        MaxMode = 6
-    }
     public enum Clouds
     {
         None,
