@@ -29,7 +29,7 @@ namespace RecordKeeper
         private void EditTeacherDetailsChanged()
         {
             EditTrap = true;
-            m_assignedListsChanged = true;
+            StaleComboLists = true;
         }
 
         private void DropTeacherSelection()

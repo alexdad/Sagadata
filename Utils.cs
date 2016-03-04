@@ -379,6 +379,37 @@ namespace RecordKeeper
                 desc = (colon + 1 < desc.Length - 1 ? desc.Substring(colon + 1) : "");
             }
 
+            // Drop possible language. 
+            // TODO - this needs to come from m_enumLanguage, but this is static...
+            string[] languages = { "English", "French", "German", "Spanish", "Mandarin", 
+                                   "Portuguese", "Italian", "Polish", "Russian",
+                                   "Japanese", "Korean", "Chinese", "Aftrikaans"};
+            foreach (string lang in languages)
+            {
+                int ll = desc.ToLower().IndexOf(lang.ToLower());
+                if (ll >= 0)
+                {
+                    if (ll > 0 && Char.IsLetter(desc[ll - 1]))
+                        continue;
+
+                    int le = ll + lang.Length;
+                    if (le >= desc.Length - 1)
+                    {
+                        desc = desc.Substring(0, ll);
+                        continue;
+                    }
+                    if (Char.IsLetter(desc[le]))
+                        continue;
+
+                    while( le < desc.Length - 1 &&
+                           (Char.IsWhiteSpace(desc[le]) ||
+                            Char.IsPunctuation(desc[le])))
+                        le++;
+
+                    desc = desc.Substring(0, ll) + " " + desc.Substring(le);
+                }
+            }
+
             // Teachers after "/" or "-"
             int slash = desc.IndexOf("/");
             if (slash < 0)
@@ -406,6 +437,8 @@ namespace RecordKeeper
             }
             else
                 teachers = new string[0];
+
+            desc = desc.Replace(" and ", ",");
 
             students = desc.Split(',');
         }

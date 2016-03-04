@@ -25,7 +25,7 @@ namespace RecordKeeper
         private void EditRoomDetailsChanged()
         {
             EditTrap = true;
-            m_assignedListsChanged = true;
+            StaleComboLists = true;
         }
 
         private void DropRoomSelection()

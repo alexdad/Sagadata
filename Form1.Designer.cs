@@ -1074,28 +1074,28 @@
             // weeklyToolStripMenuItem
             // 
             this.weeklyToolStripMenuItem.Name = "weeklyToolStripMenuItem";
-            this.weeklyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.weeklyToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.weeklyToolStripMenuItem.Text = "Weekly";
             this.weeklyToolStripMenuItem.Click += new System.EventHandler(this.weeklyToolStripMenuItem_Click);
             // 
             // biweeklyToolStripMenuItem
             // 
             this.biweeklyToolStripMenuItem.Name = "biweeklyToolStripMenuItem";
-            this.biweeklyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.biweeklyToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.biweeklyToolStripMenuItem.Text = "Bi-weekly";
             this.biweeklyToolStripMenuItem.Click += new System.EventHandler(this.biweeklyToolStripMenuItem_Click);
             // 
             // monthlyToolStripMenuItem
             // 
             this.monthlyToolStripMenuItem.Name = "monthlyToolStripMenuItem";
-            this.monthlyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.monthlyToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
             this.monthlyToolStripMenuItem.Text = "Monthly";
             this.monthlyToolStripMenuItem.Click += new System.EventHandler(this.monthlyToolStripMenuItem_Click);
             // 
             // deleteFuturesToolStripMenuItem1
             // 
             this.deleteFuturesToolStripMenuItem1.Name = "deleteFuturesToolStripMenuItem1";
-            this.deleteFuturesToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.deleteFuturesToolStripMenuItem1.Size = new System.Drawing.Size(147, 22);
             this.deleteFuturesToolStripMenuItem1.Text = "Delete futures";
             this.deleteFuturesToolStripMenuItem1.Click += new System.EventHandler(this.deleteFuturesToolStripMenuItem_Click);
             // 
@@ -3727,6 +3727,7 @@
             this.cbLessonStudent1.Name = "cbLessonStudent1";
             this.cbLessonStudent1.Size = new System.Drawing.Size(96, 21);
             this.cbLessonStudent1.TabIndex = 9;
+            this.cbLessonStudent1.SelectedIndexChanged += new System.EventHandler(this.cbLessonStudent1_SelectedIndexChanged);
             this.cbLessonStudent1.Click += new System.EventHandler(this.cbLessonStudent1_Click);
             // 
             // cbLessonTeacher2
@@ -3760,6 +3761,7 @@
             this.cbLessonProg.Name = "cbLessonProg";
             this.cbLessonProg.Size = new System.Drawing.Size(96, 21);
             this.cbLessonProg.TabIndex = 3;
+            this.cbLessonProg.SelectedIndexChanged += new System.EventHandler(this.cbLessonProg_SelectedIndexChanged);
             this.cbLessonProg.Click += new System.EventHandler(this.cbLessonProg_Click);
             // 
             // labelLessonStudent1

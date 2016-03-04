@@ -667,10 +667,10 @@ namespace RecordKeeper
             }
 
             if (!IsStringEmpty(l.Student1))
-                PopulateLessonProgPrice(l);
+                PopulateLessonProgPrice(l, null);
         }
 
-        void PopulateLessonProgPrice(Lesson l)
+        void PopulateLessonProgPrice(Lesson l, string prog)
         {
             foreach (Student stud in SpecificStudent(l.Student1))
             {
@@ -688,6 +688,12 @@ namespace RecordKeeper
                         l.Price = spr;
                         return;
                     }
+                }
+                if (!IsStringEmpty(prog))
+                {
+                    string spr = GetProgramPrice(prog);
+                    tbLessonPrice.Text = spr;
+                    l.Price = spr;
                 }
             }
         }
@@ -786,6 +792,17 @@ namespace RecordKeeper
             return ExtractPerson(LessonTeacherComboBox(ind), desc);
         }
 
+        public void TrySetEditLessonPrice()
+        {
+            Lesson l = DataList.Current as Lesson;
+            if ( l != null && 
+                 IsStringEmpty(tbLessonPrice.Text) &&  
+                !IsStringEmpty(cbLessonStudent1.Text) &&
+                !IsStringEmpty(cbLessonProg.Text))
+            {
+                PopulateLessonProgPrice(l, cbLessonProg.Text);
+            }
+        }
 
     }
 }

@@ -44,7 +44,83 @@ namespace RecordKeeper
 
     public partial class FormGlob : Form
     {
+        #region "Datalist"
+        public System.Windows.Forms.BindingSource DataList
+        {
+            get
+            {
+                // Here are links between manually crafted per-record-type UI and modes
+                switch (CurrentMode)
+                {
+                    case Modes.Programs:
+                        return programList;
+                    case Modes.Rooms:
+                        return roomList;
+                    case Modes.Students:
+                        return studentList;
+                    case Modes.Teachers:
+                        return teacherList;
+                    case Modes.Lessons:
+                        return lessonList;
+                    case Modes.Clients:
+                        return clientList;
+
+                    default:
+                        return null;
+                }
+            }
+        }
+
+        public void Datalist_AddRecord()
+        {
+            Record st = (Record)DataList.AddNew();
+            st.Id = FormGlob.AllocateID();
+            st.ChangedBy = ClientCode;
+            st.CreatedBy = ClientCode;
+        }
+
+        public void Datalist_SetPosition(int i)
+        {
+            DataList.CurrencyManager.Position = i;
+        }
+        public void Datalist_StepForward()
+        {
+            if (DataList.CurrencyManager.Position < DataList.Count - 1)
+                DataList.CurrencyManager.Position++;
+        }
+        public void Datalist_StepBack()
+        {
+            if (DataList.CurrencyManager.Position > 0)
+                DataList.CurrencyManager.Position--;
+        }
+        public void Datalist_Complete()
+        {
+            if (DataList.Count == 0)
+                return;
+
+            // TODO: here we need to caclulate where there were any real changes
+            // Maybe checksum. For now, do it always
+            Modified = true;
+            if (CurrentMode != Modes.Lessons)
+                StaleComboLists = true;
+
+            if (DataList.CurrencyManager.Position < DataList.Count - 1)
+            {
+                DataList.CurrencyManager.Position++;
+                DataList.CurrencyManager.Position--;
+            }
+            if (DataList.CurrencyManager.Position > 0)
+            {
+                DataList.CurrencyManager.Position--;
+                DataList.CurrencyManager.Position++;
+            }
+
+        }
+
+        #endregion
+
         #region "Operational mode"
+
         public Ops OperMode()
         {
             return (Ops)tabControlOps.SelectedIndex;
@@ -53,6 +129,34 @@ namespace RecordKeeper
         public void ChangeOperMode(Ops op)
         {
             tabControlOps.SelectedIndex = (int)op;
+        }
+        public void Operation_CompletePrevious()
+        {
+            switch(OperMode())
+            {
+                case Ops.Edit:
+                    Datalist_Complete();
+                    UpdateComboLists();
+                    break;
+                case Ops.View:
+                    Datalist_Complete();
+                    break;
+                case Ops.Plan:
+                    Datalist_Complete();
+                    break;
+                case Ops.SchedCancel:
+                    break;
+                case Ops.PayStud:
+                    break;
+                case Ops.PayTeach:
+                    break;
+                case Ops.PayExpense:
+                    break;
+                case Ops.page8:
+                    break;
+                default:
+                    break;
+            }
         }
 
         #endregion
@@ -71,12 +175,12 @@ namespace RecordKeeper
             if (Modified)
                 SaveAll();
 
-            if (m_assignedListsChanged)
-                AssignListsToComboBoxes();
+            UpdateComboLists();
 
             SelectionMode = false;
             CurrentType.SavedFullListDuringSelection = null;
             SetEditMode(newMode);
+            cbGlobMode.Text = newMode.ToString();
             ShowCurrentCount();
             ManageSearchWindow();
 
@@ -85,6 +189,8 @@ namespace RecordKeeper
 
         private void cbGlobType_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             ComboBox comboBox = (ComboBox)sender;
             Modes newMode = (Modes)comboBox.SelectedIndex;
             if (newMode == CurrentMode)
@@ -164,7 +270,7 @@ namespace RecordKeeper
                 m_editSavingTrap = value;
                 if (value)
                 {
-                    m_assignedListsChanged = true;
+                    StaleComboLists = true;
                     buttonGlobEditAccept.Visible = true;
                 }
                 else
@@ -190,7 +296,8 @@ namespace RecordKeeper
                 else
                     DropFlagUnsavedAvailabilityChanges();
             }
-
+            return true;
+            /*
             if (m_editSavingTrap)
             {
                 if (MessageBox.Show(
@@ -202,11 +309,22 @@ namespace RecordKeeper
                 else
                     m_editSavingTrap = false;
             }
-
             return true;
+            */
         }
         #endregion
 
+        #region "ComboLists"
+
+        public bool StaleComboLists { get; set; }
+
+        public void UpdateComboLists()
+        {
+            if (StaleComboLists)
+                AssignListsToComboBoxes();
+        }
+
+        #endregion
         #region "Bulk operations"
         bool m_bulkOperationInPlay;
         Modes m_modePreBulkOperation;

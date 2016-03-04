@@ -16,14 +16,13 @@ namespace RecordKeeper
     public partial class FormGlob : Form
     {
         string m_ProgramSelectionType;
-        bool m_assignedListsChanged;
 
         delegate bool EvaluateProgram(Program t);
 
         private void EditProgramDetailsChanged()
         {
             EditTrap = true;
-            m_assignedListsChanged = true;
+            StaleComboLists = true;
         }
 
         private void DropProgramSelection()

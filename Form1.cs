@@ -81,31 +81,6 @@ namespace RecordKeeper
         public string LastDownloadText { set { labelGlobLastDownload.Text = value; } }
         public string LastUploadText { set { labelGlobLastUpload.Text = value; } }
 
-        public System.Windows.Forms.BindingSource DataList
-        {
-            get
-            {
-                // Here are links between manually crafted per-record-type UI and modes
-                switch (CurrentMode)
-                {
-                    case Modes.Programs:
-                        return programList;
-                    case Modes.Rooms:
-                        return roomList;
-                    case Modes.Students:
-                        return studentList;
-                    case Modes.Teachers:
-                        return teacherList;
-                    case Modes.Lessons:
-                        return lessonList;
-                    case Modes.Clients:
-                        return clientList;
-
-                    default:
-                        return null;
-                }
-            }
-        }
         #endregion
 
         #region "Form"
@@ -231,7 +206,7 @@ namespace RecordKeeper
             cbViewDetailRoom.Items.Clear();
             cbViewDetailRoom.Items.AddRange(orderedRoomNames);
 
-            m_assignedListsChanged = false;
+            StaleComboLists = false;
         }
 
         private string GetClientCode()
@@ -526,17 +501,7 @@ namespace RecordKeeper
         private void buttonGlobEditAccept_Click(object sender, EventArgs e)
         {
             Modified = true;
-
-            if (DataList.CurrencyManager.Position < DataList.Count - 1)
-            {
-                DataList.CurrencyManager.Position++;
-                DataList.CurrencyManager.Position--;
-            }
-            if (DataList.CurrencyManager.Position > 0)
-            {
-                DataList.CurrencyManager.Position--;
-                DataList.CurrencyManager.Position++;
-            }
+            Datalist_Complete();
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -563,8 +528,7 @@ namespace RecordKeeper
         {
             if (!CheckSafety())
                 return;
-            if (DataList.CurrencyManager.Position < DataList.Count - 1)
-                DataList.CurrencyManager.Position++;
+            Datalist_StepForward();
             SetEditFocus();
         }
 
@@ -572,8 +536,7 @@ namespace RecordKeeper
         {
             if (!CheckSafety())
                 return;
-            if (DataList.CurrencyManager.Position > 0)
-                DataList.CurrencyManager.Position--;
+            Datalist_StepBack();
             SetEditFocus();
         }
 
@@ -581,10 +544,7 @@ namespace RecordKeeper
         {
             if (!CheckSafety())
                 return;
-            Record st = (Record)DataList.AddNew();
-            st.Id = FormGlob.AllocateID();
-            st.ChangedBy = ClientCode;
-            st.CreatedBy = ClientCode;
+            Datalist_AddRecord();
             ShowCurrentCount();
 
             Modified = true;
@@ -1118,6 +1078,11 @@ namespace RecordKeeper
             EditLessonDetailsChanged();
         }
 
+        private void cbLessonProg_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TrySetEditLessonPrice();
+        }
+
         private void cbLessonRoom_Click(object sender, EventArgs e)
         {
             EditLessonDetailsChanged();
@@ -1146,6 +1111,10 @@ namespace RecordKeeper
         private void cbLessonStudent1_Click(object sender, EventArgs e)
         {
             EditLessonDetailsChanged();
+        }
+        private void cbLessonStudent1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TrySetEditLessonPrice();
         }
 
         private void cbLessonStudent2_Click(object sender, EventArgs e)
@@ -1613,8 +1582,7 @@ namespace RecordKeeper
 
         private void ShowView()
         {
-            if (m_assignedListsChanged)
-                AssignListsToComboBoxes();
+            UpdateComboLists();
 
             switch (tabControlViewScales.SelectedIndex)
             {

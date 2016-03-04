@@ -625,7 +625,7 @@ namespace RecordKeeper
                 if (lsn.RepeaterKey == l.RepeaterSequenceKey &&
                     lsn.DateTimeStart > l.DateTimeEnd)
                 {
-                    DataList.CurrencyManager.Position = i;
+                    Datalist_SetPosition(i);
                     buttonDelete_Click(null, null);
                 }
             }
@@ -635,7 +635,7 @@ namespace RecordKeeper
                 Lesson lsn = (Lesson)lessonList[i];
                 if (lsn.Key == l.Key)
                 {
-                    DataList.CurrencyManager.Position = i;
+                    Datalist_SetPosition(i);
                     break;
                 }
             }

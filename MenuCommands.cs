@@ -16,6 +16,8 @@ namespace RecordKeeper
         #region "Top menu strip"
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             if (!CheckSafety())
                 return;
             AskAndUploadChangedFiles();
@@ -27,6 +29,8 @@ namespace RecordKeeper
         #region "View submenu strip"
         private void slotsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             tabControlViewScales.SelectedIndex = (int)Scales.Slots;
             ChangeOperMode(Ops.View);
             FollowFocusedDay();
@@ -35,6 +39,8 @@ namespace RecordKeeper
 
         private void dayToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             tabControlViewScales.SelectedIndex = (int)Scales.Day;
             ChangeOperMode(Ops.View);
             FollowFocusedDay();
@@ -43,6 +49,8 @@ namespace RecordKeeper
 
         private void weekToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             tabControlViewScales.SelectedIndex = (int)Scales.Week;
             ChangeOperMode(Ops.View);
             FollowFocusedDay();
@@ -51,6 +59,8 @@ namespace RecordKeeper
 
         private void monthToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             tabControlViewScales.SelectedIndex = (int)Scales.Month;
             ChangeOperMode(Ops.View);
             ShowView();
@@ -61,35 +71,40 @@ namespace RecordKeeper
         #region "Edit submenu strip"
         private void studentsToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             ChangeOperMode(Ops.Edit);
-            cbGlobMode.Text = "Students";
             ChangeEditMode(Modes.Students);
         }
 
         private void teachersToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             ChangeOperMode(Ops.Edit);
-            cbGlobMode.Text = "Teachers";
             ChangeEditMode(Modes.Teachers);
         }
 
         private void lessonsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             ChangeOperMode(Ops.Edit);
-            cbGlobMode.Text = "Lessons";
             ChangeEditMode(Modes.Lessons);
         }
 
         private void programsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             ChangeOperMode(Ops.Edit);
-            cbGlobMode.Text = "Programs";
             ChangeEditMode(Modes.Programs);
         }
         private void roomsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             ChangeOperMode(Ops.Edit);
-            cbGlobMode.Text = "Rooms";
             ChangeEditMode(Modes.Rooms);
         }
         #endregion
@@ -98,21 +113,29 @@ namespace RecordKeeper
 
         private void planToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             InitializePlan(true, false);
             ChangeOperMode(Ops.Plan);
         }
         private void showToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             dayToolStripMenuItem_Click(sender, e);
         }
 
         private void checkToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             // TODO - future - check the schedule for errors
         }
 
         private void publishToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             DateTime dtMin = WeekStart(m_chosenDate);
             DateTime dtMax = WeekEnd(m_chosenDate);
 
@@ -138,16 +161,22 @@ namespace RecordKeeper
 
         private void studentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             ChangeOperMode(Ops.PayStud);
         }
 
         private void teachersToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             ChangeOperMode(Ops.PayTeach);
         }
 
         private void reportExpenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             ChangeOperMode(Ops.PayExpense);
         }
         #endregion
@@ -155,15 +184,21 @@ namespace RecordKeeper
         #region "Advanced menu strip"
         private void downloadToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             CommandDownload();
         }
 
         private void uploadToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             CommandUpload();
         }
         private void reopenToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             ReadAllFiles();
         }
         #endregion
@@ -171,6 +206,8 @@ namespace RecordKeeper
         #region "Relocate submenu of Lesson ctx menu"
         private void redToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             Lesson l = GetLessonFromSender2(sender);
             l.Room = "Red";
             Modified = true;
@@ -179,6 +216,8 @@ namespace RecordKeeper
 
         private void greenToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             Lesson l = GetLessonFromSender2(sender);
             l.Room = "Green";
             Modified = true;
@@ -187,6 +226,8 @@ namespace RecordKeeper
 
         private void tealToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             Lesson l = GetLessonFromSender2(sender);
             l.Room = "Teal";
             Modified = true;
@@ -195,6 +236,8 @@ namespace RecordKeeper
 
         private void yellowToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             Lesson l = GetLessonFromSender2(sender);
             l.Room = "Yellow";
             Modified = true;
@@ -202,6 +245,8 @@ namespace RecordKeeper
         }
         private void whiteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             Lesson l = GetLessonFromSender2(sender);
             l.Room = "White";
             Modified = true;
@@ -209,6 +254,8 @@ namespace RecordKeeper
         }
         private void pinkToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             Lesson l = GetLessonFromSender2(sender);
             l.Room = "Pink";
             Modified = true;
@@ -217,6 +264,8 @@ namespace RecordKeeper
 
         private void nAToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             Lesson l = GetLessonFromSender2(sender);
             l.Room = "N/A";
             Modified = true;
@@ -227,30 +276,40 @@ namespace RecordKeeper
         #region "Move submenu of Lesson ctx menu"
         private void sameWeekToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             Lesson l = GetLessonFromSender2(sender);
             MoveLesson(l, 0);
         }
 
         private void weekForwardToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             Lesson l = GetLessonFromSender2(sender);
             MoveLesson(l, 7);
         }
 
         private void twoWeeksToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             Lesson l = GetLessonFromSender2(sender);
             MoveLesson(l, 14);
         }
 
         private void weekBackToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             Lesson l = GetLessonFromSender2(sender);
             MoveLesson(l, -7);
         }
 
         private void twoWeeksBackToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             Lesson l = GetLessonFromSender2(sender);
             MoveLesson(l, -14);
         }
@@ -260,6 +319,8 @@ namespace RecordKeeper
         #region "Mark submenu of Lesson ctx menu"
         private void plannedToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             Lesson l = GetLessonFromSender2(sender);
             l.State = "Planned";
             Modified = true;
@@ -268,6 +329,8 @@ namespace RecordKeeper
 
         private void doneToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             Lesson l = GetLessonFromSender2(sender);
             l.State = "Done";
             Modified = true;
@@ -276,6 +339,8 @@ namespace RecordKeeper
 
         private void cancelledToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             Lesson l = GetLessonFromSender2(sender);
             l.State = "Cancelled";
             l.CancellationTime = DateTime.Now.ToString();
@@ -287,6 +352,8 @@ namespace RecordKeeper
         #region "Repeat submenu of Lesson ctx menu"
         private void weeklyToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             if (!CheckSafety())
                 return;
 
@@ -307,6 +374,8 @@ namespace RecordKeeper
 
         private void biweeklyToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             if (!CheckSafety())
                 return;
 
@@ -327,6 +396,8 @@ namespace RecordKeeper
 
         private void monthlyToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             if (!CheckSafety())
                 return;
 
@@ -348,6 +419,8 @@ namespace RecordKeeper
 
         private void deleteFuturesToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            Operation_CompletePrevious();
+
             if (!CheckSafety())
                 return;
 
@@ -477,9 +550,7 @@ namespace RecordKeeper
                 CurrentType.WriteRecordsFile();
             }
             Modified = false;
-            if (m_assignedListsChanged)
-                AssignListsToComboBoxes();
-            m_assignedListsChanged = false;
+            UpdateComboLists();
             SetEditMode(was);
             m_editSavingTrap = false;
             HideWorkout = false;
