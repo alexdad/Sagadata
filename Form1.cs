@@ -139,15 +139,25 @@ namespace RecordKeeper
             string[] orderedStudentNames = studentNames.OrderBy(q => q).ToArray();
             cbSearchLessonStudent.Items.Clear();
             cbSearchLessonStudent.Items.AddRange(orderedStudentNames);
+            cbLessonStudent1.Items.Clear();
             cbLessonStudent1.Items.AddRange(orderedStudentNames);
+            cbLessonStudent2.Items.Clear();
             cbLessonStudent2.Items.AddRange(orderedStudentNames);
+            cbLessonStudent3.Items.Clear();
             cbLessonStudent3.Items.AddRange(orderedStudentNames);
+            cbLessonStudent4.Items.Clear();
             cbLessonStudent4.Items.AddRange(orderedStudentNames);
+            cbLessonStudent5.Items.Clear();
             cbLessonStudent5.Items.AddRange(orderedStudentNames);
+            cbLessonStudent6.Items.Clear();
             cbLessonStudent6.Items.AddRange(orderedStudentNames);
+            cbLessonStudent7.Items.Clear();
             cbLessonStudent7.Items.AddRange(orderedStudentNames);
+            cbLessonStudent8.Items.Clear();
             cbLessonStudent8.Items.AddRange(orderedStudentNames);
+            cbLessonStudent9.Items.Clear();
             cbLessonStudent9.Items.AddRange(orderedStudentNames);
+            cbLessonStudent10.Items.Clear();
             cbLessonStudent10.Items.AddRange(orderedStudentNames);
 
             List<Teacher> teachers = ActiveTeachers();

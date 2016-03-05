@@ -192,6 +192,8 @@ namespace RecordKeeper
                     sb.Append(" + ");
                     sb.Append(Student10);
                 }
+                sb.Append(" # REF: ");
+                sb.Append(this.Key);
 
                 return sb.ToString();
             }

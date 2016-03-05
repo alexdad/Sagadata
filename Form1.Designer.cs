@@ -5170,7 +5170,7 @@
             // lbViewGbMinus
             // 
             this.lbViewGbMinus.AutoSize = true;
-            this.lbViewGbMinus.Location = new System.Drawing.Point(130, 20);
+            this.lbViewGbMinus.Location = new System.Drawing.Point(141, 98);
             this.lbViewGbMinus.Name = "lbViewGbMinus";
             this.lbViewGbMinus.Size = new System.Drawing.Size(10, 13);
             this.lbViewGbMinus.TabIndex = 12;
@@ -5179,7 +5179,7 @@
             // lbViewGbComment
             // 
             this.lbViewGbComment.AutoSize = true;
-            this.lbViewGbComment.Location = new System.Drawing.Point(20, 101);
+            this.lbViewGbComment.Location = new System.Drawing.Point(8, 16);
             this.lbViewGbComment.Name = "lbViewGbComment";
             this.lbViewGbComment.Size = new System.Drawing.Size(0, 13);
             this.lbViewGbComment.TabIndex = 11;
@@ -5251,7 +5251,7 @@
             // lbViewGbStart
             // 
             this.lbViewGbStart.AutoSize = true;
-            this.lbViewGbStart.Location = new System.Drawing.Point(89, 20);
+            this.lbViewGbStart.Location = new System.Drawing.Point(83, 98);
             this.lbViewGbStart.Name = "lbViewGbStart";
             this.lbViewGbStart.Size = new System.Drawing.Size(0, 13);
             this.lbViewGbStart.TabIndex = 2;
@@ -5259,7 +5259,7 @@
             // lbViewGbEnd
             // 
             this.lbViewGbEnd.AutoSize = true;
-            this.lbViewGbEnd.Location = new System.Drawing.Point(139, 20);
+            this.lbViewGbEnd.Location = new System.Drawing.Point(157, 98);
             this.lbViewGbEnd.Name = "lbViewGbEnd";
             this.lbViewGbEnd.Size = new System.Drawing.Size(0, 13);
             this.lbViewGbEnd.TabIndex = 1;
@@ -5275,7 +5275,7 @@
             // lbViewGbDate
             // 
             this.lbViewGbDate.AutoSize = true;
-            this.lbViewGbDate.Location = new System.Drawing.Point(20, 20);
+            this.lbViewGbDate.Location = new System.Drawing.Point(6, 98);
             this.lbViewGbDate.Name = "lbViewGbDate";
             this.lbViewGbDate.Size = new System.Drawing.Size(0, 13);
             this.lbViewGbDate.TabIndex = 1;
