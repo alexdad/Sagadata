@@ -70,15 +70,49 @@ namespace RecordKeeper
         {
             get
             {
+                string st1 = FormGlob.ExtractFirstNameAndInitial(this.Student1);
+                string st2 = FormGlob.ExtractFirstNameAndInitial(this.Student2);
+                string st3 = FormGlob.ExtractFirstNameAndInitial(this.Student3);
+                string tc1 = FormGlob.ExtractFirstNameAndInitial(this.Teacher1);
+                string tc2 = FormGlob.ExtractFirstNameAndInitial(this.Teacher1);
+
+                int count = 0;
                 StringBuilder sb = new StringBuilder();
-                sb.Append(FormGlob.ExtractFirstNameAndInitial(this.Student1));
+                if (!FormGlob.IsStringEmpty(st1))
+                {
+                    sb.Append(st1);
+                    count++;
+                }
+                if (!FormGlob.IsStringEmpty(st2))
+                {
+                    if (count > 0)
+                        sb.Append(",");
+                    sb.Append(st2);
+                    count++;
+                }
+                if (!FormGlob.IsStringEmpty(st3))
+                {
+                    if (count > 0)
+                        sb.Append(",");
+                    sb.Append(st3);
+                    count++;
+                }
                 sb.Append(" / ");
                 sb.Append(FormGlob.ExtractFirstNameAndInitial(this.Teacher1));
+
+                if (sb.ToString().Length < 24 && !FormGlob.IsStringEmpty(this.Comments))
+                {
+                    sb.Append("; ");
+                    string cm = (this.Comments.Length < 50 ?
+                                 this.Comments :
+                                 this.Comments.Substring(0, 49));
+                    sb.Append(cm);
+                }
                 return sb.ToString();
             }
         }
 
-        public  string ShortDescription
+        public string ShortDescription
         {
             get
             {

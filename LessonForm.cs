@@ -305,8 +305,8 @@ namespace RecordKeeper
         {
             return FindLessons(l =>
                     (!onlyActual || l.Actual) &&
-                    DateTime.Parse(l.Start) <= t2 && 
-                    DateTime.Parse(l.End) >= t1);
+                    l.DateTimeStart <= t2 && 
+                    l.DateTimeEnd >= t1);
         }
         List<Lesson> LessonsByTeacher(string desc, bool onlyActual)
         {

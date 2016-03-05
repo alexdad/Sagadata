@@ -207,24 +207,24 @@ namespace RecordKeeper
             // Eah column (day) is totally separate
             for (int col = cols - 1; col >= 0; col--)
             {
-                for (int row = 0; row < rows; row++)
+                List<Point> boundaries = new List<Point>();
+                foreach (Control c in panel.Controls)
                 {
-                    int nLabels = 0;
-                    foreach (Control c in panel.Controls)
-                    {
-                        Label l = GetLabel(c);
-                        if (l == null)
-                            continue;
-
-                        if ((x1 - 1) / nRooms > col || (x2 - 1) / nRooms < col || y1 > row || y2 < row)
-                            continue;
-
-                        nLabels++;
-                    }
-                    labelsPerRow[row] = nLabels;
+                    Label l = GetLabel(c);
+                    if (l == null || (x1 - 1) / nRooms > col || (x2 - 1) / nRooms < col)
+                        continue;
+                    boundaries.Add(new Point(1, y1));
+                    boundaries.Add(new Point(-1, y2));
                 }
-
-                int maxInColumn = labelsPerRow.Max();
+                boundaries.Sort((r1, r2) => r1.Y.CompareTo(r2.Y));
+                int maxInColumn = 0;
+                int curCol = 0;
+                foreach(Point p in boundaries)
+                {
+                    curCol += (int)p.X;
+                    if (curCol > maxInColumn)
+                        maxInColumn = curCol;
+                }
                 if (maxInColumn == 0)
                     continue;
                 int newWidth = cellWidth / maxInColumn;
