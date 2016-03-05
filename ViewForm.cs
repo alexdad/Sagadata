@@ -449,6 +449,8 @@ namespace RecordKeeper
                 roomList.Count,
                 vc.cellWidth,
                 vc.cellHight);
+
+            MarkAllCollisions(panelViewMonth);
         }
 
         public void ViewShowWeek()
@@ -502,6 +504,8 @@ namespace RecordKeeper
                 roomList.Count,
                 vc.cellWidth, 
                 vc.cellHight);
+
+            MarkAllCollisions(panelViewWeek);
         }
 
         public void ViewShowDay()
@@ -984,6 +988,18 @@ namespace RecordKeeper
             return null;
         }
 
+        private void MarkAllCollisions(Panel panel)
+        {
+            foreach (Control c in panel.Controls)
+            {
+                Label lb = c as Label;
+                if (lb == null)
+                    continue;
+                MarkCollisions(lb, panel);
+
+            }
+        }
+
         private bool MarkCollisions(Label lb, Panel panel)
         {
             ContentAlignment[] choices = {
@@ -1004,23 +1020,29 @@ namespace RecordKeeper
                 if (lc == null || lc == lb)
                     continue;
 
-                if (!(lb.Location.X > lc.Location.X + lc.Width ||
-                      lb.Location.X + lb.Width < lc.Location.X ||
-                      lb.Location.Y > lc.Location.Y + lc.Height ||
-                      lb.Location.Y + lb.Height < lc.Location.Y))
+                if (!(lb.Location.X > lc.Location.X + lc.Width - 1 ||
+                      lb.Location.X + lb.Width - 1 < lc.Location.X ||
+                      lb.Location.Y > lc.Location.Y + lc.Height - 1 ||
+                      lb.Location.Y + lb.Height - 1 < lc.Location.Y))
                 {
                     found =  true;
-                    lc.BackColor = Color.Transparent;
-                    lc.ForeColor = Color.Black;
-                    lc.TextAlign = choices[m_rnd.Next() % 9];
+                    if (lc.BackColor != Color.Transparent)
+                    {
+                        lc.ForeColor = lc.BackColor;
+                        lc.BackColor = Color.Transparent;
+                        lc.TextAlign = choices[m_rnd.Next() % 9];
+                    }
                 }
             }
 
             if (found)
             {
-                lb.BackColor = Color.Transparent;
-                lb.ForeColor = Color.Black;
-                lb.TextAlign = choices[m_rnd.Next() % 9];
+                if (lb.BackColor != Color.Transparent)
+                {
+                    lb.ForeColor = lb.BackColor;
+                    lb.BackColor = Color.Transparent;
+                    lb.TextAlign = choices[m_rnd.Next() % 9];
+                }
             }
             return found;
        }
