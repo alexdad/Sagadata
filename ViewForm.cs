@@ -169,10 +169,7 @@ namespace RecordKeeper
                 (panel, vc, cols, rows, 
                  cellRoomWidth,  nRooms, cellWidth, cellHeight);
 
-            //exp.CountHits();
-            //exp.ExpandRight();
-            //exp.ExpandLeft();
-            exp.EqualizeWidths(vc);
+            exp.EqualizeWidths();
         }
 
         private Label GetLabel(Control c)
@@ -184,9 +181,9 @@ namespace RecordKeeper
                 return null;
 
             x1 = (l.Location.X - vc.minX) / cellRoomWidth;
-            y1 = (l.Location.Y - vc.minY) / cellHeight;
+            y1 = (l.Location.Y - vc.minY - vc.labelHeight / 2) / cellHeight;
             x2 = (l.Location.X + l.Width - vc.minX) / cellRoomWidth - 1;
-            y2 = (l.Location.Y + l.Height - vc.minY) / cellHeight - 1;
+            y2 = (l.Location.Y + l.Height - vc.minY - vc.labelHeight / 2) / cellHeight; // - 1;
 
             if (x1 < 0 || x2 < 0 || x1 > ncols || x2 > ncols ||
                 y1 < 0 || y2 < 0 || y1 > nrows || y2 > nrows)
@@ -202,18 +199,84 @@ namespace RecordKeeper
             return l;
         }
 
+        private void EqualizeWidths()
+        {
+            int[] labelsPerRow = new int[rows];
+            HashSet<Control> moved = new HashSet<Control>();
+
+            // Eah column (day) is totally separate
+            for (int col = cols - 1; col >= 0; col--)
+            {
+                for (int row = 0; row < rows; row++)
+                {
+                    int nLabels = 0;
+                    foreach (Control c in panel.Controls)
+                    {
+                        Label l = GetLabel(c);
+                        if (l == null)
+                            continue;
+
+                        if ((x1 - 1) / nRooms > col || (x2 - 1) / nRooms < col || y1 > row || y2 < row)
+                            continue;
+
+                        nLabels++;
+                    }
+                    labelsPerRow[row] = nLabels;
+                }
+
+                int maxInColumn = labelsPerRow.Max();
+                if (maxInColumn == 0)
+                    continue;
+                int newWidth = cellWidth / maxInColumn;
+
+                int[] used = new int[nrows];
+                foreach (Control c in panel.Controls)
+                {
+                    Label l = GetLabel(c);
+                    if (l == null)
+                        continue;
+                    if (x1 / nRooms > col || x2 / nRooms < col)
+                        continue;
+                    if (moved.Contains(c))
+                        continue;
+                    moved.Add(c);
+
+                    int newX = 0;
+                    for (int yy = y1; yy < y2; yy++)
+                    {
+                        if (used[yy] > newX)
+                            newX = used[yy];
+                    }
+                    newX++;
+                    for (int yy = y1; yy < y2; yy++)
+                        used[yy] = newX;
+
+                    l.Width = newWidth;
+                    l.Location = new Point(
+                        vc.minX + cellWidth * col + (newX - 1) * newWidth,
+                        l.Location.Y);
+                }
+            }
+        }
+
         private void CountHits()
         {
+            int collisions = 0;
             foreach (Control c in panel.Controls)
             {
                 Label l = GetLabel(c);
                 if (l == null)
                     continue;
 
-                for (int x = x1; x <= x2; x++)
-                    for (int y = y1; y <= y2; y++)
+                for (int x = x1; x < x2; x++)
+                    for (int y = y1; y < y2; y++)
+                    {
                         hits[x, y] = hits[x, y] + 1;
+                        if (hits[x, y] > 1)
+                            collisions++;
+                    }
             }
+            MessageBox.Show("Collisions " + collisions.ToString());
         }
         private void ExpandRight()
         {
@@ -282,65 +345,38 @@ namespace RecordKeeper
                 }
             }
         }
-
-        private void EqualizeWidths(ViewContext vc)
+        private void HighlightOverlaps()
         {
-            int[] labelsPerRow = new int[rows];
-            HashSet<Control> moved = new HashSet<Control>();
-
-            // Eah column (day) is totally separate
-            for (int col = cols-1; col >= 0; col--)
+            foreach (Control c in panel.Controls)
             {
-                for (int row = 0; row < rows; row++)
-                {
-                    int nLabels = 0;
-                    foreach (Control c in panel.Controls)
-                    {
-                        Label l = GetLabel(c);
-                        if (l == null)
-                            continue;
-
-                        if ((x1-1) / nRooms > col || (x2-1) / nRooms < col || y1 > row || y2 < row)
-                            continue;
-
-                        nLabels++;
-                    }
-                    labelsPerRow[row] = nLabels;
-                }
-
-                int maxInColumn = labelsPerRow.Max();
-                if (maxInColumn == 0)
+                Label l = GetLabel(c);
+                if (l == null)
                     continue;
-                int newWidth = cellWidth / maxInColumn;
 
-                int[] used = new int[nrows];
-                foreach (Control c in panel.Controls)
+                bool hit = false;
+                for (int x = x1; x < x2 && !hit; x++)
                 {
-                    Label l = GetLabel(c);
-                    if (l == null)
-                        continue;
-                    if ( x1 / nRooms > col || x2 / nRooms < col)
-                        continue;
-                    if (moved.Contains(c))
-                        continue;
-                    moved.Add(c);
-
-                    int newX = 0;
-                    for (int yy = y1; yy < y2; yy++)
+                    for (int y = y1; y < y2 && !hit; y++)
                     {
-                        if (used[yy] > newX)
-                            newX = used[yy];
+                        if (x - 1 < 0 || y < 0 || x - 1 >= ncols || y >= nrows)
+                            return;
+                        if (hits[x - 1, y] > 1)
+                        {
+                            hit = true;
+                            break;
+                        }
                     }
-                    newX++;
-                    for (int yy = y1; yy < y2; yy++)
-                        used[yy] = newX;
-
-                    l.Width = newWidth;
-                    l.Location = new Point(
-                        vc.minX + cellWidth * col + (newX-1) * newWidth, 
-                        l.Location.Y);
+                    if (hit)
+                        break;
+                }
+                if (hit)
+                {
+                    l.BackColor = Color.Transparent;
+                    l.ForeColor = Color.Black;
+                    l.BorderStyle = BorderStyle.FixedSingle;
                 }
             }
+
         }
     }
 
@@ -509,6 +545,9 @@ namespace RecordKeeper
                     BorderStyle = BorderStyle.FixedSingle,
                     Tag = l
                 };
+
+                MarkCollisions(lb, panelViewDay);
+
                 lb.ContextMenuStrip = ctxMenuLesson;
                 lb.MouseHover += new System.EventHandler(this.butViewShowLesson_MouseHover);
                 lb.MouseDown += new System.Windows.Forms.MouseEventHandler(this.butViewShowLesson_MouseDown);
@@ -945,5 +984,32 @@ namespace RecordKeeper
             return null;
         }
 
+        private bool MarkCollisions(Label lb, Panel panel)
+        {
+            bool found = false;
+            foreach (Control c in panel.Controls)
+            {
+                Label lc = c as Label;
+                if (lc == null || lc == lb)
+                    continue;
+
+                if (!(lb.Location.X > lc.Location.X + lc.Width ||
+                      lb.Location.X + lb.Width < lc.Location.X ||
+                      lb.Location.Y > lc.Location.Y + lc.Height ||
+                      lb.Location.Y + lb.Height < lc.Location.Y))
+                {
+                    found =  true;
+                    lc.BackColor = Color.Transparent;
+                    lc.ForeColor = Color.Black;
+                }
+            }
+
+            if (found)
+            {
+                lb.BackColor = Color.Transparent;
+                lb.ForeColor = Color.Black;
+            }
+            return found;
+       }
     }
 }
