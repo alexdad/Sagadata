@@ -181,9 +181,9 @@ namespace RecordKeeper
                 return null;
 
             x1 = (l.Location.X - vc.minX) / cellRoomWidth;
-            y1 = (l.Location.Y - vc.minY - vc.labelHeight / 2) / cellHeight;
+            y1 = (l.Location.Y - vc.minY) / cellHeight;
             x2 = (l.Location.X + l.Width - vc.minX) / cellRoomWidth - 1;
-            y2 = (l.Location.Y + l.Height - vc.minY - vc.labelHeight / 2) / cellHeight; // - 1;
+            y2 = (l.Location.Y + l.Height - vc.minY) / cellHeight - 1;
 
             if (x1 < 0 || x2 < 0 || x1 > ncols || x2 > ncols ||
                 y1 < 0 || y2 < 0 || y1 > nrows || y2 > nrows)
@@ -986,6 +986,17 @@ namespace RecordKeeper
 
         private bool MarkCollisions(Label lb, Panel panel)
         {
+            ContentAlignment[] choices = {
+                ContentAlignment.TopLeft,
+                ContentAlignment.TopCenter,
+                ContentAlignment.TopRight,
+                ContentAlignment.MiddleLeft,
+                ContentAlignment.MiddleCenter,
+                ContentAlignment.MiddleRight,
+                ContentAlignment.BottomLeft,
+                ContentAlignment.BottomCenter,
+                ContentAlignment.BottomRight };
+
             bool found = false;
             foreach (Control c in panel.Controls)
             {
@@ -1001,6 +1012,7 @@ namespace RecordKeeper
                     found =  true;
                     lc.BackColor = Color.Transparent;
                     lc.ForeColor = Color.Black;
+                    lc.TextAlign = choices[m_rnd.Next() % 9];
                 }
             }
 
@@ -1008,6 +1020,7 @@ namespace RecordKeeper
             {
                 lb.BackColor = Color.Transparent;
                 lb.ForeColor = Color.Black;
+                lb.TextAlign = choices[m_rnd.Next() % 9];
             }
             return found;
        }
