@@ -164,11 +164,14 @@ namespace GCal
             return calEvents;
         }
 
-        public static bool DeleteAllEvents(DateTime dtMin, DateTime dtMax)
+        public static bool DeleteAllEvents(
+            DateTime dtMin, 
+            DateTime dtMax,
+            string calendarId)
         {
             CalendarService service = GetCalendarService();
 
-            EventsResource.ListRequest request = service.Events.List(SystemCalendarID);
+            EventsResource.ListRequest request = service.Events.List(calendarId);
             request.TimeMin = dtMin;
             request.TimeMax = dtMax;
             request.ShowDeleted = false;
@@ -183,7 +186,7 @@ namespace GCal
                 foreach (var eventItem in events.Items)
                 {
                     EventsResource.DeleteRequest del = service.Events.Delete(
-                        SystemCalendarID, eventItem.Id);
+                        calendarId, eventItem.Id);
 
                     string res = del.Execute();
                     if (res != null && res.Trim().Length != 0)
@@ -192,7 +195,7 @@ namespace GCal
             }
             return success;
         }
-        public static bool WriteCalendarEvents(List<CalEvent> events)
+        public static bool WriteCalendarEvents(List<CalEvent> events, string calendarId)
         {
             CalendarService service = GetCalendarService();
 
@@ -215,7 +218,7 @@ namespace GCal
                     }
                 };
 
-                EventsResource.InsertRequest req = service.Events.Insert(evt, SystemCalendarID);
+                EventsResource.InsertRequest req = service.Events.Insert(evt, calendarId);
                 Event result = req.Execute();
             }
 
@@ -227,7 +230,18 @@ namespace GCal
             return ReadEvents(dtMin, dtMax, OperationalCalendarID);
         }
 
-    }
+        public static bool WriteSystemCalendarEvents(List<CalEvent> events)
+        {
+            return WriteCalendarEvents(events, SystemCalendarID);
+        }
+
+        public static bool DeleteAllSystemCalendarEvents(DateTime dtMin, DateTime dtMax)
+        {
+            return DeleteAllEvents(dtMin, dtMax, SystemCalendarID);
+        }
+
+
+}
 }
 
 

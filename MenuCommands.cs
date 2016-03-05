@@ -145,10 +145,10 @@ namespace RecordKeeper
 
             if (result == DialogResult.Yes)
             {
-                bool res = GCal.Ops.DeleteAllEvents(dtMin, dtMax);
+                bool res = GCal.Ops.DeleteAllSystemCalendarEvents(dtMin, dtMax);
                 if (res)
                 {
-                    res = GCal.Ops.WriteCalendarEvents(
+                    res = GCal.Ops.WriteSystemCalendarEvents(
                                     GetEventsForPublishing(dtMin, dtMax));
                 }
                 if (!res)

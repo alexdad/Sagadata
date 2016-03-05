@@ -26,6 +26,7 @@ namespace RecordKeeper
         public String Friday { get; set; }
         public String Saturday { get; set; }
         public String Sunday { get; set; }
+        public String Calendar { get; set; }
 
         public override string Description
         {
@@ -118,6 +119,9 @@ namespace RecordKeeper
                 case "Sunday":
                     this.Sunday = value;
                     break;
+                case "Calendar":
+                    this.Calendar = value;
+                    break;
                 default:
                     throw new Exception("unknown field " + field);
             }
@@ -144,6 +148,7 @@ namespace RecordKeeper
             Friday="";
             Saturday="";
             Sunday="";
+            Calendar = "";
         }
 
         public override string Get(string field)
@@ -190,6 +195,8 @@ namespace RecordKeeper
                     return this.Saturday;
                 case "Sunday":
                     return this.Sunday;
+                case "Calendar":
+                    return this.Calendar;
                 default:
                     throw new Exception("unknown field " + field);
             }
@@ -227,8 +234,6 @@ namespace RecordKeeper
             sb.Append(Language2);
             sb.Append(LanguageDetail);
             sb.Append(MailingAddress);
-            sb.Append(LanguageDetail);
-            sb.Append(MailingAddress);
             sb.Append(Vacations);
             sb.Append(Monday);
             sb.Append(Tuesday);
@@ -237,6 +242,8 @@ namespace RecordKeeper
             sb.Append(Friday);
             sb.Append(Saturday);
             sb.Append(Sunday);
+            sb.Append(Calendar);
+
             sb.Append(Key);
             sb.Append(Comments);
 
