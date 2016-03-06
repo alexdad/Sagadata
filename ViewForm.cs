@@ -95,6 +95,7 @@ namespace RecordKeeper
         public int y2;
         public int cols;
         public int rows;
+        public HashSet<Label> movedAlready; 
 
         public ViewContext(
             int cellWidth,
@@ -122,6 +123,7 @@ namespace RecordKeeper
             this.y1 = 0;
             this.x2 = 0;
             this.y2 = 0;
+            this.movedAlready = new HashSet<Label>();
         }
     }
 
@@ -813,15 +815,12 @@ namespace RecordKeeper
             return l;
         }
 
-        private int EstimateChannels(Panel panel, ViewContext vc, int col)
+        private int EstimateChannels(List<Label> labels, ViewContext vc, int col)
         {
             List<Point> boundaries = new List<Point>();
-            foreach (Control c in panel.Controls)
+            foreach (Label l in labels)
             {
-                Label l = GetLabel(c, ref vc);
-                if (l == null || vc.x1 / vc.elements > col
-                              || vc.x2 / vc.elements < col)
-                    continue;
+                GetLabel(l, ref vc);
                 boundaries.Add(new Point(1, vc.y1));
                 boundaries.Add(new Point(-1, vc.y2+1));
             }
@@ -847,6 +846,8 @@ namespace RecordKeeper
                     continue;
                 if (vc.x1 / vc.elements > col || vc.x2 / vc.elements < col)
                     continue;
+                if (vc.movedAlready.Contains(l))
+                    continue;
                 labels.Add(l);
             }
 
@@ -860,15 +861,18 @@ namespace RecordKeeper
 
             for (int col = vc.cols - 1; col >= 0; col--)
             {
-                int estChannels = EstimateChannels(panel, vc, col);
+                List<Label> labels = CollectColumnLabels(panel, vc, col);
+                if (labels.Count == 0)
+                    continue;
+
+                int estChannels = EstimateChannels(labels, vc, col);
                 if (estChannels == 0)
                     continue;
-               
+
                 for (int channels = estChannels; channels <= vc.elements; channels++)
                 {
                     int channelWidth = vc.cellWidth / channels - 1;
                     Packer packer = new Packer(vc.elemrows, vc.elements);
-                    List<Label> labels = CollectColumnLabels(panel, vc, col);
 
                     bool failed = false;
                     foreach (Label l in labels)
@@ -889,6 +893,9 @@ namespace RecordKeeper
                     if (!failed)
                         break;
                 }
+
+                foreach (Label l in labels)
+                    vc.movedAlready.Add(l);
             }
         }
 
