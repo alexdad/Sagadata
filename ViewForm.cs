@@ -80,307 +80,47 @@ namespace RecordKeeper
 
     public struct ViewContext
     {
-        public int days;
         public int cellWidth;
         public int cellHight;
         public int cellRoomWidth;
         public int minX;
         public int minY;
         public int labelHeight;
+        public int elemcols;
+        public int elemrows;
+        public int x1;
+        public int y1;
+        public int x2;
+        public int y2;
+        public int cols;
+        public int rows;
 
         public ViewContext(
-            int days, 
-            int cellWidth, 
-            int cellHight, 
+            int cellWidth,
+            int cellHight,
             int cellRoomWidth,
+            int rows,
+            int cols,
             int minX,
             int minY,
             int labelHeight)
         {
-            this.days = days;
             this.cellWidth = cellWidth;
             this.cellHight = cellHight;
             this.cellRoomWidth = cellRoomWidth;
+            this.cols = cols;
+            this.rows = rows;
             this.minX = minX;
             this.minY = minY;
             this.labelHeight = labelHeight;
+            this.elemcols = 0;
+            this.elemrows = 0;
+            this.x1 = 0;
+            this.y1 = 0;
+            this.x2 = 0;
+            this.y2 = 0;
         }
     }
-
-    public class LabelsExpander
-    {
-        private Panel panel;
-        ViewContext vc;
-        private int cols;
-        private int rows;
-        private int cellRoomWidth;
-        private int nRooms;
-        private int cellWidth;
-        private int cellHeight;
-
-        private int ncols;
-        private int nrows;
-        private int[,] hits;
-
-        private int x1;
-        private int y1;
-        private int x2;
-        private int y2;
-        private int x1min;
-        private int x1max;
-        private int x2min;
-        private int x2max;
-
-        public LabelsExpander(
-            Panel panel,
-            ViewContext vc,
-            int cols,
-            int rows,
-            int cellRoomWidth,
-            int nRooms,
-            int cellWidth,
-            int cellHeight)
-        {
-            this.panel = panel;
-            this.vc = vc;
-            this.cols = cols;
-            this.rows = rows;
-            this.cellRoomWidth = cellRoomWidth;
-            this.nRooms = nRooms;
-            this.cellWidth = cellWidth;
-            this.cellHeight = cellHeight;
-
-            ncols = (cols + 1) * nRooms + 1;
-            nrows = rows;
-            hits = new int[ncols, nrows];
-        }
-
-        public static void Expand(
-            Panel panel,
-            ViewContext vc,
-            int cols,
-            int rows,
-            int cellRoomWidth,
-            int nRooms,
-            int cellWidth,
-            int cellHeight)
-        {
-            LabelsExpander exp = new LabelsExpander
-                (panel, vc, cols, rows, 
-                 cellRoomWidth,  nRooms, cellWidth, cellHeight);
-
-            exp.EqualizeWidths();
-        }
-
-        private Label GetLabel(Control c)
-        {
-            Label l = c as Label;
-            if (l == null)
-                return null;
-            if (l.Location.Y < vc.minY || l.Location.X < vc.minX)
-                return null;
-
-            x1 = (l.Location.X - vc.minX) / cellRoomWidth;
-            y1 = (l.Location.Y - vc.minY) / cellHeight;
-            x2 = (l.Location.X + l.Width - vc.minX) / cellRoomWidth - 1;
-            y2 = (l.Location.Y + l.Height - vc.minY) / cellHeight - 1;
-
-            if (x1 < 0 || x2 < 0 || x1 > ncols || x2 > ncols ||
-                y1 < 0 || y2 < 0 || y1 > nrows || y2 > nrows)
-                return null;
-
-            x1min = x1 - (x1 % nRooms);  
-            x1max = x1min + nRooms;
-
-            x2min = x2 - (x2 % nRooms);  
-            x2max = x2min + nRooms;
-
-
-            return l;
-        }
-
-        private void EqualizeWidths()
-        {
-            int[] labelsPerRow = new int[rows];
-            HashSet<Control> moved = new HashSet<Control>();
-
-            // Eah column (day) is totally separate
-            for (int col = cols - 1; col >= 0; col--)
-            {
-                List<Point> boundaries = new List<Point>();
-                foreach (Control c in panel.Controls)
-                {
-                    Label l = GetLabel(c);
-                    if (l == null || (x1 - 1) / nRooms > col || (x2 - 1) / nRooms < col)
-                        continue;
-                    boundaries.Add(new Point(1, y1));
-                    boundaries.Add(new Point(-1, y2));
-                }
-                boundaries.Sort((r1, r2) => r1.Y.CompareTo(r2.Y));
-                int maxInColumn = 0;
-                int curCol = 0;
-                foreach(Point p in boundaries)
-                {
-                    curCol += (int)p.X;
-                    if (curCol > maxInColumn)
-                        maxInColumn = curCol;
-                }
-                if (maxInColumn == 0)
-                    continue;
-                int newWidth = cellWidth / maxInColumn;
-
-                int[] used = new int[nrows];
-                foreach (Control c in panel.Controls)
-                {
-                    Label l = GetLabel(c);
-                    if (l == null)
-                        continue;
-                    if (x1 / nRooms > col || x2 / nRooms < col)
-                        continue;
-                    if (moved.Contains(c))
-                        continue;
-                    moved.Add(c);
-
-                    int newX = 0;
-                    for (int yy = y1; yy < y2; yy++)
-                    {
-                        if (used[yy] > newX)
-                            newX = used[yy];
-                    }
-                    newX++;
-                    for (int yy = y1; yy < y2; yy++)
-                        used[yy] = newX;
-
-                    l.Width = newWidth;
-                    l.Location = new Point(
-                        vc.minX + cellWidth * col + (newX - 1) * newWidth,
-                        l.Location.Y);
-                }
-            }
-        }
-
-        private void CountHits()
-        {
-            int collisions = 0;
-            foreach (Control c in panel.Controls)
-            {
-                Label l = GetLabel(c);
-                if (l == null)
-                    continue;
-
-                for (int x = x1; x < x2; x++)
-                    for (int y = y1; y < y2; y++)
-                    {
-                        hits[x, y] = hits[x, y] + 1;
-                        if (hits[x, y] > 1)
-                            collisions++;
-                    }
-            }
-            MessageBox.Show("Collisions " + collisions.ToString());
-        }
-        private void ExpandRight()
-        {
-            foreach (Control c in panel.Controls)
-            {
-                Label l = GetLabel(c);
-                if (l == null)
-                    continue;
-
-                bool hit = false;
-                for (int x = x2; x < x2max && !hit; x++)
-                {
-                    for (int y = y1; y < y2; y++)
-                    {
-                        if (x + 1 < 0 || y < 0 || x + 1 >= ncols || y >= nrows)
-                            return;
-                        if (hits[x + 1, y] > 0)
-                        {
-                            hit = true;
-                            break;
-                        }
-                    }
-                    if (hit)
-                        break;
-                    l.Width += cellRoomWidth;
-                    for (int y = y1; y < y2; y++)
-                    {
-                        if (x + 1 < 0 || y < 0 || x + 1 >= ncols || y >= nrows)
-                            return;
-                        hits[x + 1, y] = 1;
-                    }
-                }
-            }
-        }
-        private void ExpandLeft()
-        {
-            foreach (Control c in panel.Controls)
-            {
-                Label l = GetLabel(c);
-                if (l == null)
-                    continue;
-
-                bool hit = false;
-                for (int x = x1; x > x1min && !hit; x--)
-                {
-                    for (int y = y1; y < y2; y++)
-                    {
-                        if (x - 1 < 0 || y < 0 || x - 1 >= ncols || y >= nrows)
-                            return;
-                        if (hits[x - 1, y] > 0)
-                        {
-                            hit = true;
-                            break;
-                        }
-                    }
-                    if (hit)
-                        break;
-                    l.Width += cellRoomWidth;
-                    l.Location = new Point(l.Location.X - cellRoomWidth, l.Location.Y);
-                    for (int y = y1; y < y2; y++)
-                    {
-                        if (x - 1 < 0 || y < 0 || x - 1 >= ncols || y >= nrows)
-                            return;
-                        hits[x - 1, y] = 1;
-                    }
-                }
-            }
-        }
-        private void HighlightOverlaps()
-        {
-            foreach (Control c in panel.Controls)
-            {
-                Label l = GetLabel(c);
-                if (l == null)
-                    continue;
-
-                bool hit = false;
-                for (int x = x1; x < x2 && !hit; x++)
-                {
-                    for (int y = y1; y < y2 && !hit; y++)
-                    {
-                        if (x - 1 < 0 || y < 0 || x - 1 >= ncols || y >= nrows)
-                            return;
-                        if (hits[x - 1, y] > 1)
-                        {
-                            hit = true;
-                            break;
-                        }
-                    }
-                    if (hit)
-                        break;
-                }
-                if (hit)
-                {
-                    l.BackColor = Color.Transparent;
-                    l.ForeColor = Color.Black;
-                    l.BorderStyle = BorderStyle.FixedSingle;
-                }
-            }
-
-        }
-    }
-
-
 
     public partial class FormGlob : Form
     {
@@ -401,16 +141,17 @@ namespace RecordKeeper
         {
             DisposeChildren(panelViewMonth);
             int days = DaysInMonth(m_chosenDate);
-            int fullWidth = panelViewMonth.Width - 
+            int fullWidth = panelViewMonth.Width -
                 butViewNext.Width - butViewPrev.Width - 10;
             int fullheight = panelViewMonth.Height -
                 butViewZoomIn.Height - butViewZoomOut.Height - 10;
 
             ViewContext vc = new ViewContext(
-                days,
                 fullWidth / days,
                 fullheight / m_enumTimeSlot.Length,
                 fullWidth / days / roomList.Count,
+                m_enumTimeSlot.Length,
+                days, 
                 60, 40, 20);
 
             DrawMonthDaysAsTopRow(m_chosenDate, panelViewMonth, vc);
@@ -427,7 +168,7 @@ namespace RecordKeeper
                     Height = vc.cellHight * (ye - ys + 1) - lessonLabelVertMargin,
                     Location = new Point(
                         vc.minX + vc.cellWidth * x + vc.cellRoomWidth * RoomIndex(l.Room),
-                        vc.minY + vc.cellHight * ys + lessonLabelVertMargin/2),
+                        vc.minY + vc.cellHight * ys + lessonLabelVertMargin / 2),
                     Parent = panelViewMonth,
                     BackColor = LessonStateBackColor(l.State),
                     ForeColor = LessonStateForeColor(l.State),
@@ -440,16 +181,7 @@ namespace RecordKeeper
                 lb.MouseDown += new System.Windows.Forms.MouseEventHandler(this.butViewShowLesson_MouseDown);
             }
 
-            LabelsExpander.Expand(
-                panelViewMonth, 
-                vc,
-                days, 
-                m_enumTimeSlot.Length,
-                vc.cellRoomWidth, 
-                roomList.Count,
-                vc.cellWidth,
-                vc.cellHight);
-
+            EqualizeWidths(panelViewMonth, vc);
             MarkAllCollisions(panelViewMonth);
         }
 
@@ -457,15 +189,16 @@ namespace RecordKeeper
         {
             DisposeChildren(panelViewWeek);
             int fullWidth = panelViewWeek.Width -
-               butViewNext.Width - butViewPrev.Width - 10;
+                butViewNext.Width - butViewPrev.Width - 10;
             int fullheight = panelViewWeek.Height -
-                butViewZoomIn.Height- butViewZoomOut.Height - 10;
+                butViewZoomIn.Height - butViewZoomOut.Height - 10;
 
             ViewContext vc = new ViewContext(
-                m_enumWeekdayNames.Length,
                 fullWidth / m_enumWeekdayNames.Length,
                 fullheight / m_enumTimeSlot.Length,
                 fullWidth / m_enumWeekdayNames.Length / roomList.Count,
+                m_enumTimeSlot.Length,
+                7,
                 60, 40, 20);
 
             DrawWeekDaysAsTopRow(m_chosenDate, panelViewWeek, vc);
@@ -482,7 +215,7 @@ namespace RecordKeeper
                     Height = vc.cellHight * (ye - ys + 1) - lessonLabelVertMargin,
                     Location = new Point(
                         vc.minX + vc.cellWidth * x + vc.cellRoomWidth * RoomIndex(l.Room),
-                        vc.minY + vc.cellHight * ys + lessonLabelVertMargin/2),
+                        vc.minY + vc.cellHight * ys + lessonLabelVertMargin / 2),
                     Parent = panelViewWeek,
                     BackColor = LessonStateBackColor(l.State),
                     ForeColor = LessonStateForeColor(l.State),
@@ -495,16 +228,7 @@ namespace RecordKeeper
                 lb.MouseDown += new System.Windows.Forms.MouseEventHandler(this.butViewShowLesson_MouseDown);
             }
 
-            LabelsExpander.Expand(
-                panelViewWeek,
-                vc,
-                7, 
-                m_enumTimeSlot.Length,
-                vc.cellRoomWidth, 
-                roomList.Count,
-                vc.cellWidth, 
-                vc.cellHight);
-
+            EqualizeWidths(panelViewWeek, vc);
             MarkAllCollisions(panelViewWeek);
         }
 
@@ -515,17 +239,17 @@ namespace RecordKeeper
             DisposeChildren(panelViewDay);
 
             int fullWidth = panelViewDay.Width -
-                   butViewNext.Width - butViewPrev.Width - 10;
+                    butViewNext.Width - butViewPrev.Width - 10;
             int fullheight = panelViewDay.Height -
                     butViewZoomIn.Height - butViewZoomOut.Height - 10;
 
             ViewContext vc = new ViewContext(
-                1,
                 fullWidth,
                 (fullheight - 20) / m_enumTimeSlot.Length,
                 (fullWidth - 60) / roomList.Count,
+                m_enumTimeSlot.Length,
+                roomList.Count,
                 60, 40, 20);
-
 
             DrawRoomsAsTopRow(panelViewDay, vc);
             DrawTimeSlotsAsLeftColumn(panelViewDay, vc);
@@ -541,8 +265,8 @@ namespace RecordKeeper
                     Width = vc.cellRoomWidth - 10,
                     Height = vc.cellHight * (ye - ys + 1) - lessonLabelVertMargin,
                     Location = new Point(
-                        vc.minX + vc.cellRoomWidth * x + 5, 
-                        vc.minY + vc.cellHight * ys + lessonLabelVertMargin/2),
+                        vc.minX + vc.cellRoomWidth * x + 5,
+                        vc.minY + vc.cellHight * ys + lessonLabelVertMargin / 2),
                     Parent = panelViewDay,
                     BackColor = LessonStateBackColor(l.State),
                     ForeColor = LessonStateForeColor(l.State),
@@ -640,11 +364,11 @@ namespace RecordKeeper
         {
             switch (state)
             {
-                case "Done":   
+                case "Done":
                     return StateColors[(int)StatusColors.Irrelevant];
-                case "Planned":   
+                case "Planned":
                     return StateColors[(int)StatusColors.Good];
-                case "Cancelled":   
+                case "Cancelled":
                     return StateColors[(int)StatusColors.Bad];
                 default:
                     return StateColors[(int)StatusColors.Unknown];
@@ -655,9 +379,9 @@ namespace RecordKeeper
         {
             switch (state)
             {
-                case "Done":   
+                case "Done":
                     return StateForeColors[(int)StatusColors.Irrelevant];
-                case "Planned":  
+                case "Planned":
                     return StateForeColors[(int)StatusColors.Good];
                 case "Cancelled":
                     return StateForeColors[(int)StatusColors.Bad];
@@ -789,7 +513,7 @@ namespace RecordKeeper
             }
             return text;
         }
-        public void GetLocationInRooms(Lesson l, 
+        public void GetLocationInRooms(Lesson l,
             out int col, out int row1, out int row2, out Color color)
         {
             color = Color.Gray;
@@ -803,7 +527,7 @@ namespace RecordKeeper
                     col = i;
                     color = LessonStateBackColor(l.State);
                 }
-                i++; 
+                i++;
             }
 
             if (col == -1)
@@ -1000,19 +724,92 @@ namespace RecordKeeper
             }
         }
 
+        private Label GetLabel(Control c, ref ViewContext vc)
+        {
+            Label l = c as Label;
+            if (l == null)
+                return null;
+            if (l.Location.Y < vc.minY || l.Location.X < vc.minX)
+                return null;
+
+            vc.x1 = (l.Location.X - vc.minX) / vc.cellRoomWidth;
+            vc.y1 = (l.Location.Y - vc.minY) / vc.cellHight;
+            vc.x2 = (l.Location.X + l.Width - vc.minX) / vc.cellRoomWidth - 1;
+            vc.y2 = (l.Location.Y + l.Height - vc.minY) / vc.cellHight - 1;
+
+            if (vc.x1 < 0 || vc.x2 < 0 || vc.x1 > vc.elemcols || vc.x2 > vc.elemcols ||
+                vc.y1 < 0 || vc.y2 < 0 || vc.y1 > vc.elemrows || vc.y2 > vc.elemrows)
+                return null;
+
+            return l;
+        }
+
+        private void EqualizeWidths(Panel panel, ViewContext vc)
+        {
+            vc.elemcols = (vc.cols + 1) * roomList.Count + 1;
+            vc.elemrows = vc.rows;
+
+            int[] labelsPerRow = new int[vc.rows];
+            HashSet<Control> moved = new HashSet<Control>();
+
+            // Eah column (day) is totally separate
+            for (int col = vc.cols - 1; col >= 0; col--)
+            {
+                List<Point> boundaries = new List<Point>();
+                foreach (Control c in panel.Controls)
+                {
+                    Label l = GetLabel(c, ref vc);
+                    if (l == null || (vc.x1 - 1) / roomList.Count > col 
+                                  || (vc.x2 - 1) / roomList.Count < col)
+                        continue;
+                    boundaries.Add(new Point(1, vc.y1));
+                    boundaries.Add(new Point(-1, vc.y2));
+                }
+                boundaries.Sort((r1, r2) => r1.Y.CompareTo(r2.Y));
+                int maxInColumn = 0;
+                int curCol = 0;
+                foreach (Point p in boundaries)
+                {
+                    curCol += (int)p.X;
+                    if (curCol > maxInColumn)
+                        maxInColumn = curCol;
+                }
+                if (maxInColumn == 0)
+                    continue;
+                int newWidth = vc.cellWidth / maxInColumn;
+
+                int[] used = new int[vc.elemrows];
+                foreach (Control c in panel.Controls)
+                {
+                    Label l = GetLabel(c, ref vc);
+                    if (l == null)
+                        continue;
+                    if (vc.x1 / roomList.Count > col || vc.x2 / roomList.Count < col)
+                        continue;
+                    if (moved.Contains(c))
+                        continue;
+                    moved.Add(c);
+
+                    int newX = 0;
+                    for (int yy = vc.y1; yy < vc.y2; yy++)
+                    {
+                        if (used[yy] > newX)
+                            newX = used[yy];
+                    }
+                    newX++;
+                    for (int yy = vc.y1; yy < vc.y2; yy++)
+                        used[yy] = newX;
+
+                    l.Width = newWidth;
+                    l.Location = new Point(
+                        vc.minX + vc.cellWidth * col + (newX - 1) * newWidth,
+                        l.Location.Y);
+                }
+            }
+        }
+
         private bool MarkCollisions(Label lb, Panel panel)
         {
-            ContentAlignment[] choices = {
-                ContentAlignment.TopLeft,
-                ContentAlignment.TopCenter,
-                ContentAlignment.TopRight,
-                ContentAlignment.MiddleLeft,
-                ContentAlignment.MiddleCenter,
-                ContentAlignment.MiddleRight,
-                ContentAlignment.BottomLeft,
-                ContentAlignment.BottomCenter,
-                ContentAlignment.BottomRight };
-
             bool found = false;
             foreach (Control c in panel.Controls)
             {
@@ -1021,16 +818,15 @@ namespace RecordKeeper
                     continue;
 
                 if (!(lb.Location.X > lc.Location.X + lc.Width - 1 ||
-                      lb.Location.X + lb.Width - 1 < lc.Location.X ||
-                      lb.Location.Y > lc.Location.Y + lc.Height - 1 ||
-                      lb.Location.Y + lb.Height - 1 < lc.Location.Y))
+                        lb.Location.X + lb.Width - 1 < lc.Location.X ||
+                        lb.Location.Y > lc.Location.Y + lc.Height - 1 ||
+                        lb.Location.Y + lb.Height - 1 < lc.Location.Y))
                 {
-                    found =  true;
+                    found = true;
                     if (lc.BackColor != Color.Transparent)
                     {
                         lc.ForeColor = lc.BackColor;
                         lc.BackColor = Color.Transparent;
-                        lc.TextAlign = choices[m_rnd.Next() % 9];
                     }
                 }
             }
@@ -1041,10 +837,9 @@ namespace RecordKeeper
                 {
                     lb.ForeColor = lb.BackColor;
                     lb.BackColor = Color.Transparent;
-                    lb.TextAlign = choices[m_rnd.Next() % 9];
                 }
             }
             return found;
-       }
+        }
     }
 }
