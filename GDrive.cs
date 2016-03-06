@@ -21,9 +21,6 @@ namespace GDrive
             DriveService.Scope.DriveMetadata
         };
 
-        const string ApplicationName = "Sagalingua1";
-        const string User = "sagalingua";
-
         public enum Direction {  Up, Down };
 
         public static bool DownloadDataFile(string cloudName, string target)
@@ -41,7 +38,10 @@ namespace GDrive
             UserCredential credential;
 
             // Read access data
-            using (var stream = new FileStream("client_id.json", FileMode.Open, FileAccess.Read))
+            using (var stream = new FileStream(
+                RecordKeeper.FormGlob.Bindings.AuthFile, 
+                FileMode.Open, 
+                FileAccess.Read))
             {
                 string credPath = System.Environment.GetFolderPath(
                     System.Environment.SpecialFolder.Personal);
@@ -51,7 +51,7 @@ namespace GDrive
                 credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
                     GoogleClientSecrets.Load(stream).Secrets,
                     Scopes,
-                    User,
+                    RecordKeeper.FormGlob.Bindings.DriveUser,
                     CancellationToken.None,
                     new FileDataStore(credPath, true)).Result;
             }
@@ -60,7 +60,7 @@ namespace GDrive
             var service = new DriveService(new BaseClientService.Initializer()
             {
                 HttpClientInitializer = credential,
-                ApplicationName = ApplicationName,
+                ApplicationName = RecordKeeper.FormGlob.Bindings.ApplicationName,
             });
 
             // Find our file on the drive, under the RecordKeeper directory

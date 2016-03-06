@@ -12,6 +12,11 @@ using System.Windows.Forms;
 
 namespace RecordKeeper
 {
+    public enum Realms
+    {
+        Live,
+        Test
+    }
     public enum Clouds
     {
         None,
@@ -59,6 +64,35 @@ namespace RecordKeeper
         PricingType,
         Source
     }
+
+    public struct RealmBindings
+    {
+        public RealmBindings(
+            string realm,
+            string applicationName,
+            string authFile, 
+            string calUser,
+            string driveUser, 
+            string systemCalendarI, 
+            string operationalCalendarID)
+        {
+            this.Realm = realm;
+            this.ApplicationName = applicationName;
+            this.AuthFile = authFile;
+            this.CalUser = calUser;
+            this.DriveUser = driveUser;
+            this.SystemCalendarID = systemCalendarI;
+            this.OperationalCalendarID = operationalCalendarID;
+        }
+
+        public string Realm;
+        public string ApplicationName;
+        public string AuthFile;
+        public string CalUser;
+        public string DriveUser;
+        public string SystemCalendarID;
+        public string OperationalCalendarID;
+    };
 
     public struct SchemaField
     {
@@ -113,6 +147,27 @@ namespace RecordKeeper
 
     public partial class FormGlob : Form
     {
+        public static RealmBindings[] SagalinguaBindings =
+        {
+            new  RealmBindings(
+                    "Live",
+                    "Sagalingua1",
+                    "client_id.json",
+                    "Galia Dadiomova",
+                    "sagalingua",
+                    "6tgvdlnrp7i7h7uhjtnt9cjh8o@group.calendar.google.com",
+                    "tptpj1po5oebik762sdpsvpum8@group.calendar.google.com"),
+
+            new  RealmBindings(
+                    "Test",
+                    "Sagalingua1",
+                    "client_id.json",
+                    "Galia Dadiomova",
+                    "alexdad",
+                    "ujtnlq130tnjclegterqrh0ao8@group.calendar.google.com",
+                    "tptpj1po5oebik762sdpsvpum8@group.calendar.google.com")
+        };
+        
         public static string ClientName;
         public static string ClientCode;
         public static int MaxID { get; set; }
@@ -123,6 +178,19 @@ namespace RecordKeeper
         public static void AccumulateID(int id)
         {
             MaxID = Math.Max(MaxID, id);
+        }
+
+        private void SetBindings()
+        {
+            for (int i = 0; i < SagalinguaBindings.Length; i++)
+            {
+                if (SagalinguaBindings[i].Realm == Properties.Settings.Default.Realm)
+                {
+                    Bindings = SagalinguaBindings[i];
+                    return;
+                }
+            }
+            throw new Exception("Unknow realm");
         }
 
         private void AssignEnums()
@@ -165,6 +233,20 @@ namespace RecordKeeper
             set { buttGlobalShowAll.Enabled = value; }
         }
 
+        public void ShowVersionAndRealm()
+        {
+            if (Properties.Settings.Default.Realm == "Test")
+            {
+                labelGlobalVersion.Text = "Test";
+                lbViewVersion.Text = "Test";
+            }
+            else
+            {
+                labelGlobalVersion.Text = "v1.1";
+                lbViewVersion.Text = "v1.1";
+            }
+        }
+
         public void ShowStudentCount()
         {
             labelGlobCount.Text = studentList.Count.ToString();
@@ -199,6 +281,12 @@ namespace RecordKeeper
 
             // Here will reside subdirs per mode for local files
             m_recordKeeperDir = Path.Combine(sd, "RecordKeeper").ToString();
+            if (!Directory.Exists(m_recordKeeperDir))
+                Directory.CreateDirectory(m_recordKeeperDir);
+
+            m_recordKeeperDir = Path.Combine(m_recordKeeperDir, 
+                Properties.Settings.Default.Realm);
+
             if (!Directory.Exists(m_recordKeeperDir))
                 Directory.CreateDirectory(m_recordKeeperDir);
 

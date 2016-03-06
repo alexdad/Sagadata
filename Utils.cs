@@ -17,9 +17,9 @@ namespace RecordKeeper
         public static Color AttentionColor = Color.FromArgb(255, 127, 39);
         public static Color RelaxationColor = Color.FromArgb(212, 255, 236);
         private static string[] m_jokes = {
-            "coffee?", "tea?", "lemonade?", "movie?", "sorry...", "patience",
-            "it takes time...", "open a bug", "alas...", "cheer", "hang tight",
-            "is it rainy today?", "ask Siri what is the meaning of life",
+            "coffee?", "tea?", "lemonade?", "movie?", "sorry for the delay...", "patience please",
+            "it takes time...", "slow?", "cheer", "hang tight",
+            "is it rainy today?", "ask Siri about meaning of life",
             "boring", "arghhh", "F*", "disgusting...", "devil..."
         };
 

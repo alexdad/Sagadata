@@ -410,6 +410,7 @@
             this.butGlobalToExcel = new System.Windows.Forms.Button();
             this.buttGlobalShowAll = new System.Windows.Forms.Button();
             this.panelGlobLogo = new System.Windows.Forms.Panel();
+            this.labelGlobalVersion = new System.Windows.Forms.Label();
             this.cbGlobMode = new System.Windows.Forms.ComboBox();
             this.picBoxGlobIcon = new System.Windows.Forms.PictureBox();
             this.labelGlobSagalingua = new System.Windows.Forms.Label();
@@ -534,6 +535,7 @@
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.lbFutureOpName = new System.Windows.Forms.Label();
             this.clientList = new System.Windows.Forms.BindingSource(this.components);
+            this.lbViewVersion = new System.Windows.Forms.Label();
             this.menuStripGlobalOps.SuspendLayout();
             this.panelGlobIndicators.SuspendLayout();
             this.ctxMenuLesson.SuspendLayout();
@@ -4492,6 +4494,7 @@
             // panelGlobLogo
             // 
             this.panelGlobLogo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelGlobLogo.Controls.Add(this.labelGlobalVersion);
             this.panelGlobLogo.Controls.Add(this.cbGlobMode);
             this.panelGlobLogo.Controls.Add(this.picBoxGlobIcon);
             this.panelGlobLogo.Controls.Add(this.labelGlobSagalingua);
@@ -4500,6 +4503,17 @@
             this.panelGlobLogo.Name = "panelGlobLogo";
             this.panelGlobLogo.Size = new System.Drawing.Size(183, 325);
             this.panelGlobLogo.TabIndex = 24;
+            // 
+            // labelGlobalVersion
+            // 
+            this.labelGlobalVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelGlobalVersion.AutoSize = true;
+            this.labelGlobalVersion.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.labelGlobalVersion.Location = new System.Drawing.Point(140, 0);
+            this.labelGlobalVersion.Name = "labelGlobalVersion";
+            this.labelGlobalVersion.Size = new System.Drawing.Size(42, 13);
+            this.labelGlobalVersion.TabIndex = 22;
+            this.labelGlobalVersion.Text = "Version";
             // 
             // cbGlobMode
             // 
@@ -4968,6 +4982,7 @@
             // 
             this.panelViewControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelViewControl.Controls.Add(this.lbViewVersion);
             this.panelViewControl.Controls.Add(this.dtpViewSlot);
             this.panelViewControl.Controls.Add(this.panelViewSelect);
             this.panelViewControl.Controls.Add(this.groupBoxViewCurrent);
@@ -5776,6 +5791,16 @@
             // 
             this.clientList.DataSource = typeof(RecordKeeper.Client);
             // 
+            // lbViewVersion
+            // 
+            this.lbViewVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbViewVersion.AutoSize = true;
+            this.lbViewVersion.Location = new System.Drawing.Point(177, 3);
+            this.lbViewVersion.Name = "lbViewVersion";
+            this.lbViewVersion.Size = new System.Drawing.Size(42, 13);
+            this.lbViewVersion.TabIndex = 26;
+            this.lbViewVersion.Text = "Version";
+            // 
             // FormGlob
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -6430,6 +6455,8 @@
         private System.Windows.Forms.ToolStripMenuItem biweeklyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem monthlyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteFuturesToolStripMenuItem1;
+        private System.Windows.Forms.Label labelGlobalVersion;
+        private System.Windows.Forms.Label lbViewVersion;
     }
 }
 

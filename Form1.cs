@@ -15,6 +15,7 @@ namespace RecordKeeper
 {
     public partial class FormGlob : Form
     {
+        public static RealmBindings Bindings;
         public static long SlotInTicks = 0;
 
         // Local fields
@@ -86,6 +87,8 @@ namespace RecordKeeper
         #region "Form"
         public FormGlob()
         {
+            SetBindings();
+
             m_dataTypes = new Dictionary<Modes, Type>();
             m_recordTypes = new Dictionary<Modes, RecordType>();
 
@@ -263,6 +266,7 @@ namespace RecordKeeper
             else
                 ReadAllFiles();
 
+            ShowVersionAndRealm();
             ShowCurrentCount();
 
             ClientCode = GetClientCode();

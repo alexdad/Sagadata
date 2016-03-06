@@ -94,5 +94,14 @@ namespace RecordKeeper.Properties {
                 this["SplitMD"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Test")]
+        public string Realm {
+            get {
+                return ((string)(this["Realm"]));
+            }
+        }
     }
 }

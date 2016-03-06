@@ -90,16 +90,15 @@ namespace GCal
     {
         static string[] RWScopes = { CalendarService.Scope.Calendar };
         static string[] ROScopes = { CalendarService.Scope.CalendarReadonly };
-        const string ApplicationName = "Sagalingua1";
-        const string User = "Galia Dadiomova";
-        const string SystemCalendarID = "6tgvdlnrp7i7h7uhjtnt9cjh8o@group.calendar.google.com";
-        const string OperationalCalendarID = "tptpj1po5oebik762sdpsvpum8@group.calendar.google.com";
 
         private static CalendarService GetCalendarService()
         {
             UserCredential credential;
 
-            using (var stream = new FileStream("client_id.json", FileMode.Open, FileAccess.Read))
+            using (var stream = new FileStream(
+                RecordKeeper.FormGlob.Bindings.AuthFile, 
+                FileMode.Open, 
+                FileAccess.Read))
             {
                 string credPath = System.Environment.GetFolderPath(
                 System.Environment.SpecialFolder.Personal);
@@ -109,7 +108,7 @@ namespace GCal
                 credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
                     GoogleClientSecrets.Load(stream).Secrets,
                     RWScopes,
-                    User,  // "user",  
+                    RecordKeeper.FormGlob.Bindings.CalUser,  // "user",  
                     CancellationToken.None,
                     new FileDataStore(credPath, true)).Result;
 
@@ -118,7 +117,7 @@ namespace GCal
             return new CalendarService(new BaseClientService.Initializer()
             {
                 HttpClientInitializer = credential,
-                ApplicationName = ApplicationName,
+                ApplicationName = RecordKeeper.FormGlob.Bindings.ApplicationName,
             });
         }
 
@@ -227,21 +226,22 @@ namespace GCal
 
         public static List<GCal.CalEvent> GetOperationalEvents(DateTime dtMin, DateTime dtMax)
         {
-            return ReadEvents(dtMin, dtMax, OperationalCalendarID);
+            return ReadEvents(dtMin, dtMax, 
+                              RecordKeeper.FormGlob.Bindings.OperationalCalendarID);
         }
 
         public static bool WriteSystemCalendarEvents(List<CalEvent> events)
         {
-            return WriteCalendarEvents(events, SystemCalendarID);
+            return WriteCalendarEvents(events, 
+                             RecordKeeper.FormGlob.Bindings.SystemCalendarID);
         }
 
         public static bool DeleteAllSystemCalendarEvents(DateTime dtMin, DateTime dtMax)
         {
-            return DeleteAllEvents(dtMin, dtMax, SystemCalendarID);
+            return DeleteAllEvents(dtMin, dtMax, 
+                            RecordKeeper.FormGlob.Bindings.SystemCalendarID);
         }
-
-
-}
+    }
 }
 
 
