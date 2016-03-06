@@ -917,7 +917,7 @@
             this.statusToolStripMenuItem,
             this.repeatToolStripMenuItem});
             this.ctxMenuLesson.Name = "ctxMenuLesson";
-            this.ctxMenuLesson.Size = new System.Drawing.Size(120, 92);
+            this.ctxMenuLesson.Size = new System.Drawing.Size(135, 92);
             // 
             // roomToolStripMenuItem
             // 
@@ -930,7 +930,7 @@
             this.pinkToolStripMenuItem1,
             this.nAToolStripMenuItem});
             this.roomToolStripMenuItem.Name = "roomToolStripMenuItem";
-            this.roomToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.roomToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.roomToolStripMenuItem.Text = "Relocate";
             // 
             // redToolStripMenuItem
@@ -991,8 +991,8 @@
             this.weekBackToolStripMenuItem,
             this.twoWeeksBackToolStripMenuItem});
             this.timeToolStripMenuItem.Name = "timeToolStripMenuItem";
-            this.timeToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
-            this.timeToolStripMenuItem.Text = "Move";
+            this.timeToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.timeToolStripMenuItem.Text = "Reschedule";
             // 
             // sameWeekToolStripMenuItem
             // 
@@ -1036,7 +1036,7 @@
             this.doneToolStripMenuItem,
             this.cancelledToolStripMenuItem});
             this.statusToolStripMenuItem.Name = "statusToolStripMenuItem";
-            this.statusToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.statusToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.statusToolStripMenuItem.Text = "Mark";
             // 
             // plannedToolStripMenuItem
@@ -1068,7 +1068,7 @@
             this.monthlyToolStripMenuItem,
             this.deleteFuturesToolStripMenuItem1});
             this.repeatToolStripMenuItem.Name = "repeatToolStripMenuItem";
-            this.repeatToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.repeatToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.repeatToolStripMenuItem.Text = "Repeat";
             // 
             // weeklyToolStripMenuItem

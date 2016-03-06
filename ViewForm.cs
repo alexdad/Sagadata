@@ -86,6 +86,7 @@ namespace RecordKeeper
         public int minX;
         public int minY;
         public int labelHeight;
+        public int elements;
         public int elemcols;
         public int elemrows;
         public int x1;
@@ -99,6 +100,7 @@ namespace RecordKeeper
             int cellWidth,
             int cellHight,
             int cellRoomWidth,
+            int elements,
             int rows,
             int cols,
             int minX,
@@ -113,12 +115,55 @@ namespace RecordKeeper
             this.minX = minX;
             this.minY = minY;
             this.labelHeight = labelHeight;
+            this.elements = elements;
             this.elemcols = 0;
             this.elemrows = 0;
             this.x1 = 0;
             this.y1 = 0;
             this.x2 = 0;
             this.y2 = 0;
+        }
+    }
+
+    public class Packer
+    {
+        private int m_rows;
+        private int m_cols;
+        private bool[,] m_used; 
+        public Packer(int rows, int cols)
+        {
+            m_rows = rows;
+            m_cols = cols;
+            m_used = new bool[rows, cols];
+        }
+
+        private bool Check(int r1, int r2, int c)
+        {
+            for (int r = r1; r <= r2; r++)
+            {
+                if (m_used[r, c])
+                    return false;
+            }
+            return true;
+        }
+        private void Use(int r1, int r2, int c)
+        {
+            for (int r = r1; r <= r2; r++)
+                m_used[r, c] = true;
+        }
+
+        public int Place(int r1, int r2)
+        {
+            // We need to respect r1, r2, and choose only c
+            for (int c=0; c < m_cols; c++)
+            {
+                if (Check(r1, r2, c))
+                {
+                    Use(r1, r2, c);
+                    return c;
+                }
+            }
+            return -1;
         }
     }
 
@@ -150,6 +195,7 @@ namespace RecordKeeper
                 fullWidth / days,
                 fullheight / m_enumTimeSlot.Length,
                 fullWidth / days / roomList.Count,
+                roomList.Count,
                 m_enumTimeSlot.Length,
                 days, 
                 60, 40, 20);
@@ -181,7 +227,7 @@ namespace RecordKeeper
                 lb.MouseDown += new System.Windows.Forms.MouseEventHandler(this.butViewShowLesson_MouseDown);
             }
 
-            EqualizeWidths(panelViewMonth, vc);
+            PackRectangles(panelViewMonth, vc);
             MarkAllCollisions(panelViewMonth);
         }
 
@@ -197,6 +243,7 @@ namespace RecordKeeper
                 fullWidth / m_enumWeekdayNames.Length,
                 fullheight / m_enumTimeSlot.Length,
                 fullWidth / m_enumWeekdayNames.Length / roomList.Count,
+                roomList.Count,
                 m_enumTimeSlot.Length,
                 7,
                 60, 40, 20);
@@ -228,7 +275,7 @@ namespace RecordKeeper
                 lb.MouseDown += new System.Windows.Forms.MouseEventHandler(this.butViewShowLesson_MouseDown);
             }
 
-            EqualizeWidths(panelViewWeek, vc);
+            PackRectangles(panelViewWeek, vc);
             MarkAllCollisions(panelViewWeek);
         }
 
@@ -247,6 +294,7 @@ namespace RecordKeeper
                 fullWidth,
                 (fullheight - 20) / m_enumTimeSlot.Length,
                 (fullWidth - 60) / roomList.Count,
+                roomList.Count,
                 m_enumTimeSlot.Length,
                 roomList.Count,
                 60, 40, 20);
@@ -744,66 +792,81 @@ namespace RecordKeeper
             return l;
         }
 
-        private void EqualizeWidths(Panel panel, ViewContext vc)
+        private int EstimateChannels(Panel panel, ViewContext vc, int col)
         {
-            vc.elemcols = (vc.cols + 1) * roomList.Count + 1;
+            List<Point> boundaries = new List<Point>();
+            foreach (Control c in panel.Controls)
+            {
+                Label l = GetLabel(c, ref vc);
+                if (l == null || (vc.x1 - 1) / vc.elements > col
+                              || (vc.x2 - 1) / vc.elements < col)
+                    continue;
+                boundaries.Add(new Point(1, vc.y1));
+                boundaries.Add(new Point(-1, vc.y2));
+            }
+            boundaries.Sort((r1, r2) => r1.Y.CompareTo(r2.Y));
+            int maxInColumn = 0;
+            int curCol = 0;
+            foreach (Point p in boundaries)
+            {
+                curCol += (int)p.X;
+                if (curCol > maxInColumn)
+                    maxInColumn = curCol;
+            }
+            return maxInColumn;
+        }
+
+        private List<Label> CollectColumnLabels(Panel panel, ViewContext vc, int col)
+        {
+            List<Label> labels = new List<Label>();
+            foreach (Control c in panel.Controls)
+            {
+                Label l = GetLabel(c, ref vc);
+                if (l == null)
+                    continue;
+                if (vc.x1 / vc.elements > col || vc.x2 / vc.elements < col)
+                    continue;
+                labels.Add(l);
+            }
+
+            labels.Sort((l1, l2) => l1.Height.CompareTo(l2.Height));
+            return labels;
+        }
+        private void PackRectangles(Panel panel, ViewContext vc)
+        {
+            vc.elemcols = (vc.cols + 1) * vc.elements + 1;
             vc.elemrows = vc.rows;
 
-            int[] labelsPerRow = new int[vc.rows];
-            HashSet<Control> moved = new HashSet<Control>();
-
-            // Eah column (day) is totally separate
             for (int col = vc.cols - 1; col >= 0; col--)
             {
-                List<Point> boundaries = new List<Point>();
-                foreach (Control c in panel.Controls)
-                {
-                    Label l = GetLabel(c, ref vc);
-                    if (l == null || (vc.x1 - 1) / roomList.Count > col 
-                                  || (vc.x2 - 1) / roomList.Count < col)
-                        continue;
-                    boundaries.Add(new Point(1, vc.y1));
-                    boundaries.Add(new Point(-1, vc.y2));
-                }
-                boundaries.Sort((r1, r2) => r1.Y.CompareTo(r2.Y));
-                int maxInColumn = 0;
-                int curCol = 0;
-                foreach (Point p in boundaries)
-                {
-                    curCol += (int)p.X;
-                    if (curCol > maxInColumn)
-                        maxInColumn = curCol;
-                }
-                if (maxInColumn == 0)
+                int estChannels = EstimateChannels(panel, vc, col);
+                if (estChannels == 0)
                     continue;
-                int newWidth = vc.cellWidth / maxInColumn;
-
-                int[] used = new int[vc.elemrows];
-                foreach (Control c in panel.Controls)
+               
+                for (int channels = estChannels; channels <= vc.elements; channels++)
                 {
-                    Label l = GetLabel(c, ref vc);
-                    if (l == null)
-                        continue;
-                    if (vc.x1 / roomList.Count > col || vc.x2 / roomList.Count < col)
-                        continue;
-                    if (moved.Contains(c))
-                        continue;
-                    moved.Add(c);
+                    int channelWidth = vc.cellWidth / channels;
+                    bool failed = false;
+                    Packer packer = new Packer(vc.elemrows, vc.elements);
 
-                    int newX = 0;
-                    for (int yy = vc.y1; yy < vc.y2; yy++)
+                    List<Label> labels = CollectColumnLabels(panel, vc, col);
+                    foreach (Label l in labels)
                     {
-                        if (used[yy] > newX)
-                            newX = used[yy];
-                    }
-                    newX++;
-                    for (int yy = vc.y1; yy < vc.y2; yy++)
-                        used[yy] = newX;
+                        GetLabel(l, ref vc);
+                        int c = packer.Place(vc.y1, vc.y2);
+                        if (c < 0)
+                        {
+                            failed = true;
+                            break;
+                        }
 
-                    l.Width = newWidth;
-                    l.Location = new Point(
-                        vc.minX + vc.cellWidth * col + (newX - 1) * newWidth,
-                        l.Location.Y);
+                        l.Width = channelWidth;
+                        l.Location = new Point(
+                            vc.minX + vc.cellWidth * col + c * channelWidth,
+                            l.Location.Y);
+                    }
+                    if (!failed)
+                        break;
                 }
             }
         }
