@@ -767,9 +767,23 @@ namespace RecordKeeper
                 Label lb = c as Label;
                 if (lb == null)
                     continue;
+                Lesson lsn = lb.Tag as Lesson;
+                if (lsn == null)
+                    continue;
+
                 MarkCollisions(lb, panel);
 
             }
+        }
+
+        int IndexOnStringArray(string[] arr, string word)
+        {
+            for (int i=0; i < arr.Length; i++)
+            {
+                if (word == arr[i])
+                    return i;
+            }
+            return -1;
         }
 
         private Label GetLabel(Control c, ref ViewContext vc)
@@ -779,11 +793,18 @@ namespace RecordKeeper
                 return null;
             if (l.Location.Y < vc.minY || l.Location.X < vc.minX)
                 return null;
+            Lesson lsn = l.Tag as Lesson;
+            if (lsn == null)
+                return null;
 
-            vc.x1 = (l.Location.X - vc.minX) / vc.cellRoomWidth;
-            vc.y1 = (l.Location.Y - vc.minY) / vc.cellHight;
-            vc.x2 = (l.Location.X + l.Width - vc.minX) / vc.cellRoomWidth - 1;
-            vc.y2 = (l.Location.Y + l.Height - vc.minY) / vc.cellHight - 1;
+            //vc.y1 = IndexOnStringArray(m_enumTimeSlot, lsn.Start);
+            //vc.y2 = IndexOnStringArray(m_enumTimeSlot, lsn.End);
+
+            int roomIndex = RoomIndex(lsn.Room);
+            vc.x1 = (l.Location.X - vc.minX - roomIndex * vc.cellRoomWidth)           / vc.cellRoomWidth;
+            vc.x2 = (l.Location.X - vc.minX - roomIndex * vc.cellRoomWidth + l.Width) / vc.cellRoomWidth - 1;
+            vc.y1 = (l.Location.Y - vc.minY - vc.labelHeight / 2)            / vc.cellHight;
+            vc.y2 = (l.Location.Y - vc.minY - vc.labelHeight / 2 + l.Height) / vc.cellHight - 1;
 
             if (vc.x1 < 0 || vc.x2 < 0 || vc.x1 > vc.elemcols || vc.x2 > vc.elemcols ||
                 vc.y1 < 0 || vc.y2 < 0 || vc.y1 > vc.elemrows || vc.y2 > vc.elemrows)
@@ -798,11 +819,11 @@ namespace RecordKeeper
             foreach (Control c in panel.Controls)
             {
                 Label l = GetLabel(c, ref vc);
-                if (l == null || (vc.x1 - 1) / vc.elements > col
-                              || (vc.x2 - 1) / vc.elements < col)
+                if (l == null || vc.x1 / vc.elements > col
+                              || vc.x2 / vc.elements < col)
                     continue;
                 boundaries.Add(new Point(1, vc.y1));
-                boundaries.Add(new Point(-1, vc.y2));
+                boundaries.Add(new Point(-1, vc.y2+1));
             }
             boundaries.Sort((r1, r2) => r1.Y.CompareTo(r2.Y));
             int maxInColumn = 0;
@@ -845,11 +866,11 @@ namespace RecordKeeper
                
                 for (int channels = estChannels; channels <= vc.elements; channels++)
                 {
-                    int channelWidth = vc.cellWidth / channels;
-                    bool failed = false;
+                    int channelWidth = vc.cellWidth / channels - 1;
                     Packer packer = new Packer(vc.elemrows, vc.elements);
-
                     List<Label> labels = CollectColumnLabels(panel, vc, col);
+
+                    bool failed = false;
                     foreach (Label l in labels)
                     {
                         GetLabel(l, ref vc);
@@ -879,11 +900,14 @@ namespace RecordKeeper
                 Label lc = c as Label;
                 if (lc == null || lc == lb)
                     continue;
+                Lesson lsn = lc.Tag as Lesson;
+                if (lsn == null)
+                    continue;
 
-                if (!(lb.Location.X > lc.Location.X + lc.Width - 1 ||
-                        lb.Location.X + lb.Width - 1 < lc.Location.X ||
-                        lb.Location.Y > lc.Location.Y + lc.Height - 1 ||
-                        lb.Location.Y + lb.Height - 1 < lc.Location.Y))
+                if (!(lb.Location.X >= lc.Location.X + lc.Width ||
+                        lb.Location.X + lb.Width  <= lc.Location.X ||
+                        lb.Location.Y >= lc.Location.Y + lc.Height ||
+                        lb.Location.Y + lb.Height  <= lc.Location.Y))
                 {
                     found = true;
                     if (lc.BackColor != Color.Transparent)
