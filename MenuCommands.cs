@@ -201,6 +201,17 @@ namespace RecordKeeper
 
             ReadAllFiles();
         }
+
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            buttonSave_Click(null, null);
+        }
+
+        private void syncToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            buttonSync_Click(null, null);
+        }
+
         #endregion
 
         #region "Relocate submenu of Lesson ctx menu"

@@ -54,6 +54,8 @@
             this.downloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reopenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.uploadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.syncToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemGlobExit = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripGlobalOps = new System.Windows.Forms.MenuStrip();
             this.labelGlobLastDownload = new System.Windows.Forms.Label();
@@ -457,6 +459,7 @@
             this.tabView = new System.Windows.Forms.TabPage();
             this.panelView = new System.Windows.Forms.Panel();
             this.panelViewControl = new System.Windows.Forms.Panel();
+            this.lbViewVersion = new System.Windows.Forms.Label();
             this.dtpViewSlot = new System.Windows.Forms.DateTimePicker();
             this.panelViewSelect = new System.Windows.Forms.Panel();
             this.cbViewSelectProgram = new System.Windows.Forms.ComboBox();
@@ -535,7 +538,6 @@
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.lbFutureOpName = new System.Windows.Forms.Label();
             this.clientList = new System.Windows.Forms.BindingSource(this.components);
-            this.lbViewVersion = new System.Windows.Forms.Label();
             this.menuStripGlobalOps.SuspendLayout();
             this.panelGlobIndicators.SuspendLayout();
             this.ctxMenuLesson.SuspendLayout();
@@ -808,7 +810,9 @@
             this.advancedToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.downloadToolStripMenuItem,
             this.reopenToolStripMenuItem,
-            this.uploadToolStripMenuItem});
+            this.uploadToolStripMenuItem,
+            this.saveToolStripMenuItem,
+            this.syncToolStripMenuItem});
             this.advancedToolStripMenuItem.Name = "advancedToolStripMenuItem";
             this.advancedToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
             this.advancedToolStripMenuItem.Text = "Advanced";
@@ -816,23 +820,37 @@
             // downloadToolStripMenuItem
             // 
             this.downloadToolStripMenuItem.Name = "downloadToolStripMenuItem";
-            this.downloadToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.downloadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.downloadToolStripMenuItem.Text = "Download";
             this.downloadToolStripMenuItem.Click += new System.EventHandler(this.downloadToolStripMenuItem_Click);
             // 
             // reopenToolStripMenuItem
             // 
             this.reopenToolStripMenuItem.Name = "reopenToolStripMenuItem";
-            this.reopenToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.reopenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.reopenToolStripMenuItem.Text = "Reopen";
             this.reopenToolStripMenuItem.Click += new System.EventHandler(this.reopenToolStripMenuItem_Click);
             // 
             // uploadToolStripMenuItem
             // 
             this.uploadToolStripMenuItem.Name = "uploadToolStripMenuItem";
-            this.uploadToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.uploadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.uploadToolStripMenuItem.Text = "Upload";
             this.uploadToolStripMenuItem.Click += new System.EventHandler(this.uploadToolStripMenuItem_Click);
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Text = "Save";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+            // 
+            // syncToolStripMenuItem
+            // 
+            this.syncToolStripMenuItem.Name = "syncToolStripMenuItem";
+            this.syncToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.syncToolStripMenuItem.Text = "Sync";
+            this.syncToolStripMenuItem.Click += new System.EventHandler(this.syncToolStripMenuItem_Click);
             // 
             // menuItemGlobExit
             // 
@@ -4994,6 +5012,16 @@
             this.panelViewControl.Size = new System.Drawing.Size(235, 775);
             this.panelViewControl.TabIndex = 1;
             // 
+            // lbViewVersion
+            // 
+            this.lbViewVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbViewVersion.AutoSize = true;
+            this.lbViewVersion.Location = new System.Drawing.Point(177, 3);
+            this.lbViewVersion.Name = "lbViewVersion";
+            this.lbViewVersion.Size = new System.Drawing.Size(42, 13);
+            this.lbViewVersion.TabIndex = 26;
+            this.lbViewVersion.Text = "Version";
+            // 
             // dtpViewSlot
             // 
             this.dtpViewSlot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -5791,16 +5819,6 @@
             // 
             this.clientList.DataSource = typeof(RecordKeeper.Client);
             // 
-            // lbViewVersion
-            // 
-            this.lbViewVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbViewVersion.AutoSize = true;
-            this.lbViewVersion.Location = new System.Drawing.Point(177, 3);
-            this.lbViewVersion.Name = "lbViewVersion";
-            this.lbViewVersion.Size = new System.Drawing.Size(42, 13);
-            this.lbViewVersion.TabIndex = 26;
-            this.lbViewVersion.Text = "Version";
-            // 
             // FormGlob
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -6457,6 +6475,8 @@
         private System.Windows.Forms.ToolStripMenuItem deleteFuturesToolStripMenuItem1;
         private System.Windows.Forms.Label labelGlobalVersion;
         private System.Windows.Forms.Label lbViewVersion;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem syncToolStripMenuItem;
     }
 }
 
