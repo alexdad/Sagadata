@@ -1468,6 +1468,24 @@ namespace RecordKeeper
             }
         }
 
+        private void butViewShowLesson_DoubleClick(object sender, EventArgs e)
+        {
+            Lesson lsn = null;
+            Label lb = sender as Label;
+            Button b = sender as Button;
+            if (b != null && (b.Tag as Lesson) != null)
+                lsn = b.Tag as Lesson;
+            else if (lb != null && (lb.Tag as Lesson) != null)
+                lsn = lb.Tag as Lesson;
+
+            if (lsn != null)
+            {
+                ChangeOperMode(Ops.Edit);
+                ChangeEditMode(Modes.Lessons);
+                Datalist_Find(lsn.Key);
+            }
+        }
+
         private void butViewShowLesson_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Right)

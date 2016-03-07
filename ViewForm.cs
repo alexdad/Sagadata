@@ -227,6 +227,7 @@ namespace RecordKeeper
                 lb.ContextMenuStrip = ctxMenuLesson;
                 lb.MouseHover += new System.EventHandler(this.butViewShowLesson_MouseHover);
                 lb.MouseDown += new System.Windows.Forms.MouseEventHandler(this.butViewShowLesson_MouseDown);
+                lb.DoubleClick += new System.EventHandler(this.butViewShowLesson_DoubleClick);
             }
 
             PackRectangles(panelViewMonth, vc);
@@ -275,6 +276,7 @@ namespace RecordKeeper
                 lb.ContextMenuStrip = ctxMenuLesson;
                 lb.MouseHover += new System.EventHandler(this.butViewShowLesson_MouseHover);
                 lb.MouseDown += new System.Windows.Forms.MouseEventHandler(this.butViewShowLesson_MouseDown);
+                lb.DoubleClick += new System.EventHandler(this.butViewShowLesson_DoubleClick);
             }
 
             PackRectangles(panelViewWeek, vc);
@@ -329,6 +331,7 @@ namespace RecordKeeper
                 lb.ContextMenuStrip = ctxMenuLesson;
                 lb.MouseHover += new System.EventHandler(this.butViewShowLesson_MouseHover);
                 lb.MouseDown += new System.Windows.Forms.MouseEventHandler(this.butViewShowLesson_MouseDown);
+                lb.DoubleClick += new System.EventHandler(this.butViewShowLesson_DoubleClick);
             }
             panelViewDay.Refresh();
         }

@@ -86,6 +86,18 @@ namespace RecordKeeper
         {
             DataList.CurrencyManager.Position = i;
         }
+        public bool Datalist_Find(string key)
+        {
+            for (int i = 0; i < DataList.Count; i++)
+            {
+                DataList.CurrencyManager.Position = i;
+                Record r = (Record)DataList.Current;
+                if (r.Key == key)
+                    return true;
+            }
+            return false;
+        }
+
         public void Datalist_StepForward()
         {
             if (DataList.CurrencyManager.Position < DataList.Count - 1)
