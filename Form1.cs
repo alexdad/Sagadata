@@ -28,6 +28,7 @@ namespace RecordKeeper
         string[] m_enumTimeSlot;
         string[] m_enumDurations;
         string[] m_enumWeekdayNames;
+        string[] m_enumCancellation;
 
         Dictionary<Modes, RecordType> m_recordTypes;
         Dictionary<Modes, Type> m_dataTypes;
@@ -1188,16 +1189,6 @@ namespace RecordKeeper
         }
 
         private void monthCalendar1_MouseDown(object sender, MouseEventArgs e)
-        {
-            EditLessonDetailsChanged();
-        }
-
-        private void dtpLessonCancellationTime_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditLessonDetailsChanged();
-        }
-
-        private void dtpLessonCancellationTime_MouseDown(object sender, MouseEventArgs e)
         {
             EditLessonDetailsChanged();
         }

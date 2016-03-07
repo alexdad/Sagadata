@@ -323,7 +323,6 @@
             this.buttonReconcileNext = new System.Windows.Forms.Button();
             this.lbLessonCancellation = new System.Windows.Forms.Label();
             this.tbLessonPrice = new System.Windows.Forms.TextBox();
-            this.labelLessonCancellation = new System.Windows.Forms.Label();
             this.labelLessonPrice = new System.Windows.Forms.Label();
             this.cbLessonStudent10 = new System.Windows.Forms.ComboBox();
             this.cbLessonStudent9 = new System.Windows.Forms.ComboBox();
@@ -538,6 +537,8 @@
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.lbFutureOpName = new System.Windows.Forms.Label();
             this.clientList = new System.Windows.Forms.BindingSource(this.components);
+            this.labelLessonCancellation = new System.Windows.Forms.Label();
+            this.cbLessonCancellation = new System.Windows.Forms.ComboBox();
             this.menuStripGlobalOps.SuspendLayout();
             this.panelGlobIndicators.SuspendLayout();
             this.ctxMenuLesson.SuspendLayout();
@@ -820,35 +821,35 @@
             // downloadToolStripMenuItem
             // 
             this.downloadToolStripMenuItem.Name = "downloadToolStripMenuItem";
-            this.downloadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.downloadToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.downloadToolStripMenuItem.Text = "Download";
             this.downloadToolStripMenuItem.Click += new System.EventHandler(this.downloadToolStripMenuItem_Click);
             // 
             // reopenToolStripMenuItem
             // 
             this.reopenToolStripMenuItem.Name = "reopenToolStripMenuItem";
-            this.reopenToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.reopenToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.reopenToolStripMenuItem.Text = "Reopen";
             this.reopenToolStripMenuItem.Click += new System.EventHandler(this.reopenToolStripMenuItem_Click);
             // 
             // uploadToolStripMenuItem
             // 
             this.uploadToolStripMenuItem.Name = "uploadToolStripMenuItem";
-            this.uploadToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.uploadToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.uploadToolStripMenuItem.Text = "Upload";
             this.uploadToolStripMenuItem.Click += new System.EventHandler(this.uploadToolStripMenuItem_Click);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.saveToolStripMenuItem.Text = "Save";
             this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
             // 
             // syncToolStripMenuItem
             // 
             this.syncToolStripMenuItem.Name = "syncToolStripMenuItem";
-            this.syncToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.syncToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.syncToolStripMenuItem.Text = "Sync";
             this.syncToolStripMenuItem.Click += new System.EventHandler(this.syncToolStripMenuItem_Click);
             // 
@@ -3146,11 +3147,12 @@
             // panelLesson
             // 
             this.panelLesson.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
+            this.panelLesson.Controls.Add(this.cbLessonCancellation);
+            this.panelLesson.Controls.Add(this.labelLessonCancellation);
             this.panelLesson.Controls.Add(this.chkLessonLink);
             this.panelLesson.Controls.Add(this.panelReconcile);
             this.panelLesson.Controls.Add(this.lbLessonCancellation);
             this.panelLesson.Controls.Add(this.tbLessonPrice);
-            this.panelLesson.Controls.Add(this.labelLessonCancellation);
             this.panelLesson.Controls.Add(this.labelLessonPrice);
             this.panelLesson.Controls.Add(this.cbLessonStudent10);
             this.panelLesson.Controls.Add(this.cbLessonStudent9);
@@ -3590,16 +3592,6 @@
             this.tbLessonPrice.Size = new System.Drawing.Size(31, 20);
             this.tbLessonPrice.TabIndex = 31;
             this.tbLessonPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbLessonPrice_KeyPress);
-            // 
-            // labelLessonCancellation
-            // 
-            this.labelLessonCancellation.AutoSize = true;
-            this.labelLessonCancellation.Location = new System.Drawing.Point(688, 119);
-            this.labelLessonCancellation.Name = "labelLessonCancellation";
-            this.labelLessonCancellation.Size = new System.Drawing.Size(90, 13);
-            this.labelLessonCancellation.TabIndex = 30;
-            this.labelLessonCancellation.Text = "Cancellation time:";
-            this.labelLessonCancellation.Visible = false;
             // 
             // labelLessonPrice
             // 
@@ -5819,6 +5811,24 @@
             // 
             this.clientList.DataSource = typeof(RecordKeeper.Client);
             // 
+            // labelLessonCancellation
+            // 
+            this.labelLessonCancellation.AutoSize = true;
+            this.labelLessonCancellation.Location = new System.Drawing.Point(657, 119);
+            this.labelLessonCancellation.Name = "labelLessonCancellation";
+            this.labelLessonCancellation.Size = new System.Drawing.Size(68, 13);
+            this.labelLessonCancellation.TabIndex = 36;
+            this.labelLessonCancellation.Text = "Cancellation:";
+            // 
+            // cbLessonCancellation
+            // 
+            this.cbLessonCancellation.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.lessonList, "CancellationTime", true));
+            this.cbLessonCancellation.FormattingEnabled = true;
+            this.cbLessonCancellation.Location = new System.Drawing.Point(660, 133);
+            this.cbLessonCancellation.Name = "cbLessonCancellation";
+            this.cbLessonCancellation.Size = new System.Drawing.Size(121, 21);
+            this.cbLessonCancellation.TabIndex = 37;
+            // 
             // FormGlob
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -6397,7 +6407,6 @@
         private System.Windows.Forms.Label lbPlanStudent;
         private System.Windows.Forms.Label lbPlanMoreStudents;
         private System.Windows.Forms.TextBox tbLessonPrice;
-        private System.Windows.Forms.Label labelLessonCancellation;
         private System.Windows.Forms.Label labelLessonPrice;
         private System.Windows.Forms.Label lbLessonCancellation;
         private System.Windows.Forms.Button buttonGlobEditAccept;
@@ -6477,6 +6486,8 @@
         private System.Windows.Forms.Label lbViewVersion;
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem syncToolStripMenuItem;
+        private System.Windows.Forms.ComboBox cbLessonCancellation;
+        private System.Windows.Forms.Label labelLessonCancellation;
     }
 }
 

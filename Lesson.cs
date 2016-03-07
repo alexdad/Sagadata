@@ -451,7 +451,7 @@ namespace RecordKeeper
             l.Teacher1 = this.Teacher1;
             l.Teacher2 = this.Teacher2;
             l.Price = this.Price;
-            l.CancellationTime = "";
+            l.CancellationTime = this.CancellationTime;
             l.GoogleId = "";
             l.RepeaterKey = this.RepeaterSequenceKey;
         }

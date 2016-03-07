@@ -225,6 +225,7 @@ namespace RecordKeeper
             //cbPlanDuration.SelectedIndex = 5;   // Starting from 1:30
 
             cbViewSelectState.Items.AddRange(m_enumState);
+            cbLessonCancellation.Items.AddRange(m_enumCancellation);
         }
 
         public bool SelectionMode
@@ -381,6 +382,7 @@ namespace RecordKeeper
             m_enumStatus = File.ReadAllLines(Path.Combine(binLocation, "EnumStatus.csv").ToString());
             m_enumState = File.ReadAllLines(Path.Combine(binLocation, "EnumState.csv").ToString());
             m_enumPricingType = File.ReadAllLines(Path.Combine(binLocation, "EnumPricingType.csv").ToString());
+            m_enumCancellation = File.ReadAllLines(Path.Combine(binLocation, "EnumCancellation.csv").ToString());
 
             PopulateEnumTimeslots();
             PopulateEnumWeekdays();

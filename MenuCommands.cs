@@ -350,13 +350,20 @@ namespace RecordKeeper
 
         private void cancelledToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Operation_CompletePrevious();
+            using (CancelForm cf = new CancelForm(m_enumCancellation))
+            {
+                if (cf.ShowDialog(this) == DialogResult.OK)
+                {
+                    Operation_CompletePrevious();
 
-            Lesson l = GetLessonFromSender2(sender);
-            l.State = "Cancelled";
-            l.CancellationTime = DateTime.Now.ToString();
-            Modified = true;
-            ShowView();
+                    Lesson l = GetLessonFromSender2(sender);
+                    l.State = "Cancelled";
+                    l.CancellationTime = cf.Situation;
+                    l.Comments = l.Comments + "; cancelled " + cf.Comment;
+                    Modified = true;
+                    ShowView();
+                }
+            }
         }
         #endregion
 
