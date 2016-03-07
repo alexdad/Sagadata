@@ -622,24 +622,14 @@ namespace RecordKeeper
             for (int i = lessonList.Count - 1; i >= 0; i--)
             {
                 Lesson lsn = (Lesson)lessonList[i];
-                if (lsn.RepeaterKey == l.RepeaterSequenceKey &&
-                    lsn.DateTimeStart > l.DateTimeEnd)
+                if ((lsn.RepeaterKey == l.RepeaterSequenceKey ||
+                     lsn.Key == l.RepeaterSequenceKey) &&
+                    lsn.DateTimeStart >= l.DateTimeStart)
                 {
                     Datalist_SetPosition(i);
                     buttonDelete_Click(null, null);
                 }
             }
-
-            for (int i = lessonList.Count - 1; i >= 0; i--)
-            {
-                Lesson lsn = (Lesson)lessonList[i];
-                if (lsn.Key == l.Key)
-                {
-                    Datalist_SetPosition(i);
-                    break;
-                }
-            }
-
             CompleteBulkEditOperation();
         }
     }

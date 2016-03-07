@@ -474,9 +474,7 @@ namespace RecordKeeper
                 DialogResult result = MessageBox.Show(
                     "Should I save?", "You have unsaved changes", MessageBoxButtons.YesNoCancel);
                 if (result == DialogResult.Cancel)
-                {
                     return false;
-                }
                 else if (result == DialogResult.Yes)
                 {
                     SaveAll();
