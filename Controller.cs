@@ -235,6 +235,7 @@ namespace RecordKeeper
 
         public void ChangeOperMode(Ops op)
         {
+            CurrentType.EndSelectionMode();
             tabControlOps.SelectedIndex = (int)op;
         }
         public void Operation_CompletePrevious()
