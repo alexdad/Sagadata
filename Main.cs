@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,9 +14,16 @@ namespace RecordKeeper
         [STAThread]
         static void Main(string[] args)
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormGlob());
+            string lockFile = Path.Combine(Path.GetTempPath(), "RecordKeeper.lock");
+            if (!File.Exists(lockFile))
+                File.WriteAllText(lockFile, "LOCK");
+
+            using (FileStream fs = File.Open(lockFile, FileMode.Open, FileAccess.ReadWrite, FileShare.None))
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new FormGlob());
+            }
         }
     }
 }
