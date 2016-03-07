@@ -20,8 +20,8 @@ namespace RecordKeeper
 
             if (!CheckSafety())
                 return;
-            AskAndUploadChangedFiles();
-            Application.Exit();
+            if (AskAndUploadChangedFiles())
+                Application.Exit();
         }
 
         #endregion
@@ -467,21 +467,28 @@ namespace RecordKeeper
             UploadAll();
         }
 
-        private void AskAndUploadChangedFiles()
+        private bool AskAndUploadChangedFiles()
         {
             if (Modified)
             {
                 DialogResult result = MessageBox.Show(
-                    "Should I save?", "You have unsaved changes", MessageBoxButtons.YesNo);
-                if (result == DialogResult.Yes)
+                    "Should I save?", "You have unsaved changes", MessageBoxButtons.YesNoCancel);
+                if (result == DialogResult.Cancel)
+                {
+                    return false;
+                }
+                else if (result == DialogResult.Yes)
                 {
                     SaveAll();
                     result = MessageBox.Show(
-                        "Should I upload?", "You have local changes", MessageBoxButtons.YesNo);
-                    if (result == DialogResult.Yes)
+                        "Should I upload?", "You have local changes", MessageBoxButtons.YesNoCancel);
+                    if (result == DialogResult.Cancel)
+                        return false;
+                    else if (result == DialogResult.Yes)
                         UploadAll();
                 }
             }
+            return true;
         }
 
         #endregion
