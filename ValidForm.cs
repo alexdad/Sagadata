@@ -87,13 +87,13 @@ namespace RecordKeeper
 
         private string ValidateLesson(Lesson l)
         {
-            if (!IsStringEmpty(l.Program))
+            if (IsStringEmpty(l.Program))
                 return "Lesson has no program";
-            if (!IsStringEmpty(l.Student1))
+            if (IsStringEmpty(l.Student1))
                 return "Lesson has no first student";
-            if (!IsStringEmpty(l.Teacher1))
+            if (IsStringEmpty(l.Teacher1))
                 return "Lesson has no teacher";
-            if (!IsStringEmpty(l.Day))
+            if (IsStringEmpty(l.Day))
                 return "Lesson has no date";
             DateTime start, end;
             if (!IsStringEmpty(l.Start) || !DateTime.TryParse(l.Start, out start))
