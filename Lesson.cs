@@ -475,6 +475,27 @@ namespace RecordKeeper
             }
         }
 
+        public override string Validate2FirstProblem()
+        {
+            if (FormGlob.IsStringEmpty(Program))
+                return "Lesson has no program";
+            if (FormGlob.IsStringEmpty(Student1))
+                return "Lesson has no first student";
+            if (FormGlob.IsStringEmpty(Teacher1))
+                return "Lesson has no teacher";
+            if (FormGlob.IsStringEmpty(Day))
+                return "Lesson has no date";
+            DateTime start = DateTime.Now, end = DateTime.Now;
+            if (FormGlob.IsStringEmpty(Start) || !DateTime.TryParse(Start, out start))
+                return "Lesson has no start";
+            if (FormGlob.IsStringEmpty(End) || !DateTime.TryParse(End, out end))
+                return "Lesson has no end";
+            if (start >= end)
+                return "Lesson starts after its end";
+
+            return null;
+        }
+
         public override string ConcatenateAll()
         {
             StringBuilder sb = new StringBuilder();

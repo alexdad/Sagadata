@@ -28,6 +28,7 @@ namespace RecordKeeper
     {
         private Dictionary<string, int> m_validationTempDict = new Dictionary<string, int>();
 
+        #region "general validation routines"
         private void buttonValidRerun_Click(object sender, EventArgs e)
         {
             RunValidation();
@@ -43,90 +44,62 @@ namespace RecordKeeper
         {
             problemList.Clear();
             m_validationTempDict.Clear();
-
-            switch (OperMode())
+            if (OperMode() == Ops.View)
             {
-                case Ops.View:
-                    ValidateLessons();
-                    break;
-                case Ops.Edit:
-                    {
-                        switch (CurrentMode)
-                        {
-                            case Modes.Lessons:
-                                ValidateLessons();
-                                break;
-                            default:
-                                return;
-                        }
-                    }
-                    break;
-                default:
-                    return;
+                ChangeEditMode(Modes.Lessons);
+                ChangeOperMode(Ops.Edit);
             }
+            if (OperMode() != Ops.Edit)
+                return;
+
+            ValidateDatalist();
         }
 
         private void AddProblem(string text, Record link)
         {
             problemList.Add(new RecordKeeper.ProblemItem(text, link.Description, link.Key));
         }
-
-        private bool ValidateLessons()
+        private bool ValidateDatalist()
         {
-            for (int i = 0; i < lessonList.Count; i++)
+            for (int i = 0; i < DataList.Count; i++)
             {
-                Lesson l = lessonList[i] as Lesson;
+                Record l = DataList[i] as Record;
                 m_validationTempDict.Add(l.Key, i);
 
-                string prob = ValidateLesson(l);
+                string prob = l.Validate2FirstProblem();
                 if (!IsStringEmpty(prob))
-                    AddProblem(prob, l);
-            }
+                    AddProblem(prob, l);            }
             return (problemList.Count == 0);
         }
 
-        private string ValidateLesson(Lesson l)
-        {
-            if (IsStringEmpty(l.Program))
-                return "Lesson has no program";
-            if (IsStringEmpty(l.Student1))
-                return "Lesson has no first student";
-            if (IsStringEmpty(l.Teacher1))
-                return "Lesson has no teacher";
-            if (IsStringEmpty(l.Day))
-                return "Lesson has no date";
-            DateTime start, end;
-            if (IsStringEmpty(l.Start) || !DateTime.TryParse(l.Start, out start))
-                return "Lesson has no start";
-            if (IsStringEmpty(l.End) || !DateTime.TryParse(l.End, out end))
-                return "Lesson has no end";
-            if (start >= end)
-                return "Lesson starts after its end";
-
-            return null;
-        }
         private void dgvValidation_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            ChangeOperMode(Ops.Edit);
-            ChangeEditMode(Modes.Lessons);
+            if (OperMode() == Ops.View)
+            {
+                ChangeEditMode(Modes.Lessons);
+                ChangeOperMode(Ops.Edit);
+            }
+            if (OperMode() != Ops.Edit)
+                return;
+
             switch (CurrentMode)
             {
                 case Modes.Lessons:
-                    ViewSelectProblemLesson(sender as DataGridView, e.RowIndex, e.ColumnIndex);
+                    ViewSelectProblem(sender as DataGridView, e.RowIndex, e.ColumnIndex);
                     break;
                 default:
-                    break; 
+                    break;
             }
         }
 
-        void ViewSelectProblemLesson(DataGridView dgv, int row, int col)
+        void ViewSelectProblem(DataGridView dgv, int row, int col)
         {
             if (row < 0 || row >= dgvValidation.RowCount)
                 return;
             string key = (problemList[row] as ProblemItem).Key;
             if (m_validationTempDict.Keys.Contains(key))
-                lessonList.CurrencyManager.Position = m_validationTempDict[key];
+                DataList.CurrencyManager.Position = m_validationTempDict[key];
         }
-
+        #endregion
     }
 }

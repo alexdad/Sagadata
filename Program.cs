@@ -118,6 +118,12 @@ namespace RecordKeeper
             }
         }
 
+        public override string Validate2FirstProblem()
+        {
+            // TODO
+            return null;
+        }
+
         public override string ConcatenateAll()
         {
             StringBuilder sb = new StringBuilder();

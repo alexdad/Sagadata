@@ -99,6 +99,11 @@ namespace RecordKeeper
                 return false;
             }
         }
+        public override string Validate2FirstProblem()
+        {
+            // TODO
+            return null;
+        }
 
         public override string ConcatenateAll()
         {
