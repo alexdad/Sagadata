@@ -222,7 +222,14 @@ namespace RecordKeeper
         }
         public override string Validate2FirstProblem()
         {
-            // TODO
+            if (FormGlob.IsStringEmpty(FirstName))
+                return "Teacher has no first  name";
+            if (FormGlob.IsStringEmpty(LastName))
+                return "Teacher has no last  name";
+            if (FormGlob.IsStringEmpty(Email))
+                return "Teacher has no email";
+            if (FormGlob.IsStringEmpty(Phone))
+                return "Teacher has no phone";
             return null;
         }
 

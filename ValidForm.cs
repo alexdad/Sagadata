@@ -82,14 +82,7 @@ namespace RecordKeeper
             if (OperMode() != Ops.Edit)
                 return;
 
-            switch (CurrentMode)
-            {
-                case Modes.Lessons:
-                    ViewSelectProblem(sender as DataGridView, e.RowIndex, e.ColumnIndex);
-                    break;
-                default:
-                    break;
-            }
+            ViewSelectProblem(sender as DataGridView, e.RowIndex, e.ColumnIndex);
         }
 
         void ViewSelectProblem(DataGridView dgv, int row, int col)

@@ -128,7 +128,8 @@ namespace RecordKeeper
         }
         public override string Validate2FirstProblem()
         {
-            // TODO
+            if (FormGlob.IsStringEmpty(Name))
+                return "Room has no name";
             return null;
         }
 
