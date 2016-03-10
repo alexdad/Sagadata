@@ -96,9 +96,9 @@ namespace RecordKeeper
             if (IsStringEmpty(l.Day))
                 return "Lesson has no date";
             DateTime start, end;
-            if (!IsStringEmpty(l.Start) || !DateTime.TryParse(l.Start, out start))
+            if (IsStringEmpty(l.Start) || !DateTime.TryParse(l.Start, out start))
                 return "Lesson has no start";
-            if (!IsStringEmpty(l.End) || !DateTime.TryParse(l.End, out end))
+            if (IsStringEmpty(l.End) || !DateTime.TryParse(l.End, out end))
                 return "Lesson has no end";
             if (start >= end)
                 return "Lesson starts after its end";
