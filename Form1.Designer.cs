@@ -5918,13 +5918,17 @@
             // 
             this.Problem.DataPropertyName = "Problem";
             this.Problem.HeaderText = "Problem";
+            this.Problem.MinimumWidth = 300;
             this.Problem.Name = "Problem";
+            this.Problem.Width = 300;
             // 
             // Description
             // 
             this.Description.DataPropertyName = "Description";
             this.Description.HeaderText = "Description";
+            this.Description.MinimumWidth = 300;
             this.Description.Name = "Description";
+            this.Description.Width = 300;
             // 
             // FormGlob
             // 
