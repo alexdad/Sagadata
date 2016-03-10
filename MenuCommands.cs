@@ -128,7 +128,13 @@ namespace RecordKeeper
         private void checkToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Operation_CompletePrevious();
-
+            if (splitContWorkValid.SplitterDistance > 200)
+            {
+                splitContWorkValid.SplitterDistance = splitContWorkValid.Height - 100;
+                panelValidation.Visible = true;
+            }
+            else
+                MessageBox.Show("Make window bigger");
             // TODO - future - check the schedule for errors
         }
 

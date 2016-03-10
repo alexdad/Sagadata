@@ -273,6 +273,7 @@ namespace RecordKeeper
             ClientCode = GetClientCode();
 
             this.Size = Properties.Settings.Default.Form1Size;
+            splitContWorkValid.SplitterDistance = splitContWorkValid.Height;
             splitContainerGlobDataControls.SplitterDistance = Properties.Settings.Default.SplitDC;
             splitContainerGlobMasterDetail.SplitterDistance = Properties.Settings.Default.SplitMD;
             AssignListsToComboBoxes();
@@ -1094,11 +1095,6 @@ namespace RecordKeeper
             EditLessonDetailsChanged();
         }
 
-        private void cbLessonProg_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            TrySetEditLessonPrice();
-        }
-
         private void cbLessonRoom_Click(object sender, EventArgs e)
         {
             EditLessonDetailsChanged();
@@ -1128,11 +1124,6 @@ namespace RecordKeeper
         {
             EditLessonDetailsChanged();
         }
-        private void cbLessonStudent1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            TrySetEditLessonPrice();
-        }
-
         private void cbLessonStudent2_Click(object sender, EventArgs e)
         {
             EditLessonDetailsChanged();
@@ -1174,11 +1165,6 @@ namespace RecordKeeper
         }
 
         private void cbLessonStudent10_Click(object sender, EventArgs e)
-        {
-            EditLessonDetailsChanged();
-        }
-
-        private void tbLessonPrice_KeyPress(object sender, KeyPressEventArgs e)
         {
             EditLessonDetailsChanged();
         }

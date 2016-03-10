@@ -665,9 +665,6 @@ namespace RecordKeeper
                 if (!IsStringEmpty(str))
                     l.SetStudent(SetComboByValue(LessonStudentComboBox(i+1), str), i+1);
             }
-
-            if (!IsStringEmpty(l.Student1))
-                PopulateLessonProgPrice(l, null);
         }
 
         void PopulateLessonProgPrice(Lesson l, string prog)
@@ -684,7 +681,6 @@ namespace RecordKeeper
                         if (IsStringEmpty(spr))
                             spr = GetProgramPrice(l.Program);
 
-                        tbLessonPrice.Text = spr;
                         l.Price = spr;
                         return;
                     }
@@ -692,7 +688,6 @@ namespace RecordKeeper
                 if (!IsStringEmpty(prog))
                 {
                     string spr = GetProgramPrice(prog);
-                    tbLessonPrice.Text = spr;
                     l.Price = spr;
                 }
             }
@@ -791,18 +786,5 @@ namespace RecordKeeper
         {
             return ExtractPerson(LessonTeacherComboBox(ind), desc);
         }
-
-        public void TrySetEditLessonPrice()
-        {
-            Lesson l = DataList.Current as Lesson;
-            if ( l != null && 
-                 IsStringEmpty(tbLessonPrice.Text) &&  
-                !IsStringEmpty(cbLessonStudent1.Text) &&
-                !IsStringEmpty(cbLessonProg.Text))
-            {
-                PopulateLessonProgPrice(l, cbLessonProg.Text);
-            }
-        }
-
     }
 }

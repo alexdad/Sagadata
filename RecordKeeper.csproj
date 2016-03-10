@@ -195,6 +195,9 @@
     <Compile Include="Utils.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ValidForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ViewForm.cs" />
     <EmbeddedResource Include="CancelForm.resx">
       <DependentUpon>CancelForm.cs</DependentUpon>
