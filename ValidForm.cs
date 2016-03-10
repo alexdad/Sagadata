@@ -78,10 +78,32 @@ namespace RecordKeeper
                 Lesson l = lessonList[i] as Lesson;
                 m_validationTempDict.Add(l.Key, i);
 
-                if (IsStringEmpty(l.Program))
-                    AddProblem("Lesson without a program", l);
+                string prob = ValidateLesson(l);
+                if (!IsStringEmpty(prob))
+                    AddProblem(prob, l);
             }
             return (problemList.Count == 0);
+        }
+
+        private string ValidateLesson(Lesson l)
+        {
+            if (!IsStringEmpty(l.Program))
+                return "Lesson has no program";
+            if (!IsStringEmpty(l.Student1))
+                return "Lesson has no first student";
+            if (!IsStringEmpty(l.Teacher1))
+                return "Lesson has no teacher";
+            if (!IsStringEmpty(l.Day))
+                return "Lesson has no date";
+            DateTime start, end;
+            if (!IsStringEmpty(l.Start) || !DateTime.TryParse(l.Start, out start))
+                return "Lesson has no start";
+            if (!IsStringEmpty(l.End) || !DateTime.TryParse(l.End, out end))
+                return "Lesson has no end";
+            if (start >= end)
+                return "Lesson starts after its end";
+
+            return null;
         }
         private void dgvValidation_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
