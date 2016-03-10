@@ -132,10 +132,10 @@ namespace RecordKeeper
             {
                 splitContWorkValid.SplitterDistance = splitContWorkValid.Height - 100;
                 panelValidation.Visible = true;
+                RunValidation();
             }
             else
                 MessageBox.Show("Make window bigger");
-            // TODO - future - check the schedule for errors
         }
 
         private void publishToolStripMenuItem_Click(object sender, EventArgs e)

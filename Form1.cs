@@ -514,6 +514,10 @@ namespace RecordKeeper
 
         #region "Global Button Clicks"
 
+        private void cbGlobType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cbGlobType_SelectedIndexChanged_Actual(sender, e);
+        }
 
         private void buttonGlobEditAccept_Click(object sender, EventArgs e)
         {

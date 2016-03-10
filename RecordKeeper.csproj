@@ -195,9 +195,7 @@
     <Compile Include="Utils.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ValidForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="ValidForm.cs" />
     <Compile Include="ViewForm.cs" />
     <EmbeddedResource Include="CancelForm.resx">
       <DependentUpon>CancelForm.cs</DependentUpon>
@@ -249,6 +247,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Client.datasource" />
     <None Include="Properties\DataSources\Lesson.datasource" />
+    <None Include="Properties\DataSources\ProblemItem.datasource" />
     <None Include="Properties\DataSources\Program.datasource" />
     <None Include="Properties\DataSources\Room.datasource" />
     <None Include="Properties\DataSources\Slot.datasource" />

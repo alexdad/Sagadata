@@ -88,6 +88,11 @@
             this.monthlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteFuturesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContWorkValid = new System.Windows.Forms.SplitContainer();
+            this.panelValidation = new System.Windows.Forms.Panel();
+            this.panelValidButtons = new System.Windows.Forms.Panel();
+            this.buttonValidRerun = new System.Windows.Forms.Button();
+            this.buttonValidClose = new System.Windows.Forms.Button();
+            this.dgvValidation = new System.Windows.Forms.DataGridView();
             this.tabControlOps = new RecordKeeper.HiddenTabControl();
             this.tabEdit = new System.Windows.Forms.TabPage();
             this.splitContainerGlobDataControls = new System.Windows.Forms.SplitContainer();
@@ -538,10 +543,10 @@
             this.lbPayExpenseName = new System.Windows.Forms.Label();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.lbFutureOpName = new System.Windows.Forms.Label();
-            this.panelValidation = new System.Windows.Forms.Panel();
-            this.buttonValidClose = new System.Windows.Forms.Button();
-            this.buttonValidRerun = new System.Windows.Forms.Button();
+            this.problemList = new System.Windows.Forms.BindingSource(this.components);
             this.clientList = new System.Windows.Forms.BindingSource(this.components);
+            this.Problem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStripGlobalOps.SuspendLayout();
             this.panelGlobIndicators.SuspendLayout();
             this.ctxMenuLesson.SuspendLayout();
@@ -549,6 +554,9 @@
             this.splitContWorkValid.Panel1.SuspendLayout();
             this.splitContWorkValid.Panel2.SuspendLayout();
             this.splitContWorkValid.SuspendLayout();
+            this.panelValidation.SuspendLayout();
+            this.panelValidButtons.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvValidation)).BeginInit();
             this.tabControlOps.SuspendLayout();
             this.tabEdit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerGlobDataControls)).BeginInit();
@@ -645,7 +653,7 @@
             this.tabPayTeach.SuspendLayout();
             this.tabPayExpense.SuspendLayout();
             this.tabPage8.SuspendLayout();
-            this.panelValidation.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.problemList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -1143,8 +1151,69 @@
             // 
             this.splitContWorkValid.Panel2.Controls.Add(this.panelValidation);
             this.splitContWorkValid.Size = new System.Drawing.Size(1291, 807);
-            this.splitContWorkValid.SplitterDistance = 778;
+            this.splitContWorkValid.SplitterDistance = 499;
             this.splitContWorkValid.TabIndex = 26;
+            // 
+            // panelValidation
+            // 
+            this.panelValidation.Controls.Add(this.panelValidButtons);
+            this.panelValidation.Controls.Add(this.dgvValidation);
+            this.panelValidation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelValidation.Location = new System.Drawing.Point(0, 0);
+            this.panelValidation.Name = "panelValidation";
+            this.panelValidation.Size = new System.Drawing.Size(1291, 304);
+            this.panelValidation.TabIndex = 2;
+            this.panelValidation.Visible = false;
+            // 
+            // panelValidButtons
+            // 
+            this.panelValidButtons.Controls.Add(this.buttonValidRerun);
+            this.panelValidButtons.Controls.Add(this.buttonValidClose);
+            this.panelValidButtons.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelValidButtons.Location = new System.Drawing.Point(1182, 0);
+            this.panelValidButtons.Name = "panelValidButtons";
+            this.panelValidButtons.Size = new System.Drawing.Size(109, 304);
+            this.panelValidButtons.TabIndex = 23;
+            // 
+            // buttonValidRerun
+            // 
+            this.buttonValidRerun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonValidRerun.Location = new System.Drawing.Point(21, 240);
+            this.buttonValidRerun.Name = "buttonValidRerun";
+            this.buttonValidRerun.Size = new System.Drawing.Size(75, 23);
+            this.buttonValidRerun.TabIndex = 1;
+            this.buttonValidRerun.Text = "Re-validate";
+            this.buttonValidRerun.UseVisualStyleBackColor = true;
+            this.buttonValidRerun.Click += new System.EventHandler(this.buttonValidRerun_Click);
+            // 
+            // buttonValidClose
+            // 
+            this.buttonValidClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonValidClose.Location = new System.Drawing.Point(20, 269);
+            this.buttonValidClose.Name = "buttonValidClose";
+            this.buttonValidClose.Size = new System.Drawing.Size(75, 23);
+            this.buttonValidClose.TabIndex = 0;
+            this.buttonValidClose.Text = "Close";
+            this.buttonValidClose.UseVisualStyleBackColor = true;
+            this.buttonValidClose.Click += new System.EventHandler(this.buttonValidClose_Click);
+            // 
+            // dgvValidation
+            // 
+            this.dgvValidation.AllowUserToAddRows = false;
+            this.dgvValidation.AllowUserToDeleteRows = false;
+            this.dgvValidation.AutoGenerateColumns = false;
+            this.dgvValidation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvValidation.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Problem,
+            this.Description});
+            this.dgvValidation.DataSource = this.problemList;
+            this.dgvValidation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvValidation.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvValidation.Location = new System.Drawing.Point(0, 0);
+            this.dgvValidation.Name = "dgvValidation";
+            this.dgvValidation.Size = new System.Drawing.Size(1291, 304);
+            this.dgvValidation.TabIndex = 22;
+            this.dgvValidation.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvValidation_CellContentClick);
             // 
             // tabControlOps
             // 
@@ -1160,7 +1229,7 @@
             this.tabControlOps.Location = new System.Drawing.Point(0, 0);
             this.tabControlOps.Name = "tabControlOps";
             this.tabControlOps.SelectedIndex = 0;
-            this.tabControlOps.Size = new System.Drawing.Size(1291, 778);
+            this.tabControlOps.Size = new System.Drawing.Size(1291, 499);
             this.tabControlOps.TabIndex = 14;
             // 
             // tabEdit
@@ -1169,7 +1238,7 @@
             this.tabEdit.Location = new System.Drawing.Point(4, 22);
             this.tabEdit.Name = "tabEdit";
             this.tabEdit.Padding = new System.Windows.Forms.Padding(3);
-            this.tabEdit.Size = new System.Drawing.Size(1283, 752);
+            this.tabEdit.Size = new System.Drawing.Size(1283, 473);
             this.tabEdit.TabIndex = 0;
             this.tabEdit.Text = "Edit";
             this.tabEdit.UseVisualStyleBackColor = true;
@@ -1188,7 +1257,7 @@
             // 
             this.splitContainerGlobDataControls.Panel2.Controls.Add(this.panelGlobSearch);
             this.splitContainerGlobDataControls.Panel2.Controls.Add(this.panelGlobLogo);
-            this.splitContainerGlobDataControls.Size = new System.Drawing.Size(1277, 746);
+            this.splitContainerGlobDataControls.Size = new System.Drawing.Size(1277, 467);
             this.splitContainerGlobDataControls.SplitterDistance = 1038;
             this.splitContainerGlobDataControls.TabIndex = 26;
             // 
@@ -1206,8 +1275,8 @@
             // splitContainerGlobMasterDetail.Panel2
             // 
             this.splitContainerGlobMasterDetail.Panel2.Controls.Add(this.panelGlobEdit);
-            this.splitContainerGlobMasterDetail.Size = new System.Drawing.Size(1038, 746);
-            this.splitContainerGlobMasterDetail.SplitterDistance = 371;
+            this.splitContainerGlobMasterDetail.Size = new System.Drawing.Size(1038, 467);
+            this.splitContainerGlobMasterDetail.SplitterDistance = 231;
             this.splitContainerGlobMasterDetail.TabIndex = 25;
             // 
             // tabControlModesTop
@@ -1223,7 +1292,7 @@
             this.tabControlModesTop.Location = new System.Drawing.Point(3, 6);
             this.tabControlModesTop.Name = "tabControlModesTop";
             this.tabControlModesTop.SelectedIndex = 0;
-            this.tabControlModesTop.Size = new System.Drawing.Size(1030, 362);
+            this.tabControlModesTop.Size = new System.Drawing.Size(1030, 222);
             this.tabControlModesTop.TabIndex = 14;
             // 
             // tabTopPageStudents
@@ -1232,7 +1301,7 @@
             this.tabTopPageStudents.Location = new System.Drawing.Point(4, 22);
             this.tabTopPageStudents.Name = "tabTopPageStudents";
             this.tabTopPageStudents.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTopPageStudents.Size = new System.Drawing.Size(1022, 336);
+            this.tabTopPageStudents.Size = new System.Drawing.Size(1022, 196);
             this.tabTopPageStudents.TabIndex = 0;
             this.tabTopPageStudents.Text = "Students";
             this.tabTopPageStudents.UseVisualStyleBackColor = true;
@@ -1270,7 +1339,7 @@
             this.dgvStudents.Name = "dgvStudents";
             this.dgvStudents.ReadOnly = true;
             this.dgvStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvStudents.Size = new System.Drawing.Size(1016, 330);
+            this.dgvStudents.Size = new System.Drawing.Size(1016, 190);
             this.dgvStudents.TabIndex = 13;
             this.dgvStudents.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudents_CellContentClick);
             this.dgvStudents.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvStudents_ColumnHeaderMouseClick);
@@ -1412,7 +1481,7 @@
             this.tabTopPageTeachers.Location = new System.Drawing.Point(4, 22);
             this.tabTopPageTeachers.Name = "tabTopPageTeachers";
             this.tabTopPageTeachers.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTopPageTeachers.Size = new System.Drawing.Size(1022, 163);
+            this.tabTopPageTeachers.Size = new System.Drawing.Size(1022, 196);
             this.tabTopPageTeachers.TabIndex = 1;
             this.tabTopPageTeachers.Text = "Teachers";
             this.tabTopPageTeachers.UseVisualStyleBackColor = true;
@@ -1442,7 +1511,7 @@
             this.dgvTeachers.Location = new System.Drawing.Point(3, 3);
             this.dgvTeachers.Name = "dgvTeachers";
             this.dgvTeachers.ReadOnly = true;
-            this.dgvTeachers.Size = new System.Drawing.Size(1016, 157);
+            this.dgvTeachers.Size = new System.Drawing.Size(1016, 190);
             this.dgvTeachers.TabIndex = 1;
             this.dgvTeachers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTeachers_CellContentClick);
             this.dgvTeachers.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTeachers_ColumnHeaderMouseClick);
@@ -1544,7 +1613,7 @@
             this.tabTopPagePrograms.Location = new System.Drawing.Point(4, 22);
             this.tabTopPagePrograms.Name = "tabTopPagePrograms";
             this.tabTopPagePrograms.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTopPagePrograms.Size = new System.Drawing.Size(1022, 163);
+            this.tabTopPagePrograms.Size = new System.Drawing.Size(1022, 196);
             this.tabTopPagePrograms.TabIndex = 2;
             this.tabTopPagePrograms.Text = "Programs";
             this.tabTopPagePrograms.UseVisualStyleBackColor = true;
@@ -1568,7 +1637,7 @@
             this.dgvPrograms.Location = new System.Drawing.Point(3, 3);
             this.dgvPrograms.Name = "dgvPrograms";
             this.dgvPrograms.ReadOnly = true;
-            this.dgvPrograms.Size = new System.Drawing.Size(1016, 157);
+            this.dgvPrograms.Size = new System.Drawing.Size(1016, 190);
             this.dgvPrograms.TabIndex = 0;
             this.dgvPrograms.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPrograms_CellContentClick);
             this.dgvPrograms.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPrograms_ColumnHeaderMouseClick);
@@ -1626,7 +1695,7 @@
             this.tabTopPageRooms.Location = new System.Drawing.Point(4, 22);
             this.tabTopPageRooms.Name = "tabTopPageRooms";
             this.tabTopPageRooms.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTopPageRooms.Size = new System.Drawing.Size(1022, 163);
+            this.tabTopPageRooms.Size = new System.Drawing.Size(1022, 196);
             this.tabTopPageRooms.TabIndex = 3;
             this.tabTopPageRooms.Text = "Rooms";
             this.tabTopPageRooms.UseVisualStyleBackColor = true;
@@ -1650,7 +1719,7 @@
             this.dgvRooms.Location = new System.Drawing.Point(3, 3);
             this.dgvRooms.Name = "dgvRooms";
             this.dgvRooms.ReadOnly = true;
-            this.dgvRooms.Size = new System.Drawing.Size(1016, 157);
+            this.dgvRooms.Size = new System.Drawing.Size(1016, 190);
             this.dgvRooms.TabIndex = 0;
             this.dgvRooms.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRooms_CellContentClick);
             this.dgvRooms.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvRooms_ColumnHeaderMouseClick);
@@ -1708,7 +1777,7 @@
             this.tabTopPageLessons.Location = new System.Drawing.Point(4, 22);
             this.tabTopPageLessons.Name = "tabTopPageLessons";
             this.tabTopPageLessons.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTopPageLessons.Size = new System.Drawing.Size(1022, 163);
+            this.tabTopPageLessons.Size = new System.Drawing.Size(1022, 196);
             this.tabTopPageLessons.TabIndex = 4;
             this.tabTopPageLessons.Text = "Lessons";
             this.tabTopPageLessons.UseVisualStyleBackColor = true;
@@ -1742,7 +1811,7 @@
             this.dgvLesson.Location = new System.Drawing.Point(3, 3);
             this.dgvLesson.Name = "dgvLesson";
             this.dgvLesson.ReadOnly = true;
-            this.dgvLesson.Size = new System.Drawing.Size(1016, 157);
+            this.dgvLesson.Size = new System.Drawing.Size(1016, 190);
             this.dgvLesson.TabIndex = 0;
             this.dgvLesson.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLesson_CellContentClick);
             this.dgvLesson.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLesson_ColumnHeaderMouseClick);
@@ -1873,7 +1942,7 @@
             this.panelGlobEdit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelGlobEdit.Location = new System.Drawing.Point(0, 0);
             this.panelGlobEdit.Name = "panelGlobEdit";
-            this.panelGlobEdit.Size = new System.Drawing.Size(1038, 371);
+            this.panelGlobEdit.Size = new System.Drawing.Size(1038, 232);
             this.panelGlobEdit.TabIndex = 23;
             // 
             // buttonGlobEditAccept
@@ -1902,7 +1971,7 @@
             this.tabControlModesBottom.Location = new System.Drawing.Point(46, 25);
             this.tabControlModesBottom.Name = "tabControlModesBottom";
             this.tabControlModesBottom.SelectedIndex = 0;
-            this.tabControlModesBottom.Size = new System.Drawing.Size(943, 368);
+            this.tabControlModesBottom.Size = new System.Drawing.Size(943, 229);
             this.tabControlModesBottom.TabIndex = 14;
             // 
             // tabBottomPageStudents
@@ -1911,7 +1980,7 @@
             this.tabBottomPageStudents.Location = new System.Drawing.Point(4, 22);
             this.tabBottomPageStudents.Name = "tabBottomPageStudents";
             this.tabBottomPageStudents.Padding = new System.Windows.Forms.Padding(3);
-            this.tabBottomPageStudents.Size = new System.Drawing.Size(935, 342);
+            this.tabBottomPageStudents.Size = new System.Drawing.Size(935, 203);
             this.tabBottomPageStudents.TabIndex = 0;
             this.tabBottomPageStudents.Text = "Students";
             this.tabBottomPageStudents.UseVisualStyleBackColor = true;
@@ -1925,7 +1994,7 @@
             this.panelStudent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelStudent.Location = new System.Drawing.Point(3, 3);
             this.panelStudent.Name = "panelStudent";
-            this.panelStudent.Size = new System.Drawing.Size(929, 336);
+            this.panelStudent.Size = new System.Drawing.Size(929, 197);
             this.panelStudent.TabIndex = 5;
             // 
             // panelStudPrimary
@@ -2397,7 +2466,7 @@
             this.panelStudSecondary.Controls.Add(this.panelStudSecondaryLeft);
             this.panelStudSecondary.Location = new System.Drawing.Point(0, 161);
             this.panelStudSecondary.Name = "panelStudSecondary";
-            this.panelStudSecondary.Size = new System.Drawing.Size(947, 314);
+            this.panelStudSecondary.Size = new System.Drawing.Size(947, 175);
             this.panelStudSecondary.TabIndex = 36;
             // 
             // groupBoxStudSecondaryRight
@@ -2412,7 +2481,7 @@
             this.groupBoxStudSecondaryRight.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
             this.groupBoxStudSecondaryRight.Location = new System.Drawing.Point(80, 0);
             this.groupBoxStudSecondaryRight.Name = "groupBoxStudSecondaryRight";
-            this.groupBoxStudSecondaryRight.Size = new System.Drawing.Size(867, 314);
+            this.groupBoxStudSecondaryRight.Size = new System.Drawing.Size(867, 175);
             this.groupBoxStudSecondaryRight.TabIndex = 3;
             this.groupBoxStudSecondaryRight.TabStop = false;
             // 
@@ -2488,7 +2557,7 @@
             this.panelStudSecondaryLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelStudSecondaryLeft.Location = new System.Drawing.Point(0, 0);
             this.panelStudSecondaryLeft.Name = "panelStudSecondaryLeft";
-            this.panelStudSecondaryLeft.Size = new System.Drawing.Size(80, 314);
+            this.panelStudSecondaryLeft.Size = new System.Drawing.Size(80, 175);
             this.panelStudSecondaryLeft.TabIndex = 35;
             // 
             // labelStudGoals
@@ -2543,7 +2612,7 @@
             this.tabBottomPageTeachers.Location = new System.Drawing.Point(4, 22);
             this.tabBottomPageTeachers.Name = "tabBottomPageTeachers";
             this.tabBottomPageTeachers.Padding = new System.Windows.Forms.Padding(3);
-            this.tabBottomPageTeachers.Size = new System.Drawing.Size(935, 167);
+            this.tabBottomPageTeachers.Size = new System.Drawing.Size(935, 203);
             this.tabBottomPageTeachers.TabIndex = 1;
             this.tabBottomPageTeachers.Text = "Teachers";
             this.tabBottomPageTeachers.UseVisualStyleBackColor = true;
@@ -2558,7 +2627,7 @@
             this.panelTeacherSecondary.Controls.Add(this.buttonTeach_GrabAvailChanges);
             this.panelTeacherSecondary.Location = new System.Drawing.Point(3, 135);
             this.panelTeacherSecondary.Name = "panelTeacherSecondary";
-            this.panelTeacherSecondary.Size = new System.Drawing.Size(929, 33);
+            this.panelTeacherSecondary.Size = new System.Drawing.Size(929, 69);
             this.panelTeacherSecondary.TabIndex = 1;
             // 
             // panelTeachMatrix
@@ -2569,7 +2638,7 @@
             this.panelTeachMatrix.AutoScroll = true;
             this.panelTeachMatrix.Location = new System.Drawing.Point(7, 53);
             this.panelTeachMatrix.Name = "panelTeachMatrix";
-            this.panelTeachMatrix.Size = new System.Drawing.Size(919, 0);
+            this.panelTeachMatrix.Size = new System.Drawing.Size(919, 36);
             this.panelTeachMatrix.TabIndex = 1;
             // 
             // buttonTeach_GrabAvailChanges
@@ -2865,7 +2934,7 @@
             this.tabBottomPagePrograms.Location = new System.Drawing.Point(4, 22);
             this.tabBottomPagePrograms.Name = "tabBottomPagePrograms";
             this.tabBottomPagePrograms.Padding = new System.Windows.Forms.Padding(3);
-            this.tabBottomPagePrograms.Size = new System.Drawing.Size(935, 167);
+            this.tabBottomPagePrograms.Size = new System.Drawing.Size(935, 203);
             this.tabBottomPagePrograms.TabIndex = 2;
             this.tabBottomPagePrograms.Text = "Programs";
             this.tabBottomPagePrograms.UseVisualStyleBackColor = true;
@@ -2878,7 +2947,7 @@
             this.panelProgram.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelProgram.Location = new System.Drawing.Point(3, 3);
             this.panelProgram.Name = "panelProgram";
-            this.panelProgram.Size = new System.Drawing.Size(929, 161);
+            this.panelProgram.Size = new System.Drawing.Size(929, 197);
             this.panelProgram.TabIndex = 0;
             // 
             // groupBoxProgram
@@ -2890,7 +2959,7 @@
             this.groupBoxProgram.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxProgram.Location = new System.Drawing.Point(241, 0);
             this.groupBoxProgram.Name = "groupBoxProgram";
-            this.groupBoxProgram.Size = new System.Drawing.Size(688, 161);
+            this.groupBoxProgram.Size = new System.Drawing.Size(688, 197);
             this.groupBoxProgram.TabIndex = 1;
             this.groupBoxProgram.TabStop = false;
             // 
@@ -2947,7 +3016,7 @@
             this.panelProgramPrimaryLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelProgramPrimaryLeft.Location = new System.Drawing.Point(0, 0);
             this.panelProgramPrimaryLeft.Name = "panelProgramPrimaryLeft";
-            this.panelProgramPrimaryLeft.Size = new System.Drawing.Size(241, 161);
+            this.panelProgramPrimaryLeft.Size = new System.Drawing.Size(241, 197);
             this.panelProgramPrimaryLeft.TabIndex = 0;
             // 
             // tbProgPrice
@@ -3030,7 +3099,7 @@
             this.tabBottomPageRooms.Location = new System.Drawing.Point(4, 22);
             this.tabBottomPageRooms.Name = "tabBottomPageRooms";
             this.tabBottomPageRooms.Padding = new System.Windows.Forms.Padding(3);
-            this.tabBottomPageRooms.Size = new System.Drawing.Size(935, 167);
+            this.tabBottomPageRooms.Size = new System.Drawing.Size(935, 203);
             this.tabBottomPageRooms.TabIndex = 3;
             this.tabBottomPageRooms.Text = "Rooms";
             this.tabBottomPageRooms.UseVisualStyleBackColor = true;
@@ -3043,7 +3112,7 @@
             this.panelRoom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelRoom.Location = new System.Drawing.Point(3, 3);
             this.panelRoom.Name = "panelRoom";
-            this.panelRoom.Size = new System.Drawing.Size(929, 161);
+            this.panelRoom.Size = new System.Drawing.Size(929, 197);
             this.panelRoom.TabIndex = 0;
             // 
             // panelRoomPrimaryLeft
@@ -3057,7 +3126,7 @@
             this.panelRoomPrimaryLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelRoomPrimaryLeft.Location = new System.Drawing.Point(0, 0);
             this.panelRoomPrimaryLeft.Name = "panelRoomPrimaryLeft";
-            this.panelRoomPrimaryLeft.Size = new System.Drawing.Size(200, 161);
+            this.panelRoomPrimaryLeft.Size = new System.Drawing.Size(200, 197);
             this.panelRoomPrimaryLeft.TabIndex = 1;
             // 
             // labelRoomRank
@@ -3123,7 +3192,7 @@
             this.groupBoxRoom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxRoom.Location = new System.Drawing.Point(0, 0);
             this.groupBoxRoom.Name = "groupBoxRoom";
-            this.groupBoxRoom.Size = new System.Drawing.Size(929, 161);
+            this.groupBoxRoom.Size = new System.Drawing.Size(929, 197);
             this.groupBoxRoom.TabIndex = 2;
             this.groupBoxRoom.TabStop = false;
             // 
@@ -3173,7 +3242,7 @@
             this.tabBottomPageLessons.Location = new System.Drawing.Point(4, 22);
             this.tabBottomPageLessons.Name = "tabBottomPageLessons";
             this.tabBottomPageLessons.Padding = new System.Windows.Forms.Padding(3);
-            this.tabBottomPageLessons.Size = new System.Drawing.Size(935, 167);
+            this.tabBottomPageLessons.Size = new System.Drawing.Size(935, 203);
             this.tabBottomPageLessons.TabIndex = 4;
             this.tabBottomPageLessons.Text = "Lessons";
             this.tabBottomPageLessons.UseVisualStyleBackColor = true;
@@ -3218,7 +3287,7 @@
             this.panelLesson.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelLesson.Location = new System.Drawing.Point(3, 3);
             this.panelLesson.Name = "panelLesson";
-            this.panelLesson.Size = new System.Drawing.Size(929, 161);
+            this.panelLesson.Size = new System.Drawing.Size(929, 197);
             this.panelLesson.TabIndex = 0;
             // 
             // cbLessonCancellation
@@ -3938,7 +4007,7 @@
             this.panelGlobPrevDelete.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelGlobPrevDelete.Location = new System.Drawing.Point(0, 0);
             this.panelGlobPrevDelete.Name = "panelGlobPrevDelete";
-            this.panelGlobPrevDelete.Size = new System.Drawing.Size(44, 371);
+            this.panelGlobPrevDelete.Size = new System.Drawing.Size(44, 232);
             this.panelGlobPrevDelete.TabIndex = 17;
             // 
             // butGlobalDelete
@@ -3975,7 +4044,7 @@
             this.panelGlobNextNew.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelGlobNextNew.Location = new System.Drawing.Point(990, 0);
             this.panelGlobNextNew.Name = "panelGlobNextNew";
-            this.panelGlobNextNew.Size = new System.Drawing.Size(48, 371);
+            this.panelGlobNextNew.Size = new System.Drawing.Size(48, 232);
             this.panelGlobNextNew.TabIndex = 20;
             // 
             // butGlobalAdd
@@ -4011,7 +4080,7 @@
             // 
             this.panelGlobSearch.Controls.Add(this.panelSearchBorder);
             this.panelGlobSearch.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelGlobSearch.Location = new System.Drawing.Point(0, 379);
+            this.panelGlobSearch.Location = new System.Drawing.Point(0, 100);
             this.panelGlobSearch.Name = "panelGlobSearch";
             this.panelGlobSearch.Size = new System.Drawing.Size(235, 367);
             this.panelGlobSearch.TabIndex = 11;
@@ -4607,7 +4676,7 @@
             this.tabPlan.Location = new System.Drawing.Point(4, 22);
             this.tabPlan.Name = "tabPlan";
             this.tabPlan.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPlan.Size = new System.Drawing.Size(1283, 404);
+            this.tabPlan.Size = new System.Drawing.Size(1283, 473);
             this.tabPlan.TabIndex = 1;
             this.tabPlan.Text = "Plan";
             this.tabPlan.UseVisualStyleBackColor = true;
@@ -5003,7 +5072,7 @@
             this.tabView.Location = new System.Drawing.Point(4, 22);
             this.tabView.Name = "tabView";
             this.tabView.Padding = new System.Windows.Forms.Padding(3);
-            this.tabView.Size = new System.Drawing.Size(1283, 404);
+            this.tabView.Size = new System.Drawing.Size(1283, 473);
             this.tabView.TabIndex = 2;
             this.tabView.Text = "View";
             this.tabView.UseVisualStyleBackColor = true;
@@ -5015,7 +5084,7 @@
             this.panelView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelView.Location = new System.Drawing.Point(3, 3);
             this.panelView.Name = "panelView";
-            this.panelView.Size = new System.Drawing.Size(1277, 398);
+            this.panelView.Size = new System.Drawing.Size(1277, 467);
             this.panelView.TabIndex = 0;
             // 
             // panelViewControl
@@ -5031,7 +5100,7 @@
             this.panelViewControl.Controls.Add(this.lbViewCount);
             this.panelViewControl.Location = new System.Drawing.Point(1042, 0);
             this.panelViewControl.Name = "panelViewControl";
-            this.panelViewControl.Size = new System.Drawing.Size(235, 398);
+            this.panelViewControl.Size = new System.Drawing.Size(235, 467);
             this.panelViewControl.TabIndex = 1;
             // 
             // lbViewVersion
@@ -5070,7 +5139,7 @@
             this.panelViewSelect.Controls.Add(this.lbViewSelectStudent);
             this.panelViewSelect.Controls.Add(this.butViewShowAll);
             this.panelViewSelect.Controls.Add(this.labelViewSelect);
-            this.panelViewSelect.Location = new System.Drawing.Point(3, 182);
+            this.panelViewSelect.Location = new System.Drawing.Point(3, 251);
             this.panelViewSelect.Name = "panelViewSelect";
             this.panelViewSelect.Size = new System.Drawing.Size(232, 216);
             this.panelViewSelect.TabIndex = 1;
@@ -5392,7 +5461,7 @@
             this.panelViewMatrix.Controls.Add(this.butViewZoomOut);
             this.panelViewMatrix.Location = new System.Drawing.Point(0, 0);
             this.panelViewMatrix.Name = "panelViewMatrix";
-            this.panelViewMatrix.Size = new System.Drawing.Size(1036, 401);
+            this.panelViewMatrix.Size = new System.Drawing.Size(1036, 470);
             this.panelViewMatrix.TabIndex = 1;
             // 
             // panelViewDetails
@@ -5408,7 +5477,7 @@
             this.panelViewDetails.Controls.Add(this.lbViewDetailStudent);
             this.panelViewDetails.Controls.Add(this.lbViewDetailTeacher);
             this.panelViewDetails.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelViewDetails.Location = new System.Drawing.Point(24, 278);
+            this.panelViewDetails.Location = new System.Drawing.Point(24, 347);
             this.panelViewDetails.Name = "panelViewDetails";
             this.panelViewDetails.Size = new System.Drawing.Size(989, 100);
             this.panelViewDetails.TabIndex = 0;
@@ -5510,7 +5579,7 @@
             this.tabControlViewScales.Location = new System.Drawing.Point(24, 19);
             this.tabControlViewScales.Name = "tabControlViewScales";
             this.tabControlViewScales.SelectedIndex = 2;
-            this.tabControlViewScales.Size = new System.Drawing.Size(989, 359);
+            this.tabControlViewScales.Size = new System.Drawing.Size(989, 428);
             this.tabControlViewScales.TabIndex = 0;
             this.tabControlViewScales.SelectedIndexChanged += new System.EventHandler(this.tabControlViewScales_SelectedIndexChanged);
             // 
@@ -5520,7 +5589,7 @@
             this.tabPageMonth.Location = new System.Drawing.Point(4, 22);
             this.tabPageMonth.Name = "tabPageMonth";
             this.tabPageMonth.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageMonth.Size = new System.Drawing.Size(981, 333);
+            this.tabPageMonth.Size = new System.Drawing.Size(981, 402);
             this.tabPageMonth.TabIndex = 3;
             this.tabPageMonth.Text = "Month";
             this.tabPageMonth.UseVisualStyleBackColor = true;
@@ -5530,7 +5599,7 @@
             this.panelViewMonth.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelViewMonth.Location = new System.Drawing.Point(3, 3);
             this.panelViewMonth.Name = "panelViewMonth";
-            this.panelViewMonth.Size = new System.Drawing.Size(975, 327);
+            this.panelViewMonth.Size = new System.Drawing.Size(975, 396);
             this.panelViewMonth.TabIndex = 1;
             // 
             // tabPageViewWeek
@@ -5539,7 +5608,7 @@
             this.tabPageViewWeek.Location = new System.Drawing.Point(4, 22);
             this.tabPageViewWeek.Name = "tabPageViewWeek";
             this.tabPageViewWeek.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageViewWeek.Size = new System.Drawing.Size(981, 333);
+            this.tabPageViewWeek.Size = new System.Drawing.Size(981, 402);
             this.tabPageViewWeek.TabIndex = 0;
             this.tabPageViewWeek.Text = "Week";
             this.tabPageViewWeek.UseVisualStyleBackColor = true;
@@ -5550,7 +5619,7 @@
             this.panelViewWeek.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelViewWeek.Location = new System.Drawing.Point(3, 3);
             this.panelViewWeek.Name = "panelViewWeek";
-            this.panelViewWeek.Size = new System.Drawing.Size(975, 327);
+            this.panelViewWeek.Size = new System.Drawing.Size(975, 396);
             this.panelViewWeek.TabIndex = 0;
             // 
             // label2
@@ -5568,7 +5637,7 @@
             this.tabPageViewDay.Location = new System.Drawing.Point(4, 22);
             this.tabPageViewDay.Name = "tabPageViewDay";
             this.tabPageViewDay.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageViewDay.Size = new System.Drawing.Size(981, 333);
+            this.tabPageViewDay.Size = new System.Drawing.Size(981, 402);
             this.tabPageViewDay.TabIndex = 1;
             this.tabPageViewDay.Text = "Day";
             this.tabPageViewDay.UseVisualStyleBackColor = true;
@@ -5580,7 +5649,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelViewDay.Location = new System.Drawing.Point(3, 3);
             this.panelViewDay.Name = "panelViewDay";
-            this.panelViewDay.Size = new System.Drawing.Size(975, 704);
+            this.panelViewDay.Size = new System.Drawing.Size(975, 703);
             this.panelViewDay.TabIndex = 0;
             // 
             // tabPageViewSlots
@@ -5589,7 +5658,7 @@
             this.tabPageViewSlots.Location = new System.Drawing.Point(4, 22);
             this.tabPageViewSlots.Name = "tabPageViewSlots";
             this.tabPageViewSlots.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageViewSlots.Size = new System.Drawing.Size(981, 333);
+            this.tabPageViewSlots.Size = new System.Drawing.Size(981, 402);
             this.tabPageViewSlots.TabIndex = 2;
             this.tabPageViewSlots.Text = "Slots";
             this.tabPageViewSlots.UseVisualStyleBackColor = true;
@@ -5600,7 +5669,7 @@
             this.panelViewSlots.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelViewSlots.Location = new System.Drawing.Point(3, 3);
             this.panelViewSlots.Name = "panelViewSlots";
-            this.panelViewSlots.Size = new System.Drawing.Size(975, 327);
+            this.panelViewSlots.Size = new System.Drawing.Size(975, 396);
             this.panelViewSlots.TabIndex = 0;
             // 
             // dgvViewSlots
@@ -5623,7 +5692,7 @@
             this.dgvViewSlots.Location = new System.Drawing.Point(0, 0);
             this.dgvViewSlots.Name = "dgvViewSlots";
             this.dgvViewSlots.ReadOnly = true;
-            this.dgvViewSlots.Size = new System.Drawing.Size(975, 327);
+            this.dgvViewSlots.Size = new System.Drawing.Size(975, 396);
             this.dgvViewSlots.TabIndex = 0;
             this.dgvViewSlots.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvViewSlots_CellClick);
             this.dgvViewSlots.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvViewSlots_MouseDown);
@@ -5693,7 +5762,7 @@
             this.butViewNext.Dock = System.Windows.Forms.DockStyle.Right;
             this.butViewNext.Location = new System.Drawing.Point(1013, 19);
             this.butViewNext.Name = "butViewNext";
-            this.butViewNext.Size = new System.Drawing.Size(23, 359);
+            this.butViewNext.Size = new System.Drawing.Size(23, 428);
             this.butViewNext.TabIndex = 3;
             this.butViewNext.Text = ">";
             this.butViewNext.UseVisualStyleBackColor = true;
@@ -5704,7 +5773,7 @@
             this.butViewPrev.Dock = System.Windows.Forms.DockStyle.Left;
             this.butViewPrev.Location = new System.Drawing.Point(0, 19);
             this.butViewPrev.Name = "butViewPrev";
-            this.butViewPrev.Size = new System.Drawing.Size(24, 359);
+            this.butViewPrev.Size = new System.Drawing.Size(24, 428);
             this.butViewPrev.TabIndex = 2;
             this.butViewPrev.Text = "<";
             this.butViewPrev.UseVisualStyleBackColor = true;
@@ -5713,7 +5782,7 @@
             // butViewZoomIn
             // 
             this.butViewZoomIn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.butViewZoomIn.Location = new System.Drawing.Point(0, 378);
+            this.butViewZoomIn.Location = new System.Drawing.Point(0, 447);
             this.butViewZoomIn.Name = "butViewZoomIn";
             this.butViewZoomIn.Size = new System.Drawing.Size(1036, 23);
             this.butViewZoomIn.TabIndex = 1;
@@ -5738,7 +5807,7 @@
             this.tabSchedCancel.Location = new System.Drawing.Point(4, 22);
             this.tabSchedCancel.Name = "tabSchedCancel";
             this.tabSchedCancel.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSchedCancel.Size = new System.Drawing.Size(1283, 404);
+            this.tabSchedCancel.Size = new System.Drawing.Size(1283, 473);
             this.tabSchedCancel.TabIndex = 3;
             this.tabSchedCancel.Text = "SchedCancel";
             this.tabSchedCancel.UseVisualStyleBackColor = true;
@@ -5759,7 +5828,7 @@
             this.tabPayStud.Location = new System.Drawing.Point(4, 22);
             this.tabPayStud.Name = "tabPayStud";
             this.tabPayStud.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPayStud.Size = new System.Drawing.Size(1283, 404);
+            this.tabPayStud.Size = new System.Drawing.Size(1283, 473);
             this.tabPayStud.TabIndex = 4;
             this.tabPayStud.Text = "PayStud";
             this.tabPayStud.UseVisualStyleBackColor = true;
@@ -5780,7 +5849,7 @@
             this.tabPayTeach.Location = new System.Drawing.Point(4, 22);
             this.tabPayTeach.Name = "tabPayTeach";
             this.tabPayTeach.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPayTeach.Size = new System.Drawing.Size(1283, 404);
+            this.tabPayTeach.Size = new System.Drawing.Size(1283, 473);
             this.tabPayTeach.TabIndex = 5;
             this.tabPayTeach.Text = "PayTeach";
             this.tabPayTeach.UseVisualStyleBackColor = true;
@@ -5801,7 +5870,7 @@
             this.tabPayExpense.Location = new System.Drawing.Point(4, 22);
             this.tabPayExpense.Name = "tabPayExpense";
             this.tabPayExpense.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPayExpense.Size = new System.Drawing.Size(1283, 404);
+            this.tabPayExpense.Size = new System.Drawing.Size(1283, 473);
             this.tabPayExpense.TabIndex = 6;
             this.tabPayExpense.Text = "PayExpense";
             this.tabPayExpense.UseVisualStyleBackColor = true;
@@ -5822,7 +5891,7 @@
             this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(1283, 404);
+            this.tabPage8.Size = new System.Drawing.Size(1283, 473);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "tabPage8";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -5837,42 +5906,25 @@
             this.lbFutureOpName.TabIndex = 0;
             this.lbFutureOpName.Text = "Future Operation";
             // 
-            // panelValidation
+            // problemList
             // 
-            this.panelValidation.Controls.Add(this.buttonValidClose);
-            this.panelValidation.Controls.Add(this.buttonValidRerun);
-            this.panelValidation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelValidation.Location = new System.Drawing.Point(0, 0);
-            this.panelValidation.Name = "panelValidation";
-            this.panelValidation.Size = new System.Drawing.Size(1291, 25);
-            this.panelValidation.TabIndex = 2;
-            this.panelValidation.Visible = false;
-            // 
-            // buttonValidClose
-            // 
-            this.buttonValidClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonValidClose.Location = new System.Drawing.Point(1204, -50);
-            this.buttonValidClose.Name = "buttonValidClose";
-            this.buttonValidClose.Size = new System.Drawing.Size(75, 23);
-            this.buttonValidClose.TabIndex = 0;
-            this.buttonValidClose.Text = "Close";
-            this.buttonValidClose.UseVisualStyleBackColor = true;
-            this.buttonValidClose.Click += new System.EventHandler(this.buttonValidClose_Click);
-            // 
-            // buttonValidRerun
-            // 
-            this.buttonValidRerun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonValidRerun.Location = new System.Drawing.Point(1204, -11);
-            this.buttonValidRerun.Name = "buttonValidRerun";
-            this.buttonValidRerun.Size = new System.Drawing.Size(75, 23);
-            this.buttonValidRerun.TabIndex = 1;
-            this.buttonValidRerun.Text = "Re-validate";
-            this.buttonValidRerun.UseVisualStyleBackColor = true;
-            this.buttonValidRerun.Click += new System.EventHandler(this.buttonValidRerun_Click);
+            this.problemList.DataSource = typeof(RecordKeeper.ProblemItem);
             // 
             // clientList
             // 
             this.clientList.DataSource = typeof(RecordKeeper.Client);
+            // 
+            // Problem
+            // 
+            this.Problem.DataPropertyName = "Problem";
+            this.Problem.HeaderText = "Problem";
+            this.Problem.Name = "Problem";
+            // 
+            // Description
+            // 
+            this.Description.DataPropertyName = "Description";
+            this.Description.HeaderText = "Description";
+            this.Description.Name = "Description";
             // 
             // FormGlob
             // 
@@ -5897,6 +5949,9 @@
             this.splitContWorkValid.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContWorkValid)).EndInit();
             this.splitContWorkValid.ResumeLayout(false);
+            this.panelValidation.ResumeLayout(false);
+            this.panelValidButtons.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvValidation)).EndInit();
             this.tabControlOps.ResumeLayout(false);
             this.tabEdit.ResumeLayout(false);
             this.splitContainerGlobDataControls.Panel1.ResumeLayout(false);
@@ -6021,7 +6076,7 @@
             this.tabPayExpense.PerformLayout();
             this.tabPage8.ResumeLayout(false);
             this.tabPage8.PerformLayout();
-            this.panelValidation.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.problemList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -6541,6 +6596,11 @@
         private System.Windows.Forms.Button buttonValidClose;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panelValidation;
+        private System.Windows.Forms.DataGridView dgvValidation;
+        private System.Windows.Forms.Panel panelValidButtons;
+        private System.Windows.Forms.BindingSource problemList;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Problem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
     }
 }
 

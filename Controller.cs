@@ -307,7 +307,7 @@ namespace RecordKeeper
             this.splitContainerGlobDataControls.Panel1.Visible = true;
         }
 
-        private void cbGlobType_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbGlobType_SelectedIndexChanged_Actual(object sender, EventArgs e)
         {
             Operation_CompletePrevious();
 
