@@ -1426,16 +1426,16 @@ namespace RecordKeeper
         private void butViewNext_Click(object sender, EventArgs e)
         {
             int step = StepPerScale();
-            dtpViewSlot.Value = dtpViewSlot.Value.Date.AddDays(step);
-            m_chosenDate = dtpViewSlot.Value;
+            dtpViewChosen.Value = dtpViewChosen.Value.Date.AddDays(step);
+            m_chosenDate = dtpViewChosen.Value;
             ShowView();
         }
 
         private void butViewPrev_Click(object sender, EventArgs e)
         {
             int step = StepPerScale();
-            dtpViewSlot.Value = dtpViewSlot.Value.Date.AddDays(-step);
-            m_chosenDate = dtpViewSlot.Value;
+            dtpViewChosen.Value = dtpViewChosen.Value.Date.AddDays(-step);
+            m_chosenDate = dtpViewChosen.Value;
             ShowView();
         }
 
@@ -1482,11 +1482,12 @@ namespace RecordKeeper
                 m_rightClickedControl = sender as Control;
         }
 
-        private void dtpViewSlot_ValueChanged(object sender, EventArgs e)
+        private void dtpViewChosen_ValueChanged(object sender, EventArgs e)
         {
             DateTimePicker dtp = (DateTimePicker)sender;
             m_chosenDate = dtp.Value.Date;
-            ShowView();
+            if (m_chosenDate < m_viewMinDate || m_chosenDate > m_viewMaxDate)
+                ShowView();
         }
 
         private void cbViewSelectState_SelectedIndexChanged(object sender, EventArgs e)

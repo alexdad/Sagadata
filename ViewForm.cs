@@ -172,6 +172,8 @@ namespace RecordKeeper
     public partial class FormGlob : Form
     {
         DateTime m_chosenDate = DateTime.Today;
+        DateTime m_viewMinDate = DateTime.Today;
+        DateTime m_viewMaxDate = DateTime.Today;
 
         string m_view_chosen_state = "";
         string m_view_chosen_student = "";
@@ -192,6 +194,9 @@ namespace RecordKeeper
                 butViewNext.Width - butViewPrev.Width - 10;
             int fullheight = panelViewMonth.Height -
                 butViewZoomIn.Height - butViewZoomOut.Height - 10;
+
+            m_viewMinDate = new DateTime(m_chosenDate.Year, m_chosenDate.Month, 1, 0, 0, 0);
+            m_viewMaxDate = new DateTime(m_chosenDate.Year, m_chosenDate.Month, days, 23, 59, 59);
 
             ViewContext vc = new ViewContext(
                 fullWidth / days,
@@ -241,6 +246,9 @@ namespace RecordKeeper
                 butViewNext.Width - butViewPrev.Width - 10;
             int fullheight = panelViewWeek.Height -
                 butViewZoomIn.Height - butViewZoomOut.Height - 10;
+
+            m_viewMinDate = WeekStart(m_chosenDate);
+            m_viewMaxDate = WeekEnd(m_chosenDate);
 
             ViewContext vc = new ViewContext(
                 fullWidth / m_enumWeekdayNames.Length,
@@ -294,6 +302,9 @@ namespace RecordKeeper
             int fullheight = panelViewDay.Height -
                     butViewZoomIn.Height - butViewZoomOut.Height - 10;
 
+            m_viewMinDate = new DateTime(m_chosenDate.Year, m_chosenDate.Month, m_chosenDate.Day, 0, 0, 0);
+            m_viewMaxDate = new DateTime(m_chosenDate.Year, m_chosenDate.Month, m_chosenDate.Day, 23, 59, 59);
+
             ViewContext vc = new ViewContext(
                 fullWidth,
                 (fullheight - 20) / m_enumTimeSlot.Length,
@@ -337,6 +348,10 @@ namespace RecordKeeper
         }
         public void ViewShowSlots()
         {
+
+            m_viewMinDate = new DateTime(m_chosenDate.Year, m_chosenDate.Month, m_chosenDate.Day, 0, 0, 0);
+            m_viewMaxDate = new DateTime(m_chosenDate.Year, m_chosenDate.Month, m_chosenDate.Day, 23, 59, 59);
+
             viewSlotList.Clear();
             m_dvgViewTags.Clear();
             for (int i = 0; i < m_enumTimeSlot.Length; i++)
@@ -449,7 +464,7 @@ namespace RecordKeeper
             if (lbViewGbDate.Text != null && lbViewGbDate.Text.Length > 0 &&
                 DateTime.TryParse(lbViewGbDate.Text, out dt))
             {
-                dtpViewSlot.Value = dt;
+                dtpViewChosen.Value = dt;
             }
         }
 
@@ -533,6 +548,9 @@ namespace RecordKeeper
             tbViewDetailComment.Text = l.Comments;
 
             ViewLessonDetailsSet(l.Key);
+
+            m_chosenDate = l.DateTimeStart;
+            dtpViewChosen.Value = m_chosenDate;
         }
 
         private string GetSlotText(Lesson l, int slotIndex)

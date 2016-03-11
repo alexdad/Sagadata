@@ -88,13 +88,6 @@
             this.monthlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteFuturesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContWorkValid = new System.Windows.Forms.SplitContainer();
-            this.panelValidation = new System.Windows.Forms.Panel();
-            this.panelValidButtons = new System.Windows.Forms.Panel();
-            this.buttonValidRerun = new System.Windows.Forms.Button();
-            this.buttonValidClose = new System.Windows.Forms.Button();
-            this.dgvValidation = new System.Windows.Forms.DataGridView();
-            this.Problem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControlOps = new RecordKeeper.HiddenTabControl();
             this.tabEdit = new System.Windows.Forms.TabPage();
             this.splitContainerGlobDataControls = new System.Windows.Forms.SplitContainer();
@@ -174,6 +167,7 @@
             this.commentsDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lessonList = new System.Windows.Forms.BindingSource(this.components);
             this.panelGlobEdit = new System.Windows.Forms.Panel();
+            this.labelGlobEditValid = new System.Windows.Forms.Label();
             this.buttonGlobEditAccept = new System.Windows.Forms.Button();
             this.tabControlModesBottom = new RecordKeeper.HiddenTabControl();
             this.tabBottomPageStudents = new System.Windows.Forms.TabPage();
@@ -468,7 +462,7 @@
             this.panelView = new System.Windows.Forms.Panel();
             this.panelViewControl = new System.Windows.Forms.Panel();
             this.lbViewVersion = new System.Windows.Forms.Label();
-            this.dtpViewSlot = new System.Windows.Forms.DateTimePicker();
+            this.dtpViewChosen = new System.Windows.Forms.DateTimePicker();
             this.panelViewSelect = new System.Windows.Forms.Panel();
             this.cbViewSelectProgram = new System.Windows.Forms.ComboBox();
             this.lbViewSelectProg = new System.Windows.Forms.Label();
@@ -545,12 +539,18 @@
             this.lbPayExpenseName = new System.Windows.Forms.Label();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.lbFutureOpName = new System.Windows.Forms.Label();
+            this.panelValidation = new System.Windows.Forms.Panel();
+            this.panelValidButtons = new System.Windows.Forms.Panel();
+            this.buttonValidRerun = new System.Windows.Forms.Button();
+            this.buttonValidClose = new System.Windows.Forms.Button();
+            this.dgvValidation = new System.Windows.Forms.DataGridView();
+            this.Problem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.problemDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.keyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.problemList = new System.Windows.Forms.BindingSource(this.components);
             this.clientList = new System.Windows.Forms.BindingSource(this.components);
-            this.labelGlobEditValid = new System.Windows.Forms.Label();
             this.menuStripGlobalOps.SuspendLayout();
             this.panelGlobIndicators.SuspendLayout();
             this.ctxMenuLesson.SuspendLayout();
@@ -558,9 +558,6 @@
             this.splitContWorkValid.Panel1.SuspendLayout();
             this.splitContWorkValid.Panel2.SuspendLayout();
             this.splitContWorkValid.SuspendLayout();
-            this.panelValidation.SuspendLayout();
-            this.panelValidButtons.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvValidation)).BeginInit();
             this.tabControlOps.SuspendLayout();
             this.tabEdit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerGlobDataControls)).BeginInit();
@@ -657,6 +654,9 @@
             this.tabPayTeach.SuspendLayout();
             this.tabPayExpense.SuspendLayout();
             this.tabPage8.SuspendLayout();
+            this.panelValidation.SuspendLayout();
+            this.panelValidButtons.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvValidation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.problemList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientList)).BeginInit();
             this.SuspendLayout();
@@ -1158,86 +1158,6 @@
             this.splitContWorkValid.Size = new System.Drawing.Size(1291, 807);
             this.splitContWorkValid.SplitterDistance = 499;
             this.splitContWorkValid.TabIndex = 26;
-            // 
-            // panelValidation
-            // 
-            this.panelValidation.Controls.Add(this.panelValidButtons);
-            this.panelValidation.Controls.Add(this.dgvValidation);
-            this.panelValidation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelValidation.Location = new System.Drawing.Point(0, 0);
-            this.panelValidation.Name = "panelValidation";
-            this.panelValidation.Size = new System.Drawing.Size(1291, 304);
-            this.panelValidation.TabIndex = 2;
-            this.panelValidation.Visible = false;
-            // 
-            // panelValidButtons
-            // 
-            this.panelValidButtons.Controls.Add(this.buttonValidRerun);
-            this.panelValidButtons.Controls.Add(this.buttonValidClose);
-            this.panelValidButtons.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelValidButtons.Location = new System.Drawing.Point(1182, 0);
-            this.panelValidButtons.Name = "panelValidButtons";
-            this.panelValidButtons.Size = new System.Drawing.Size(109, 304);
-            this.panelValidButtons.TabIndex = 23;
-            // 
-            // buttonValidRerun
-            // 
-            this.buttonValidRerun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonValidRerun.Location = new System.Drawing.Point(21, 240);
-            this.buttonValidRerun.Name = "buttonValidRerun";
-            this.buttonValidRerun.Size = new System.Drawing.Size(75, 23);
-            this.buttonValidRerun.TabIndex = 1;
-            this.buttonValidRerun.Text = "Re-validate";
-            this.buttonValidRerun.UseVisualStyleBackColor = true;
-            this.buttonValidRerun.Click += new System.EventHandler(this.buttonValidRerun_Click);
-            // 
-            // buttonValidClose
-            // 
-            this.buttonValidClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonValidClose.Location = new System.Drawing.Point(20, 269);
-            this.buttonValidClose.Name = "buttonValidClose";
-            this.buttonValidClose.Size = new System.Drawing.Size(75, 23);
-            this.buttonValidClose.TabIndex = 0;
-            this.buttonValidClose.Text = "Close";
-            this.buttonValidClose.UseVisualStyleBackColor = true;
-            this.buttonValidClose.Click += new System.EventHandler(this.buttonValidClose_Click);
-            // 
-            // dgvValidation
-            // 
-            this.dgvValidation.AllowUserToAddRows = false;
-            this.dgvValidation.AllowUserToDeleteRows = false;
-            this.dgvValidation.AutoGenerateColumns = false;
-            this.dgvValidation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvValidation.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Problem,
-            this.Description,
-            this.problemDataGridViewTextBoxColumn,
-            this.descriptionDataGridViewTextBoxColumn1,
-            this.keyDataGridViewTextBoxColumn});
-            this.dgvValidation.DataSource = this.problemList;
-            this.dgvValidation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvValidation.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvValidation.Location = new System.Drawing.Point(0, 0);
-            this.dgvValidation.Name = "dgvValidation";
-            this.dgvValidation.Size = new System.Drawing.Size(1291, 304);
-            this.dgvValidation.TabIndex = 22;
-            this.dgvValidation.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvValidation_CellContentClick);
-            // 
-            // Problem
-            // 
-            this.Problem.DataPropertyName = "Problem";
-            this.Problem.HeaderText = "Problem";
-            this.Problem.MinimumWidth = 300;
-            this.Problem.Name = "Problem";
-            this.Problem.Width = 300;
-            // 
-            // Description
-            // 
-            this.Description.DataPropertyName = "Description";
-            this.Description.HeaderText = "Description";
-            this.Description.MinimumWidth = 300;
-            this.Description.Name = "Description";
-            this.Description.Width = 300;
             // 
             // tabControlOps
             // 
@@ -1969,6 +1889,16 @@
             this.panelGlobEdit.Name = "panelGlobEdit";
             this.panelGlobEdit.Size = new System.Drawing.Size(1038, 232);
             this.panelGlobEdit.TabIndex = 23;
+            // 
+            // labelGlobEditValid
+            // 
+            this.labelGlobEditValid.AutoSize = true;
+            this.labelGlobEditValid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(127)))), ((int)(((byte)(39)))));
+            this.labelGlobEditValid.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGlobEditValid.Location = new System.Drawing.Point(337, 4);
+            this.labelGlobEditValid.Name = "labelGlobEditValid";
+            this.labelGlobEditValid.Size = new System.Drawing.Size(0, 13);
+            this.labelGlobEditValid.TabIndex = 29;
             // 
             // buttonGlobEditAccept
             // 
@@ -5117,7 +5047,7 @@
             this.panelViewControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panelViewControl.Controls.Add(this.lbViewVersion);
-            this.panelViewControl.Controls.Add(this.dtpViewSlot);
+            this.panelViewControl.Controls.Add(this.dtpViewChosen);
             this.panelViewControl.Controls.Add(this.panelViewSelect);
             this.panelViewControl.Controls.Add(this.groupBoxViewCurrent);
             this.panelViewControl.Controls.Add(this.lbViewLogo);
@@ -5138,14 +5068,14 @@
             this.lbViewVersion.TabIndex = 26;
             this.lbViewVersion.Text = "Version";
             // 
-            // dtpViewSlot
+            // dtpViewChosen
             // 
-            this.dtpViewSlot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpViewSlot.Location = new System.Drawing.Point(3, 40);
-            this.dtpViewSlot.Name = "dtpViewSlot";
-            this.dtpViewSlot.Size = new System.Drawing.Size(200, 20);
-            this.dtpViewSlot.TabIndex = 1;
-            this.dtpViewSlot.ValueChanged += new System.EventHandler(this.dtpViewSlot_ValueChanged);
+            this.dtpViewChosen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtpViewChosen.Location = new System.Drawing.Point(3, 40);
+            this.dtpViewChosen.Name = "dtpViewChosen";
+            this.dtpViewChosen.Size = new System.Drawing.Size(200, 20);
+            this.dtpViewChosen.TabIndex = 1;
+            this.dtpViewChosen.ValueChanged += new System.EventHandler(this.dtpViewChosen_ValueChanged);
             // 
             // panelViewSelect
             // 
@@ -5931,6 +5861,86 @@
             this.lbFutureOpName.TabIndex = 0;
             this.lbFutureOpName.Text = "Future Operation";
             // 
+            // panelValidation
+            // 
+            this.panelValidation.Controls.Add(this.panelValidButtons);
+            this.panelValidation.Controls.Add(this.dgvValidation);
+            this.panelValidation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelValidation.Location = new System.Drawing.Point(0, 0);
+            this.panelValidation.Name = "panelValidation";
+            this.panelValidation.Size = new System.Drawing.Size(1291, 304);
+            this.panelValidation.TabIndex = 2;
+            this.panelValidation.Visible = false;
+            // 
+            // panelValidButtons
+            // 
+            this.panelValidButtons.Controls.Add(this.buttonValidRerun);
+            this.panelValidButtons.Controls.Add(this.buttonValidClose);
+            this.panelValidButtons.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelValidButtons.Location = new System.Drawing.Point(1182, 0);
+            this.panelValidButtons.Name = "panelValidButtons";
+            this.panelValidButtons.Size = new System.Drawing.Size(109, 304);
+            this.panelValidButtons.TabIndex = 23;
+            // 
+            // buttonValidRerun
+            // 
+            this.buttonValidRerun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonValidRerun.Location = new System.Drawing.Point(21, 240);
+            this.buttonValidRerun.Name = "buttonValidRerun";
+            this.buttonValidRerun.Size = new System.Drawing.Size(75, 23);
+            this.buttonValidRerun.TabIndex = 1;
+            this.buttonValidRerun.Text = "Re-validate";
+            this.buttonValidRerun.UseVisualStyleBackColor = true;
+            this.buttonValidRerun.Click += new System.EventHandler(this.buttonValidRerun_Click);
+            // 
+            // buttonValidClose
+            // 
+            this.buttonValidClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonValidClose.Location = new System.Drawing.Point(20, 269);
+            this.buttonValidClose.Name = "buttonValidClose";
+            this.buttonValidClose.Size = new System.Drawing.Size(75, 23);
+            this.buttonValidClose.TabIndex = 0;
+            this.buttonValidClose.Text = "Close";
+            this.buttonValidClose.UseVisualStyleBackColor = true;
+            this.buttonValidClose.Click += new System.EventHandler(this.buttonValidClose_Click);
+            // 
+            // dgvValidation
+            // 
+            this.dgvValidation.AllowUserToAddRows = false;
+            this.dgvValidation.AllowUserToDeleteRows = false;
+            this.dgvValidation.AutoGenerateColumns = false;
+            this.dgvValidation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvValidation.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Problem,
+            this.Description,
+            this.problemDataGridViewTextBoxColumn,
+            this.descriptionDataGridViewTextBoxColumn1,
+            this.keyDataGridViewTextBoxColumn});
+            this.dgvValidation.DataSource = this.problemList;
+            this.dgvValidation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvValidation.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvValidation.Location = new System.Drawing.Point(0, 0);
+            this.dgvValidation.Name = "dgvValidation";
+            this.dgvValidation.Size = new System.Drawing.Size(1291, 304);
+            this.dgvValidation.TabIndex = 22;
+            this.dgvValidation.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvValidation_CellContentClick);
+            // 
+            // Problem
+            // 
+            this.Problem.DataPropertyName = "Problem";
+            this.Problem.HeaderText = "Problem";
+            this.Problem.MinimumWidth = 300;
+            this.Problem.Name = "Problem";
+            this.Problem.Width = 300;
+            // 
+            // Description
+            // 
+            this.Description.DataPropertyName = "Description";
+            this.Description.HeaderText = "Description";
+            this.Description.MinimumWidth = 300;
+            this.Description.Name = "Description";
+            this.Description.Width = 300;
+            // 
             // problemDataGridViewTextBoxColumn
             // 
             this.problemDataGridViewTextBoxColumn.DataPropertyName = "Problem";
@@ -5957,16 +5967,6 @@
             // 
             this.clientList.DataSource = typeof(RecordKeeper.Client);
             // 
-            // labelGlobEditValid
-            // 
-            this.labelGlobEditValid.AutoSize = true;
-            this.labelGlobEditValid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(127)))), ((int)(((byte)(39)))));
-            this.labelGlobEditValid.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelGlobEditValid.Location = new System.Drawing.Point(337, 4);
-            this.labelGlobEditValid.Name = "labelGlobEditValid";
-            this.labelGlobEditValid.Size = new System.Drawing.Size(0, 13);
-            this.labelGlobEditValid.TabIndex = 29;
-            // 
             // FormGlob
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5990,9 +5990,6 @@
             this.splitContWorkValid.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContWorkValid)).EndInit();
             this.splitContWorkValid.ResumeLayout(false);
-            this.panelValidation.ResumeLayout(false);
-            this.panelValidButtons.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvValidation)).EndInit();
             this.tabControlOps.ResumeLayout(false);
             this.tabEdit.ResumeLayout(false);
             this.splitContainerGlobDataControls.Panel1.ResumeLayout(false);
@@ -6118,6 +6115,9 @@
             this.tabPayExpense.PerformLayout();
             this.tabPage8.ResumeLayout(false);
             this.tabPage8.PerformLayout();
+            this.panelValidation.ResumeLayout(false);
+            this.panelValidButtons.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvValidation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.problemList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientList)).EndInit();
             this.ResumeLayout(false);
@@ -6461,7 +6461,7 @@
         private System.Windows.Forms.Label lbViewGbStudent3;
         private System.Windows.Forms.Label lbViewGbStudent1;
         private System.Windows.Forms.DataGridView dgvViewSlots;
-        private System.Windows.Forms.DateTimePicker dtpViewSlot;
+        private System.Windows.Forms.DateTimePicker dtpViewChosen;
         private System.Windows.Forms.DataGridViewTextBoxColumn slotDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn redDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn tealDataGridViewTextBoxColumn;
