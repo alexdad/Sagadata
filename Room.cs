@@ -16,6 +16,8 @@ namespace RecordKeeper
         public int ColorG { get; set; }
         public int ColorB { get; set; }
 
+        public override Modes Mode { get { return Modes.Rooms; } }
+
         public override string Description
         {
             get { return Name; }
@@ -126,27 +128,11 @@ namespace RecordKeeper
                 return false;
             }
         }
-        public override string Validate2FirstProblem(FormGlob glob)
+        public override string Validate2FirstProblem()
         {
             if (FormGlob.IsStringEmpty(Name))
                 return "Room has no name";
             return null;
-        }
-
-        public override string ConcatenateAll()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append(Capacity.ToString());
-            sb.Append(Name);
-            sb.Append(Rank.ToString());
-            sb.Append(Tags);
-            sb.Append(ColorR.ToString());
-            sb.Append(ColorG.ToString());
-            sb.Append(ColorB.ToString());
-            sb.Append(Key);
-            sb.Append(Comments);
-
-            return sb.ToString();
         }
 
         #region "Comparers"

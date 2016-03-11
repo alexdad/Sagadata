@@ -150,6 +150,7 @@ namespace RecordKeeper
         public T ParseValues<T>(int ind, string[] vals) where T : Record
         {
             T st = Activator.CreateInstance<T>();
+            st.SetGlob(m_glob);
 
             for (int i = 0; i < Placements.Length; i++)
             {
@@ -183,22 +184,27 @@ namespace RecordKeeper
 
                     st.SetHash();
                 }
-
-                StringBuilder sb = new StringBuilder();
-                for (int i = 0; i < Schema.Length; i++)
-                {
-                    string safeValue = st.Get(Schema[i].Header);
-                    if (safeValue == null)
-                        safeValue = "";
-                    safeValue = safeValue.Replace('"', ' ');
-                    safeValue = safeValue.Replace(',', ';');
-                    sb.Append("\"");
-                    sb.Append(safeValue);
-                    sb.Append("\",");
-                }
-                sw.WriteLine(SafeguardString(sb.ToString()));
+                sw.WriteLine(SafeguardString(Persist(st)));
             }
         }
+
+        public string Persist(Record st)
+        {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < Schema.Length; i++)
+            {
+                string safeValue = st.Get(Schema[i].Header);
+                if (safeValue == null)
+                    safeValue = "";
+                safeValue = safeValue.Replace('"', ' ');
+                safeValue = safeValue.Replace(',', ';');
+                sb.Append("\"");
+                sb.Append(safeValue);
+                sb.Append("\",");
+            }
+            return sb.ToString();
+        }
+
         public void ParseHeaders(string[] hdrs)
         {
             Placements = new int[hdrs.Length];

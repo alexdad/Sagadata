@@ -1156,7 +1156,7 @@
             // 
             this.splitContWorkValid.Panel2.Controls.Add(this.panelValidation);
             this.splitContWorkValid.Size = new System.Drawing.Size(1291, 807);
-            this.splitContWorkValid.SplitterDistance = 499;
+            this.splitContWorkValid.SplitterDistance = 777;
             this.splitContWorkValid.TabIndex = 26;
             // 
             // tabControlOps
@@ -1173,7 +1173,7 @@
             this.tabControlOps.Location = new System.Drawing.Point(0, 0);
             this.tabControlOps.Name = "tabControlOps";
             this.tabControlOps.SelectedIndex = 0;
-            this.tabControlOps.Size = new System.Drawing.Size(1291, 499);
+            this.tabControlOps.Size = new System.Drawing.Size(1291, 777);
             this.tabControlOps.TabIndex = 14;
             // 
             // tabEdit
@@ -1182,7 +1182,7 @@
             this.tabEdit.Location = new System.Drawing.Point(4, 22);
             this.tabEdit.Name = "tabEdit";
             this.tabEdit.Padding = new System.Windows.Forms.Padding(3);
-            this.tabEdit.Size = new System.Drawing.Size(1283, 473);
+            this.tabEdit.Size = new System.Drawing.Size(1283, 751);
             this.tabEdit.TabIndex = 0;
             this.tabEdit.Text = "Edit";
             this.tabEdit.UseVisualStyleBackColor = true;
@@ -1201,7 +1201,7 @@
             // 
             this.splitContainerGlobDataControls.Panel2.Controls.Add(this.panelGlobSearch);
             this.splitContainerGlobDataControls.Panel2.Controls.Add(this.panelGlobLogo);
-            this.splitContainerGlobDataControls.Size = new System.Drawing.Size(1277, 467);
+            this.splitContainerGlobDataControls.Size = new System.Drawing.Size(1277, 745);
             this.splitContainerGlobDataControls.SplitterDistance = 1038;
             this.splitContainerGlobDataControls.TabIndex = 26;
             // 
@@ -1219,8 +1219,8 @@
             // splitContainerGlobMasterDetail.Panel2
             // 
             this.splitContainerGlobMasterDetail.Panel2.Controls.Add(this.panelGlobEdit);
-            this.splitContainerGlobMasterDetail.Size = new System.Drawing.Size(1038, 467);
-            this.splitContainerGlobMasterDetail.SplitterDistance = 231;
+            this.splitContainerGlobMasterDetail.Size = new System.Drawing.Size(1038, 745);
+            this.splitContainerGlobMasterDetail.SplitterDistance = 368;
             this.splitContainerGlobMasterDetail.TabIndex = 25;
             // 
             // tabControlModesTop
@@ -1236,7 +1236,7 @@
             this.tabControlModesTop.Location = new System.Drawing.Point(3, 6);
             this.tabControlModesTop.Name = "tabControlModesTop";
             this.tabControlModesTop.SelectedIndex = 0;
-            this.tabControlModesTop.Size = new System.Drawing.Size(1030, 222);
+            this.tabControlModesTop.Size = new System.Drawing.Size(1030, 359);
             this.tabControlModesTop.TabIndex = 14;
             // 
             // tabTopPageStudents
@@ -1245,7 +1245,7 @@
             this.tabTopPageStudents.Location = new System.Drawing.Point(4, 22);
             this.tabTopPageStudents.Name = "tabTopPageStudents";
             this.tabTopPageStudents.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTopPageStudents.Size = new System.Drawing.Size(1022, 196);
+            this.tabTopPageStudents.Size = new System.Drawing.Size(1022, 333);
             this.tabTopPageStudents.TabIndex = 0;
             this.tabTopPageStudents.Text = "Students";
             this.tabTopPageStudents.UseVisualStyleBackColor = true;
@@ -1283,7 +1283,7 @@
             this.dgvStudents.Name = "dgvStudents";
             this.dgvStudents.ReadOnly = true;
             this.dgvStudents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvStudents.Size = new System.Drawing.Size(1016, 190);
+            this.dgvStudents.Size = new System.Drawing.Size(1016, 327);
             this.dgvStudents.TabIndex = 13;
             this.dgvStudents.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudents_CellContentClick);
             this.dgvStudents.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvStudents_ColumnHeaderMouseClick);
@@ -1887,7 +1887,7 @@
             this.panelGlobEdit.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelGlobEdit.Location = new System.Drawing.Point(0, 0);
             this.panelGlobEdit.Name = "panelGlobEdit";
-            this.panelGlobEdit.Size = new System.Drawing.Size(1038, 232);
+            this.panelGlobEdit.Size = new System.Drawing.Size(1038, 373);
             this.panelGlobEdit.TabIndex = 23;
             // 
             // labelGlobEditValid
@@ -1926,7 +1926,7 @@
             this.tabControlModesBottom.Location = new System.Drawing.Point(46, 25);
             this.tabControlModesBottom.Name = "tabControlModesBottom";
             this.tabControlModesBottom.SelectedIndex = 0;
-            this.tabControlModesBottom.Size = new System.Drawing.Size(943, 229);
+            this.tabControlModesBottom.Size = new System.Drawing.Size(943, 370);
             this.tabControlModesBottom.TabIndex = 14;
             // 
             // tabBottomPageStudents
@@ -1935,7 +1935,7 @@
             this.tabBottomPageStudents.Location = new System.Drawing.Point(4, 22);
             this.tabBottomPageStudents.Name = "tabBottomPageStudents";
             this.tabBottomPageStudents.Padding = new System.Windows.Forms.Padding(3);
-            this.tabBottomPageStudents.Size = new System.Drawing.Size(935, 203);
+            this.tabBottomPageStudents.Size = new System.Drawing.Size(935, 344);
             this.tabBottomPageStudents.TabIndex = 0;
             this.tabBottomPageStudents.Text = "Students";
             this.tabBottomPageStudents.UseVisualStyleBackColor = true;
@@ -1949,7 +1949,7 @@
             this.panelStudent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelStudent.Location = new System.Drawing.Point(3, 3);
             this.panelStudent.Name = "panelStudent";
-            this.panelStudent.Size = new System.Drawing.Size(929, 197);
+            this.panelStudent.Size = new System.Drawing.Size(929, 338);
             this.panelStudent.TabIndex = 5;
             // 
             // panelStudPrimary
@@ -2421,7 +2421,7 @@
             this.panelStudSecondary.Controls.Add(this.panelStudSecondaryLeft);
             this.panelStudSecondary.Location = new System.Drawing.Point(0, 161);
             this.panelStudSecondary.Name = "panelStudSecondary";
-            this.panelStudSecondary.Size = new System.Drawing.Size(947, 175);
+            this.panelStudSecondary.Size = new System.Drawing.Size(947, 316);
             this.panelStudSecondary.TabIndex = 36;
             // 
             // groupBoxStudSecondaryRight
@@ -2436,7 +2436,7 @@
             this.groupBoxStudSecondaryRight.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
             this.groupBoxStudSecondaryRight.Location = new System.Drawing.Point(80, 0);
             this.groupBoxStudSecondaryRight.Name = "groupBoxStudSecondaryRight";
-            this.groupBoxStudSecondaryRight.Size = new System.Drawing.Size(867, 175);
+            this.groupBoxStudSecondaryRight.Size = new System.Drawing.Size(867, 316);
             this.groupBoxStudSecondaryRight.TabIndex = 3;
             this.groupBoxStudSecondaryRight.TabStop = false;
             // 
@@ -2512,7 +2512,7 @@
             this.panelStudSecondaryLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelStudSecondaryLeft.Location = new System.Drawing.Point(0, 0);
             this.panelStudSecondaryLeft.Name = "panelStudSecondaryLeft";
-            this.panelStudSecondaryLeft.Size = new System.Drawing.Size(80, 175);
+            this.panelStudSecondaryLeft.Size = new System.Drawing.Size(80, 316);
             this.panelStudSecondaryLeft.TabIndex = 35;
             // 
             // labelStudGoals
@@ -3197,7 +3197,7 @@
             this.tabBottomPageLessons.Location = new System.Drawing.Point(4, 22);
             this.tabBottomPageLessons.Name = "tabBottomPageLessons";
             this.tabBottomPageLessons.Padding = new System.Windows.Forms.Padding(3);
-            this.tabBottomPageLessons.Size = new System.Drawing.Size(935, 203);
+            this.tabBottomPageLessons.Size = new System.Drawing.Size(935, 344);
             this.tabBottomPageLessons.TabIndex = 4;
             this.tabBottomPageLessons.Text = "Lessons";
             this.tabBottomPageLessons.UseVisualStyleBackColor = true;
@@ -3242,7 +3242,7 @@
             this.panelLesson.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelLesson.Location = new System.Drawing.Point(3, 3);
             this.panelLesson.Name = "panelLesson";
-            this.panelLesson.Size = new System.Drawing.Size(929, 197);
+            this.panelLesson.Size = new System.Drawing.Size(929, 338);
             this.panelLesson.TabIndex = 0;
             // 
             // cbLessonCancellation
@@ -3253,6 +3253,7 @@
             this.cbLessonCancellation.Name = "cbLessonCancellation";
             this.cbLessonCancellation.Size = new System.Drawing.Size(121, 21);
             this.cbLessonCancellation.TabIndex = 37;
+            this.cbLessonCancellation.Click += new System.EventHandler(this.cbLessonCancellation_Click);
             // 
             // labelLessonCancellation
             // 
@@ -3962,7 +3963,7 @@
             this.panelGlobPrevDelete.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelGlobPrevDelete.Location = new System.Drawing.Point(0, 0);
             this.panelGlobPrevDelete.Name = "panelGlobPrevDelete";
-            this.panelGlobPrevDelete.Size = new System.Drawing.Size(44, 232);
+            this.panelGlobPrevDelete.Size = new System.Drawing.Size(44, 373);
             this.panelGlobPrevDelete.TabIndex = 17;
             // 
             // butGlobalDelete
@@ -3999,7 +4000,7 @@
             this.panelGlobNextNew.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelGlobNextNew.Location = new System.Drawing.Point(990, 0);
             this.panelGlobNextNew.Name = "panelGlobNextNew";
-            this.panelGlobNextNew.Size = new System.Drawing.Size(48, 232);
+            this.panelGlobNextNew.Size = new System.Drawing.Size(48, 373);
             this.panelGlobNextNew.TabIndex = 20;
             // 
             // butGlobalAdd
@@ -4035,7 +4036,7 @@
             // 
             this.panelGlobSearch.Controls.Add(this.panelSearchBorder);
             this.panelGlobSearch.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelGlobSearch.Location = new System.Drawing.Point(0, 100);
+            this.panelGlobSearch.Location = new System.Drawing.Point(0, 378);
             this.panelGlobSearch.Name = "panelGlobSearch";
             this.panelGlobSearch.Size = new System.Drawing.Size(235, 367);
             this.panelGlobSearch.TabIndex = 11;
@@ -5868,7 +5869,7 @@
             this.panelValidation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelValidation.Location = new System.Drawing.Point(0, 0);
             this.panelValidation.Name = "panelValidation";
-            this.panelValidation.Size = new System.Drawing.Size(1291, 304);
+            this.panelValidation.Size = new System.Drawing.Size(1291, 26);
             this.panelValidation.TabIndex = 2;
             this.panelValidation.Visible = false;
             // 
@@ -5879,13 +5880,13 @@
             this.panelValidButtons.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelValidButtons.Location = new System.Drawing.Point(1182, 0);
             this.panelValidButtons.Name = "panelValidButtons";
-            this.panelValidButtons.Size = new System.Drawing.Size(109, 304);
+            this.panelValidButtons.Size = new System.Drawing.Size(109, 26);
             this.panelValidButtons.TabIndex = 23;
             // 
             // buttonValidRerun
             // 
             this.buttonValidRerun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonValidRerun.Location = new System.Drawing.Point(21, 240);
+            this.buttonValidRerun.Location = new System.Drawing.Point(21, -38);
             this.buttonValidRerun.Name = "buttonValidRerun";
             this.buttonValidRerun.Size = new System.Drawing.Size(75, 23);
             this.buttonValidRerun.TabIndex = 1;
@@ -5896,7 +5897,7 @@
             // buttonValidClose
             // 
             this.buttonValidClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonValidClose.Location = new System.Drawing.Point(20, 269);
+            this.buttonValidClose.Location = new System.Drawing.Point(20, -9);
             this.buttonValidClose.Name = "buttonValidClose";
             this.buttonValidClose.Size = new System.Drawing.Size(75, 23);
             this.buttonValidClose.TabIndex = 0;
@@ -5921,7 +5922,7 @@
             this.dgvValidation.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvValidation.Location = new System.Drawing.Point(0, 0);
             this.dgvValidation.Name = "dgvValidation";
-            this.dgvValidation.Size = new System.Drawing.Size(1291, 304);
+            this.dgvValidation.Size = new System.Drawing.Size(1291, 26);
             this.dgvValidation.TabIndex = 22;
             this.dgvValidation.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvValidation_CellContentClick);
             // 

@@ -16,6 +16,8 @@ namespace RecordKeeper
 
     public abstract class Record
     {
+        protected FormGlob m_glob;
+
         public static int LastColumnSorted = -1;
         public static bool NeedToReverse = false;
 
@@ -57,14 +59,14 @@ namespace RecordKeeper
             }
         }
 
+        public abstract Modes Mode { get; } 
         public abstract string Description { get; }
         public abstract string Abbreviation { get; }
         public abstract bool Set(string field, string value);
         public abstract string Get(string field);
         public abstract bool Actual { get; }
         public abstract bool Validate();
-        public abstract string Validate2FirstProblem(FormGlob glob);
-        public abstract string ConcatenateAll();
+        public abstract string Validate2FirstProblem();
 
         public Record()
         {
@@ -75,6 +77,12 @@ namespace RecordKeeper
             Comments = "";
             Id = FormGlob.AllocateID();
         }
+
+        public void SetGlob(FormGlob glob)
+        {
+            m_glob = glob;
+        }
+
 
         public string SetRecordFields(string field, string value)
         {
@@ -132,7 +140,7 @@ namespace RecordKeeper
 
         public string GetHash()
         {
-            return FormGlob.CalculateMD5( ConcatenateAll() );
+            return FormGlob.CalculateMD5( m_glob.PersistRecord(this));
         }
 
         public void SetHash()

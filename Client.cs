@@ -12,6 +12,7 @@ namespace RecordKeeper
         public string MachineName { get; set; }
         public string LastTouch { get; set; }
 
+        public override Modes Mode { get { return Modes.Clients; } }
         public override string Description
         {
             get { return MachineName; }
@@ -99,24 +100,11 @@ namespace RecordKeeper
                 return false;
             }
         }
-        public override string Validate2FirstProblem(FormGlob glob)
+        public override string Validate2FirstProblem()
         {
             // TODO
             return null;
         }
-
-        public override string ConcatenateAll()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append(Code);
-            sb.Append(MachineName);
-            sb.Append(LastTouch);
-            sb.Append(Key);
-            sb.Append(Comments);
-
-            return sb.ToString();
-        }
-
 
         #region "Comparers"
         public class ComparerByCode : IComparer<Client>

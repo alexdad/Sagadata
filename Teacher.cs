@@ -28,6 +28,7 @@ namespace RecordKeeper
         public String Sunday { get; set; }
         public String Calendar { get; set; }
 
+        public override Modes Mode { get { return Modes.Teachers; } }
         public override string Description
         {
             get { return FirstName + " " + LastName; }
@@ -220,7 +221,7 @@ namespace RecordKeeper
                 return false;
             }
         }
-        public override string Validate2FirstProblem(FormGlob glob)
+        public override string Validate2FirstProblem()
         {
             if (FormGlob.IsStringEmpty(FirstName))
                 return "Teacher has no first  name";
@@ -231,35 +232,6 @@ namespace RecordKeeper
             if (FormGlob.IsStringEmpty(Phone))
                 return "Teacher has no phone";
             return null;
-        }
-
-        public override string ConcatenateAll()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append(FirstName);
-            sb.Append(LastName);
-            sb.Append(Status);
-            sb.Append(Email);
-            sb.Append(Phone);
-            sb.Append(Birthday);
-            sb.Append(Language);
-            sb.Append(Language2);
-            sb.Append(LanguageDetail);
-            sb.Append(MailingAddress);
-            sb.Append(Vacations);
-            sb.Append(Monday);
-            sb.Append(Tuesday);
-            sb.Append(Wednesday);
-            sb.Append(Thursday);
-            sb.Append(Friday);
-            sb.Append(Saturday);
-            sb.Append(Sunday);
-            sb.Append(Calendar);
-
-            sb.Append(Key);
-            sb.Append(Comments);
-
-            return sb.ToString();
         }
 
         #region "Comparers"

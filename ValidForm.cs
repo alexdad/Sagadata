@@ -66,7 +66,7 @@ namespace RecordKeeper
                 Record l = DataList[i] as Record;
                 m_validationTempDict.Add(l.Key, i);
 
-                string prob = l.Validate2FirstProblem(this);
+                string prob = l.Validate2FirstProblem();
                 if (!IsStringEmpty(prob))
                     AddProblem(prob, l);            }
             return (problemList.Count == 0);

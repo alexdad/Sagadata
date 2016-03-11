@@ -117,7 +117,7 @@ namespace RecordKeeper
             if (OperMode() == Ops.Edit)
             {
                 Record rec = DataList.Current as Record;
-                string prob = rec.Validate2FirstProblem(this);
+                string prob = rec.Validate2FirstProblem();
                 if (!IsStringEmpty(prob))
                 {
                     labelGlobEditValid.Text = prob;
@@ -158,6 +158,11 @@ namespace RecordKeeper
             }
             DataList.CurrencyManager.Position = poswas;
             return FormGlob.CalculateMD5(sb.ToString());
+        }
+
+        public string PersistRecord(Record r)
+        {
+            return m_recordTypes[r.Mode].Persist(r);
         }
 
         public bool HashAll()

@@ -37,6 +37,7 @@ namespace RecordKeeper
         {
             get { return (CellPhone.Length > 0 ? CellPhone : HomePhone); }
         }
+        public override Modes Mode { get { return Modes.Students; } }
         public override string Description
         {
             get { return FirstName + " " + LastName; }
@@ -188,8 +189,7 @@ namespace RecordKeeper
         public override string Get(string field)
         {
             string v = GetRecordFields(field);
-            if (v != null)
-                return v;
+            if (v != null)return v;
 
             switch (field)
             {
@@ -267,7 +267,7 @@ namespace RecordKeeper
                 return false;
             }
         }
-        public override string Validate2FirstProblem(FormGlob glob)
+        public override string Validate2FirstProblem()
         {
             if (FormGlob.IsStringEmpty(FirstName))
                 return "Student has no first  name";
@@ -284,40 +284,6 @@ namespace RecordKeeper
             if (FormGlob.IsStringEmpty(Source))
                 return "Student has no source";
             return null;
-        }
-
-        public override string ConcatenateAll()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append(Background);
-            sb.Append(Birthday);
-            sb.Append(CellPhone);
-            sb.Append(Email);
-            sb.Append(FirstName);
-            sb.Append(Goals);
-            sb.Append(HomePhone);
-            sb.Append(Interests);
-            sb.Append(LastName);
-            sb.Append(LearningLanguage);
-            sb.Append(LanguageDetail);
-            sb.Append(Level);
-            sb.Append(MailingAddress);
-            sb.Append(NativeLanguage);
-            sb.Append(OtherLanguage);
-            sb.Append(PossibleSchedule);
-            sb.Append(Price1);
-            sb.Append(Price2);
-            sb.Append(Price3);
-            sb.Append(Prog1);
-            sb.Append(Prog2);
-            sb.Append(Prog3);
-            sb.Append(Source);
-            sb.Append(SourceDetail);
-            sb.Append(Status);
-            sb.Append(Key);
-            sb.Append(Comments);
-
-            return sb.ToString();
         }
 
         public string Program(int i)

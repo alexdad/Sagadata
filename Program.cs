@@ -15,6 +15,7 @@ namespace RecordKeeper
         public string Summary { get; set; }
         public string Type { get; set; }
 
+        public override Modes Mode { get { return Modes.Programs; } }
         public override string Description
         {
             get { return Name; }
@@ -118,25 +119,10 @@ namespace RecordKeeper
             }
         }
 
-        public override string Validate2FirstProblem(FormGlob glob)
+        public override string Validate2FirstProblem()
         {
             // TODO
             return null;
-        }
-
-        public override string ConcatenateAll()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append(Code);
-            sb.Append(Language);
-            sb.Append(Name);
-            sb.Append(Price);
-            sb.Append(Summary);
-            sb.Append(Type);
-            sb.Append(Key);
-            sb.Append(Comments);
-
-            return sb.ToString();
         }
 
         #region "Comparers"

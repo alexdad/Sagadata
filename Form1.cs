@@ -1199,6 +1199,11 @@ namespace RecordKeeper
                 EditLessonDetailsChanged();
         }
 
+        private void cbLessonCancellation_Click(object sender, EventArgs e)
+        {
+            EditLessonDetailsChanged();
+        }
+
         private void cbSearchLessonStudent_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
