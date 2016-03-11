@@ -521,7 +521,7 @@ namespace RecordKeeper
 
         private void buttonGlobEditAccept_Click(object sender, EventArgs e)
         {
-            Modified = true;
+            //Modified = true;
             Datalist_Complete();
         }
 
@@ -549,6 +549,9 @@ namespace RecordKeeper
         {
             if (!CheckSafety())
                 return;
+            if (!Datalist_Complete())
+                return;
+
             Datalist_StepForward();
             SetEditFocus();
         }
@@ -557,6 +560,9 @@ namespace RecordKeeper
         {
             if (!CheckSafety())
                 return;
+            if (!Datalist_Complete())
+                return;
+
             Datalist_StepBack();
             SetEditFocus();
         }
@@ -565,6 +571,9 @@ namespace RecordKeeper
         {
             if (!CheckSafety())
                 return;
+            if (!Datalist_Complete())
+                return;
+
             Datalist_AddRecord();
             ShowCurrentCount();
 

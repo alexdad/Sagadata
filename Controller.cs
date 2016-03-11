@@ -80,6 +80,7 @@ namespace RecordKeeper
             st.Id = FormGlob.AllocateID();
             st.ChangedBy = ClientCode;
             st.CreatedBy = ClientCode;
+            st.SetHash();
         }
 
         public void Datalist_SetPosition(int i)
@@ -108,15 +109,29 @@ namespace RecordKeeper
             if (DataList.CurrencyManager.Position > 0)
                 DataList.CurrencyManager.Position--;
         }
-        public void Datalist_Complete()
+        public bool Datalist_Complete()
         {
             if (DataList.Count == 0)
-                return;
+                return true;
 
-            // TODO - here we really need it to compare changes. Hashes below will replace it.
-            Modified = true;  
-            if (CurrentMode != Modes.Lessons)
-                StaleComboLists = true;
+            if (OperMode() == Ops.Edit)
+            {
+                Record rec = DataList.Current as Record;
+                string prob = rec.Validate2FirstProblem(this);
+                if (!IsStringEmpty(prob))
+                {
+                    labelGlobEditValid.Text = prob;
+                    return false;
+                }
+                labelGlobEditValid.Text = "";
+            }
+
+            if (!(DataList.Current as Record).IsHashAsRead())
+            {
+                Modified = true;
+                if (CurrentMode != Modes.Lessons)
+                    StaleComboLists = true;
+            }
 
             if (DataList.CurrencyManager.Position < DataList.Count - 1)
             {
@@ -128,7 +143,7 @@ namespace RecordKeeper
                 DataList.CurrencyManager.Position--;
                 DataList.CurrencyManager.Position++;
             }
-            //Modified = HashAll(); 
+            return true;
         }
 
         public string Datalist_GetHash()
@@ -250,19 +265,22 @@ namespace RecordKeeper
             CurrentType.EndSelectionMode();
             tabControlOps.SelectedIndex = (int)op;
         }
-        public void Operation_CompletePrevious()
+        public bool Operation_CompletePrevious()
         {
             switch(OperMode())
             {
                 case Ops.Edit:
-                    Datalist_Complete();
+                    if (!Datalist_Complete())
+                        return false;
                     UpdateComboLists();
                     break;
                 case Ops.View:
-                    Datalist_Complete();
+                    if (!Datalist_Complete())
+                        return false;
                     break;
                 case Ops.Plan:
-                    Datalist_Complete();
+                    if (!Datalist_Complete())
+                        return false;
                     break;
                 case Ops.SchedCancel:
                     break;
@@ -277,6 +295,7 @@ namespace RecordKeeper
                 default:
                     break;
             }
+            return true;
         }
 
         #endregion
@@ -309,7 +328,8 @@ namespace RecordKeeper
 
         private void cbGlobType_SelectedIndexChanged_Actual(object sender, EventArgs e)
         {
-            Operation_CompletePrevious();
+            if (!Operation_CompletePrevious())
+                return;
 
             ComboBox comboBox = (ComboBox)sender;
             Modes newMode = (Modes)comboBox.SelectedIndex;

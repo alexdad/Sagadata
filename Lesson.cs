@@ -475,11 +475,12 @@ namespace RecordKeeper
             }
         }
 
-        public override string Validate2FirstProblem()
+        public override string Validate2FirstProblem(FormGlob glob)
         {
             if (FormGlob.IsStringEmpty(Program))
-                return "Lesson has no program";
-            if (FormGlob.IsStringEmpty(Student1))
+                return "Lesson has no program"; ;
+            string programType = glob.GetProgramType(Program);
+            if (FormGlob.IsStringEmpty(Student1) && programType != "PriceFree") 
                 return "Lesson has no first student";
             if (FormGlob.IsStringEmpty(Teacher1))
                 return "Lesson has no teacher";

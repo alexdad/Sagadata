@@ -16,12 +16,10 @@ namespace RecordKeeper
     public abstract class RecordType
     {
         protected FormGlob m_glob;
-        protected Dictionary<string, Record> m_originalRecords;
 
         public RecordType(FormGlob glob)
         {
             m_glob = glob;
-            m_originalRecords = new Dictionary<string, Record>();
             DeletedKeys = new List<string>();
 
         }
@@ -29,7 +27,6 @@ namespace RecordKeeper
         public SchemaField[] Schema { get; set; }
         public int[] Placements { get; set; }
 
-        public Dictionary<string, Record> OriginalRecords { get { return m_originalRecords; } }
         public Record[] SavedFullListDuringSelection { get; set; }
         public List<string> DeletedKeys { get; set; }
 
@@ -58,7 +55,6 @@ namespace RecordKeeper
         public bool ReadRecordsFile<T>() where T : Record
         {
             m_glob.DataList.Clear();
-            m_originalRecords.Clear();
             bool success = false;
             try
             {
@@ -81,8 +77,8 @@ namespace RecordKeeper
                     }
                     if (st.Validate())
                     {
+                        st.SetHash();
                         m_glob.DataList.Add(st);
-                        m_originalRecords.Add(st.Key, st);
                         FormGlob.AccumulateID(st.Id);
                     }
                 };
@@ -180,14 +176,12 @@ namespace RecordKeeper
             foreach (Record s in m_glob.DataList)
             {
                 Record st = s;
-                if (m_originalRecords.ContainsKey(st.Key))
+                if (!st.IsHashAsRead())
                 {
-                    Record oldSt = m_originalRecords[st.Key];
-                    if (RecordDiffers(st, oldSt))
-                    {
-                        st.Changed = DateTime.Now;
-                        st.ChangedBy = FormGlob.ClientCode;
-                    }
+                    st.Changed = DateTime.Now;
+                    st.ChangedBy = FormGlob.ClientCode;
+
+                    st.SetHash();
                 }
 
                 StringBuilder sb = new StringBuilder();
@@ -269,6 +263,7 @@ namespace RecordKeeper
                     T r = ParseValues<T>(s, safeStr.Split(','));
                     if (r.Validate())
                     {
+                        r.SetHash();
                         recs.Add(r);
                     }
                 }

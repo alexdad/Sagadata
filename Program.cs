@@ -118,7 +118,7 @@ namespace RecordKeeper
             }
         }
 
-        public override string Validate2FirstProblem()
+        public override string Validate2FirstProblem(FormGlob glob)
         {
             // TODO
             return null;

@@ -26,6 +26,9 @@ namespace RecordKeeper
         public string ChangedBy { get; set; }
         public string Comments { get; set; }
         public string Key { get { return CreatedBy + Id.ToString(); } }
+
+        private string m_hashAsRead;
+
         public bool ValidateBase
         {
             get
@@ -60,7 +63,7 @@ namespace RecordKeeper
         public abstract string Get(string field);
         public abstract bool Actual { get; }
         public abstract bool Validate();
-        public abstract string Validate2FirstProblem();
+        public abstract string Validate2FirstProblem(FormGlob glob);
         public abstract string ConcatenateAll();
 
         public Record()
@@ -130,6 +133,15 @@ namespace RecordKeeper
         public string GetHash()
         {
             return FormGlob.CalculateMD5( ConcatenateAll() );
+        }
+
+        public void SetHash()
+        {
+            m_hashAsRead = GetHash();
+        }
+        public bool IsHashAsRead()
+        {
+            return (m_hashAsRead == GetHash());
         }
     }
 }

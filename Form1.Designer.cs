@@ -93,6 +93,8 @@
             this.buttonValidRerun = new System.Windows.Forms.Button();
             this.buttonValidClose = new System.Windows.Forms.Button();
             this.dgvValidation = new System.Windows.Forms.DataGridView();
+            this.Problem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControlOps = new RecordKeeper.HiddenTabControl();
             this.tabEdit = new System.Windows.Forms.TabPage();
             this.splitContainerGlobDataControls = new System.Windows.Forms.SplitContainer();
@@ -543,10 +545,12 @@
             this.lbPayExpenseName = new System.Windows.Forms.Label();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.lbFutureOpName = new System.Windows.Forms.Label();
+            this.problemDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descriptionDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.keyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.problemList = new System.Windows.Forms.BindingSource(this.components);
             this.clientList = new System.Windows.Forms.BindingSource(this.components);
-            this.Problem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelGlobEditValid = new System.Windows.Forms.Label();
             this.menuStripGlobalOps.SuspendLayout();
             this.panelGlobIndicators.SuspendLayout();
             this.ctxMenuLesson.SuspendLayout();
@@ -1206,7 +1210,10 @@
             this.dgvValidation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvValidation.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Problem,
-            this.Description});
+            this.Description,
+            this.problemDataGridViewTextBoxColumn,
+            this.descriptionDataGridViewTextBoxColumn1,
+            this.keyDataGridViewTextBoxColumn});
             this.dgvValidation.DataSource = this.problemList;
             this.dgvValidation.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvValidation.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
@@ -1215,6 +1222,22 @@
             this.dgvValidation.Size = new System.Drawing.Size(1291, 304);
             this.dgvValidation.TabIndex = 22;
             this.dgvValidation.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvValidation_CellContentClick);
+            // 
+            // Problem
+            // 
+            this.Problem.DataPropertyName = "Problem";
+            this.Problem.HeaderText = "Problem";
+            this.Problem.MinimumWidth = 300;
+            this.Problem.Name = "Problem";
+            this.Problem.Width = 300;
+            // 
+            // Description
+            // 
+            this.Description.DataPropertyName = "Description";
+            this.Description.HeaderText = "Description";
+            this.Description.MinimumWidth = 300;
+            this.Description.Name = "Description";
+            this.Description.Width = 300;
             // 
             // tabControlOps
             // 
@@ -1936,6 +1959,7 @@
             // 
             // panelGlobEdit
             // 
+            this.panelGlobEdit.Controls.Add(this.labelGlobEditValid);
             this.panelGlobEdit.Controls.Add(this.buttonGlobEditAccept);
             this.panelGlobEdit.Controls.Add(this.tabControlModesBottom);
             this.panelGlobEdit.Controls.Add(this.panelGlobPrevDelete);
@@ -5907,6 +5931,24 @@
             this.lbFutureOpName.TabIndex = 0;
             this.lbFutureOpName.Text = "Future Operation";
             // 
+            // problemDataGridViewTextBoxColumn
+            // 
+            this.problemDataGridViewTextBoxColumn.DataPropertyName = "Problem";
+            this.problemDataGridViewTextBoxColumn.HeaderText = "Problem";
+            this.problemDataGridViewTextBoxColumn.Name = "problemDataGridViewTextBoxColumn";
+            // 
+            // descriptionDataGridViewTextBoxColumn1
+            // 
+            this.descriptionDataGridViewTextBoxColumn1.DataPropertyName = "Description";
+            this.descriptionDataGridViewTextBoxColumn1.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn1.Name = "descriptionDataGridViewTextBoxColumn1";
+            // 
+            // keyDataGridViewTextBoxColumn
+            // 
+            this.keyDataGridViewTextBoxColumn.DataPropertyName = "Key";
+            this.keyDataGridViewTextBoxColumn.HeaderText = "Key";
+            this.keyDataGridViewTextBoxColumn.Name = "keyDataGridViewTextBoxColumn";
+            // 
             // problemList
             // 
             this.problemList.DataSource = typeof(RecordKeeper.ProblemItem);
@@ -5915,21 +5957,15 @@
             // 
             this.clientList.DataSource = typeof(RecordKeeper.Client);
             // 
-            // Problem
+            // labelGlobEditValid
             // 
-            this.Problem.DataPropertyName = "Problem";
-            this.Problem.HeaderText = "Problem";
-            this.Problem.MinimumWidth = 300;
-            this.Problem.Name = "Problem";
-            this.Problem.Width = 300;
-            // 
-            // Description
-            // 
-            this.Description.DataPropertyName = "Description";
-            this.Description.HeaderText = "Description";
-            this.Description.MinimumWidth = 300;
-            this.Description.Name = "Description";
-            this.Description.Width = 300;
+            this.labelGlobEditValid.AutoSize = true;
+            this.labelGlobEditValid.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(127)))), ((int)(((byte)(39)))));
+            this.labelGlobEditValid.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelGlobEditValid.Location = new System.Drawing.Point(337, 4);
+            this.labelGlobEditValid.Name = "labelGlobEditValid";
+            this.labelGlobEditValid.Size = new System.Drawing.Size(0, 13);
+            this.labelGlobEditValid.TabIndex = 29;
             // 
             // FormGlob
             // 
@@ -5984,6 +6020,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvLesson)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lessonList)).EndInit();
             this.panelGlobEdit.ResumeLayout(false);
+            this.panelGlobEdit.PerformLayout();
             this.tabControlModesBottom.ResumeLayout(false);
             this.tabBottomPageStudents.ResumeLayout(false);
             this.panelStudent.ResumeLayout(false);
@@ -6606,6 +6643,10 @@
         private System.Windows.Forms.BindingSource problemList;
         private System.Windows.Forms.DataGridViewTextBoxColumn Problem;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
+        private System.Windows.Forms.Label labelGlobEditValid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn problemDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn keyDataGridViewTextBoxColumn;
     }
 }
 

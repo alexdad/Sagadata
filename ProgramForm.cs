@@ -78,12 +78,21 @@ namespace RecordKeeper
             return programs;
         }
 
-        string GetProgramPrice(string desc)
+        public string GetProgramPrice(string desc)
         {
             List<Program> lst = SpecificProgram(desc);
             string res = "";
             foreach (Program t in lst)
                 res = t.Price;
+
+            return res;
+        }
+        public string GetProgramType(string desc)
+        {
+            List<Program> lst = SpecificProgram(desc);
+            string res = "";
+            foreach (Program t in lst)
+                res = t.Type;
 
             return res;
         }

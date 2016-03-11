@@ -267,7 +267,7 @@ namespace RecordKeeper
                 return false;
             }
         }
-        public override string Validate2FirstProblem()
+        public override string Validate2FirstProblem(FormGlob glob)
         {
             if (FormGlob.IsStringEmpty(FirstName))
                 return "Student has no first  name";
