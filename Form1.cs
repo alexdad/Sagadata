@@ -392,7 +392,6 @@ namespace RecordKeeper
 
         private void dgvStudents_RowLeave(object sender, DataGridViewCellEventArgs e)
         {
-            EditTrap = false;
             lbStudStdProgPrice1.Text = "";
             lbStudStdProgPrice2.Text = "";
             lbStudStdProgPrice3.Text = "";
@@ -418,10 +417,6 @@ namespace RecordKeeper
                 DropFlagUnsavedAvailabilityChanges();
             }
         }
-        private void dgvTeachers_RowLeave(object sender, DataGridViewCellEventArgs e)
-        {
-            EditTrap = false;
-        }
 
         private void dgvPrograms_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -434,11 +429,6 @@ namespace RecordKeeper
                 sender as DataGridView,
                 CurrentType.ForkOut<Program>(0),
                 e.ColumnIndex);
-        }
-
-        private void dgvPrograms_RowLeave(object sender, DataGridViewCellEventArgs e)
-        {
-            EditTrap = false;
         }
 
         private void dgvRooms_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -454,11 +444,6 @@ namespace RecordKeeper
                 e.ColumnIndex);
         }
 
-        private void dgvRooms_RowLeave(object sender, DataGridViewCellEventArgs e)
-        {
-            EditTrap = false;
-        }
-
         private void dgvLesson_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             dgvCellCopy(sender as DataGridView, e.RowIndex, e.ColumnIndex);
@@ -470,11 +455,6 @@ namespace RecordKeeper
                 sender as DataGridView,
                 CurrentType.ForkOut<Lesson>(0),
                 e.ColumnIndex);
-        }
-
-        private void dgvLesson_RowLeave(object sender, DataGridViewCellEventArgs e)
-        {
-            EditTrap = false;
         }
 
         private void dgvPlan_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -519,22 +499,8 @@ namespace RecordKeeper
             cbGlobType_SelectedIndexChanged_Actual(sender, e);
         }
 
-        private void buttonGlobEditAccept_Click(object sender, EventArgs e)
-        {
-            //Modified = true;
-            Datalist_Complete();
-        }
-
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            if (OperMode() == Ops.Edit)
-            {
-                if (m_editSavingTrap)
-                {
-                    MessageBox.Show("Please click orange Accept to push your edits, then save again");
-                    return;
-                }
-            }
             CommandSave();
             buttonSync.Visible = !m_synced;
         }
@@ -547,8 +513,6 @@ namespace RecordKeeper
 
         private void buttonNext_Click(object sender, EventArgs e)
         {
-            if (!CheckSafety())
-                return;
             if (!Datalist_Complete())
                 return;
 
@@ -558,8 +522,6 @@ namespace RecordKeeper
 
         private void buttonPrev_Click(object sender, EventArgs e)
         {
-            if (!CheckSafety())
-                return;
             if (!Datalist_Complete())
                 return;
 
@@ -569,8 +531,6 @@ namespace RecordKeeper
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            if (!CheckSafety())
-                return;
             if (!Datalist_Complete())
                 return;
 
@@ -578,7 +538,6 @@ namespace RecordKeeper
             ShowCurrentCount();
 
             Modified = true;
-            EditTrap = true;
 
             SetEditFocus();
         }
@@ -593,7 +552,6 @@ namespace RecordKeeper
             ShowCurrentCount();
 
             Modified = true;
-            EditTrap = true;
 
             SetEditFocus();
         }
@@ -1257,7 +1215,8 @@ namespace RecordKeeper
             if (l == null)
                 return;
             l.GoogleId = lbReconcileGoogleCalId.Text;
-            buttonGlobEditAccept_Click(null, null);
+            if (!Datalist_Complete())
+                return;
             //buttonReconcileNext_Click(null, null);
         }
 
@@ -1268,14 +1227,15 @@ namespace RecordKeeper
                 return;
             l.GoogleId = "";
             ShowMatching(MatchingState.Unknown, 0.0);
-            buttonGlobEditAccept_Click(null, null);
+            Datalist_Complete();
         }
 
         private void buttonReconcileNext2_Click(object sender, EventArgs e)
         {
             if (m_OperationalEvents == null)
                 return;
-            buttonGlobEditAccept_Click(null, null);
+            if (!Datalist_Complete())
+                return;
             while (m_curOperationalevent < m_OperationalEvents.Length - 1)
             {
                 m_curOperationalevent++;
@@ -1288,7 +1248,8 @@ namespace RecordKeeper
         {
             if (m_OperationalEvents == null)
                 return;
-            buttonGlobEditAccept_Click(null, null);
+            if (!Datalist_Complete())
+                return;
             if (m_curOperationalevent < m_OperationalEvents.Length - 1)
             {
                 m_curOperationalevent++;
@@ -1300,7 +1261,8 @@ namespace RecordKeeper
         {
             if (m_OperationalEvents == null)
                 return;
-            buttonGlobEditAccept_Click(null, null);
+            if (!Datalist_Complete())
+                return;
             while (m_curOperationalevent >= 1)
             {
                 m_curOperationalevent--;
@@ -1313,7 +1275,8 @@ namespace RecordKeeper
         {
             if (m_OperationalEvents == null)
                 return;
-            buttonGlobEditAccept_Click(null, null);
+            if (!Datalist_Complete())
+                return;
             if (m_curOperationalevent >= 1)
             {
                 m_curOperationalevent--;
@@ -1330,7 +1293,7 @@ namespace RecordKeeper
 
             FillLessonFromCalendar(l);
             ShowMatching(MatchingState.Linked, 0.0);
-            buttonGlobEditAccept_Click(null, null);
+            Datalist_Complete();
         }
         private void lbReconcileDescription_Click(object sender, EventArgs e)
         {

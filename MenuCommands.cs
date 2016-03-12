@@ -19,8 +19,6 @@ namespace RecordKeeper
             if (!Operation_CompletePrevious())
                 return;
 
-            if (!CheckSafety())
-                return;
             if (AskAndUploadChangedFiles())
                 Application.Exit();
         }
@@ -230,11 +228,17 @@ namespace RecordKeeper
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (!Operation_CompletePrevious())
+                return;
+
             buttonSave_Click(null, null);
         }
 
         private void syncToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (!Operation_CompletePrevious())
+                return;
+
             buttonSync_Click(null, null);
         }
 
@@ -413,9 +417,6 @@ namespace RecordKeeper
             if (!Operation_CompletePrevious())
                 return;
 
-            if (!CheckSafety())
-                return;
-
             using (RepeatForm rf = new RepeatForm())
             {
                 if (rf.ShowDialog(this) == DialogResult.OK)
@@ -436,9 +437,6 @@ namespace RecordKeeper
             if (!Operation_CompletePrevious())
                 return;
 
-            if (!CheckSafety())
-                return;
-
             using (RepeatForm rf = new RepeatForm())
             {
                 if (rf.ShowDialog(this) == DialogResult.OK)
@@ -457,9 +455,6 @@ namespace RecordKeeper
         private void monthlyToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!Operation_CompletePrevious())
-                return;
-
-            if (!CheckSafety())
                 return;
 
             using (RepeatForm rf = new RepeatForm())
@@ -483,9 +478,6 @@ namespace RecordKeeper
             if (!Operation_CompletePrevious())
                 return;
 
-            if (!CheckSafety())
-                return;
-
             Lesson l = GetLessonFromSender2(sender);
             DeleteFutures(l);
             Modified = true;
@@ -506,8 +498,6 @@ namespace RecordKeeper
         }
         private void CommandDownload()
         {
-            if (!CheckSafety())
-                return;
             DownloadCurrentFile();
         }
         private void CommandSync()

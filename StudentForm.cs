@@ -27,7 +27,6 @@ namespace RecordKeeper
 
         private void EditStudentDetailsChanged()
         {
-            EditTrap = true;
             StaleComboLists = true;
         }
 

@@ -114,8 +114,22 @@ namespace RecordKeeper
             if (DataList.Count == 0)
                 return true;
 
+            if (DataList.CurrencyManager.Position < DataList.Count - 1)
+            {
+                DataList.CurrencyManager.Position++;
+                DataList.CurrencyManager.Position--;
+            }
+            if (DataList.CurrencyManager.Position > 0)
+            {
+                DataList.CurrencyManager.Position--;
+                DataList.CurrencyManager.Position++;
+            }
+
             if (OperMode() == Ops.Edit)
             {
+                if (!CheckSafety())
+                    return false;
+
                 Record rec = DataList.Current as Record;
                 string prob = rec.Validate2FirstProblem();
                 if (!IsStringEmpty(prob))
@@ -133,16 +147,6 @@ namespace RecordKeeper
                     StaleComboLists = true;
             }
 
-            if (DataList.CurrencyManager.Position < DataList.Count - 1)
-            {
-                DataList.CurrencyManager.Position++;
-                DataList.CurrencyManager.Position--;
-            }
-            if (DataList.CurrencyManager.Position > 0)
-            {
-                DataList.CurrencyManager.Position--;
-                DataList.CurrencyManager.Position++;
-            }
             return true;
         }
 
@@ -252,7 +256,6 @@ namespace RecordKeeper
             //HashAll();
             UpdateComboLists();
             SetEditMode(was);
-            m_editSavingTrap = false;
             HideWorkout = false;
         }
 
@@ -406,25 +409,6 @@ namespace RecordKeeper
 
         #region "Edit Trap"
 
-        bool m_editSavingTrap;
-
-        public bool EditTrap
-        {
-            set
-            {
-                m_editSavingTrap = value;
-                if (value)
-                {
-                    StaleComboLists = true;
-                    buttonGlobEditAccept.Visible = true;
-                }
-                else
-                {
-                    buttonGlobEditAccept.Visible = false;
-                }
-            }
-        }
-
         public bool CheckSafety()
         {
             if (m_bulkOperationInPlay)
@@ -442,20 +426,6 @@ namespace RecordKeeper
                     DropFlagUnsavedAvailabilityChanges();
             }
             return true;
-            /*
-            if (m_editSavingTrap)
-            {
-                if (MessageBox.Show(
-                    "Want to lose them?",
-                    "You did not Accept editing changes",
-                    MessageBoxButtons.YesNo)
-                                            != DialogResult.Yes)
-                    return false;
-                else
-                    m_editSavingTrap = false;
-            }
-            return true;
-            */
         }
         #endregion
 
@@ -498,7 +468,7 @@ namespace RecordKeeper
         }
         public void CompleteBulkEditOperation()
         {
-            buttonGlobEditAccept_Click(null, null);
+            Datalist_Complete();
             BulkOperation = false;
             Modified = true;
         }

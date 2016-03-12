@@ -32,14 +32,11 @@ namespace RecordKeeper
 
         public override void ShowCount()
         {
-            //m_glob.ShowRoomCount();
         }
 
         public override void DoSelection()
         {
-            //if (!m_glob.CheckSafety())
                 return;
-            //m_glob.DoClientSelection();
         }
 
         public override void SortRecords(string hdr, Record[] temp)

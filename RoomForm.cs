@@ -24,7 +24,6 @@ namespace RecordKeeper
 
         private void EditRoomDetailsChanged()
         {
-            EditTrap = true;
             StaleComboLists = true;
         }
 

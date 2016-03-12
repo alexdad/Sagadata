@@ -21,7 +21,6 @@ namespace RecordKeeper
 
         private void EditProgramDetailsChanged()
         {
-            EditTrap = true;
             StaleComboLists = true;
         }
 

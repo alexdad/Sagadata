@@ -168,7 +168,6 @@
             this.lessonList = new System.Windows.Forms.BindingSource(this.components);
             this.panelGlobEdit = new System.Windows.Forms.Panel();
             this.labelGlobEditValid = new System.Windows.Forms.Label();
-            this.buttonGlobEditAccept = new System.Windows.Forms.Button();
             this.tabControlModesBottom = new RecordKeeper.HiddenTabControl();
             this.tabBottomPageStudents = new System.Windows.Forms.TabPage();
             this.panelStudent = new System.Windows.Forms.Panel();
@@ -1459,7 +1458,6 @@
             this.dgvTeachers.TabIndex = 1;
             this.dgvTeachers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTeachers_CellContentClick);
             this.dgvTeachers.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTeachers_ColumnHeaderMouseClick);
-            this.dgvTeachers.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTeachers_RowLeave);
             this.dgvTeachers.SelectionChanged += new System.EventHandler(this.dgvTeachers_SelectionChanged);
             // 
             // statusDataGridViewTextBoxColumn
@@ -1585,7 +1583,6 @@
             this.dgvPrograms.TabIndex = 0;
             this.dgvPrograms.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPrograms_CellContentClick);
             this.dgvPrograms.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPrograms_ColumnHeaderMouseClick);
-            this.dgvPrograms.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPrograms_RowLeave);
             // 
             // codeDataGridViewTextBoxColumn
             // 
@@ -1667,7 +1664,6 @@
             this.dgvRooms.TabIndex = 0;
             this.dgvRooms.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRooms_CellContentClick);
             this.dgvRooms.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvRooms_ColumnHeaderMouseClick);
-            this.dgvRooms.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRooms_RowLeave);
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -1759,7 +1755,6 @@
             this.dgvLesson.TabIndex = 0;
             this.dgvLesson.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLesson_CellContentClick);
             this.dgvLesson.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLesson_ColumnHeaderMouseClick);
-            this.dgvLesson.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLesson_RowLeave);
             // 
             // State
             // 
@@ -1880,7 +1875,6 @@
             // panelGlobEdit
             // 
             this.panelGlobEdit.Controls.Add(this.labelGlobEditValid);
-            this.panelGlobEdit.Controls.Add(this.buttonGlobEditAccept);
             this.panelGlobEdit.Controls.Add(this.tabControlModesBottom);
             this.panelGlobEdit.Controls.Add(this.panelGlobPrevDelete);
             this.panelGlobEdit.Controls.Add(this.panelGlobNextNew);
@@ -1899,19 +1893,6 @@
             this.labelGlobEditValid.Name = "labelGlobEditValid";
             this.labelGlobEditValid.Size = new System.Drawing.Size(0, 13);
             this.labelGlobEditValid.TabIndex = 29;
-            // 
-            // buttonGlobEditAccept
-            // 
-            this.buttonGlobEditAccept.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(127)))), ((int)(((byte)(39)))));
-            this.buttonGlobEditAccept.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonGlobEditAccept.Location = new System.Drawing.Point(200, 0);
-            this.buttonGlobEditAccept.Name = "buttonGlobEditAccept";
-            this.buttonGlobEditAccept.Size = new System.Drawing.Size(75, 23);
-            this.buttonGlobEditAccept.TabIndex = 28;
-            this.buttonGlobEditAccept.Text = "Accept";
-            this.buttonGlobEditAccept.UseVisualStyleBackColor = false;
-            this.buttonGlobEditAccept.Visible = false;
-            this.buttonGlobEditAccept.Click += new System.EventHandler(this.buttonGlobEditAccept_Click);
             // 
             // tabControlModesBottom
             // 
@@ -6555,7 +6536,6 @@
         private System.Windows.Forms.Label lbPlanStudent;
         private System.Windows.Forms.Label lbPlanMoreStudents;
         private System.Windows.Forms.Label lbLessonCancellation;
-        private System.Windows.Forms.Button buttonGlobEditAccept;
         private System.Windows.Forms.BindingSource clientList;
         private System.Windows.Forms.Panel panelReconcile;
         private System.Windows.Forms.Label lbReconcileLocation;
