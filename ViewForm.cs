@@ -841,7 +841,7 @@ namespace RecordKeeper
             return l;
         }
 
-        private int EstimateChannels2(List<Label> labels, ViewContext vc, int col)
+        private int EstimateChannels(List<Label> labels, ViewContext vc, int col)
         {
             int[] perRow = new int[m_enumTimeSlot.Count() + 1];
 
@@ -852,29 +852,8 @@ namespace RecordKeeper
                     perRow[y]++;
             }
 
-            return perRow.Max();
+            return perRow.Max() + 1;
         }
-        private int EstimateChannels(List<Label> labels, ViewContext vc, int col)
-        {
-            List<Point> boundaries = new List<Point>();
-            foreach (Label l in labels)
-            {
-                GetLabel(l, ref vc);
-                boundaries.Add(new Point(1, 2 * vc.y1));
-                boundaries.Add(new Point(-1, 2 * vc.y2 + 1));
-            }
-            boundaries.Sort((r1, r2) => r1.Y.CompareTo(r2.Y));
-            int maxInColumn = 0;
-            int curCol = 0;
-            foreach (Point p in boundaries)
-            {
-                curCol += (int)p.X;
-                if (curCol > maxInColumn)
-                    maxInColumn = curCol;
-            }
-            return maxInColumn + 1;
-        }
-
         private List<Label> CollectColumnLabels(Panel panel, ViewContext vc, int col)
         {
             List<Label> labels = new List<Label>();
