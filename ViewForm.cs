@@ -93,6 +93,7 @@ namespace RecordKeeper
         public int y1;
         public int x2;
         public int y2;
+        public int x2max;
         public int cols;
         public int rows;
         public HashSet<Label> movedAlready; 
@@ -123,6 +124,7 @@ namespace RecordKeeper
             this.y1 = 0;
             this.x2 = 0;
             this.y2 = 0;
+            this.x2max = 0;
             this.movedAlready = new HashSet<Label>();
         }
     }
@@ -236,6 +238,7 @@ namespace RecordKeeper
             }
 
             PackRectangles(panelViewMonth, vc);
+            ExpandRight(panelViewMonth, vc);
             MarkAllCollisions(panelViewMonth);
         }
 
@@ -288,6 +291,7 @@ namespace RecordKeeper
             }
 
             PackRectangles(panelViewWeek, vc);
+            ExpandRight(panelViewWeek, vc);
             MarkAllCollisions(panelViewWeek);
         }
 
@@ -826,6 +830,7 @@ namespace RecordKeeper
             int roomIndex = RoomIndex(lsn.Room);
             vc.x1 = (l.Location.X - vc.minX - roomIndex * vc.cellRoomWidth)           / vc.cellRoomWidth;
             vc.x2 = (l.Location.X - vc.minX - roomIndex * vc.cellRoomWidth + l.Width) / vc.cellRoomWidth - 1;
+            vc.x2max = (l.Location.X - vc.minX - (roomList.Count - 1) * vc.cellRoomWidth + l.Width) / vc.cellRoomWidth - 1;
             vc.y1 = (l.Location.Y - vc.minY - vc.labelHeight / 2)            / vc.cellHight;
             vc.y2 = (l.Location.Y - vc.minY - vc.labelHeight / 2 + l.Height) / vc.cellHight - 1;
 
@@ -836,14 +841,27 @@ namespace RecordKeeper
             return l;
         }
 
+        private int EstimateChannels2(List<Label> labels, ViewContext vc, int col)
+        {
+            int[] perRow = new int[m_enumTimeSlot.Count() + 1];
+
+            foreach (Label l in labels)
+            {
+                GetLabel(l, ref vc);
+                for (int y = vc.y1; y <= vc.y2; y++)
+                    perRow[y]++;
+            }
+
+            return perRow.Max();
+        }
         private int EstimateChannels(List<Label> labels, ViewContext vc, int col)
         {
             List<Point> boundaries = new List<Point>();
             foreach (Label l in labels)
             {
                 GetLabel(l, ref vc);
-                boundaries.Add(new Point(1, vc.y1));
-                boundaries.Add(new Point(-1, vc.y2+1));
+                boundaries.Add(new Point(1, 2 * vc.y1));
+                boundaries.Add(new Point(-1, 2 * vc.y2 + 1));
             }
             boundaries.Sort((r1, r2) => r1.Y.CompareTo(r2.Y));
             int maxInColumn = 0;
@@ -854,7 +872,7 @@ namespace RecordKeeper
                 if (curCol > maxInColumn)
                     maxInColumn = curCol;
             }
-            return maxInColumn;
+            return maxInColumn + 1;
         }
 
         private List<Label> CollectColumnLabels(Panel panel, ViewContext vc, int col)
@@ -917,6 +935,62 @@ namespace RecordKeeper
 
                 foreach (Label l in labels)
                     vc.movedAlready.Add(l);
+            }
+        }
+
+        private List<Label> CollectColumnLabels2(Panel panel, ViewContext vc, int col)
+        {
+            List<Label> labels = new List<Label>();
+            foreach (Control c in panel.Controls)
+            {
+                Label l = c as Label;
+                if (l == null)
+                    continue;
+                Lesson lsn = l.Tag as Lesson;
+                if (lsn == null)
+                    continue;
+
+                if (l.Location.X >= vc.minX + (col + 1) * vc.cellWidth ||
+                    l.Location.X + l.Width < vc.minX + col * vc.cellWidth)
+                    continue;
+                labels.Add(l);
+            }
+            return labels;
+        }
+
+        private void ExpandRight(Panel panel, ViewContext vc)
+        {
+            for (int col = vc.cols - 1; col >= 0; col--)
+            {
+                List<Label> labels = CollectColumnLabels2(panel, vc, col);
+                if (labels.Count == 0)
+                    continue;
+
+                int[] rightmost = new int[panel.Height];
+                foreach (Label l in labels)
+                {
+                    int rb = l.Location.X + l.Width;
+                    for (int y = l.Location.Y; y <= l.Location.Y + l.Height; y++)
+                    {
+                        if (rb > rightmost[y])
+                            rightmost[y] = rb;
+                    }
+                }
+                foreach (Label l in labels)
+                {
+                    int rb = l.Location.X + l.Width;
+                    bool hit = false;
+                    for (int y = l.Location.Y; y <= l.Location.Y + l.Height; y++)
+                    {
+                        if (rb != rightmost[y])
+                        {
+                            hit = true;
+                            break;
+                        }
+                    }
+                    if (!hit)
+                        l.Width = (vc.minX + (col + 1) * vc.cellWidth - l.Location.X);
+                }
             }
         }
 

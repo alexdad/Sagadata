@@ -86,7 +86,7 @@ namespace RecordKeeper
             }
             catch (Exception e)
             {
-                MessageBox.Show("Failed to ead local file: " + e.Message);
+                MessageBox.Show("Failed to read local file: " + e.Message);
                 success = false;
             }
 
