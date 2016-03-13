@@ -29,6 +29,7 @@ namespace RecordKeeper
         string[] m_enumDurations;
         string[] m_enumWeekdayNames;
         string[] m_enumCancellation;
+        string[] m_enumAccountingCategories;
 
         Dictionary<Modes, RecordType> m_recordTypes;
         Dictionary<Modes, Type> m_dataTypes;
@@ -124,6 +125,9 @@ namespace RecordKeeper
             RoomToFormConst1();
             LessonToFormConst1();
             ClientToFormConst1();
+            PayExpenseToFormConst1();
+            PayStudentToFormConst1();
+            PayTeacherToFormConst1();
         }
         private void RecordsToFormConst2()
         {
@@ -133,6 +137,9 @@ namespace RecordKeeper
             RoomToFormConst2();
             LessonToFormConst2();
             ClientToFormConst2();
+            PayExpenseToFormConst2();
+            PayStudentToFormConst2();
+            PayTeacherToFormConst2();
         }
 
         private void AssignListsToComboBoxes()
@@ -164,6 +171,11 @@ namespace RecordKeeper
             cbLessonStudent10.Items.Clear();
             cbLessonStudent10.Items.AddRange(orderedStudentNames);
 
+            cbPayStudentStudent.Items.Clear();
+            cbPayStudentStudent.Items.AddRange(orderedStudentNames);
+            cbSearchPayStudentName.Items.Clear();
+            cbSearchPayStudentName.Items.AddRange(orderedStudentNames);
+
             List<Teacher> teachers = ActiveTeachers();
             List<String> teacherNames = teachers.ConvertAll(x => x.Description);
             teacherNames.Add("");
@@ -177,6 +189,11 @@ namespace RecordKeeper
 
             cbLessonTeacher2.Items.Clear();
             cbLessonTeacher2.Items.AddRange(orderedTeacherNames);
+
+            cbPayTeacherTeacher.Items.Clear();
+            cbPayTeacherTeacher.Items.AddRange(orderedTeacherNames);
+            cbSearchPayTeacherName.Items.Clear();
+            cbSearchPayTeacherName.Items.AddRange(orderedTeacherNames);
 
             List<Program> programs = ActivePrograms();
             List<String> programNames = programs.ConvertAll(x => x.Description);
@@ -220,6 +237,9 @@ namespace RecordKeeper
 
             cbViewDetailRoom.Items.Clear();
             cbViewDetailRoom.Items.AddRange(orderedRoomNames);
+
+
+
 
             StaleComboLists = false;
         }
@@ -318,6 +338,9 @@ namespace RecordKeeper
             DropRoomSelection();
             DropProgramSelection();
             DropLessonSelection();
+            DropPayExpenseSelection();
+            DropPayStudentSelection();
+            DropPayTeacherSelection();
         }
 
 
@@ -345,7 +368,10 @@ namespace RecordKeeper
                 (CurrentMode == Modes.Students ||
                  CurrentMode == Modes.Teachers ||
                  CurrentMode == Modes.Lessons ||
-                 CurrentMode == Modes.Programs);
+                 CurrentMode == Modes.Programs ||
+                 CurrentMode == Modes.PayExpenses ||
+                 CurrentMode == Modes.PayStudents ||
+                 CurrentMode == Modes.PayTeachers);
 
         }
 
@@ -456,6 +482,47 @@ namespace RecordKeeper
                 CurrentType.ForkOut<Lesson>(0),
                 e.ColumnIndex);
         }
+
+
+        private void dgvPayExpenses_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            dgvColumnSort<PayExpense>(
+                sender as DataGridView,
+                CurrentType.ForkOut<PayExpense>(0),
+                e.ColumnIndex);
+        }
+
+        private void dgvPayStudents_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            dgvColumnSort<PayStudent>(
+                sender as DataGridView,
+                CurrentType.ForkOut<PayStudent>(0),
+                e.ColumnIndex);
+        }
+
+        private void dgvPayTeacher_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            dgvColumnSort<PayTeacher>(
+                sender as DataGridView,
+                CurrentType.ForkOut<PayTeacher>(0),
+                e.ColumnIndex);
+        }
+
+        private void dgvPayExpenses_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvCellCopy(sender as DataGridView, e.RowIndex, e.ColumnIndex);
+        }
+
+        private void dgvPayStudents_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvCellCopy(sender as DataGridView, e.RowIndex, e.ColumnIndex);
+        }
+
+        private void dgvPayTeacher_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvCellCopy(sender as DataGridView, e.RowIndex, e.ColumnIndex);
+        }
+
 
         private void dgvPlan_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -585,6 +652,15 @@ namespace RecordKeeper
             chkBoxSearchLessonDate.Checked = false;
             dtpSearchLessonDate.Value = DateTime.Now;
 
+            cbSearchPayExpenseCategory.SelectedIndex = -1;
+            cbSearchPayStudentName.SelectedIndex = -1;
+            cbSearchPayTeacherName.SelectedIndex = -1;
+            tbSearchPayExpenseSum.Text = "";
+            tbSearchPayStudentSum.Text = "";
+            tbSearchPayTeacherSum.Text = "";
+            dtpSearchPayExpenseDate.Value = DateTime.Now;
+            dtpSearchPayStudentDate.Value = DateTime.Now;
+            dtpSearchPayTeacherDate.Value = DateTime.Now;
 
         }
 
@@ -615,6 +691,15 @@ namespace RecordKeeper
                     break;
                 case Modes.Clients:
                     //
+                    break;
+                case Modes.PayExpenses:
+                    dtpPayExpenseDay.Focus();
+                    break;
+                case Modes.PayStudents:
+                    dtpPayStudentDate.Focus();
+                    break;
+                case Modes.PayTeachers:
+                    dtpPayTeacherDate.Focus();
                     break;
                 default:
                     break;
@@ -1593,6 +1678,122 @@ namespace RecordKeeper
                 default:
                     break;
             }
+        }
+        #endregion
+
+        #region "Pay-related UI"
+        private void chkSearchPayExpenseDate_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox cb = sender as CheckBox;
+            m_use_PayExpenseSelectionDate = cb.Checked;
+            if (m_use_PayExpenseSelectionDate)
+                m_PayExpenseSelectionDate = dtpSearchPayExpenseDate.Value;
+            else
+                m_PayExpenseSelectionDate = DateTime.Now;
+
+            CurrentType.DoSelection();
+        }
+
+        private void tbSearchPayExpenseSum_TextChanged(object sender, EventArgs e)
+        {
+            double s = 0;
+            if (double.TryParse(tbSearchPayExpenseSum.Text, out s))
+            {
+                m_PayExpenseSelectionSum = s;
+                CurrentType.DoSelection();
+            }
+        }
+
+        private void cbSearchPayExpenseCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            m_PayExpenseSelectionCategory = (string)comboBox.SelectedItem;
+            CurrentType.DoSelection();
+        }
+
+        private void cbSearchPayStudentName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            m_PayStudentSelectionName= (string)comboBox.SelectedItem;
+            CurrentType.DoSelection();
+        }
+
+        private void tbSearchPayStudentSum_TextChanged(object sender, EventArgs e)
+        {
+            double s = 0;
+            if (double.TryParse(tbSearchPayStudentSum.Text, out s))
+            {
+                m_PayStudentSelectionSum = s;
+                CurrentType.DoSelection();
+            }
+        }
+
+        private void chkSearchPayStudentDate_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox cb = sender as CheckBox;
+            m_use_PayStudentSelectionDate = cb.Checked;
+            if (m_use_PayStudentSelectionDate)
+                m_PayStudentSelectionDate = dtpSearchPayStudentDate.Value;
+            else
+                m_PayStudentSelectionDate = DateTime.Now;
+
+            CurrentType.DoSelection();
+        }
+
+        private void dtpSearchPayStudentDate_ValueChanged(object sender, EventArgs e)
+        {
+            if (m_use_PayStudentSelectionDate)
+            {
+                m_PayStudentSelectionDate = dtpSearchPayStudentDate.Value;
+                CurrentType.DoSelection();
+            }
+        }
+
+        private void dtpSearchPayExpenseDate_ValueChanged(object sender, EventArgs e)
+        {
+            if (m_use_PayExpenseSelectionDate)
+            {
+                m_PayExpenseSelectionDate = dtpSearchPayExpenseDate.Value;
+                CurrentType.DoSelection();
+            }
+        }
+
+        private void cbSearchPayTeacherName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ComboBox comboBox = (ComboBox)sender;
+            m_PayTeacherSelectionName= (string)comboBox.SelectedItem;
+            CurrentType.DoSelection();
+        }
+
+        private void tbSearchPayTeacherSum_TextChanged(object sender, EventArgs e)
+        {
+            double s = 0;
+            if (double.TryParse(tbSearchPayTeacherSum.Text, out s))
+            {
+                m_PayTeacherSelectionSum = s;
+                CurrentType.DoSelection();
+            }
+        }
+
+        private void dtpSearchPayTeacherDate_ValueChanged(object sender, EventArgs e)
+        {
+            if (m_use_PayTeacherSelectionDate)
+            {
+                m_PayTeacherSelectionDate = dtpSearchPayTeacherDate.Value;
+                CurrentType.DoSelection();
+            }
+        }
+
+        private void chkSearchPayTeacherDate_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox cb = sender as CheckBox;
+            m_use_PayTeacherSelectionDate = cb.Checked;
+            if (m_use_PayTeacherSelectionDate)
+                m_PayTeacherSelectionDate = dtpSearchPayTeacherDate.Value;
+            else
+                m_PayTeacherSelectionDate = DateTime.Now;
+
+            CurrentType.DoSelection();
         }
         #endregion
     }

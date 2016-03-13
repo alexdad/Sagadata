@@ -42,6 +42,12 @@ namespace RecordKeeper
                 DateTime dts = DateTime.Parse(Start);
                 return new DateTime(dtd.Year, dtd.Month, dtd.Day, dts.Hour, dts.Minute, 0);
             }
+            set
+            {
+                Day = value.ToShortDateString();
+                Start = value.ToShortTimeString();
+            }
+
         }
 
         public DateTime DateTimeEnd
@@ -55,6 +61,11 @@ namespace RecordKeeper
                 DateTime dtd = DateTime.Parse(Day);
                 DateTime dte = DateTime.Parse(End);
                 return new DateTime(dtd.Year, dtd.Month, dtd.Day, dte.Hour, dte.Minute, 0);
+            }
+            set
+            {
+                Day = value.ToShortDateString();
+                End = value.ToShortTimeString();
             }
         }
 

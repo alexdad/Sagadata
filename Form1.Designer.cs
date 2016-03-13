@@ -47,9 +47,9 @@
             this.programsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.roomsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.payToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.studentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.teachersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.reportExpenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.payStudentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.payTeachersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.payExpenseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.advancedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.downloadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reopenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -88,6 +88,13 @@
             this.monthlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteFuturesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContWorkValid = new System.Windows.Forms.SplitContainer();
+            this.panelValidation = new System.Windows.Forms.Panel();
+            this.panelValidButtons = new System.Windows.Forms.Panel();
+            this.buttonValidRerun = new System.Windows.Forms.Button();
+            this.buttonValidClose = new System.Windows.Forms.Button();
+            this.dgvValidation = new System.Windows.Forms.DataGridView();
+            this.Problem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControlOps = new RecordKeeper.HiddenTabControl();
             this.tabEdit = new System.Windows.Forms.TabPage();
             this.splitContainerGlobDataControls = new System.Windows.Forms.SplitContainer();
@@ -166,6 +173,28 @@
             this.CancellationTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.commentsDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lessonList = new System.Windows.Forms.BindingSource(this.components);
+            this.tabTopPageClients = new System.Windows.Forms.TabPage();
+            this.tabTopPagePayExpenses = new System.Windows.Forms.TabPage();
+            this.dgvPayExpenses = new System.Windows.Forms.DataGridView();
+            this.dayDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categoryDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.commentsDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.payExpenseList = new System.Windows.Forms.BindingSource(this.components);
+            this.tabTopPagePayStudents = new System.Windows.Forms.TabPage();
+            this.dgvPayStudents = new System.Windows.Forms.DataGridView();
+            this.studentDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dayDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sumDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.commentsDataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.payStudentList = new System.Windows.Forms.BindingSource(this.components);
+            this.tabTopPagePayTeachers = new System.Windows.Forms.TabPage();
+            this.dgvPayTeacher = new System.Windows.Forms.DataGridView();
+            this.teacherDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dayDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sumDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.commentsDataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.payTeacherList = new System.Windows.Forms.BindingSource(this.components);
             this.panelGlobEdit = new System.Windows.Forms.Panel();
             this.labelGlobEditValid = new System.Windows.Forms.Label();
             this.tabControlModesBottom = new RecordKeeper.HiddenTabControl();
@@ -355,6 +384,37 @@
             this.labelLessonEnd = new System.Windows.Forms.Label();
             this.labelLessonStart = new System.Windows.Forms.Label();
             this.labelLessonDate = new System.Windows.Forms.Label();
+            this.tabBottomPageClients = new System.Windows.Forms.TabPage();
+            this.tabBottomPagePayExpenses = new System.Windows.Forms.TabPage();
+            this.panelPayExpense = new System.Windows.Forms.Panel();
+            this.lbPayExpenseComments = new System.Windows.Forms.Label();
+            this.lbPayExpenceCategory = new System.Windows.Forms.Label();
+            this.lbPayExpenseDate = new System.Windows.Forms.Label();
+            this.vbPayExpenseSum = new System.Windows.Forms.Label();
+            this.dtpPayExpenseDay = new System.Windows.Forms.DateTimePicker();
+            this.cbPayExpenseCategory = new System.Windows.Forms.ComboBox();
+            this.tbPayExpenseSum = new System.Windows.Forms.TextBox();
+            this.tbPayExpenseComments = new System.Windows.Forms.TextBox();
+            this.tabBottomPagePayStudents = new System.Windows.Forms.TabPage();
+            this.panelPayStudents = new System.Windows.Forms.Panel();
+            this.lbPayStudentComments = new System.Windows.Forms.Label();
+            this.lbPayStudentStudent = new System.Windows.Forms.Label();
+            this.lbPayStudentSum = new System.Windows.Forms.Label();
+            this.lbPayStudentDate = new System.Windows.Forms.Label();
+            this.cbPayStudentStudent = new System.Windows.Forms.ComboBox();
+            this.dtpPayStudentDate = new System.Windows.Forms.DateTimePicker();
+            this.tbPayStudentSum = new System.Windows.Forms.TextBox();
+            this.tbPayStudentComments = new System.Windows.Forms.TextBox();
+            this.tabBottomPagePayTeachers = new System.Windows.Forms.TabPage();
+            this.panelPayTeachers = new System.Windows.Forms.Panel();
+            this.lbPayTeacherComments = new System.Windows.Forms.Label();
+            this.lbPayTeacherTeacger = new System.Windows.Forms.Label();
+            this.lbPayTeacherSum = new System.Windows.Forms.Label();
+            this.lbPayTeacherDate = new System.Windows.Forms.Label();
+            this.cbPayTeacherTeacher = new System.Windows.Forms.ComboBox();
+            this.dtpPayTeacherDate = new System.Windows.Forms.DateTimePicker();
+            this.tbPayTeacherSum = new System.Windows.Forms.TextBox();
+            this.tbPayTeacherComments = new System.Windows.Forms.TextBox();
             this.panelGlobPrevDelete = new System.Windows.Forms.Panel();
             this.butGlobalDelete = new System.Windows.Forms.Button();
             this.butGlobalPrev = new System.Windows.Forms.Button();
@@ -409,6 +469,34 @@
             this.lbSearchLessonProgram = new System.Windows.Forms.Label();
             this.lbSearchTeacher = new System.Windows.Forms.Label();
             this.lbSearchLessonDay = new System.Windows.Forms.Label();
+            this.tabPageSearchClients = new System.Windows.Forms.TabPage();
+            this.tabPageSearchPayExpenses = new System.Windows.Forms.TabPage();
+            this.panelSearchPayExpense = new System.Windows.Forms.Panel();
+            this.lbSearchPayExpenseDate = new System.Windows.Forms.Label();
+            this.lbSearchPayExpenseSum = new System.Windows.Forms.Label();
+            this.lbSearchPayExpenseCategoty = new System.Windows.Forms.Label();
+            this.chkSearchPayExpenseDate = new System.Windows.Forms.CheckBox();
+            this.dtpSearchPayExpenseDate = new System.Windows.Forms.DateTimePicker();
+            this.tbSearchPayExpenseSum = new System.Windows.Forms.TextBox();
+            this.cbSearchPayExpenseCategory = new System.Windows.Forms.ComboBox();
+            this.tabPageSearchPayStudents = new System.Windows.Forms.TabPage();
+            this.panelSearchPayStudent = new System.Windows.Forms.Panel();
+            this.dtpSearchPayStudentDate = new System.Windows.Forms.DateTimePicker();
+            this.chkSearchPayStudentDate = new System.Windows.Forms.CheckBox();
+            this.tbSearchPayStudentSum = new System.Windows.Forms.TextBox();
+            this.lbSearchPayStudentDate = new System.Windows.Forms.Label();
+            this.lbSearchPayStudentSum = new System.Windows.Forms.Label();
+            this.lbSearchPayStudentName = new System.Windows.Forms.Label();
+            this.cbSearchPayStudentName = new System.Windows.Forms.ComboBox();
+            this.tabPageSearchPayTeachers = new System.Windows.Forms.TabPage();
+            this.panelSearchPayTeacher = new System.Windows.Forms.Panel();
+            this.chkSearchPayTeacherDate = new System.Windows.Forms.CheckBox();
+            this.dtpSearchPayTeacherDate = new System.Windows.Forms.DateTimePicker();
+            this.tbSearchPayTeacherSum = new System.Windows.Forms.TextBox();
+            this.cbSearchPayTeacherName = new System.Windows.Forms.ComboBox();
+            this.lbSearchPayTeacherDate = new System.Windows.Forms.Label();
+            this.lbSearchPayTeacherSum = new System.Windows.Forms.Label();
+            this.lbSearchPayTeacherName = new System.Windows.Forms.Label();
             this.panelSearchButtons = new System.Windows.Forms.Panel();
             this.butGlobalToExcel = new System.Windows.Forms.Button();
             this.buttGlobalShowAll = new System.Windows.Forms.Button();
@@ -528,23 +616,8 @@
             this.butViewPrev = new System.Windows.Forms.Button();
             this.butViewZoomIn = new System.Windows.Forms.Button();
             this.butViewZoomOut = new System.Windows.Forms.Button();
-            this.tabSchedCancel = new System.Windows.Forms.TabPage();
-            this.lbSchedCancelName = new System.Windows.Forms.Label();
-            this.tabPayStud = new System.Windows.Forms.TabPage();
-            this.lbPayStudName = new System.Windows.Forms.Label();
-            this.tabPayTeach = new System.Windows.Forms.TabPage();
-            this.lbPayTeachName = new System.Windows.Forms.Label();
-            this.tabPayExpense = new System.Windows.Forms.TabPage();
-            this.lbPayExpenseName = new System.Windows.Forms.Label();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.lbFutureOpName = new System.Windows.Forms.Label();
-            this.panelValidation = new System.Windows.Forms.Panel();
-            this.panelValidButtons = new System.Windows.Forms.Panel();
-            this.buttonValidRerun = new System.Windows.Forms.Button();
-            this.buttonValidClose = new System.Windows.Forms.Button();
-            this.dgvValidation = new System.Windows.Forms.DataGridView();
-            this.Problem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.problemDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.keyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -557,6 +630,9 @@
             this.splitContWorkValid.Panel1.SuspendLayout();
             this.splitContWorkValid.Panel2.SuspendLayout();
             this.splitContWorkValid.SuspendLayout();
+            this.panelValidation.SuspendLayout();
+            this.panelValidButtons.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvValidation)).BeginInit();
             this.tabControlOps.SuspendLayout();
             this.tabEdit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerGlobDataControls)).BeginInit();
@@ -583,6 +659,15 @@
             this.tabTopPageLessons.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLesson)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lessonList)).BeginInit();
+            this.tabTopPagePayExpenses.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPayExpenses)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.payExpenseList)).BeginInit();
+            this.tabTopPagePayStudents.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPayStudents)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.payStudentList)).BeginInit();
+            this.tabTopPagePayTeachers.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPayTeacher)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.payTeacherList)).BeginInit();
             this.panelGlobEdit.SuspendLayout();
             this.tabControlModesBottom.SuspendLayout();
             this.tabBottomPageStudents.SuspendLayout();
@@ -609,6 +694,12 @@
             this.tabBottomPageLessons.SuspendLayout();
             this.panelLesson.SuspendLayout();
             this.panelReconcile.SuspendLayout();
+            this.tabBottomPagePayExpenses.SuspendLayout();
+            this.panelPayExpense.SuspendLayout();
+            this.tabBottomPagePayStudents.SuspendLayout();
+            this.panelPayStudents.SuspendLayout();
+            this.tabBottomPagePayTeachers.SuspendLayout();
+            this.panelPayTeachers.SuspendLayout();
             this.panelGlobPrevDelete.SuspendLayout();
             this.panelGlobNextNew.SuspendLayout();
             this.panelGlobSearch.SuspendLayout();
@@ -623,6 +714,12 @@
             this.tabPageSearchRoom.SuspendLayout();
             this.tabPageSearchLesson.SuspendLayout();
             this.panelSearchLesson.SuspendLayout();
+            this.tabPageSearchPayExpenses.SuspendLayout();
+            this.panelSearchPayExpense.SuspendLayout();
+            this.tabPageSearchPayStudents.SuspendLayout();
+            this.panelSearchPayStudent.SuspendLayout();
+            this.tabPageSearchPayTeachers.SuspendLayout();
+            this.panelSearchPayTeacher.SuspendLayout();
             this.panelSearchButtons.SuspendLayout();
             this.panelGlobLogo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBoxGlobIcon)).BeginInit();
@@ -648,14 +745,7 @@
             this.panelViewSlots.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewSlots)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewSlotList)).BeginInit();
-            this.tabSchedCancel.SuspendLayout();
-            this.tabPayStud.SuspendLayout();
-            this.tabPayTeach.SuspendLayout();
-            this.tabPayExpense.SuspendLayout();
             this.tabPage8.SuspendLayout();
-            this.panelValidation.SuspendLayout();
-            this.panelValidButtons.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvValidation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.problemList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientList)).BeginInit();
             this.SuspendLayout();
@@ -798,33 +888,33 @@
             // payToolStripMenuItem
             // 
             this.payToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.studentsToolStripMenuItem,
-            this.teachersToolStripMenuItem,
-            this.reportExpenseToolStripMenuItem});
+            this.payStudentsToolStripMenuItem,
+            this.payTeachersToolStripMenuItem,
+            this.payExpenseToolStripMenuItem});
             this.payToolStripMenuItem.Name = "payToolStripMenuItem";
             this.payToolStripMenuItem.Size = new System.Drawing.Size(38, 20);
             this.payToolStripMenuItem.Text = "Pay";
             // 
-            // studentsToolStripMenuItem
+            // payStudentsToolStripMenuItem
             // 
-            this.studentsToolStripMenuItem.Name = "studentsToolStripMenuItem";
-            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
-            this.studentsToolStripMenuItem.Text = "Students";
-            this.studentsToolStripMenuItem.Click += new System.EventHandler(this.studentsToolStripMenuItem_Click);
+            this.payStudentsToolStripMenuItem.Name = "payStudentsToolStripMenuItem";
+            this.payStudentsToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.payStudentsToolStripMenuItem.Text = "Students";
+            this.payStudentsToolStripMenuItem.Click += new System.EventHandler(this.payStudentsToolStripMenuItem_Click);
             // 
-            // teachersToolStripMenuItem
+            // payTeachersToolStripMenuItem
             // 
-            this.teachersToolStripMenuItem.Name = "teachersToolStripMenuItem";
-            this.teachersToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
-            this.teachersToolStripMenuItem.Text = "Teachers";
-            this.teachersToolStripMenuItem.Click += new System.EventHandler(this.teachersToolStripMenuItem_Click);
+            this.payTeachersToolStripMenuItem.Name = "payTeachersToolStripMenuItem";
+            this.payTeachersToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.payTeachersToolStripMenuItem.Text = "Teachers";
+            this.payTeachersToolStripMenuItem.Click += new System.EventHandler(this.payTeachersToolStripMenuItem_Click);
             // 
-            // reportExpenseToolStripMenuItem
+            // payExpenseToolStripMenuItem
             // 
-            this.reportExpenseToolStripMenuItem.Name = "reportExpenseToolStripMenuItem";
-            this.reportExpenseToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
-            this.reportExpenseToolStripMenuItem.Text = "Expenses";
-            this.reportExpenseToolStripMenuItem.Click += new System.EventHandler(this.reportExpenseToolStripMenuItem_Click);
+            this.payExpenseToolStripMenuItem.Name = "payExpenseToolStripMenuItem";
+            this.payExpenseToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.payExpenseToolStripMenuItem.Text = "Expenses";
+            this.payExpenseToolStripMenuItem.Click += new System.EventHandler(this.payExpenseToolStripMenuItem_Click);
             // 
             // advancedToolStripMenuItem
             // 
@@ -1158,15 +1248,91 @@
             this.splitContWorkValid.SplitterDistance = 777;
             this.splitContWorkValid.TabIndex = 26;
             // 
+            // panelValidation
+            // 
+            this.panelValidation.Controls.Add(this.panelValidButtons);
+            this.panelValidation.Controls.Add(this.dgvValidation);
+            this.panelValidation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelValidation.Location = new System.Drawing.Point(0, 0);
+            this.panelValidation.Name = "panelValidation";
+            this.panelValidation.Size = new System.Drawing.Size(1291, 26);
+            this.panelValidation.TabIndex = 2;
+            this.panelValidation.Visible = false;
+            // 
+            // panelValidButtons
+            // 
+            this.panelValidButtons.Controls.Add(this.buttonValidRerun);
+            this.panelValidButtons.Controls.Add(this.buttonValidClose);
+            this.panelValidButtons.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelValidButtons.Location = new System.Drawing.Point(1182, 0);
+            this.panelValidButtons.Name = "panelValidButtons";
+            this.panelValidButtons.Size = new System.Drawing.Size(109, 26);
+            this.panelValidButtons.TabIndex = 23;
+            // 
+            // buttonValidRerun
+            // 
+            this.buttonValidRerun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonValidRerun.Location = new System.Drawing.Point(21, -38);
+            this.buttonValidRerun.Name = "buttonValidRerun";
+            this.buttonValidRerun.Size = new System.Drawing.Size(75, 23);
+            this.buttonValidRerun.TabIndex = 1;
+            this.buttonValidRerun.Text = "Re-validate";
+            this.buttonValidRerun.UseVisualStyleBackColor = true;
+            this.buttonValidRerun.Click += new System.EventHandler(this.buttonValidRerun_Click);
+            // 
+            // buttonValidClose
+            // 
+            this.buttonValidClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonValidClose.Location = new System.Drawing.Point(20, -9);
+            this.buttonValidClose.Name = "buttonValidClose";
+            this.buttonValidClose.Size = new System.Drawing.Size(75, 23);
+            this.buttonValidClose.TabIndex = 0;
+            this.buttonValidClose.Text = "Close";
+            this.buttonValidClose.UseVisualStyleBackColor = true;
+            this.buttonValidClose.Click += new System.EventHandler(this.buttonValidClose_Click);
+            // 
+            // dgvValidation
+            // 
+            this.dgvValidation.AllowUserToAddRows = false;
+            this.dgvValidation.AllowUserToDeleteRows = false;
+            this.dgvValidation.AutoGenerateColumns = false;
+            this.dgvValidation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvValidation.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Problem,
+            this.Description,
+            this.problemDataGridViewTextBoxColumn,
+            this.descriptionDataGridViewTextBoxColumn1,
+            this.keyDataGridViewTextBoxColumn});
+            this.dgvValidation.DataSource = this.problemList;
+            this.dgvValidation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvValidation.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvValidation.Location = new System.Drawing.Point(0, 0);
+            this.dgvValidation.Name = "dgvValidation";
+            this.dgvValidation.Size = new System.Drawing.Size(1291, 26);
+            this.dgvValidation.TabIndex = 22;
+            this.dgvValidation.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvValidation_CellContentClick);
+            // 
+            // Problem
+            // 
+            this.Problem.DataPropertyName = "Problem";
+            this.Problem.HeaderText = "Problem";
+            this.Problem.MinimumWidth = 300;
+            this.Problem.Name = "Problem";
+            this.Problem.Width = 300;
+            // 
+            // Description
+            // 
+            this.Description.DataPropertyName = "Description";
+            this.Description.HeaderText = "Description";
+            this.Description.MinimumWidth = 300;
+            this.Description.Name = "Description";
+            this.Description.Width = 300;
+            // 
             // tabControlOps
             // 
             this.tabControlOps.Controls.Add(this.tabEdit);
             this.tabControlOps.Controls.Add(this.tabPlan);
             this.tabControlOps.Controls.Add(this.tabView);
-            this.tabControlOps.Controls.Add(this.tabSchedCancel);
-            this.tabControlOps.Controls.Add(this.tabPayStud);
-            this.tabControlOps.Controls.Add(this.tabPayTeach);
-            this.tabControlOps.Controls.Add(this.tabPayExpense);
             this.tabControlOps.Controls.Add(this.tabPage8);
             this.tabControlOps.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControlOps.Location = new System.Drawing.Point(0, 0);
@@ -1232,6 +1398,10 @@
             this.tabControlModesTop.Controls.Add(this.tabTopPagePrograms);
             this.tabControlModesTop.Controls.Add(this.tabTopPageRooms);
             this.tabControlModesTop.Controls.Add(this.tabTopPageLessons);
+            this.tabControlModesTop.Controls.Add(this.tabTopPageClients);
+            this.tabControlModesTop.Controls.Add(this.tabTopPagePayExpenses);
+            this.tabControlModesTop.Controls.Add(this.tabTopPagePayStudents);
+            this.tabControlModesTop.Controls.Add(this.tabTopPagePayTeachers);
             this.tabControlModesTop.Location = new System.Drawing.Point(3, 6);
             this.tabControlModesTop.Name = "tabControlModesTop";
             this.tabControlModesTop.SelectedIndex = 0;
@@ -1424,7 +1594,7 @@
             this.tabTopPageTeachers.Location = new System.Drawing.Point(4, 22);
             this.tabTopPageTeachers.Name = "tabTopPageTeachers";
             this.tabTopPageTeachers.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTopPageTeachers.Size = new System.Drawing.Size(1022, 196);
+            this.tabTopPageTeachers.Size = new System.Drawing.Size(1022, 333);
             this.tabTopPageTeachers.TabIndex = 1;
             this.tabTopPageTeachers.Text = "Teachers";
             this.tabTopPageTeachers.UseVisualStyleBackColor = true;
@@ -1454,7 +1624,7 @@
             this.dgvTeachers.Location = new System.Drawing.Point(3, 3);
             this.dgvTeachers.Name = "dgvTeachers";
             this.dgvTeachers.ReadOnly = true;
-            this.dgvTeachers.Size = new System.Drawing.Size(1016, 190);
+            this.dgvTeachers.Size = new System.Drawing.Size(1016, 327);
             this.dgvTeachers.TabIndex = 1;
             this.dgvTeachers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTeachers_CellContentClick);
             this.dgvTeachers.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvTeachers_ColumnHeaderMouseClick);
@@ -1555,7 +1725,7 @@
             this.tabTopPagePrograms.Location = new System.Drawing.Point(4, 22);
             this.tabTopPagePrograms.Name = "tabTopPagePrograms";
             this.tabTopPagePrograms.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTopPagePrograms.Size = new System.Drawing.Size(1022, 196);
+            this.tabTopPagePrograms.Size = new System.Drawing.Size(1022, 333);
             this.tabTopPagePrograms.TabIndex = 2;
             this.tabTopPagePrograms.Text = "Programs";
             this.tabTopPagePrograms.UseVisualStyleBackColor = true;
@@ -1579,7 +1749,7 @@
             this.dgvPrograms.Location = new System.Drawing.Point(3, 3);
             this.dgvPrograms.Name = "dgvPrograms";
             this.dgvPrograms.ReadOnly = true;
-            this.dgvPrograms.Size = new System.Drawing.Size(1016, 190);
+            this.dgvPrograms.Size = new System.Drawing.Size(1016, 327);
             this.dgvPrograms.TabIndex = 0;
             this.dgvPrograms.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPrograms_CellContentClick);
             this.dgvPrograms.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPrograms_ColumnHeaderMouseClick);
@@ -1636,7 +1806,7 @@
             this.tabTopPageRooms.Location = new System.Drawing.Point(4, 22);
             this.tabTopPageRooms.Name = "tabTopPageRooms";
             this.tabTopPageRooms.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTopPageRooms.Size = new System.Drawing.Size(1022, 196);
+            this.tabTopPageRooms.Size = new System.Drawing.Size(1022, 333);
             this.tabTopPageRooms.TabIndex = 3;
             this.tabTopPageRooms.Text = "Rooms";
             this.tabTopPageRooms.UseVisualStyleBackColor = true;
@@ -1660,7 +1830,7 @@
             this.dgvRooms.Location = new System.Drawing.Point(3, 3);
             this.dgvRooms.Name = "dgvRooms";
             this.dgvRooms.ReadOnly = true;
-            this.dgvRooms.Size = new System.Drawing.Size(1016, 190);
+            this.dgvRooms.Size = new System.Drawing.Size(1016, 327);
             this.dgvRooms.TabIndex = 0;
             this.dgvRooms.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRooms_CellContentClick);
             this.dgvRooms.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvRooms_ColumnHeaderMouseClick);
@@ -1717,7 +1887,7 @@
             this.tabTopPageLessons.Location = new System.Drawing.Point(4, 22);
             this.tabTopPageLessons.Name = "tabTopPageLessons";
             this.tabTopPageLessons.Padding = new System.Windows.Forms.Padding(3);
-            this.tabTopPageLessons.Size = new System.Drawing.Size(1022, 196);
+            this.tabTopPageLessons.Size = new System.Drawing.Size(1022, 333);
             this.tabTopPageLessons.TabIndex = 4;
             this.tabTopPageLessons.Text = "Lessons";
             this.tabTopPageLessons.UseVisualStyleBackColor = true;
@@ -1751,7 +1921,7 @@
             this.dgvLesson.Location = new System.Drawing.Point(3, 3);
             this.dgvLesson.Name = "dgvLesson";
             this.dgvLesson.ReadOnly = true;
-            this.dgvLesson.Size = new System.Drawing.Size(1016, 190);
+            this.dgvLesson.Size = new System.Drawing.Size(1016, 327);
             this.dgvLesson.TabIndex = 0;
             this.dgvLesson.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLesson_CellContentClick);
             this.dgvLesson.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLesson_ColumnHeaderMouseClick);
@@ -1872,6 +2042,210 @@
             // 
             this.lessonList.DataSource = typeof(RecordKeeper.Lesson);
             // 
+            // tabTopPageClients
+            // 
+            this.tabTopPageClients.Location = new System.Drawing.Point(4, 22);
+            this.tabTopPageClients.Name = "tabTopPageClients";
+            this.tabTopPageClients.Padding = new System.Windows.Forms.Padding(3);
+            this.tabTopPageClients.Size = new System.Drawing.Size(1022, 333);
+            this.tabTopPageClients.TabIndex = 8;
+            this.tabTopPageClients.Text = "Clients";
+            this.tabTopPageClients.UseVisualStyleBackColor = true;
+            // 
+            // tabTopPagePayExpenses
+            // 
+            this.tabTopPagePayExpenses.Controls.Add(this.dgvPayExpenses);
+            this.tabTopPagePayExpenses.Location = new System.Drawing.Point(4, 22);
+            this.tabTopPagePayExpenses.Name = "tabTopPagePayExpenses";
+            this.tabTopPagePayExpenses.Padding = new System.Windows.Forms.Padding(3);
+            this.tabTopPagePayExpenses.Size = new System.Drawing.Size(1022, 333);
+            this.tabTopPagePayExpenses.TabIndex = 5;
+            this.tabTopPagePayExpenses.Text = "PayExpenses";
+            this.tabTopPagePayExpenses.UseVisualStyleBackColor = true;
+            // 
+            // dgvPayExpenses
+            // 
+            this.dgvPayExpenses.AllowUserToAddRows = false;
+            this.dgvPayExpenses.AllowUserToDeleteRows = false;
+            this.dgvPayExpenses.AutoGenerateColumns = false;
+            this.dgvPayExpenses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPayExpenses.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dayDataGridViewTextBoxColumn1,
+            this.sumDataGridViewTextBoxColumn,
+            this.categoryDataGridViewTextBoxColumn,
+            this.commentsDataGridViewTextBoxColumn3});
+            this.dgvPayExpenses.DataSource = this.payExpenseList;
+            this.dgvPayExpenses.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvPayExpenses.Location = new System.Drawing.Point(3, 3);
+            this.dgvPayExpenses.Name = "dgvPayExpenses";
+            this.dgvPayExpenses.ReadOnly = true;
+            this.dgvPayExpenses.Size = new System.Drawing.Size(1016, 327);
+            this.dgvPayExpenses.TabIndex = 0;
+            this.dgvPayExpenses.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPayExpenses_CellContentClick);
+            this.dgvPayExpenses.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPayExpenses_ColumnHeaderMouseClick);
+            // 
+            // dayDataGridViewTextBoxColumn1
+            // 
+            this.dayDataGridViewTextBoxColumn1.DataPropertyName = "Day";
+            this.dayDataGridViewTextBoxColumn1.HeaderText = "Day";
+            this.dayDataGridViewTextBoxColumn1.Name = "dayDataGridViewTextBoxColumn1";
+            this.dayDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // sumDataGridViewTextBoxColumn
+            // 
+            this.sumDataGridViewTextBoxColumn.DataPropertyName = "Sum";
+            this.sumDataGridViewTextBoxColumn.HeaderText = "Sum";
+            this.sumDataGridViewTextBoxColumn.Name = "sumDataGridViewTextBoxColumn";
+            this.sumDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // categoryDataGridViewTextBoxColumn
+            // 
+            this.categoryDataGridViewTextBoxColumn.DataPropertyName = "Category";
+            this.categoryDataGridViewTextBoxColumn.HeaderText = "Category";
+            this.categoryDataGridViewTextBoxColumn.Name = "categoryDataGridViewTextBoxColumn";
+            this.categoryDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // commentsDataGridViewTextBoxColumn3
+            // 
+            this.commentsDataGridViewTextBoxColumn3.DataPropertyName = "Comments";
+            this.commentsDataGridViewTextBoxColumn3.HeaderText = "Comments";
+            this.commentsDataGridViewTextBoxColumn3.Name = "commentsDataGridViewTextBoxColumn3";
+            this.commentsDataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // payExpenseList
+            // 
+            this.payExpenseList.DataSource = typeof(RecordKeeper.PayExpense);
+            // 
+            // tabTopPagePayStudents
+            // 
+            this.tabTopPagePayStudents.Controls.Add(this.dgvPayStudents);
+            this.tabTopPagePayStudents.Location = new System.Drawing.Point(4, 22);
+            this.tabTopPagePayStudents.Name = "tabTopPagePayStudents";
+            this.tabTopPagePayStudents.Padding = new System.Windows.Forms.Padding(3);
+            this.tabTopPagePayStudents.Size = new System.Drawing.Size(1022, 333);
+            this.tabTopPagePayStudents.TabIndex = 6;
+            this.tabTopPagePayStudents.Text = "PayStudents";
+            this.tabTopPagePayStudents.UseVisualStyleBackColor = true;
+            // 
+            // dgvPayStudents
+            // 
+            this.dgvPayStudents.AllowUserToAddRows = false;
+            this.dgvPayStudents.AllowUserToDeleteRows = false;
+            this.dgvPayStudents.AllowUserToOrderColumns = true;
+            this.dgvPayStudents.AutoGenerateColumns = false;
+            this.dgvPayStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPayStudents.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.studentDataGridViewTextBoxColumn,
+            this.dayDataGridViewTextBoxColumn2,
+            this.sumDataGridViewTextBoxColumn1,
+            this.commentsDataGridViewTextBoxColumn4});
+            this.dgvPayStudents.DataSource = this.payStudentList;
+            this.dgvPayStudents.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvPayStudents.Location = new System.Drawing.Point(3, 3);
+            this.dgvPayStudents.Name = "dgvPayStudents";
+            this.dgvPayStudents.ReadOnly = true;
+            this.dgvPayStudents.Size = new System.Drawing.Size(1016, 327);
+            this.dgvPayStudents.TabIndex = 0;
+            this.dgvPayStudents.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPayStudents_CellContentClick);
+            this.dgvPayStudents.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPayStudents_ColumnHeaderMouseClick);
+            // 
+            // studentDataGridViewTextBoxColumn
+            // 
+            this.studentDataGridViewTextBoxColumn.DataPropertyName = "Student";
+            this.studentDataGridViewTextBoxColumn.HeaderText = "Student";
+            this.studentDataGridViewTextBoxColumn.Name = "studentDataGridViewTextBoxColumn";
+            this.studentDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dayDataGridViewTextBoxColumn2
+            // 
+            this.dayDataGridViewTextBoxColumn2.DataPropertyName = "Day";
+            this.dayDataGridViewTextBoxColumn2.HeaderText = "Day";
+            this.dayDataGridViewTextBoxColumn2.Name = "dayDataGridViewTextBoxColumn2";
+            this.dayDataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // sumDataGridViewTextBoxColumn1
+            // 
+            this.sumDataGridViewTextBoxColumn1.DataPropertyName = "Sum";
+            this.sumDataGridViewTextBoxColumn1.HeaderText = "Sum";
+            this.sumDataGridViewTextBoxColumn1.Name = "sumDataGridViewTextBoxColumn1";
+            this.sumDataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // commentsDataGridViewTextBoxColumn4
+            // 
+            this.commentsDataGridViewTextBoxColumn4.DataPropertyName = "Comments";
+            this.commentsDataGridViewTextBoxColumn4.HeaderText = "Comments";
+            this.commentsDataGridViewTextBoxColumn4.Name = "commentsDataGridViewTextBoxColumn4";
+            this.commentsDataGridViewTextBoxColumn4.ReadOnly = true;
+            // 
+            // payStudentList
+            // 
+            this.payStudentList.DataSource = typeof(RecordKeeper.PayStudent);
+            // 
+            // tabTopPagePayTeachers
+            // 
+            this.tabTopPagePayTeachers.Controls.Add(this.dgvPayTeacher);
+            this.tabTopPagePayTeachers.Location = new System.Drawing.Point(4, 22);
+            this.tabTopPagePayTeachers.Name = "tabTopPagePayTeachers";
+            this.tabTopPagePayTeachers.Padding = new System.Windows.Forms.Padding(3);
+            this.tabTopPagePayTeachers.Size = new System.Drawing.Size(1022, 333);
+            this.tabTopPagePayTeachers.TabIndex = 7;
+            this.tabTopPagePayTeachers.Text = "PayTeachers";
+            this.tabTopPagePayTeachers.UseVisualStyleBackColor = true;
+            // 
+            // dgvPayTeacher
+            // 
+            this.dgvPayTeacher.AllowUserToAddRows = false;
+            this.dgvPayTeacher.AllowUserToDeleteRows = false;
+            this.dgvPayTeacher.AllowUserToOrderColumns = true;
+            this.dgvPayTeacher.AutoGenerateColumns = false;
+            this.dgvPayTeacher.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPayTeacher.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.teacherDataGridViewTextBoxColumn,
+            this.dayDataGridViewTextBoxColumn3,
+            this.sumDataGridViewTextBoxColumn2,
+            this.commentsDataGridViewTextBoxColumn5});
+            this.dgvPayTeacher.DataSource = this.payTeacherList;
+            this.dgvPayTeacher.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvPayTeacher.Location = new System.Drawing.Point(3, 3);
+            this.dgvPayTeacher.Name = "dgvPayTeacher";
+            this.dgvPayTeacher.ReadOnly = true;
+            this.dgvPayTeacher.Size = new System.Drawing.Size(1016, 327);
+            this.dgvPayTeacher.TabIndex = 0;
+            this.dgvPayTeacher.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPayTeacher_CellContentClick);
+            this.dgvPayTeacher.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPayTeacher_ColumnHeaderMouseClick);
+            // 
+            // teacherDataGridViewTextBoxColumn
+            // 
+            this.teacherDataGridViewTextBoxColumn.DataPropertyName = "Teacher";
+            this.teacherDataGridViewTextBoxColumn.HeaderText = "Teacher";
+            this.teacherDataGridViewTextBoxColumn.Name = "teacherDataGridViewTextBoxColumn";
+            this.teacherDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dayDataGridViewTextBoxColumn3
+            // 
+            this.dayDataGridViewTextBoxColumn3.DataPropertyName = "Day";
+            this.dayDataGridViewTextBoxColumn3.HeaderText = "Day";
+            this.dayDataGridViewTextBoxColumn3.Name = "dayDataGridViewTextBoxColumn3";
+            this.dayDataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // sumDataGridViewTextBoxColumn2
+            // 
+            this.sumDataGridViewTextBoxColumn2.DataPropertyName = "Sum";
+            this.sumDataGridViewTextBoxColumn2.HeaderText = "Sum";
+            this.sumDataGridViewTextBoxColumn2.Name = "sumDataGridViewTextBoxColumn2";
+            this.sumDataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // commentsDataGridViewTextBoxColumn5
+            // 
+            this.commentsDataGridViewTextBoxColumn5.DataPropertyName = "Comments";
+            this.commentsDataGridViewTextBoxColumn5.HeaderText = "Comments";
+            this.commentsDataGridViewTextBoxColumn5.Name = "commentsDataGridViewTextBoxColumn5";
+            this.commentsDataGridViewTextBoxColumn5.ReadOnly = true;
+            // 
+            // payTeacherList
+            // 
+            this.payTeacherList.DataSource = typeof(RecordKeeper.PayTeacher);
+            // 
             // panelGlobEdit
             // 
             this.panelGlobEdit.Controls.Add(this.labelGlobEditValid);
@@ -1904,6 +2278,10 @@
             this.tabControlModesBottom.Controls.Add(this.tabBottomPagePrograms);
             this.tabControlModesBottom.Controls.Add(this.tabBottomPageRooms);
             this.tabControlModesBottom.Controls.Add(this.tabBottomPageLessons);
+            this.tabControlModesBottom.Controls.Add(this.tabBottomPageClients);
+            this.tabControlModesBottom.Controls.Add(this.tabBottomPagePayExpenses);
+            this.tabControlModesBottom.Controls.Add(this.tabBottomPagePayStudents);
+            this.tabControlModesBottom.Controls.Add(this.tabBottomPagePayTeachers);
             this.tabControlModesBottom.Location = new System.Drawing.Point(46, 25);
             this.tabControlModesBottom.Name = "tabControlModesBottom";
             this.tabControlModesBottom.SelectedIndex = 0;
@@ -2548,7 +2926,7 @@
             this.tabBottomPageTeachers.Location = new System.Drawing.Point(4, 22);
             this.tabBottomPageTeachers.Name = "tabBottomPageTeachers";
             this.tabBottomPageTeachers.Padding = new System.Windows.Forms.Padding(3);
-            this.tabBottomPageTeachers.Size = new System.Drawing.Size(935, 203);
+            this.tabBottomPageTeachers.Size = new System.Drawing.Size(935, 344);
             this.tabBottomPageTeachers.TabIndex = 1;
             this.tabBottomPageTeachers.Text = "Teachers";
             this.tabBottomPageTeachers.UseVisualStyleBackColor = true;
@@ -2563,7 +2941,7 @@
             this.panelTeacherSecondary.Controls.Add(this.buttonTeach_GrabAvailChanges);
             this.panelTeacherSecondary.Location = new System.Drawing.Point(3, 135);
             this.panelTeacherSecondary.Name = "panelTeacherSecondary";
-            this.panelTeacherSecondary.Size = new System.Drawing.Size(929, 69);
+            this.panelTeacherSecondary.Size = new System.Drawing.Size(929, 210);
             this.panelTeacherSecondary.TabIndex = 1;
             // 
             // panelTeachMatrix
@@ -2574,7 +2952,7 @@
             this.panelTeachMatrix.AutoScroll = true;
             this.panelTeachMatrix.Location = new System.Drawing.Point(7, 53);
             this.panelTeachMatrix.Name = "panelTeachMatrix";
-            this.panelTeachMatrix.Size = new System.Drawing.Size(919, 36);
+            this.panelTeachMatrix.Size = new System.Drawing.Size(919, 177);
             this.panelTeachMatrix.TabIndex = 1;
             // 
             // buttonTeach_GrabAvailChanges
@@ -2870,7 +3248,7 @@
             this.tabBottomPagePrograms.Location = new System.Drawing.Point(4, 22);
             this.tabBottomPagePrograms.Name = "tabBottomPagePrograms";
             this.tabBottomPagePrograms.Padding = new System.Windows.Forms.Padding(3);
-            this.tabBottomPagePrograms.Size = new System.Drawing.Size(935, 203);
+            this.tabBottomPagePrograms.Size = new System.Drawing.Size(935, 344);
             this.tabBottomPagePrograms.TabIndex = 2;
             this.tabBottomPagePrograms.Text = "Programs";
             this.tabBottomPagePrograms.UseVisualStyleBackColor = true;
@@ -2883,7 +3261,7 @@
             this.panelProgram.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelProgram.Location = new System.Drawing.Point(3, 3);
             this.panelProgram.Name = "panelProgram";
-            this.panelProgram.Size = new System.Drawing.Size(929, 197);
+            this.panelProgram.Size = new System.Drawing.Size(929, 338);
             this.panelProgram.TabIndex = 0;
             // 
             // groupBoxProgram
@@ -2895,7 +3273,7 @@
             this.groupBoxProgram.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxProgram.Location = new System.Drawing.Point(241, 0);
             this.groupBoxProgram.Name = "groupBoxProgram";
-            this.groupBoxProgram.Size = new System.Drawing.Size(688, 197);
+            this.groupBoxProgram.Size = new System.Drawing.Size(688, 338);
             this.groupBoxProgram.TabIndex = 1;
             this.groupBoxProgram.TabStop = false;
             // 
@@ -2952,7 +3330,7 @@
             this.panelProgramPrimaryLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelProgramPrimaryLeft.Location = new System.Drawing.Point(0, 0);
             this.panelProgramPrimaryLeft.Name = "panelProgramPrimaryLeft";
-            this.panelProgramPrimaryLeft.Size = new System.Drawing.Size(241, 197);
+            this.panelProgramPrimaryLeft.Size = new System.Drawing.Size(241, 338);
             this.panelProgramPrimaryLeft.TabIndex = 0;
             // 
             // tbProgPrice
@@ -3035,7 +3413,7 @@
             this.tabBottomPageRooms.Location = new System.Drawing.Point(4, 22);
             this.tabBottomPageRooms.Name = "tabBottomPageRooms";
             this.tabBottomPageRooms.Padding = new System.Windows.Forms.Padding(3);
-            this.tabBottomPageRooms.Size = new System.Drawing.Size(935, 203);
+            this.tabBottomPageRooms.Size = new System.Drawing.Size(935, 344);
             this.tabBottomPageRooms.TabIndex = 3;
             this.tabBottomPageRooms.Text = "Rooms";
             this.tabBottomPageRooms.UseVisualStyleBackColor = true;
@@ -3048,7 +3426,7 @@
             this.panelRoom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelRoom.Location = new System.Drawing.Point(3, 3);
             this.panelRoom.Name = "panelRoom";
-            this.panelRoom.Size = new System.Drawing.Size(929, 197);
+            this.panelRoom.Size = new System.Drawing.Size(929, 338);
             this.panelRoom.TabIndex = 0;
             // 
             // panelRoomPrimaryLeft
@@ -3062,7 +3440,7 @@
             this.panelRoomPrimaryLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelRoomPrimaryLeft.Location = new System.Drawing.Point(0, 0);
             this.panelRoomPrimaryLeft.Name = "panelRoomPrimaryLeft";
-            this.panelRoomPrimaryLeft.Size = new System.Drawing.Size(200, 197);
+            this.panelRoomPrimaryLeft.Size = new System.Drawing.Size(200, 338);
             this.panelRoomPrimaryLeft.TabIndex = 1;
             // 
             // labelRoomRank
@@ -3128,7 +3506,7 @@
             this.groupBoxRoom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBoxRoom.Location = new System.Drawing.Point(0, 0);
             this.groupBoxRoom.Name = "groupBoxRoom";
-            this.groupBoxRoom.Size = new System.Drawing.Size(929, 197);
+            this.groupBoxRoom.Size = new System.Drawing.Size(929, 338);
             this.groupBoxRoom.TabIndex = 2;
             this.groupBoxRoom.TabStop = false;
             // 
@@ -3937,6 +4315,313 @@
             this.labelLessonDate.TabIndex = 0;
             this.labelLessonDate.Text = "Date:";
             // 
+            // tabBottomPageClients
+            // 
+            this.tabBottomPageClients.Location = new System.Drawing.Point(4, 22);
+            this.tabBottomPageClients.Name = "tabBottomPageClients";
+            this.tabBottomPageClients.Padding = new System.Windows.Forms.Padding(3);
+            this.tabBottomPageClients.Size = new System.Drawing.Size(935, 344);
+            this.tabBottomPageClients.TabIndex = 8;
+            this.tabBottomPageClients.Text = "Clients";
+            this.tabBottomPageClients.UseVisualStyleBackColor = true;
+            // 
+            // tabBottomPagePayExpenses
+            // 
+            this.tabBottomPagePayExpenses.Controls.Add(this.panelPayExpense);
+            this.tabBottomPagePayExpenses.Location = new System.Drawing.Point(4, 22);
+            this.tabBottomPagePayExpenses.Name = "tabBottomPagePayExpenses";
+            this.tabBottomPagePayExpenses.Padding = new System.Windows.Forms.Padding(3);
+            this.tabBottomPagePayExpenses.Size = new System.Drawing.Size(935, 344);
+            this.tabBottomPagePayExpenses.TabIndex = 5;
+            this.tabBottomPagePayExpenses.Text = "PayExpenses";
+            this.tabBottomPagePayExpenses.UseVisualStyleBackColor = true;
+            // 
+            // panelPayExpense
+            // 
+            this.panelPayExpense.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
+            this.panelPayExpense.Controls.Add(this.lbPayExpenseComments);
+            this.panelPayExpense.Controls.Add(this.lbPayExpenceCategory);
+            this.panelPayExpense.Controls.Add(this.lbPayExpenseDate);
+            this.panelPayExpense.Controls.Add(this.vbPayExpenseSum);
+            this.panelPayExpense.Controls.Add(this.dtpPayExpenseDay);
+            this.panelPayExpense.Controls.Add(this.cbPayExpenseCategory);
+            this.panelPayExpense.Controls.Add(this.tbPayExpenseSum);
+            this.panelPayExpense.Controls.Add(this.tbPayExpenseComments);
+            this.panelPayExpense.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelPayExpense.Location = new System.Drawing.Point(3, 3);
+            this.panelPayExpense.Name = "panelPayExpense";
+            this.panelPayExpense.Size = new System.Drawing.Size(929, 338);
+            this.panelPayExpense.TabIndex = 0;
+            // 
+            // lbPayExpenseComments
+            // 
+            this.lbPayExpenseComments.AutoSize = true;
+            this.lbPayExpenseComments.Location = new System.Drawing.Point(16, 46);
+            this.lbPayExpenseComments.Name = "lbPayExpenseComments";
+            this.lbPayExpenseComments.Size = new System.Drawing.Size(59, 13);
+            this.lbPayExpenseComments.TabIndex = 7;
+            this.lbPayExpenseComments.Text = "Comments:";
+            // 
+            // lbPayExpenceCategory
+            // 
+            this.lbPayExpenceCategory.AutoSize = true;
+            this.lbPayExpenceCategory.Location = new System.Drawing.Point(340, 1);
+            this.lbPayExpenceCategory.Name = "lbPayExpenceCategory";
+            this.lbPayExpenceCategory.Size = new System.Drawing.Size(108, 13);
+            this.lbPayExpenceCategory.TabIndex = 6;
+            this.lbPayExpenceCategory.Text = "Accounting category:";
+            // 
+            // lbPayExpenseDate
+            // 
+            this.lbPayExpenseDate.AutoSize = true;
+            this.lbPayExpenseDate.Location = new System.Drawing.Point(16, 4);
+            this.lbPayExpenseDate.Name = "lbPayExpenseDate";
+            this.lbPayExpenseDate.Size = new System.Drawing.Size(33, 13);
+            this.lbPayExpenseDate.TabIndex = 5;
+            this.lbPayExpenseDate.Text = "Date:";
+            // 
+            // vbPayExpenseSum
+            // 
+            this.vbPayExpenseSum.AutoSize = true;
+            this.vbPayExpenseSum.Location = new System.Drawing.Point(244, 1);
+            this.vbPayExpenseSum.Name = "vbPayExpenseSum";
+            this.vbPayExpenseSum.Size = new System.Drawing.Size(46, 13);
+            this.vbPayExpenseSum.TabIndex = 4;
+            this.vbPayExpenseSum.Text = "Amount:";
+            // 
+            // dtpPayExpenseDay
+            // 
+            this.dtpPayExpenseDay.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.payExpenseList, "PaymentDate", true));
+            this.dtpPayExpenseDay.Location = new System.Drawing.Point(16, 17);
+            this.dtpPayExpenseDay.Name = "dtpPayExpenseDay";
+            this.dtpPayExpenseDay.Size = new System.Drawing.Size(200, 20);
+            this.dtpPayExpenseDay.TabIndex = 1;
+            // 
+            // cbPayExpenseCategory
+            // 
+            this.cbPayExpenseCategory.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.payExpenseList, "Category", true));
+            this.cbPayExpenseCategory.FormattingEnabled = true;
+            this.cbPayExpenseCategory.Location = new System.Drawing.Point(343, 16);
+            this.cbPayExpenseCategory.Name = "cbPayExpenseCategory";
+            this.cbPayExpenseCategory.Size = new System.Drawing.Size(121, 21);
+            this.cbPayExpenseCategory.TabIndex = 3;
+            // 
+            // tbPayExpenseSum
+            // 
+            this.tbPayExpenseSum.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.payExpenseList, "Sum", true));
+            this.tbPayExpenseSum.Location = new System.Drawing.Point(247, 17);
+            this.tbPayExpenseSum.Name = "tbPayExpenseSum";
+            this.tbPayExpenseSum.Size = new System.Drawing.Size(60, 20);
+            this.tbPayExpenseSum.TabIndex = 2;
+            // 
+            // tbPayExpenseComments
+            // 
+            this.tbPayExpenseComments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbPayExpenseComments.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.payExpenseList, "Comments", true));
+            this.tbPayExpenseComments.Location = new System.Drawing.Point(16, 62);
+            this.tbPayExpenseComments.Name = "tbPayExpenseComments";
+            this.tbPayExpenseComments.Size = new System.Drawing.Size(891, 20);
+            this.tbPayExpenseComments.TabIndex = 4;
+            // 
+            // tabBottomPagePayStudents
+            // 
+            this.tabBottomPagePayStudents.Controls.Add(this.panelPayStudents);
+            this.tabBottomPagePayStudents.Location = new System.Drawing.Point(4, 22);
+            this.tabBottomPagePayStudents.Name = "tabBottomPagePayStudents";
+            this.tabBottomPagePayStudents.Padding = new System.Windows.Forms.Padding(3);
+            this.tabBottomPagePayStudents.Size = new System.Drawing.Size(935, 344);
+            this.tabBottomPagePayStudents.TabIndex = 6;
+            this.tabBottomPagePayStudents.Text = "PayStudents";
+            this.tabBottomPagePayStudents.UseVisualStyleBackColor = true;
+            // 
+            // panelPayStudents
+            // 
+            this.panelPayStudents.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
+            this.panelPayStudents.Controls.Add(this.lbPayStudentComments);
+            this.panelPayStudents.Controls.Add(this.lbPayStudentStudent);
+            this.panelPayStudents.Controls.Add(this.lbPayStudentSum);
+            this.panelPayStudents.Controls.Add(this.lbPayStudentDate);
+            this.panelPayStudents.Controls.Add(this.cbPayStudentStudent);
+            this.panelPayStudents.Controls.Add(this.dtpPayStudentDate);
+            this.panelPayStudents.Controls.Add(this.tbPayStudentSum);
+            this.panelPayStudents.Controls.Add(this.tbPayStudentComments);
+            this.panelPayStudents.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelPayStudents.Location = new System.Drawing.Point(3, 3);
+            this.panelPayStudents.Name = "panelPayStudents";
+            this.panelPayStudents.Size = new System.Drawing.Size(929, 338);
+            this.panelPayStudents.TabIndex = 0;
+            // 
+            // lbPayStudentComments
+            // 
+            this.lbPayStudentComments.AutoSize = true;
+            this.lbPayStudentComments.Location = new System.Drawing.Point(14, 47);
+            this.lbPayStudentComments.Name = "lbPayStudentComments";
+            this.lbPayStudentComments.Size = new System.Drawing.Size(59, 13);
+            this.lbPayStudentComments.TabIndex = 7;
+            this.lbPayStudentComments.Text = "Comments:";
+            // 
+            // lbPayStudentStudent
+            // 
+            this.lbPayStudentStudent.AutoSize = true;
+            this.lbPayStudentStudent.Location = new System.Drawing.Point(324, 1);
+            this.lbPayStudentStudent.Name = "lbPayStudentStudent";
+            this.lbPayStudentStudent.Size = new System.Drawing.Size(47, 13);
+            this.lbPayStudentStudent.TabIndex = 6;
+            this.lbPayStudentStudent.Text = "Student:";
+            // 
+            // lbPayStudentSum
+            // 
+            this.lbPayStudentSum.AutoSize = true;
+            this.lbPayStudentSum.Location = new System.Drawing.Point(244, 4);
+            this.lbPayStudentSum.Name = "lbPayStudentSum";
+            this.lbPayStudentSum.Size = new System.Drawing.Size(46, 13);
+            this.lbPayStudentSum.TabIndex = 5;
+            this.lbPayStudentSum.Text = "Amount:";
+            // 
+            // lbPayStudentDate
+            // 
+            this.lbPayStudentDate.AutoSize = true;
+            this.lbPayStudentDate.Location = new System.Drawing.Point(14, 1);
+            this.lbPayStudentDate.Name = "lbPayStudentDate";
+            this.lbPayStudentDate.Size = new System.Drawing.Size(33, 13);
+            this.lbPayStudentDate.TabIndex = 4;
+            this.lbPayStudentDate.Text = "Date:";
+            // 
+            // cbPayStudentStudent
+            // 
+            this.cbPayStudentStudent.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.payStudentList, "Student", true));
+            this.cbPayStudentStudent.FormattingEnabled = true;
+            this.cbPayStudentStudent.Location = new System.Drawing.Point(327, 19);
+            this.cbPayStudentStudent.Name = "cbPayStudentStudent";
+            this.cbPayStudentStudent.Size = new System.Drawing.Size(121, 21);
+            this.cbPayStudentStudent.TabIndex = 3;
+            // 
+            // dtpPayStudentDate
+            // 
+            this.dtpPayStudentDate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.payStudentList, "PaymentDate", true));
+            this.dtpPayStudentDate.Location = new System.Drawing.Point(14, 20);
+            this.dtpPayStudentDate.Name = "dtpPayStudentDate";
+            this.dtpPayStudentDate.Size = new System.Drawing.Size(200, 20);
+            this.dtpPayStudentDate.TabIndex = 1;
+            // 
+            // tbPayStudentSum
+            // 
+            this.tbPayStudentSum.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.payStudentList, "Sum", true));
+            this.tbPayStudentSum.Location = new System.Drawing.Point(244, 21);
+            this.tbPayStudentSum.Name = "tbPayStudentSum";
+            this.tbPayStudentSum.Size = new System.Drawing.Size(56, 20);
+            this.tbPayStudentSum.TabIndex = 2;
+            // 
+            // tbPayStudentComments
+            // 
+            this.tbPayStudentComments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbPayStudentComments.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.payStudentList, "Comments", true));
+            this.tbPayStudentComments.Location = new System.Drawing.Point(14, 65);
+            this.tbPayStudentComments.Name = "tbPayStudentComments";
+            this.tbPayStudentComments.Size = new System.Drawing.Size(896, 20);
+            this.tbPayStudentComments.TabIndex = 4;
+            // 
+            // tabBottomPagePayTeachers
+            // 
+            this.tabBottomPagePayTeachers.Controls.Add(this.panelPayTeachers);
+            this.tabBottomPagePayTeachers.Location = new System.Drawing.Point(4, 22);
+            this.tabBottomPagePayTeachers.Name = "tabBottomPagePayTeachers";
+            this.tabBottomPagePayTeachers.Padding = new System.Windows.Forms.Padding(3);
+            this.tabBottomPagePayTeachers.Size = new System.Drawing.Size(935, 344);
+            this.tabBottomPagePayTeachers.TabIndex = 7;
+            this.tabBottomPagePayTeachers.Text = "PayTeachers";
+            this.tabBottomPagePayTeachers.UseVisualStyleBackColor = true;
+            // 
+            // panelPayTeachers
+            // 
+            this.panelPayTeachers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(212)))), ((int)(((byte)(255)))), ((int)(((byte)(236)))));
+            this.panelPayTeachers.Controls.Add(this.lbPayTeacherComments);
+            this.panelPayTeachers.Controls.Add(this.lbPayTeacherTeacger);
+            this.panelPayTeachers.Controls.Add(this.lbPayTeacherSum);
+            this.panelPayTeachers.Controls.Add(this.lbPayTeacherDate);
+            this.panelPayTeachers.Controls.Add(this.cbPayTeacherTeacher);
+            this.panelPayTeachers.Controls.Add(this.dtpPayTeacherDate);
+            this.panelPayTeachers.Controls.Add(this.tbPayTeacherSum);
+            this.panelPayTeachers.Controls.Add(this.tbPayTeacherComments);
+            this.panelPayTeachers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelPayTeachers.Location = new System.Drawing.Point(3, 3);
+            this.panelPayTeachers.Name = "panelPayTeachers";
+            this.panelPayTeachers.Size = new System.Drawing.Size(929, 338);
+            this.panelPayTeachers.TabIndex = 0;
+            // 
+            // lbPayTeacherComments
+            // 
+            this.lbPayTeacherComments.AutoSize = true;
+            this.lbPayTeacherComments.Location = new System.Drawing.Point(14, 47);
+            this.lbPayTeacherComments.Name = "lbPayTeacherComments";
+            this.lbPayTeacherComments.Size = new System.Drawing.Size(59, 13);
+            this.lbPayTeacherComments.TabIndex = 7;
+            this.lbPayTeacherComments.Text = "Comments:";
+            // 
+            // lbPayTeacherTeacger
+            // 
+            this.lbPayTeacherTeacger.AutoSize = true;
+            this.lbPayTeacherTeacger.Location = new System.Drawing.Point(319, 4);
+            this.lbPayTeacherTeacger.Name = "lbPayTeacherTeacger";
+            this.lbPayTeacherTeacger.Size = new System.Drawing.Size(50, 13);
+            this.lbPayTeacherTeacger.TabIndex = 6;
+            this.lbPayTeacherTeacger.Text = "Teacher:";
+            // 
+            // lbPayTeacherSum
+            // 
+            this.lbPayTeacherSum.AutoSize = true;
+            this.lbPayTeacherSum.Location = new System.Drawing.Point(242, 4);
+            this.lbPayTeacherSum.Name = "lbPayTeacherSum";
+            this.lbPayTeacherSum.Size = new System.Drawing.Size(46, 13);
+            this.lbPayTeacherSum.TabIndex = 5;
+            this.lbPayTeacherSum.Text = "Amount:";
+            // 
+            // lbPayTeacherDate
+            // 
+            this.lbPayTeacherDate.AutoSize = true;
+            this.lbPayTeacherDate.Location = new System.Drawing.Point(14, 4);
+            this.lbPayTeacherDate.Name = "lbPayTeacherDate";
+            this.lbPayTeacherDate.Size = new System.Drawing.Size(33, 13);
+            this.lbPayTeacherDate.TabIndex = 4;
+            this.lbPayTeacherDate.Text = "Date:";
+            // 
+            // cbPayTeacherTeacher
+            // 
+            this.cbPayTeacherTeacher.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.payTeacherList, "Teacher", true));
+            this.cbPayTeacherTeacher.FormattingEnabled = true;
+            this.cbPayTeacherTeacher.Location = new System.Drawing.Point(322, 19);
+            this.cbPayTeacherTeacher.Name = "cbPayTeacherTeacher";
+            this.cbPayTeacherTeacher.Size = new System.Drawing.Size(121, 21);
+            this.cbPayTeacherTeacher.TabIndex = 3;
+            // 
+            // dtpPayTeacherDate
+            // 
+            this.dtpPayTeacherDate.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.payTeacherList, "PaymentDate", true));
+            this.dtpPayTeacherDate.Location = new System.Drawing.Point(14, 20);
+            this.dtpPayTeacherDate.Name = "dtpPayTeacherDate";
+            this.dtpPayTeacherDate.Size = new System.Drawing.Size(200, 20);
+            this.dtpPayTeacherDate.TabIndex = 1;
+            // 
+            // tbPayTeacherSum
+            // 
+            this.tbPayTeacherSum.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.payTeacherList, "Sum", true));
+            this.tbPayTeacherSum.Location = new System.Drawing.Point(242, 20);
+            this.tbPayTeacherSum.Name = "tbPayTeacherSum";
+            this.tbPayTeacherSum.Size = new System.Drawing.Size(54, 20);
+            this.tbPayTeacherSum.TabIndex = 2;
+            // 
+            // tbPayTeacherComments
+            // 
+            this.tbPayTeacherComments.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbPayTeacherComments.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.payTeacherList, "Comments", true));
+            this.tbPayTeacherComments.Location = new System.Drawing.Point(14, 62);
+            this.tbPayTeacherComments.Name = "tbPayTeacherComments";
+            this.tbPayTeacherComments.Size = new System.Drawing.Size(899, 20);
+            this.tbPayTeacherComments.TabIndex = 4;
+            // 
             // panelGlobPrevDelete
             // 
             this.panelGlobPrevDelete.Controls.Add(this.butGlobalDelete);
@@ -4062,6 +4747,10 @@
             this.tabControlSearch.Controls.Add(this.tabPageSearchProgram);
             this.tabControlSearch.Controls.Add(this.tabPageSearchRoom);
             this.tabControlSearch.Controls.Add(this.tabPageSearchLesson);
+            this.tabControlSearch.Controls.Add(this.tabPageSearchClients);
+            this.tabControlSearch.Controls.Add(this.tabPageSearchPayExpenses);
+            this.tabControlSearch.Controls.Add(this.tabPageSearchPayStudents);
+            this.tabControlSearch.Controls.Add(this.tabPageSearchPayTeachers);
             this.tabControlSearch.Location = new System.Drawing.Point(5, 37);
             this.tabControlSearch.Name = "tabControlSearch";
             this.tabControlSearch.SelectedIndex = 0;
@@ -4500,6 +5189,283 @@
             this.lbSearchLessonDay.TabIndex = 0;
             this.lbSearchLessonDay.Text = "Date:";
             // 
+            // tabPageSearchClients
+            // 
+            this.tabPageSearchClients.Location = new System.Drawing.Point(4, 22);
+            this.tabPageSearchClients.Name = "tabPageSearchClients";
+            this.tabPageSearchClients.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageSearchClients.Size = new System.Drawing.Size(211, 271);
+            this.tabPageSearchClients.TabIndex = 8;
+            this.tabPageSearchClients.Text = "t6";
+            this.tabPageSearchClients.UseVisualStyleBackColor = true;
+            // 
+            // tabPageSearchPayExpenses
+            // 
+            this.tabPageSearchPayExpenses.Controls.Add(this.panelSearchPayExpense);
+            this.tabPageSearchPayExpenses.Location = new System.Drawing.Point(4, 22);
+            this.tabPageSearchPayExpenses.Name = "tabPageSearchPayExpenses";
+            this.tabPageSearchPayExpenses.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageSearchPayExpenses.Size = new System.Drawing.Size(211, 271);
+            this.tabPageSearchPayExpenses.TabIndex = 5;
+            this.tabPageSearchPayExpenses.Text = "t7";
+            this.tabPageSearchPayExpenses.UseVisualStyleBackColor = true;
+            // 
+            // panelSearchPayExpense
+            // 
+            this.panelSearchPayExpense.Controls.Add(this.lbSearchPayExpenseDate);
+            this.panelSearchPayExpense.Controls.Add(this.lbSearchPayExpenseSum);
+            this.panelSearchPayExpense.Controls.Add(this.lbSearchPayExpenseCategoty);
+            this.panelSearchPayExpense.Controls.Add(this.chkSearchPayExpenseDate);
+            this.panelSearchPayExpense.Controls.Add(this.dtpSearchPayExpenseDate);
+            this.panelSearchPayExpense.Controls.Add(this.tbSearchPayExpenseSum);
+            this.panelSearchPayExpense.Controls.Add(this.cbSearchPayExpenseCategory);
+            this.panelSearchPayExpense.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelSearchPayExpense.Location = new System.Drawing.Point(3, 3);
+            this.panelSearchPayExpense.Name = "panelSearchPayExpense";
+            this.panelSearchPayExpense.Size = new System.Drawing.Size(205, 265);
+            this.panelSearchPayExpense.TabIndex = 0;
+            // 
+            // lbSearchPayExpenseDate
+            // 
+            this.lbSearchPayExpenseDate.AutoSize = true;
+            this.lbSearchPayExpenseDate.Location = new System.Drawing.Point(21, 95);
+            this.lbSearchPayExpenseDate.Name = "lbSearchPayExpenseDate";
+            this.lbSearchPayExpenseDate.Size = new System.Drawing.Size(33, 13);
+            this.lbSearchPayExpenseDate.TabIndex = 6;
+            this.lbSearchPayExpenseDate.Text = "Date:";
+            // 
+            // lbSearchPayExpenseSum
+            // 
+            this.lbSearchPayExpenseSum.AutoSize = true;
+            this.lbSearchPayExpenseSum.Location = new System.Drawing.Point(21, 60);
+            this.lbSearchPayExpenseSum.Name = "lbSearchPayExpenseSum";
+            this.lbSearchPayExpenseSum.Size = new System.Drawing.Size(46, 13);
+            this.lbSearchPayExpenseSum.TabIndex = 5;
+            this.lbSearchPayExpenseSum.Text = "Amount:";
+            // 
+            // lbSearchPayExpenseCategoty
+            // 
+            this.lbSearchPayExpenseCategoty.AutoSize = true;
+            this.lbSearchPayExpenseCategoty.Location = new System.Drawing.Point(21, 25);
+            this.lbSearchPayExpenseCategoty.Name = "lbSearchPayExpenseCategoty";
+            this.lbSearchPayExpenseCategoty.Size = new System.Drawing.Size(52, 13);
+            this.lbSearchPayExpenseCategoty.TabIndex = 4;
+            this.lbSearchPayExpenseCategoty.Text = "Category:";
+            // 
+            // chkSearchPayExpenseDate
+            // 
+            this.chkSearchPayExpenseDate.AutoSize = true;
+            this.chkSearchPayExpenseDate.Location = new System.Drawing.Point(173, 95);
+            this.chkSearchPayExpenseDate.Name = "chkSearchPayExpenseDate";
+            this.chkSearchPayExpenseDate.Size = new System.Drawing.Size(15, 14);
+            this.chkSearchPayExpenseDate.TabIndex = 3;
+            this.chkSearchPayExpenseDate.UseVisualStyleBackColor = true;
+            this.chkSearchPayExpenseDate.CheckedChanged += new System.EventHandler(this.chkSearchPayExpenseDate_CheckedChanged);
+            // 
+            // dtpSearchPayExpenseDate
+            // 
+            this.dtpSearchPayExpenseDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpSearchPayExpenseDate.Location = new System.Drawing.Point(72, 95);
+            this.dtpSearchPayExpenseDate.Name = "dtpSearchPayExpenseDate";
+            this.dtpSearchPayExpenseDate.Size = new System.Drawing.Size(93, 20);
+            this.dtpSearchPayExpenseDate.TabIndex = 2;
+            this.dtpSearchPayExpenseDate.ValueChanged += new System.EventHandler(this.dtpSearchPayExpenseDate_ValueChanged);
+            // 
+            // tbSearchPayExpenseSum
+            // 
+            this.tbSearchPayExpenseSum.Location = new System.Drawing.Point(73, 60);
+            this.tbSearchPayExpenseSum.Name = "tbSearchPayExpenseSum";
+            this.tbSearchPayExpenseSum.Size = new System.Drawing.Size(92, 20);
+            this.tbSearchPayExpenseSum.TabIndex = 1;
+            this.tbSearchPayExpenseSum.TextChanged += new System.EventHandler(this.tbSearchPayExpenseSum_TextChanged);
+            // 
+            // cbSearchPayExpenseCategory
+            // 
+            this.cbSearchPayExpenseCategory.FormattingEnabled = true;
+            this.cbSearchPayExpenseCategory.Location = new System.Drawing.Point(73, 22);
+            this.cbSearchPayExpenseCategory.Name = "cbSearchPayExpenseCategory";
+            this.cbSearchPayExpenseCategory.Size = new System.Drawing.Size(121, 21);
+            this.cbSearchPayExpenseCategory.TabIndex = 0;
+            this.cbSearchPayExpenseCategory.SelectedIndexChanged += new System.EventHandler(this.cbSearchPayExpenseCategory_SelectedIndexChanged);
+            // 
+            // tabPageSearchPayStudents
+            // 
+            this.tabPageSearchPayStudents.Controls.Add(this.panelSearchPayStudent);
+            this.tabPageSearchPayStudents.Location = new System.Drawing.Point(4, 22);
+            this.tabPageSearchPayStudents.Name = "tabPageSearchPayStudents";
+            this.tabPageSearchPayStudents.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageSearchPayStudents.Size = new System.Drawing.Size(211, 271);
+            this.tabPageSearchPayStudents.TabIndex = 6;
+            this.tabPageSearchPayStudents.Text = "t8";
+            this.tabPageSearchPayStudents.UseVisualStyleBackColor = true;
+            // 
+            // panelSearchPayStudent
+            // 
+            this.panelSearchPayStudent.Controls.Add(this.dtpSearchPayStudentDate);
+            this.panelSearchPayStudent.Controls.Add(this.chkSearchPayStudentDate);
+            this.panelSearchPayStudent.Controls.Add(this.tbSearchPayStudentSum);
+            this.panelSearchPayStudent.Controls.Add(this.lbSearchPayStudentDate);
+            this.panelSearchPayStudent.Controls.Add(this.lbSearchPayStudentSum);
+            this.panelSearchPayStudent.Controls.Add(this.lbSearchPayStudentName);
+            this.panelSearchPayStudent.Controls.Add(this.cbSearchPayStudentName);
+            this.panelSearchPayStudent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelSearchPayStudent.Location = new System.Drawing.Point(3, 3);
+            this.panelSearchPayStudent.Name = "panelSearchPayStudent";
+            this.panelSearchPayStudent.Size = new System.Drawing.Size(205, 265);
+            this.panelSearchPayStudent.TabIndex = 0;
+            // 
+            // dtpSearchPayStudentDate
+            // 
+            this.dtpSearchPayStudentDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpSearchPayStudentDate.Location = new System.Drawing.Point(73, 95);
+            this.dtpSearchPayStudentDate.Name = "dtpSearchPayStudentDate";
+            this.dtpSearchPayStudentDate.Size = new System.Drawing.Size(98, 20);
+            this.dtpSearchPayStudentDate.TabIndex = 5;
+            this.dtpSearchPayStudentDate.ValueChanged += new System.EventHandler(this.dtpSearchPayStudentDate_ValueChanged);
+            // 
+            // chkSearchPayStudentDate
+            // 
+            this.chkSearchPayStudentDate.AutoSize = true;
+            this.chkSearchPayStudentDate.Location = new System.Drawing.Point(177, 100);
+            this.chkSearchPayStudentDate.Name = "chkSearchPayStudentDate";
+            this.chkSearchPayStudentDate.Size = new System.Drawing.Size(15, 14);
+            this.chkSearchPayStudentDate.TabIndex = 5;
+            this.chkSearchPayStudentDate.UseVisualStyleBackColor = true;
+            this.chkSearchPayStudentDate.CheckedChanged += new System.EventHandler(this.chkSearchPayStudentDate_CheckedChanged);
+            // 
+            // tbSearchPayStudentSum
+            // 
+            this.tbSearchPayStudentSum.Location = new System.Drawing.Point(73, 56);
+            this.tbSearchPayStudentSum.Name = "tbSearchPayStudentSum";
+            this.tbSearchPayStudentSum.Size = new System.Drawing.Size(66, 20);
+            this.tbSearchPayStudentSum.TabIndex = 4;
+            this.tbSearchPayStudentSum.TextChanged += new System.EventHandler(this.tbSearchPayStudentSum_TextChanged);
+            // 
+            // lbSearchPayStudentDate
+            // 
+            this.lbSearchPayStudentDate.AutoSize = true;
+            this.lbSearchPayStudentDate.Location = new System.Drawing.Point(23, 95);
+            this.lbSearchPayStudentDate.Name = "lbSearchPayStudentDate";
+            this.lbSearchPayStudentDate.Size = new System.Drawing.Size(33, 13);
+            this.lbSearchPayStudentDate.TabIndex = 3;
+            this.lbSearchPayStudentDate.Text = "Date:";
+            // 
+            // lbSearchPayStudentSum
+            // 
+            this.lbSearchPayStudentSum.AutoSize = true;
+            this.lbSearchPayStudentSum.Location = new System.Drawing.Point(23, 60);
+            this.lbSearchPayStudentSum.Name = "lbSearchPayStudentSum";
+            this.lbSearchPayStudentSum.Size = new System.Drawing.Size(46, 13);
+            this.lbSearchPayStudentSum.TabIndex = 2;
+            this.lbSearchPayStudentSum.Text = "Amount:";
+            // 
+            // lbSearchPayStudentName
+            // 
+            this.lbSearchPayStudentName.AutoSize = true;
+            this.lbSearchPayStudentName.Location = new System.Drawing.Point(20, 25);
+            this.lbSearchPayStudentName.Name = "lbSearchPayStudentName";
+            this.lbSearchPayStudentName.Size = new System.Drawing.Size(47, 13);
+            this.lbSearchPayStudentName.TabIndex = 1;
+            this.lbSearchPayStudentName.Text = "Student:";
+            // 
+            // cbSearchPayStudentName
+            // 
+            this.cbSearchPayStudentName.FormattingEnabled = true;
+            this.cbSearchPayStudentName.Location = new System.Drawing.Point(73, 22);
+            this.cbSearchPayStudentName.Name = "cbSearchPayStudentName";
+            this.cbSearchPayStudentName.Size = new System.Drawing.Size(121, 21);
+            this.cbSearchPayStudentName.TabIndex = 0;
+            this.cbSearchPayStudentName.SelectedIndexChanged += new System.EventHandler(this.cbSearchPayStudentName_SelectedIndexChanged);
+            // 
+            // tabPageSearchPayTeachers
+            // 
+            this.tabPageSearchPayTeachers.Controls.Add(this.panelSearchPayTeacher);
+            this.tabPageSearchPayTeachers.Location = new System.Drawing.Point(4, 22);
+            this.tabPageSearchPayTeachers.Name = "tabPageSearchPayTeachers";
+            this.tabPageSearchPayTeachers.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageSearchPayTeachers.Size = new System.Drawing.Size(211, 271);
+            this.tabPageSearchPayTeachers.TabIndex = 7;
+            this.tabPageSearchPayTeachers.Text = "t9";
+            this.tabPageSearchPayTeachers.UseVisualStyleBackColor = true;
+            // 
+            // panelSearchPayTeacher
+            // 
+            this.panelSearchPayTeacher.Controls.Add(this.chkSearchPayTeacherDate);
+            this.panelSearchPayTeacher.Controls.Add(this.dtpSearchPayTeacherDate);
+            this.panelSearchPayTeacher.Controls.Add(this.tbSearchPayTeacherSum);
+            this.panelSearchPayTeacher.Controls.Add(this.cbSearchPayTeacherName);
+            this.panelSearchPayTeacher.Controls.Add(this.lbSearchPayTeacherDate);
+            this.panelSearchPayTeacher.Controls.Add(this.lbSearchPayTeacherSum);
+            this.panelSearchPayTeacher.Controls.Add(this.lbSearchPayTeacherName);
+            this.panelSearchPayTeacher.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelSearchPayTeacher.Location = new System.Drawing.Point(3, 3);
+            this.panelSearchPayTeacher.Name = "panelSearchPayTeacher";
+            this.panelSearchPayTeacher.Size = new System.Drawing.Size(205, 265);
+            this.panelSearchPayTeacher.TabIndex = 0;
+            // 
+            // chkSearchPayTeacherDate
+            // 
+            this.chkSearchPayTeacherDate.AutoSize = true;
+            this.chkSearchPayTeacherDate.Location = new System.Drawing.Point(173, 89);
+            this.chkSearchPayTeacherDate.Name = "chkSearchPayTeacherDate";
+            this.chkSearchPayTeacherDate.Size = new System.Drawing.Size(15, 14);
+            this.chkSearchPayTeacherDate.TabIndex = 6;
+            this.chkSearchPayTeacherDate.UseVisualStyleBackColor = true;
+            this.chkSearchPayTeacherDate.CheckedChanged += new System.EventHandler(this.chkSearchPayTeacherDate_CheckedChanged);
+            // 
+            // dtpSearchPayTeacherDate
+            // 
+            this.dtpSearchPayTeacherDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpSearchPayTeacherDate.Location = new System.Drawing.Point(68, 88);
+            this.dtpSearchPayTeacherDate.Name = "dtpSearchPayTeacherDate";
+            this.dtpSearchPayTeacherDate.Size = new System.Drawing.Size(97, 20);
+            this.dtpSearchPayTeacherDate.TabIndex = 5;
+            this.dtpSearchPayTeacherDate.ValueChanged += new System.EventHandler(this.dtpSearchPayTeacherDate_ValueChanged);
+            // 
+            // tbSearchPayTeacherSum
+            // 
+            this.tbSearchPayTeacherSum.Location = new System.Drawing.Point(68, 57);
+            this.tbSearchPayTeacherSum.Name = "tbSearchPayTeacherSum";
+            this.tbSearchPayTeacherSum.Size = new System.Drawing.Size(71, 20);
+            this.tbSearchPayTeacherSum.TabIndex = 4;
+            this.tbSearchPayTeacherSum.TextChanged += new System.EventHandler(this.tbSearchPayTeacherSum_TextChanged);
+            // 
+            // cbSearchPayTeacherName
+            // 
+            this.cbSearchPayTeacherName.FormattingEnabled = true;
+            this.cbSearchPayTeacherName.Location = new System.Drawing.Point(68, 19);
+            this.cbSearchPayTeacherName.Name = "cbSearchPayTeacherName";
+            this.cbSearchPayTeacherName.Size = new System.Drawing.Size(121, 21);
+            this.cbSearchPayTeacherName.TabIndex = 3;
+            this.cbSearchPayTeacherName.SelectedIndexChanged += new System.EventHandler(this.cbSearchPayTeacherName_SelectedIndexChanged);
+            // 
+            // lbSearchPayTeacherDate
+            // 
+            this.lbSearchPayTeacherDate.AutoSize = true;
+            this.lbSearchPayTeacherDate.Location = new System.Drawing.Point(12, 94);
+            this.lbSearchPayTeacherDate.Name = "lbSearchPayTeacherDate";
+            this.lbSearchPayTeacherDate.Size = new System.Drawing.Size(33, 13);
+            this.lbSearchPayTeacherDate.TabIndex = 2;
+            this.lbSearchPayTeacherDate.Text = "Date:";
+            // 
+            // lbSearchPayTeacherSum
+            // 
+            this.lbSearchPayTeacherSum.AutoSize = true;
+            this.lbSearchPayTeacherSum.Location = new System.Drawing.Point(12, 60);
+            this.lbSearchPayTeacherSum.Name = "lbSearchPayTeacherSum";
+            this.lbSearchPayTeacherSum.Size = new System.Drawing.Size(46, 13);
+            this.lbSearchPayTeacherSum.TabIndex = 1;
+            this.lbSearchPayTeacherSum.Text = "Amount:";
+            // 
+            // lbSearchPayTeacherName
+            // 
+            this.lbSearchPayTeacherName.AutoSize = true;
+            this.lbSearchPayTeacherName.Location = new System.Drawing.Point(12, 22);
+            this.lbSearchPayTeacherName.Name = "lbSearchPayTeacherName";
+            this.lbSearchPayTeacherName.Size = new System.Drawing.Size(50, 13);
+            this.lbSearchPayTeacherName.TabIndex = 0;
+            this.lbSearchPayTeacherName.Text = "Teacher:";
+            // 
             // panelSearchButtons
             // 
             this.panelSearchButtons.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -4613,7 +5579,7 @@
             this.tabPlan.Location = new System.Drawing.Point(4, 22);
             this.tabPlan.Name = "tabPlan";
             this.tabPlan.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPlan.Size = new System.Drawing.Size(1283, 473);
+            this.tabPlan.Size = new System.Drawing.Size(1283, 751);
             this.tabPlan.TabIndex = 1;
             this.tabPlan.Text = "Plan";
             this.tabPlan.UseVisualStyleBackColor = true;
@@ -5009,7 +5975,7 @@
             this.tabView.Location = new System.Drawing.Point(4, 22);
             this.tabView.Name = "tabView";
             this.tabView.Padding = new System.Windows.Forms.Padding(3);
-            this.tabView.Size = new System.Drawing.Size(1283, 473);
+            this.tabView.Size = new System.Drawing.Size(1283, 751);
             this.tabView.TabIndex = 2;
             this.tabView.Text = "View";
             this.tabView.UseVisualStyleBackColor = true;
@@ -5021,7 +5987,7 @@
             this.panelView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelView.Location = new System.Drawing.Point(3, 3);
             this.panelView.Name = "panelView";
-            this.panelView.Size = new System.Drawing.Size(1277, 467);
+            this.panelView.Size = new System.Drawing.Size(1277, 745);
             this.panelView.TabIndex = 0;
             // 
             // panelViewControl
@@ -5037,7 +6003,7 @@
             this.panelViewControl.Controls.Add(this.lbViewCount);
             this.panelViewControl.Location = new System.Drawing.Point(1042, 0);
             this.panelViewControl.Name = "panelViewControl";
-            this.panelViewControl.Size = new System.Drawing.Size(235, 467);
+            this.panelViewControl.Size = new System.Drawing.Size(235, 745);
             this.panelViewControl.TabIndex = 1;
             // 
             // lbViewVersion
@@ -5076,7 +6042,7 @@
             this.panelViewSelect.Controls.Add(this.lbViewSelectStudent);
             this.panelViewSelect.Controls.Add(this.butViewShowAll);
             this.panelViewSelect.Controls.Add(this.labelViewSelect);
-            this.panelViewSelect.Location = new System.Drawing.Point(3, 251);
+            this.panelViewSelect.Location = new System.Drawing.Point(3, 529);
             this.panelViewSelect.Name = "panelViewSelect";
             this.panelViewSelect.Size = new System.Drawing.Size(232, 216);
             this.panelViewSelect.TabIndex = 1;
@@ -5398,7 +6364,7 @@
             this.panelViewMatrix.Controls.Add(this.butViewZoomOut);
             this.panelViewMatrix.Location = new System.Drawing.Point(0, 0);
             this.panelViewMatrix.Name = "panelViewMatrix";
-            this.panelViewMatrix.Size = new System.Drawing.Size(1036, 470);
+            this.panelViewMatrix.Size = new System.Drawing.Size(1036, 748);
             this.panelViewMatrix.TabIndex = 1;
             // 
             // panelViewDetails
@@ -5414,7 +6380,7 @@
             this.panelViewDetails.Controls.Add(this.lbViewDetailStudent);
             this.panelViewDetails.Controls.Add(this.lbViewDetailTeacher);
             this.panelViewDetails.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelViewDetails.Location = new System.Drawing.Point(24, 347);
+            this.panelViewDetails.Location = new System.Drawing.Point(24, 625);
             this.panelViewDetails.Name = "panelViewDetails";
             this.panelViewDetails.Size = new System.Drawing.Size(989, 100);
             this.panelViewDetails.TabIndex = 0;
@@ -5516,7 +6482,7 @@
             this.tabControlViewScales.Location = new System.Drawing.Point(24, 19);
             this.tabControlViewScales.Name = "tabControlViewScales";
             this.tabControlViewScales.SelectedIndex = 2;
-            this.tabControlViewScales.Size = new System.Drawing.Size(989, 428);
+            this.tabControlViewScales.Size = new System.Drawing.Size(989, 706);
             this.tabControlViewScales.TabIndex = 0;
             this.tabControlViewScales.SelectedIndexChanged += new System.EventHandler(this.tabControlViewScales_SelectedIndexChanged);
             // 
@@ -5526,7 +6492,7 @@
             this.tabPageMonth.Location = new System.Drawing.Point(4, 22);
             this.tabPageMonth.Name = "tabPageMonth";
             this.tabPageMonth.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageMonth.Size = new System.Drawing.Size(981, 402);
+            this.tabPageMonth.Size = new System.Drawing.Size(981, 680);
             this.tabPageMonth.TabIndex = 3;
             this.tabPageMonth.Text = "Month";
             this.tabPageMonth.UseVisualStyleBackColor = true;
@@ -5536,7 +6502,7 @@
             this.panelViewMonth.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelViewMonth.Location = new System.Drawing.Point(3, 3);
             this.panelViewMonth.Name = "panelViewMonth";
-            this.panelViewMonth.Size = new System.Drawing.Size(975, 396);
+            this.panelViewMonth.Size = new System.Drawing.Size(975, 674);
             this.panelViewMonth.TabIndex = 1;
             // 
             // tabPageViewWeek
@@ -5545,7 +6511,7 @@
             this.tabPageViewWeek.Location = new System.Drawing.Point(4, 22);
             this.tabPageViewWeek.Name = "tabPageViewWeek";
             this.tabPageViewWeek.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageViewWeek.Size = new System.Drawing.Size(981, 402);
+            this.tabPageViewWeek.Size = new System.Drawing.Size(981, 680);
             this.tabPageViewWeek.TabIndex = 0;
             this.tabPageViewWeek.Text = "Week";
             this.tabPageViewWeek.UseVisualStyleBackColor = true;
@@ -5556,7 +6522,7 @@
             this.panelViewWeek.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelViewWeek.Location = new System.Drawing.Point(3, 3);
             this.panelViewWeek.Name = "panelViewWeek";
-            this.panelViewWeek.Size = new System.Drawing.Size(975, 396);
+            this.panelViewWeek.Size = new System.Drawing.Size(975, 674);
             this.panelViewWeek.TabIndex = 0;
             // 
             // label2
@@ -5574,7 +6540,7 @@
             this.tabPageViewDay.Location = new System.Drawing.Point(4, 22);
             this.tabPageViewDay.Name = "tabPageViewDay";
             this.tabPageViewDay.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageViewDay.Size = new System.Drawing.Size(981, 402);
+            this.tabPageViewDay.Size = new System.Drawing.Size(981, 680);
             this.tabPageViewDay.TabIndex = 1;
             this.tabPageViewDay.Text = "Day";
             this.tabPageViewDay.UseVisualStyleBackColor = true;
@@ -5595,7 +6561,7 @@
             this.tabPageViewSlots.Location = new System.Drawing.Point(4, 22);
             this.tabPageViewSlots.Name = "tabPageViewSlots";
             this.tabPageViewSlots.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageViewSlots.Size = new System.Drawing.Size(981, 402);
+            this.tabPageViewSlots.Size = new System.Drawing.Size(981, 680);
             this.tabPageViewSlots.TabIndex = 2;
             this.tabPageViewSlots.Text = "Slots";
             this.tabPageViewSlots.UseVisualStyleBackColor = true;
@@ -5606,7 +6572,7 @@
             this.panelViewSlots.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelViewSlots.Location = new System.Drawing.Point(3, 3);
             this.panelViewSlots.Name = "panelViewSlots";
-            this.panelViewSlots.Size = new System.Drawing.Size(975, 396);
+            this.panelViewSlots.Size = new System.Drawing.Size(975, 674);
             this.panelViewSlots.TabIndex = 0;
             // 
             // dgvViewSlots
@@ -5629,7 +6595,7 @@
             this.dgvViewSlots.Location = new System.Drawing.Point(0, 0);
             this.dgvViewSlots.Name = "dgvViewSlots";
             this.dgvViewSlots.ReadOnly = true;
-            this.dgvViewSlots.Size = new System.Drawing.Size(975, 396);
+            this.dgvViewSlots.Size = new System.Drawing.Size(975, 674);
             this.dgvViewSlots.TabIndex = 0;
             this.dgvViewSlots.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvViewSlots_CellClick);
             this.dgvViewSlots.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvViewSlots_MouseDown);
@@ -5699,7 +6665,7 @@
             this.butViewNext.Dock = System.Windows.Forms.DockStyle.Right;
             this.butViewNext.Location = new System.Drawing.Point(1013, 19);
             this.butViewNext.Name = "butViewNext";
-            this.butViewNext.Size = new System.Drawing.Size(23, 428);
+            this.butViewNext.Size = new System.Drawing.Size(23, 706);
             this.butViewNext.TabIndex = 3;
             this.butViewNext.Text = ">";
             this.butViewNext.UseVisualStyleBackColor = true;
@@ -5710,7 +6676,7 @@
             this.butViewPrev.Dock = System.Windows.Forms.DockStyle.Left;
             this.butViewPrev.Location = new System.Drawing.Point(0, 19);
             this.butViewPrev.Name = "butViewPrev";
-            this.butViewPrev.Size = new System.Drawing.Size(24, 428);
+            this.butViewPrev.Size = new System.Drawing.Size(24, 706);
             this.butViewPrev.TabIndex = 2;
             this.butViewPrev.Text = "<";
             this.butViewPrev.UseVisualStyleBackColor = true;
@@ -5719,7 +6685,7 @@
             // butViewZoomIn
             // 
             this.butViewZoomIn.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.butViewZoomIn.Location = new System.Drawing.Point(0, 447);
+            this.butViewZoomIn.Location = new System.Drawing.Point(0, 725);
             this.butViewZoomIn.Name = "butViewZoomIn";
             this.butViewZoomIn.Size = new System.Drawing.Size(1036, 23);
             this.butViewZoomIn.TabIndex = 1;
@@ -5738,97 +6704,13 @@
             this.butViewZoomOut.UseVisualStyleBackColor = true;
             this.butViewZoomOut.Click += new System.EventHandler(this.butViewZoomOut_Click);
             // 
-            // tabSchedCancel
-            // 
-            this.tabSchedCancel.Controls.Add(this.lbSchedCancelName);
-            this.tabSchedCancel.Location = new System.Drawing.Point(4, 22);
-            this.tabSchedCancel.Name = "tabSchedCancel";
-            this.tabSchedCancel.Padding = new System.Windows.Forms.Padding(3);
-            this.tabSchedCancel.Size = new System.Drawing.Size(1283, 473);
-            this.tabSchedCancel.TabIndex = 3;
-            this.tabSchedCancel.Text = "SchedCancel";
-            this.tabSchedCancel.UseVisualStyleBackColor = true;
-            // 
-            // lbSchedCancelName
-            // 
-            this.lbSchedCancelName.AutoSize = true;
-            this.lbSchedCancelName.Font = this.lbSchedPlanName.Font;
-            this.lbSchedCancelName.Location = this.lbSchedPlanName.Location;
-            this.lbSchedCancelName.Name = "lbSchedCancelName";
-            this.lbSchedCancelName.Size = this.lbSchedPlanName.Size;
-            this.lbSchedCancelName.TabIndex = 0;
-            this.lbSchedCancelName.Text = "Cancel a Lesson";
-            // 
-            // tabPayStud
-            // 
-            this.tabPayStud.Controls.Add(this.lbPayStudName);
-            this.tabPayStud.Location = new System.Drawing.Point(4, 22);
-            this.tabPayStud.Name = "tabPayStud";
-            this.tabPayStud.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPayStud.Size = new System.Drawing.Size(1283, 473);
-            this.tabPayStud.TabIndex = 4;
-            this.tabPayStud.Text = "PayStud";
-            this.tabPayStud.UseVisualStyleBackColor = true;
-            // 
-            // lbPayStudName
-            // 
-            this.lbPayStudName.AutoSize = true;
-            this.lbPayStudName.Font = this.lbSchedPlanName.Font;
-            this.lbPayStudName.Location = this.lbSchedPlanName.Location;
-            this.lbPayStudName.Name = "lbPayStudName";
-            this.lbPayStudName.Size = this.lbSchedPlanName.Size;
-            this.lbPayStudName.TabIndex = 0;
-            this.lbPayStudName.Text = "Enter Student Payment";
-            // 
-            // tabPayTeach
-            // 
-            this.tabPayTeach.Controls.Add(this.lbPayTeachName);
-            this.tabPayTeach.Location = new System.Drawing.Point(4, 22);
-            this.tabPayTeach.Name = "tabPayTeach";
-            this.tabPayTeach.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPayTeach.Size = new System.Drawing.Size(1283, 473);
-            this.tabPayTeach.TabIndex = 5;
-            this.tabPayTeach.Text = "PayTeach";
-            this.tabPayTeach.UseVisualStyleBackColor = true;
-            // 
-            // lbPayTeachName
-            // 
-            this.lbPayTeachName.AutoSize = true;
-            this.lbPayTeachName.Font = this.lbSchedPlanName.Font;
-            this.lbPayTeachName.Location = this.lbSchedPlanName.Location;
-            this.lbPayTeachName.Name = "lbPayTeachName";
-            this.lbPayTeachName.Size = this.lbSchedPlanName.Size;
-            this.lbPayTeachName.TabIndex = 0;
-            this.lbPayTeachName.Text = "Enter Teacher Payment";
-            // 
-            // tabPayExpense
-            // 
-            this.tabPayExpense.Controls.Add(this.lbPayExpenseName);
-            this.tabPayExpense.Location = new System.Drawing.Point(4, 22);
-            this.tabPayExpense.Name = "tabPayExpense";
-            this.tabPayExpense.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPayExpense.Size = new System.Drawing.Size(1283, 473);
-            this.tabPayExpense.TabIndex = 6;
-            this.tabPayExpense.Text = "PayExpense";
-            this.tabPayExpense.UseVisualStyleBackColor = true;
-            // 
-            // lbPayExpenseName
-            // 
-            this.lbPayExpenseName.AutoSize = true;
-            this.lbPayExpenseName.Font = this.lbSchedPlanName.Font;
-            this.lbPayExpenseName.Location = this.lbSchedPlanName.Location;
-            this.lbPayExpenseName.Name = "lbPayExpenseName";
-            this.lbPayExpenseName.Size = this.lbSchedPlanName.Size;
-            this.lbPayExpenseName.TabIndex = 0;
-            this.lbPayExpenseName.Text = "Report New Expense";
-            // 
             // tabPage8
             // 
             this.tabPage8.Controls.Add(this.lbFutureOpName);
             this.tabPage8.Location = new System.Drawing.Point(4, 22);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(1283, 473);
+            this.tabPage8.Size = new System.Drawing.Size(1283, 751);
             this.tabPage8.TabIndex = 7;
             this.tabPage8.Text = "tabPage8";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -5842,86 +6724,6 @@
             this.lbFutureOpName.Size = this.lbSchedPlanName.Size;
             this.lbFutureOpName.TabIndex = 0;
             this.lbFutureOpName.Text = "Future Operation";
-            // 
-            // panelValidation
-            // 
-            this.panelValidation.Controls.Add(this.panelValidButtons);
-            this.panelValidation.Controls.Add(this.dgvValidation);
-            this.panelValidation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelValidation.Location = new System.Drawing.Point(0, 0);
-            this.panelValidation.Name = "panelValidation";
-            this.panelValidation.Size = new System.Drawing.Size(1291, 26);
-            this.panelValidation.TabIndex = 2;
-            this.panelValidation.Visible = false;
-            // 
-            // panelValidButtons
-            // 
-            this.panelValidButtons.Controls.Add(this.buttonValidRerun);
-            this.panelValidButtons.Controls.Add(this.buttonValidClose);
-            this.panelValidButtons.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelValidButtons.Location = new System.Drawing.Point(1182, 0);
-            this.panelValidButtons.Name = "panelValidButtons";
-            this.panelValidButtons.Size = new System.Drawing.Size(109, 26);
-            this.panelValidButtons.TabIndex = 23;
-            // 
-            // buttonValidRerun
-            // 
-            this.buttonValidRerun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonValidRerun.Location = new System.Drawing.Point(21, -38);
-            this.buttonValidRerun.Name = "buttonValidRerun";
-            this.buttonValidRerun.Size = new System.Drawing.Size(75, 23);
-            this.buttonValidRerun.TabIndex = 1;
-            this.buttonValidRerun.Text = "Re-validate";
-            this.buttonValidRerun.UseVisualStyleBackColor = true;
-            this.buttonValidRerun.Click += new System.EventHandler(this.buttonValidRerun_Click);
-            // 
-            // buttonValidClose
-            // 
-            this.buttonValidClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonValidClose.Location = new System.Drawing.Point(20, -9);
-            this.buttonValidClose.Name = "buttonValidClose";
-            this.buttonValidClose.Size = new System.Drawing.Size(75, 23);
-            this.buttonValidClose.TabIndex = 0;
-            this.buttonValidClose.Text = "Close";
-            this.buttonValidClose.UseVisualStyleBackColor = true;
-            this.buttonValidClose.Click += new System.EventHandler(this.buttonValidClose_Click);
-            // 
-            // dgvValidation
-            // 
-            this.dgvValidation.AllowUserToAddRows = false;
-            this.dgvValidation.AllowUserToDeleteRows = false;
-            this.dgvValidation.AutoGenerateColumns = false;
-            this.dgvValidation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvValidation.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Problem,
-            this.Description,
-            this.problemDataGridViewTextBoxColumn,
-            this.descriptionDataGridViewTextBoxColumn1,
-            this.keyDataGridViewTextBoxColumn});
-            this.dgvValidation.DataSource = this.problemList;
-            this.dgvValidation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvValidation.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvValidation.Location = new System.Drawing.Point(0, 0);
-            this.dgvValidation.Name = "dgvValidation";
-            this.dgvValidation.Size = new System.Drawing.Size(1291, 26);
-            this.dgvValidation.TabIndex = 22;
-            this.dgvValidation.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvValidation_CellContentClick);
-            // 
-            // Problem
-            // 
-            this.Problem.DataPropertyName = "Problem";
-            this.Problem.HeaderText = "Problem";
-            this.Problem.MinimumWidth = 300;
-            this.Problem.Name = "Problem";
-            this.Problem.Width = 300;
-            // 
-            // Description
-            // 
-            this.Description.DataPropertyName = "Description";
-            this.Description.HeaderText = "Description";
-            this.Description.MinimumWidth = 300;
-            this.Description.Name = "Description";
-            this.Description.Width = 300;
             // 
             // problemDataGridViewTextBoxColumn
             // 
@@ -5972,6 +6774,9 @@
             this.splitContWorkValid.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContWorkValid)).EndInit();
             this.splitContWorkValid.ResumeLayout(false);
+            this.panelValidation.ResumeLayout(false);
+            this.panelValidButtons.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvValidation)).EndInit();
             this.tabControlOps.ResumeLayout(false);
             this.tabEdit.ResumeLayout(false);
             this.splitContainerGlobDataControls.Panel1.ResumeLayout(false);
@@ -5998,6 +6803,15 @@
             this.tabTopPageLessons.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLesson)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lessonList)).EndInit();
+            this.tabTopPagePayExpenses.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPayExpenses)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.payExpenseList)).EndInit();
+            this.tabTopPagePayStudents.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPayStudents)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.payStudentList)).EndInit();
+            this.tabTopPagePayTeachers.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPayTeacher)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.payTeacherList)).EndInit();
             this.panelGlobEdit.ResumeLayout(false);
             this.panelGlobEdit.PerformLayout();
             this.tabControlModesBottom.ResumeLayout(false);
@@ -6037,6 +6851,15 @@
             this.panelLesson.PerformLayout();
             this.panelReconcile.ResumeLayout(false);
             this.panelReconcile.PerformLayout();
+            this.tabBottomPagePayExpenses.ResumeLayout(false);
+            this.panelPayExpense.ResumeLayout(false);
+            this.panelPayExpense.PerformLayout();
+            this.tabBottomPagePayStudents.ResumeLayout(false);
+            this.panelPayStudents.ResumeLayout(false);
+            this.panelPayStudents.PerformLayout();
+            this.tabBottomPagePayTeachers.ResumeLayout(false);
+            this.panelPayTeachers.ResumeLayout(false);
+            this.panelPayTeachers.PerformLayout();
             this.panelGlobPrevDelete.ResumeLayout(false);
             this.panelGlobNextNew.ResumeLayout(false);
             this.panelGlobSearch.ResumeLayout(false);
@@ -6055,6 +6878,15 @@
             this.tabPageSearchLesson.ResumeLayout(false);
             this.panelSearchLesson.ResumeLayout(false);
             this.panelSearchLesson.PerformLayout();
+            this.tabPageSearchPayExpenses.ResumeLayout(false);
+            this.panelSearchPayExpense.ResumeLayout(false);
+            this.panelSearchPayExpense.PerformLayout();
+            this.tabPageSearchPayStudents.ResumeLayout(false);
+            this.panelSearchPayStudent.ResumeLayout(false);
+            this.panelSearchPayStudent.PerformLayout();
+            this.tabPageSearchPayTeachers.ResumeLayout(false);
+            this.panelSearchPayTeacher.ResumeLayout(false);
+            this.panelSearchPayTeacher.PerformLayout();
             this.panelSearchButtons.ResumeLayout(false);
             this.panelGlobLogo.ResumeLayout(false);
             this.panelGlobLogo.PerformLayout();
@@ -6087,19 +6919,8 @@
             this.panelViewSlots.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewSlots)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewSlotList)).EndInit();
-            this.tabSchedCancel.ResumeLayout(false);
-            this.tabSchedCancel.PerformLayout();
-            this.tabPayStud.ResumeLayout(false);
-            this.tabPayStud.PerformLayout();
-            this.tabPayTeach.ResumeLayout(false);
-            this.tabPayTeach.PerformLayout();
-            this.tabPayExpense.ResumeLayout(false);
-            this.tabPayExpense.PerformLayout();
             this.tabPage8.ResumeLayout(false);
             this.tabPage8.PerformLayout();
-            this.panelValidation.ResumeLayout(false);
-            this.panelValidButtons.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvValidation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.problemList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientList)).EndInit();
             this.ResumeLayout(false);
@@ -6118,14 +6939,6 @@
         private System.Windows.Forms.TabPage tabPage8;
         private System.Windows.Forms.Label lbFutureOpName;
         private System.Windows.Forms.Label lbSchedPlanName;
-        private System.Windows.Forms.TabPage tabPayExpense;
-        private System.Windows.Forms.Label lbPayExpenseName;
-        private System.Windows.Forms.TabPage tabPayTeach;
-        private System.Windows.Forms.Label lbPayTeachName;
-        private System.Windows.Forms.TabPage tabPayStud;
-        private System.Windows.Forms.Label lbPayStudName;
-        private System.Windows.Forms.TabPage tabSchedCancel;
-        private System.Windows.Forms.Label lbSchedCancelName;
         private System.Windows.Forms.TabPage tabView;
         private HiddenTabControl tabControlViewScales;
         private System.Windows.Forms.TabPage tabPageViewWeek;
@@ -6406,9 +7219,9 @@
         private System.Windows.Forms.ToolStripMenuItem scheduleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem payToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem studentsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem teachersToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem reportExpenseToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem payStudentsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem payTeachersToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem payExpenseToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem advancedToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem downloadToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem reopenToolStripMenuItem;
@@ -6628,6 +7441,87 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn problemDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn keyDataGridViewTextBoxColumn;
+        private System.Windows.Forms.TabPage tabTopPagePayExpenses;
+        private System.Windows.Forms.TabPage tabTopPagePayStudents;
+        private System.Windows.Forms.TabPage tabTopPagePayTeachers;
+        private System.Windows.Forms.TabPage tabBottomPagePayExpenses;
+        private System.Windows.Forms.TabPage tabBottomPagePayStudents;
+        private System.Windows.Forms.TabPage tabBottomPagePayTeachers;
+        private System.Windows.Forms.TabPage tabPageSearchPayExpenses;
+        private System.Windows.Forms.TabPage tabPageSearchPayStudents;
+        private System.Windows.Forms.TabPage tabPageSearchPayTeachers;
+        private System.Windows.Forms.DataGridView dgvPayExpenses;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dayDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sumDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn categoryDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn commentsDataGridViewTextBoxColumn3;
+        private System.Windows.Forms.BindingSource payExpenseList;
+        private System.Windows.Forms.DataGridView dgvPayStudents;
+        private System.Windows.Forms.DataGridViewTextBoxColumn studentDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dayDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sumDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn commentsDataGridViewTextBoxColumn4;
+        private System.Windows.Forms.BindingSource payStudentList;
+        private System.Windows.Forms.DataGridView dgvPayTeacher;
+        private System.Windows.Forms.DataGridViewTextBoxColumn teacherDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dayDataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sumDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn commentsDataGridViewTextBoxColumn5;
+        private System.Windows.Forms.BindingSource payTeacherList;
+        private System.Windows.Forms.TabPage tabTopPageClients;
+        private System.Windows.Forms.TabPage tabBottomPageClients;
+        private System.Windows.Forms.TabPage tabPageSearchClients;
+        private System.Windows.Forms.Panel panelPayExpense;
+        private System.Windows.Forms.Label lbPayExpenceCategory;
+        private System.Windows.Forms.Label lbPayExpenseDate;
+        private System.Windows.Forms.Label vbPayExpenseSum;
+        private System.Windows.Forms.DateTimePicker dtpPayExpenseDay;
+        private System.Windows.Forms.ComboBox cbPayExpenseCategory;
+        private System.Windows.Forms.TextBox tbPayExpenseSum;
+        private System.Windows.Forms.TextBox tbPayExpenseComments;
+        private System.Windows.Forms.Panel panelPayStudents;
+        private System.Windows.Forms.TextBox tbPayStudentSum;
+        private System.Windows.Forms.TextBox tbPayStudentComments;
+        private System.Windows.Forms.Panel panelPayTeachers;
+        private System.Windows.Forms.TextBox tbPayTeacherSum;
+        private System.Windows.Forms.TextBox tbPayTeacherComments;
+        private System.Windows.Forms.Label lbPayExpenseComments;
+        private System.Windows.Forms.Label lbPayStudentComments;
+        private System.Windows.Forms.Label lbPayStudentStudent;
+        private System.Windows.Forms.Label lbPayStudentSum;
+        private System.Windows.Forms.Label lbPayStudentDate;
+        private System.Windows.Forms.ComboBox cbPayStudentStudent;
+        private System.Windows.Forms.DateTimePicker dtpPayStudentDate;
+        private System.Windows.Forms.Label lbPayTeacherComments;
+        private System.Windows.Forms.Label lbPayTeacherTeacger;
+        private System.Windows.Forms.Label lbPayTeacherSum;
+        private System.Windows.Forms.Label lbPayTeacherDate;
+        private System.Windows.Forms.ComboBox cbPayTeacherTeacher;
+        private System.Windows.Forms.DateTimePicker dtpPayTeacherDate;
+        private System.Windows.Forms.Panel panelSearchPayExpense;
+        private System.Windows.Forms.Label lbSearchPayExpenseDate;
+        private System.Windows.Forms.Label lbSearchPayExpenseSum;
+        private System.Windows.Forms.Label lbSearchPayExpenseCategoty;
+        private System.Windows.Forms.CheckBox chkSearchPayExpenseDate;
+        private System.Windows.Forms.DateTimePicker dtpSearchPayExpenseDate;
+        private System.Windows.Forms.TextBox tbSearchPayExpenseSum;
+        private System.Windows.Forms.ComboBox cbSearchPayExpenseCategory;
+        private System.Windows.Forms.Panel panelSearchPayStudent;
+        private System.Windows.Forms.DateTimePicker dtpSearchPayStudentDate;
+        private System.Windows.Forms.CheckBox chkSearchPayStudentDate;
+        private System.Windows.Forms.TextBox tbSearchPayStudentSum;
+        private System.Windows.Forms.Label lbSearchPayStudentDate;
+        private System.Windows.Forms.Label lbSearchPayStudentSum;
+        private System.Windows.Forms.Label lbSearchPayStudentName;
+        private System.Windows.Forms.ComboBox cbSearchPayStudentName;
+        private System.Windows.Forms.Panel panelSearchPayTeacher;
+        private System.Windows.Forms.CheckBox chkSearchPayTeacherDate;
+        private System.Windows.Forms.DateTimePicker dtpSearchPayTeacherDate;
+        private System.Windows.Forms.TextBox tbSearchPayTeacherSum;
+        private System.Windows.Forms.ComboBox cbSearchPayTeacherName;
+        private System.Windows.Forms.Label lbSearchPayTeacherDate;
+        private System.Windows.Forms.Label lbSearchPayTeacherSum;
+        private System.Windows.Forms.Label lbSearchPayTeacherName;
     }
 }
 

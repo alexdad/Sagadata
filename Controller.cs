@@ -18,10 +18,6 @@ namespace RecordKeeper
         Edit,
         Plan,
         View,
-        SchedCancel,
-        PayStud,
-        PayTeach,
-        PayExpense,
         page8
     };
     public enum Modes
@@ -32,7 +28,10 @@ namespace RecordKeeper
         Rooms = 3,
         Lessons = 4,
         Clients = 5,
-        MaxMode = 6
+        PayExpenses = 6,
+        PayStudents = 7,
+        PayTeachers = 8,
+        MaxMode = 9
     }
     public enum Scales
     {
@@ -67,6 +66,12 @@ namespace RecordKeeper
                         return lessonList;
                     case Modes.Clients:
                         return clientList;
+                    case Modes.PayExpenses:
+                        return payExpenseList;
+                    case Modes.PayStudents:
+                        return payStudentList;
+                    case Modes.PayTeachers:
+                        return payTeacherList;
 
                     default:
                         return null;
@@ -289,14 +294,6 @@ namespace RecordKeeper
                 case Ops.Plan:
                     if (!Datalist_Complete())
                         return false;
-                    break;
-                case Ops.SchedCancel:
-                    break;
-                case Ops.PayStud:
-                    break;
-                case Ops.PayTeach:
-                    break;
-                case Ops.PayExpense:
                     break;
                 case Ops.page8:
                     break;

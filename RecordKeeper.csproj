@@ -146,6 +146,21 @@
     </Compile>
     <Compile Include="GCal.cs" />
     <Compile Include="LessonForm.cs" />
+    <Compile Include="PayExpense.cs" />
+    <Compile Include="PayExpenseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PayExpenseType.cs" />
+    <Compile Include="PayStudent.cs" />
+    <Compile Include="PayStudentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PayStudentType.cs" />
+    <Compile Include="PayTeacher.cs" />
+    <Compile Include="PayTeacherForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PayTeacherType.cs" />
     <Compile Include="ProgramForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -223,6 +238,9 @@
     <None Include="client_id.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="EnumAccountingCategories.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="EnumCancellation.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -247,6 +265,9 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Client.datasource" />
     <None Include="Properties\DataSources\Lesson.datasource" />
+    <None Include="Properties\DataSources\PayExpense.datasource" />
+    <None Include="Properties\DataSources\PayStudent.datasource" />
+    <None Include="Properties\DataSources\PayTeacher.datasource" />
     <None Include="Properties\DataSources\ProblemItem.datasource" />
     <None Include="Properties\DataSources\Program.datasource" />
     <None Include="Properties\DataSources\Room.datasource" />
@@ -265,6 +286,15 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="SchemaClients.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SchemaPayExpenses.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SchemaPayStudents.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="SchemaPayTeachers.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="SchemaTeachers.csv">

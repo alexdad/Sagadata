@@ -226,6 +226,9 @@ namespace RecordKeeper
 
             cbViewSelectState.Items.AddRange(m_enumState);
             cbLessonCancellation.Items.AddRange(m_enumCancellation);
+
+            cbPayExpenseCategory.Items.AddRange(m_enumAccountingCategories);
+            cbSearchPayExpenseCategory.Items.AddRange(m_enumAccountingCategories);
         }
 
         public bool SelectionMode
@@ -267,6 +270,18 @@ namespace RecordKeeper
         public void ShowLessonCount()
         {
             labelGlobCount.Text = lessonList.Count.ToString();
+        }
+        public void ShowPayExpenseCount()
+        {
+            labelGlobCount.Text = payExpenseList.Count.ToString();
+        }
+        public void ShowPayStudentCount()
+        {
+            labelGlobCount.Text = payStudentList.Count.ToString();
+        }
+        public void ShowPayTeacherCount()
+        {
+            labelGlobCount.Text = payTeacherList.Count.ToString();
         }
 
         void PrepareDataDirectories()
@@ -383,6 +398,7 @@ namespace RecordKeeper
             m_enumState = File.ReadAllLines(Path.Combine(binLocation, "EnumState.csv").ToString());
             m_enumPricingType = File.ReadAllLines(Path.Combine(binLocation, "EnumPricingType.csv").ToString());
             m_enumCancellation = File.ReadAllLines(Path.Combine(binLocation, "EnumCancellation.csv").ToString());
+            m_enumAccountingCategories = File.ReadAllLines(Path.Combine(binLocation, "EnumAccountingCategories.csv").ToString());
 
             PopulateEnumTimeslots();
             PopulateEnumWeekdays();

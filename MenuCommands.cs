@@ -177,28 +177,31 @@ namespace RecordKeeper
 
         #region "Pay submenu strip"
 
-        private void studentsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void payStudentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!Operation_CompletePrevious())
                 return;
 
-            ChangeOperMode(Ops.PayStud);
+            ChangeOperMode(Ops.Edit);
+            ChangeEditMode(Modes.PayStudents);
         }
 
-        private void teachersToolStripMenuItem_Click(object sender, EventArgs e)
+        private void payTeachersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!Operation_CompletePrevious())
                 return;
 
-            ChangeOperMode(Ops.PayTeach);
+            ChangeOperMode(Ops.Edit);
+            ChangeEditMode(Modes.PayTeachers);
         }
 
-        private void reportExpenseToolStripMenuItem_Click(object sender, EventArgs e)
+        private void payExpenseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!Operation_CompletePrevious())
                 return;
 
-            ChangeOperMode(Ops.PayExpense);
+            ChangeOperMode(Ops.Edit);
+            ChangeEditMode(Modes.PayExpenses);
         }
         #endregion
 
