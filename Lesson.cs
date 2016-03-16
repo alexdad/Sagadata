@@ -500,9 +500,13 @@ namespace RecordKeeper
             if (FormGlob.IsStringEmpty(Day))
                 return "Lesson has no date";
             DateTime start = DateTime.Now, end = DateTime.Now;
-            if (FormGlob.IsStringEmpty(Start) || !DateTime.TryParse(Start, out start))
+            if (FormGlob.IsStringEmpty(Start) || 
+                !DateTime.TryParse(Start, out start) ||
+                start.Hour == 0 && start.Minute == 0)
                 return "Lesson has no start";
-            if (FormGlob.IsStringEmpty(End) || !DateTime.TryParse(End, out end))
+            if (FormGlob.IsStringEmpty(End) || 
+                !DateTime.TryParse(End, out end) ||
+                end.Hour == 0 && end.Minute == 0)
                 return "Lesson has no end";
             if (start >= end)
                 return "Lesson starts after its end";

@@ -331,9 +331,9 @@ namespace RecordKeeper
             m_labelWorking.AutoSize = true;
             m_labelWorking.BackColor = System.Drawing.Color.Transparent;
             m_labelWorking.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            m_labelWorking.Location = new System.Drawing.Point(298, 263);
+            m_labelWorking.Location = new System.Drawing.Point(100, 100);
             m_labelWorking.Name = "labelWorking";
-            m_labelWorking.Size = new System.Drawing.Size(533, 42);
+            m_labelWorking.Size = new System.Drawing.Size(333, 42);
             m_labelWorking.TabIndex = 14;
             m_labelWorking.Text = "Working... " + m_jokes[ (int) ((m_jokes.Length-1) * m_rnd.NextDouble())];
             m_labelWorking.Parent = this;

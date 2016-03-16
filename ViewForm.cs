@@ -951,6 +951,9 @@ namespace RecordKeeper
                     int rb = l.Location.X + l.Width;
                     for (int y = l.Location.Y; y <= l.Location.Y + l.Height; y++)
                     {
+                        if (y < 0 || y >= panel.Height)
+                            continue;
+
                         if (rb > rightmost[y])
                             rightmost[y] = rb;
                     }
@@ -961,6 +964,9 @@ namespace RecordKeeper
                     bool hit = false;
                     for (int y = l.Location.Y; y <= l.Location.Y + l.Height; y++)
                     {
+                        if (y < 0 || y >= panel.Height)
+                            continue;
+
                         if (rb != rightmost[y])
                         {
                             hit = true;
