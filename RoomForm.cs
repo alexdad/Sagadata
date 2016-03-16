@@ -22,11 +22,6 @@ namespace RecordKeeper
 
         delegate bool EvaluateRoom(Room t);
 
-        private void EditRoomDetailsChanged()
-        {
-            StaleComboLists = true;
-        }
-
         private void DropRoomSelection()
         {
             m_RoomSelectionCapacity = null;

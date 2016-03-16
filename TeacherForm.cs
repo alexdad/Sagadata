@@ -26,11 +26,6 @@ namespace RecordKeeper
 
         delegate bool EvaluateTeacher(Teacher t);
 
-        private void EditTeacherDetailsChanged()
-        {
-            StaleComboLists = true;
-        }
-
         private void DropTeacherSelection()
         {
             m_teacherSelectionFirstName = null;
@@ -346,7 +341,6 @@ namespace RecordKeeper
             }
 
             DropFlagUnsavedAvailabilityChanges();
-            EditTeacherDetailsChanged();
         }
 
 

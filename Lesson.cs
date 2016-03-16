@@ -45,7 +45,8 @@ namespace RecordKeeper
             set
             {
                 Day = value.ToShortDateString();
-                Start = value.ToShortTimeString();
+                if (value.Hour != 0 || value.Minute != 0)
+                    Start = value.ToShortTimeString();
             }
 
         }

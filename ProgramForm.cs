@@ -19,11 +19,6 @@ namespace RecordKeeper
 
         delegate bool EvaluateProgram(Program t);
 
-        private void EditProgramDetailsChanged()
-        {
-            StaleComboLists = true;
-        }
-
         private void DropProgramSelection()
         {
             m_ProgramSelectionType = null;

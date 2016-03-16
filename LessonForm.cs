@@ -240,9 +240,6 @@ namespace RecordKeeper
         int m_curOperationalevent;
 
         delegate bool EvaluateLesson(Lesson t);
-        private void EditLessonDetailsChanged()
-        {
-        }
 
         private void DropLessonSelection()
         {

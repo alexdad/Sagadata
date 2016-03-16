@@ -256,6 +256,7 @@ namespace RecordKeeper
 
             string usedCodes = sb.ToString();
             Client st = (Client)clientList.AddNew();
+            st.SetGlob(this);
             st.MachineName = ClientName;
             st.LastTouch = DateTime.Now.ToString();
             for (char c = 'A'; c <= 'Z'; c++)
@@ -758,128 +759,15 @@ namespace RecordKeeper
         }
 
         // Edit Student 
-        private void tbStudFirstName_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditStudentDetailsChanged();
-        }
 
-        private void cbStudStatus_Click(object sender, EventArgs e)
-        {
-            EditStudentDetailsChanged();
-        }
-
-        private void tbStudLastName_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditStudentDetailsChanged();
-        }
-
-        private void tbStudEmail_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditStudentDetailsChanged();
-        }
-
-        private void tbStudCellPhone_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditStudentDetailsChanged();
-        }
-
-        private void tbStudHomePhone_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditStudentDetailsChanged();
-        }
-
-        private void tbStudAddress1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditStudentDetailsChanged();
-        }
-
-        private void tbStudLanguageDetail_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditStudentDetailsChanged();
-        }
-
-        private void tbStudSourceDetail_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditStudentDetailsChanged();
-        }
-
-        private void tbStudBackground_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditStudentDetailsChanged();
-        }
-
-        private void tbStudBirthday_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditStudentDetailsChanged();
-        }
-
-        private void tbStudGoals_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditStudentDetailsChanged();
-        }
-
-        private void tbStudInterests_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditStudentDetailsChanged();
-        }
-
-        private void tbStudSchedule_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditStudentDetailsChanged();
-        }
-
-        private void tbStudComments_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditStudentDetailsChanged();
-        }
-
-        private void cbStudLearns_Click(object sender, EventArgs e)
-        {
-            EditStudentDetailsChanged();
-        }
-
-        private void cbStudLevel_Click(object sender, EventArgs e)
-        {
-            EditStudentDetailsChanged();
-        }
-
-        private void cbStudSpeaks_Click(object sender, EventArgs e)
-        {
-            EditStudentDetailsChanged();
-        }
-
-        private void cbStudOther_Click(object sender, EventArgs e)
-        {
-            EditStudentDetailsChanged();
-        }
-
-        private void cbStudSource_Click(object sender, EventArgs e)
-        {
-            EditStudentDetailsChanged();
-        }
-
-        private void cbStudProg1_Click(object sender, EventArgs e)
-        {
-            EditStudentDetailsChanged();
-        }
         private void cbStudProg1_SelectedIndexChanged(object sender, EventArgs e)
         {
             SetStudProgPrice(sender, 1);
         }
 
-        private void cbStudProg2_Click(object sender, EventArgs e)
-        {
-            EditStudentDetailsChanged();
-        }
-
         private void cbStudProg2_SelectedIndexChanged(object sender, EventArgs e)
         {
             SetStudProgPrice(sender, 2);
-        }
-
-        private void cbStudProg3_Click(object sender, EventArgs e)
-        {
-            EditStudentDetailsChanged();
         }
 
         private void cbStudProg3_SelectedIndexChanged(object sender, EventArgs e)
@@ -917,38 +805,14 @@ namespace RecordKeeper
             }
         }
 
-        private void tbStudPrice1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditStudentDetailsChanged();
-        }
-
-        private void tbStudPrice2_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditStudentDetailsChanged();
-        }
-
-        private void tbStudPrice3_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditStudentDetailsChanged();
-        }
-
         private void buttonStudGrabStdPrices_Click(object sender, EventArgs e)
         {
             if (!IsStringEmpty(lbStudStdProgPrice1.Text))
-            {
                 tbStudPrice1.Text = lbStudStdProgPrice1.Text;
-                tbStudPrice1_KeyPress(null, null);
-            }
             if (!IsStringEmpty(lbStudStdProgPrice2.Text))
-            {
                 tbStudPrice2.Text = lbStudStdProgPrice2.Text;
-                tbStudPrice2_KeyPress(null, null);
-            }
             if (!IsStringEmpty(lbStudStdProgPrice3.Text))
-            {
                 tbStudPrice3.Text = lbStudStdProgPrice3.Text;
-                tbStudPrice3_KeyPress(null, null);
-            }
         }
 
         #endregion
@@ -1003,128 +867,10 @@ namespace RecordKeeper
         {
             AcceptAvailabilityEdits();
         }
-        private void tbTeachFirstName_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditTeacherDetailsChanged();
-        }
-
-        private void tbTeachLastName_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditTeacherDetailsChanged();
-        }
-
-        private void tbTeachEmail_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditTeacherDetailsChanged();
-        }
-
-        private void tbTeachPhone_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditTeacherDetailsChanged();
-        }
-
-        private void tbTeachLastBirthday_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditTeacherDetailsChanged();
-        }
-
-        private void tbTeachLanguageDetail_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditTeacherDetailsChanged();
-        }
-
-        private void tbTeachAddress_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditTeacherDetailsChanged();
-        }
-
-        private void tbTeachVacations_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditTeacherDetailsChanged();
-        }
-
-        private void tbTeachComment_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditTeacherDetailsChanged();
-        }
-
-        private void cbTeachStatus_Click(object sender, EventArgs e)
-        {
-            EditTeacherDetailsChanged();
-        }
-
-        private void cbTeachLanguage_Click(object sender, EventArgs e)
-        {
-            EditTeacherDetailsChanged();
-        }
-
-        private void cbTeachLanguage2_Click(object sender, EventArgs e)
-        {
-            EditTeacherDetailsChanged();
-        }
-
-        #endregion
-
-        #region Room-related UI
-
-        private void tbRoomName_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditRoomDetailsChanged();
-        }
-
-        private void tbRoomCapacity_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditRoomDetailsChanged();
-        }
-
-        private void tbRoomPreferrability_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditRoomDetailsChanged();
-        }
-
-        private void tbRoomTags_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditRoomDetailsChanged();
-        }
-
-        private void tbRoomComments_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditRoomDetailsChanged();
-        }
 
         #endregion
 
         #region Program-related UI
-
-        private void tbProgCode_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditProgramDetailsChanged();
-        }
-
-        private void tbProgName_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditProgramDetailsChanged();
-        }
-
-        private void tbProgPrice_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditProgramDetailsChanged();
-        }
-
-        private void tbProgSummary_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditProgramDetailsChanged();
-        }
-
-        private void tbProgComments_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditProgramDetailsChanged();
-        }
-
-        private void cbPricingType_Click(object sender, EventArgs e)
-        {
-            EditProgramDetailsChanged();
-        }
 
         private void cbSearchPricingType_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1135,117 +881,6 @@ namespace RecordKeeper
         #endregion
 
         #region Lesson-related UI
-
-        private void tbLEssonComment_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditLessonDetailsChanged();
-        }
-
-        private void cbLessonState_Click(object sender, EventArgs e)
-        {
-            EditLessonDetailsChanged();
-        }
-
-        private void cbLessonProg_Click(object sender, EventArgs e)
-        {
-            EditLessonDetailsChanged();
-        }
-
-        private void cbLessonRoom_Click(object sender, EventArgs e)
-        {
-            EditLessonDetailsChanged();
-        }
-
-        private void cbLessonStart_Click(object sender, EventArgs e)
-        {
-            EditLessonDetailsChanged();
-        }
-
-        private void cbLessonEnd_Click(object sender, EventArgs e)
-        {
-            EditLessonDetailsChanged();
-        }
-
-        private void cbLessonTeacher1_Click(object sender, EventArgs e)
-        {
-            EditLessonDetailsChanged();
-        }
-
-        private void cbLessonTeacher2_Click(object sender, EventArgs e)
-        {
-            EditLessonDetailsChanged();
-        }
-
-        private void cbLessonStudent1_Click(object sender, EventArgs e)
-        {
-            EditLessonDetailsChanged();
-        }
-        private void cbLessonStudent2_Click(object sender, EventArgs e)
-        {
-            EditLessonDetailsChanged();
-        }
-
-        private void cbLessonStudent3_Click(object sender, EventArgs e)
-        {
-            EditLessonDetailsChanged();
-        }
-
-        private void cbLessonStudent5_Click(object sender, EventArgs e)
-        {
-            EditLessonDetailsChanged();
-        }
-
-        private void cbLessonStudent7_Click(object sender, EventArgs e)
-        {
-            EditLessonDetailsChanged();
-        }
-
-        private void cbLessonStudent9_Click(object sender, EventArgs e)
-        {
-            EditLessonDetailsChanged();
-        }
-
-        private void cbLessonStudent4_Click(object sender, EventArgs e)
-        {
-            EditLessonDetailsChanged();
-        }
-
-        private void cbLessonStudent6_Click(object sender, EventArgs e)
-        {
-            EditLessonDetailsChanged();
-        }
-
-        private void cbLessonStudent8_Click(object sender, EventArgs e)
-        {
-            EditLessonDetailsChanged();
-        }
-
-        private void cbLessonStudent10_Click(object sender, EventArgs e)
-        {
-            EditLessonDetailsChanged();
-        }
-
-        private void monthCalendar1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            EditLessonDetailsChanged();
-        }
-
-        private void monthCalendar1_MouseDown(object sender, MouseEventArgs e)
-        {
-            EditLessonDetailsChanged();
-        }
-
-        private void chkLessonLink_CheckedChanged(object sender, EventArgs e)
-        {
-            CheckBox cb = sender as CheckBox;
-            if (!cb.Checked)
-                EditLessonDetailsChanged();
-        }
-
-        private void cbLessonCancellation_Click(object sender, EventArgs e)
-        {
-            EditLessonDetailsChanged();
-        }
 
         private void cbSearchLessonStudent_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1796,5 +1431,360 @@ namespace RecordKeeper
             CurrentType.DoSelection();
         }
         #endregion
+
+        private void tbStudPrice1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void tbStudPrice2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void tbStudPrice3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void cbStudProg3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbStudProg2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbStudProg1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbStudAddress1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void tbStudLanguageDetail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void tbStudSourceDetail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void cbStudSpeaks_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbStudOther_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbStudLastName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void tbStudFirstName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void cbStudStatus_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbStudLearns_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbStudBirthday_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void tbStudEmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void cbStudLevel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbStudCellPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void tbStudHomePhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void cbStudSource_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbStudComments_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void tbStudSchedule_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void tbStudInterests_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void tbStudGoals_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void tbStudBackground_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void tbTeachComment_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void tbTeachVacations_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void tbTeachAddress_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void tbTeachLanguageDetail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void cbTeachLanguage2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbTeachLanguage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbTeachStatus_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbTeachLastBirthday_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void tbTeachPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void tbTeachEmail_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void tbTeachLastName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void tbTeachFirstName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void tbProgComments_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void tbProgSummary_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void tbProgPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void cbPricingType_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbProgName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void tbProgCode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void tbRoomPreferrability_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void tbRoomCapacity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void tbRoomName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void tbRoomComments_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void tbRoomTags_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void cbLessonCancellation_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chkLessonLink_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbLessonStudent10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbLessonStudent9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbLessonStudent8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbLessonStudent7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbLessonStudent6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbLessonStudent5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbLessonStudent4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbLessonStudent3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbLEssonComment_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void cbLessonStudent2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbLessonStudent1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbLessonTeacher2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbLessonTeacher1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbLessonProg_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbLessonState_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbLessonEnd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbLessonStart_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void monthCalendar1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void monthCalendar1_MouseDown(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void cbLessonRoom_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

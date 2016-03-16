@@ -88,13 +88,6 @@
             this.monthlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteFuturesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContWorkValid = new System.Windows.Forms.SplitContainer();
-            this.panelValidation = new System.Windows.Forms.Panel();
-            this.panelValidButtons = new System.Windows.Forms.Panel();
-            this.buttonValidRerun = new System.Windows.Forms.Button();
-            this.buttonValidClose = new System.Windows.Forms.Button();
-            this.dgvValidation = new System.Windows.Forms.DataGridView();
-            this.Problem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControlOps = new RecordKeeper.HiddenTabControl();
             this.tabEdit = new System.Windows.Forms.TabPage();
             this.splitContainerGlobDataControls = new System.Windows.Forms.SplitContainer();
@@ -156,22 +149,6 @@
             this.roomList = new System.Windows.Forms.BindingSource(this.components);
             this.tabTopPageLessons = new System.Windows.Forms.TabPage();
             this.dgvLesson = new System.Windows.Forms.DataGridView();
-            this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Start = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.End = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.student1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.teacher1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.roomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.programDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Linked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.student2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.student3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Student4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.teacher2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CancellationTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.commentsDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lessonList = new System.Windows.Forms.BindingSource(this.components);
             this.tabTopPageClients = new System.Windows.Forms.TabPage();
             this.tabTopPagePayExpenses = new System.Windows.Forms.TabPage();
@@ -618,11 +595,35 @@
             this.butViewZoomOut = new System.Windows.Forms.Button();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.lbFutureOpName = new System.Windows.Forms.Label();
+            this.panelValidation = new System.Windows.Forms.Panel();
+            this.panelValidButtons = new System.Windows.Forms.Panel();
+            this.buttonValidRerun = new System.Windows.Forms.Button();
+            this.buttonValidClose = new System.Windows.Forms.Button();
+            this.dgvValidation = new System.Windows.Forms.DataGridView();
+            this.Problem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.problemDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.keyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.problemList = new System.Windows.Forms.BindingSource(this.components);
             this.clientList = new System.Windows.Forms.BindingSource(this.components);
+            this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dayDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Start = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.End = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.student1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.teacher1DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.roomDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.programDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Linked = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.student2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.student3DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Student4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.teacher2DataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CancellationTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.commentsDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStripGlobalOps.SuspendLayout();
             this.panelGlobIndicators.SuspendLayout();
             this.ctxMenuLesson.SuspendLayout();
@@ -630,9 +631,6 @@
             this.splitContWorkValid.Panel1.SuspendLayout();
             this.splitContWorkValid.Panel2.SuspendLayout();
             this.splitContWorkValid.SuspendLayout();
-            this.panelValidation.SuspendLayout();
-            this.panelValidButtons.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvValidation)).BeginInit();
             this.tabControlOps.SuspendLayout();
             this.tabEdit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerGlobDataControls)).BeginInit();
@@ -746,6 +744,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewSlots)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewSlotList)).BeginInit();
             this.tabPage8.SuspendLayout();
+            this.panelValidation.SuspendLayout();
+            this.panelValidButtons.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvValidation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.problemList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientList)).BeginInit();
             this.SuspendLayout();
@@ -1247,86 +1248,6 @@
             this.splitContWorkValid.Size = new System.Drawing.Size(1291, 807);
             this.splitContWorkValid.SplitterDistance = 777;
             this.splitContWorkValid.TabIndex = 26;
-            // 
-            // panelValidation
-            // 
-            this.panelValidation.Controls.Add(this.panelValidButtons);
-            this.panelValidation.Controls.Add(this.dgvValidation);
-            this.panelValidation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelValidation.Location = new System.Drawing.Point(0, 0);
-            this.panelValidation.Name = "panelValidation";
-            this.panelValidation.Size = new System.Drawing.Size(1291, 26);
-            this.panelValidation.TabIndex = 2;
-            this.panelValidation.Visible = false;
-            // 
-            // panelValidButtons
-            // 
-            this.panelValidButtons.Controls.Add(this.buttonValidRerun);
-            this.panelValidButtons.Controls.Add(this.buttonValidClose);
-            this.panelValidButtons.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelValidButtons.Location = new System.Drawing.Point(1182, 0);
-            this.panelValidButtons.Name = "panelValidButtons";
-            this.panelValidButtons.Size = new System.Drawing.Size(109, 26);
-            this.panelValidButtons.TabIndex = 23;
-            // 
-            // buttonValidRerun
-            // 
-            this.buttonValidRerun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonValidRerun.Location = new System.Drawing.Point(21, -38);
-            this.buttonValidRerun.Name = "buttonValidRerun";
-            this.buttonValidRerun.Size = new System.Drawing.Size(75, 23);
-            this.buttonValidRerun.TabIndex = 1;
-            this.buttonValidRerun.Text = "Re-validate";
-            this.buttonValidRerun.UseVisualStyleBackColor = true;
-            this.buttonValidRerun.Click += new System.EventHandler(this.buttonValidRerun_Click);
-            // 
-            // buttonValidClose
-            // 
-            this.buttonValidClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonValidClose.Location = new System.Drawing.Point(20, -9);
-            this.buttonValidClose.Name = "buttonValidClose";
-            this.buttonValidClose.Size = new System.Drawing.Size(75, 23);
-            this.buttonValidClose.TabIndex = 0;
-            this.buttonValidClose.Text = "Close";
-            this.buttonValidClose.UseVisualStyleBackColor = true;
-            this.buttonValidClose.Click += new System.EventHandler(this.buttonValidClose_Click);
-            // 
-            // dgvValidation
-            // 
-            this.dgvValidation.AllowUserToAddRows = false;
-            this.dgvValidation.AllowUserToDeleteRows = false;
-            this.dgvValidation.AutoGenerateColumns = false;
-            this.dgvValidation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvValidation.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Problem,
-            this.Description,
-            this.problemDataGridViewTextBoxColumn,
-            this.descriptionDataGridViewTextBoxColumn1,
-            this.keyDataGridViewTextBoxColumn});
-            this.dgvValidation.DataSource = this.problemList;
-            this.dgvValidation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvValidation.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvValidation.Location = new System.Drawing.Point(0, 0);
-            this.dgvValidation.Name = "dgvValidation";
-            this.dgvValidation.Size = new System.Drawing.Size(1291, 26);
-            this.dgvValidation.TabIndex = 22;
-            this.dgvValidation.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvValidation_CellContentClick);
-            // 
-            // Problem
-            // 
-            this.Problem.DataPropertyName = "Problem";
-            this.Problem.HeaderText = "Problem";
-            this.Problem.MinimumWidth = 300;
-            this.Problem.Name = "Problem";
-            this.Problem.Width = 300;
-            // 
-            // Description
-            // 
-            this.Description.DataPropertyName = "Description";
-            this.Description.HeaderText = "Description";
-            this.Description.MinimumWidth = 300;
-            this.Description.Name = "Description";
-            this.Description.Width = 300;
             // 
             // tabControlOps
             // 
@@ -1915,7 +1836,8 @@
             this.Student4,
             this.teacher2DataGridViewTextBoxColumn,
             this.CancellationTime,
-            this.commentsDataGridViewTextBoxColumn2});
+            this.commentsDataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn2});
             this.dgvLesson.DataSource = this.lessonList;
             this.dgvLesson.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvLesson.Location = new System.Drawing.Point(3, 3);
@@ -1925,118 +1847,6 @@
             this.dgvLesson.TabIndex = 0;
             this.dgvLesson.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLesson_CellContentClick);
             this.dgvLesson.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvLesson_ColumnHeaderMouseClick);
-            // 
-            // State
-            // 
-            this.State.DataPropertyName = "State";
-            this.State.HeaderText = "State";
-            this.State.Name = "State";
-            this.State.ReadOnly = true;
-            // 
-            // dayDataGridViewTextBoxColumn
-            // 
-            this.dayDataGridViewTextBoxColumn.DataPropertyName = "Day";
-            this.dayDataGridViewTextBoxColumn.HeaderText = "Day";
-            this.dayDataGridViewTextBoxColumn.Name = "dayDataGridViewTextBoxColumn";
-            this.dayDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // Start
-            // 
-            this.Start.DataPropertyName = "Start";
-            this.Start.HeaderText = "Start";
-            this.Start.Name = "Start";
-            this.Start.ReadOnly = true;
-            // 
-            // End
-            // 
-            this.End.DataPropertyName = "End";
-            this.End.HeaderText = "End";
-            this.End.Name = "End";
-            this.End.ReadOnly = true;
-            // 
-            // student1DataGridViewTextBoxColumn
-            // 
-            this.student1DataGridViewTextBoxColumn.DataPropertyName = "Student1";
-            this.student1DataGridViewTextBoxColumn.HeaderText = "Student1";
-            this.student1DataGridViewTextBoxColumn.Name = "student1DataGridViewTextBoxColumn";
-            this.student1DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // teacher1DataGridViewTextBoxColumn
-            // 
-            this.teacher1DataGridViewTextBoxColumn.DataPropertyName = "Teacher1";
-            this.teacher1DataGridViewTextBoxColumn.HeaderText = "Teacher1";
-            this.teacher1DataGridViewTextBoxColumn.Name = "teacher1DataGridViewTextBoxColumn";
-            this.teacher1DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // roomDataGridViewTextBoxColumn
-            // 
-            this.roomDataGridViewTextBoxColumn.DataPropertyName = "Room";
-            this.roomDataGridViewTextBoxColumn.HeaderText = "Room";
-            this.roomDataGridViewTextBoxColumn.Name = "roomDataGridViewTextBoxColumn";
-            this.roomDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // programDataGridViewTextBoxColumn
-            // 
-            this.programDataGridViewTextBoxColumn.DataPropertyName = "Program";
-            this.programDataGridViewTextBoxColumn.HeaderText = "Program";
-            this.programDataGridViewTextBoxColumn.Name = "programDataGridViewTextBoxColumn";
-            this.programDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // Linked
-            // 
-            this.Linked.DataPropertyName = "Linked";
-            this.Linked.HeaderText = "Linked";
-            this.Linked.Name = "Linked";
-            this.Linked.ReadOnly = true;
-            // 
-            // Price
-            // 
-            this.Price.DataPropertyName = "Price";
-            this.Price.HeaderText = "Price";
-            this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
-            // 
-            // student2DataGridViewTextBoxColumn
-            // 
-            this.student2DataGridViewTextBoxColumn.DataPropertyName = "Student2";
-            this.student2DataGridViewTextBoxColumn.HeaderText = "Student2";
-            this.student2DataGridViewTextBoxColumn.Name = "student2DataGridViewTextBoxColumn";
-            this.student2DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // student3DataGridViewTextBoxColumn
-            // 
-            this.student3DataGridViewTextBoxColumn.DataPropertyName = "Student3";
-            this.student3DataGridViewTextBoxColumn.HeaderText = "Student3";
-            this.student3DataGridViewTextBoxColumn.Name = "student3DataGridViewTextBoxColumn";
-            this.student3DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // Student4
-            // 
-            this.Student4.DataPropertyName = "Student4";
-            this.Student4.HeaderText = "Student4";
-            this.Student4.Name = "Student4";
-            this.Student4.ReadOnly = true;
-            // 
-            // teacher2DataGridViewTextBoxColumn
-            // 
-            this.teacher2DataGridViewTextBoxColumn.DataPropertyName = "Teacher2";
-            this.teacher2DataGridViewTextBoxColumn.HeaderText = "Teacher2";
-            this.teacher2DataGridViewTextBoxColumn.Name = "teacher2DataGridViewTextBoxColumn";
-            this.teacher2DataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // CancellationTime
-            // 
-            this.CancellationTime.DataPropertyName = "CancellationTime";
-            this.CancellationTime.HeaderText = "CancellationTime";
-            this.CancellationTime.Name = "CancellationTime";
-            this.CancellationTime.ReadOnly = true;
-            // 
-            // commentsDataGridViewTextBoxColumn2
-            // 
-            this.commentsDataGridViewTextBoxColumn2.DataPropertyName = "Comments";
-            this.commentsDataGridViewTextBoxColumn2.HeaderText = "Comments";
-            this.commentsDataGridViewTextBoxColumn2.Name = "commentsDataGridViewTextBoxColumn2";
-            this.commentsDataGridViewTextBoxColumn2.ReadOnly = true;
             // 
             // lessonList
             // 
@@ -2392,7 +2202,6 @@
             this.tbStudPrice1.Name = "tbStudPrice1";
             this.tbStudPrice1.Size = new System.Drawing.Size(31, 20);
             this.tbStudPrice1.TabIndex = 22;
-            this.tbStudPrice1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStudPrice1_KeyPress);
             // 
             // tbStudPrice2
             // 
@@ -2401,7 +2210,6 @@
             this.tbStudPrice2.Name = "tbStudPrice2";
             this.tbStudPrice2.Size = new System.Drawing.Size(31, 20);
             this.tbStudPrice2.TabIndex = 21;
-            this.tbStudPrice2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStudPrice2_KeyPress);
             // 
             // tbStudPrice3
             // 
@@ -2410,7 +2218,6 @@
             this.tbStudPrice3.Name = "tbStudPrice3";
             this.tbStudPrice3.Size = new System.Drawing.Size(31, 20);
             this.tbStudPrice3.TabIndex = 20;
-            this.tbStudPrice3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStudPrice3_KeyPress);
             // 
             // cbStudProg3
             // 
@@ -2422,7 +2229,6 @@
             this.cbStudProg3.Size = new System.Drawing.Size(49, 21);
             this.cbStudProg3.TabIndex = 19;
             this.cbStudProg3.SelectedIndexChanged += new System.EventHandler(this.cbStudProg3_SelectedIndexChanged);
-            this.cbStudProg3.Click += new System.EventHandler(this.cbStudProg3_Click);
             // 
             // cbStudProg2
             // 
@@ -2434,7 +2240,6 @@
             this.cbStudProg2.Size = new System.Drawing.Size(49, 21);
             this.cbStudProg2.TabIndex = 18;
             this.cbStudProg2.SelectedIndexChanged += new System.EventHandler(this.cbStudProg2_SelectedIndexChanged);
-            this.cbStudProg2.Click += new System.EventHandler(this.cbStudProg2_Click);
             // 
             // cbStudProg1
             // 
@@ -2446,7 +2251,6 @@
             this.cbStudProg1.Size = new System.Drawing.Size(49, 21);
             this.cbStudProg1.TabIndex = 17;
             this.cbStudProg1.SelectedIndexChanged += new System.EventHandler(this.cbStudProg1_SelectedIndexChanged);
-            this.cbStudProg1.Click += new System.EventHandler(this.cbStudProg1_Click);
             // 
             // labelStudDetailsSource
             // 
@@ -2487,7 +2291,6 @@
             this.tbStudAddress1.Name = "tbStudAddress1";
             this.tbStudAddress1.Size = new System.Drawing.Size(425, 20);
             this.tbStudAddress1.TabIndex = 7;
-            this.tbStudAddress1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStudAddress1_KeyPress);
             // 
             // tbStudLanguageDetail
             // 
@@ -2498,7 +2301,6 @@
             this.tbStudLanguageDetail.Name = "tbStudLanguageDetail";
             this.tbStudLanguageDetail.Size = new System.Drawing.Size(425, 20);
             this.tbStudLanguageDetail.TabIndex = 11;
-            this.tbStudLanguageDetail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStudLanguageDetail_KeyPress);
             // 
             // tbStudSourceDetail
             // 
@@ -2509,7 +2311,6 @@
             this.tbStudSourceDetail.Name = "tbStudSourceDetail";
             this.tbStudSourceDetail.Size = new System.Drawing.Size(425, 20);
             this.tbStudSourceDetail.TabIndex = 15;
-            this.tbStudSourceDetail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStudSourceDetail_KeyPress);
             // 
             // panelStudPrimaryLeft
             // 
@@ -2552,7 +2353,6 @@
             this.cbStudSpeaks.Name = "cbStudSpeaks";
             this.cbStudSpeaks.Size = new System.Drawing.Size(162, 21);
             this.cbStudSpeaks.TabIndex = 9;
-            this.cbStudSpeaks.Click += new System.EventHandler(this.cbStudSpeaks_Click);
             // 
             // cbStudOther
             // 
@@ -2563,7 +2363,6 @@
             this.cbStudOther.Name = "cbStudOther";
             this.cbStudOther.Size = new System.Drawing.Size(152, 21);
             this.cbStudOther.TabIndex = 10;
-            this.cbStudOther.Click += new System.EventHandler(this.cbStudOther_Click);
             // 
             // labelStudBirthday
             // 
@@ -2581,7 +2380,6 @@
             this.tbStudLastName.Name = "tbStudLastName";
             this.tbStudLastName.Size = new System.Drawing.Size(162, 20);
             this.tbStudLastName.TabIndex = 2;
-            this.tbStudLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStudLastName_KeyPress);
             // 
             // labelStudAlso
             // 
@@ -2617,7 +2415,6 @@
             this.tbStudFirstName.Name = "tbStudFirstName";
             this.tbStudFirstName.Size = new System.Drawing.Size(130, 20);
             this.tbStudFirstName.TabIndex = 1;
-            this.tbStudFirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStudFirstName_KeyPress);
             // 
             // cbStudStatus
             // 
@@ -2628,7 +2425,6 @@
             this.cbStudStatus.Name = "cbStudStatus";
             this.cbStudStatus.Size = new System.Drawing.Size(130, 21);
             this.cbStudStatus.TabIndex = 4;
-            this.cbStudStatus.Click += new System.EventHandler(this.cbStudStatus_Click);
             // 
             // labelStudLastName1
             // 
@@ -2648,7 +2444,6 @@
             this.cbStudLearns.Name = "cbStudLearns";
             this.cbStudLearns.Size = new System.Drawing.Size(130, 21);
             this.cbStudLearns.TabIndex = 8;
-            this.cbStudLearns.Click += new System.EventHandler(this.cbStudLearns_Click);
             // 
             // labelStudEmail1
             // 
@@ -2666,7 +2461,6 @@
             this.tbStudBirthday.Name = "tbStudBirthday";
             this.tbStudBirthday.Size = new System.Drawing.Size(124, 20);
             this.tbStudBirthday.TabIndex = 13;
-            this.tbStudBirthday.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStudBirthday_KeyPress);
             // 
             // tbStudEmail
             // 
@@ -2675,7 +2469,6 @@
             this.tbStudEmail.Name = "tbStudEmail";
             this.tbStudEmail.Size = new System.Drawing.Size(152, 20);
             this.tbStudEmail.TabIndex = 3;
-            this.tbStudEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStudEmail_KeyPress);
             // 
             // labelStudSpeaks1
             // 
@@ -2722,7 +2515,6 @@
             this.cbStudLevel.Name = "cbStudLevel";
             this.cbStudLevel.Size = new System.Drawing.Size(130, 21);
             this.cbStudLevel.TabIndex = 12;
-            this.cbStudLevel.Click += new System.EventHandler(this.cbStudLevel_Click);
             // 
             // tbStudCellPhone
             // 
@@ -2731,7 +2523,6 @@
             this.tbStudCellPhone.Name = "tbStudCellPhone";
             this.tbStudCellPhone.Size = new System.Drawing.Size(130, 20);
             this.tbStudCellPhone.TabIndex = 5;
-            this.tbStudCellPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStudCellPhone_KeyPress);
             // 
             // labelStudSource1
             // 
@@ -2749,7 +2540,6 @@
             this.tbStudHomePhone.Name = "tbStudHomePhone";
             this.tbStudHomePhone.Size = new System.Drawing.Size(155, 20);
             this.tbStudHomePhone.TabIndex = 6;
-            this.tbStudHomePhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStudHomePhone_KeyPress);
             // 
             // labelStudSpeaks2
             // 
@@ -2769,7 +2559,6 @@
             this.cbStudSource.Name = "cbStudSource";
             this.cbStudSource.Size = new System.Drawing.Size(155, 21);
             this.cbStudSource.TabIndex = 14;
-            this.cbStudSource.Click += new System.EventHandler(this.cbStudSource_Click);
             // 
             // panelStudSecondary
             // 
@@ -2815,7 +2604,6 @@
             this.tbStudComments.Name = "tbStudComments";
             this.tbStudComments.Size = new System.Drawing.Size(853, 20);
             this.tbStudComments.TabIndex = 20;
-            this.tbStudComments.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStudComments_KeyPress);
             // 
             // tbStudSchedule
             // 
@@ -2826,7 +2614,6 @@
             this.tbStudSchedule.Name = "tbStudSchedule";
             this.tbStudSchedule.Size = new System.Drawing.Size(853, 20);
             this.tbStudSchedule.TabIndex = 19;
-            this.tbStudSchedule.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStudSchedule_KeyPress);
             // 
             // tbStudInterests
             // 
@@ -2837,7 +2624,6 @@
             this.tbStudInterests.Name = "tbStudInterests";
             this.tbStudInterests.Size = new System.Drawing.Size(853, 20);
             this.tbStudInterests.TabIndex = 18;
-            this.tbStudInterests.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStudInterests_KeyPress);
             // 
             // tbStudGoals
             // 
@@ -2848,7 +2634,6 @@
             this.tbStudGoals.Name = "tbStudGoals";
             this.tbStudGoals.Size = new System.Drawing.Size(853, 20);
             this.tbStudGoals.TabIndex = 17;
-            this.tbStudGoals.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStudGoals_KeyPress);
             // 
             // tbStudBackground
             // 
@@ -2859,7 +2644,6 @@
             this.tbStudBackground.Name = "tbStudBackground";
             this.tbStudBackground.Size = new System.Drawing.Size(853, 20);
             this.tbStudBackground.TabIndex = 16;
-            this.tbStudBackground.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbStudBackground_KeyPress);
             // 
             // panelStudSecondaryLeft
             // 
@@ -3001,7 +2785,6 @@
             this.tbTeachComment.Name = "tbTeachComment";
             this.tbTeachComment.Size = new System.Drawing.Size(437, 20);
             this.tbTeachComment.TabIndex = 12;
-            this.tbTeachComment.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTeachComment_KeyPress);
             // 
             // tbTeachVacations
             // 
@@ -3010,7 +2793,6 @@
             this.tbTeachVacations.Name = "tbTeachVacations";
             this.tbTeachVacations.Size = new System.Drawing.Size(437, 20);
             this.tbTeachVacations.TabIndex = 8;
-            this.tbTeachVacations.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTeachVacations_KeyPress);
             // 
             // tbTeachAddress
             // 
@@ -3019,7 +2801,6 @@
             this.tbTeachAddress.Name = "tbTeachAddress";
             this.tbTeachAddress.Size = new System.Drawing.Size(437, 20);
             this.tbTeachAddress.TabIndex = 4;
-            this.tbTeachAddress.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTeachAddress_KeyPress);
             // 
             // labelTeachComment
             // 
@@ -3081,7 +2862,6 @@
             this.tbTeachLanguageDetail.Name = "tbTeachLanguageDetail";
             this.tbTeachLanguageDetail.Size = new System.Drawing.Size(163, 20);
             this.tbTeachLanguageDetail.TabIndex = 11;
-            this.tbTeachLanguageDetail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTeachLanguageDetail_KeyPress);
             // 
             // cbTeachLanguage2
             // 
@@ -3092,7 +2872,6 @@
             this.cbTeachLanguage2.Name = "cbTeachLanguage2";
             this.cbTeachLanguage2.Size = new System.Drawing.Size(121, 21);
             this.cbTeachLanguage2.TabIndex = 10;
-            this.cbTeachLanguage2.Click += new System.EventHandler(this.cbTeachLanguage2_Click);
             // 
             // cbTeachLanguage
             // 
@@ -3103,7 +2882,6 @@
             this.cbTeachLanguage.Name = "cbTeachLanguage";
             this.cbTeachLanguage.Size = new System.Drawing.Size(121, 21);
             this.cbTeachLanguage.TabIndex = 9;
-            this.cbTeachLanguage.Click += new System.EventHandler(this.cbTeachLanguage_Click);
             // 
             // labelTeachLabguageDetail
             // 
@@ -3141,7 +2919,6 @@
             this.cbTeachStatus.Name = "cbTeachStatus";
             this.cbTeachStatus.Size = new System.Drawing.Size(131, 21);
             this.cbTeachStatus.TabIndex = 5;
-            this.cbTeachStatus.Click += new System.EventHandler(this.cbTeachStatus_Click);
             // 
             // tbTeachLastBirthday
             // 
@@ -3150,7 +2927,6 @@
             this.tbTeachLastBirthday.Name = "tbTeachLastBirthday";
             this.tbTeachLastBirthday.Size = new System.Drawing.Size(163, 20);
             this.tbTeachLastBirthday.TabIndex = 7;
-            this.tbTeachLastBirthday.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTeachLastBirthday_KeyPress);
             // 
             // tbTeachPhone
             // 
@@ -3159,7 +2935,6 @@
             this.tbTeachPhone.Name = "tbTeachPhone";
             this.tbTeachPhone.Size = new System.Drawing.Size(151, 20);
             this.tbTeachPhone.TabIndex = 6;
-            this.tbTeachPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTeachPhone_KeyPress);
             // 
             // labelTeachBirthday
             // 
@@ -3195,7 +2970,6 @@
             this.tbTeachEmail.Name = "tbTeachEmail";
             this.tbTeachEmail.Size = new System.Drawing.Size(163, 20);
             this.tbTeachEmail.TabIndex = 3;
-            this.tbTeachEmail.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTeachEmail_KeyPress);
             // 
             // tbTeachLastName
             // 
@@ -3204,7 +2978,6 @@
             this.tbTeachLastName.Name = "tbTeachLastName";
             this.tbTeachLastName.Size = new System.Drawing.Size(151, 20);
             this.tbTeachLastName.TabIndex = 2;
-            this.tbTeachLastName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTeachLastName_KeyPress);
             // 
             // tbTeachFirstName
             // 
@@ -3213,7 +2986,6 @@
             this.tbTeachFirstName.Name = "tbTeachFirstName";
             this.tbTeachFirstName.Size = new System.Drawing.Size(131, 20);
             this.tbTeachFirstName.TabIndex = 1;
-            this.tbTeachFirstName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbTeachFirstName_KeyPress);
             // 
             // labelTeachEmail
             // 
@@ -3286,7 +3058,6 @@
             this.tbProgComments.Name = "tbProgComments";
             this.tbProgComments.Size = new System.Drawing.Size(594, 20);
             this.tbProgComments.TabIndex = 7;
-            this.tbProgComments.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbProgComments_KeyPress);
             // 
             // tbProgSummary
             // 
@@ -3297,7 +3068,6 @@
             this.tbProgSummary.Name = "tbProgSummary";
             this.tbProgSummary.Size = new System.Drawing.Size(594, 20);
             this.tbProgSummary.TabIndex = 6;
-            this.tbProgSummary.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbProgSummary_KeyPress);
             // 
             // labelProgComments
             // 
@@ -3340,7 +3110,6 @@
             this.tbProgPrice.Name = "tbProgPrice";
             this.tbProgPrice.Size = new System.Drawing.Size(146, 20);
             this.tbProgPrice.TabIndex = 5;
-            this.tbProgPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbProgPrice_KeyPress);
             // 
             // labelProgPrice
             // 
@@ -3360,7 +3129,6 @@
             this.cbPricingType.Name = "cbPricingType";
             this.cbPricingType.Size = new System.Drawing.Size(146, 21);
             this.cbPricingType.TabIndex = 4;
-            this.cbPricingType.Click += new System.EventHandler(this.cbPricingType_Click);
             // 
             // labelPricingType
             // 
@@ -3378,7 +3146,6 @@
             this.tbProgName.Name = "tbProgName";
             this.tbProgName.Size = new System.Drawing.Size(146, 20);
             this.tbProgName.TabIndex = 2;
-            this.tbProgName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbProgName_KeyPress);
             // 
             // labelProgName
             // 
@@ -3396,7 +3163,6 @@
             this.tbProgCode.Name = "tbProgCode";
             this.tbProgCode.Size = new System.Drawing.Size(146, 20);
             this.tbProgCode.TabIndex = 1;
-            this.tbProgCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbProgCode_KeyPress);
             // 
             // labelProgCode
             // 
@@ -3477,7 +3243,6 @@
             this.tbRoomPreferrability.Name = "tbRoomPreferrability";
             this.tbRoomPreferrability.Size = new System.Drawing.Size(87, 20);
             this.tbRoomPreferrability.TabIndex = 3;
-            this.tbRoomPreferrability.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbRoomPreferrability_KeyPress);
             // 
             // tbRoomCapacity
             // 
@@ -3486,7 +3251,6 @@
             this.tbRoomCapacity.Name = "tbRoomCapacity";
             this.tbRoomCapacity.Size = new System.Drawing.Size(87, 20);
             this.tbRoomCapacity.TabIndex = 2;
-            this.tbRoomCapacity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbRoomCapacity_KeyPress);
             // 
             // tbRoomName
             // 
@@ -3495,7 +3259,6 @@
             this.tbRoomName.Name = "tbRoomName";
             this.tbRoomName.Size = new System.Drawing.Size(87, 20);
             this.tbRoomName.TabIndex = 1;
-            this.tbRoomName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbRoomName_KeyPress);
             // 
             // groupBoxRoom
             // 
@@ -3537,7 +3300,6 @@
             this.tbRoomComments.Name = "tbRoomComments";
             this.tbRoomComments.Size = new System.Drawing.Size(717, 20);
             this.tbRoomComments.TabIndex = 5;
-            this.tbRoomComments.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbRoomComments_KeyPress);
             // 
             // tbRoomTags
             // 
@@ -3548,7 +3310,6 @@
             this.tbRoomTags.Name = "tbRoomTags";
             this.tbRoomTags.Size = new System.Drawing.Size(717, 20);
             this.tbRoomTags.TabIndex = 4;
-            this.tbRoomTags.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbRoomTags_KeyPress);
             // 
             // tabBottomPageLessons
             // 
@@ -3612,7 +3373,6 @@
             this.cbLessonCancellation.Name = "cbLessonCancellation";
             this.cbLessonCancellation.Size = new System.Drawing.Size(121, 21);
             this.cbLessonCancellation.TabIndex = 37;
-            this.cbLessonCancellation.Click += new System.EventHandler(this.cbLessonCancellation_Click);
             // 
             // labelLessonCancellation
             // 
@@ -3633,7 +3393,6 @@
             this.chkLessonLink.TabIndex = 34;
             this.chkLessonLink.Text = "Link";
             this.chkLessonLink.UseVisualStyleBackColor = true;
-            this.chkLessonLink.CheckedChanged += new System.EventHandler(this.chkLessonLink_CheckedChanged);
             // 
             // panelReconcile
             // 
@@ -4027,7 +3786,6 @@
             this.cbLessonStudent10.Name = "cbLessonStudent10";
             this.cbLessonStudent10.Size = new System.Drawing.Size(93, 21);
             this.cbLessonStudent10.TabIndex = 18;
-            this.cbLessonStudent10.Click += new System.EventHandler(this.cbLessonStudent10_Click);
             // 
             // cbLessonStudent9
             // 
@@ -4038,7 +3796,6 @@
             this.cbLessonStudent9.Name = "cbLessonStudent9";
             this.cbLessonStudent9.Size = new System.Drawing.Size(85, 21);
             this.cbLessonStudent9.TabIndex = 17;
-            this.cbLessonStudent9.Click += new System.EventHandler(this.cbLessonStudent9_Click);
             // 
             // cbLessonStudent8
             // 
@@ -4049,7 +3806,6 @@
             this.cbLessonStudent8.Name = "cbLessonStudent8";
             this.cbLessonStudent8.Size = new System.Drawing.Size(93, 21);
             this.cbLessonStudent8.TabIndex = 16;
-            this.cbLessonStudent8.Click += new System.EventHandler(this.cbLessonStudent8_Click);
             // 
             // cbLessonStudent7
             // 
@@ -4060,7 +3816,6 @@
             this.cbLessonStudent7.Name = "cbLessonStudent7";
             this.cbLessonStudent7.Size = new System.Drawing.Size(85, 21);
             this.cbLessonStudent7.TabIndex = 15;
-            this.cbLessonStudent7.Click += new System.EventHandler(this.cbLessonStudent7_Click);
             // 
             // cbLessonStudent6
             // 
@@ -4071,7 +3826,6 @@
             this.cbLessonStudent6.Name = "cbLessonStudent6";
             this.cbLessonStudent6.Size = new System.Drawing.Size(93, 21);
             this.cbLessonStudent6.TabIndex = 14;
-            this.cbLessonStudent6.Click += new System.EventHandler(this.cbLessonStudent6_Click);
             // 
             // cbLessonStudent5
             // 
@@ -4082,7 +3836,6 @@
             this.cbLessonStudent5.Name = "cbLessonStudent5";
             this.cbLessonStudent5.Size = new System.Drawing.Size(85, 21);
             this.cbLessonStudent5.TabIndex = 13;
-            this.cbLessonStudent5.Click += new System.EventHandler(this.cbLessonStudent5_Click);
             // 
             // cbLessonStudent4
             // 
@@ -4093,7 +3846,6 @@
             this.cbLessonStudent4.Name = "cbLessonStudent4";
             this.cbLessonStudent4.Size = new System.Drawing.Size(93, 21);
             this.cbLessonStudent4.TabIndex = 12;
-            this.cbLessonStudent4.Click += new System.EventHandler(this.cbLessonStudent4_Click);
             // 
             // cbLessonStudent3
             // 
@@ -4104,7 +3856,6 @@
             this.cbLessonStudent3.Name = "cbLessonStudent3";
             this.cbLessonStudent3.Size = new System.Drawing.Size(85, 21);
             this.cbLessonStudent3.TabIndex = 11;
-            this.cbLessonStudent3.Click += new System.EventHandler(this.cbLessonStudent3_Click);
             // 
             // labelLessonStudent3
             // 
@@ -4133,7 +3884,6 @@
             this.tbLessonComment.Name = "tbLessonComment";
             this.tbLessonComment.Size = new System.Drawing.Size(904, 20);
             this.tbLessonComment.TabIndex = 26;
-            this.tbLessonComment.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbLEssonComment_KeyPress);
             // 
             // cbLessonStudent2
             // 
@@ -4144,7 +3894,6 @@
             this.cbLessonStudent2.Name = "cbLessonStudent2";
             this.cbLessonStudent2.Size = new System.Drawing.Size(96, 21);
             this.cbLessonStudent2.TabIndex = 10;
-            this.cbLessonStudent2.Click += new System.EventHandler(this.cbLessonStudent2_Click);
             // 
             // cbLessonStudent1
             // 
@@ -4155,7 +3904,6 @@
             this.cbLessonStudent1.Name = "cbLessonStudent1";
             this.cbLessonStudent1.Size = new System.Drawing.Size(96, 21);
             this.cbLessonStudent1.TabIndex = 9;
-            this.cbLessonStudent1.Click += new System.EventHandler(this.cbLessonStudent1_Click);
             // 
             // cbLessonTeacher2
             // 
@@ -4166,7 +3914,6 @@
             this.cbLessonTeacher2.Name = "cbLessonTeacher2";
             this.cbLessonTeacher2.Size = new System.Drawing.Size(96, 21);
             this.cbLessonTeacher2.TabIndex = 8;
-            this.cbLessonTeacher2.Click += new System.EventHandler(this.cbLessonTeacher2_Click);
             // 
             // cbLessonTeacher1
             // 
@@ -4177,7 +3924,6 @@
             this.cbLessonTeacher1.Name = "cbLessonTeacher1";
             this.cbLessonTeacher1.Size = new System.Drawing.Size(96, 21);
             this.cbLessonTeacher1.TabIndex = 7;
-            this.cbLessonTeacher1.Click += new System.EventHandler(this.cbLessonTeacher1_Click);
             // 
             // cbLessonProg
             // 
@@ -4188,7 +3934,6 @@
             this.cbLessonProg.Name = "cbLessonProg";
             this.cbLessonProg.Size = new System.Drawing.Size(96, 21);
             this.cbLessonProg.TabIndex = 3;
-            this.cbLessonProg.Click += new System.EventHandler(this.cbLessonProg_Click);
             // 
             // labelLessonStudent1
             // 
@@ -4226,7 +3971,6 @@
             this.cbLessonState.Name = "cbLessonState";
             this.cbLessonState.Size = new System.Drawing.Size(91, 21);
             this.cbLessonState.TabIndex = 1;
-            this.cbLessonState.Click += new System.EventHandler(this.cbLessonState_Click);
             // 
             // labelLessonState
             // 
@@ -4246,7 +3990,6 @@
             this.cbLessonEnd.Name = "cbLessonEnd";
             this.cbLessonEnd.Size = new System.Drawing.Size(92, 21);
             this.cbLessonEnd.TabIndex = 6;
-            this.cbLessonEnd.Click += new System.EventHandler(this.cbLessonEnd_Click);
             // 
             // cbLessonStart
             // 
@@ -4257,7 +4000,6 @@
             this.cbLessonStart.Name = "cbLessonStart";
             this.cbLessonStart.Size = new System.Drawing.Size(96, 21);
             this.cbLessonStart.TabIndex = 5;
-            this.cbLessonStart.Click += new System.EventHandler(this.cbLessonStart_Click);
             // 
             // monthCalLessonDate
             // 
@@ -4265,8 +4007,6 @@
             this.monthCalLessonDate.Location = new System.Drawing.Point(9, 47);
             this.monthCalLessonDate.Name = "monthCalLessonDate";
             this.monthCalLessonDate.TabIndex = 2;
-            this.monthCalLessonDate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.monthCalendar1_KeyPress);
-            this.monthCalLessonDate.MouseDown += new System.Windows.Forms.MouseEventHandler(this.monthCalendar1_MouseDown);
             // 
             // cbLessonRoom
             // 
@@ -4277,7 +4017,6 @@
             this.cbLessonRoom.Name = "cbLessonRoom";
             this.cbLessonRoom.Size = new System.Drawing.Size(92, 21);
             this.cbLessonRoom.TabIndex = 4;
-            this.cbLessonRoom.Click += new System.EventHandler(this.cbLessonRoom_Click);
             // 
             // labelLessonRoom
             // 
@@ -6725,6 +6464,86 @@
             this.lbFutureOpName.TabIndex = 0;
             this.lbFutureOpName.Text = "Future Operation";
             // 
+            // panelValidation
+            // 
+            this.panelValidation.Controls.Add(this.panelValidButtons);
+            this.panelValidation.Controls.Add(this.dgvValidation);
+            this.panelValidation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelValidation.Location = new System.Drawing.Point(0, 0);
+            this.panelValidation.Name = "panelValidation";
+            this.panelValidation.Size = new System.Drawing.Size(1291, 26);
+            this.panelValidation.TabIndex = 2;
+            this.panelValidation.Visible = false;
+            // 
+            // panelValidButtons
+            // 
+            this.panelValidButtons.Controls.Add(this.buttonValidRerun);
+            this.panelValidButtons.Controls.Add(this.buttonValidClose);
+            this.panelValidButtons.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelValidButtons.Location = new System.Drawing.Point(1182, 0);
+            this.panelValidButtons.Name = "panelValidButtons";
+            this.panelValidButtons.Size = new System.Drawing.Size(109, 26);
+            this.panelValidButtons.TabIndex = 23;
+            // 
+            // buttonValidRerun
+            // 
+            this.buttonValidRerun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonValidRerun.Location = new System.Drawing.Point(21, -38);
+            this.buttonValidRerun.Name = "buttonValidRerun";
+            this.buttonValidRerun.Size = new System.Drawing.Size(75, 23);
+            this.buttonValidRerun.TabIndex = 1;
+            this.buttonValidRerun.Text = "Re-validate";
+            this.buttonValidRerun.UseVisualStyleBackColor = true;
+            this.buttonValidRerun.Click += new System.EventHandler(this.buttonValidRerun_Click);
+            // 
+            // buttonValidClose
+            // 
+            this.buttonValidClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonValidClose.Location = new System.Drawing.Point(20, -9);
+            this.buttonValidClose.Name = "buttonValidClose";
+            this.buttonValidClose.Size = new System.Drawing.Size(75, 23);
+            this.buttonValidClose.TabIndex = 0;
+            this.buttonValidClose.Text = "Close";
+            this.buttonValidClose.UseVisualStyleBackColor = true;
+            this.buttonValidClose.Click += new System.EventHandler(this.buttonValidClose_Click);
+            // 
+            // dgvValidation
+            // 
+            this.dgvValidation.AllowUserToAddRows = false;
+            this.dgvValidation.AllowUserToDeleteRows = false;
+            this.dgvValidation.AutoGenerateColumns = false;
+            this.dgvValidation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvValidation.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Problem,
+            this.Description,
+            this.problemDataGridViewTextBoxColumn,
+            this.descriptionDataGridViewTextBoxColumn1,
+            this.keyDataGridViewTextBoxColumn});
+            this.dgvValidation.DataSource = this.problemList;
+            this.dgvValidation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvValidation.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvValidation.Location = new System.Drawing.Point(0, 0);
+            this.dgvValidation.Name = "dgvValidation";
+            this.dgvValidation.Size = new System.Drawing.Size(1291, 26);
+            this.dgvValidation.TabIndex = 22;
+            this.dgvValidation.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvValidation_CellContentClick);
+            // 
+            // Problem
+            // 
+            this.Problem.DataPropertyName = "Problem";
+            this.Problem.HeaderText = "Problem";
+            this.Problem.MinimumWidth = 300;
+            this.Problem.Name = "Problem";
+            this.Problem.Width = 300;
+            // 
+            // Description
+            // 
+            this.Description.DataPropertyName = "Description";
+            this.Description.HeaderText = "Description";
+            this.Description.MinimumWidth = 300;
+            this.Description.Name = "Description";
+            this.Description.Width = 300;
+            // 
             // problemDataGridViewTextBoxColumn
             // 
             this.problemDataGridViewTextBoxColumn.DataPropertyName = "Problem";
@@ -6751,6 +6570,125 @@
             // 
             this.clientList.DataSource = typeof(RecordKeeper.Client);
             // 
+            // State
+            // 
+            this.State.DataPropertyName = "State";
+            this.State.HeaderText = "State";
+            this.State.Name = "State";
+            this.State.ReadOnly = true;
+            // 
+            // dayDataGridViewTextBoxColumn
+            // 
+            this.dayDataGridViewTextBoxColumn.DataPropertyName = "Day";
+            this.dayDataGridViewTextBoxColumn.HeaderText = "Day";
+            this.dayDataGridViewTextBoxColumn.Name = "dayDataGridViewTextBoxColumn";
+            this.dayDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Start
+            // 
+            this.Start.DataPropertyName = "Start";
+            this.Start.HeaderText = "Start";
+            this.Start.Name = "Start";
+            this.Start.ReadOnly = true;
+            // 
+            // End
+            // 
+            this.End.DataPropertyName = "End";
+            this.End.HeaderText = "End";
+            this.End.Name = "End";
+            this.End.ReadOnly = true;
+            // 
+            // student1DataGridViewTextBoxColumn
+            // 
+            this.student1DataGridViewTextBoxColumn.DataPropertyName = "Student1";
+            this.student1DataGridViewTextBoxColumn.HeaderText = "Student1";
+            this.student1DataGridViewTextBoxColumn.Name = "student1DataGridViewTextBoxColumn";
+            this.student1DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // teacher1DataGridViewTextBoxColumn
+            // 
+            this.teacher1DataGridViewTextBoxColumn.DataPropertyName = "Teacher1";
+            this.teacher1DataGridViewTextBoxColumn.HeaderText = "Teacher1";
+            this.teacher1DataGridViewTextBoxColumn.Name = "teacher1DataGridViewTextBoxColumn";
+            this.teacher1DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // roomDataGridViewTextBoxColumn
+            // 
+            this.roomDataGridViewTextBoxColumn.DataPropertyName = "Room";
+            this.roomDataGridViewTextBoxColumn.HeaderText = "Room";
+            this.roomDataGridViewTextBoxColumn.Name = "roomDataGridViewTextBoxColumn";
+            this.roomDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // programDataGridViewTextBoxColumn
+            // 
+            this.programDataGridViewTextBoxColumn.DataPropertyName = "Program";
+            this.programDataGridViewTextBoxColumn.HeaderText = "Program";
+            this.programDataGridViewTextBoxColumn.Name = "programDataGridViewTextBoxColumn";
+            this.programDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Linked
+            // 
+            this.Linked.DataPropertyName = "Linked";
+            this.Linked.HeaderText = "Linked";
+            this.Linked.Name = "Linked";
+            this.Linked.ReadOnly = true;
+            // 
+            // Price
+            // 
+            this.Price.DataPropertyName = "Price";
+            this.Price.HeaderText = "Price";
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
+            // 
+            // student2DataGridViewTextBoxColumn
+            // 
+            this.student2DataGridViewTextBoxColumn.DataPropertyName = "Student2";
+            this.student2DataGridViewTextBoxColumn.HeaderText = "Student2";
+            this.student2DataGridViewTextBoxColumn.Name = "student2DataGridViewTextBoxColumn";
+            this.student2DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // student3DataGridViewTextBoxColumn
+            // 
+            this.student3DataGridViewTextBoxColumn.DataPropertyName = "Student3";
+            this.student3DataGridViewTextBoxColumn.HeaderText = "Student3";
+            this.student3DataGridViewTextBoxColumn.Name = "student3DataGridViewTextBoxColumn";
+            this.student3DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Student4
+            // 
+            this.Student4.DataPropertyName = "Student4";
+            this.Student4.HeaderText = "Student4";
+            this.Student4.Name = "Student4";
+            this.Student4.ReadOnly = true;
+            // 
+            // teacher2DataGridViewTextBoxColumn
+            // 
+            this.teacher2DataGridViewTextBoxColumn.DataPropertyName = "Teacher2";
+            this.teacher2DataGridViewTextBoxColumn.HeaderText = "Teacher2";
+            this.teacher2DataGridViewTextBoxColumn.Name = "teacher2DataGridViewTextBoxColumn";
+            this.teacher2DataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // CancellationTime
+            // 
+            this.CancellationTime.DataPropertyName = "CancellationTime";
+            this.CancellationTime.HeaderText = "CancellationTime";
+            this.CancellationTime.Name = "CancellationTime";
+            this.CancellationTime.ReadOnly = true;
+            // 
+            // commentsDataGridViewTextBoxColumn2
+            // 
+            this.commentsDataGridViewTextBoxColumn2.DataPropertyName = "Comments";
+            this.commentsDataGridViewTextBoxColumn2.HeaderText = "Comments";
+            this.commentsDataGridViewTextBoxColumn2.Name = "commentsDataGridViewTextBoxColumn2";
+            this.commentsDataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Start";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Start";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
             // FormGlob
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -6774,9 +6712,6 @@
             this.splitContWorkValid.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContWorkValid)).EndInit();
             this.splitContWorkValid.ResumeLayout(false);
-            this.panelValidation.ResumeLayout(false);
-            this.panelValidButtons.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvValidation)).EndInit();
             this.tabControlOps.ResumeLayout(false);
             this.tabEdit.ResumeLayout(false);
             this.splitContainerGlobDataControls.Panel1.ResumeLayout(false);
@@ -6921,6 +6856,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.viewSlotList)).EndInit();
             this.tabPage8.ResumeLayout(false);
             this.tabPage8.PerformLayout();
+            this.panelValidation.ResumeLayout(false);
+            this.panelValidButtons.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvValidation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.problemList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientList)).EndInit();
             this.ResumeLayout(false);
@@ -7382,22 +7320,6 @@
         private System.Windows.Forms.Label lbReconcileResult;
         private System.Windows.Forms.Label lbReconcileSimilarity;
         private System.Windows.Forms.CheckBox chkLessonLink;
-        private System.Windows.Forms.DataGridViewTextBoxColumn State;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dayDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Start;
-        private System.Windows.Forms.DataGridViewTextBoxColumn End;
-        private System.Windows.Forms.DataGridViewTextBoxColumn student1DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn teacher1DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn roomDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn programDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Linked;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn student2DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn student3DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Student4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn teacher2DataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CancellationTime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn commentsDataGridViewTextBoxColumn2;
         private System.Windows.Forms.ToolStripMenuItem roomToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem redToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem greenToolStripMenuItem;
@@ -7522,6 +7444,23 @@
         private System.Windows.Forms.Label lbSearchPayTeacherDate;
         private System.Windows.Forms.Label lbSearchPayTeacherSum;
         private System.Windows.Forms.Label lbSearchPayTeacherName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn State;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dayDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Start;
+        private System.Windows.Forms.DataGridViewTextBoxColumn End;
+        private System.Windows.Forms.DataGridViewTextBoxColumn student1DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn teacher1DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn roomDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn programDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Linked;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn student2DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn student3DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Student4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn teacher2DataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CancellationTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn commentsDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
     }
 }
 

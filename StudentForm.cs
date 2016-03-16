@@ -25,11 +25,6 @@ namespace RecordKeeper
 
         delegate bool EvaluateStudent(Student t);
 
-        private void EditStudentDetailsChanged()
-        {
-            StaleComboLists = true;
-        }
-
         private void DropStudentSelections()
         {
             m_StudentSelectionStatus = null;

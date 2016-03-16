@@ -82,6 +82,7 @@ namespace RecordKeeper
         public void Datalist_AddRecord()
         {
             Record st = (Record)DataList.AddNew();
+            st.SetGlob(this);
             st.Id = FormGlob.AllocateID();
             st.ChangedBy = ClientCode;
             st.CreatedBy = ClientCode;
@@ -148,7 +149,12 @@ namespace RecordKeeper
             if (!(DataList.Current as Record).IsHashAsRead())
             {
                 Modified = true;
-                if (CurrentMode != Modes.Lessons)
+
+                if (CurrentMode == Modes.Students || 
+                    CurrentMode == Modes.Teachers ||
+                    CurrentMode == Modes.Programs ||
+                    CurrentMode == Modes.Rooms)
+
                     StaleComboLists = true;
             }
 
