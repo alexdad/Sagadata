@@ -353,6 +353,7 @@ namespace RecordKeeper
                 {
                     tabControlOps.Visible = false;
                     m_labelWorking.Visible = true;
+                    m_labelWorking.BringToFront();
                 }
                 else
                 {
