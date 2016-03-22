@@ -63,22 +63,16 @@ namespace GDrive
                 ApplicationName = RecordKeeper.FormGlob.Bindings.ApplicationName,
             });
 
-            // Find our file on the drive, under the RecordKeeper directory
+            // Find our file on the drive
             string fileId = null;
 
             FilesResource.ListRequest listRequest = service.Files.List();
-            listRequest.PageSize = 10;
+            listRequest.PageSize = 1;
             listRequest.Fields = "nextPageToken, files(id, name)";
+            listRequest.Q = "name='" + cloudName + "'";
             IList<Google.Apis.Drive.v3.Data.File> files = listRequest.Execute().Files;
             if (files != null && files.Count > 0)
-            {
-                foreach (var file in files)
-                {
-                    string name = file.Name;
-                    if (name != null && name.ToLower() == cloudName.ToLower())
-                        fileId = file.Id;
-                }
-            }
+                fileId = files.First().Id;
 
             if (fileId != null)
             {
