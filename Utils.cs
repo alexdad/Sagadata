@@ -18,9 +18,9 @@ namespace RecordKeeper
         public static Color RelaxationColor = Color.FromArgb(212, 255, 236);
         private static string[] m_jokes = {
             "coffee?", "tea?", "lemonade?", "movie?", "sorry for the delay...", "patience please",
-            "it takes time...", "slow?", "cheer", "hang tight",
+            "it takes time...", "slow?", "cheer", "hang tight", "next avaliable agent...",
             "is it rainy today?", "ask Siri about meaning of life",
-            "boring", "arghhh", "F*", "disgusting...", "devil..."
+            "boring", "arghhh", "disgusting...", "devil..."
         };
 
         private Label m_labelWorking;

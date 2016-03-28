@@ -18,7 +18,7 @@ namespace RecordKeeper
         public override Modes Mode { get { return Modes.Programs; } }
         public override string Description
         {
-            get { return Name; }
+            get { return Code; }
         }
         public override string Abbreviation
         {

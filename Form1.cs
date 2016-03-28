@@ -198,7 +198,8 @@ namespace RecordKeeper
             List<Program> programs = ActivePrograms();
             List<String> programNames = programs.ConvertAll(x => x.Description);
             programNames.Add("");
-            string[] orderedProgramNames = programNames.OrderBy(q => q).ToArray();
+            var uniqueProgramNames = programNames.Distinct<String>();
+            string[] orderedProgramNames = uniqueProgramNames.OrderBy(q => q).ToArray();
 
             cbSearchLessonProgram.Items.Clear();
             cbSearchLessonProgram.Items.AddRange(orderedProgramNames);

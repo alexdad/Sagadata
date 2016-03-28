@@ -239,7 +239,6 @@
             this.cbStudSource = new System.Windows.Forms.ComboBox();
             this.panelStudSecondary = new System.Windows.Forms.Panel();
             this.groupBoxStudSecondaryRight = new System.Windows.Forms.GroupBox();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.tbStudComments = new System.Windows.Forms.TextBox();
             this.tbStudSchedule = new System.Windows.Forms.TextBox();
             this.tbStudInterests = new System.Windows.Forms.TextBox();
@@ -2693,7 +2692,6 @@
             // 
             // groupBoxStudSecondaryRight
             // 
-            this.groupBoxStudSecondaryRight.Controls.Add(this.panel1);
             this.groupBoxStudSecondaryRight.Controls.Add(this.tbStudComments);
             this.groupBoxStudSecondaryRight.Controls.Add(this.tbStudSchedule);
             this.groupBoxStudSecondaryRight.Controls.Add(this.tbStudInterests);
@@ -2706,13 +2704,6 @@
             this.groupBoxStudSecondaryRight.Size = new System.Drawing.Size(867, 316);
             this.groupBoxStudSecondaryRight.TabIndex = 3;
             this.groupBoxStudSecondaryRight.TabStop = false;
-            // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(203, 8);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 100);
-            this.panel1.TabIndex = 21;
             // 
             // tbStudComments
             // 
@@ -7352,7 +7343,6 @@
         private System.Windows.Forms.SplitContainer splitContWorkValid;
         private System.Windows.Forms.Button buttonValidRerun;
         private System.Windows.Forms.Button buttonValidClose;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panelValidation;
         private System.Windows.Forms.DataGridView dgvValidation;
         private System.Windows.Forms.Panel panelValidButtons;
