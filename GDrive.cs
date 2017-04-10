@@ -67,7 +67,7 @@ namespace GDrive
             string fileId = null;
 
             FilesResource.ListRequest listRequest = service.Files.List();
-            listRequest.PageSize = 1;
+            listRequest.PageSize = 100;
             listRequest.Fields = "nextPageToken, files(id, name)";
             listRequest.Q = "name='" + cloudName + "'";
             IList<Google.Apis.Drive.v3.Data.File> files = listRequest.Execute().Files;

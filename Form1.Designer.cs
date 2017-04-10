@@ -88,6 +88,13 @@
             this.monthlyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteFuturesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContWorkValid = new System.Windows.Forms.SplitContainer();
+            this.panelValidation = new System.Windows.Forms.Panel();
+            this.panelValidButtons = new System.Windows.Forms.Panel();
+            this.buttonValidRerun = new System.Windows.Forms.Button();
+            this.buttonValidClose = new System.Windows.Forms.Button();
+            this.dgvValidation = new System.Windows.Forms.DataGridView();
+            this.Problem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControlOps = new RecordKeeper.HiddenTabControl();
             this.tabEdit = new System.Windows.Forms.TabPage();
             this.splitContainerGlobDataControls = new System.Windows.Forms.SplitContainer();
@@ -611,13 +618,6 @@
             this.butViewZoomOut = new System.Windows.Forms.Button();
             this.tabPage8 = new System.Windows.Forms.TabPage();
             this.lbFutureOpName = new System.Windows.Forms.Label();
-            this.panelValidation = new System.Windows.Forms.Panel();
-            this.panelValidButtons = new System.Windows.Forms.Panel();
-            this.buttonValidRerun = new System.Windows.Forms.Button();
-            this.buttonValidClose = new System.Windows.Forms.Button();
-            this.dgvValidation = new System.Windows.Forms.DataGridView();
-            this.Problem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.problemDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.keyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -630,6 +630,9 @@
             this.splitContWorkValid.Panel1.SuspendLayout();
             this.splitContWorkValid.Panel2.SuspendLayout();
             this.splitContWorkValid.SuspendLayout();
+            this.panelValidation.SuspendLayout();
+            this.panelValidButtons.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvValidation)).BeginInit();
             this.tabControlOps.SuspendLayout();
             this.tabEdit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerGlobDataControls)).BeginInit();
@@ -743,9 +746,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewSlots)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewSlotList)).BeginInit();
             this.tabPage8.SuspendLayout();
-            this.panelValidation.SuspendLayout();
-            this.panelValidButtons.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvValidation)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.problemList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientList)).BeginInit();
             this.SuspendLayout();
@@ -814,6 +814,7 @@
             // showToolStripMenuItem
             // 
             this.showToolStripMenuItem.Name = "showToolStripMenuItem";
+            this.showToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
             this.showToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.showToolStripMenuItem.Text = "Show";
             this.showToolStripMenuItem.Click += new System.EventHandler(this.showToolStripMenuItem_Click);
@@ -1247,6 +1248,86 @@
             this.splitContWorkValid.Size = new System.Drawing.Size(1291, 807);
             this.splitContWorkValid.SplitterDistance = 777;
             this.splitContWorkValid.TabIndex = 26;
+            // 
+            // panelValidation
+            // 
+            this.panelValidation.Controls.Add(this.panelValidButtons);
+            this.panelValidation.Controls.Add(this.dgvValidation);
+            this.panelValidation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelValidation.Location = new System.Drawing.Point(0, 0);
+            this.panelValidation.Name = "panelValidation";
+            this.panelValidation.Size = new System.Drawing.Size(1291, 26);
+            this.panelValidation.TabIndex = 2;
+            this.panelValidation.Visible = false;
+            // 
+            // panelValidButtons
+            // 
+            this.panelValidButtons.Controls.Add(this.buttonValidRerun);
+            this.panelValidButtons.Controls.Add(this.buttonValidClose);
+            this.panelValidButtons.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelValidButtons.Location = new System.Drawing.Point(1182, 0);
+            this.panelValidButtons.Name = "panelValidButtons";
+            this.panelValidButtons.Size = new System.Drawing.Size(109, 26);
+            this.panelValidButtons.TabIndex = 23;
+            // 
+            // buttonValidRerun
+            // 
+            this.buttonValidRerun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonValidRerun.Location = new System.Drawing.Point(21, -38);
+            this.buttonValidRerun.Name = "buttonValidRerun";
+            this.buttonValidRerun.Size = new System.Drawing.Size(75, 23);
+            this.buttonValidRerun.TabIndex = 1;
+            this.buttonValidRerun.Text = "Re-validate";
+            this.buttonValidRerun.UseVisualStyleBackColor = true;
+            this.buttonValidRerun.Click += new System.EventHandler(this.buttonValidRerun_Click);
+            // 
+            // buttonValidClose
+            // 
+            this.buttonValidClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonValidClose.Location = new System.Drawing.Point(20, -9);
+            this.buttonValidClose.Name = "buttonValidClose";
+            this.buttonValidClose.Size = new System.Drawing.Size(75, 23);
+            this.buttonValidClose.TabIndex = 0;
+            this.buttonValidClose.Text = "Close";
+            this.buttonValidClose.UseVisualStyleBackColor = true;
+            this.buttonValidClose.Click += new System.EventHandler(this.buttonValidClose_Click);
+            // 
+            // dgvValidation
+            // 
+            this.dgvValidation.AllowUserToAddRows = false;
+            this.dgvValidation.AllowUserToDeleteRows = false;
+            this.dgvValidation.AutoGenerateColumns = false;
+            this.dgvValidation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvValidation.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Problem,
+            this.Description,
+            this.problemDataGridViewTextBoxColumn,
+            this.descriptionDataGridViewTextBoxColumn1,
+            this.keyDataGridViewTextBoxColumn});
+            this.dgvValidation.DataSource = this.problemList;
+            this.dgvValidation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvValidation.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvValidation.Location = new System.Drawing.Point(0, 0);
+            this.dgvValidation.Name = "dgvValidation";
+            this.dgvValidation.Size = new System.Drawing.Size(1291, 26);
+            this.dgvValidation.TabIndex = 22;
+            this.dgvValidation.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvValidation_CellContentClick);
+            // 
+            // Problem
+            // 
+            this.Problem.DataPropertyName = "Problem";
+            this.Problem.HeaderText = "Problem";
+            this.Problem.MinimumWidth = 300;
+            this.Problem.Name = "Problem";
+            this.Problem.Width = 300;
+            // 
+            // Description
+            // 
+            this.Description.DataPropertyName = "Description";
+            this.Description.HeaderText = "Description";
+            this.Description.MinimumWidth = 300;
+            this.Description.Name = "Description";
+            this.Description.Width = 300;
             // 
             // tabControlOps
             // 
@@ -5631,6 +5712,7 @@
             this.tbPlanRepeat.Name = "tbPlanRepeat";
             this.tbPlanRepeat.Size = new System.Drawing.Size(47, 20);
             this.tbPlanRepeat.TabIndex = 5;
+            this.tbPlanRepeat.Visible = false;
             // 
             // lbPlanRepeat
             // 
@@ -5640,6 +5722,7 @@
             this.lbPlanRepeat.Size = new System.Drawing.Size(85, 13);
             this.lbPlanRepeat.TabIndex = 30;
             this.lbPlanRepeat.Text = "Repeat (weeks):";
+            this.lbPlanRepeat.Visible = false;
             // 
             // tbPlanComment
             // 
@@ -6574,86 +6657,6 @@
             this.lbFutureOpName.TabIndex = 0;
             this.lbFutureOpName.Text = "Future Operation";
             // 
-            // panelValidation
-            // 
-            this.panelValidation.Controls.Add(this.panelValidButtons);
-            this.panelValidation.Controls.Add(this.dgvValidation);
-            this.panelValidation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelValidation.Location = new System.Drawing.Point(0, 0);
-            this.panelValidation.Name = "panelValidation";
-            this.panelValidation.Size = new System.Drawing.Size(1291, 26);
-            this.panelValidation.TabIndex = 2;
-            this.panelValidation.Visible = false;
-            // 
-            // panelValidButtons
-            // 
-            this.panelValidButtons.Controls.Add(this.buttonValidRerun);
-            this.panelValidButtons.Controls.Add(this.buttonValidClose);
-            this.panelValidButtons.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelValidButtons.Location = new System.Drawing.Point(1182, 0);
-            this.panelValidButtons.Name = "panelValidButtons";
-            this.panelValidButtons.Size = new System.Drawing.Size(109, 26);
-            this.panelValidButtons.TabIndex = 23;
-            // 
-            // buttonValidRerun
-            // 
-            this.buttonValidRerun.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonValidRerun.Location = new System.Drawing.Point(21, -38);
-            this.buttonValidRerun.Name = "buttonValidRerun";
-            this.buttonValidRerun.Size = new System.Drawing.Size(75, 23);
-            this.buttonValidRerun.TabIndex = 1;
-            this.buttonValidRerun.Text = "Re-validate";
-            this.buttonValidRerun.UseVisualStyleBackColor = true;
-            this.buttonValidRerun.Click += new System.EventHandler(this.buttonValidRerun_Click);
-            // 
-            // buttonValidClose
-            // 
-            this.buttonValidClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonValidClose.Location = new System.Drawing.Point(20, -9);
-            this.buttonValidClose.Name = "buttonValidClose";
-            this.buttonValidClose.Size = new System.Drawing.Size(75, 23);
-            this.buttonValidClose.TabIndex = 0;
-            this.buttonValidClose.Text = "Close";
-            this.buttonValidClose.UseVisualStyleBackColor = true;
-            this.buttonValidClose.Click += new System.EventHandler(this.buttonValidClose_Click);
-            // 
-            // dgvValidation
-            // 
-            this.dgvValidation.AllowUserToAddRows = false;
-            this.dgvValidation.AllowUserToDeleteRows = false;
-            this.dgvValidation.AutoGenerateColumns = false;
-            this.dgvValidation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvValidation.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Problem,
-            this.Description,
-            this.problemDataGridViewTextBoxColumn,
-            this.descriptionDataGridViewTextBoxColumn1,
-            this.keyDataGridViewTextBoxColumn});
-            this.dgvValidation.DataSource = this.problemList;
-            this.dgvValidation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvValidation.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvValidation.Location = new System.Drawing.Point(0, 0);
-            this.dgvValidation.Name = "dgvValidation";
-            this.dgvValidation.Size = new System.Drawing.Size(1291, 26);
-            this.dgvValidation.TabIndex = 22;
-            this.dgvValidation.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvValidation_CellContentClick);
-            // 
-            // Problem
-            // 
-            this.Problem.DataPropertyName = "Problem";
-            this.Problem.HeaderText = "Problem";
-            this.Problem.MinimumWidth = 300;
-            this.Problem.Name = "Problem";
-            this.Problem.Width = 300;
-            // 
-            // Description
-            // 
-            this.Description.DataPropertyName = "Description";
-            this.Description.HeaderText = "Description";
-            this.Description.MinimumWidth = 300;
-            this.Description.Name = "Description";
-            this.Description.Width = 300;
-            // 
             // problemDataGridViewTextBoxColumn
             // 
             this.problemDataGridViewTextBoxColumn.DataPropertyName = "Problem";
@@ -6703,6 +6706,9 @@
             this.splitContWorkValid.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContWorkValid)).EndInit();
             this.splitContWorkValid.ResumeLayout(false);
+            this.panelValidation.ResumeLayout(false);
+            this.panelValidButtons.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvValidation)).EndInit();
             this.tabControlOps.ResumeLayout(false);
             this.tabEdit.ResumeLayout(false);
             this.splitContainerGlobDataControls.Panel1.ResumeLayout(false);
@@ -6847,9 +6853,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.viewSlotList)).EndInit();
             this.tabPage8.ResumeLayout(false);
             this.tabPage8.PerformLayout();
-            this.panelValidation.ResumeLayout(false);
-            this.panelValidButtons.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvValidation)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.problemList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientList)).EndInit();
             this.ResumeLayout(false);

@@ -44,9 +44,11 @@ namespace RecordKeeper
             }
             set
             {
+                /*
                 Day = value.ToShortDateString();
                 if (value.Hour != 0 || value.Minute != 0)
                     Start = value.ToShortTimeString();
+                */
             }
 
         }
@@ -443,9 +445,9 @@ namespace RecordKeeper
             }
         }
 
-        public void CloneValuesTo(Lesson l)
+        public void CloneValuesTo(Lesson l, string day)
         {
-            l.Day = this.Day;
+            l.Day = day;
             l.End = this.End;
             l.Program = this.Program;
             l.Room = this.Room;

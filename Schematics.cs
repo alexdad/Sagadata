@@ -246,8 +246,8 @@ namespace RecordKeeper
             }
             else
             {
-                labelGlobalVersion.Text = "v1.1";
-                lbViewVersion.Text = "v1.1";
+                labelGlobalVersion.Text = "v1.5";
+                lbViewVersion.Text = "v1.5";
             }
         }
 

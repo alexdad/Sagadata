@@ -565,7 +565,7 @@ namespace RecordKeeper
         {
             List<DateTime> dates = new List<DateTime>();
 
-            DateTime dt = DateTime.Now;
+            DateTime dt = l.DateTimeStart;
             bool hitEnd = false;
             while(!hitEnd)
             {
@@ -608,8 +608,7 @@ namespace RecordKeeper
                 Lesson l;
                 buttonAdd_Click(null, null);
                 l = lessonList.Current as Lesson;
-                lbase.CloneValuesTo(l);
-                l.Day = dt.ToShortDateString();
+                lbase.CloneValuesTo(l, dt.ToShortDateString());
             }
 
             CompleteBulkEditOperation();

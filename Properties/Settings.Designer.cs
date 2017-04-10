@@ -97,7 +97,7 @@ namespace RecordKeeper.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Test")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Live")]
         public string Realm {
             get {
                 return ((string)(this["Realm"]));
