@@ -641,6 +641,10 @@ namespace RecordKeeper
             l.State = SetComboByValue(cbLessonState, 
                             (cancelled ? m_enumState[(int)LessonStates.Cancelled] :
                                          m_enumState[(int)LessonStates.Planned]) );
+            if (cancelled)
+                l.CancellationTime = m_enumCancellation[1];   // On Time
+            else
+                l.CancellationTime = "";
 
             string geTitle, geComment;
             string[] geStudents, geTeachers;
@@ -661,9 +665,11 @@ namespace RecordKeeper
                 if (!IsStringEmpty(str))
                     l.SetStudent(SetComboByValue(LessonStudentComboBox(i+1), str), i+1);
             }
+
+            PopulateLessonProgPrice(l);
         }
 
-        void PopulateLessonProgPrice(Lesson l, string prog)
+        void PopulateLessonProgPrice(Lesson l)
         {
             foreach (Student stud in SpecificStudent(l.Student1))
             {
@@ -681,11 +687,11 @@ namespace RecordKeeper
                         return;
                     }
                 }
-                if (!IsStringEmpty(prog))
+                /*if (!IsStringEmpty(prog))
                 {
                     string spr = GetProgramPrice(prog);
                     l.Price = spr;
-                }
+                }*/
             }
         }
 
